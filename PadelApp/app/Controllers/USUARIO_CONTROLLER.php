@@ -102,15 +102,10 @@ switch ( $_REQUEST[ 'action' ] ) {
 			
             
             $dependencias = $USUARIO->dependencias($_REQUEST['login']);//Variable que almacena las dependencias que tiene  tabla USUARIOS a la hora de realizar el borrado
-            $dependencias2 = $USUARIO->dependencias2($_REQUEST['login']);//Variable que almacena las dependencias que tiene  tabla USUARIOS a la hora de realizar el borrado
-            $dependencias3 = $USUARIO->dependencias3($_REQUEST['login']);//Variable que almacena las dependencias que tiene  tabla USUARIOS a la hora de realizar el borrado
-            $dependencias4 = $USUARIO->dependencias4($_REQUEST['login']);//Variable que almacena las dependencias que tiene  tabla USUARIOS a la hora de realizar el borrado
-            $dependencias5 = $USUARIO->dependencias5($_REQUEST['login']);//Variable que almacena las dependencias que tiene  tabla USUARIOS a la hora de realizar el borrado
-            $dependencias6 = $USUARIO->dependencias6($_REQUEST['login']);//Variable que almacena las dependencias que tiene  tabla USUARIOS a la hora de realizar el borrado
-            $dependencias7 = $USUARIO->dependencias7($_REQUEST['login']);//Variable que almacena las dependencias que tiene  tabla USUARIOS a la hora de realizar el borrado
+
                 
             //Crea una vista delete para ver la tupla
-			new USUARIO_DELETE( $valores,$dependencias, $dependencias2, $dependencias3, $dependencias4, $dependencias5, $dependencias6, $dependencias7 );
+			new USUARIO_DELETE( $valores,$dependencias);
 			}else{//si el usuario no es administrador
 			//Variable que almacena el valor númerico para indicar si tiene permiso '1' tiene '0' no tiene permisos
 			$cont=0;//inicializamos la variable cont a 0.
@@ -131,15 +126,10 @@ switch ( $_REQUEST[ 'action' ] ) {
 			
               
             $dependencias = $USUARIO->dependencias($_REQUEST['login']);//Variable que almacena las dependencias que tiene  tabla USUARIOS a la hora de realizar el borrado
-            $dependencias2 = $USUARIO->dependencias2($_REQUEST['login']);//Variable que almacena las dependencias que tiene  tabla USUARIOS a la hora de realizar el borrado
-            $dependencias3 = $USUARIO->dependencias3($_REQUEST['login']);//Variable que almacena las dependencias que tiene  tabla USUARIOS a la hora de realizar el borrado
-            $dependencias4 = $USUARIO->dependencias4($_REQUEST['login']);//Variable que almacena las dependencias que tiene  tabla USUARIOS a la hora de realizar el borrado
-            $dependencias5 = $USUARIO->dependencias5($_REQUEST['login']);//Variable que almacena las dependencias que tiene  tabla USUARIOS a la hora de realizar el borrado
-            $dependencias6 = $USUARIO->dependencias6($_REQUEST['login']);//Variable que almacena las dependencias que tiene  tabla USUARIOS a la hora de realizar el borrado
-			$dependencias7 = $USUARIO->dependencias7($_REQUEST['login']);//Variable que almacena las dependencias que tiene  tabla USUARIOS a la hora de realizar el borrado
+            
                 
             //Crea una vista delete para ver la tupla
-			new USUARIO_DELETE($valores, $dependencias, $dependencias2, $dependencias3, $dependencias4, $dependencias5, $dependencias6,$dependencias7 );
+			new USUARIO_DELETE($valores, $dependencias );
 			}else{//si la variable cont no es uno mostramos un mensaje diciendo que dicho usuario no tiene permiso
 			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/USUARIO_CONTROLLER.php' );
 			}

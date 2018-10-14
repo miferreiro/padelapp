@@ -32,8 +32,6 @@
 	
 <div id="capaFondo1"></div>
 	<footer>
-		<p>LICORCA</p>
-		<p>23/12/2017</p>
 		<a href="../Views/INFO_GRUPO_ET.php"><?php echo $strings['INFORMACIÓN GRUPO'];?></a>
 	</footer>
   </body>

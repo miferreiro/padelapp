@@ -49,6 +49,8 @@
 			echo $strings['Usuario no identificado'];
 ?> 
 		<a href = '../Controllers/Registro_Controller.php' ><img src="../Views/icon/registrarse.png" alt="<?php echo $strings['Registrar']?>" /></a>
+		<a href = '../Controllers/Login_Controller.php' ><img src="../Views/icon/conectarse.png" alt="<?php echo $strings['Conectarse']?>" /></a>
+		<a href = '../Controllers/DEFAULT_CONTROLLER.php' ><img src="../Views/icon/casa.png" alt="<?php echo $strings['Atras']?>" /></a>
 <?php		
 	}
 ?>

@@ -18,12 +18,7 @@ class USUARIO_MODEL{
 	var $Telefono; // declaración del atributo Telefono
 	var $mysqli; // declaración del atributo manejador de la bd
     var $dependencias;//declaración del atributo dependencias
-    var $dependencias2;//declaración del atributo dependencias
-    var $dependencias3;//declaración del atributo dependencias
-    var $dependencias4;//declaración del atributo dependencias
-    var $dependencias5;//declaración del atributo dependencias
-    var $dependencias6;//declaración del atributo dependencias
-    var $dependencias7;//declaración del atributo dependencias
+
 	
 
     //Constructor de la clase
@@ -220,92 +215,7 @@ class USUARIO_MODEL{
         return $dependencias;
 	} // fin del metodo dependencias()
     
-    //Esta funcion mira las dependencias de la tabla a la hora de borrar
-    function dependencias2() { 
-        
-        $dependencias2 = null;//inicializamos la variable a null
-
-        
-        $sql = "SELECT E.login, NombreTrabajo, Alias, Horas, Ruta FROM ENTREGA E, USUARIO U, TRABAJO T WHERE E.login = '$this->login' AND E.login = U.login AND E.IdTrabajo = T.IdTrabajo";//se construye la sentencia sql
-        $resultado = $this->mysqli->query( $sql );//ejecutamos la query
-        if ( $resultado->num_rows >= 1 ) {//miramos si el numero de tuplas es mayor o igual a uno
-            
-            $dependencias2 = $resultado;//asignamos las dependencias
-        }
-        
-        return $dependencias2;
-	} // fin del metodo dependencias2()
-    
-    //Esta funcion mira las dependencias de la tabla a la hora de borrar
-    function dependencias3() { 
-        
-        $dependencias3 = null;//inicializamos la variable a null
-        
-        $sql = "SELECT NombreTrabajo, LoginEvaluador, LoginEvaluado, AliasEvaluado FROM ASIGNAC_QA QA, USUARIO U, TRABAJO T WHERE LoginEvaluador = '$this->login' AND LoginEvaluador=login AND QA.IdTrabajo = T.IdTrabajo";//se construye la sentencia sql
-        $resultado = $this->mysqli->query( $sql );//ejecutamos la query
-        if ( $resultado->num_rows >= 1 ) { //miramos si el numero de tuplas es mayor o igual a uno
-            $dependencias3 = $resultado;//asignamos las dependencias
-        }
-        
-        return $dependencias3;
-	} // fin del metodo dependencias3()
-    
-    //Esta funcion mira las dependencias de la tabla a la hora de borrar
-    function dependencias4() { 
-        
-        $dependencias4 = null;//inicializamos la variable a null
-        
-		
-        $sql = "SELECT NombreTrabajo, LoginEvaluador, LoginEvaluado, AliasEvaluado FROM ASIGNAC_QA QA, USUARIO U, TRABAJO T WHERE LoginEvaluado = '$this->login' AND LoginEvaluado=login AND QA.IdTrabajo = T.IdTrabajo";//se construye la sentencia sql
-        $resultado = $this->mysqli->query( $sql );//ejecutamos la query
-        if ( $resultado->num_rows >= 1 ) { //miramos si el numero de tuplas es mayor o igual a uno
-            $dependencias4 = $resultado;//asignamos las dependencias
-        }
-        
-        return $dependencias4;
-	} // fin del metodo dependencias4()
-    
-     //Esta funcion mira las dependencias de la tabla a la hora de borrar
-    function dependencias5() { 
-        
-        $dependencias5 = null;//inicializamos la variable a null
-        
-        $sql = "SELECT NombreTrabajo,NotaTrabajo FROM NOTA_TRABAJO NT, USUARIO U, TRABAJO T WHERE NT.login = '$this->login' AND U.login=NT.login AND NT.IdTrabajo = T.IdTrabajo";//se construye la sentencia sql
-        $resultado = $this->mysqli->query( $sql );//ejecutamos la query
-        if ( $resultado->num_rows >= 1 ) {//miramos si el numero de tuplas es mayor o igual a uno
-            $dependencias5 = $resultado;//asignamos las dependencias
-        }
-        
-        return $dependencias5;
-	} // fin del metodo dependencias5()
-
-    //Esta funcion mira las dependencias de la tabla a la hora de borrar
-    function dependencias6() { 
-        
-        $dependencias6 = null;//inicializamos la variable a null
-        
-        $sql = "SELECT NombreTrabajo, LoginEvaluador, AliasEvaluado, IdHistoria, CorrectoA, ComenIncorrectoA, CorrectoP, ComentIncorrectoP, OK FROM EVALUACION E, USUARIO U, TRABAJO T WHERE LoginEvaluador = '$this->login' AND LoginEvaluador = login AND E.IdTrabajo = T.IdTrabajo";//se construye la sentencia sql
-        $resultado = $this->mysqli->query( $sql );//ejecutamos la query
-        if ( $resultado->num_rows >= 1 ) {//miramos si el numero de tuplas es mayor o igual a uno
-            $dependencias6 = $resultado;//asignamos las dependencias
-        }
-        
-        return $dependencias6;
-	} // fin del metodo dependencias6()
-       //Esta funcion mira las dependencias de la tabla a la hora de borrar
-     function dependencias7() { 
-        
-        $dependencias7 = null;//inicializamos la variable a null
-        
-        $sql = "SELECT NombreTrabajo, LoginEvaluador, AliasEvaluado, IdHistoria, CorrectoA, ComenIncorrectoA, CorrectoP, ComentIncorrectoP, OK FROM EVALUACION E, ENTREGA ET, TRABAJO T, USUARIO U WHERE AliasEvaluado = Alias AND ET.IdTrabajo = T.IdTrabajo AND U.login = ET.login AND ET.login = '$this->login'";//se construye la sentencia sql
-        $resultado = $this->mysqli->query( $sql );//ejecutamos la query
-        if ( $resultado->num_rows >= 1 ) {//miramos si el numero de tuplas es mayor o igual a uno
-            $dependencias7 = $resultado;//asignamos las dependencias
-        }
-        
-        return $dependencias7;
-	} // fin del metodo dependencias7()
-    
+   
 
 	// funcion EDIT()
 	// Se comprueba que la tupla a modificar exista en base al valor de su clave primaria

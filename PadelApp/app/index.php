@@ -20,7 +20,7 @@ include './Functions/Authentication.php';
 
 //si no ha pasado por el login de forma correcta
 if (!IsAuthenticated()){
-	header('Location:./Controllers/Login_Controller.php');
+	header('Location:./Controllers/DEFAULT_Controller.php');
 }
 //si ha pasado por el login de forma correcta 
 else{
