@@ -123,29 +123,7 @@ function RellenaDatos($login, $IdGrupo)
 	}
 } // fin del metodo RellenaDatos()
     
-   //esta función nos permite comprobar los permisos de cada grupo
-   function comprobarPermisos(){
-	   $sql = "SELECT DISTINCT P.IdGrupo, P.IdFuncionalidad, P.IdAccion FROM PERMISO P, USU_GRUPO U WHERE U.login = '$this->login' && (U.IdGrupo = P.IdGrupo || P.IdGrupo ='00000A')";//se construye la sentencia sql 
-       
-	   $resultado = $this->mysqli->query( $sql );//hacemos la consulta en la base de datos
-       return $resultado;
 
-   }//fin del método comprobarPermisos
-   
-    //esta función nos permite saber si un usuario es administrador o no.
-   function comprobarAdmin(){
-		
-		$sql = "SELECT * FROM USU_GRUPO WHERE login = '$this->login' && IdGrupo = '00000A'";//se construye la sentencia sql.
-		
-		$resultado = $this->mysqli->query($sql); //hacemos la consulta en la base de datos
-		
-		if($resultado->num_rows == 0){//miramos si el numero de filas es 0
-			return false;
-		}else{//miramos si el número de filas es mayor que 0.
-			return true;
-		}
-	
-   }//fin del método comprobarAdmin
     
     //Esta funcion devuelve el id del grupo y nombre del grupo de los usuarios
 	function RellenaShowCurrent() {
@@ -159,5 +137,18 @@ function RellenaDatos($login, $IdGrupo)
 			return $resultado;
 		}
 	} // fin del metodo RellenaShowCurrent()
-    }
+    
+
+	function obtenerGrupo(){
+		$sql = "SELECT IdGrupo FROM USU_GRUPO WHERE login = '$this->login'";//se construye la sentencia sql.
+			
+		$resultado = $this->mysqli->query($sql); //hacemos la consulta en la base de datos
+		
+		if($resultado->num_rows == 0){//miramos si el numero de filas es 0
+			return "Error: No esta en ningun grupo";
+		}else{//miramos si el número de filas es mayor que 0.
+			return $resultado;
+		}
+	}
+	}
 ?>

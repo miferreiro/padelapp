@@ -10,7 +10,7 @@
 //Esta función mira si existe una variable de sessión del login, si existe retorna true, en caso contrario false.
 function IsAuthenticated(){
 
-	if (!isset($_SESSION['login'])){//mira si no existe la variable de sesión del login
+	if (!isset($_SESSION['login']) && !isset($_SESSION['grupo'])){//mira si no existe la variable de sesión del login
 		return false;//retorna false
 	}
 	else{//si existe la variable de sesión del login retorna true

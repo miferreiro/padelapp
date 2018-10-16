@@ -127,7 +127,7 @@ class USUARIO_MODEL{
 								'$this->Telefono'
 								)";
 							include_once '../Models/USU_GRUPO_MODEL.php';//incluimos el modelo USU_GRUPO
-							$USU_GRUPO = new USU_GRUPO($this->login,'00001A');//instanciamos un objeto del modelo USU_GRUPO donde metemos un  usuario en el grupo alumnos
+							$USU_GRUPO = new USU_GRUPO($this->login,'Deportista');//instanciamos un objeto del modelo USU_GRUPO donde metemos un  usuario en el grupo alumnos
 							$mensaje = $USU_GRUPO->ADD();//insertamos el login en el grupo alumnos
 							
 
@@ -310,6 +310,7 @@ class USUARIO_MODEL{
 		}
 	} //fin metodo login
    
+	
 
 } //fin de clase
 

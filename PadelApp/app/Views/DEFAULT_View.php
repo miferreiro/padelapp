@@ -26,6 +26,7 @@ class USUARIO_DEFAULT {
 		<div class="seccion">	
 			<h2>
 				<?php echo "PAGINA DEFAULT"; ?>
+				
 			</h2>
 		</div>
 <?php

@@ -6,7 +6,7 @@
 	Fecha creación: 23/10/2017 
 	Función: controlador que realiza las operaciones necesarias para realizar un logeo correcto de un usuario
 */
-session_start();//se inicia la sesión
+//session_start();//se inicia la sesión
 if(!isset($_REQUEST['login']) && !(isset($_REQUEST['password']))){//mira si no existe el login y no existe la password
 	//Incluye la vista login
 	include '../Views/LOGIN_View.php';
@@ -26,6 +26,11 @@ else{//si existe el y la password
 	if ($respuesta == 'true'){
 		session_start();//se inicia la sesión
 		$_SESSION['login'] = $_REQUEST['login'];//le asignamos a la variable de sesión del login el login que se introdujo
+		include '../Models/USU_GRUPO_MODEL.php';
+		$usugru = new USU_GRUPO($_REQUEST['login'],'');//Variable que almacena un objeto del modelo USUARIOS_MODEL
+
+		//$_SESSION['grupo'] = $usugru->obtenerGrupo();
+		$_SESSION['grupo'] = '';
 		header('Location:../Controllers/USUARIO_CONTROLLER.php');//se redirige al controlador de USUARIOS_CONTROLLER.php
 	}
 	//Si no esta en la base de datos, se muestra la respuesta en la vista mensaje
