@@ -15,7 +15,6 @@ if (!IsAuthenticated()){
 }
 
 include '../Models/USUARIO_MODEL.php'; //incluye el contendio del modelo usuarios
-include '../Models/USU_GRUPO_MODEL.php';//incluye el contendio del modelo usuarios grupo
 include '../Views/USUARIO/USUARIO_SHOWALL_View.php'; //incluye la vista del showall
 include '../Views/USUARIO/USUARIO_SEARCH_View.php'; //incluye la vista search
 include '../Views/USUARIO/USUARIO_ADD_View.php'; //incluye la vista add
@@ -27,7 +26,7 @@ include '../Views/MESSAGE_View.php'; //incluye la vista mensaje
 
 //Esta función crea un objeto tipo USUARIO_MODEL con los valores que se le pasan con $_REQUEST
 function get_data_form() {
-
+	
 	$login = $_REQUEST[ 'login' ]; //Variable que almacena el valor de login
 	$password = $_REQUEST[ 'password' ]; //Variable que almacena el valor de password
 	$dni = $_REQUEST[ 'DNI' ]; //Variable que almacena el valor de dni
@@ -36,6 +35,7 @@ function get_data_form() {
 	$correo = $_REQUEST[ 'email' ]; //Variable que almacena el valor de correo
 	$direccion = $_REQUEST[ 'direc' ]; //Variable que almacena el valor de direccion
 	$telefono = $_REQUEST[ 'telefono' ]; //Variable que almacena el valor de telefono
+	$idGrupo = $_REQUEST[ 'idGrupo' ];
 	$action = $_REQUEST[ 'action' ]; //Variable que almacena el valor de action
     //Variable que almacena un modelo de USUARIO
 	$USUARIO = new USUARIO_MODEL(
@@ -46,9 +46,11 @@ function get_data_form() {
 		$apellidos,
 		$correo,
 		$direccion,
-		$telefono
+		$telefono,
+		$idGrupo
 	);//Creamos un objeto de usuario con las variables que se han recibido del formulario
 	//Devuelve el valor del objecto model creado
+	
 	return $USUARIO;
 }
 //Si la variable action no tiene contenido le asignamos ''
@@ -80,17 +82,14 @@ switch ( $_REQUEST[ 'action' ] ) {
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario DELETE
 
 			if($_SESSION['grupo'] == 'Admin'){//miramos si este usuario es administrador
-			//Variable que recoge un objecto model con solo el login
-			$USUARIO = new USUARIO_MODEL( $_REQUEST[ 'login' ], '', '', '', '', '', '', '');
-			//Variable que almacena el relleno de los datos utilizando el login
-			$valores = $USUARIO->RellenaDatos( $_REQUEST[ 'login' ] );
-			
-            
-            $dependencias = $USUARIO->dependencias($_REQUEST['login']);//Variable que almacena las dependencias que tiene  tabla USUARIOS a la hora de realizar el borrado
+				//Variable que recoge un objecto model con solo el login
+				$USUARIO = new USUARIO_MODEL( $_REQUEST[ 'login' ], '', '', '', '', '', '', '', '');
+				//Variable que almacena el relleno de los datos utilizando el login
+				$valores = $USUARIO->RellenaDatos( $_REQUEST[ 'login' ] );
 
-                
-            //Crea una vista delete para ver la tupla
-			new USUARIO_DELETE( $valores,$dependencias);
+            
+				//Crea una vista delete para ver la tupla
+				new USUARIO_DELETE( $valores);
 			}else{
 				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/USUARIO_CONTROLLER.php' );
 			
@@ -111,7 +110,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 
 			if($_SESSION['grupo'] == 'Admin'){//si es el usuario es administrador
 						//Variable que almacena un objeto USUARIO model con el login
-			$USUARIO = new USUARIO_MODEL( $_REQUEST[ 'login' ], '', '', '', '', '', '', '');
+			$USUARIO = new USUARIO_MODEL( $_REQUEST[ 'login' ], '', '', '', '', '', '', '','');
 			//Variable que almacena un objecto USUARIO(modelo) con los datos de los atibutos rellenados a traves de login
 			$valores = $USUARIO->RellenaDatos( $_REQUEST[ 'login' ] );
 
@@ -163,7 +162,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 	case 'SHOWCURRENT'://Caso showcurrent
 		if($_SESSION['grupo'] == 'Admin'){//miramos si el usuario es administrador
 					//Variable que almacena un objeto USUARIO model con el login
-		           $USUARIO = new USUARIO_MODEL( $_REQUEST[ 'login' ], '', '', '', '', '', '', '');
+		           $USUARIO = new USUARIO_MODEL( $_REQUEST[ 'login' ], '', '', '', '', '', '', '','');
 		//Variable que almacena los valores rellenados a traves de login
 		           $valores = $USUARIO->RellenaDatos( $_REQUEST[ 'login' ] );
 		           //Creación de la vista showcurrent
@@ -177,7 +176,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 	default: //Caso que se ejecuta por defecto
 			if($_SESSION['grupo'] == 'Admin'){//miramos si el usuario es administrador
 						if ( !$_POST ) {//Si no se han recibido datos 
-						$USUARIO = new USUARIO_MODEL( '', '', '', '', '', '', '', '');//Variable que almacena la un objeto del modelo USUARIO
+						$USUARIO = new USUARIO_MODEL( '', '', '', '', '', '', '', '', '');//Variable que almacena la un objeto del modelo USUARIO
 						//Si se reciben datos
 						} else {
 							$USUARIO = get_data_form();//Variable que almacena los valores de un objeto USUARIO_MODEL
@@ -185,7 +184,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 						//Variable que almacena los datos de la busqueda
 						$datos = $USUARIO->SEARCH();
 						//Variable que almacena array con el nombre de los atributos
-						$lista = array( 'login','DNI','Nombre','Apellidos','Correo');
+						$lista = array( 'login','DNI','Nombre','Apellidos','Correo','idGrupo');
 						
 						new USUARIO_SHOWALL( $lista, $datos);//nos muestra una vista showall con todos los permisos
 			

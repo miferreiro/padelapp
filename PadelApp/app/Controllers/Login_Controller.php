@@ -26,11 +26,9 @@ else{//si existe el y la password
 	if ($respuesta == 'true'){
 		session_start();//se inicia la sesión
 		$_SESSION['login'] = $_REQUEST['login'];//le asignamos a la variable de sesión del login el login que se introdujo
-		include '../Models/USU_GRUPO_MODEL.php';
-		$usugru = new USU_GRUPO($_REQUEST['login'],'');//Variable que almacena un objeto del modelo USUARIOS_MODEL
-
-		//$_SESSION['grupo'] = $usugru->obtenerGrupo();
-		$_SESSION['grupo'] = '';
+		
+		$_SESSION['grupo'] = $usuario->obtenerGrupo();
+		//$_SESSION['grupo'] = 'Admin';
 		header('Location:../Controllers/USUARIO_CONTROLLER.php');//se redirige al controlador de USUARIOS_CONTROLLER.php
 	}
 	//Si no esta en la base de datos, se muestra la respuesta en la vista mensaje

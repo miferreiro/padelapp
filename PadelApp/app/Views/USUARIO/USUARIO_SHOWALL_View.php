@@ -91,12 +91,7 @@ class USUARIO_SHOWALL {
 					
 						</form>
 				    <td>
-							
-						<form action="../Controllers/USU_GRUPO_CONTROLLER.php" method="get" style="display:inline" >
-							<input type="hidden" name="login" value="<?php echo $fila['login']; ?>">
-							<button type="submit" ><img src="../Views/icon/cambioGrupo.png" width="20" height="20"/></button>
-						</form>
-							
+													
 				</tr>
 <?php
 				}

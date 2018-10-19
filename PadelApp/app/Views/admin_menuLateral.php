@@ -19,18 +19,8 @@ que comprueba permisos para cada una de las acciones -->
 		<li>
 			<a href="../Controllers/USUARIO_CONTROLLER.php" class="primerNivel"><?php echo $strings['Gestion de usuarios']; ?></a>
 		</li>
-
 		<?php }
-//Si el usuario tiene permisos de showall en gestión de grupos se muestra la opción
-	if($_SESSION['grupo'] == 'Admin'){ ?>
-		<li>
-			<a href="../Controllers/GRUPO_CONTROLLER.php" class="primerNivel"><?php echo $strings['Gestion de grupo']; ?></a>
-		</li>
-		<?php }
-
-
  ?>
-
 		<?php } ?>
 	</ul>
 </nav>

@@ -241,7 +241,8 @@ array(
 	'Error en la inserción, login ya en uso' => 'Error en la inserción, login ya en uso',
 
 	'El usuario no puede evaluarse a si mismo' => 'El usuario no puede evaluarse a si mismo',
-	'El alias evaluado no se corresponde con LoginEvaluado' => 'El alias evaluado no se corresponde con LoginEvaluado'
+	'El alias evaluado no se corresponde con LoginEvaluado' => 'El alias evaluado no se corresponde con LoginEvaluado',
+	'idGrupo' => 'idGrupo'
 
 	)
 ;

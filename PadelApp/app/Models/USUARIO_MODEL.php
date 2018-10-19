@@ -16,13 +16,12 @@ class USUARIO_MODEL{
     var $Correo; // declaración del atributo Correo
     var $Direccion;//declaración del atributo Direccion
 	var $Telefono; // declaración del atributo Telefono
+    var $idGrupo;//declaración del atributo idGrupo
 	var $mysqli; // declaración del atributo manejador de la bd
-    var $dependencias;//declaración del atributo dependencias
 
-	
 
     //Constructor de la clase
-	function __construct($login,$password,$DNI,$Nombre,$Apellidos,$Correo,$Direccion,$Telefono) {
+	function __construct($login,$password,$DNI,$Nombre,$Apellidos,$Correo,$Direccion,$Telefono,$idGrupo) {
 		//asignación de valores de parámetro a los atributos de la clase
 		$this->login = $login;//declaracion de la variable que almacena login
         $this->password=$password;//declaracion de la variable que almacena password
@@ -32,7 +31,7 @@ class USUARIO_MODEL{
         $this->Correo = $Correo;//declaracion de la variable que almacena correo
         $this->Direccion=$Direccion;//declaracion de la variable que almacena direccion
 		$this->Telefono = $Telefono;//declaracion de la variable que almacena telefono
-		
+		$this->idGrupo = $idGrupo;//declaracion de la variable que almacena idGrupo
         
 		// incluimos la funcion de acceso a la bd
 		include_once '../Functions/BdAdmin.php';
@@ -52,7 +51,8 @@ class USUARIO_MODEL{
 					Apellidos,
                     Correo,
                     Direccion,
-					Telefono
+					Telefono,
+					idGrupo
        			from USUARIO 
     			where 
     				(
@@ -63,7 +63,8 @@ class USUARIO_MODEL{
 	 				(BINARY Apellidos LIKE '%$this->Apellidos%') &&
                     (BINARY Correo LIKE '%$this->Correo%') &&
                     (BINARY Direccion LIKE '%$this->Direccion%') &&
-	 				(BINARY Telefono LIKE '%$this->Telefono%')
+	 				(BINARY Telefono LIKE '%$this->Telefono%') &&
+					(BINARY Telefono LIKE '%$this->idGrupo%')
     				)";
 		// si se produce un error en la busqueda mandamos el mensaje de error en la consulta
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
@@ -115,7 +116,8 @@ class USUARIO_MODEL{
 					             Apellidos,
                                  Correo,
                                  Direccion,
-					             Telefono) 
+					             Telefono,
+								 idGrupo) 
 								VALUES(
 								'$this->login',
                                 '$this->password',
@@ -124,13 +126,9 @@ class USUARIO_MODEL{
 								'$this->Apellidos',
 								'$this->Correo',
 								'$this->Direccion',
-								'$this->Telefono'
-								)";
-							include_once '../Models/USU_GRUPO_MODEL.php';//incluimos el modelo USU_GRUPO
-							$USU_GRUPO = new USU_GRUPO($this->login,'Deportista');//instanciamos un objeto del modelo USU_GRUPO donde metemos un  usuario en el grupo alumnos
-							$mensaje = $USU_GRUPO->ADD();//insertamos el login en el grupo alumnos
-							
-
+								'$this->Telefono',
+								'$this->idGrupo'
+								)";					
 						}
 
 					}
@@ -170,7 +168,7 @@ class USUARIO_MODEL{
 		$sql = "SELECT * FROM USUARIO WHERE (login = '$this->login')";
 		// se ejecuta la query
 		$result = $this->mysqli->query( $sql );
-		
+	
 
 		if ( $result->num_rows == 1 ) {// si existe una tupla con ese valor de clave
 			// se construye la sentencia sql de borrado
@@ -200,23 +198,6 @@ class USUARIO_MODEL{
 		}
 	} // fin del metodo RellenaDatos()
     
-   
-    //Esta funcion mira las dependencias de la tabla a la hora de borrar
-	function dependencias() { 
-        
-        $dependencias = null;//inicializamos la variable a null
-
-		$sql = "SELECT UG.login, NombreGrupo FROM USU_GRUPO UG, USUARIO U, GRUPO G WHERE UG.login = '$this->login' AND U.login = UG.login AND G.IdGrupo = UG.IdGrupo";//se construye la sentencia sql
-        $resultado = $this->mysqli->query( $sql );//ejecutamos la query
-        if ( $resultado->num_rows >= 1 ) {//miramos si el numero de tuplas es mayor o igual a uno
-            $dependencias = $resultado;//asignamos las dependencias
-        }
-        
-        return $dependencias;
-	} // fin del metodo dependencias()
-    
-   
-
 	// funcion EDIT()
 	// Se comprueba que la tupla a modificar exista en base al valor de su clave primaria
 	// si existe se modifica
@@ -238,7 +219,8 @@ class USUARIO_MODEL{
 					Apellidos = '$this->Apellidos',
                     Correo = '$this->Correo',
                     Direccion ='$this->Direccion',
-					Telefono = '$this->Telefono'
+					Telefono = '$this->Telefono',
+					idGrupo = '$this->idGrupo'
 				WHERE ( login = '$this->login'
 				)";
 			// si hay un problema con la query se envia un mensaje de error en la modificacion
@@ -253,7 +235,6 @@ class USUARIO_MODEL{
 			return 'No existe en la base de datos';
 		}
 	} // fin del metodo EDIT
-
 
 
 	//Con esta función vemos si ya está registrado el usuario, sino lo registramos
@@ -310,7 +291,21 @@ class USUARIO_MODEL{
 		}
 	} //fin metodo login
    
-	
+	function obtenerGrupo(){
+		$sql = "SELECT idGrupo
+			FROM USUARIO
+			WHERE (
+				(login = '$this->login') 
+			)";
+		
+		$resultado = $this->mysqli->query( $sql );//hacemos la consulta en la base de datos
+		if ( $resultado->num_rows == 0 ) {//miramos si el numero de filas es 0
+			return 'El usuario no existe';
+		} else {//si no es 0, el usuario existe
+			$tupla = $resultado->fetch_array();//devolvemos la tupla
+			return $tupla[ 'idGrupo' ];
+		}
+	}
 
 } //fin de clase
 
