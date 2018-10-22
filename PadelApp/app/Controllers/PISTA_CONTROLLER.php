@@ -12,7 +12,8 @@ include '../Models/PISTA_MODEL.php'; //incluye el contendio del modelo PISTAS
 include '../Views/PISTA/PISTA_SHOWALL.php'; //incluye la vista del showall
 include '../Views/PISTA/PISTA_EDIT.php'; //incluye la vista EDIT
 include '../Views/PISTA/PISTA_SHOWCURRENT.php'; //incluye la vista SEARCH
-
+include '../Views/DEFAULT_View.php'; //incluye la vista por defecto
+include '../Views/MESSAGE_View.php'; //incluye la vista mensaje
 
 //Esta función crea un objeto tipo PISTA_MODEL con los valores que se le pasan con $_REQUEST
 function get_data_form() {
@@ -42,15 +43,14 @@ if ( !isset( $_REQUEST[ 'action' ] ) ) {
 //Estructura de control, que realiza un determinado caso dependiendo del valor action
 switch ( $_REQUEST[ 'action' ] ) {
 	case 'ADD'://Caso añadir
-		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario ADD
-
+		if ( $_POST ) {//Si no se han recibido datos se envia a la vista del formulario ADD
 		
          
 			new MESSAGE( 'La PISTA no tiene los permisos necesarios', '../Controllers/PISTA_CONTROLLER.php' );
 			
 			
 		} else {//Si recibe datos los recoge y mediante las funcionalidad de PISTA_MODEL inserta los datos
-			$PISTA = get_data_form();//Variable que almacena un objecto PISTA(modelo) con los datos recogidos
+		    $PISTA = new PISTA_MODEL( '', '', '', '');
 			$respuesta = $PISTA->ADD();//Variable que almacena la respuesta de la inserción
 			//Crea la vista con la respuesta y la ruta para volver
 			new MESSAGE( $respuesta, '../Controllers/PISTA_CONTROLLER.php' );
@@ -125,19 +125,19 @@ switch ( $_REQUEST[ 'action' ] ) {
 		//Final del bloque
 		break;
 	case 'SHOWCURRENT'://Caso showcurrent
-		           $PISTA = new PISTA_MODEL( $_REQUEST[ 'login' ], '', '', '', '', '', '', '','');
+		           $PISTA = new PISTA_MODEL( '', '', '', '');
 		//Variable que almacena los valores rellenados a traves de login
-		           $valores = $PISTA->RellenaDatos( $_REQUEST[ 'login' ] );
+		           $valores = $PISTA->RellenaDatos();
 		           //Creación de la vista showcurrent
 		           new PISTA_SHOWCURRENT( $valores );
 			
 		//Final del bloque
 		break;
 	default: //Caso que se ejecuta por defecto
-			
+			if($_SESSION['grupo'] == 'Admin'){//miramos si el usuario es administrador
 						if ( !$_POST ) {//Si no se han recibido datos 
-						$PISTA = new PISTA_MODEL( '', '', '', '', '', '', '', '', '');//Variable que almacena la un objeto del modelo PISTA
-						//Si se reciben datos
+							$PISTA = new PISTA_MODEL( '', '', '', '');//Variable que almacena la un objeto del modelo PISTA
+							//Si se reciben datos
 						} else {
 							$PISTA = get_data_form();//Variable que almacena los valores de un objeto PISTA_MODEL
 						}
@@ -147,7 +147,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 						$lista = array( 'idPista','Hora','Fecha','Disponibilidad');
 						
 						new PISTA_SHOWALL( $lista, $datos);//nos muestra una vista showall con todos los permisos
-			
+			}else{//en el caso de que el usuario no tenga permisos le sale una vista vacía
+				new USUARIO_DEFAULT();
+			}
    				
 			
 }

@@ -22,5 +22,14 @@ que comprueba permisos para cada una de las acciones -->
 		<?php }
  ?>
 		<?php } ?>
+				<?php if (isset($_SESSION['login']) & isset($_SESSION['grupo'])) { 
+//Si el usuario tiene permisos de showall en gestión de usuarios se muestra la opción ?>
+		<?php if($_SESSION['grupo'] == 'Admin'){ ?>
+		<li>
+			<a href="../Controllers/PISTA_CONTROLLER.php" class="primerNivel"><?php echo 'Gestion de pistas' ?></a>
+		</li>
+		<?php }
+ ?>
+		<?php } ?>
 	</ul>
 </nav>

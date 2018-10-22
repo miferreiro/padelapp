@@ -62,20 +62,30 @@ class PISTA_MODEL{
 	function ADD() {
 		
 			// construimos el sql para buscar esa clave en la tabla
-			$c = "SELECT * FROM PISTA ORDER BY idPista DESC LIMIT 1";
+			$sql = "SELECT * FROM PISTA";
 
-			if ( !$result = $this->mysqli->query( $c ) ) { // si da error la ejecución de la query
+			if ( !$result = $this->mysqli->query( $sql ) ) { // si da error la ejecución de la query
 				return 'No se ha podido conectar con la base de datos'; // error en la consulta (no se ha podido conectar con la bd). Devolvemos un mensaje que el controlador manejara
 			} else { // si la ejecución de la query no da error
 
 				if ( $result->num_rows == 0 ) { 
-					$sql = "SELECT * FROM PISTA WHERE (idPista = '$this->idPista')";
+					
+					$c = "SELECT * FROM PISTA ORDER BY idPista DESC LIMIT 1";
+					
+					$sql = "SELECT * FROM PISTA WHERE (idPista = '$c + 1')";
 					
 					if ( $result->num_rows != 0 ) {
 						return 'Ya existe un PISTA con el idPista introducido en la base de datos';// ya existe
 						
-						} else { //si ninguna de las claves candidatas son iguales, insertamos la PISTA
-                            //insertamos un PISTA
+					} else { //si ninguna de las claves candidatas son iguales, insertamos la PISTA
+                           
+						$dia = time();
+						
+							for($i=0 ; $i<7 ; $i++){
+						
+							$dia = date('d',$dia+84600); 
+						
+						
 							$sql = "INSERT INTO PISTA (
 							    idPista,
 								Fecha,
@@ -83,10 +93,22 @@ class PISTA_MODEL{
 								Disponibilidad) 
 								VALUES(
 								'$c+1',
-                                '$this->fecha',
-								'$this->hora',
+                                '$dia',
+								'9:00',
+								'1'
+								)";		
+							$sql = "INSERT INTO PISTA (
+							    idPista,
+								Fecha,
+								Hora,
+								Disponibilidad) 
+								VALUES(
+								'$c+1',
+                                '$dia',
+								'10:30',
 								'1'
 								)";					
+							}
 						}
 
 					}
@@ -98,9 +120,7 @@ class PISTA_MODEL{
 							return 'Inserción realizada con éxito'; //operacion de insertado correcta
 						}else{//si la insercion no tuvo exito
 							return $mensaje;
-						}
-						
-						
+						}	
 					}
 	}
 	} // fin del metodo ADD
