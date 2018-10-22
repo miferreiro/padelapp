@@ -125,21 +125,16 @@ switch ( $_REQUEST[ 'action' ] ) {
 		//Final del bloque
 		break;
 	case 'SHOWCURRENT'://Caso showcurrent
-		if($_SESSION['grupo'] == 'Admin'){//miramos si el PISTA es administrador
-					//Variable que almacena un objeto PISTA model con el login
 		           $PISTA = new PISTA_MODEL( $_REQUEST[ 'login' ], '', '', '', '', '', '', '','');
 		//Variable que almacena los valores rellenados a traves de login
 		           $valores = $PISTA->RellenaDatos( $_REQUEST[ 'login' ] );
 		           //Creación de la vista showcurrent
 		           new PISTA_SHOWCURRENT( $valores );
-			}else{
-				new MESSAGE( 'El PISTA no tiene los permisos necesarios', '../Controllers/PISTA_CONTROLLER.php' );
-			}
-		
+			
 		//Final del bloque
 		break;
 	default: //Caso que se ejecuta por defecto
-			if($_SESSION['grupo'] == 'Admin'){//miramos si el PISTA es administrador
+			
 						if ( !$_POST ) {//Si no se han recibido datos 
 						$PISTA = new PISTA_MODEL( '', '', '', '', '', '', '', '', '');//Variable que almacena la un objeto del modelo PISTA
 						//Si se reciben datos
@@ -149,13 +144,11 @@ switch ( $_REQUEST[ 'action' ] ) {
 						//Variable que almacena los datos de la busqueda
 						$datos = $PISTA->SEARCH();
 						//Variable que almacena array con el nombre de los atributos
-						$lista = array( 'login','DNI','Nombre','Apellidos','Correo','idGrupo');
+						$lista = array( 'idPista','Hora','Fecha','Disponibilidad');
 						
 						new PISTA_SHOWALL( $lista, $datos);//nos muestra una vista showall con todos los permisos
 			
-   				}else{//en el caso de que el PISTA no tenga permisos le sale una vista vacía
-				new PISTA_DEFAULT();
-			}
+   				
 			
 }
 
