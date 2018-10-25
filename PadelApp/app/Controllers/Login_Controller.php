@@ -28,7 +28,6 @@ else{//si existe el y la password
 		$_SESSION['login'] = $_REQUEST['login'];//le asignamos a la variable de sesión del login el login que se introdujo
 		
 		$_SESSION['tipo'] = $usuario->obtenerTipo();
-		//$_SESSION['grupo'] = 'Admin';
 		header('Location:../Controllers/USUARIO_CONTROLLER.php');//se redirige al controlador de USUARIOS_CONTROLLER.php
 	}
 	//Si no esta en la base de datos, se muestra la respuesta en la vista mensaje

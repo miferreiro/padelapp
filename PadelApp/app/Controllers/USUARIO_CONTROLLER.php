@@ -63,7 +63,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 	case 'ADD'://Caso añadir
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario ADD
 
-			if($_SESSION['grupo'] == 'Admin'){//si el usuario es administrador mostramos la vista ADD
+			if($_SESSION['tipo'] == 'Admin'){//si el usuario es administrador mostramos la vista ADD
 				new USUARIO_ADD();
 			}else{//si no es administrador
          
@@ -81,7 +81,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 	case 'DELETE'://Caso borrar
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario DELETE
 
-			if($_SESSION['grupo'] == 'Admin'){//miramos si este usuario es administrador
+			if($_SESSION['tipo'] == 'Admin'){//miramos si este usuario es administrador
 				//Variable que recoge un objecto model con solo el login
 				$USUARIO = new USUARIO_MODEL( $_REQUEST[ 'Dni' ], '', '', '', '', '', '', '', '');
 				//Variable que almacena el relleno de los datos utilizando el login
@@ -108,7 +108,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 	case 'EDIT'://Caso editar	
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario EDIT
 
-			if($_SESSION['grupo'] == 'Admin'){//si es el usuario es administrador
+			if($_SESSION['tipo'] == 'Admin'){//si es el usuario es administrador
 						//Variable que almacena un objeto USUARIO model con el login
 			$USUARIO = new USUARIO_MODEL( $_REQUEST[ 'Dni' ], '', '', '', '', '', '', '','');
 			//Variable que almacena un objecto USUARIO(modelo) con los datos de los atibutos rellenados a traves de login
@@ -160,7 +160,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		//Final del bloque
 		break;
 	case 'SHOWCURRENT'://Caso showcurrent
-		if($_SESSION['grupo'] == 'Admin'){//miramos si el usuario es administrador
+		if($_SESSION['tipo'] == 'Admin'){//miramos si el usuario es administrador
 					//Variable que almacena un objeto USUARIO model con el login
 		           $USUARIO = new USUARIO_MODEL( $_REQUEST[ 'Dni' ], '', '', '', '', '', '', '');
 		//Variable que almacena los valores rellenados a traves de login
@@ -174,7 +174,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		//Final del bloque
 		break;
 	default: //Caso que se ejecuta por defecto
-			if($_SESSION['grupo'] == 'Admin'){//miramos si el usuario es administrador
+			if($_SESSION['tipo'] == 'Admin'){//miramos si el usuario es administrador
 						if ( !$_POST ) {//Si no se han recibido datos 
 						$USUARIO = new USUARIO_MODEL( '', '', '', '', '', '', '', '', '');//Variable que almacena la un objeto del modelo USUARIO
 						//Si se reciben datos
