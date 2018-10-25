@@ -134,7 +134,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		//Final del bloque
 		break;
 	default: //Caso que se ejecuta por defecto
-			if($_SESSION['tipo'] == 'Admin'){//miramos si el usuario es administrador
+			if($_SESSION['Tipo'] == 'Admin'){//miramos si el usuario es administrador
 						if ( !$_POST ) {//Si no se han recibido datos 
 							$PISTA = new PISTA_MODEL( '', '', date("Y-m-d"), '');//Variable que almacena la un objeto del modelo PISTA
 							//Si se reciben datos
