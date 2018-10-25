@@ -44,7 +44,7 @@
 		<?php 	echo $strings['Usuario'] . ' : ' . $_SESSION['login'] . '<br>'; ?>	
 		   </li>
 			  <li class="nav-item">
-              <a class="nav-link disabled" href="../Funcions/Desconectar.php" alt="<?php echo $strings['Desconectarse']?>"/> </a>
+              <a class="nav-link disabled" href="../Functions/Desconectar.php" alt="<?php echo $strings['Desconectarse']?>"/> </a>
             </li>
 		  <?php
 	} else { //si no esta autenticado se muestra en un mensaje indicandolo
@@ -71,7 +71,6 @@
 			  <li class="nav-item">
               <a class="nav-link disabled" href="../Controllers/DEFAULT_CONTROLLER.php"/><?php echo $strings['Atras']?></a>
             </li>
-
 <?php		
 	}
 ?>			<li>
@@ -79,7 +78,7 @@
 	
 		<!-- Si hay un usuario logeado (Variable de sesion login con valor) ejecuta el código dento del if
 que comprueba permisos para cada una de las acciones -->
-		<?php if (isset($_SESSION['login'])) { 
+	<?php if (isset($_SESSION['login'])) { 
 //Si el usuario tiene permisos de showall en gestión de usuarios se muestra la opción ?>
 		<li>
 			<a href="../Controllers/USUARIO_CONTROLLER.php" class="primerNivel"/><?php echo $strings['Gestion de usuarios']?></a>
@@ -90,7 +89,7 @@ que comprueba permisos para cada una de las acciones -->
 //Si el usuario tiene permisos de showall en gestión de usuarios se muestra la opción ?>
 		<?php if($_SESSION['tipo'] == 'Admin'){ ?>
 		<li>
-			<a href="../Controllers/PISTA_CONTROLLER.php" class="primerNivel"/><?php echo $strings['Gestion de pistas'] ?></a>
+			<a href="../Controllers/PISTA_CONTROLLER.php" class="primerNivel"/><?php echo $strings['Gestión de pistas'] ?></a>
 		</li>
 		<?php }
  ?>
