@@ -36,7 +36,7 @@ class Register {
 					</tr>
 					<tr>
 						<th class="formThTd">
-							<?php echo $strings['DNI']; ?>
+							<?php echo $strings['Dni']; ?>
 						</th>
 						<td class="formThTd"><input type="text" id="DNI" name="DNI" placeholder="<?php echo $strings['Escriba aqui...'] ?>" value="" maxlength="9" size="9" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'9') && comprobarTexto(this,'9') && comprobarDni(this)"/>
 					</tr>
