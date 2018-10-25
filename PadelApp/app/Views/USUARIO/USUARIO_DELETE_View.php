@@ -86,18 +86,18 @@ class USUARIO_DELETE {
 				</tr>
 				<tr>
 					<th>
-						<?php echo $strings['Direccion'];?>
+						<?php echo $strings['Sexo'];?>
 					</th>
 					<td>
-						<?php echo $this->valores['Direccion']?>
+						<?php echo $this->valores['Sexo']?>
 					</td>
 				</tr>
 								<tr>
 					<th>
-						<?php echo $strings['idGrupo'];?>
+						<?php echo $strings['Tipo'];?>
 					</th>
 					<td>
-						<?php echo $this->valores['idGrupo']?>
+						<?php echo $this->valores['Tipo']?>
 					</td>
 				</tr>
 			</table>
@@ -115,9 +115,8 @@ class USUARIO_DELETE {
 				<input type="hidden" name="nombre" value=<?php echo $this->valores['Nombre'] ?> />
 				<input type="hidden" name="apellidos" value=<?php echo $this->valores['Apellidos'] ?> />
 				<input type="hidden" name="telefono" value=<?php echo $this->valores['Telefono'] ?> />
-				<input type="hidden" name="email" value=<?php echo $this->valores['Correo'] ?> />
-				<input type="hidden" name="direc" value=<?php echo $this->valores['Direccion'] ?> />
-				<input type="hidden" name="idGrupo" value=<?php echo $this->valores['idGrupo'] ?> />
+				<input type="hidden" name="sexo" value=<?php echo $this->valores['Sexo'] ?> />
+				<input type="hidden" name="tipo" value=<?php echo $this->valores['Tipo'] ?> />
 				<button type="submit" name="action" value="DELETE" ><img src="../Views/icon/confirmar.png" alt="<?php echo $strings['Confirmar'] ?>"/></button>
 			</form>
 			<form action='../Controllers/USUARIO_CONTROLLER.php' method="post" style="display: inline">

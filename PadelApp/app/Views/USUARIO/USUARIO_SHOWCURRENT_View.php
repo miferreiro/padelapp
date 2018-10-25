@@ -29,7 +29,7 @@ class USUARIO_SHOWCURRENT {
 					<?php echo $strings['Usuario'];?>
 				</th>
 				<td>
-					<?php echo $this->lista['login'] ?>
+					<?php echo $this->valores['login']?>
 				</td>
 			</tr>
 			<tr>
@@ -37,16 +37,15 @@ class USUARIO_SHOWCURRENT {
 					<?php echo $strings['Contraseña'];?>
 				</th>
 				<td>
-					<?php echo $this->lista['password'] ?>
+					<?php echo $this->valores['password']?>
 				</td>
 			</tr>
-
 			<tr>
 				<th>
 					<?php echo $strings['DNI'];?>
 				</th>
 				<td>
-					<?php echo $this->lista['DNI'] ?>
+					<?php echo $this->valores['DNI']?>
 				</td>
 			</tr>
 			<tr>
@@ -54,7 +53,7 @@ class USUARIO_SHOWCURRENT {
 					<?php echo $strings['Nombre'];?>
 				</th>
 				<td>
-					<?php echo $this->lista['Nombre'] ?>
+					<?php echo $this->valores['Nombre']?>
 				</td>
 			</tr>
 			<tr>
@@ -62,7 +61,7 @@ class USUARIO_SHOWCURRENT {
 					<?php echo $strings['Apellidos'];?>
 				</th>
 				<td>
-					<?php echo $this->lista['Apellidos'] ?>
+					<?php echo $this->valores['Apellidos']?>
 				</td>
 			</tr>
 			<tr>
@@ -70,7 +69,7 @@ class USUARIO_SHOWCURRENT {
 					<?php echo $strings['Teléfono'];?>
 				</th>
 				<td>
-					<?php echo $this->lista['Telefono'] ?>
+					<?php echo $this->valores['Telefono']?>
 				</td>
 			</tr>
 			<tr>
@@ -78,23 +77,23 @@ class USUARIO_SHOWCURRENT {
 					<?php echo $strings['Correo electrónico'];?>
 				</th>
 				<td>
-					<?php echo $this->lista['Correo'] ?>
+					<?php echo $this->valores['Correo']?>
 				</td>
 			</tr>
 			<tr>
 				<th>
-					<?php echo $strings['Direccion'];?>
+					<?php echo $strings['Sexo'];?>
 				</th>
 				<td>
-					<?php echo $this->lista['Direccion'] ?>
+					<?php echo $this->valores['Sexo']?>
 				</td>
 			</tr>
-			<tr>
+							<tr>
 				<th>
-					<?php echo $strings['idGrupo'];?>
+					<?php echo $strings['Tipo'];?>
 				</th>
 				<td>
-					<?php echo $this->lista['idGrupo'] ?>
+					<?php echo $this->valores['Tipo']?>
 				</td>
 			</tr>
 			<caption style="margin-top:10px;" align="bottom">
