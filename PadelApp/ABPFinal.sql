@@ -18,6 +18,14 @@ DROP SCHEMA IF EXISTS `AbpBase` ;
 CREATE SCHEMA IF NOT EXISTS `AbpBase` DEFAULT CHARACTER SET utf8 ;
 USE `AbpBase` ;
 
+GRANT USAGE ON * . * TO `user`@`localhost`;
+	DROP USER `user`@`localhost`;
+
+
+CREATE USER IF NOT EXISTS `user`@`localhost` IDENTIFIED BY 'pass';
+GRANT USAGE ON *.* TO `user`@`localhost` REQUIRE NONE WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0;
+GRANT ALL PRIVILEGES ON `abpbase`.* TO `user`@`localhost` WITH GRANT OPTION;
+
 -- -----------------------------------------------------
 -- Table `AbpBase`.`Pista`
 -- -----------------------------------------------------
