@@ -8,7 +8,7 @@
 */
 $strings=
 array(
-	'Portal de Gestión' => 'Portal de Xestión',
+	'Portal de Gestión' => 'PadelApp',
 	'Login' => 'Login',
 	'ENTREGAS' => 'Entregas',
 	'QA' => 'QA',
@@ -18,6 +18,7 @@ array(
 	'Elija sexo' => 'Elixa sexo',
 	'Hombre' => 'Home',
 	'Mujer' => 'Muller',
+	'Hora' => 'Hora',
 	'Subir entrega' => 'Subir entrega',
 	'Ya existe la acción introducida en la base de datos' => 'Xa existe a acción introducida na base de datos',
 	'No puedes eliminar ese grupo' => 'Non podes eliminar ese grupo',
@@ -33,7 +34,8 @@ array(
     'El usuario no tiene los permisos necesarios' => 'O usuario non ten os permisos necesarios',
 	'Contraseña' => 'Contrasinal',
 	'password' => 'Contrasinal',
-	'DNI' => 'DNI',
+	'Dni' => 'Dni',
+	'Tipo' => 'Tipo usuario',
 	'Nombre' => 'Nome',
 	'nombre' => 'Nome',
 	'Apellidos' => 'Apelidos',

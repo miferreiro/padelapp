@@ -8,8 +8,9 @@
 */
 $strings=
 array(
-	'Portal de Gestión' => 'Portal de Gestión',
+	'Portal de Gestión' => 'PadelApp',
 	'Login' => 'Login',
+	'Hora' => 'Hora',
 	'ENTREGAS' => 'Entregas',
 	'QA' => 'QA',
 	'idioma' => 'Idioma',
@@ -32,7 +33,8 @@ array(
 	'login' => 'Usuario',
 	'Contraseña' => 'Contraseña',
 	'password' => 'Contraseña',
-	'DNI' => 'DNI',
+	'Dni' => 'Dni',
+	'Tipo' => 'Tipo usuario',
 	'Nombre' => 'Nombre',
 	'nombre' => 'Nombre',
 	'Apellidos' => 'Apellidos',

@@ -17,7 +17,7 @@ else{
 		
 	include '../Models/USUARIO_MODEL.php';//incluye el contenido del modelo USUARIO_MODEL
 	//Variable que almacena un objecto de usuarios model
-	$usuario = new USUARIO_MODEL($_REQUEST['login'],$_REQUEST['password'],$_REQUEST['DNI'],$_REQUEST['nombre'],$_REQUEST['apellidos'],$_REQUEST['email'],$_REQUEST['direc'],$_REQUEST['telefono'],'Deportista');//creamos un objeto del modelo USUARIO_MODEL donde le pasamos todos los datos del usuario registrado
+	$usuario = new USUARIO_MODEL($_REQUEST['Dni'],$_REQUEST['Login'],$_REQUEST['Password'],$_REQUEST['Nombre'],$_REQUEST['Apellidos'],$_REQUEST['Sexo'],$_REQUEST['Telefono'],'Deportista');//creamos un objeto del modelo USUARIO_MODEL donde le pasamos todos los datos del usuario registrado
 	//Variable que almacena la respuesta de si esta existe el login o no para poder registrarse
 	$respuesta = $usuario->Register();
 
