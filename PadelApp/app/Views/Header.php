@@ -42,7 +42,6 @@
       <div class="container">
 		<?php	if (IsAuthenticated()){ //miramos si el usuario esta autenticado ?> 
 		<?php 	echo $strings['Usuario'] . ' : ' . $_SESSION['login'] . '<br>'; ?>	
-		  <a class="navbar-brand" href="#">El usuario no está registrado</a>
 		   </li>
 			  <li class="nav-item">
               <a class="nav-link disabled" href="../Funcions/Desconectar.php" alt="<?php echo $strings['Desconectarse']?>"/> </a>
@@ -62,36 +61,56 @@
             <li class="nav-item active">
 				
 				
-            	<a class="nav-link" href="../Controllers/Login_Controller.php" alt="<?php echo $strings['Conectarse']?>"/>Conectarse
+            	<a class="nav-link" href="../Controllers/Login_Controller.php" /><?php echo $strings['Conectarse']?>
 				<!--<span class="sr-only">(current)</span>--></a>
 				
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../Controllers/Registro_Controller.php" alt="<?php echo $strings['Registrarse']?>"/>Registrarse</a>
+              <a class="nav-link" href="../Controllers/Registro_Controller.php"/><?php echo $strings['Registro']?></a>
             </li>
 			  <li class="nav-item">
-              <a class="nav-link disabled" href="../Controllers/DEFAULT_CONTROLLER.php" alt="<?php echo $strings['Atras']?>"/>Atras</a>
+              <a class="nav-link disabled" href="../Controllers/DEFAULT_CONTROLLER.php"/><?php echo $strings['Atras']?></a>
             </li>
 
 <?php		
 	}
-?>
+?>			<li>
+			<nav>
+	
+		<!-- Si hay un usuario logeado (Variable de sesion login con valor) ejecuta el código dento del if
+que comprueba permisos para cada una de las acciones -->
+		<?php if (isset($_SESSION['login'])) { 
+//Si el usuario tiene permisos de showall en gestión de usuarios se muestra la opción ?>
+		<li>
+			<a href="../Controllers/USUARIO_CONTROLLER.php" class="primerNivel"/><?php echo $strings['Gestion de usuarios']?></a>
+		</li>
 
-
-			
+		<?php } ?>
+				<?php if (isset($_SESSION['login']) & isset($_SESSION['tipo'])) { 
+//Si el usuario tiene permisos de showall en gestión de usuarios se muestra la opción ?>
+		<?php if($_SESSION['tipo'] == 'Admin'){ ?>
+		<li>
+			<a href="../Controllers/PISTA_CONTROLLER.php" class="primerNivel"/><?php echo $strings['Gestion de pistas'] ?></a>
+		</li>
+		<?php }
+ ?>
+		<?php } ?>
+	
+			</nav>
+				</li>
             <li class="nav-item dropdown">
 			<form name='idiomform' action="../Functions/CambioIdioma.php" method="post">
               <a class="nav-link dropdown-toggle" href="<?php echo $strings['idioma']; ?>" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Idiomas</a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <button type="submit"  name="idioma" value="SPANISH" ><a class="dropdown-item" alt="<?php echo $strings['Cambiar idioma a español']?>"/>Español</a></button>
+                <button type="submit"  name="idioma" value="SPANISH" ><a class="dropdown-item"/> <?php echo $strings['Cambiar idioma a español']?></a></button>
 				
 				  <div class="dropdown-divider"></div>
 				
-                <button type="submit"  name="idioma" value="ENGLISH" ><a class="dropdown-item" alt="<?php echo $strings['Cambiar idioma a inglés']?>"/>Inglés</a></button>
+                <button type="submit"  name="idioma" value="ENGLISH" ><a class="dropdown-item"/><?php echo $strings['Cambiar idioma a inglés']?></a></button>
 
                 <div class="dropdown-divider"></div>
 
-                <button type="submit"  name="idioma" value="GALLEGO" ><a class="dropdown-item" alt="<?php echo $strings['Cambiar idioma a gallego']?>"/>Gallego</a></button>
+                <button type="submit"  name="idioma" value="GALLEGO" ><a class="dropdown-item"/><?php echo $strings['Cambiar idioma a gallego']?></a></button>
               </div>
 			</form>
             </li>
@@ -103,6 +122,12 @@
         </div>
       </div>
 </nav>
+
+
+
+
+
+
 	  <hr>
 	  	<!-- <?php echo $strings['Portal de Gestión']; ?>-->
 	  	<div class="titulo"><h1>PADEL APP</h1></div>
