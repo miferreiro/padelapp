@@ -335,28 +335,26 @@ INSERT INTO `partido` (`IdCampeonato`, `Tipo`, `Nivel`, `Grupo_Letra`, `NumEnfre
 --
 
 INSERT INTO `usuario` (`Dni`, `Login`, `Password`, `Nombre`, `Apellidos`, `Sexo`, `Tipo`, `Telefono`) VALUES
-('12345678A', 'leile', '06d1641fd3eb1d0589a6e6c83', 'leile', 'le lei', 'Mujer', 'user', '114658797'),
-('12345678B', 'luilu', 'cccfea6bb17ed97626af780bd', 'luilu', 'lu lui', 'Mujer', 'user', '452168792'),
-('12345678P', 'laila', 'f30618ed64655812746272636', 'laila', 'la lai', 'Mujer', 'user', '123456789'),
-('13447465Q', 'jaglez', '47747a3f07debbd856020e280', 'Jacobo', 'Gonzalez Gonzalez', 'Hombre', 'trainer', '765890434'),
-('34321546F', 'davurin', '9de928ec1ef8601960385d3ef', 'David', 'Prieto Lopez', 'Hombre', 'user', '443534545'),
-('45144479X', 'avcid3', 'c5975a14c491c06bdea25d3a4', 'Alejandro', 'Vila Cid', 'Hombre', 'admin', '647864184'),
-('67676121D', 'analia', '72da240e19db5b286c1f725b9', 'Analia', 'Lourenzo X', 'Mujer', 'user', '666333666'),
-('97871245Y', 'mfdiaz', '54cd358904ef041d1e89b6c73', 'Miguel', 'Ferreiro Diaz', 'Hombre', 'admin', '687654987');
+('10880946Z', 'leile', '06d1641fd3eb1d0589a6e6c83d4992e6', 'leile', 'le lei', 'Mujer', 'Deportista', '114658797'),
+('23293294K', 'luilu', 'cccfea6bb17ed97626af780bd3ffa3cf', 'luilu', 'lu lui', 'Mujer', 'Deportista', '452168792'),
+('50890587M', 'mfdiaz', '54cd358904ef041d1e89b6c73cc264a2', 'Miguel', 'Ferreiro Diaz', 'Hombre', 'Deportista', '123456789'),
+('72070206H', 'jaglez', '47747a3f07debbd856020e280fa2419e', 'Jacobo', 'Gonzalez Gonzalez', 'Hombre', 'Deportista', '765890434'),
+('09291497A', 'davurin', '9de928ec1ef8601960385d3ef0e99940', 'David', 'Prieto Lopez', 'Hombre', 'Deportista', '443534545'),
+('52349896X', 'avcid3', 'c5975a14c491c06bdea25d3a4c60b86e', 'Alejandro', 'Vila Cid', 'Hombre', 'Deportista', '647864184'),
+('53042369E', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', 'admin', 'Hombre', 'Admin', '687654987');
 
 --
 -- Volcado de datos para la tabla `usuarioparejas`
 --
 
 INSERT INTO `usuarioparejas` (`Usuario_Dni`, `Pareja_idCampeonato`, `Pareja_Tipo`, `Pareja_Nivel`, `Pareja_NumPareja`) VALUES
-('12345678A', 1, 'Femenino', 1, 2),
-('12345678B', 1, 'Femenino', 1, 2),
-('12345678P', 1, 'Femenino', 1, 1),
-('13447465Q', 1, 'Masculino', 1, 1),
-('34321546F', 1, 'Masculino', 1, 1),
-('45144479X', 1, 'Masculino', 1, 2),
-('67676121D', 1, 'Femenino', 1, 1),
-('97871245Y', 1, 'Masculino', 1, 2);
+('10880946Z', 1, 'Femenino', 1, 2),
+('23293294K', 1, 'Femenino', 1, 2),
+('50890587M', 1, 'Femenino', 1, 1),
+('72070206H', 1, 'Masculino', 1, 1),
+('09291497A', 1, 'Masculino', 1, 1),
+('52349896X', 1, 'Masculino', 1, 2),
+('46866917R', 1, 'Femenino', 1, 1);
 
 --
 -- Volcado de datos para la tabla `campeonato`
@@ -371,8 +369,8 @@ INSERT INTO `campeonato` (`IdCampeonato`, `FechaIni`, `FechaFin`) VALUES
 --
 
 INSERT INTO `incripcionpromociones` (`Usuario_Dni`, `Promociones_Fecha`, `Promociones_Hora`) VALUES
-('13447465Q', '2018-10-23', '16:00:00'),
-('97871245Y', '2018-10-23', '12:30:00');
+('72070206H', '2018-10-23', '16:00:00'),
+('50890587M', '2018-10-23', '12:30:00');
 
 --
 -- Volcado de datos para la tabla `pista`
@@ -589,8 +587,8 @@ INSERT INTO `promociones` (`Fecha`, `Hora`) VALUES
 --
 
 INSERT INTO `reserva` (`Usuario_Dni`, `Pista_idPista`, `Pista_Fecha`, `Pista_Hora`) VALUES
-('45144479X', 1, '2018-10-23', '11:00:00'),
-('97871245Y', 1, '2018-10-23', '17:30:00');
+('52349896X', 1, '2018-10-23', '11:00:00'),
+('50890587M', 1, '2018-10-23', '17:30:00');
 
 INSERT INTO `enfrentamiento` (`IdCampeonato`, `Tipo`, `Nivel`, `Letra`, `NumEnfrentamiento`, `NumPareja`, `Resultado`) VALUES 
 ('1', 'Femenino', '1', 'A', '1', '1', NULL),
