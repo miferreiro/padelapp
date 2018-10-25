@@ -134,6 +134,7 @@ array(
 	'Buscador' => 'Buscador',
 	'No hay entregas para realizar la asignación' => 'No hay entregas para realizar la asignación',
 	'ET' => 'ET',
+	'Gestión de pistas' => 'Gestión de pistas',
 	'Número de QAs' => 'Número de QAs',
 	'ASIGNACIÓN DE QAs' => 'ASIGNACIÓN DE QAs',
 	'Asignacion generada con exito' => 'Asignacion generada con exito',

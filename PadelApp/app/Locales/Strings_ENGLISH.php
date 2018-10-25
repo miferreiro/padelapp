@@ -30,7 +30,7 @@ array(
 	'Vista detallada' => 'Detailed view',
 	'Usuario' => 'User',
     'El usuario no tiene los permisos necesarios' => 'The user does not have the necessary permits',
-
+	'Gestión de pistas' => 'Court management',
 
 	'login' => 'User',
 	'Contraseña' => 'Password',

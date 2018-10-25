@@ -86,6 +86,7 @@ array(
 	'Escriba aqui...' => 'Escriba aquí...',
 	'Alerta' => 'Alerta',
 	'Error:' => 'Error:',
+	'Gestión de pistas' => 'Xestión de pistas',
 	'Aceptar' => 'Aceptar',
 	'Conectarse' => 'Conectarse',
 	'Desconectarse' => 'Desconectarse',
