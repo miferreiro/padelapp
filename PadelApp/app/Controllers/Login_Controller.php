@@ -27,7 +27,7 @@ else{//si existe el y la password
 		session_start();//se inicia la sesión
 		$_SESSION['login'] = $_REQUEST['login'];//le asignamos a la variable de sesión del login el login que se introdujo
 		
-		$_SESSION['grupo'] = $usuario->obtenerGrupo();
+		$_SESSION['tipo'] = $usuario->obtenerTipo();
 		//$_SESSION['grupo'] = 'Admin';
 		header('Location:../Controllers/USUARIO_CONTROLLER.php');//se redirige al controlador de USUARIOS_CONTROLLER.php
 	}

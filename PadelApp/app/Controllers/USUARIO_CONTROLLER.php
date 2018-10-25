@@ -83,9 +83,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 
 			if($_SESSION['grupo'] == 'Admin'){//miramos si este usuario es administrador
 				//Variable que recoge un objecto model con solo el login
-				$USUARIO = new USUARIO_MODEL( $_REQUEST[ 'login' ], '', '', '', '', '', '', '', '');
+				$USUARIO = new USUARIO_MODEL( $_REQUEST[ 'Dni' ], '', '', '', '', '', '', '', '');
 				//Variable que almacena el relleno de los datos utilizando el login
-				$valores = $USUARIO->RellenaDatos( $_REQUEST[ 'login' ] );
+				$valores = $USUARIO->RellenaDatos( $_REQUEST[ 'Dni' ] );
 
             
 				//Crea una vista delete para ver la tupla
@@ -110,9 +110,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 
 			if($_SESSION['grupo'] == 'Admin'){//si es el usuario es administrador
 						//Variable que almacena un objeto USUARIO model con el login
-			$USUARIO = new USUARIO_MODEL( $_REQUEST[ 'login' ], '', '', '', '', '', '', '','');
+			$USUARIO = new USUARIO_MODEL( $_REQUEST[ 'Dni' ], '', '', '', '', '', '', '','');
 			//Variable que almacena un objecto USUARIO(modelo) con los datos de los atibutos rellenados a traves de login
-			$valores = $USUARIO->RellenaDatos( $_REQUEST[ 'login' ] );
+			$valores = $USUARIO->RellenaDatos( $_REQUEST[ 'Dni' ] );
 
 			//Muestra la vista del formulario editar
 			new USUARIO_EDIT( $valores);
@@ -162,9 +162,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 	case 'SHOWCURRENT'://Caso showcurrent
 		if($_SESSION['grupo'] == 'Admin'){//miramos si el usuario es administrador
 					//Variable que almacena un objeto USUARIO model con el login
-		           $USUARIO = new USUARIO_MODEL( $_REQUEST[ 'login' ], '', '', '', '', '', '', '','');
+		           $USUARIO = new USUARIO_MODEL( $_REQUEST[ 'Dni' ], '', '', '', '', '', '', '');
 		//Variable que almacena los valores rellenados a traves de login
-		           $valores = $USUARIO->RellenaDatos( $_REQUEST[ 'login' ] );
+		           $valores = $USUARIO->RellenaDatos( $_REQUEST[ 'Dni' ] );
 		           //Creación de la vista showcurrent
 		           new USUARIO_SHOWCURRENT( $valores );
 			}else{
@@ -184,7 +184,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 						//Variable que almacena los datos de la busqueda
 						$datos = $USUARIO->SEARCH();
 						//Variable que almacena array con el nombre de los atributos
-						$lista = array( 'login','DNI','Nombre','Apellidos','Correo','idGrupo');
+						$lista = array( 'Dni','Login','Nombre','Apellidos','Sexo','Telefono','Tipo');
 						
 						new USUARIO_SHOWALL( $lista, $datos);//nos muestra una vista showall con todos los permisos
 			

@@ -22,6 +22,7 @@ class USUARIO_DEFAULT {
 		
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
 		include '../Views/Header.php';//incluimos la cabecera
+		
 ?>
 		<div class="seccion">	
 			<h2>
