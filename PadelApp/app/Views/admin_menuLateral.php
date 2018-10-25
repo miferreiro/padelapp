@@ -20,7 +20,7 @@ que comprueba permisos para cada una de las acciones -->
 		</li>
 
 		<?php } ?>
-				<?php if (isset($_SESSION['login']) & isset($_SESSION['tipo'])) { 
+		<?php if (isset($_SESSION['login']) & isset($_SESSION['tipo'])) { 
 //Si el usuario tiene permisos de showall en gestión de usuarios se muestra la opción ?>
 		<?php if($_SESSION['tipo'] == 'Admin'){ ?>
 		<li>
@@ -29,5 +29,15 @@ que comprueba permisos para cada una de las acciones -->
 		<?php }
  ?>
 		<?php } ?>
+		<?php if (isset($_SESSION['login']) & isset($_SESSION['tipo'])) { 
+//Si el usuario tiene permisos de showall en gestión de usuarios se muestra la opción ?>
+		<?php if($_SESSION['tipo'] == 'Admin'){ ?>
+		<li>
+			<a href="../Controllers/CAMPEONATO_CONTROLLER.php" class="primerNivel"><?php echo 'Gestion de campeonatos' ?></a>
+		</li>
+		<?php }
+ ?>
+		<?php } ?>
+		
 	</ul>
 </nav>

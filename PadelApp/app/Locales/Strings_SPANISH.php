@@ -245,7 +245,10 @@ array(
 
 	'El usuario no puede evaluarse a si mismo' => 'El usuario no puede evaluarse a si mismo',
 	'El alias evaluado no se corresponde con LoginEvaluado' => 'El alias evaluado no se corresponde con LoginEvaluado',
-	'idGrupo' => 'idGrupo'
+	'idGrupo' => 'idGrupo',
+	'IdCampeonato' => 'IdCampeonato',
+	'FechaIni' => 'FechaIni',
+	'FechaFin' => 'FechaFin'
 
 	)
 ;
