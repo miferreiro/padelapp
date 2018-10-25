@@ -4,9 +4,7 @@
 	Fecha de creación: 23/10/2017 
 	Función: contiene todas las características del footer
 -->
-</article>
- </div>
- <div id="capaVentana" style="visibility: hidden;">
+ <!--<div id="capaVentana" style="visibility: hidden;">
 		<table  width="250px" style="border:1px solid red;padding:0px;">
 			<tr>
 				<td colspan="2" style="background-color:red" width="250px">
@@ -28,11 +26,17 @@
 			</tr>
 			
 		</table>
-</div>
+</div>-->
 	
-<div id="capaFondo1"></div>
-	<footer>
-		<a href="../Views/INFO_GRUPO_ET.php"><?php echo $strings['INFORMACIÓN GRUPO'];?></a>
+
+		 <footer class="text-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <p>Copyright © Uvigo. Derechos reservados a Davurin.</p>
+          </div>
+        </div>
+      </div>
 	</footer>
   </body>
 </html>

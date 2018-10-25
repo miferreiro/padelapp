@@ -13,59 +13,97 @@
 	}
 	include '../Locales/Strings_' . $_SESSION['idioma'] . '.php';//incluimos todos los strings de los idiomas:ingles,español y galego
 ?>
+
 <!doctype html>
 <html lang="es">
-<head>
+	
 	<meta charset="UTF-8">
 	<script type="text/javascript" src="../Views/js/md5.js"></script>
-	<link rel="stylesheet" type="text/css" media="screen" href="../Views/css/estilos.css" hreflang="es">
+	<link rel="stylesheet" type="text/css" media="screen" href="../Views/css/bootstrap-4.0.0.css" hreflang="es">
 	<link rel="stylesheet" type="text/css" media="screen" href="../Views/js/tcal/tcal.css" hreflang="es">
 	<script language="JavaScript" type="text/javascript" src="../Views/js/tcal/tcal.js"></script>
-	<?php include '../Views/js/validaciones.js' ?>
-	<title>ET3</title>
-</head>
-<body>
- <header>
-	<p style="text-align:center">
-		<h1>
-<?php
-			echo $strings['Portal de Gestión'];
-?>
-		</h1>
-	</p>
-<?php	
-	if (IsAuthenticated()){ //miramos si el usuario esta autenticado
-?>
-		<p style="font-size:20px; ">
-<?php
-			echo $strings['Usuario'] . ' : ' . $_SESSION['login'] . ' Grupo: ' . $_SESSION['tipo'] . '<br>';
-?>	
-			<a href="../Functions/Desconectar.php" style="text-decoration:none"> <img src="../Views/icon/desconexion.png" width="32" height="32" alt="<?php echo $strings['Desconectarse']?>" style="float:right;"></a>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="../Views/js/jquery-3.2.1.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../Views/js/popper.min.js"></script>
+    <script src="../Views/js/bootstrap-4.0.0.js"></script>
 	
-		</p>
-<?php
+	<?php include '../Views/js/validaciones.js' ?>
+  <head>
+ 
+    <!-- Bootstrap -->
+
+  </head>
+  <body>
+	  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+		<?php	if (IsAuthenticated()){ //miramos si el usuario esta autenticado ?> 
+		<?php 	echo $strings['Usuario'] . ' : ' . $_SESSION['login'] . '<br>'; ?>	
+		  <a class="navbar-brand" href="#">El usuario no está registrado</a>
+		   </li>
+			  <li class="nav-item">
+              <a class="nav-link disabled" href="../Funcions/Desconectar.php" alt="<?php echo $strings['Desconectarse']?>"/> </a>
+            </li>
+		  <?php
 	} else { //si no esta autenticado se muestra en un mensaje indicandolo
 		
 			echo $strings['Usuario no identificado'];
-?> 
-		<a href = '../Controllers/Registro_Controller.php' ><img src="../Views/icon/registrarse.png" alt="<?php echo $strings['Registrar']?>" /></a>
-		<a href = '../Controllers/Login_Controller.php' ><img src="../Views/icon/conectarse.png" alt="<?php echo $strings['Conectarse']?>" /></a>
-		<a href = '../Controllers/DEFAULT_CONTROLLER.php' ><img src="../Views/icon/casa.png" alt="<?php echo $strings['Atras']?>" /></a>
+?>	  
+		  <!--<font color="white">El usuario no está registrado</font> -->
+		  
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+				
+				
+            	<a class="nav-link" href="../Controllers/Login_Controller.php" alt="<?php echo $strings['Conectarse']?>"/>Conectarse
+				<!--<span class="sr-only">(current)</span>--></a>
+				
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../Controllers/Registro_Controller.php" alt="<?php echo $strings['Registrarse']?>"/>Registrarse</a>
+            </li>
+			  <li class="nav-item">
+              <a class="nav-link disabled" href="../Controllers/DEFAULT_CONTROLLER.php" alt="<?php echo $strings['Atras']?>"/>Atras</a>
+            </li>
+
 <?php		
 	}
 ?>
-		
-	<form name='idiomform' action="../Functions/CambioIdioma.php" method="post">
-		<?php echo $strings['idioma']; ?>
-		<button type="submit"  name="idioma" value="SPANISH" ><img src="../Views/icon/banderaEspaña.jpg" alt="<?php echo $strings['Cambiar idioma a español']?>" width="32" height="20" style="display: block;"/></button>
-		<button type="submit"  name="idioma" value="ENGLISH" ><img src="../Views/icon/banderaReinoUnido.png" alt="<?php echo $strings['Cambiar idioma a inglés']?>" width="32" height="20" style="display: block;"/></button>
-		<button type="submit"  name="idioma" value="GALLEGO" ><img src="../Views/icon/banderaGalicia.png" alt="<?php echo $strings['Cambiar idioma a gallego']?>" width="32" height="20" style="display: block;"/></button>
-	</form>	
-</header>
-<div id = 'main'>   
-<?php
-		include '../Views/admin_menuLateral.php';//incluimos el footer
-?>  
-<article>
 
-     
+
+			
+            <li class="nav-item dropdown">
+			<form name='idiomform' action="../Functions/CambioIdioma.php" method="post">
+              <a class="nav-link dropdown-toggle" href="<?php echo $strings['idioma']; ?>" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Idiomas</a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <button type="submit"  name="idioma" value="SPANISH" ><a class="dropdown-item" alt="<?php echo $strings['Cambiar idioma a español']?>"/>Español</a></button>
+				
+				  <div class="dropdown-divider"></div>
+				
+                <button type="submit"  name="idioma" value="ENGLISH" ><a class="dropdown-item" alt="<?php echo $strings['Cambiar idioma a inglés']?>"/>Inglés</a></button>
+
+                <div class="dropdown-divider"></div>
+
+                <button type="submit"  name="idioma" value="GALLEGO" ><a class="dropdown-item" alt="<?php echo $strings['Cambiar idioma a gallego']?>"/>Gallego</a></button>
+              </div>
+			</form>
+            </li>
+          </ul>
+          <!--<form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>-->
+        </div>
+      </div>
+</nav>
+	  <hr>
+	  	<!-- <?php echo $strings['Portal de Gestión']; ?>-->
+	  	<div class="titulo"><h1>PADEL APP</h1></div>
+	</header>
