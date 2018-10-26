@@ -77,7 +77,7 @@ class USUARIO_MODEL{
 	// de los atributos del objeto. Comprueba si la clave/s esta vacia y si 
 	//existe ya en la tabla
 	function ADD() {
-		if ( ( $this->login <> '' ) ) { // si el atributo clave de la entidad no esta vacio
+		if ( ( $this->Dni <> '' ) ) { // si el atributo clave de la entidad no esta vacio
             
 			// construimos el sql para buscar esa clave en la tabla
 			$sql = "SELECT * FROM USUARIO WHERE (  Dni = '$this->Dni')";
@@ -122,12 +122,9 @@ class USUARIO_MODEL{
 					if ( !$this->mysqli->query( $sql )) { // si da error en la ejecución del insert devolvemos mensaje
 						return 'Error en la inserción';
 					} else { //si no da error en la insercion devolvemos mensaje de exito
-						
-						if($mensaje == 'Inserción realizada con éxito'){//miramos si la inserción en USU_GRUPO tuvo exito
-							return 'Inserción realizada con éxito'; //operacion de insertado correcta
-						}else{//si la insercion no tuvo exito
-							return $mensaje;
-					}
+												
+						return 'Inserción realizada con éxito'; //operacion de insertado correcta
+
 				}		
 			}
 		} else { // si el atributo clave de la bd es vacio solicitamos un valor en un mensaje

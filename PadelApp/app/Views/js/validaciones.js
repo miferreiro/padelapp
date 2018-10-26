@@ -12,7 +12,7 @@ var atributo = new Array(); /*Array que sirve para poder traducir el nombre de l
 //GESTION DE USUARIOS
 atributo['login'] = '<?php echo $strings["Usuario"]?>';
 atributo['password'] = '<?php echo $strings["password"]?>';
-atributo['DNI'] = '<?php echo $strings["DNI"]?>';
+atributo['Dni'] = '<?php echo $strings["Dni"]?>';
 atributo['nombre'] = '<?php echo $strings["Nombre"]?>';
 atributo['apellidos'] = '<?php echo $strings["Apellidos"]?>';
 atributo['telefono'] = '<?php echo $strings["Teléfono"]?>';
