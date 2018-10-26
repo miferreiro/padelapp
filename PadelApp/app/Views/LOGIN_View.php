@@ -35,7 +35,7 @@ class Login {
 				</tr>
 				<tr>
 					<td colspan="2">
-						<button type="submit" name="action" value="Login"><img src="../Views/icon/conectarse.png" alt="<?php echo $strings['Conectarse'] ?>" /></button>
+						<button id ="buttonBien" type="submit" name="action" value="Login"><img src="../Views/icon/conectarse.png" alt="<?php echo $strings['Conectarse'] ?>" /></button>
 				</tr>
 			</table>
 		</form>

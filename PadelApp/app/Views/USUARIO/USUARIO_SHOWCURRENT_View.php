@@ -98,7 +98,7 @@ class USUARIO_SHOWCURRENT {
 			</tr>
 			<caption style="margin-top:10px;" align="bottom">
 				<form action='../Controllers/USUARIO_CONTROLLER.php' method="post">
-					<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras'] ?>" /></button>
+					<button id ="buttonBien" type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras'] ?>" /></button>
 				</form>
 			</caption>
 		</table>

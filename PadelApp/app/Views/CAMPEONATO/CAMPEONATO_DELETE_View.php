@@ -54,10 +54,10 @@ class CAMPEONATO_DELETE {
 				<input type="hidden" name="IdTrabajo" value="<?php echo $this->valores['IdTrabajo'] ?>" />
 				<input type="hidden" name="FechaIni" value="<?php echo $this->valores['FechaIni'] ?>" />
 				<input type="hidden" name="FechaFin" value="<?php echo $this->valores['FechaFin'] ?>" />
-                <button type="submit" id="DELETE" name="action" value="DELETE" ><img src="../Views/icon/confirmar.png" width="32" height="32" alt="<?php echo $strings['Confirmar'] ?>"/></button>
+                <button id ="buttonBien" type="submit" id="DELETE" name="action" value="DELETE" ><img src="../Views/icon/confirmar.png" width="32" height="32" alt="<?php echo $strings['Confirmar'] ?>"/></button>
 			</form>
 			<form action='../Controllers/CAMPEONATO_CONTROLLER.php' method="post" style="display: inline">
-				<button type="submit"><img src="../Views/icon/cancelar.png" alt="<?php echo $strings['Atras'] ?>"/></button>
+				<button id ="buttonBien" type="submit"><img src="../Views/icon/cancelar.png" alt="<?php echo $strings['Atras'] ?>"/></button>
 			</form>
 		</div>
 <?php             

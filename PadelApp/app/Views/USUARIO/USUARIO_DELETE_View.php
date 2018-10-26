@@ -117,10 +117,10 @@ class USUARIO_DELETE {
 				<input type="hidden" name="telefono" value=<?php echo $this->valores['Telefono'] ?> />
 				<input type="hidden" name="sexo" value=<?php echo $this->valores['Sexo'] ?> />
 				<input type="hidden" name="tipo" value=<?php echo $this->valores['Tipo'] ?> />
-				<button type="submit" name="action" value="DELETE" ><img src="../Views/icon/confirmar.png" alt="<?php echo $strings['Confirmar'] ?>"/></button>
+				<button id ="buttonBien" type="submit" name="action" value="DELETE" ><img src="../Views/icon/confirmar.png" alt="<?php echo $strings['Confirmar'] ?>"/></button>
 			</form>
 			<form action='../Controllers/USUARIO_CONTROLLER.php' method="post" style="display: inline">
-				<button type="submit"><img src="../Views/icon/cancelar.png" alt="<?php echo $strings['Atras'] ?>"/></button>
+				<button id ="buttonBien" type="submit"><img src="../Views/icon/cancelar.png" alt="<?php echo $strings['Atras'] ?>"/></button>
 			</form>
 		</div>
 <?php

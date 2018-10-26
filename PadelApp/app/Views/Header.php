@@ -39,7 +39,9 @@
 		<?php 	echo $strings['Usuario'] . ' : ' . $_SESSION['login'] . '<br>'; ?>	
 		   </li>
 			  <li class="nav-item">
-              <a class="nav-link disabled" href="../Functions/Desconectar.php" alt="<?php echo $strings['Desconectarse']?>"/> </a>
+              <a class="nav-link disabled" href="../Functions/Desconectar.php" alt="<?php echo $strings['Desconectarse']?>"/>
+              <img src="../Views/icon/desconexion.png" width="32" height="32" alt="<?php echo $strings['Desconectarse']?>" style="float:right;">
+               </a>
             </li>
 		  <?php
 	} else { //si no esta autenticado se muestra en un mensaje indicandolo
@@ -89,22 +91,30 @@ que comprueba permisos para cada una de las acciones -->
 		<?php }
  ?>
 		<?php } ?>
-	
+	<?php if (isset($_SESSION['login']) & isset($_SESSION['tipo'])) { 
+//Si el usuario tiene permisos de showall en gestión de usuarios se muestra la opción ?>
+		<?php if($_SESSION['tipo'] == 'Admin'){ ?>
+		<li>
+			<a href="../Controllers/CAMPEONATO_CONTROLLER.php" class="primerNivel"><?php echo 'Gestion de campeonatos' ?></a>
+		</li>
+		<?php }
+ ?>
+		<?php } ?>
 			</nav>
 				</li>
             <li class="nav-item dropdown">
 			<form name='idiomform' action="../Functions/CambioIdioma.php" method="post">
               <a class="nav-link dropdown-toggle" href="<?php echo $strings['idioma']; ?>" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Idiomas</a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <button type="submit"  name="idioma" value="SPANISH" ><a class="dropdown-item"/> <?php echo $strings['Cambiar idioma a español']?></a></button>
+                <button id ="buttonBien" type="submit"  name="idioma" value="SPANISH" ><a class="dropdown-item"/> <?php echo $strings['Cambiar idioma a español']?></a></button>
 				
 				  <div class="dropdown-divider"></div>
 				
-                <button type="submit"  name="idioma" value="ENGLISH" ><a class="dropdown-item"/><?php echo $strings['Cambiar idioma a inglés']?></a></button>
+                <button id ="buttonBien" type="submit"  name="idioma" value="ENGLISH" ><a class="dropdown-item"/><?php echo $strings['Cambiar idioma a inglés']?></a></button>
 
                 <div class="dropdown-divider"></div>
 
-                <button type="submit"  name="idioma" value="GALLEGO" ><a class="dropdown-item"/><?php echo $strings['Cambiar idioma a gallego']?></a></button>
+                <button id ="buttonBien" type="submit"  name="idioma" value="GALLEGO" ><a class="dropdown-item"/><?php echo $strings['Cambiar idioma a gallego']?></a></button>
               </div>
 			</form>
             </li>
@@ -125,4 +135,5 @@ que comprueba permisos para cada una de las acciones -->
 	  <hr>
 	  	<!-- <?php echo $strings['Portal de Gestión']; ?>-->
 	  	<div class="titulo"><h1>PADEL APP</h1></div>
+</hr>
 	</header>

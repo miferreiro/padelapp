@@ -37,10 +37,10 @@ class CAMPEONATO_SEARCH {
 					</tr>
                   		<tr>
 						<td colspan="2">
-							<button type="submit" name="action" value="SEARCH"><img src="../Views/icon/buscar.png" alt="<?php echo $strings['Buscar formulario']?>" /></button>
+							<button id ="buttonBien" type="submit" name="action" value="SEARCH"><img src="../Views/icon/buscar.png" alt="<?php echo $strings['Buscar formulario']?>" /></button>
 			</form>
 						<form action='../Controllers/CAMPEONATO_CONTROLLER.php' method="post" style="display:inline">
-							<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
+							<button id ="buttonBien" type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 						</form>
 						</td>
 					</tr>

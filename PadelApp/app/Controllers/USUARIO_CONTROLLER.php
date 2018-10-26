@@ -132,7 +132,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 	case 'SEARCH'://Caso buscar
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario SEARCH
 			
-			if($_SESSION['grupo'] == 'Admin'){//miramos si es administrador, si lo es, nos muestra la vista SEARCH
+			if($_SESSION['tipo'] == 'Admin'){//miramos si es administrador, si lo es, nos muestra la vista SEARCH
 				new USUARIO_SEARCH();
 			}else{
 	
