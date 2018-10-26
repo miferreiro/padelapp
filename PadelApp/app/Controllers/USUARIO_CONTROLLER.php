@@ -29,13 +29,12 @@ function get_data_form() {
 	
 	$login = $_REQUEST[ 'login' ]; //Variable que almacena el valor de login
 	$password = $_REQUEST[ 'password' ]; //Variable que almacena el valor de password
-	$dni = $_REQUEST[ 'DNI' ]; //Variable que almacena el valor de dni
+	$dni = $_REQUEST[ 'Dni' ]; //Variable que almacena el valor de dni
 	$nombre = $_REQUEST[ 'nombre' ]; //Variable que almacena el valor de nombre
 	$apellidos = $_REQUEST[ 'apellidos' ]; //Variable que almacena el valor de apellidos
-	$correo = $_REQUEST[ 'email' ]; //Variable que almacena el valor de correo
-	$direccion = $_REQUEST[ 'direc' ]; //Variable que almacena el valor de direccion
+	$sexo = $_REQUEST[ 'Sexo' ]; //Variable que almacena el valor de direccion
 	$telefono = $_REQUEST[ 'telefono' ]; //Variable que almacena el valor de telefono
-	$idGrupo = $_REQUEST[ 'idGrupo' ];
+	$tipo = $_REQUEST[ 'Tipo' ];
 	$action = $_REQUEST[ 'action' ]; //Variable que almacena el valor de action
     //Variable que almacena un modelo de USUARIO
 	$USUARIO = new USUARIO_MODEL(
@@ -44,10 +43,9 @@ function get_data_form() {
 		$dni,
 		$nombre,
 		$apellidos,
-		$correo,
-		$direccion,
+		$sexo,
 		$telefono,
-		$idGrupo
+		$tipo
 	);//Creamos un objeto de usuario con las variables que se han recibido del formulario
 	//Devuelve el valor del objecto model creado
 	
