@@ -1,150 +1,227 @@
 <?php
 
-session_start(); //solicito trabajar con la session
-include '../Functions/Authentication.php'; //incluye el contenido de la función de autentificación
-//Si no esta autenticado se redirecciona al index
+session_start(); 
+include '../Functions/Authentication.php'; 
+
 if (!IsAuthenticated()){
-	//Redireción al index
  	header('Location:../index.php');
 }
 
-include '../Models/CAMPEONATO_MODEL.php'; //incluye el contendio del modelo usuarios
-include '../Views/CAMPEONATO/CAMPEONATO_SHOWALL_View.php'; //incluye la vista del showall
-include '../Views/CAMPEONATO/CAMPEONATO_SEARCH_View.php'; //incluye la vista search
-include '../Views/CAMPEONATO/CAMPEONATO_ADD_View.php'; //incluye la vista add
-include '../Views/CAMPEONATO/CAMPEONATO_DELETE_View.php'; //incluye la vista edit
-include '../Views/CAMPEONATO/CAMPEONATO_SHOWCURRENT_View.php'; //incluye la vista showcurrent
-include '../Views/DEFAULT_View.php'; //incluye la vista por defecto
-include '../Views/MESSAGE_View.php'; //incluye la vista mensaje
+include '../Models/CAMPEONATO_MODEL.php'; 
+include '../Models/CATEGORIA_MODEL.php'; 
+include '../Views/CAMPEONATO/CAMPEONATO_SHOWALL_View.php'; 
+include '../Views/CAMPEONATO/CAMPEONATO_SEARCH_View.php'; 
+include '../Views/CAMPEONATO/CAMPEONATO_ADD_View.php'; 
+include '../Views/CAMPEONATO/CAMPEONATO_DELETE_View.php';
+include '../Views/CAMPEONATO/CAMPEONATO_SHOWCURRENT_View.php'; 
+include '../Views/DEFAULT_View.php'; 
+include '../Views/MESSAGE_View.php'; 
 
-//Esta función crea un objeto tipo USUARIO_MODEL con los valores que se le pasan con $_REQUEST
 function get_data_form() {
 	
-	$idCampeonato = $_REQUEST[ 'IdCampeonato' ]; //Variable que almacena el valor de login
-	$fechaIni = $_REQUEST[ 'FechaIni' ]; //Variable que almacena el valor de password
-	$fechaFin = $_REQUEST[ 'FechaFin' ]; //Variable que almacena el valor de dni
-
-    //Variable que almacena un modelo de USUARIO
+	$idCampeonato = $_REQUEST[ 'IdCampeonato' ]; 
+	$fechaIni = $_REQUEST[ 'FechaIni' ]; 
+	$fechaFin = $_REQUEST[ 'FechaFin' ] ; 
+    $horaIni =  $_REQUEST[ 'HoraIni' ] ; 
+	$horaFin =  $_REQUEST[ 'HoraIni' ] ; 
+    
 	$CAMPEONATO = new CAMPEONATO_MODEL(
 		$idCampeonato,
 		$fechaIni,
-		$fechaFin
-	);//Creamos un objeto de usuario con las variables que se han recibido del formulario
-	//Devuelve el valor del objecto model creado
+		$horaIni,
+		$fechaFin,
+		$horaFin
+	);
 	
 	return $CAMPEONATO;
 }
-//Si la variable action no tiene contenido le asignamos ''
+
 if ( !isset( $_REQUEST[ 'action' ] ) ) {
 	$_REQUEST[ 'action' ] = '';
 	
 }
-//Estructura de control, que realiza un determinado caso dependiendo del valor action
 switch ( $_REQUEST[ 'action' ] ) {
-	case 'ADD'://Caso añadir
-		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario ADD
+	case 'ADD':
+		if ( !$_POST ) {
 
-			if($_SESSION['tipo'] == 'Admin'){//si el usuario es administrador mostramos la vista ADD
+			if($_SESSION['tipo'] == 'Admin'){
 				new CAMPEONATO_ADD();
-			}else{//si no es administrador
-         
-			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/CAMPEONATO_CONTROLLER.php' );
-			
+			}else{  
+				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/CAMPEONATO_CONTROLLER.php' );			
 			}
-		} else {//Si recibe datos los recoge y mediante las funcionalidad de USUARIO_MODEL inserta los datos
-			$CAMPEONATO = get_data_form();//Variable que almacena un objecto USUARIO(modelo) con los datos recogidos
-			$respuesta = $CAMPEONATO->ADD();//Variable que almacena la respuesta de la inserción
-			//Crea la vista con la respuesta y la ruta para volver
-			new MESSAGE( $respuesta, '../Controllers/CAMPEONATO_CONTROLLER.php' );
+		} else {
+			$CAMPEONATO = get_data_form();
+			$respuesta = $CAMPEONATO->ADD();
+			$respuesta1 = '';
+			$respuesta2 = '';
+			$respuesta3 = '';
+			$respuesta4 = '';
+			$respuesta5 = '';
+			$respuesta6 = '';
+			$respuesta7 = '';
+			$respuesta8 = '';
+			$respuesta9 = '';
+			
+			$categoria = $_POST['categoria'];
+			
+			if ( in_array('Masculina1', $categoria)){
+				$CATEGORIAMA1 = new CATEGORIA_MODEL($CAMPEONATO->IdCampeonato,'Masculino',1);
+				$respuesta1 = $CATEGORIAMA1->ADD();			
+			}
+			
+			if(in_array('Masculina2', $categoria)){
+				$CATEGORIAMA2 = new CATEGORIA_MODEL($CAMPEONATO->IdCampeonato,'Masculino',2);
+				$respuesta2 = $CATEGORIAMA2->ADD();
+			}
+			
+			
+			if(in_array('Masculina3', $categoria)){
+				$CATEGORIAMA3 = new CATEGORIA_MODEL($CAMPEONATO->IdCampeonato,'Masculino',3);
+				$respuesta3 = $CATEGORIAMA3->ADD();
+			}
+			
+
+			if(in_array('Femenina1', $categoria)){
+				$CATEGORIAF1 = new CATEGORIA_MODEL($CAMPEONATO->IdCampeonato,'Femenino',1);
+				$respuesta4 = $CATEGORIAF1->ADD();
+			}
+			
+			
+			if(in_array('Femenina2', $categoria)){
+	
+				$CATEGORIAF2 = new CATEGORIA_MODEL($CAMPEONATO->IdCampeonato,'Femenino',2);
+				$respuesta5 = $CATEGORIAF2->ADD();
+			}
+			
+
+			if(in_array('Femenina3', $categoria)){
+				$CATEGORIAF3 = new CATEGORIA_MODEL($CAMPEONATO->IdCampeonato,'Femenino',3);
+				$respuesta6 = $CATEGORIAF3->ADD();
+			}
+			
+			
+			if(in_array('Mixta1', $categoria)){
+					$CATEGORIAMI1 = new CATEGORIA_MODEL($CAMPEONATO->IdCampeonato,'Mixto',1);
+					$respuesta7 = $CATEGORIAMI1->ADD();
+			}
+			
+			
+			if(in_array('Mixta2', $categoria)){
+				$CATEGORIAMI2 = new CATEGORIA_MODEL($CAMPEONATO->IdCampeonato,'Mixto',2);
+				$respuesta8 = $CATEGORIAMI2->ADD();
+			}
+			
+			
+			if(in_array('Mixta3', $categoria)){
+				$CATEGORIAMI3 = new CATEGORIA_MODEL($CAMPEONATO->IdCampeonato,'Mixto',3);
+				$respuesta9 = $CATEGORIAMI3->ADD();
+			}
+			
+			
+			if($respuesta == 'Error en la inserción' || $respuesta1 == 'Error en la inserción' ||$respuesta2 == 'Error en la inserción' ||
+			  $respuesta3 == 'Error en la inserción' ||$respuesta4 == 'Error en la inserción' ||$respuesta5 == 'Error en la inserción' ||
+			   $respuesta6 == 'Error en la inserción' ||$respuesta7 == 'Error en la inserción' ||$respuesta8 == 'Error en la inserción' ||
+			  $respuesta9 == 'Error en la inserción'){
+				
+				$CAMPEONATO->DELETE();
+				
+				if(in_array('Masculina1', $categoria)){$CATEGORIAMA1->DELETE();}
+				if(in_array('Masculina2', $categoria)){$CATEGORIAMA2->DELETE();}
+				if(in_array('Masculina3', $categoria)){$CATEGORIAMA3->DELETE();}
+				if(in_array('Femenina1', $categoria)){$CATEGORIAF1->DELETE();}
+				if(in_array('Femenina2', $categoria)){$CATEGORIAF2->DELETE();}
+				if(in_array('Femenina3', $categoria)){$CATEGORIAF3->DELETE();}
+				if(in_array('Mixta1', $categoria)){$CATEGORIAMI1->DELETE();}
+				if(in_array('Mixta2', $categoria)){$CATEGORIAMI2->DELETE();}
+				if(in_array('Mixta3', $categoria)){$CATEGORIAMI3->DELETE();}
+				
+				new MESSAGE( 'Error en la inserción', '../Controllers/CAMPEONATO_CONTROLLER.php' );
+				
+			}else{
+				new MESSAGE( $respuesta, '../Controllers/CAMPEONATO_CONTROLLER.php' );
+			}
 		}
-		//Finaliza el bloque
 		break;
-	case 'DELETE'://Caso borrar
-		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario DELETE
+	case 'DELETE':
+		if ( !$_POST ) {
 
-			if($_SESSION['tipo'] == 'Admin'){//miramos si este usuario es administrador
-				//Variable que recoge un objecto model con solo el login
-				$CAMPEONATO = new CAMPEONATO_MODEL( $_REQUEST[ 'IdCampeonato' ], '', '');
-				//Variable que almacena el relleno de los datos utilizando el login
+			if($_SESSION['tipo'] == 'Admin'){
+				$CAMPEONATO = new CAMPEONATO_MODEL( $_REQUEST[ 'IdCampeonato' ], '', '','','');
+
 				$valores = $CAMPEONATO->RellenaDatos( $_REQUEST[ 'IdCampeonato' ] );
-
             
-				//Crea una vista delete para ver la tupla
 				new CAMPEONATO_DELETE( $valores);
 			}else{
 				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/CAMPEONATO_CONTROLLER.php' );
 			
 			}
-			//Si recibe valores ejecuta el borrado
-		} else {//Si recibe datos los recoge y mediante las funcionalidad de USUARIO_MODEL borra los datos
-			//Variable que almacena un objecto USUARIO(modelo) con los datos recogidos de los atributos
-			$CAMPEONATO = get_data_form();
-			//Variable que almacena la respuesta de realizar el borrado
-			$respuesta = $CAMPEONATO->DELETE();
-			//crea una vista mensaje con la respuesta y la dirección de vuelta
-			new MESSAGE( $respuesta, '../Controllers/CAMPEONATO_CONTROLLER.php' );
-		}
-		//Finaliza el bloque
-		break;
-	case 'SEARCH'://Caso buscar
-		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario SEARCH
-			
-			if($_SESSION['tipo'] == 'Admin'){//miramos si es administrador, si lo es, nos muestra la vista SEARCH
-				new CAMPEONATO_SEARCH();
-			}else{
-	
-			//en caso de que no tenga dichos permisos se muestra una vista diciendo que este usuario no tiene dichos permisos
-				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/CAMPEONATO_CONTROLLER.php' );
-			
-			}
-		//Si se reciben datos	
+		
 		} else {
 			
-			//Variable que almacena los datos recogidos de los atributos
+			$CAMPEONATO = new CAMPEONATO_MODEL( $_REQUEST[ 'IdCampeonato' ], '', '','','');
+			
+			$CATEGORIA = new CATEGORIA_MODEL($CAMPEONATO->IdCampeonato,'','');
+			
+			$respuesta1 = $CATEGORIA->DELETE_ALL();
+				
+			$respuesta = $CAMPEONATO->DELETE();
+
+			
+			
+			if(($respuesta != 'Borrado correctamente') | ($respuesta1 != 'Borrado correctamente')){
+				new MESSAGE( 'Borrado incorrectamente', '../Controllers/CAMPEONATO_CONTROLLER.php' );
+			}else{
+				new MESSAGE( $respuesta, '../Controllers/CAMPEONATO_CONTROLLER.php' );
+			}
+			
+		}
+		break;
+	case 'SEARCH':
+		if ( !$_POST ) {		
+			if($_SESSION['tipo'] == 'Admin'){
+				new CAMPEONATO_SEARCH();
+			}else{
+				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/CAMPEONATO_CONTROLLER.php' );			
+			}
+		
+		} else {
+			
 			$CAMPEONATO = get_data_form();
-			//Variable que almacena el resultado de la busqueda
+		
 			$datos = $CAMPEONATO->SEARCH();
-			//Variable que almacena array con el nombre de los atributos
-			$lista = array( 'IdCampeonato','FechaIni','FechaFin');
-			//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
+
+			$lista = array( 'IdCampeonato','FechaIni','HoraIni','FechaFin','HoraFin');			
 		
 			new CAMPEONATO_SHOWALL( $lista, $datos );
 			
 			
 		}
-		//Final del bloque
-		break;
-	case 'SHOWCURRENT'://Caso showcurrent
-		if($_SESSION['tipo'] == 'Admin'){//miramos si el usuario es administrador
-					//Variable que almacena un objeto USUARIO model con el login
 
-			$CAMPEONATO = new CAMPEONATO_MODEL( $_REQUEST[ 'IdCampeonato' ], '', '');
-		//Variable que almacena los valores rellenados a traves de login
-		           $valores = $CAMPEONATO->RellenaDatos( $_REQUEST[ 'IdCampeonato' ] );
-		           //Creación de la vista showcurrent
-		           new CAMPEONATO_SHOWCURRENT( $valores );
+		break;
+	case 'SHOWCURRENT':
+		if($_SESSION['tipo'] == 'Admin'){
+
+			   $CAMPEONATO = new CAMPEONATO_MODEL( $_REQUEST[ 'IdCampeonato' ], '', '','','');
+
+			   $valores = $CAMPEONATO->RellenaDatos( $_REQUEST[ 'IdCampeonato' ] );
+			   new CAMPEONATO_SHOWCURRENT( $valores );
 			}else{
 				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/CAMPEONATO_CONTROLLER.php' );
 			}
-		
-		//Final del bloque
 		break;
-	default: //Caso que se ejecuta por defecto
-			if($_SESSION['tipo'] == 'Admin'){//miramos si el usuario es administrador
-						if ( !$_POST ) {//Si no se han recibido datos 
-						$CAMPEONATO = new CAMPEONATO_MODEL( '', '', '');//Variable que almacena la un objeto del modelo USUARIO
-						//Si se reciben datos
+	default: 
+			if($_SESSION['tipo'] == 'Admin'){
+						if ( !$_POST ) {
+							$CAMPEONATO = new CAMPEONATO_MODEL( '', '', '','','');						
 						} else {
-							$CAMPEONATO = get_data_form();//Variable que almacena los valores de un objeto USUARIO_MODEL
+							$CAMPEONATO = get_data_form();
 						}
-						//Variable que almacena los datos de la busqueda
 						$datos = $CAMPEONATO->SEARCH();
-						//Variable que almacena array con el nombre de los atributos
-						$lista = array( 'IdCampeonato','FechaIni','FechaFin');
+						$lista = array( 'IdCampeonato','FechaIni','HoraIni','FechaFin','HoraFin');
 						
-						new CAMPEONATO_SHOWALL( $lista, $datos);//nos muestra una vista showall con todos los permisos
+						new CAMPEONATO_SHOWALL( $lista, $datos);
 			
-   				}else{//en el caso de que el usuario no tenga permisos le sale una vista vacía
+   				}else{
 				new USUARIO_DEFAULT();
 			}
 			

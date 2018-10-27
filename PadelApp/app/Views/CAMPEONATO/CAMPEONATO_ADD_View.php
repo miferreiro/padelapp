@@ -28,13 +28,97 @@ class CAMPEONATO_ADD {
 						</th>
 						<td class="formThTd"><input type="text" id="FechaIni" name="FechaIni" placeholder="<?php echo $strings['Escriba aqui...']?>" value=""  size="20" class="tcal" readonly required onBlur=""/>
 					</tr>
-                    
+                   	<tr>
+					<th class="formThTd">
+							<?php echo $strings['HoraIni'];?>
+						</th>
+						<td class="formThTd"><input type="time" id="HoraIni" name="HoraIni" placeholder="<?php echo $strings['Escriba aqui...']?>" value=""  size="20"  required onBlur="comprobarVacio(this)"/>
+					</tr> 
                     <tr>
 						<th class="formThTd">
 							<?php echo $strings['FechaFin'];?>
 						</th>
 						<td class="formThTd"><input type="text" id="FechaFin" name="FechaFin" placeholder="<?php echo $strings['Escriba aqui...']?>" value=""  size="20" class="tcal" readonly required onBlur=""/>
-					</tr>                  
+					</tr>         
+					<tr>
+					<th class="formThTd">
+							<?php echo $strings['HoraFin'];?>
+						</th>
+						<td class="formThTd"><input type="time" id="HoraFin" name="HoraFin" placeholder="<?php echo $strings['Escriba aqui...']?>" value=""  size="20"  required onBlur="comprobarVacio(this)"/>
+					</tr>
+					<tr>
+					<th class="formThTd">
+							<?php echo $strings['Categoria masculina Nivel 1'];?>
+						</th>
+						<td class="formThTd">		
+							<input type="checkbox" name="categoria[]" id="categoria" value="Masculina1" /> <br>
+ 						</td>        
+					</tr>
+					<tr>
+					<th class="formThTd">
+							<?php echo $strings['Categoria masculina Nivel 2'];?>
+						</th>
+						<td class="formThTd">		
+							<input type="checkbox" name="categoria[]" id="categoria" value="Masculina2" /> <br>
+ 						</td>        
+					</tr>
+					<tr>
+					<th class="formThTd">
+							<?php echo $strings['Categoria masculina Nivel 3'];?>
+						</th>
+						<td class="formThTd">		
+							<input type="checkbox" name="categoria[]" id="categoria" value="Masculina3" /> <br>
+ 						</td>        
+					</tr>				                    					
+					<th class="formThTd">
+							<?php echo $strings['Categoria femenina Nivel 1'];?>
+						</th>
+						<td class="formThTd">		
+							<input type="checkbox" name="categoria[]" id="categoria" value="Femenina1" /> <br>
+ 						</td>        
+					</tr>
+					<tr>
+					<th class="formThTd">
+							<?php echo $strings['Categoria femenina Nivel 2'];?>
+						</th>
+						<td class="formThTd">		
+							<input type="checkbox" name="categoria[]" id="categoria" value="Femenina2" /> <br>
+ 						</td>        
+					</tr>
+					<tr>
+					<th class="formThTd">
+							<?php echo $strings['Categoria femenina Nivel 3'];?>
+						</th>
+						<td class="formThTd">		
+							<input type="checkbox" name="categoria[]" id="categoria" value="Femenina3" /> <br>
+ 						</td>        
+					</tr>				                    					
+					<th class="formThTd">
+							<?php echo $strings['Categoria mixta Nivel 1'];?>
+						</th>
+						<td class="formThTd">		
+							<input type="checkbox" name="categoria[]" id="categoria" value="Mixta1" /> <br>
+ 						</td>        
+					</tr>
+					<tr>
+					<th class="formThTd">
+							<?php echo $strings['Categoria mixta Nivel 2'];?>
+						</th>
+						<td class="formThTd">		
+							<input type="checkbox" name="categoria[]" id="categoria" value="Mixta2" /> <br>
+ 						</td>        
+					</tr>
+					<tr>
+					<th class="formThTd">
+							<?php echo $strings['Categoria mixta Nivel 3'];?>
+						</th>
+						<td class="formThTd">		
+							<input type="checkbox" name="categoria[]" id="categoria" value="Mixta3" /> <br>
+ 						</td>        
+					</tr>				                    					
+					         					         					                    
+					                              
+					                                                  
 					<tr>
 						<td colspan="2">
 							<button id ="buttonBien" type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="<?php echo $strings['Confirmar formulario']?>" /></button>
@@ -49,4 +133,4 @@ class CAMPEONATO_ADD {
 		include '../Views/Footer.php';//incluimos el pie de la página
 		}
 		}
-?><strong></strong>
+?>

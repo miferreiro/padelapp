@@ -34,13 +34,28 @@ class CAMPEONATO_DELETE {
 						<?php echo $this->valores['FechaIni']?>
 					</td>
 				</tr>
-                
+                <tr>
+					<th>
+						<?php echo $strings['HoraIni'];?>
+					</th>
+					<td>
+						<?php echo $this->valores['HoraIni']?>
+					</td>
+				</tr>
                 <tr>
 					<th>
 						<?php echo $strings['FechaFin'];?>
 					</th>
 					<td>
 						<?php echo $this->valores['FechaFin']?>
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<?php echo $strings['HoraFin'];?>
+					</th>
+					<td>
+						<?php echo $this->valores['HoraFin']?>
 					</td>
 				</tr>
 				
@@ -51,9 +66,11 @@ class CAMPEONATO_DELETE {
 				<?php echo $strings['¿Está seguro de que quiere borrar esta tupla de la tabla?'];?>
 			</p>
 			<form action="../Controllers/CAMPEONATO_CONTROLLER.php" method="post" style="display: inline">
-				<input type="hidden" name="IdTrabajo" value="<?php echo $this->valores['IdTrabajo'] ?>" />
+				<input type="hidden" name="IdCampeonato" value="<?php echo $this->valores['IdCampeonato'] ?>" />
 				<input type="hidden" name="FechaIni" value="<?php echo $this->valores['FechaIni'] ?>" />
 				<input type="hidden" name="FechaFin" value="<?php echo $this->valores['FechaFin'] ?>" />
+               	<input type="hidden" name="HoraIni" value="<?php echo $this->valores['HoraIni'] ?>" />
+               	<input type="hidden" name="HoraFin" value="<?php echo $this->valores['HoraFin'] ?>" />
                 <button id ="buttonBien" type="submit" id="DELETE" name="action" value="DELETE" ><img src="../Views/icon/confirmar.png" width="32" height="32" alt="<?php echo $strings['Confirmar'] ?>"/></button>
 			</form>
 			<form action='../Controllers/CAMPEONATO_CONTROLLER.php' method="post" style="display: inline">

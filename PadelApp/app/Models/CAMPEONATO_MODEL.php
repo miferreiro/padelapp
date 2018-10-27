@@ -4,72 +4,73 @@ class CAMPEONATO_MODEL{
 
 	var $IdCampeonato; 
     var $FechaIni;
-	var $FechaFin; 
+	var $HoraIni;
+	var $FechaFin;
+	var $HoraFin;
 	var $mysqli; 
 
-
-    //Constructor de la clase
-	function __construct($IdCampeonato,$FechaIni,$FechaFin) {
+	function __construct($IdCampeonato,$FechaIni,$HoraIni,$FechaFin,$HoraFin) {
 
 		$this->IdCampeonato = $IdCampeonato;
         $this->FechaIni=$FechaIni;
+		$this->HoraIni = $HoraIni;
 		$this->FechaFin = $FechaFin;
-        
-		// incluimos la funcion de acceso a la bd
+		$this->HoraFin = $HoraFin;
+
 		include_once '../Functions/BdAdmin.php';
-		// conectamos con la bd y guardamos el manejador en un atributo de la clase
 		$this->mysqli = ConectarBD();
 
-	} // fin del constructor
+	} 
 
-	//funcion SEARCH: hace una búsqueda en la tabla con
-	//los datos proporcionados. Si van vacios devuelve todos
 	function SEARCH() {
-		// construimos la sentencia de busqueda con LIKE y los atributos de la entidad
+
 		$sql = "select IdCampeonato,
 					FechaIni,
-                    FechaFin
+					HoraIni,
+                    FechaFin,
+					HoraFin
        			from CAMPEONATO 
     			where 
     				(
 					(BINARY IdCampeonato LIKE '%$this->IdCampeonato%') &&
-                    (BINARY FechaIni LIKE '%$this->FechaIni%') &&
-    				(BINARY FechaFin LIKE '%$this->FechaFin%') 
+                    (BINARY  DATE_FORMAT(FechaIni,'%d/%m/%Y') LIKE '%$this->FechaIni%') &&
+					(BINARY HoraIni LIKE '%$this->HoraIni%') &&
+    				(BINARY DATE_FORMAT(FechaFin,'%d/%m/%Y') LIKE '%$this->FechaFin%') &&
+					(BINARY HoraFin LIKE '%$this->HoraFin%')
 			
     				)";
-		// si se produce un error en la busqueda mandamos el mensaje de error en la consulta
+
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'Error en la consulta sobre la base de datos';
-		} else { // si la busqueda es correcta devolvemos el recordset resultado
+		} else { 
 
 			return $resultado;
 		}
-	} // fin metodo SEARCH
+	} 
 
-
-	//Metodo ADD()
-	//Inserta en la tabla  de la bd  los valores
-	// de los atributos del objeto. Comprueba si la clave/s esta vacia y si 
-	//existe ya en la tabla
 	function ADD() {
 		if ( ( $this->IdCampeonato <> '' ) ) {         
 	
 			$sql = "SELECT * FROM CAMPEONATO WHERE (  IdCampeonato = '$this->IdCampeonato')";
 
 			if ( !$result = $this->mysqli->query( $sql ) ) { 
-				return 'No se ha podido conectar con la base de datos'; 
+				return 'Error en la inserción'; 
 			} else { 
 
 				if ( $result->num_rows == 0 ) { 
 							$sql = "INSERT INTO CAMPEONATO (
 									IdCampeonato,
 									FechaIni,
-									FechaFin
+									HoraIni,
+									FechaFin,
+									HoraFin
 					             	) 
 								VALUES(
 								'$this->IdCampeonato',
-                                '$this->FechaIni',
-								'$this->FechaFin'
+								STR_TO_DATE(REPLACE('$this->FechaIni','/','.'),GET_FORMAT(date,'EUR')),
+								'$this->HoraIni',
+								STR_TO_DATE(REPLACE('$this->FechaFin','/','.'),GET_FORMAT(date,'EUR')),
+								'$this->HoraFin'
 								)";					
 					}
 					if ( !$this->mysqli->query( $sql )) { 
@@ -81,19 +82,17 @@ class CAMPEONATO_MODEL{
 					}
 						
 			}
-		} else { // si el atributo clave de la bd es vacio solicitamos un valor en un mensaje
-			return 'Introduzca un valor';
+		} else { 
+			return 'Error en la inserción';
 		}
 			
-	} // fin del metodo ADD
+	} 
 
     
 	function DELETE() {
 
 		$sql = "SELECT * FROM CAMPEONATO WHERE (IdCampeonato = '$this->IdCampeonato')";
-		// se ejecuta la query
-		$result = $this->mysqli->query( $sql );
-	
+		$result = $this->mysqli->query( $sql );	
 
 		if ( $result->num_rows == 1 ) {
 
@@ -111,9 +110,10 @@ class CAMPEONATO_MODEL{
 		
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'No existe en la base de datos'; // 
-		} else {
-            
+		} else {            
 			$result = $resultado->fetch_array();
+			$result[ 'FechaIni' ] = date( "d/m/Y", strtotime( $result[ 'FechaIni' ] ) );
+			$result[ 'FechaFin' ] = date( "d/m/Y", strtotime( $result[ 'FechaFin' ] ) );
 			return $result;
 		}
 	} 
@@ -129,8 +129,10 @@ class CAMPEONATO_MODEL{
 
 			$sql = "UPDATE CAMPEONATO SET 
 					IdCampeonato = '$this->IdCampeonato',
-                    FechaIni='$this->FechaIni',
-					FechaFin = '$this->FechaFin'
+                    FechaIni=STR_TO_DATE(REPLACE('$this->FechaIni','/','.') ,GET_FORMAT(date,'EUR')),
+					HoraIni='$this->HoraIni',
+					FechaFin = STR_TO_DATE(REPLACE('$this->FechaFin','/','.') ,GET_FORMAT(date,'EUR')),
+					HoraFin='$this->HoraFin'
 				WHERE ( IdCampeonato = '$this->IdCampeonato'
 				)";
 

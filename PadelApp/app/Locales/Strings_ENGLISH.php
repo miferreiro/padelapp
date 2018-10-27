@@ -36,7 +36,7 @@ array(
 	'Contraseña' => 'Password',
 	'password' => 'Password',
 	'Dni' => 'Dni',
-	'Tipo' => 'User type',
+	'Tipo' => 'Type',
 	'Nombre' => 'Name',
 	'nombre' => 'name',
 	'Apellidos' => 'Surnames',
@@ -261,7 +261,19 @@ array(
 	'idGrupo' => 'idGrupo',
 	'IdCampeonato' => 'IdCampeonato',
 	'FechaIni' => 'FechaIni',
-	'FechaFin' => 'FechaFin'
+	'FechaFin' => 'FechaFin',
+	'HoraIni' => 'HoraIni',
+	'HoraFin' => 'HoraFin',
+	'Categoria masculina Nivel 1' => 'Categoria masculina Nivel 1',
+	'Categoria masculina Nivel 2' => 'Categoria masculina Nivel 2',
+	'Categoria masculina Nivel 3' => 'Categoria masculina Nivel 3',
+	'Categoria femenina Nivel 1' => 'Categoria femenina Nivel 1',
+	'Categoria femenina Nivel 2' => 'Categoria femenina Nivel 2',
+	'Categoria femenina Nivel 3' => 'Categoria femenina Nivel 3',
+	'Categoria mixta Nivel 1' => 'Categoria mixta Nivel 1',
+	'Categoria mixta Nivel 2' => 'Categoria mixta Nivel 2',
+	'Categoria mixta Nivel 3' => 'Categoria mixta Nivel 3',
+	'Nivel' => 'Level'
 
 	)
 ;

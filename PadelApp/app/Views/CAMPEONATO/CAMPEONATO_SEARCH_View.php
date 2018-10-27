@@ -28,12 +28,23 @@ class CAMPEONATO_SEARCH {
 							<?php echo $strings['FechaIni'];?>
 						</th>
 						<td class="formThTd"><input type="text" id="FechaIni" class="tcal" name="FechaIni" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" size="20" onBlur="" readonly/>
-					</tr>                   
+					</tr>
+                   	<th class="formThTd">
+							<?php echo $strings['HoraIni'];?>
+						</th>
+						<td class="formThTd"><input type="time" id="HoraIni" name="HoraIni" placeholder="<?php echo $strings['Escriba aqui...']?>" value=""  size="20"   onBlur=""/>
+					</tr>                    
                     <tr>
 						<th class="formThTd">
 							<?php echo $strings['FechaFin'];?>
 						</th>
 						<td class="formThTd"><input type="text" id="FechaFin" class="tcal" name="FechaFin" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" size="20" onBlur="" readonly/>
+					</tr>
+                 	<tr>
+					<th class="formThTd">
+							<?php echo $strings['HoraFin'];?>
+						</th>
+						<td class="formThTd"><input type="time" id="HoraFin" name="HoraFin" placeholder="<?php echo $strings['Escriba aqui...']?>" value=""  size="20"   onBlur=""/>
 					</tr>
                   		<tr>
 						<td colspan="2">

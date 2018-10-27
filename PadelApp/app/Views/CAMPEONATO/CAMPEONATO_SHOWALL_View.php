@@ -41,7 +41,7 @@ class CAMPEONATO_SHOWALL {
 <?php
 					}
 ?>
-					<th colspan="3" >
+					<th colspan="4" >
 						<?php echo $strings['Opciones']?>
 					</th>
 				</tr>
@@ -54,6 +54,12 @@ class CAMPEONATO_SHOWALL {
 ?>
 					<td>
 <?php 					
+					if ( $atributo == 'FechaIni' ) {//Si es la fecha inicial del trabajo, cambiamos el formato de la fecha
+						$fila[ $atributo ] = date( "d/m/Y", strtotime( $fila[ $atributo ] ) );
+					} 
+					if ( $atributo == 'FechaFin' ) {//Si es la fecha inicial del trabajo, cambiamos el formato de la fecha
+							$fila[ $atributo ] = date( "d/m/Y", strtotime( $fila[ $atributo ] ) );
+					} 
 						echo $fila[ $atributo ];			
 ?>
 					</td>
@@ -69,6 +75,14 @@ class CAMPEONATO_SHOWALL {
 					<td>
 								<button id ="buttonBien"type="submit" name="action" value="SHOWCURRENT" ><img src="../Views/icon/verDetalles.png" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>
 						</form>
+					<td>
+						<form action="../Controllers/CAMPEONATO_CATEGORIA_CONTROLLER.php" method="get" style="display:inline" >
+					
+							<input type="hidden" name="IdCampeonato" value="<?php echo $fila['IdCampeonato']; ?>">
+								<button id ="buttonBien"type="submit" ><img src="../Views/icon/categoria.png" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>
+							</td>
+						</form>
+						
 
 				</tr>
 <?php
