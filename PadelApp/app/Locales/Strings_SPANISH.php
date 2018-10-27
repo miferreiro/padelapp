@@ -260,7 +260,12 @@ array(
 	'Categoria mixta Nivel 1' => 'Categoria mixta Nivel 1',
 	'Categoria mixta Nivel 2' => 'Categoria mixta Nivel 2',
 	'Categoria mixta Nivel 3' => 'Categoria mixta Nivel 3',
-	'Nivel' => 'Nivel'
+	'Nivel' => 'Nivel',
+	'Formulario de inscripcion' => 'Formulario de inscripción',
+	'Login del miembro 1 de la pareja' => 'Login del miembro 1 de la pareja',
+	'Login del miembro 2 de la pareja' => 'Login del miembro 2 de la pareja',
+	'Capitan de la pareja' => 'Capitán',
+	'NumPareja' => 'NumPareja'
 	)
 ;
 

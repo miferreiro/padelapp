@@ -81,7 +81,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 
 			if($_SESSION['tipo'] == 'Admin'){//miramos si este usuario es administrador
 				//Variable que recoge un objecto model con solo el login
-				$USUARIO = new USUARIO_MODEL( $_REQUEST[ 'Dni' ], '', '', '', '', '', '', '', '');
+				$USUARIO = new USUARIO_MODEL( '', '', $_REQUEST[ 'Dni' ], '', '', '', '', '', '');
 				//Variable que almacena el relleno de los datos utilizando el login
 				$valores = $USUARIO->RellenaDatos( $_REQUEST[ 'Dni' ] );
 
@@ -108,7 +108,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 
 			if($_SESSION['tipo'] == 'Admin'){//si es el usuario es administrador
 						//Variable que almacena un objeto USUARIO model con el login
-			$USUARIO = new USUARIO_MODEL( $_REQUEST[ 'Dni' ], '', '', '', '', '', '', '','');
+			$USUARIO = new USUARIO_MODEL( '', '', $_REQUEST[ 'Dni' ], '', '', '', '', '','');
 			//Variable que almacena un objecto USUARIO(modelo) con los datos de los atibutos rellenados a traves de login
 			$valores = $USUARIO->RellenaDatos( $_REQUEST[ 'Dni' ] );
 
@@ -160,7 +160,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 	case 'SHOWCURRENT'://Caso showcurrent
 		if($_SESSION['tipo'] == 'Admin'){//miramos si el usuario es administrador
 					//Variable que almacena un objeto USUARIO model con el login
-		           $USUARIO = new USUARIO_MODEL( $_REQUEST[ 'Dni' ], '', '', '', '', '', '', '');
+		           $USUARIO = new USUARIO_MODEL( '', '', $_REQUEST[ 'Dni' ], '', '', '', '', '');
 		//Variable que almacena los valores rellenados a traves de login
 		           $valores = $USUARIO->RellenaDatos( $_REQUEST[ 'Dni' ] );
 		           //Creación de la vista showcurrent

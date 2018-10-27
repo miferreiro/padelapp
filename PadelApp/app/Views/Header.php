@@ -36,7 +36,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container">
 		<?php	if (IsAuthenticated()){ //miramos si el usuario esta autenticado ?> 
-		<?php 	echo $strings['Usuario'] . ' : ' . $_SESSION['login'] . '<br>'; ?>	
+		<?php 	echo $strings['Usuario'] . ' : ' . $_SESSION['login'] . '--' . $_SESSION['tipo'] . '<br>'; ?>	
 		   </li>
 			  <li class="nav-item">
               <a class="nav-link disabled" href="../Functions/Desconectar.php" alt="<?php echo $strings['Desconectarse']?>"/>
@@ -75,31 +75,37 @@
 	
 		<!-- Si hay un usuario logeado (Variable de sesion login con valor) ejecuta el código dento del if
 que comprueba permisos para cada una de las acciones -->
-	<?php if (isset($_SESSION['login'])) { 
-//Si el usuario tiene permisos de showall en gestión de usuarios se muestra la opción ?>
-		<li>
-			<a href="../Controllers/USUARIO_CONTROLLER.php" class="primerNivel"/><?php echo $strings['Gestion de usuarios']?></a>
-		</li>
-
-		<?php } ?>
-				<?php if (isset($_SESSION['login']) & isset($_SESSION['tipo'])) { 
-//Si el usuario tiene permisos de showall en gestión de usuarios se muestra la opción ?>
-		<?php if($_SESSION['tipo'] == 'Admin'){ ?>
-		<li>
-			<a href="../Controllers/PISTA_CONTROLLER.php" class="primerNivel"/><?php echo $strings['Gestión de pistas'] ?></a>
-		</li>
-		<?php }
- ?>
-		<?php } ?>
 	<?php if (isset($_SESSION['login']) & isset($_SESSION['tipo'])) { 
 //Si el usuario tiene permisos de showall en gestión de usuarios se muestra la opción ?>
 		<?php if($_SESSION['tipo'] == 'Admin'){ ?>
 		<li>
-			<a href="../Controllers/CAMPEONATO_CONTROLLER.php" class="primerNivel"><?php echo 'Gestion de campeonatos' ?></a>
+			<a href="../Controllers/USUARIO_CONTROLLER.php" /><?php echo $strings['Gestion de usuarios']?></a>
 		</li>
 		<?php }
- ?>
-		<?php } ?>
+		 } ?>
+	<?php if (isset($_SESSION['login']) & isset($_SESSION['tipo'])) { 
+//Si el usuario tiene permisos de showall en gestión de usuarios se muestra la opción ?>
+		<?php if($_SESSION['tipo'] == 'Admin'){ ?>
+		<li>
+			<a href="../Controllers/PISTA_CONTROLLER.php" /><?php echo $strings['Gestión de pistas'] ?></a>
+		</li>
+		<?php } 
+		 } ?>
+	<?php if (isset($_SESSION['login']) & isset($_SESSION['tipo'])) { 
+//Si el usuario tiene permisos de showall en gestión de usuarios se muestra la opción ?>
+		<?php if($_SESSION['tipo'] == 'Admin'){ ?>
+		<li>
+			<a href="../Controllers/CAMPEONATO_CONTROLLER.php"/><?php echo 'Gestion de campeonatos' ?></a>
+		</li>
+		<?php }
+		 } ?>
+	<?php if(isset($_SESSION['login']) & isset($_SESSION['tipo'])) {  ?>
+		 <?php if($_SESSION['tipo'] == 'Deportista'){ ?>
+		<li>
+			<a href="../Controllers/CATEGORIA_CONTROLLER.php" /><?php echo 'Inscribirse en campeonato' ?></a>
+		</li>
+		<?php }
+		 } ?>
 			</nav>
 				</li>
             <li class="nav-item dropdown">

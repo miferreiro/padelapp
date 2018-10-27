@@ -124,7 +124,6 @@ switch ( $_REQUEST[ 'action' ] ) {
 			  $respuesta9 == 'Error en la inserción'){
 				
 				$CAMPEONATO->DELETE();
-				
 				if(in_array('Masculina1', $categoria)){$CATEGORIAMA1->DELETE();}
 				if(in_array('Masculina2', $categoria)){$CATEGORIAMA2->DELETE();}
 				if(in_array('Masculina3', $categoria)){$CATEGORIAMA3->DELETE();}

@@ -277,6 +277,22 @@ class USUARIO_MODEL{
 			return $tupla[ 'Tipo' ];
 		}
 	}
+	
+	function obtenerDni(){
+		$sql = "SELECT Dni
+			FROM USUARIO
+			WHERE (
+				(Login = '$this->Login') 
+			)";
+		
+		$resultado = $this->mysqli->query( $sql );
+		if ( $resultado->num_rows == 0 ) {
+			return 'El usuario no existe';
+		} else {
+			$tupla = $resultado->fetch_array();
+			return $tupla[ 'Dni' ];
+		}
+	}
 
  	}//fin de clase
 
