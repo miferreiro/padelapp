@@ -1,24 +1,17 @@
 <?php
-/*  Archivo php
-	Nombre: USUARIOS_SHOWCURRENT_View.php
-	Autor: 	Jonatan Couto
-	Fecha de creación: 29/11/2017 
-	Función: vista de la tabla de vista en detalle(showcurrent) realizada con una clase donde se muestran todos los datos de un usuario
-*/
 
-//es la clase SHOWCURRENT de USUARIO que nos permite ver en detalle un usuario
 class USUARIO_SHOWCURRENT {
 
-     //es el constructor de la clase USUARIO_SHOWCURRENT
+
 	function __construct( $lista ) {
-		$this->lista = $lista;//pasamos los campos de la tabla usuario
-		$this->render( $this->lista );//llamamos a la función render donde se mostrará el formulario SHOWCURRENT con los campos correspondientes
+		$this->lista = $lista;
+		$this->render( $this->lista );
 	}
-//funcion que mostrará el formulario SHOWCURRENT con los campos correspondientes
+
 	function render( $lista ) { 
-		$this->lista = $lista;//pasamos los campos de la tabla usuario
-		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
-		include '../Views/Header.php';//incluimos la cabecera
+		$this->lista = $lista;
+		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
+		include '../Views/Header.php';
 ?>
 		<h2>
 			<?php echo $strings['Vista detallada'];?>
@@ -29,7 +22,7 @@ class USUARIO_SHOWCURRENT {
 					<?php echo $strings['Usuario'];?>
 				</th>
 				<td>
-					<?php echo $this->valores['login']?>
+					<?php echo $this->lista['Login']?>
 				</td>
 			</tr>
 			<tr>
@@ -37,15 +30,15 @@ class USUARIO_SHOWCURRENT {
 					<?php echo $strings['Contraseña'];?>
 				</th>
 				<td>
-					<?php echo $this->valores['password']?>
+					<?php echo $this->lista['Password']?>
 				</td>
 			</tr>
 			<tr>
 				<th>
-					<?php echo $strings['DNI'];?>
+					<?php echo $strings['Dni'];?>
 				</th>
 				<td>
-					<?php echo $this->valores['DNI']?>
+					<?php echo $this->lista['Dni']?>
 				</td>
 			</tr>
 			<tr>
@@ -53,7 +46,7 @@ class USUARIO_SHOWCURRENT {
 					<?php echo $strings['Nombre'];?>
 				</th>
 				<td>
-					<?php echo $this->valores['Nombre']?>
+					<?php echo $this->lista['Nombre']?>
 				</td>
 			</tr>
 			<tr>
@@ -61,31 +54,16 @@ class USUARIO_SHOWCURRENT {
 					<?php echo $strings['Apellidos'];?>
 				</th>
 				<td>
-					<?php echo $this->valores['Apellidos']?>
+					<?php echo $this->lista['Apellidos']?>
 				</td>
 			</tr>
-			<tr>
-				<th>
-					<?php echo $strings['Teléfono'];?>
-				</th>
-				<td>
-					<?php echo $this->valores['Telefono']?>
-				</td>
-			</tr>
-			<tr>
-				<th>
-					<?php echo $strings['Correo electrónico'];?>
-				</th>
-				<td>
-					<?php echo $this->valores['Correo']?>
-				</td>
-			</tr>
+
 			<tr>
 				<th>
 					<?php echo $strings['Sexo'];?>
 				</th>
 				<td>
-					<?php echo $this->valores['Sexo']?>
+					<?php echo $this->lista['Sexo']?>
 				</td>
 			</tr>
 							<tr>
@@ -93,7 +71,15 @@ class USUARIO_SHOWCURRENT {
 					<?php echo $strings['Tipo'];?>
 				</th>
 				<td>
-					<?php echo $this->valores['Tipo']?>
+					<?php echo $this->lista['Tipo']?>
+				</td>
+			</tr>
+			<tr>
+				<th>
+					<?php echo $strings['Teléfono'];?>
+				</th>
+				<td>
+					<?php echo $this->lista['Telefono']?>
 				</td>
 			</tr>
 			<caption style="margin-top:10px;" align="bottom">
@@ -104,7 +90,7 @@ class USUARIO_SHOWCURRENT {
 		</table>
 
 <?php
-		include '../Views/Footer.php';//incluimos el pie de página
+		include '../Views/Footer.php';
 	}
 }
 ?>
