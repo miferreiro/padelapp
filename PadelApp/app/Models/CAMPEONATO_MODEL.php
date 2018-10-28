@@ -147,8 +147,7 @@ class CAMPEONATO_MODEL{
 			return 'No existe en la base de datos';
 		}
 	} 
-
-
+	
 	
 
  	}//fin de clase

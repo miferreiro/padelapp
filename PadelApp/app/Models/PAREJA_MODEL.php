@@ -59,6 +59,22 @@ class PAREJA_MODEL{
 			
 	}   
 	
+	function getParejasCategoria(){
+		if ( ( $this->IdCampeonato <> '' ) && ( $this->Tipo <> '' ) && ( $this->Nivel <> '' )){
+				
+			$sql = "SELECT NumPareja FROM PAREJA WHERE (IdCampeonato = '$this->IdCampeonato') && (Tipo = '$this->Tipo') && (Nivel = '$this->Nivel') ORDER BY NumPareja";
+		
+			if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
+				return 'No existe en la base de datos'; // 
+			} else {            
+				$result = $resultado->fetch_array();	
+				return $result;
+			}
+
+		}else { 
+			return 'Error en la busqueda';
+		}
+	}
 	function getLastNumPareja(){
 		if ( ( $this->IdCampeonato <> '' ) && ( $this->Tipo <> '' ) && ( $this->Nivel <> '' )){
 			
