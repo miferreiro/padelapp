@@ -40,6 +40,12 @@ class Pista_Showall{
 ?>
 					<th>
 						<?php echo $li['idPista']?>
+						<form action="../Controllers/PISTA_CONTROLLER.php" method="get" style="display:inline" >
+						<button id ="buttonBien" type="submit" name="action" value="DELETE" ><img src="../Views/icon/eliminar.png" alt="<?php echo $strings['Eliminar']?>" width="20" height="20" /></button>
+					
+				
+								<button id ="buttonBien" type="submit" name="action" value="SEARCH"><img src="../Views/icon/buscar.png" alt="BUSCAR" width="20" height="20"/></button>	
+						</form>
 					</th>
 <?php					
 
@@ -67,30 +73,27 @@ class Pista_Showall{
 							
 ?>
 						
+							<form action="../Controllers/PISTA_CONTROLLER.php" method="get" style="display:inline" >
+							<input type="hidden" name="idPista" value="<?php echo $i+1 ?>">
+							<input type="hidden" name="Hora" value="<?php echo $fila['Hora'] ?>">
+							<input type="hidden" name="Fecha" value="<?php echo date("Y-m-d") ?>">	
+								<button id ="buttonBien" type="submit" name="action" value="EDIT" ><img src="../Views/icon/modificar.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" /></button>
+	
+						</form>	
 				</td>
+						
+						
+				
+				   
 <?php
 					}
 					}
 																	 
 ?>
-			<!--		<td>
-						<form action="../Controllers/PISTA_CONTROLLER.php" method="get" style="display:inline" >
-							<input type="hidden" name="login" value="<?php //echo $fila['login']; ?>">
-							
-								<button id ="buttonBien" type="submit" name="action" value="EDIT" ><img src="../Views/icon/modificar.png" alt="<?php// echo $strings['Modificar']?>" width="20" height="20" /></button>
-						
-					<td>
-						
-								<button id ="buttonBien" type="submit" name="action" value="DELETE" ><img src="../Views/icon/eliminar.png" alt="<?php// echo $strings['Eliminar']?>" width="20" height="20" /></button>
+						</tr>
 					
-					<td>
-								<button id ="buttonBien" type="submit" name="action" value="SEARCH"><img src="../Views/icon/buscar.png" alt="BUSCAR" width="20" height="20"/></button>		
-					<td>	
-					
-						</form>
-				    <td>
-						-->							
-				</tr>
+												
+				
 			</table>
 			<form action='../Controllers/PISTA_CONTROLLER.php' method="post">
 				<button id ="buttonBien" type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>

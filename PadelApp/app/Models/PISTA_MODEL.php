@@ -208,6 +208,18 @@ class PISTA_MODEL{
 			return $result;
 		}
 	} // fin del metodo RellenaDatos()
+	function RellenaDatos2() { 
+
+		$sql = "SELECT * FROM PISTA WHERE (idPista = '$this->idPista',Hora = '$this->hora',Fecha = '$this->fecha')";// se construye la sentencia de busqueda de la tupla
+		// Si la busqueda no da resultados, se devuelve el mensaje de que no existe
+		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
+			return 'No existe en la base de datos'; // 
+		} else { // si existe se devuelve la tupla resultado
+            //Aplicamos fetch_array sobre $resultado para crear un array y se guarda en $result
+			$result = $resultado->fetch_array();
+			return $result;
+		}
+	} // fin del metodo RellenaDatos2()
     
 	// funcion EDIT()
 	// Se comprueba que la tupla a modificar exista en base al valor de su clave primaria

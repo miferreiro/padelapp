@@ -87,9 +87,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario EDIT
 
 			
-			$PISTA = new PISTA_MODEL( $_REQUEST[ 'idPista' ], '', '', '', '', '', '', '','');
+			$PISTA = new PISTA_MODEL( $_REQUEST[ 'idPista' ], $_REQUEST['Hora'], $_REQUEST['Fecha'], '');
 			//Variable que almacena un objecto PISTA(modelo) con los datos de los atibutos rellenados a traves de login
-			$valores = $PISTA->RellenaDatos( $_REQUEST[ 'idPista' ] );
+			$valores = $PISTA->RellenaDatos2( $_REQUEST[ 'idPista' ], $_REQUEST['Hora'], $_REQUEST['Fecha'] );
 
 			//Muestra la vista del formulario editar
 			new PISTA_EDIT( $valores);
