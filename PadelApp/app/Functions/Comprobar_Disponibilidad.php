@@ -1,0 +1,7 @@
+<?php
+//include_once'../Models/PISTA_MODEL.php';
+function Comprobar_Disponibilidad($idPista,$hora,$fecha){
+$PISTA=new PISTA_MODEL('','','','');
+	return $PISTA->ComprobarDisp($idPista,$hora,$fecha);
+}
+?>

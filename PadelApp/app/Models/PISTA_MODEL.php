@@ -12,7 +12,7 @@ class PISTA_MODEL{
 	var	$hora;
 	var	$fecha;
 	var $disponibilidad;
-
+	
     //Constructor de la clase
 	function __construct($idPista,$hora,$fecha,$disponibilidad) {
 		//asignación de valores de parámetro a los atributos de la clase
@@ -53,7 +53,51 @@ class PISTA_MODEL{
 			return $resultado;
 		}
 	} // fin metodo SEARCH
+	
+	
+	function PISTAS() {
+		// construimos la sentencia de busqueda con LIKE y los atributos de la entidad
+		$sql = "select distinct idPista
+       			from PISTA";
+		// si se produce un error en la busqueda mandamos el mensaje de error en la consulta
+		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
+			return 'Error en la consulta sobre la base de datos';
+		} else { // si la busqueda es correcta devolvemos el recordset resultado
 
+			return $resultado;
+		}
+	} // fin metodo PISTAS
+	
+	function HORAS() {
+		// construimos la sentencia de busqueda con LIKE y los atributos de la entidad
+		$sql = "select distinct Hora 
+       			from PISTA";
+		// si se produce un error en la busqueda mandamos el mensaje de error en la consulta
+		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
+			return 'Error en la consulta sobre la base de datos';
+		} else { // si la busqueda es correcta devolvemos el recordset resultado
+
+			return $resultado;
+		}
+	} // fin metodo HORAS
+	function ComprobarDisp($idPista,$hora,$fecha) {
+		// construimos la sentencia de busqueda con LIKE y los atributos de la entidad
+		$sql = "select Disponibilidad 
+       			from PISTA
+				where 
+    				(
+					idPista='$idPista' && Fecha='$fecha' && Hora ='$hora' && Disponibilidad = '1'
+    				)";
+		// si se produce un error en la busqueda mandamos el mensaje de error en la consulta
+		 $resultado = $this->mysqli->query( $sql ) ;
+			if($resultado->num_rows==1){
+				return 1;
+			}else {
+				return 0;
+			}
+			
+		
+	} // fin metodo ComprobarDisp
 
 	//Metodo ADD()
 	//Inserta en la tabla  de la bd  los valores

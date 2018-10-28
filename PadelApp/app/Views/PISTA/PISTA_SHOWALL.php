@@ -16,7 +16,8 @@ class Pista_Showall{
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
 
   
-	include '../Views/Header.php';//incluimos la cabecera			
+	include '../Views/Header.php';//incluimos la cabecera
+	
 
 ?>
 <div class="seccion">
@@ -33,44 +34,54 @@ class Pista_Showall{
 				</caption>
 				<tr>
 <?php
-					foreach ( $lista as $atributo ) { //este bucle devolverá cada uno de los campos de la tabla PISTA
+		$c=0;
+					while( $li = mysqli_fetch_array( $this->lista) ){
+						$c++;
 ?>
 					<th>
-						<?php echo $atributo?>
+						<?php echo $li['idPista']?>
 					</th>
-<?php
-					}
+<?php					
+
+				}
 ?>
-					<th colspan="4" >
-						<?php echo $strings['Opciones']?>
-					</th>
 
 				</tr>
-<?php
-				while ( $fila = mysqli_fetch_array( $this->datos ) ) { //este bucle va a devolver todas las tuplas de la tabla PISTA de la base de datos
-?>
 				<tr>
+					<?php
+						while ( $fila = mysqli_fetch_array( $this->datos ) ) {
+?>
+					<tr>
 <?php
-					foreach ( $lista as $atributo ) { //este bucle va a ir devolviendo el valor de cada campo de la tabla PISTA
+					for($i=0;$i<$c;$i++){
+						if(Comprobar_Disponibilidad($i+1,$fila['Hora'],date("Y-m-d"))==1){
 ?>
-					<td>
+					<td bgcolor="#35B109" >					
+<?php
+						}else{
+?>
+					<td bgcolor="#E80408">
 <?php 
-							echo $fila[ $atributo ];
-
+						}
+							echo $fila['Hora'];
+							
 ?>
-					</td>
+						
+				</td>
 <?php
 					}
+					}
+																	 
 ?>
-					<td>
+			<!--		<td>
 						<form action="../Controllers/PISTA_CONTROLLER.php" method="get" style="display:inline" >
-							<input type="hidden" name="login" value="<?php echo $fila['login']; ?>">
+							<input type="hidden" name="login" value="<?php //echo $fila['login']; ?>">
 							
-								<button id ="buttonBien" type="submit" name="action" value="EDIT" ><img src="../Views/icon/modificar.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" /></button>
+								<button id ="buttonBien" type="submit" name="action" value="EDIT" ><img src="../Views/icon/modificar.png" alt="<?php// echo $strings['Modificar']?>" width="20" height="20" /></button>
 						
 					<td>
 						
-								<button id ="buttonBien" type="submit" name="action" value="DELETE" ><img src="../Views/icon/eliminar.png" alt="<?php echo $strings['Eliminar']?>" width="20" height="20" /></button>
+								<button id ="buttonBien" type="submit" name="action" value="DELETE" ><img src="../Views/icon/eliminar.png" alt="<?php// echo $strings['Eliminar']?>" width="20" height="20" /></button>
 					
 					<td>
 								<button id ="buttonBien" type="submit" name="action" value="SEARCH"><img src="../Views/icon/buscar.png" alt="BUSCAR" width="20" height="20"/></button>		
@@ -78,11 +89,8 @@ class Pista_Showall{
 					
 						</form>
 				    <td>
-													
+						-->							
 				</tr>
-<?php
-				}
-?>
 			</table>
 			<form action='../Controllers/PISTA_CONTROLLER.php' method="post">
 				<button id ="buttonBien" type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>

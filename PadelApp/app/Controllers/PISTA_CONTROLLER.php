@@ -2,6 +2,7 @@
 
 session_start(); //solicito trabajar con la session
 include '../Functions/Authentication.php'; //incluye el contenido de la función de autentificación
+include '../Functions/Comprobar_Disponibilidad.php'; 
 //Si no esta autenticado se redirecciona al index
 if (!IsAuthenticated()){
 	//Redireción al index
@@ -14,6 +15,7 @@ include '../Views/PISTA/PISTA_EDIT.php'; //incluye la vista EDIT
 include '../Views/PISTA/PISTA_SHOWCURRENT.php'; //incluye la vista SEARCH
 include '../Views/DEFAULT_View.php'; //incluye la vista por defecto
 include '../Views/MESSAGE_View.php'; //incluye la vista mensaje
+
 
 //Esta función crea un objeto tipo PISTA_MODEL con los valores que se le pasan con $_REQUEST
 function get_data_form() {
@@ -142,9 +144,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 							$PISTA = get_data_form();//Variable que almacena los valores de un objeto PISTA_MODEL
 						}
 						//Variable que almacena los datos de la busqueda
-						$datos = $PISTA->SEARCH();
+						$datos = $PISTA->HORAS();
 						//Variable que almacena array con el nombre de los atributos
-						$lista = array( 'idPista','Hora','Fecha','Disponibilidad');
+						$lista = $PISTA->PISTAS();
 						
 						new PISTA_SHOWALL( $lista, $datos);//nos muestra una vista showall con todos los permisos
 			}else{//en el caso de que el usuario no tenga permisos le sale una vista vacía
