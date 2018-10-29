@@ -25,7 +25,7 @@ class RESERVA_SHOWCURRENT {
 					<?php echo $strings['Dni'];?>
 				</th>
 				<td>
-					<?php echo $this->lista['Usuarios_Dni']?>
+					<?php echo $this->lista['Usuario_Dni']?>
 				</td>
 			</tr>
 			<tr>

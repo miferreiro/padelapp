@@ -27,7 +27,7 @@ class RESERVA_DELETE {
 						<?php echo $strings['Dni'];?>
 					</th>
 					<td>
-						<?php echo $this->valores['Usuarios_Dni']?>
+						<?php echo $this->valores['Usuario_Dni']?>
 					</td>
 				</tr>			
 				<tr>
@@ -62,7 +62,7 @@ class RESERVA_DELETE {
 ?>
 			<div>
 			<form action="../Controllers/RESERVA_CONTROLLER.php" method="post" style="display: inline" >
-				<input type="hidden" name="Usuarios_Dni" value="<?php echo $fila['Usuarios_Dni']; ?>">
+				<input type="hidden" name="Usuario_Dni" value="<?php echo $fila['Usuario_Dni']; ?>">
 				<input type="hidden" name="Pista_idPista" value="<?php echo $fila['Pista_idPista']; ?>">
 				<input type="hidden" name="Pista_Fecha" value="<?php echo $fila['Pista_Fecha']; ?>">
 				<input type="hidden" name="Pista_Hora" value="<?php echo $fila['Pista_Hora']; ?>">

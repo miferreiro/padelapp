@@ -77,8 +77,6 @@ class PROM_SHOWALL {
 						<td colspan="2">
 					<form action='../Controllers/PROM_CONTROLLER.php'>
 
-						<button id ="buttonBien"  type="submit" name="action" value="SEARCH"><img src="../Views/icon/buscar.png" alt="BUSCAR" /></button>	
-
 						<button id ="buttonBien"  type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="AÑADIR" /></button>
 					</form>
 					</td>

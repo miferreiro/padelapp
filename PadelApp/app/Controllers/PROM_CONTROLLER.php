@@ -96,7 +96,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 						//Variable que almacena los datos de la busqueda
 						$datos = $PROM->SEARCH();
 						//Variable que almacena array con el nombre de los atributos
-						$lista = array('Hora','Fecha');
+						$lista = array('Fecha','Hora');
 						
 						new PROM_SHOWALL( $lista, $datos);//nos muestra una vista showall con todos los permisos
 			}else{//en el caso de que el usuario no tenga permisos le sale una vista vacía

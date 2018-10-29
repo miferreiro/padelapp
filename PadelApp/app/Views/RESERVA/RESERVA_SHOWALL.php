@@ -57,7 +57,7 @@ class RESERVA_SHOWALL {
 ?>
 					<td>
 						<form action="../Controllers/RESERVA_CONTROLLER.php" method="get" style="display:inline" >
-							<input type="hidden" name="Usuarios_Dni" value="<?php echo $fila['Usuarios_Dni']; ?>">
+							<input type="hidden" name="Usuario_Dni" value="<?php echo $fila['Usuario_Dni']; ?>">
 							<input type="hidden" name="Pista_idPista" value="<?php echo $fila['Pista_idPista']; ?>">
 							<input type="hidden" name="Pista_Fecha" value="<?php echo $fila['Pista_Fecha']; ?>">
 							<input type="hidden" name="Pista_Hora" value="<?php echo $fila['Pista_Hora']; ?>">
