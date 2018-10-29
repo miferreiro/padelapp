@@ -80,14 +80,14 @@ class PROM_MODEL{
 	// se manda un mensaje de que ese valor de clave no existe
 	function DELETE() {
 		// se construye la sentencia sql de busqueda con los atributos de la clase
-		$sql = "SELECT * FROM RESERVA WHERE (Fecha = '$this->fecha' && Hora = '$this->hora')";
+		$sql = "SELECT * FROM promociones WHERE (Fecha = '$this->fecha' && Hora = '$this->hora')";
 		// se ejecuta la query
 		$result = $this->mysqli->query( $sql );
 	
 
 		if ( $result->num_rows == 1 ) {// si existe una tupla con ese valor de clave
 			// se construye la sentencia sql de borrado
-			$sql = "DELETE FROM RESERVA WHERE (Fecha = '$this->fecha' && Hora = '$this->hora')";
+			$sql = "DELETE FROM promociones WHERE (Fecha = '$this->fecha' && Hora = '$this->hora')";
 			// se ejecuta la query
 			$this->mysqli->query( $sql );
 			// se devuelve el mensaje de borrado correcto
@@ -102,7 +102,7 @@ class PROM_MODEL{
 	// en el atributo de la clase
 	function RellenaDatos() { 
 
-		$sql = "SELECT * FROM RESERVA WHERE (Fecha = '$this->fecha' && Hora = '$this->hora')";// se construye la sentencia de busqueda de la tupla
+		$sql = "SELECT * FROM promociones WHERE (Fecha = '$this->fecha' && Hora = '$this->hora')";// se construye la sentencia de busqueda de la tupla
 		// Si la busqueda no da resultados, se devuelve el mensaje de que no existe
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'No existe en la base de datos'; // 

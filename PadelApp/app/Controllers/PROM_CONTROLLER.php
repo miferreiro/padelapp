@@ -69,7 +69,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			//Variable que almacena la respuesta de realizar el borrado
 			$respuesta = $PROM->DELETE();
 			//crea una vista mensaje con la respuesta y la dirección de vuelta
-			new MESSAGE( $respuesta, '../Controllers/PISTA_CONTROLLER.php' );
+			new MESSAGE( $respuesta, '../Controllers/PROM_CONTROLLER.php' );
 		}
 		//Finaliza el bloque
 		break;
