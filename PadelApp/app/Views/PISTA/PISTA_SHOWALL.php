@@ -20,18 +20,13 @@ class Pista_Showall{
 	
 
 ?>
-<div class="seccion">
+<div class="seccion" align="center">
 			<h2>
 				<?php echo $strings['Tabla de datos'];?>
 			</h2>
-			<table>
-				<caption style="margin-bottom:10px;">
-					<form action='../Controllers/PISTA_CONTROLLER.php'>
-
-						<button type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="AÑADIR" /></button>
-
-					</form>
-				</caption>
+			<div class="col-md-4">
+			<table class="table table-sm" align="center">
+			<thead class="thead-light">
 				<tr>
 <?php
 		$c=0;
@@ -80,21 +75,21 @@ class Pista_Showall{
 								<button id ="buttonBien" type="submit" name="action" value="EDIT" ><img src="../Views/icon/modificar.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" /></button>
 	
 						</form>	
-				</td>
-						
-						
-				
-				   
+				</td>			   
 <?php
 					}
 					}
 																	 
 ?>
-						</tr>
-					
-												
-				
+						</tr>											
+				</thead>
 			</table>
+					<form action='../Controllers/PISTA_CONTROLLER.php'>
+
+						<button type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="AÑADIR" /></button>
+
+					</form>
+		</div>
 			<form action='../Controllers/PISTA_CONTROLLER.php' method="post">
 				<button id ="buttonBien" type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>

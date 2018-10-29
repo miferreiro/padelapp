@@ -20,12 +20,13 @@ class PISTA_SHOWCURRENT{
 	
 
 ?>
-<div class="seccion">
+<div class="seccion" align="center">
 			<h2>
 				<?php echo $strings['Vista detallada'];?>
 			</h2>
-			<table>
-
+			<div class="col-md-3">
+			<table class="table table-sm" align="center">
+			<thead class="thead-light">
 				<tr>
 <?php
 					foreach ( $lista as $atributo ) { 
@@ -59,8 +60,9 @@ class PISTA_SHOWCURRENT{
 <?php
 					}
 ?>
-		
+				</thead>
 			</table>
+		</div>
 			<form action='../Controllers/PISTA_CONTROLLER.php' method="post">
 				<button id ="buttonBien" type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>
