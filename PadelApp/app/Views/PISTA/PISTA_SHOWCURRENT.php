@@ -3,15 +3,15 @@
 class PISTA_SHOWCURRENT{
 	
     //es el constructor de la clase Pista_Showall
-	function __construct( $lista, $datos) {
+	function __construct( $lista, $valores) {
 		$this->lista = $lista;//pasamos los campos de la tabla PISTAS
-		$this->datos = $datos;//pasamos los valores de cada campo
+		$this->valores = $valores;//pasamos los valores de cada campo
 
-		$this->render($this->lista,$this->datos);//llamamos a la función render donde se mostrará el formulario SHOWALL con los campos correspondientes
+		$this->render($this->lista,$this->valores);//llamamos a la función render donde se mostrará el formulario SHOWALL con los campos correspondientes
 	}
-	function render($lista,$datos){
+	function render($lista,$valores){
 		$this->lista = $lista;//pasamos los campos de la tabla PISTAS
-		$this->datos = $datos;//pasamos los valores de cada campo
+		$this->valores = $valores;//pasamos los valores de cada campo
 
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
 
@@ -28,66 +28,38 @@ class PISTA_SHOWCURRENT{
 
 				<tr>
 <?php
-		$c=0;
-					while( $li = mysqli_fetch_array( $this->lista) ){
-						$c++;
+					foreach ( $lista as $atributo ) { 
 ?>
-					<th>
-						<?php echo $li['idPista']?>
-						<form action="../Controllers/PISTA_CONTROLLER.php" method="get" style="display:inline" >
-						<input type="hidden" name="idPista" value="<?php echo $li['idPista'] ?>">
-						<button id ="buttonBien" type="submit" name="action" value="DELETE" ><img src="../Views/icon/eliminar.png" alt="<?php echo $strings['Eliminar']?>" width="20" height="20" /></button>
-	
-						<button id ="buttonBien" type="submit" name="action" value="SHOWCURRENT"><img src="../Views/icon/buscar.png" alt="BUSCAR" width="20" height="20"/></button>	
-						</form>
-					</th>
-<?php					
-
-				}
+						<th>
+							<?php echo $strings[$atributo]?>
+						</th>
+<?php
+					}
 ?>
 
 				</tr>
 				<tr>
 					<?php
-						while ( $fila = mysqli_fetch_array( $this->datos ) ) {
+						while ( $fila = mysqli_fetch_array( $this->valores ) ) {
 ?>
-					<tr>
+				<tr>
 <?php
-					for($i=0;$i<$c;$i++){
-						if(Comprobar_Disponibilidad($i+1,$fila['Hora'],date("Y-m-d"))==1){
+					foreach ( $lista as $atributo ) { 
 ?>
-					<td bgcolor="#35B109" >					
-<?php
-						}else{
-?>
-					<td bgcolor="#E80408">
+					<td>
 <?php 
-						}
-							echo $fila['Hora'];
-							
+							echo $fila[ $atributo ];
 ?>
-						
-							<form action="../Controllers/PISTA_CONTROLLER.php" method="get" style="display:inline" >
-							<input type="hidden" name="idPista" value="<?php echo $i+1 ?>">
-							<input type="hidden" name="Hora" value="<?php echo $fila['Hora'] ?>">
-							<input type="hidden" name="Fecha" value="<?php echo date("Y-m-d") ?>">	
-								<button id ="buttonBien" type="submit" name="action" value="EDIT" ><img src="../Views/icon/modificar.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" /></button>
-	
-						</form>	
-				</td>
-						
-						
-				
-				   
+					</td>
 <?php
 					}
-					}
-																	 
 ?>
-						</tr>
-					
-												
-				
+														
+				</tr>
+<?php
+					}
+?>
+		
 			</table>
 			<form action='../Controllers/PISTA_CONTROLLER.php' method="post">
 				<button id ="buttonBien" type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>

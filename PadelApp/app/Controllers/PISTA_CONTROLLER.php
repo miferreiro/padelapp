@@ -112,8 +112,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 		           $PISTA = new PISTA_MODEL(  $_REQUEST[ 'idPista' ],'','','');
 		//Variable que almacena los valores rellenados a traves de login
 		           $valores = $PISTA->RellenaDatos( $_REQUEST[ 'idPista' ],'','','');
+				   $lista = array('Hora','Disponibilidad');
 		           //Creación de la vista showcurrent
-		           new PISTA_SHOWCURRENT( $valores );
+		           new PISTA_SHOWCURRENT($lista, $valores );
 			
 		//Final del bloque
 		break;
