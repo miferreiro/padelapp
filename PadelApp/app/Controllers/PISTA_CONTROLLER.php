@@ -65,7 +65,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 
 		
 				//Variable que recoge un objecto model con solo el login
-				$PISTA = new PISTA_MODEL( $_REQUEST[ 'idPista' ], '', '', '', '', '', '', '', '');
+				$PISTA = new PISTA_MODEL( $_REQUEST[ 'idPista' ], '', '', '');
 				//Variable que almacena el relleno de los datos utilizando el login
 				$valores = $PISTA->RellenaDatos( $_REQUEST[ 'idPista' ] );
 

@@ -46,7 +46,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		if ( $_POST ) {//Si no se han recibido datos se envia a la vista del formulario ADD
 		
 		} else {//Si recibe datos los recoge y mediante las funcionalidad de RESERVA_MODEL inserta los datos
-		    $RESERVA = new RESERVA_MODEL( '', '', '', '');
+		    $RESERVA = new RESERVA_MODEL( $_REQUEST[ 'Dni' ], $_REQUEST[ 'idPista' ], $_REQUEST[ 'Fecha' ], $_REQUEST[ 'Hora' ]);
 			$respuesta = $RESERVA->ADD();//Variable que almacena la respuesta de la inserción
 			//Crea la vista con la respuesta y la ruta para volver
 			new MESSAGE( $respuesta, '../Controllers/RESERVA_CONTROLLER.php' );
@@ -58,9 +58,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 
 		
 				//Variable que recoge un objecto model con solo el login
-				$RESERVA = new RESERVA_MODEL( $_REQUEST[ 'idPista' ], '', '', '', '', '', '', '', '');
+				$RESERVA = new RESERVA_MODEL( $_REQUEST[ 'Dni' ], $_REQUEST[ 'idPista' ], $_REQUEST[ 'Fecha' ], $_REQUEST[ 'Hora' ]);
 				//Variable que almacena el relleno de los datos utilizando el login
-				$valores = $RESERVA->RellenaDatos( $_REQUEST[ 'idPista' ] );
+				$valores = $RESERVA->RellenaDatos($_REQUEST[ 'Dni' ], $_REQUEST[ 'idPista' ], $_REQUEST[ 'Fecha' ], $_REQUEST[ 'Hora' ]);
 
             
 				//Crea una vista delete para ver la tupla
@@ -89,7 +89,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			//Variable que almacena el resultado de la busqueda
 			$datos = $RESERVA->SEARCH();
 			//Variable que almacena array con el nombre de los atributos
-			$lista = array( 'idPista','Hora','Fecha','Disponibilidad');
+			$lista = array('Dni','idPista','Hora','Fecha');
 			//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
 		
 				new RESERVA_SHOWCURRENT( $lista, $datos );
@@ -99,9 +99,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 		//Final del bloque
 		break;
 	case 'SHOWCURRENT'://Caso showcurrent
-		           $RESERVA = new RESERVA_MODEL( '', '', '', '');
+		           $RESERVA = new RESERVA_MODEL( $_REQUEST[ 'Dni' ], $_REQUEST[ 'idPista' ], $_REQUEST[ 'Fecha' ], $_REQUEST[ 'Hora' ]);
 		//Variable que almacena los valores rellenados a traves de login
-		           $valores = $RESERVA->RellenaDatos();
+		           $valores = $RESERVA->RellenaDatos($_REQUEST[ 'Dni' ], $_REQUEST[ 'idPista' ], $_REQUEST[ 'Fecha' ], $_REQUEST[ 'Hora' ]);
 		           //Creación de la vista showcurrent
 		           new RESERVA_SHOWCURRENT( $valores );
 			
@@ -110,7 +110,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 	default: //Caso que se ejecuta por defecto
 			if($_SESSION['tipo'] == 'Admin'){//miramos si el usuario es administrador
 						if ( !$_POST ) {//Si no se han recibido datos 
-							$RESERVA = new RESERVA_MODEL( '', '', date("Y-m-d"), '');//Variable que almacena la un objeto del modelo PISTA
+							$RESERVA = new RESERVA_MODEL( '', '', '', '');//Variable que almacena la un objeto del modelo PISTA
 							//Si se reciben datos
 						} else {
 							$RESERVA = get_data_form();//Variable que almacena los valores de un objeto PISTA_MODEL
@@ -118,7 +118,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 						//Variable que almacena los datos de la busqueda
 						$datos = $RESERVA->SEARCH();
 						//Variable que almacena array con el nombre de los atributos
-						$lista = array( 'idPista','Hora','Fecha','Disponibilidad');
+						$lista = array( 'Dni','idPista','Hora','Fecha');
 						
 						new RESERVA_SHOWALL( $lista, $datos);//nos muestra una vista showall con todos los permisos
 			}else{//en el caso de que el usuario no tenga permisos le sale una vista vacía
