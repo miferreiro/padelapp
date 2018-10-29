@@ -60,7 +60,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 				//Variable que recoge un objecto model con solo el login
 				$RESERVA = new RESERVA_MODEL( $_REQUEST[ 'Usuarios_Dni' ], $_REQUEST[ 'Pista_idPista' ], $_REQUEST[ 'Pista_Fecha' ], $_REQUEST[ 'Pista_Hora' ]);
 				//Variable que almacena el relleno de los datos utilizando el login
-				$valores = $RESERVA->RellenaDatos($_REQUEST[ 'Usuarios_Dni' ], $_REQUEST[ 'Pista_idPista' ], $_REQUEST[ 'Pista_Fecha' ], $_REQUEST[ 'Pista_Hora' ]);
+				$valores = $RESERVA->SEARCH();
 
             
 				//Crea una vista delete para ver la tupla
@@ -73,7 +73,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			//Variable que almacena la respuesta de realizar el borrado
 			$respuesta = $RESERVA->DELETE();
 			//crea una vista mensaje con la respuesta y la dirección de vuelta
-			new MESSAGE( $respuesta, '../Controllers/PISTA_CONTROLLER.php' );
+			new MESSAGE( $respuesta, '../Controllers/RESERVA_CONTROLLER.php' );
 		}
 		//Finaliza el bloque
 		break;
@@ -101,7 +101,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 	case 'SHOWCURRENT'://Caso showcurrent
 		           $RESERVA = new RESERVA_MODEL( $_REQUEST[ 'Usuarios_Dni' ], $_REQUEST[ 'Pista_idPista' ], $_REQUEST[ 'Pista_Fecha' ], $_REQUEST[ 'Pista_Hora' ]);
 		//Variable que almacena los valores rellenados a traves de login
-		           $valores = $RESERVA->RellenaDatos($_REQUEST[ 'Usuarios_Dni' ], $_REQUEST[ 'Pista_idPista' ], $_REQUEST[ 'Pista_Fecha' ], $_REQUEST[ 'Pista_Hora' ]);
+		           $valores = $RESERVA->SEARCH();
 		           //Creación de la vista showcurrent
 		           new RESERVA_SHOWCURRENT( $valores );
 			

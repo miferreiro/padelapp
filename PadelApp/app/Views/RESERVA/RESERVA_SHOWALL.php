@@ -35,7 +35,7 @@ class RESERVA_SHOWALL {
 <?php
 					}
 ?>
-					<th colspan="2" >
+					<th colspan="4" >
 						<?php echo $strings['Opciones']?>
 					</th>
 

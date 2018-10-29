@@ -27,7 +27,7 @@ class RESERVA_DELETE {
 						<?php echo $strings['Dni'];?>
 					</th>
 					<td>
-						<?php echo $this->valores['Dni']?>
+						<?php echo $this->valores['Usuarios_Dni']?>
 					</td>
 				</tr>			
 				<tr>
@@ -35,7 +35,7 @@ class RESERVA_DELETE {
 						<?php echo $strings['idPista'];?>
 					</th>
 					<td>
-						<?php echo $this->valores['idPista']?>
+						<?php echo $this->valores['Pista_idPista']?>
 					</td>
 				</tr>
 				<tr>
@@ -43,7 +43,7 @@ class RESERVA_DELETE {
 						<?php echo $strings['Fecha'];?>
 					</th>
 					<td>
-						<?php echo $this->valores['Fecha']?>
+						<?php echo $this->valores['Pista_Fecha']?>
 					</td>
 				</tr>
 				<tr>
@@ -51,7 +51,7 @@ class RESERVA_DELETE {
 						<?php echo $strings['Hora'];?>
 					</th>
 					<td>
-						<?php echo $this->valores['Hora']?>
+						<?php echo $this->valores['Pista_Hora']?>
 					</td>
 				</tr>
 				</thead>
@@ -62,10 +62,10 @@ class RESERVA_DELETE {
 ?>
 			<div>
 			<form action="../Controllers/RESERVA_CONTROLLER.php" method="post" style="display: inline" >
-				<input type="hidden" name="Dni" value="<?php echo $fila['Dni']; ?>">
-				<input type="hidden" name="idPista" value="<?php echo $fila['idPista']; ?>">
-				<input type="hidden" name="Fecha" value="<?php echo $fila['Fecha']; ?>">
-				<input type="hidden" name="Hora" value="<?php echo $fila['Hora']; ?>">
+				<input type="hidden" name="Usuarios_Dni" value="<?php echo $fila['Usuarios_Dni']; ?>">
+				<input type="hidden" name="Pista_idPista" value="<?php echo $fila['Pista_idPista']; ?>">
+				<input type="hidden" name="Pista_Fecha" value="<?php echo $fila['Pista_Fecha']; ?>">
+				<input type="hidden" name="Pista_Hora" value="<?php echo $fila['Pista_Hora']; ?>">
 
 				<button id ="buttonBien" type="submit" name="action" value="DELETE" ><img src="../Views/icon/confirmar.png" alt="<?php echo $strings['Confirmar'] ?>"/></button>
 			</form>

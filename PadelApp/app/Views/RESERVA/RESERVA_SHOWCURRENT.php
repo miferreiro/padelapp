@@ -25,7 +25,7 @@ class RESERVA_SHOWCURRENT {
 					<?php echo $strings['Dni'];?>
 				</th>
 				<td>
-					<?php echo $this->lista['Dni']?>
+					<?php echo $this->lista['Usuarios_Dni']?>
 				</td>
 			</tr>
 			<tr>
@@ -33,7 +33,7 @@ class RESERVA_SHOWCURRENT {
 					<?php echo $strings['idPista'];?>
 				</th>
 				<td>
-					<?php echo $this->lista['idPista']?>
+					<?php echo $this->lista['Pista_idPista']?>
 				</td>
 			</tr>
 			<tr>
@@ -41,7 +41,7 @@ class RESERVA_SHOWCURRENT {
 					<?php echo $strings['Fecha'];?>
 				</th>
 				<td>
-					<?php echo $this->lista['Fecha']?>
+					<?php echo $this->lista['Pista_Fecha']?>
 				</td>
 			</tr>
 
@@ -50,7 +50,7 @@ class RESERVA_SHOWCURRENT {
 					<?php echo $strings['Hora'];?>
 				</th>
 				<td>
-					<?php echo $this->lista['Hora']?>
+					<?php echo $this->lista['Pista_Hora']?>
 				</td>
 			</tr>
 						
