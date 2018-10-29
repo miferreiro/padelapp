@@ -12,10 +12,13 @@ class CAMPEONATO_SHOWCURRENT {
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
 ?>
-		<h2>
+		<div align="center">
+		<h2 align="center">
 			<?php echo $strings['Vista detallada'];?>
 		</h2>
-		<table>
+		<div class="col-md-3">
+		<table class="table table-sm" >
+			<thead class="thead-light">
 				<tr>
 					<th>
 						<?php echo $strings['IdCampeonato'];?>
@@ -56,15 +59,16 @@ class CAMPEONATO_SHOWCURRENT {
 						<?php echo $this->valores['HoraFin']?>
 					</td>
 				</tr>
-				
+				</thead>
+			</table>
+			</div>
 			
-			
-			<caption style="margin-top:10px;" align="bottom">
 				<form action='../Controllers/CAMPEONATO_CONTROLLER.php' method="post">
 					<button id ="buttonBien" type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras'] ?>" /></button>
 				</form>
-			</caption>
-		</table>
+			
+		</div>
+	
 
 <?php
 		include '../Views/Footer.php';//incluimos el pie de la página

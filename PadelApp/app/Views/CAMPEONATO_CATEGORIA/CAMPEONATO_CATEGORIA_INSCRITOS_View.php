@@ -17,11 +17,14 @@ class CATEGORIA_INSCRITOS {
 		include '../Views/Header.php';
       
 ?>
-		<div class="seccion">
+
+		<div class="seccion" align="center">
 			<h2>
 				<?php echo $strings['Tabla de datos'];?>
 			</h2>
-			<table>
+			<div class="col-md-4">
+			<table class="table table-sm">
+				<thead class="thead-light">
 
 				<tr>
 <?php
@@ -60,7 +63,9 @@ class CATEGORIA_INSCRITOS {
 <?php
 				}
 ?>
+				</thead>
 			</table>
+			</div>
 			<form action='../Controllers/CAMPEONATO_CATEGORIA_CONTROLLER.php' method="get">
 				<input type="hidden" name="IdCampeonato" value="<?php echo $vuelta['IdCampeonato']; ?>">		
 				<input type="hidden" name="Tipo" value="<?php echo $vuelta['Tipo']; ?>">		

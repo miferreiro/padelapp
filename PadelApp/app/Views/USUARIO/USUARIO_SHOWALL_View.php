@@ -17,20 +17,14 @@ class USUARIO_SHOWALL {
 	include '../Views/Header.php';		
 ?>
 
-		<div class="seccion">
+		<div class="seccion" align="center">
 			<h2>
 				<?php echo $strings['Tabla de datos'];?>
 			</h2>
-			<table>
-				<caption style="margin-bottom:10px;">
-					<form action='../Controllers/USUARIO_CONTROLLER.php'>
-
-						<button id ="buttonBien"  type="submit" name="action" value="SEARCH"><img src="../Views/icon/buscar.png" alt="BUSCAR" /></button>	
-
-						<button id ="buttonBien"  type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="AÑADIR" /></button>
-
-					</form>
-				</caption>
+			<div class="col-md-6">
+			<table class="table">
+				<thead class="thead-light">
+				
 				<tr>
 <?php
 					foreach ( $lista as $atributo ) { 
@@ -76,7 +70,22 @@ class USUARIO_SHOWALL {
 <?php
 				}
 ?>
+				
+				</thead>
 			</table>
+				
+				<tr align="center">
+						<td colspan="2">
+					<form action='../Controllers/USUARIO_CONTROLLER.php'>
+
+						<button id ="buttonBien"  type="submit" name="action" value="SEARCH"><img src="../Views/icon/buscar.png" alt="BUSCAR" /></button>	
+
+						<button id ="buttonBien"  type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="AÑADIR" /></button>
+					</form>
+					</td>
+				</tr>
+			
+			</div>
 			<form action='../Controllers/USUARIO_CONTROLLER.php' method="post">
 				<button id ="buttonBien" type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>

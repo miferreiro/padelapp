@@ -15,39 +15,33 @@ class CAMPEONATO_SHOWALL {
 		include '../Views/Header.php';
       
 ?>
-		<div class="seccion">
-			<h2>
+		<div align="center" class="seccion">
+			<h2 align="center">
 				<?php echo $strings['Tabla de datos'];?>
 			</h2>
-			<table>
-				<caption style="margin-bottom:10px;">
-					<form action='../Controllers/CAMPEONATO_CONTROLLER.php'>
-				
-
-						<button id ="buttonBien" type="submit" name="action" value="SEARCH"><img src="../Views/icon/buscar.png" alt="BUSCAR" /></button>
-
-	  
-						<button id ="buttonBien" type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="AÑADIR" /></button>
-
-					</form>
-				</caption>
+			<div class="col-md-7">
+			<table align="center" class="table">
+		
+				<thead class="thead-light">
 				<tr>
 <?php
 					foreach ( $lista as $atributo ) {//muestra el nombre de cada uno de los campos
 ?>
-					<th>
+					<th scope="col">
 						<?php echo $strings[$atributo]?>
 					</th>
 <?php
 					}
 ?>
-					<th colspan="4" >
+					<th scope="col" colspan="4" >
 						<?php echo $strings['Opciones']?>
 					</th>
 				</tr>
+				</thead>
 <?php
 				while ( $fila = mysqli_fetch_array( $this->datos ) ) {//este bucle se va a repetir mientras no se muestren todos los datos
 ?>
+				
 				<tr>
 <?php
 					foreach ( $lista as $atributo ) {//este bucle sacará los valores de cada uno de los campos de una tupla
@@ -85,13 +79,29 @@ class CAMPEONATO_SHOWALL {
 						
 
 				</tr>
+				
 <?php
 				}
 ?>
+			
 			</table>
+					<form action='../Controllers/CAMPEONATO_CONTROLLER.php'>
+				
+
+						<button id ="buttonBien" type="submit" name="action" value="SEARCH"><img src="../Views/icon/buscar.png" alt="BUSCAR" /></button>
+
+	  
+						<button id ="buttonBien" type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="AÑADIR" /></button>
+
+					</form>
+			
+			
+			
+
 			<form action='../Controllers/CAMPEONATO_CONTROLLER.php' method="post">
 				<button id ="buttonBien" type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>
+			</div>
 		</div>
 <?php
 		include '../Views/Footer.php';//incluimos el pie de la página

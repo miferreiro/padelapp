@@ -11,12 +11,14 @@ class CAMPEONATO_SEARCH {
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
 		include '../Views/Header.php';//incluimos la cabecera
 ?>
-		<div class="seccion">
-			<h2>
+		<div align="center" class="seccion">
+			<h2 align="center">
 				<?php echo $strings['Formulario de búsqueda'];?>
 			</h2>
 			<form id="SEARCH"name="SEARCH" action="../Controllers/CAMPEONATO_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="return comprobarSearchCampeonato()">
-				<table>
+				<div class="col-md-4">
+				<table class="table table-sm">
+					<thead class="thead-light">
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['IdCampeonato'];?>
@@ -29,6 +31,7 @@ class CAMPEONATO_SEARCH {
 						</th>
 						<td class="formThTd"><input type="text" id="FechaIni" class="tcal" name="FechaIni" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" size="20" onBlur="" readonly/>
 					</tr>
+					<tr>
                    	<th class="formThTd">
 							<?php echo $strings['HoraIni'];?>
 						</th>
@@ -46,17 +49,19 @@ class CAMPEONATO_SEARCH {
 						</th>
 						<td class="formThTd"><input type="time" id="HoraFin" name="HoraFin" placeholder="<?php echo $strings['Escriba aqui...']?>" value=""  size="20"   onBlur=""/>
 					</tr>
-                  		<tr>
+				</thead>
+                  		<tr align="center">
 						<td colspan="2">
 							<button id ="buttonBien" type="submit" name="action" value="SEARCH"><img src="../Views/icon/buscar.png" alt="<?php echo $strings['Buscar formulario']?>" /></button>
-			</form>
+					</form>
 						<form action='../Controllers/CAMPEONATO_CONTROLLER.php' method="post" style="display:inline">
 							<button id ="buttonBien" type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 						</form>
 						</td>
 					</tr>
+					
 				</table>
-
+			</div>
 		</div>
 <?php
 		include '../Views/Footer.php';//incluimos el pie de la página

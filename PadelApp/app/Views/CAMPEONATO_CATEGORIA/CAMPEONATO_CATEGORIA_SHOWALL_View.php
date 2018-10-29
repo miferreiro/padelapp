@@ -17,11 +17,13 @@ class CAMPEONATO_CATEGORIA_SHOWALL {
 		include '../Views/Header.php';
       
 ?>
-		<div class="seccion">
+		<div class="seccion" align="center">
 			<h2>
 				<?php echo $strings['Tabla de datos'];?>
 			</h2>
-			<table>
+			<div class="col-md-4">
+			<table class="table">
+				<thead class="thead-light">
 				<tr>
 <?php
 					foreach ( $lista as $atributo ) {//muestra el nombre de cada uno de los campos
@@ -72,8 +74,10 @@ class CAMPEONATO_CATEGORIA_SHOWALL {
 				</tr>
 <?php
 				}
-?>
+?>			
+				</thead>
 			</table>
+			</div>
 			<form action='../Controllers/CAMPEONATO_CONTROLLER.php' method="post">
 
 				<button id ="buttonBien" type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>

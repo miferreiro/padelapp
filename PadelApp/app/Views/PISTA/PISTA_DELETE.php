@@ -15,11 +15,13 @@ class PISTA_DELETE {
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
 ?>
-		<div class="seccion">
+		<div class="seccion" align="center">
 			<h2>
 				<?php echo $strings['Tabla de borrado'];?>
 			</h2>
-			<table>
+			<div class="col-md-4">
+			<table class="table table-sm">
+				<thead class="thead-light">
 				<tr>
 					<th>
 						<?php echo $strings['idPista'];?>
@@ -44,13 +46,13 @@ class PISTA_DELETE {
 						<?php echo $this->valores['Hora']?>
 					</td>
 				</tr>
-				
+				</thead>
 			</table>
-            <br>
-            <br>
-			<p style="text-align:center;">
-				<?php echo $strings['¿Está seguro de que quiere borrar esta tupla de la tabla?'];?>
-			</p>
+			</div>
+<?php 
+			echo $strings['¿Está seguro de que quiere borrar esta tupla de la tabla?'];
+?>
+			<div>
 			<form action="../Controllers/USUARIO_CONTROLLER.php" method="post" style="display: inline" >
 				<input type="hidden" name="login" value=<?php echo $this->valores['idPista'] ?> />
 				<button id ="buttonBien" type="submit" name="action" value="DELETE" ><img src="../Views/icon/confirmar.png" alt="<?php echo $strings['Confirmar'] ?>"/></button>
@@ -58,6 +60,7 @@ class PISTA_DELETE {
 			<form action='../Controllers/USUARIO_CONTROLLER.php' method="post" style="display: inline">
 				<button id ="buttonBien" type="submit"><img src="../Views/icon/cancelar.png" alt="<?php echo $strings['Atras'] ?>"/></button>
 			</form>
+			</div>
 		</div>
 <?php           
 		include '../Views/Footer.php';               

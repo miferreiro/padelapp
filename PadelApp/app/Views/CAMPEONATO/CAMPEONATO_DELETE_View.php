@@ -13,11 +13,13 @@ class CAMPEONATO_DELETE {
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
 		include '../Views/Header.php';//incluimos la cabecera
 ?>
-		<div class="seccion">
-			<h2>
+		<div class="seccion" align="center">
+			<h2 align="center">
 				<?php echo $strings['Tabla de borrado'];?>
 			</h2>
-			<table>
+			<div class="col-md-4">
+			<table class="table table-sm">
+				<thead class="thead-light">
 				<tr>
 					<th>
 						<?php echo $strings['IdCampeonato'];?>
@@ -58,10 +60,9 @@ class CAMPEONATO_DELETE {
 						<?php echo $this->valores['HoraFin']?>
 					</td>
 				</tr>
-				
+				</thead>
 			</table>
-            <br>
-            <br>            
+            <br>           
 			<p style="text-align:center;">
 				<?php echo $strings['¿Está seguro de que quiere borrar esta tupla de la tabla?'];?>
 			</p>
@@ -76,6 +77,7 @@ class CAMPEONATO_DELETE {
 			<form action='../Controllers/CAMPEONATO_CONTROLLER.php' method="post" style="display: inline">
 				<button id ="buttonBien" type="submit"><img src="../Views/icon/cancelar.png" alt="<?php echo $strings['Atras'] ?>"/></button>
 			</form>
+			</div>
 		</div>
 <?php             
 		include '../Views/Footer.php';//incluimos el pie de la página

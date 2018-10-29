@@ -14,13 +14,15 @@ class PISTA_EDIT {
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
 		include '../Views/Header.php';//incluimos la cabecera
 ?>
-		<div class="seccion">
+		<div class="seccion" align="center">
 			
 		<h2>
 				<?php echo $strings['Formulario de modificación'];?>
 			</h2>
 			<form name="EDIT" action="../Controllers/PISTA_CONTROLLER.php" method="post" enctype="multipart/form-data">
-				<table>
+				<div class="col-md-4">
+				<table class="table">
+					<thead class="thead-light">
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['idPista'];?>
@@ -63,7 +65,7 @@ class PISTA_EDIT {
 			
 		
 
-							<tr>
+							<tr align="center">
 						<td colspan="2">
 							<button id ="buttonBien" type="submit" name="action" value="EDIT"><img src="../Views/icon/modificar.png" alt="<?php echo $strings['Confirmar formulario']?>" /></button>
 					    </form>
@@ -71,7 +73,9 @@ class PISTA_EDIT {
 							<button id ="buttonBien" type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 						</form>
 					</tr>
+					</thead>
 				</table>
+			</div>
 		</div>
 <?php
 		include '../Views/Footer.php';//incluimos el pie de la página

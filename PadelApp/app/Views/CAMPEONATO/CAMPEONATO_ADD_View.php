@@ -10,12 +10,14 @@ class CAMPEONATO_ADD {
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
 		include '../Views/Header.php';//incluimos la cabecera
 ?>
-		<div class="seccion">
-			<h2>
+		<div class="seccion" align="center">
+			<h2 align="center">
 				<?php echo $strings['Formulario de inserción'];?>
 			</h2>
 			<form name="ADD" action="../Controllers/CAMPEONATO_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="return comprobarAddCampeonato()">
-				<table>
+				<div class="col-md-4">
+				<table class="table table-sm">
+					<thead class="thead-light">
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['IdCampeonato'];?>
@@ -115,11 +117,12 @@ class CAMPEONATO_ADD {
 						<td class="formThTd">		
 							<input type="checkbox" name="categoria[]" id="categoria" value="Mixta3" /> <br>
  						</td>        
-					</tr>				                    					
+					</tr>	
+				</thead>
 					         					         					                    
 					                              
 					                                                  
-					<tr>
+					<tr align="center">
 						<td colspan="2">
 							<button id ="buttonBien" type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="<?php echo $strings['Confirmar formulario']?>" /></button>
 			</form>
@@ -127,7 +130,9 @@ class CAMPEONATO_ADD {
 							<button id ="buttonBien" type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 						</form>
 					</tr>
+					</thead>
 				</table>
+			</div>	
 		</div>
 <?php
 		include '../Views/Footer.php';//incluimos el pie de la página
