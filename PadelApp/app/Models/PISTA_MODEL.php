@@ -210,7 +210,7 @@ class PISTA_MODEL{
 	} // fin del metodo RellenaDatos()
 	function RellenaDatos2() { 
 
-		$sql = "SELECT * FROM PISTA WHERE (idPista = '$this->idPista',Hora = '$this->hora',Fecha = '$this->fecha')";// se construye la sentencia de busqueda de la tupla
+		$sql = "SELECT * FROM PISTA WHERE (idPista = '$this->idPista' && Hora = '$this->hora' && Fecha = '$this->fecha')";// se construye la sentencia de busqueda de la tupla
 		// Si la busqueda no da resultados, se devuelve el mensaje de que no existe
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'No existe en la base de datos'; // 
@@ -226,7 +226,7 @@ class PISTA_MODEL{
 	// si existe se modifica
 	function EDIT() {
 		// se construye la sentencia de busqueda de la tupla en la bd
-		$sql = "SELECT * FROM PISTA WHERE (idPista = '$this->idPista')";
+		$sql = "SELECT * FROM PISTA WHERE (idPista = '$this->idPista' && Hora = '$this->hora' && Fecha = '$this->fecha')";
 		// se ejecuta la query
 		$result = $this->mysqli->query( $sql );
 		// si el numero de filas es igual a uno es que lo encuentra

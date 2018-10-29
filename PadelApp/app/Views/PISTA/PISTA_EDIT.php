@@ -31,13 +31,13 @@ class PISTA_EDIT {
 						<th class="formThTd">
 							<?php echo $strings['Hora'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="Hora" name="Hora" value="<?php echo $this->valores['hora']?>" readonly required/>
+						<td class="formThTd"><input type="text" id="Hora" name="Hora" value="<?php echo $this->valores['Hora']?>" readonly required/>
 					</tr>
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['Fecha'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="Fecha" name="Fecha" value="<?php echo $this->valores['fecha']?>" readonly required/>
+						<td class="formThTd"><input type="text" id="Fecha" name="Fecha" value="<?php echo $this->valores['Fecha']?>" readonly required/>
 					</tr>
 			<tr>
 						<th class="formThTd">

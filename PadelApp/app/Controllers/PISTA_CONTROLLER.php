@@ -107,30 +107,11 @@ switch ( $_REQUEST[ 'action' ] ) {
 		}
 		//Fin del bloque
 		break;
-	case 'SEARCH'://Caso buscar
-		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario SEARCH
-			
-		//Si se reciben datos	
-		} else {
-			
-			//Variable que almacena los datos recogidos de los atributos
-			$PISTA = get_data_form();
-			//Variable que almacena el resultado de la busqueda
-			$datos = $PISTA->SEARCH();
-			//Variable que almacena array con el nombre de los atributos
-			$lista = array( 'idPista','Hora','Fecha','Disponibilidad');
-			//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
-		
-				new PISTA_SHOWCURRENT( $lista, $datos );
-			
-			
-		}
-		//Final del bloque
-		break;
+
 	case 'SHOWCURRENT'://Caso showcurrent
-		           $PISTA = new PISTA_MODEL(  $_REQUEST[ 'idPista' ], '', '', '');
+		           $PISTA = new PISTA_MODEL(  $_REQUEST[ 'idPista' ],'','','');
 		//Variable que almacena los valores rellenados a traves de login
-		           $valores = $PISTA->RellenaDatos( $_REQUEST[ 'idPista' ]);
+		           $valores = $PISTA->RellenaDatos( $_REQUEST[ 'idPista' ],'','','');
 		           //Creación de la vista showcurrent
 		           new PISTA_SHOWCURRENT( $valores );
 			
