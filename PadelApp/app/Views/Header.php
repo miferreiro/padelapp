@@ -36,7 +36,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container">
 		<?php	if (IsAuthenticated()){ //miramos si el usuario esta autenticado ?> 
-		<?php 	echo $strings['Usuario'] . ' : ' . $_SESSION['login'] . '--' . $_SESSION['tipo'] . '<br>'; ?>	
+		<?php 	echo $strings['Usuario'] . ' : ' . $_SESSION['login'] . '--' . $_SESSION['tipo'] . '<br>'; ?>
 		   </li>
 			  <li class="nav-item">
               <a class="nav-link disabled" href="../Functions/Desconectar.php" alt="<?php echo $strings['Desconectarse']?>"/>
@@ -58,7 +58,7 @@
             <li class="nav-item active">
 				
 				
-            	<a class="nav-link" href="../Controllers/Login_Controller.php" /><?php echo $strings['Conectarse']?>
+            <a  class="nav-link" href="../Controllers/Login_Controller.php" /><?php echo $strings['Conectarse']?>
 				<!--<span class="sr-only">(current)</span>--></a>
 				
             </li>
@@ -140,6 +140,6 @@ que comprueba permisos para cada una de las acciones -->
 
 	  <hr>
 	  	<!-- <?php echo $strings['Portal de Gestión']; ?>-->
-	  	<div class="titulo"><h1>PADEL APP</h1></div>
+	  	<div align="center" class="titulo"><h1>PADEL APP</h1></div>
 </hr>
 	</header>
