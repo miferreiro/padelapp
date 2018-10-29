@@ -11,12 +11,14 @@ class USUARIO_SEARCH {
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
 ?>
-		<div class="seccion">
+		<div class="seccion" align="center">
 			<h2>
 				<?php echo $strings['Formulario de búsqueda'];?>
 			</h2>
 			<form id="SEARCH" name="SEARCH" action="../Controllers/USUARIO_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="return comprobarSearchUsuario()">
-				<table>
+			<div class="col-sm-4">
+				<table class="table table-sm">
+					<thead class="thead-light">
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['Dni'];?>
@@ -33,7 +35,7 @@ class USUARIO_SEARCH {
 						<th class="formThTd">
 							<?php echo $strings['Contraseña'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="password" name="password" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="128" size="128" onBlur="comprobarLongitud(this,'128') && comprobarTexto(this,'128')"/>
+						<td class="formThTd"><input type="text" id="password" name="password" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="128" size="40" onBlur="comprobarLongitud(this,'128') && comprobarTexto(this,'128')"/>
 					</tr>
 					<tr>
 						<th class="formThTd">
@@ -45,7 +47,7 @@ class USUARIO_SEARCH {
 						<th class="formThTd">
 							<?php echo $strings['Apellidos'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="apellidos" name="apellidos" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="50" size="60" onBlur="comprobarLongitud(this,'50') && comprobarTexto(this,'50') && comprobarAlfabetico(this,'50')"/>
+						<td class="formThTd"><input type="text" id="apellidos" name="apellidos" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="50" size="40" onBlur="comprobarLongitud(this,'50') && comprobarTexto(this,'50') && comprobarAlfabetico(this,'50')"/>
 					</tr>
 					<tr>
 						<th class="formThTd">
@@ -61,7 +63,7 @@ class USUARIO_SEARCH {
 						</th>
 						<td class="formThTd"><input type="text" id="telefono" name="telefono" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="11" size="13" onBlur="comprobarLongitud(this,'11') && comprobarTexto(this,'11')"/>
 					</tr>
-					<tr>
+					<tr align="center">
 						<td colspan="2">
 							<button id ="buttonBien"type="submit" name="action" value="SEARCH"><img src="../Views/icon/buscar.png" alt="<?php echo $strings['Buscar formulario']?>" /></button>
 			</form>
@@ -70,8 +72,9 @@ class USUARIO_SEARCH {
 						</form>
 						</td>
 					</tr>
+					</thead>
 				</table>
-
+			</div>
 		</div>
 <?php
 		include '../Views/Footer.php';

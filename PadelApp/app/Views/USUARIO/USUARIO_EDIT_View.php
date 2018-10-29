@@ -11,12 +11,14 @@ class USUARIO_EDIT {
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
 		?>
-		<div class="seccion">
+		<div class="seccion" align="center">
 			<h2>
 				<?php echo $strings['Formulario de modificación'];?>
 			</h2>
 			<form name="EDIT" action="../Controllers/USUARIO_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="return comprobarEditUsuario()">
-				<table>
+				<div class="col-sm-4">
+				<table class="table table-sm">
+					<thead class="thead-light">
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['Dni'];?>
@@ -33,7 +35,7 @@ class USUARIO_EDIT {
 						<th class="formThTd">
 							<?php echo $strings['Contraseña'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="password" name="password" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['Password']?>" maxlength="128" size="128" onBlur="comprobarVacio(this) && sinEspacio(this) && comprobarLongitud(this,128) && comprobarTexto(this,128)" required/>
+						<td class="formThTd"><input type="text" id="password" name="password" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['Password']?>" maxlength="128" size="40" onBlur="comprobarVacio(this) && sinEspacio(this) && comprobarLongitud(this,128) && comprobarTexto(this,128)" required/>
 					</tr>
 
 					<tr>
@@ -46,7 +48,7 @@ class USUARIO_EDIT {
 						<th class="formThTd">
 							<?php echo $strings['Apellidos'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="apellidos" name="apellidos" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['Apellidos']?>" maxlength="45" size="45" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'45') && comprobarTexto(this,'45') && comprobarAlfabetico(this,'45')"/>
+						<td class="formThTd"><input type="text" id="apellidos" name="apellidos" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['Apellidos']?>" maxlength="45" size="40" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'45') && comprobarTexto(this,'45') && comprobarAlfabetico(this,'45')"/>
 					</tr>
 					<tr>
 						<th class="formThTd">
@@ -79,16 +81,18 @@ class USUARIO_EDIT {
 						</th>
 						<td class="formThTd"><input type="text" id="Tipo" name="Tipo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['Tipo']?>" maxlength="12" size="12" required readonly onBlur="comprobarVacio(this) && comprobarLongitud(this,'12') && comprobarTexto(this,'12') "/>
 					</tr>
-					<tr>
+					<tr align="center">
 						<td colspan="2">
 							<button id ="buttonBien" type="submit" name="action" value="EDIT"><img src="../Views/icon/modificar.png" alt="<?php echo $strings['Confirmar formulario']?>" /></button>
 			</form>
+						</thead>
+				</table>
+			</div>
 			<form action='../Controllers/USUARIO_CONTROLLER.php' style="display: inline">
 				<button id ="buttonBien"type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>
 			</tr>
-
-			</table>
+			
 		</div>
 
 		<?php
