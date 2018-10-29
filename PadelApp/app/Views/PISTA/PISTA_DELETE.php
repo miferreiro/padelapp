@@ -30,22 +30,6 @@ class PISTA_DELETE {
 						<?php echo $this->valores['idPista']?>
 					</td>
 				</tr>			
-				<tr>
-					<th>
-						<?php echo $strings['Fecha'];?>
-					</th>
-					<td>
-						<?php echo $this->valores['Fecha']?>
-					</td>
-				</tr>
-				<tr>
-					<th>
-						<?php echo $strings['Hora'];?>
-					</th>
-					<td>
-						<?php echo $this->valores['Hora']?>
-					</td>
-				</tr>
 				</thead>
 			</table>
 			</div>
@@ -53,11 +37,11 @@ class PISTA_DELETE {
 			echo $strings['¿Está seguro de que quiere borrar esta tupla de la tabla?'];
 ?>
 			<div>
-			<form action="../Controllers/USUARIO_CONTROLLER.php" method="post" style="display: inline" >
+			<form action="../Controllers/PISTA_CONTROLLER.php" method="post" style="display: inline" >
 				<input type="hidden" name="login" value=<?php echo $this->valores['idPista'] ?> />
 				<button id ="buttonBien" type="submit" name="action" value="DELETE" ><img src="../Views/icon/confirmar.png" alt="<?php echo $strings['Confirmar'] ?>"/></button>
 			</form>
-			<form action='../Controllers/USUARIO_CONTROLLER.php' method="post" style="display: inline">
+			<form action='../Controllers/PISTA_CONTROLLER.php' method="post" style="display: inline">
 				<button id ="buttonBien" type="submit"><img src="../Views/icon/cancelar.png" alt="<?php echo $strings['Atras'] ?>"/></button>
 			</form>
 			</div>

@@ -111,8 +111,8 @@ switch ( $_REQUEST[ 'action' ] ) {
 	case 'SHOWCURRENT'://Caso showcurrent
 		           $PISTA = new PISTA_MODEL(  $_REQUEST[ 'idPista' ],'','','');
 		//Variable que almacena los valores rellenados a traves de login
-		           $valores = $PISTA->RellenaDatos( $_REQUEST[ 'idPista' ],'','','');
-				   $lista = array('Hora','Disponibilidad');
+		           $valores = $PISTA->SEARCH();
+				   $lista = array('Fecha','Hora','Disponibilidad');
 		           //Creación de la vista showcurrent
 		           new PISTA_SHOWCURRENT($lista, $valores );
 			
