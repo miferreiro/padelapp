@@ -267,7 +267,11 @@ array(
 	'Login del miembro 1 de la pareja' => 'Login do membro 1 da parexa',
 	'Login del miembro 2 de la pareja' => 'Login do membro 2 da parexa',
 	'Capitan de la pareja' => 'Capitán',
-	'NumPareja' => 'NumPareja'
+	'NumPareja' => 'NumPareja',
+	'Usuario_Dni'=>'Dni',
+	'Pista_idPista'=>'Pista',
+	'Pista_Hora'=>'Hora',
+	'Pista_Fecha'=>'Fecha'
 	
 	)
 ;
