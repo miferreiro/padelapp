@@ -26,11 +26,7 @@
 	
 	<div id="capaFondo1" ></div>
 		
-	<footer class="text-center" 		display: "block";
-		margin: "4px"
-		padding: "15px"
-		border-top: "2px solid #000"
-		background: "#CCC">
+	<footer class="text-center" align="fixed" >
       <div class="container">
         <div class="row">
           <div class="col-12">

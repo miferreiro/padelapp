@@ -36,18 +36,20 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container">
 		<?php	if (IsAuthenticated()){ //miramos si el usuario esta autenticado ?> 
-		<?php 	echo $strings['Usuario'] . ' : ' . $_SESSION['login'] . '--' . $_SESSION['tipo'] . '<br>'; ?>
-		   </li>
-			  <li class="nav-item">
+		<p style="color: white"><?php 	echo $strings['Usuario'] . ' : ' . $_SESSION['login'] . '--' . $_SESSION['tipo'] . '<br>'; ?></p>
+		   
+			  
               <a class="nav-link disabled" href="../Functions/Desconectar.php" alt="<?php echo $strings['Desconectarse']?>"/>
               <img src="../Views/icon/desconexion.png" width="32" height="32" alt="<?php echo $strings['Desconectarse']?>" style="float:right;">
                </a>
-            </li>
+            
 		  <?php
 	} else { //si no esta autenticado se muestra en un mensaje indicandolo
-		
+		?>
+		  
+		  <p style="color: white"><?php
 			echo $strings['Usuario no identificado'];
-?>	  
+?></p>	  
 		  <!--<font color="white">El usuario no está registrado</font> -->
 		  
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -61,17 +63,17 @@
             <a  class="nav-link" href="../Controllers/Login_Controller.php" /><?php echo $strings['Conectarse']?>
 				<!--<span class="sr-only">(current)</span>--></a>
 				
-            </li>
-            <li class="nav-item">
+           </li>
+        <li class="nav-item">
               <a class="nav-link" href="../Controllers/Registro_Controller.php"/><?php echo $strings['Registro']?></a>
-            </li>
+           </li>
 			  <li class="nav-item">
               <a class="nav-link disabled" href="../Controllers/DEFAULT_CONTROLLER.php"/><?php echo $strings['Atras']?></a>
             </li>
 <?php		
 	}
 ?>			<li>
-			<nav>
+			
 	
 		<!-- Si hay un usuario logeado (Variable de sesion login con valor) ejecuta el código dento del if
 que comprueba permisos para cada una de las acciones -->
@@ -79,7 +81,7 @@ que comprueba permisos para cada una de las acciones -->
 //Si el usuario tiene permisos de showall en gestión de usuarios se muestra la opción ?>
 		<?php if($_SESSION['tipo'] == 'Admin'){ ?>
 		<li>
-			<a href="../Controllers/USUARIO_CONTROLLER.php" /><?php echo $strings['Gestion de usuarios']?></a>
+			<a style="color: lightgrey" href="../Controllers/USUARIO_CONTROLLER.php" /><?php echo $strings['Gestion de usuarios']?></a>
 		</li>
 		<?php }
 		 } ?>
@@ -87,7 +89,7 @@ que comprueba permisos para cada una de las acciones -->
 //Si el usuario tiene permisos de showall en gestión de usuarios se muestra la opción ?>
 		<?php if($_SESSION['tipo'] == 'Admin'){ ?>
 		<li>
-			<a href="../Controllers/PISTA_CONTROLLER.php" /><?php echo $strings['Gestión de pistas'] ?></a>
+			<a style="color: lightgrey" href="../Controllers/PISTA_CONTROLLER.php" /><?php echo $strings['Gestión de pistas'] ?></a>
 		</li>
 		<?php } 
 		 } ?>
@@ -95,22 +97,22 @@ que comprueba permisos para cada una de las acciones -->
 //Si el usuario tiene permisos de showall en gestión de usuarios se muestra la opción ?>
 		<?php if($_SESSION['tipo'] == 'Admin'){ ?>
 		<li>
-			<a href="../Controllers/CAMPEONATO_CONTROLLER.php"/><?php echo 'Gestion de campeonatos' ?></a>
+			<a style="color: lightgrey" href="../Controllers/CAMPEONATO_CONTROLLER.php"/><?php echo 'Gestion de campeonatos' ?></a>
 		</li>
 		<?php }
 		 } ?>
 	<?php if(isset($_SESSION['login']) & isset($_SESSION['tipo'])) {  ?>
 		 <?php if($_SESSION['tipo'] == 'Deportista'){ ?>
 		<li>
-			<a href="../Controllers/CATEGORIA_CONTROLLER.php" /><?php echo 'Inscribirse en campeonato' ?></a>
+			<a style="color: lightgrey" href="../Controllers/CATEGORIA_CONTROLLER.php" /><?php echo 'Inscribirse en campeonato' ?></a>
 		</li>
 		<?php }
 		 } ?>
-			</nav>
+			
 				</li>
             <li class="nav-item dropdown">
 			<form name='idiomform' action="../Functions/CambioIdioma.php" method="post">
-              <a class="nav-link dropdown-toggle" href="<?php echo $strings['idioma']; ?>" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Idiomas</a>
+              <a class="nav-link dropdown-toggle" style="color: lightgrey" href="<?php echo $strings['idioma']; ?>" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Idiomas</a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <button id ="buttonBien" type="submit"  name="idioma" value="SPANISH" ><a class="dropdown-item"/> <?php echo $strings['Cambiar idioma a español']?></a></button>
 				
