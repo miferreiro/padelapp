@@ -13,6 +13,7 @@ include '../Models/PISTA_MODEL.php'; //incluye el contendio del modelo PISTAS
 include '../Views/PISTA/PISTA_SHOWALL.php'; //incluye la vista del showall
 include '../Views/PISTA/PISTA_EDIT.php'; //incluye la vista EDIT
 include '../Views/PISTA/PISTA_SHOWCURRENT.php'; //incluye la vista SEARCH
+include '../Views/PISTA/PISTA_DELETE.php'; //incluye la vista SEARCH
 include '../Views/DEFAULT_View.php'; //incluye la vista por defecto
 include '../Views/MESSAGE_View.php'; //incluye la vista mensaje
 
@@ -127,9 +128,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 		//Final del bloque
 		break;
 	case 'SHOWCURRENT'://Caso showcurrent
-		           $PISTA = new PISTA_MODEL( '', '', '', '');
+		           $PISTA = new PISTA_MODEL(  $_REQUEST[ 'idPista' ], '', '', '');
 		//Variable que almacena los valores rellenados a traves de login
-		           $valores = $PISTA->RellenaDatos();
+		           $valores = $PISTA->RellenaDatos( $_REQUEST[ 'idPista' ]);
 		           //Creación de la vista showcurrent
 		           new PISTA_SHOWCURRENT( $valores );
 			

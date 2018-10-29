@@ -15,45 +15,58 @@ class PISTA_EDIT {
 		include '../Views/Header.php';//incluimos la cabecera
 ?>
 		<div class="seccion">
-			<h2>
+			
+		<h2>
 				<?php echo $strings['Formulario de modificación'];?>
 			</h2>
-			<form name="ADD" action="../Controllers/PISTA_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="return comprobarAddPista()">
+			<form name="EDIT" action="../Controllers/PISTA_CONTROLLER.php" method="post" enctype="multipart/form-data">
 				<table>
-					
-	<tr>
+					<tr>
 						<th class="formThTd">
-							<?php echo "Disponibilidad"?>
+							<?php echo $strings['idPista'];?>
+						</th>
+						<td class="formThTd"><input type="text" id="idPista" name="idPista" value="<?php echo $this->valores['idPista']?>" readonly required/>
+					</tr>
+					<tr>
+						<th class="formThTd">
+							<?php echo $strings['Hora'];?>
+						</th>
+						<td class="formThTd"><input type="text" id="Hora" name="Hora" value="<?php echo $this->valores['hora']?>" readonly required/>
+					</tr>
+					<tr>
+						<th class="formThTd">
+							<?php echo $strings['Fecha'];?>
+						</th>
+						<td class="formThTd"><input type="text" id="Fecha" name="Fecha" value="<?php echo $this->valores['fecha']?>" readonly required/>
+					</tr>
+			<tr>
+						<th class="formThTd">
+							<?php echo $strings['Disponibilidad']?>
 						</th>
 						<td class="formThTd">
 <?php
-								if( echo $this->valores['Disponibilidad'] == "1"){
+								if( $this->valores['Disponibilidad'] == "1"){
 ?>	
-									<input type="radio"  id="true" name="true" value="1" checked/>1<br>
-									<input type="radio"  id="false" name="false" value="0"/>0<br>
+									<input type="radio"  id="Disponibilidad" name="Disponibilidad" value="1" checked/>1<br>
+									<input type="radio"  id="Disponibilidad" name="Disponibilidad" value="0"/>0<br>
 <?php
 								}else{
 ?>
-									<input type="radio"  id="true1" name="true" value="1" />1<br>
-									<input type="radio"  id="false2" name="false" value="0" checked/>0<br>
+									<input type="radio"  id="Disponibilidad" name="Disponibilidad" value="1" />1<br>
+									<input type="radio"  id="Disponibilidad" name="Disponibilidad" value="0" checked/>0<br>
 <?php
 									
 
 								}
 ?>								
-							<th class="formThTd">
-								<?php echo "Hora"?>
-							</th>
-								<td class="formThTd">
-								<?php
-								echo $this->valores['Hora']
-								?>		
+
 			
-							</tr>
+		
+
 							<tr>
 						<td colspan="2">
 							<button id ="buttonBien" type="submit" name="action" value="EDIT"><img src="../Views/icon/modificar.png" alt="<?php echo $strings['Confirmar formulario']?>" /></button>
-					
+					    </form>
 						<form action='../Controllers/PISTA_CONTROLLER.php' method="post" style="display: inline">
 							<button id ="buttonBien" type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 						</form>

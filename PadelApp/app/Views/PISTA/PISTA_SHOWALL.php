@@ -41,10 +41,10 @@ class Pista_Showall{
 					<th>
 						<?php echo $li['idPista']?>
 						<form action="../Controllers/PISTA_CONTROLLER.php" method="get" style="display:inline" >
+						<input type="hidden" name="Hora" value="<?php echo $li['idPista'] ?>">
 						<button id ="buttonBien" type="submit" name="action" value="DELETE" ><img src="../Views/icon/eliminar.png" alt="<?php echo $strings['Eliminar']?>" width="20" height="20" /></button>
-					
-				
-								<button id ="buttonBien" type="submit" name="action" value="SEARCH"><img src="../Views/icon/buscar.png" alt="BUSCAR" width="20" height="20"/></button>	
+	
+						<button id ="buttonBien" type="submit" name="action" value="SEARCH"><img src="../Views/icon/buscar.png" alt="BUSCAR" width="20" height="20"/></button>	
 						</form>
 					</th>
 <?php					
