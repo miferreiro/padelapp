@@ -8,20 +8,20 @@
 //declaración de la clase
 class RESERVA_MODEL{ 
 	
-	var $Dni;
-	var $idPista;
-	var	$fecha;
-	var	$hora;
+	var $Usuario_Dni;
+	var $Pista_idPista;
+	var	$Pista_fecha;
+	var	$Pista_hora;
 
 
 
     //Constructor de la clase
-	function __construct($Dni,$idPista,$fecha,$hora) {
+	function __construct($Usuario_Dni,$Pista_idPista,$Pista_fecha,$Pista_hora) {
 		//asignación de valores de parámetro a los atributos de la clase
-		$this->Dni = $Dni;
-		$this->idPista = $idPista;
-		$this->fecha = $fecha;
-        $this->hora=$hora;
+		$this->Usuario_Dni = $Usuario_Dni;
+		$this->Pista_idPista = $Pista_idPista;
+		$this->Pista_fecha = $Pista_fecha;
+        $this->Pista_hora=$Pista_hora;
 
 		
 		
@@ -37,16 +37,16 @@ class RESERVA_MODEL{
 	//los datos proporcionados. Si van vacios devuelve todos
 	function SEARCH() {
 		// construimos la sentencia de busqueda con LIKE y los atributos de la entidad
-		$sql = "select  Dni,
-					idPista,
-					Hora,
-					Fecha
+		$sql = "select  Usuario_Dni,
+					Pista_idPista,
+					Pista_Hora,
+					Pista_Fecha
        			from RESERVA 
     			where 
-    				((BINARY Dni LIKE '%$this->Dni%')&&
-					(BINARY idPista LIKE '%$this->idPista%') &&
-                    (BINARY Fecha LIKE '%$this->fecha%') &&
-    				(BINARY Hora LIKE '%$this->hora%') 
+    				((BINARY Usuario_Dni LIKE '%$this->Usuario_Dni%')&&
+					(BINARY Pista_idPista LIKE '%$this->Pista_idPista%') &&
+                    (BINARY Pista_Fecha LIKE '%$this->Pista_fecha%') &&
+    				(BINARY Pista_Hora LIKE '%$this->Pista_hora%') 
 					
     				)";
 		// si se produce un error en la busqueda mandamos el mensaje de error en la consulta
@@ -86,14 +86,14 @@ class RESERVA_MODEL{
 	// se manda un mensaje de que ese valor de clave no existe
 	function DELETE() {
 		// se construye la sentencia sql de busqueda con los atributos de la clase
-		$sql = "SELECT * FROM RESERVA WHERE (Dni='$this->Dni' && idPista = '$this->idPista' && Fecha = '$this->fecha' && Hora = '$this->hora')";
+		$sql = "SELECT * FROM RESERVA WHERE (Usuario_Dni='$this->Usuario_Dni' && Pista_idPista = '$this->Pista_idPista' && Pista_Fecha = '$this->Pista_fecha' && Pista_Hora = '$this->Pista_hora')";
 		// se ejecuta la query
 		$result = $this->mysqli->query( $sql );
 	
 
 		if ( $result->num_rows == 1 ) {// si existe una tupla con ese valor de clave
 			// se construye la sentencia sql de borrado
-			$sql = "DELETE FROM RESERVA WHERE (Dni='$this->Dni' && idPista = '$this->idPista' && Fecha = '$this->fecha' && Hora = '$this->hora')";
+			$sql = "DELETE FROM RESERVA WHERE (Usuario_Dni='$this->Usuario_Dni' && Pista_idPista = '$this->Pista_idPista' && Pista_Fecha = '$this->Pista_fecha' && Pista_Hora = '$this->Pista_hora')";
 			// se ejecuta la query
 			$this->mysqli->query( $sql );
 			// se devuelve el mensaje de borrado correcto
@@ -108,7 +108,7 @@ class RESERVA_MODEL{
 	// en el atributo de la clase
 	function RellenaDatos() { 
 
-		$sql = "SELECT * FROM RESERVA WHERE (Dni='$this->Dni' && idPista = '$this->idPista' && Fecha = '$this->fecha' && Hora = '$this->hora')";// se construye la sentencia de busqueda de la tupla
+		$sql = "SELECT * FROM RESERVA WHERE (Usuario_Dni='$this->Usuario_Dni' && Pista_idPista = '$this->Pista_idPista' && Pista_Fecha = '$this->Pista_fecha' && Pista_Hora = '$this->Pista_hora')";// se construye la sentencia de busqueda de la tupla
 		// Si la busqueda no da resultados, se devuelve el mensaje de que no existe
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'No existe en la base de datos'; // 

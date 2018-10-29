@@ -64,7 +64,7 @@
 				<!--<span class="sr-only">(current)</span>--></a>
 				
            </li>
-        <li class="nav-item">
+           <li class="nav-item">
               <a class="nav-link" href="../Controllers/Registro_Controller.php"/><?php echo $strings['Registro']?></a>
            </li>
 			  <li class="nav-item">
@@ -93,6 +93,9 @@ que comprueba permisos para cada una de las acciones -->
 		</li>
 		<?php } 
 		 } ?>
+		<li>
+			<a style="color: lightgrey" href="../Controllers/RESERVA_CONTROLLER.php" /><?php echo 'Gestión de reservas' ?></a>
+		</li>
 	<?php if (isset($_SESSION['login']) & isset($_SESSION['tipo'])) { 
 //Si el usuario tiene permisos de showall en gestión de usuarios se muestra la opción ?>
 		<?php if($_SESSION['tipo'] == 'Admin'){ ?>
