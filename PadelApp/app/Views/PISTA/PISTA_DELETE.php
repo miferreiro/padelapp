@@ -38,7 +38,7 @@ class PISTA_DELETE {
 ?>
 			<div>
 			<form action="../Controllers/PISTA_CONTROLLER.php" method="post" style="display: inline" >
-				<input type="hidden" name="login" value=<?php echo $this->valores['idPista'] ?> />
+				<input type="hidden" name="idPista" value=<?php echo $this->valores['idPista'] ?> />
 				<button id ="buttonBien" type="submit" name="action" value="DELETE" ><img src="../Views/icon/confirmar.png" alt="<?php echo $strings['Confirmar'] ?>"/></button>
 			</form>
 			<form action='../Controllers/PISTA_CONTROLLER.php' method="post" style="display: inline">

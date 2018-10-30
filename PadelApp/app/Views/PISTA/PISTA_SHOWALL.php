@@ -39,14 +39,12 @@ class Pista_Showall{
 						<input type="hidden" name="idPista" value="<?php echo $li['idPista'] ?>">
 						<button id ="buttonBien" type="submit" name="action" value="DELETE" ><img src="../Views/icon/eliminar.png" alt="<?php echo $strings['Eliminar']?>" width="20" height="20" /></button>
 	
-						<button id ="buttonBien" type="submit" name="action" value="SHOWCURRENT"><img src="../Views/icon/buscar.png" alt="BUSCAR" width="20" height="20"/></button>	
+						<button id ="buttonBien" type="submit" name="action" value="SHOWCURRENT"><img src="../Views/icon/verDetalles.png" alt="BUSCAR" width="20" height="20"/></button>	
 						</form>
 					</th>
 <?php					
-
 				}
 ?>
-
 				</tr>
 				<tr>
 					<?php
@@ -57,15 +55,14 @@ class Pista_Showall{
 					for($i=0;$i<$c;$i++){
 						if(Comprobar_Disponibilidad($i+1,$fila['Hora'],date("Y-m-d"))==1){
 ?>
-					<td bgcolor="#35B109" >					
+							<td bgcolor="#35B109" >					
 <?php
 						}else{
 ?>
-					<td bgcolor="#E80408">
+							<td bgcolor="#E80408">
 <?php 
 						}
-							echo $fila['Hora'];
-							
+							echo $fila['Hora'];						
 ?>
 						
 							<form action="../Controllers/PISTA_CONTROLLER.php" method="get" style="display:inline" >
@@ -78,16 +75,13 @@ class Pista_Showall{
 				</td>			   
 <?php
 					}
-					}
-																	 
+					}												 
 ?>
 						</tr>											
 				</thead>
 			</table>
 					<form action='../Controllers/PISTA_CONTROLLER.php'>
-
 						<button type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="AÑADIR" /></button>
-
 					</form>
 		</div>
 			<form action='../Controllers/PISTA_CONTROLLER.php' method="post">

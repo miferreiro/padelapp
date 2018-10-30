@@ -181,7 +181,7 @@ class PISTA_MODEL{
 		$result = $this->mysqli->query( $sql );
 	
 
-		if ( $result->num_rows == 1 ) {// si existe una tupla con ese valor de clave
+		if ( $result->num_rows >=1 ) {// si existe una tupla con ese valor de clave
 			// se construye la sentencia sql de borrado
 			$sql = "DELETE FROM PISTA WHERE (idPista = '$this->idPista' )";
 			// se ejecuta la query

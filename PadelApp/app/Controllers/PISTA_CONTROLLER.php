@@ -63,7 +63,6 @@ switch ( $_REQUEST[ 'action' ] ) {
 	case 'DELETE'://Caso borrar
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario DELETE
 
-		
 				//Variable que recoge un objecto model con solo el login
 				$PISTA = new PISTA_MODEL( $_REQUEST[ 'idPista' ], '', '', '');
 				//Variable que almacena el relleno de los datos utilizando el login
@@ -76,7 +75,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			//Si recibe valores ejecuta el borrado
 		} else {//Si recibe datos los recoge y mediante las funcionalidad de PISTA_MODEL borra los datos
 			//Variable que almacena un objecto PISTA(modelo) con los datos recogidos de los atributos
-			$PISTA = get_data_form();
+			$PISTA = new PISTA_MODEL( $_REQUEST[ 'idPista' ], '', '', '');
 			//Variable que almacena la respuesta de realizar el borrado
 			$respuesta = $PISTA->DELETE();
 			//crea una vista mensaje con la respuesta y la dirección de vuelta
@@ -90,7 +89,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			
 			$PISTA = new PISTA_MODEL( $_REQUEST[ 'idPista' ], $_REQUEST['Hora'], $_REQUEST['Fecha'], '');
 			//Variable que almacena un objecto PISTA(modelo) con los datos de los atibutos rellenados a traves de login
-			$valores = $PISTA->RellenaDatos2( $_REQUEST[ 'idPista' ], $_REQUEST['Hora'], $_REQUEST['Fecha'] );
+			$valores = $PISTA->RellenaDatos2( );
 
 			//Muestra la vista del formulario editar
 			new PISTA_EDIT( $valores);
