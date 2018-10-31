@@ -252,7 +252,7 @@ class PISTA_MODEL{
                     Hora='$this->hora',
 					Fecha = '$this->fecha',
 					Disponibilidad = '$this->disponibilidad'
-				WHERE ( idPista = '$this->idPista'
+				WHERE ( idPista = '$this->idPista' && Hora = '$this->hora' && Fecha = '$this->fecha'
 				)";
 			// si hay un problema con la query se envia un mensaje de error en la modificacion
 			if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {

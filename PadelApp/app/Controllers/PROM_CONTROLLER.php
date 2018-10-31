@@ -40,9 +40,9 @@ if ( !isset( $_REQUEST[ 'action' ] ) ) {
 switch ( $_REQUEST[ 'action' ] ) {
 	case 'ADD'://Caso añadir
 		if ( $_POST ) {//Si no se han recibido datos se envia a la vista del formulario ADD
-		
+			new PROM_ADD();
 		} else {//Si recibe datos los recoge y mediante las funcionalidad de PROM_MODEL inserta los datos
-		    $PROM = new PROM_MODEL($_REQUEST[ 'Fecha' ], $_REQUEST[ 'Hora' ]);
+		    $PROM = get_data_form();
 			$respuesta = $PROM->ADD();//Variable que almacena la respuesta de la inserción
 			//Crea la vista con la respuesta y la ruta para volver
 			new MESSAGE( $respuesta, '../Controllers/PROM_CONTROLLER.php' );

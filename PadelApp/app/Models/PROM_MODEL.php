@@ -59,17 +59,50 @@ class PROM_MODEL{
 	//existe ya en la tabla
 	function ADD() {
 		
-		
-					if ( !$this->mysqli->query( $sql )) { // si da error en la ejecución del insert devolvemos mensaje
-						return 'Error en la inserción';
-					} else { //si no da error en la insercion devolvemos mensaje de exito
-						
-						if($mensaje == 'Inserción realizada con éxito'){//miramos si la inserción en USU_GRUPO tuvo exito
-							return 'Inserción realizada con éxito'; //operacion de insertado correcta
-						}else{//si la insercion no tuvo exito
-							return $mensaje;
-						}	
+	if ( ( $this->fecha <> '' ) && ( $this->hora <> '' )  ) { 
+            			
+			$sql = "SELECT * FROM promociones WHERE (  Fecha = '$this->fecha' && Hora = '$this->hora')";
+
+			if ( !$result = $this->mysqli->query( $sql ) ) { 
+				return 'No se ha podido conectar con la base de datos';
+			} else { 
+
+				if ( $result->num_rows == 0 ) { 
+
+
+							$sql = "INSERT INTO USUARIO (
+							     Dni,
+								 Login,
+                                 Password,	     
+					             Nombre,
+					             Apellidos,
+                                 Sexo,
+								 Tipo,
+					             Telefono
+								) 
+								VALUES(
+								'$this->Dni',
+								'$this->Login',
+                                '$this->Password',	
+								'$this->Nombre',
+								'$this->Apellidos',
+								'$this->Sexo',
+								'$this->Tipo',
+								'$this->Telefono'
+								)";					
+						}else {
+					
+						return 'Ya existe una promocion con la fecha y horas introducidas en la base de datos';// ya existe		
 					}
+					if ( !$this->mysqli->query( $sql )) { 
+						return 'Error en la inserción';
+					} else { 											
+						return 'Inserción realizada con éxito'; 
+					}		
+				}
+		} else { 
+			return 'Introduzca un valor'; 
+		}			
 	
 	} // fin del metodo ADD
 
@@ -85,7 +118,7 @@ class PROM_MODEL{
 		$result = $this->mysqli->query( $sql );
 	
 
-		if ( $result->num_rows == 1 ) {// si existe una tupla con ese valor de clave
+		if ( $result->num_rows >= 1 ) {// si existe una tupla con ese valor de clave
 			// se construye la sentencia sql de borrado
 			$sql = "DELETE FROM promociones WHERE (Fecha = '$this->fecha' && Hora = '$this->hora')";
 			// se ejecuta la query
