@@ -183,6 +183,15 @@ class PISTA_MODEL{
 
 		if ( $result->num_rows >=1 ) {// si existe una tupla con ese valor de clave
 			// se construye la sentencia sql de borrado
+			$sql = "SELECT * FROM RESERVA WHERE (Pista_idPista = '$this->idPista')";
+			$result = $this->mysqli->query( $sql );
+			
+			// se construye la sentencia sql de borrado
+			if($result->num_rows == 1){
+				$sql = "DELETE FROM RESERVA WHERE (Pista_idPista = '$this->idPista')";
+				$this->mysqli->query( $sql );
+			}
+			
 			$sql = "DELETE FROM PISTA WHERE (idPista = '$this->idPista' )";
 			// se ejecuta la query
 			$this->mysqli->query( $sql );

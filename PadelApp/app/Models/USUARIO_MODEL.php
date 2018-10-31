@@ -118,6 +118,22 @@ class USUARIO_MODEL{
 		$result = $this->mysqli->query( $sql );	
 
 		if ( $result->num_rows == 1 ) {
+			$sql = "SELECT * FROM inscripcionpromociones WHERE (Usuario_Dni = '$this->Dni')";
+			$result = $this->mysqli->query( $sql );
+			
+			// se construye la sentencia sql de borrado
+			if($result->num_rows == 1){
+				$sql = "DELETE FROM inscripcionpromociones WHERE (Usuario_Dni = '$this->Dni')";
+				$this->mysqli->query( $sql );
+			}
+			$sql = "SELECT * FROM RESERVA WHERE (Usuario_Dni = '$this->Dni')";
+			$result = $this->mysqli->query( $sql );
+			
+			// se construye la sentencia sql de borrado
+			if($result->num_rows == 1){
+				$sql = "DELETE FROM RESERVA WHERE (Usuario_Dni = '$this->Dni')";
+				$this->mysqli->query( $sql );
+			}
 			
 			$sql = "DELETE FROM USUARIO WHERE (Dni = '$this->Dni' )";
 
