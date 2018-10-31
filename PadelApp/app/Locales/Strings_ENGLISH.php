@@ -285,7 +285,9 @@ array(
 	'Usuario_Dni'=>'Dni',
 	'Pista_idPista'=>'Court',
 	'Pista_Hora'=>'Hour',
-	'Pista_Fecha'=>'Date'
+	'Pista_Fecha'=>'Date',
+	'Promociones_Fecha'=>'Date',
+	'Promociones_Hora'=>'Hour'
 
 	)
 ;
