@@ -98,6 +98,12 @@ que comprueba permisos para cada una de las acciones -->
 			<a style="color: lightgrey" href="../Controllers/PROM_CONTROLLER.php" /><?php echo 'Gestión de promociones' ?></a>
 		</li>
 
+	<?php } if (isset($_SESSION['login'])){?>
+		<li>
+			<a style="color: lightgrey" href="../Controllers/INSPROM_CONTROLLER.php" /><?php echo 'Inscripción en Promociones' ?></a>
+		</li>
+
+
 	<?php }
 		if (isset($_SESSION['login'])){?>
 		<li>
