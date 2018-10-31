@@ -13,6 +13,7 @@ array(
 	'ENTREGAS' => 'Deliverables',
 	'QA' => 'QA',
 	'idioma' => 'Language',
+	'menuGestion' => 'Management Menu',
 	'Opciones' => 'Options  ',
 	'Registro' => 'Register',
 	'Elija sexo' => 'Choose sex',
@@ -285,9 +286,7 @@ array(
 	'Usuario_Dni'=>'Dni',
 	'Pista_idPista'=>'Court',
 	'Pista_Hora'=>'Hour',
-	'Pista_Fecha'=>'Date',
-	'Promociones_Fecha'=>'Date',
-	'Promociones_Hora'=>'Hour'
+	'Pista_Fecha'=>'Date'
 
 	)
 ;
