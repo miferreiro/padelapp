@@ -26,7 +26,31 @@ class PISTA_DELETE {
 			<table class="table table-sm">
 				<thead class="thead-light">
 				<tr>
-					<?php
+					<th>
+						<?php echo $strings['idPista'];?>
+					</th>
+					<td>
+						<?php echo $this->valores['idPista']?>
+					</td>
+				</tr>			
+				</thead>
+			</table>
+			</div>
+<?php 
+			echo $strings['¿Está seguro de que quiere borrar esta tupla de la tabla?'];
+?>
+			<div>
+			<form action="../Controllers/PISTA_CONTROLLER.php" method="post" style="display: inline" >
+				<input type="hidden" name="idPista" value=<?php echo $this->valores['idPista'] ?> />
+				<button id ="buttonBien" type="submit" name="action" value="DELETE" ><img src="../Views/icon/confirmar.png" alt="<?php echo $strings['Confirmar'] ?>"/></button>
+			</form>
+			<form action='../Controllers/PISTA_CONTROLLER.php' method="post" style="display: inline">
+				<button id ="buttonBien" type="submit"><img src="../Views/icon/cancelar.png" alt="<?php echo $strings['Atras'] ?>"/></button>
+			</form>
+			</div>
+		</div>
+
+<?php
 					foreach ( $lista as $atributo ) { 
 ?>
 						<th>
@@ -55,30 +79,22 @@ class PISTA_DELETE {
 <?php
 					}
 ?>
-				<tr>
-					<th>
-						<?php echo $strings['idPista'];?>
-					</th>
 					<td>
-						<?php echo $this->valores['idPista']?>
-					</td>
-				</tr>			
-				</thead>
-			</table>
-			</div>
-<?php 
-			echo $strings['¿Está seguro de que quiere borrar esta tupla de la tabla?'];
+						<form action="../Controllers/RESERVA_CONTROLLER.php" method="get" style="display:inline" >
+							<input type="hidden" name="Usuario_Dni" value="<?php echo $fila['Usuario_Dni']; ?>">
+							<input type="hidden" name="Pista_idPista" value="<?php echo $fila['Pista_idPista']; ?>">
+							<input type="hidden" name="Pista_Fecha" value="<?php echo $fila['Pista_Fecha']; ?>">
+							<input type="hidden" name="Pista_Hora" value="<?php echo $fila['Pista_Hora']; ?>">
+				
+								<button id ="buttonBien" type="submit" name="action" value="DELETE" ><img src="../Views/icon/eliminar.png" alt="<?php echo $strings['Eliminar']?>" width="20" height="20" /></button>				
+					<td>						
+								<button id ="buttonBien" type="submit" name="action" value="SHOWCURRENT" ><img src="../Views/icon/verDetalles.png" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>
+						</form>
+				    <td>								
+				</tr>
+<?php
+				}
 ?>
-			<div>
-			<form action="../Controllers/PISTA_CONTROLLER.php" method="post" style="display: inline" >
-				<input type="hidden" name="idPista" value=<?php echo $this->valores['idPista'] ?> />
-				<button id ="buttonBien" type="submit" name="action" value="DELETE" ><img src="../Views/icon/confirmar.png" alt="<?php echo $strings['Confirmar'] ?>"/></button>
-			</form>
-			<form action='../Controllers/PISTA_CONTROLLER.php' method="post" style="display: inline">
-				<button id ="buttonBien" type="submit"><img src="../Views/icon/cancelar.png" alt="<?php echo $strings['Atras'] ?>"/></button>
-			</form>
-			</div>
-		</div>
 <?php           
 		include '../Views/Footer.php';               
          }   
