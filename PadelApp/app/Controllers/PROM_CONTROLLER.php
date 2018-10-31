@@ -58,7 +58,6 @@ switch ( $_REQUEST[ 'action' ] ) {
 				//Variable que almacena el relleno de los datos utilizando el login
 				$valores = $PROM->RellenaDatos($_REQUEST[ 'Fecha' ], $_REQUEST[ 'Hora' ]);
 
-            
 				//Crea una vista delete para ver la tupla
 				new PROM_DELETE( $valores);
 			

@@ -167,7 +167,7 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `AbpBase`.`IncripcionPromociones`
+-- Table `AbpBase`.`InscripcionPromociones`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `AbpBase`.`InscripcionPromociones` ;
 
@@ -375,10 +375,10 @@ INSERT INTO `campeonato` (`IdCampeonato`, `FechaIni`,`HoraIni`, `FechaFin`,`Hora
 (2, '2018-10-25', '10:00', '2018-10-27' ,'23:00');
 
 --
--- Volcado de datos para la tabla `incripcionpromociones`
+-- Volcado de datos para la tabla `inscripcionpromociones`
 --
 
-INSERT INTO `incripcionpromociones` (`Usuario_Dni`, `Promociones_Fecha`, `Promociones_Hora`) VALUES
+INSERT INTO `inscripcionpromociones` (`Usuario_Dni`, `Promociones_Fecha`, `Promociones_Hora`) VALUES
 ('72070206H', '2018-10-23', '16:00'),
 ('50890587M', '2018-10-23', '12:30');
 

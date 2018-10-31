@@ -46,8 +46,8 @@ class PROM_DELETE {
 ?>
 			<div>
 			<form action="../Controllers/PROM_CONTROLLER.php" method="post" style="display: inline" >
-				<input type="hidden" name="Fecha" value="<?php echo $fila['Fecha']; ?>">
-				<input type="hidden" name="Hora" value="<?php echo $fila['Hora']; ?>">
+				<input type="hidden" name="Fecha" value="<?php echo $this->valores['Fecha']; ?>">
+				<input type="hidden" name="Hora" value="<?php echo $this->valores['Hora']; ?>">
 
 				<button id ="buttonBien" type="submit" name="action" value="DELETE" ><img src="../Views/icon/confirmar.png" alt="<?php echo $strings['Confirmar'] ?>"/></button>
 			</form>

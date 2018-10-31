@@ -118,8 +118,16 @@ class PROM_MODEL{
 		$result = $this->mysqli->query( $sql );
 	
 
-		if ( $result->num_rows >= 1 ) {// si existe una tupla con ese valor de clave
+		if ( $result->num_rows == 1 ) {// si existe una tupla con ese valor de clave
+			$sql = "SELECT * FROM inscripcionpromociones WHERE (Promociones_Fecha = '$this->fecha' && Promociones_Hora = '$this->hora')";
+			$result = $this->mysqli->query( $sql );
+			
 			// se construye la sentencia sql de borrado
+			if($result->num_rows == 1){
+				$sql = "DELETE FROM inscripcionpromociones WHERE (Promociones_Fecha = '$this->fecha' && Promociones_Hora = '$this->hora')";
+				$this->mysqli->query( $sql );
+			}
+			
 			$sql = "DELETE FROM promociones WHERE (Fecha = '$this->fecha' && Hora = '$this->hora')";
 			// se ejecuta la query
 			$this->mysqli->query( $sql );
