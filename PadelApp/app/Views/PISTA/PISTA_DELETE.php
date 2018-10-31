@@ -9,10 +9,8 @@ class PISTA_DELETE {
 		$this->render( $this->valores);
 	}
 
-	function render( $valores,$lista,$lista2) { 
+	function render( $valores) { 
 		$this->valores = $valores;
-		$this->lista = $lista;
-		$this->lista2 = $lista2;
 	
 
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
