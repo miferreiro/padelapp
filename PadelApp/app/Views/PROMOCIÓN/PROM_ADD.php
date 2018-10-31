@@ -14,7 +14,7 @@ class PROM_ADD {
 			<h2>
 				<?php echo $strings['Formulario de inserción'];?>
 			</h2>
-			<form name="ADD" action="../Controllers/PROM_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="return comprobarAddUsuario()">
+			<form name="ADD" action="../Controllers/PROM_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="">
 			<div class="col-sm-4">
 			<table class="table table-sm">
 				<thead class="thead-light">

@@ -43,7 +43,7 @@ if ( !isset( $_REQUEST[ 'action' ] ) ) {
 //Estructura de control, que realiza un determinado caso dependiendo del valor action
 switch ( $_REQUEST[ 'action' ] ) {
 	case 'ADD'://Caso añadir
-		if ( $_POST ) {//Si no se han recibido datos se envia a la vista del formulario ADD
+		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario ADD
 		
 		} else {//Si recibe datos los recoge y mediante las funcionalidad de RESERVA_MODEL inserta los datos
 		    $RESERVA = new RESERVA_MODEL( $_REQUEST[ 'Usuario_Dni' ], $_REQUEST[ 'Pista_idPista' ], $_REQUEST[ 'Pista_Fecha' ], $_REQUEST[ 'Pista_Hora' ]);

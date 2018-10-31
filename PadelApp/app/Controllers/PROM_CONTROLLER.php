@@ -39,7 +39,7 @@ if ( !isset( $_REQUEST[ 'action' ] ) ) {
 //Estructura de control, que realiza un determinado caso dependiendo del valor action
 switch ( $_REQUEST[ 'action' ] ) {
 	case 'ADD'://Caso añadir
-		if ( $_POST ) {//Si no se han recibido datos se envia a la vista del formulario ADD
+		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario ADD
 			new PROM_ADD();
 		} else {//Si recibe datos los recoge y mediante las funcionalidad de PROM_MODEL inserta los datos
 		    $PROM = get_data_form();
