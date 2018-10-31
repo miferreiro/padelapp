@@ -25,7 +25,7 @@ class PISTA_DELETE {
 			<table class="table table-sm">
 				<thead class="thead-light">
 <?php
-				foreach ( $lista as $atributo ) { 
+					foreach ( $lista as $atributo ) { 
 ?>
 						<th>
 							<?php echo $strings[$atributo]?>

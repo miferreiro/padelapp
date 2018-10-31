@@ -83,7 +83,7 @@ que comprueba permisos para cada una de las acciones -->
 	<?php if (isset($_SESSION['login']) & isset($_SESSION['tipo'])) { 
 //Si el usuario tiene permisos de showall en gestión de usuarios se muestra la opción ?>
 		<?php if($_SESSION['tipo'] == 'Admin'){ ?>
-<li class="nav-item dropdown">
+<li class="nav-item dropdown" style="display: block">
 			<form name='idiomform' action="../Functions/CambioIdioma.php" method="post">
               <a class="nav-link dropdown-toggle" style="color: lightgrey" href="<?php echo $strings['menuGestion']; ?>" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Menú de Gestión</a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -91,40 +91,42 @@ que comprueba permisos para cada una de las acciones -->
 				  
                 <button id ="buttonBien" type="submit"  name="usuarios"><a class="dropdown-item" href="../Controllers/USUARIO_CONTROLLER.php" /><?php echo $strings['Gestion de usuarios']?></a></button>
 				
-				  <div class="dropdown-divider"></div>
+				  
 				<?php }
 					} ?>
 				<?php if (isset($_SESSION['login']) & isset($_SESSION['tipo'])) { 
 				//Si el usuario tiene permisos de showall en gestión de usuarios se muestra la opción ?>
-
+				<div class="dropdown-divider"></div>
+				
 				 <button id ="buttonBien" type="submit"  name="pistas"><a class="dropdown-item" href="../Controllers/PISTA_CONTROLLER.php" /><?php echo $strings['Gestión de pistas'] ?></a></button>
 				
-				  <div class="dropdown-divider"></div>
+				  
 	
 				<?php 
 						} 
 				?>
 				<?php if (isset($_SESSION['login'])){?>
 	
+				
+				<div class="dropdown-divider"></div>
 	
 				 <button id ="buttonBien" type="submit"  name="promociones"><a class="dropdown-item"  href="../Controllers/PROM_CONTROLLER.php" /><?php echo 'Gestión de promociones' ?></a></button>
 				
-				  <div class="dropdown-divider"></div>
+				  
 				
 
 				<?php } if (isset($_SESSION['login'])){?>
 	
-                <button id ="buttonBien" type="submit"  name="insPromociones"><a class="dropdown-item" href="../Controllers/INSPROM_CONTROLLER.php" /><?php echo 'Inscripción en Promociones' ?></a></button>
+				<div class="dropdown-divider"></div>
 
-                <div class="dropdown-divider"></div>
+                <button id ="buttonBien" type="submit"  name="insPromociones"><a class="dropdown-item" href="../Controllers/INSPROM_CONTROLLER.php" /><?php echo 'Inscripción en Promociones' ?></a></button>
 
 				<?php }
 				if (isset($_SESSION['login'])){?>
 
-                <button id ="buttonBien" type="submit"  name="gesReservas"><a class="dropdown-item"  href="../Controllers/RESERVA_CONTROLLER.php" /><?php echo 'Gestión de reservas' ?></a></button>
-
 				<div class="dropdown-divider"></div>
 
+                <button id ="buttonBien" type="submit"  name="gesReservas"><a class="dropdown-item"  href="../Controllers/RESERVA_CONTROLLER.php" /><?php echo 'Gestión de reservas' ?></a></button>
 
 				<?php
 									   }
@@ -132,16 +134,17 @@ que comprueba permisos para cada una de las acciones -->
 				//Si el usuario tiene permisos de showall en gestión de usuarios se muestra la opción ?>
 				<?php if($_SESSION['tipo'] == 'Admin'){ ?>
 
-                <button id ="buttonBien" type="submit"  name="gesCampeonatos" ><a class="dropdown-item" href="../Controllers/CAMPEONATO_CONTROLLER.php"/><?php echo 'Gestion de campeonatos' ?></a></button>
-             	 
 				<div class="dropdown-divider"></div>
+
+                <button id ="buttonBien" type="submit"  name="gesCampeonatos" ><a class="dropdown-item" href="../Controllers/CAMPEONATO_CONTROLLER.php"/><?php echo 'Gestion de campeonatos' ?></a></button>
+             	
 
 					<?php }
 				} ?>
 
 				<?php if(isset($_SESSION['login']) & isset($_SESSION['tipo'])) {  ?>
 				 <?php if($_SESSION['tipo'] == 'Deportista'){ ?>
-
+				<div class="dropdown-divider"></div>
 
                 <button id ="buttonBien" type="submit"  name="insCampeonato"><a class="dropdown-item" href="../Controllers/CATEGORIA_CONTROLLER.php" /><?php echo 'Inscribirse en campeonato' ?></a></button>
 
@@ -151,7 +154,7 @@ que comprueba permisos para cada una de las acciones -->
 			</form>
             </li>
 
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown" style="display: block">
 			<form name='idiomform' action="../Functions/CambioIdioma.php" method="post">
               <a class="nav-link dropdown-toggle" style="color: lightgrey" href="<?php echo $strings['idioma']; ?>" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Idiomas</a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
