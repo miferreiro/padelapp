@@ -64,7 +64,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 
             
 				//Crea una vista delete para ver la tupla
-				new RESERVA_DELETE( $valores);
+				new RESERVA_DELETE($valores);
 			
 			//Si recibe valores ejecuta el borrado
 		} else {//Si recibe datos los recoge y mediante las funcionalidad de PISTA_MODEL borra los datos

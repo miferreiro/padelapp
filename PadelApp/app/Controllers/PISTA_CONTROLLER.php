@@ -8,7 +8,7 @@ if (!IsAuthenticated()){
 	//Redireción al index
  	header('Location:../index.php');
 }
-
+include '../Models/RESERVA_MODEL.php';
 include '../Models/PISTA_MODEL.php'; //incluye el contendio del modelo PISTAS
 include '../Views/PISTA/PISTA_SHOWALL.php'; //incluye la vista del showall
 include '../Views/PISTA/PISTA_EDIT.php'; //incluye la vista EDIT
@@ -67,10 +67,12 @@ switch ( $_REQUEST[ 'action' ] ) {
 				$PISTA = new PISTA_MODEL( $_REQUEST[ 'idPista' ], '', '', '');
 				//Variable que almacena el relleno de los datos utilizando el login
 				$valores = $PISTA->RellenaDatos( $_REQUEST[ 'idPista' ] );
-
+				$lista = array('Usuario_Dni','Pista_idPista','Pista_Fecha','Pista_Hora');
+				$RESERVA = new RESERVA_MODEL('',$_REQUEST[ 'idPista' ],'',''); 
+				$lista2 = $RESERVA->SEARCH();
             
 				//Crea una vista delete para ver la tupla
-				new PISTA_DELETE( $valores);
+				new PISTA_DELETE( $valores,$lista,$lista2);
 			
 			//Si recibe valores ejecuta el borrado
 		} else {//Si recibe datos los recoge y mediante las funcionalidad de PISTA_MODEL borra los datos
@@ -110,10 +112,13 @@ switch ( $_REQUEST[ 'action' ] ) {
 	case 'SHOWCURRENT'://Caso showcurrent
 		           $PISTA = new PISTA_MODEL(  $_REQUEST[ 'idPista' ],'','','');
 		//Variable que almacena los valores rellenados a traves de login
-		           $valores = $PISTA->SEARCH();
-				   $lista = array('Fecha','Hora','Disponibilidad');
+					$valores = $PISTA->SEARCH();
+				   	$lista = array('Fecha','Hora','Disponibilidad');
+					$lista1 = array('Usuario_Dni','Pista_idPista','Pista_Fecha','Pista_Hora');
+					$RESERVA = new RESERVA_MODEL('',$_REQUEST[ 'idPista' ],'',''); 
+					$lista2 = $RESERVA->SEARCH();
 		           //Creación de la vista showcurrent
-		           new PISTA_SHOWCURRENT($lista, $valores );
+		           new PISTA_SHOWCURRENT($lista, $valores, $lista1, $lista2 );
 			
 		//Final del bloque
 		break;

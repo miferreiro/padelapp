@@ -3,14 +3,18 @@
 class PISTA_SHOWCURRENT{
 	
     //es el constructor de la clase Pista_Showall
-	function __construct( $lista, $valores) {
+	function __construct( $lista, $valores, $lista1, $lista2) {
 		$this->lista = $lista;//pasamos los campos de la tabla PISTAS
+		$this->lista1 = $lista1;
+		$this->lista2 = $lista2;
 		$this->valores = $valores;//pasamos los valores de cada campo
 
 		$this->render($this->lista,$this->valores);//llamamos a la función render donde se mostrará el formulario SHOWALL con los campos correspondientes
 	}
-	function render($lista,$valores){
+	function render($lista,$valores,$lista1,$lista2){
 		$this->lista = $lista;//pasamos los campos de la tabla PISTAS
+		$this->lista1 = $lista1;
+		$this->lista2 = $lista2;
 		$this->valores = $valores;//pasamos los valores de cada campo
 
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego

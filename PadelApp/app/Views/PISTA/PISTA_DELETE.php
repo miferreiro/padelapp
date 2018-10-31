@@ -2,14 +2,17 @@
 
 class PISTA_DELETE {
 
-	function __construct( $valores) { 
+	function __construct($valores,$lista,$lista2) { 
 		$this->valores = $valores;
-
+		$this->lista = $lista;
+		$this->lista2 = $lista2;
 		$this->render( $this->valores);
 	}
 
-	function render( $valores) { 
+	function render( $valores,$lista,$lista2) { 
 		$this->valores = $valores;
+		$this->lista = $lista;
+		$this->lista2 = $lista2;
 	
 
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
@@ -22,6 +25,36 @@ class PISTA_DELETE {
 			<div class="col-md-4">
 			<table class="table table-sm">
 				<thead class="thead-light">
+				<tr>
+					<?php
+					foreach ( $lista as $atributo ) { 
+?>
+						<th>
+							<?php echo $strings[$atributo]?>
+						</th>
+<?php
+					}
+?>
+					<th colspan="4" >
+						<?php echo $strings['Opciones']?>
+					</th>
+
+				</tr>
+<?php
+				while ( $fila = mysqli_fetch_array( $this->lista2 ) ) { 
+?>
+				<tr>
+<?php
+					foreach ( $lista as $atributo ) { 
+?>
+					<td>
+<?php 
+							echo $fila[ $atributo ];
+?>
+					</td>
+<?php
+					}
+?>
 				<tr>
 					<th>
 						<?php echo $strings['idPista'];?>
