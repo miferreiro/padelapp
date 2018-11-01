@@ -1,11 +1,5 @@
 <?php
-/*
-	Archivo php
-	Nombre: Header.php
-	Autor: 	Miguel Ferreiro
-	Fecha de creación: 23/10/2017 
-	Función: contiene todas las características del header
-*/
+
 	include_once '../Functions/Authentication.php';//incluimos este fichero para mirar si el usuario esta auteneticado
 	if (!isset($_SESSION['idioma'])) { //miramos si existe algún idioma
 		$_SESSION['idioma'] = 'SPANISH';//si no existe ponemos por defecto el español
@@ -75,83 +69,61 @@
 ?>			
 
 
-
-
-
 		<!-- Si hay un usuario logeado (Variable de sesion login con valor) ejecuta el código dento del if
 que comprueba permisos para cada una de las acciones -->
 	<?php if (isset($_SESSION['login']) & isset($_SESSION['tipo'])) { 
 //Si el usuario tiene permisos de showall en gestión de usuarios se muestra la opción ?>
-		<?php if($_SESSION['tipo'] == 'Admin'){ ?>
-<li class="nav-item dropdown" style="display: block">
-			<form name='idiomform' action="../Functions/CambioIdioma.php" method="post">
-              <a class="nav-link dropdown-toggle" style="color: lightgrey" href="<?php echo $strings['menuGestion']; ?>" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Menú de Gestión</a>
+		<li class="nav-item dropdown" style="display: block">
+			<a class="nav-link dropdown-toggle" style="color: lightgrey" href="<?php echo $strings['menuGestion']; ?>" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Menú de Gestión</a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-				  
-				  
-                <button id ="buttonBien" type="submit"  name="usuarios"><a class="dropdown-item" href="../Controllers/USUARIO_CONTROLLER.php" /><?php echo $strings['Gestion de usuarios']?></a></button>
-				
-				  
-				<?php }
-					} ?>
+				<?php if($_SESSION['tipo'] == 'Admin'){ ?>
+							<div class="dropdown-divider"></div>
+								<button id ="buttonBien" type="submit"  name="usuarios"><a class="dropdown-item" href="../Controllers/USUARIO_CONTROLLER.php" /><?php echo $strings['Gestion de usuarios']?></a></button>
+								  
+				<?php } ?>
 				<?php if (isset($_SESSION['login']) & isset($_SESSION['tipo'])) { 
 				//Si el usuario tiene permisos de showall en gestión de usuarios se muestra la opción ?>
-				<div class="dropdown-divider"></div>
-				
-				 <button id ="buttonBien" type="submit"  name="pistas"><a class="dropdown-item" href="../Controllers/PISTA_CONTROLLER.php" /><?php echo $strings['Gestión de pistas'] ?></a></button>
-				
-				  
-	
-				<?php 
-						} 
-				?>
-				<?php if (isset($_SESSION['login'])){?>
-	
-				
-				<div class="dropdown-divider"></div>
-	
-				 <button id ="buttonBien" type="submit"  name="promociones"><a class="dropdown-item"  href="../Controllers/PROM_CONTROLLER.php" /><?php echo 'Gestión de promociones' ?></a></button>
-				
-				  
-				
-
-				<?php } if (isset($_SESSION['login'])){?>
-	
-				<div class="dropdown-divider"></div>
-
-                <button id ="buttonBien" type="submit"  name="insPromociones"><a class="dropdown-item" href="../Controllers/INSPROM_CONTROLLER.php" /><?php echo 'Inscripción en Promociones' ?></a></button>
-
-				<?php }
-				if (isset($_SESSION['login'])){?>
-
-				<div class="dropdown-divider"></div>
-
-                <button id ="buttonBien" type="submit"  name="gesReservas"><a class="dropdown-item"  href="../Controllers/RESERVA_CONTROLLER.php" /><?php echo 'Gestión de reservas' ?></a></button>
-
-				<?php
-									   }
-					if (isset($_SESSION['login']) & isset($_SESSION['tipo'])) { 
-				//Si el usuario tiene permisos de showall en gestión de usuarios se muestra la opción ?>
 				<?php if($_SESSION['tipo'] == 'Admin'){ ?>
+							<div class="dropdown-divider"></div>	
+								<button id ="buttonBien" type="submit"  name="pistas"><a class="dropdown-item" href="../Controllers/PISTA_CONTROLLER.php" /><?php echo $strings['Gestión de pistas'] ?></a></button>
+				
+				<?php } }?>				
+				<?php if (isset($_SESSION['login']) &  isset($_SESSION['tipo'])){?>
+					<?php if($_SESSION['tipo'] == 'Admin'){ ?>
+							<div class="dropdown-divider"></div>
+	
+								<button id ="buttonBien" type="submit"  name="promociones"><a class="dropdown-item"  href="../Controllers/PROM_CONTROLLER.php" /><?php echo 'Gestión de promociones' ?></a></button>
+								
+				<?php } } ?>
+				<?php if (isset($_SESSION['login']) &  isset($_SESSION['tipo'])){?>
+						<?php if($_SESSION['tipo'] == 'Deportista'){ ?>
+							<div class="dropdown-divider"></div>
+								<button id ="buttonBien" type="submit"  name="insPromociones"><a class="dropdown-item" href="../Controllers/INSPROM_CONTROLLER.php" /><?php echo 'Inscripción en Promociones' ?></a></button>
+	
+				<?php } } ?>
+				<?php if (isset($_SESSION['login']) &  isset($_SESSION['tipo'])){?>
+					<?php if($_SESSION['tipo'] == 'Admin'){ ?>
+							<div class="dropdown-divider"></div>
 
-				<div class="dropdown-divider"></div>
+								<button id ="buttonBien" type="submit"  name="gesReservas"><a class="dropdown-item"  href="../Controllers/RESERVA_CONTROLLER.php" /><?php echo 'Gestión de reservas' ?></a></button>
 
-                <button id ="buttonBien" type="submit"  name="gesCampeonatos" ><a class="dropdown-item" href="../Controllers/CAMPEONATO_CONTROLLER.php"/><?php echo 'Gestion de campeonatos' ?></a></button>
-             	
+					<?php }  } ?>
+				<?php if (isset($_SESSION['login']) & isset($_SESSION['tipo'])) { 
+					//Si el usuario tiene permisos de showall en gestión de usuarios se muestra la opción ?>
+					<?php if($_SESSION['tipo'] == 'Admin'){ ?>
 
-					<?php }
-				} ?>
+							<div class="dropdown-divider"></div>
 
+								<button id ="buttonBien" type="submit"  name="gesCampeonatos" ><a class="dropdown-item" href="../Controllers/CAMPEONATO_CONTROLLER.php"/><?php echo 'Gestion de campeonatos' ?></a></button>
+				<?php }} ?>
 				<?php if(isset($_SESSION['login']) & isset($_SESSION['tipo'])) {  ?>
-				 <?php if($_SESSION['tipo'] == 'Deportista'){ ?>
-				<div class="dropdown-divider"></div>
+					<?php if($_SESSION['tipo'] == 'Deportista'){ ?>
+							<div class="dropdown-divider"></div>
 
-                <button id ="buttonBien" type="submit"  name="insCampeonato"><a class="dropdown-item" href="../Controllers/CATEGORIA_CONTROLLER.php" /><?php echo 'Inscribirse en campeonato' ?></a></button>
+								<button id ="buttonBien" type="submit"  name="insCampeonato"><a class="dropdown-item" href="../Controllers/CATEGORIA_CONTROLLER.php" /><?php echo 'Inscribirse en campeonato' ?></a></button>
 
-              	<?php }
-				} ?>
+              	<?php } } }?>
               </div>
-			</form>
             </li>
 
             <li class="nav-item dropdown" style="display: block">

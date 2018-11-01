@@ -35,7 +35,7 @@ class USUARIO_SHOWALL {
 <?php
 					}
 ?>
-					<th colspan="4" >
+					<th colspan="2" >
 						<?php echo $strings['Opciones']?>
 					</th>
 
@@ -60,12 +60,12 @@ class USUARIO_SHOWALL {
 							<input type="hidden" name="Dni" value="<?php echo $fila['Dni']; ?>">
 							
 								<button id ="buttonBien" type="submit" name="action" value="EDIT" ><img src="../Views/icon/modificar.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" /></button>
-					<td>					
+										
 								<button id ="buttonBien" type="submit" name="action" value="DELETE" ><img src="../Views/icon/eliminar.png" alt="<?php echo $strings['Eliminar']?>" width="20" height="20" /></button>				
-					<td>						
+											
 								<button id ="buttonBien" type="submit" name="action" value="SHOWCURRENT" ><img src="../Views/icon/verDetalles.png" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>
 						</form>
-				    <td>								
+				    								
 				</tr>
 <?php
 				}

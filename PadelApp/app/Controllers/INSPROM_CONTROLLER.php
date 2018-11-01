@@ -98,7 +98,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'SHOWCURRENT'://Caso showcurrent
 		           $INSPROM = new INSPROM_MODEL( $_REQUEST[ 'Usuario_Dni' ], $_REQUEST[ 'Promociones_Fecha' ], $_REQUEST[ 'Promociones_Hora' ]);
-		//Variable que almacena los valores rellenados a traves de login
+					//Variable que almacena los valores rellenados a traves de login
 		           	$valores = $INSPROM->RellenaDatos($_REQUEST[ 'Usuario_Dni' ], $_REQUEST[ 'Promociones_Fecha' ], $_REQUEST[ 'Promociones_Hora' ]);
 		           //Creación de la vista showcurrent
 		           new INSPROM_SHOWCURRENT( $valores );
@@ -106,19 +106,19 @@ switch ( $_REQUEST[ 'action' ] ) {
 		//Final del bloque
 		break;
 	default: //Caso que se ejecuta por defecto
-			if($_SESSION['tipo'] == 'Admin'){//miramos si el usuario es administrador
-						if ( !$_POST ) {//Si no se han recibido datos 
-							$INSPROM = new INSPROM_MODEL( '', '', '', '');//Variable que almacena la un objeto del modelo PISTA
-							//Si se reciben datos
-						} else {
-							$INSPROM = get_data_form();//Variable que almacena los valores de un objeto PISTA_MODEL
-						}
-						//Variable que almacena los datos de la busqueda
-						$datos = $INSPROM->SEARCH();
-						//Variable que almacena array con el nombre de los atributos
-						$lista = array( 'Usuario_Dni','Promociones_Hora','Promociones_Fecha');
-						
-						new INSPROM_SHOWALL( $lista, $datos);//nos muestra una vista showall con todos los permisos
+			if($_SESSION['tipo'] == 'Deportista'){//miramos si el usuario es administrador
+				if ( !$_POST ) {//Si no se han recibido datos 
+					$INSPROM = new INSPROM_MODEL( '', '', '', '');//Variable que almacena la un objeto del modelo PISTA
+					//Si se reciben datos
+				} else {
+					$INSPROM = get_data_form();//Variable que almacena los valores de un objeto PISTA_MODEL
+				}
+				//Variable que almacena los datos de la busqueda
+				$datos = $INSPROM->SEARCH();
+				//Variable que almacena array con el nombre de los atributos
+				$lista = array( 'Usuario_Dni','Promociones_Hora','Promociones_Fecha');
+				
+				new INSPROM_SHOWALL( $lista, $datos);//nos muestra una vista showall con todos los permisos
 			}else{//en el caso de que el usuario no tenga permisos le sale una vista vacía
 				new USUARIO_DEFAULT();
 			}

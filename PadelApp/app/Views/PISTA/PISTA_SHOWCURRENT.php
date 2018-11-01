@@ -9,7 +9,7 @@ class PISTA_SHOWCURRENT{
 		$this->lista2 = $lista2;
 		$this->valores = $valores;//pasamos los valores de cada campo
 
-		$this->render($this->lista,$this->valores);//llamamos a la función render donde se mostrará el formulario SHOWALL con los campos correspondientes
+		$this->render($this->lista,$this->valores,$this->lista1,$this->lista2);//llamamos a la función render donde se mostrará el formulario SHOWALL con los campos correspondientes
 	}
 	function render($lista,$valores,$lista1,$lista2){
 		$this->lista = $lista;//pasamos los campos de la tabla PISTAS

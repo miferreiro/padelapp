@@ -27,19 +27,19 @@ class PISTA_EDIT {
 						<th class="formThTd">
 							<?php echo $strings['idPista'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="idPista" name="idPista" value="<?php echo $this->valores['idPista']?>" readonly required/>
+						<td class="formThTd"><input type="text" id="idPista" name="idPista" value="<?php echo $this->valores['idPista']?>" readonly required />
 					</tr>
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['Hora'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="Hora" name="Hora" value="<?php echo $this->valores['Hora']?>" readonly required/>
+						<td class="formThTd"><input type="text" id="Hora" name="Hora" value="<?php echo $this->valores['Hora']?>" readonly required />
 					</tr>
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['Fecha'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="Fecha" name="Fecha" value="<?php echo $this->valores['Fecha']?>" readonly required/>
+						<td class="formThTd"><input type="text" id="Fecha" name="Fecha" value="<?php echo $this->valores['Fecha']?>" readonly required />
 					</tr>
 			<tr>
 						<th class="formThTd">
@@ -49,13 +49,13 @@ class PISTA_EDIT {
 <?php
 								if( $this->valores['Disponibilidad'] == "1"){
 ?>	
-									<input type="radio"  id="Disponibilidad" name="Disponibilidad" value="1" checked/>1<br>
+									<input type="radio"  id="Disponibilidad" name="Disponibilidad" value="1" checked />1<br>
 									<input type="radio"  id="Disponibilidad" name="Disponibilidad" value="0"/>0<br>
 <?php
 								}else{
 ?>
 									<input type="radio"  id="Disponibilidad" name="Disponibilidad" value="1" />1<br>
-									<input type="radio"  id="Disponibilidad" name="Disponibilidad" value="0" checked/>0<br>
+									<input type="radio"  id="Disponibilidad" name="Disponibilidad" value="0" checked />0<br>
 <?php
 									
 

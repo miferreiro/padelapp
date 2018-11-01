@@ -24,6 +24,14 @@ class PISTA_DELETE {
 			<div class="col-md-4">
 			<table class="table table-sm">
 				<thead class="thead-light">
+								<tr>
+					<th>
+						<?php echo $strings['idPista'];?>
+					</th>
+					<td>
+						<?php echo $this->valores['idPista']?>
+					</td>
+				</tr>	
 <?php
 					foreach ( $lista as $atributo ) { 
 ?>
@@ -49,14 +57,7 @@ class PISTA_DELETE {
 					}
 				}
 ?>
-				<tr>
-					<th>
-						<?php echo $strings['idPista'];?>
-					</th>
-					<td>
-						<?php echo $this->valores['idPista']?>
-					</td>
-				</tr>			
+		
 				</thead>
 			</table>
 			</div>

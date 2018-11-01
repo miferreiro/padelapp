@@ -67,7 +67,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 				$PISTA = new PISTA_MODEL( $_REQUEST[ 'idPista' ], '', '', '');
 				//Variable que almacena el relleno de los datos utilizando el login
 				$valores = $PISTA->RellenaDatos( $_REQUEST[ 'idPista' ] );
-				$lista = array('Usuario_Dni','Pista_idPista','Pista_Fecha','Pista_Hora');
+				$lista = array('Usuario_Dni','Pista_Fecha','Pista_Hora');
 				$RESERVA = new RESERVA_MODEL('',$_REQUEST[ 'idPista' ],'',''); 
 				$lista2 = $RESERVA->SEARCH();
             

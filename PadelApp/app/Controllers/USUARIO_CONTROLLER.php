@@ -36,14 +36,38 @@ function get_data_form() {
 		$dni,
 		$nombre,
 		$apellidos,
-		$sexo,
 		$telefono,
+		$sexo,
 		$tipo
 	);
 	
 	return $USUARIO;
 }
+function get_data_form_add() {
+	
+	$dni = $_REQUEST[ 'Dni' ];
+	$login = $_REQUEST[ 'login' ]; 
+	$password = $_REQUEST[ 'password' ];
+	$nombre = $_REQUEST[ 'nombre' ]; 
+	$apellidos = $_REQUEST[ 'apellidos' ]; 
+	$sexo = $_REQUEST[ 'sexo' ]; 
+	$tipo = 'Deportista';	
+	$telefono = $_REQUEST[ 'telefono' ]; 
+	$action = $_REQUEST[ 'action' ]; 
 
+	$USUARIO = new USUARIO_MODEL(
+		$login,
+		$password,
+		$dni,
+		$nombre,
+		$apellidos,
+		$telefono,
+		$sexo,
+		$tipo
+	);
+	
+	return $USUARIO;
+}
 if ( !isset( $_REQUEST[ 'action' ] ) ) {
 	$_REQUEST[ 'action' ] = '';
 	
@@ -58,7 +82,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/USUARIO_CONTROLLER.php' );
 			}
 		} else {
-			$USUARIO = get_data_form();
+			$USUARIO = get_data_form_add();
 			$respuesta = $USUARIO->ADD();
 
 			new MESSAGE( $respuesta, '../Controllers/USUARIO_CONTROLLER.php' );
@@ -79,7 +103,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			}
 		} else {
 			
-			$USUARIO = get_data_form();
+			$USUARIO = new USUARIO_MODEL( '', '', $_REQUEST[ 'Dni' ], '', '', '', '', '', '');
 			$respuesta = $USUARIO->DELETE();
 			new MESSAGE( $respuesta, '../Controllers/USUARIO_CONTROLLER.php' );
 		}
@@ -113,7 +137,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$USUARIO = get_data_form();
 			$datos = $USUARIO->SEARCH();
 			$lista = array( 'Login','Dni','Nombre','Apellidos');
-			new USUARIO_SHOWALL( $lista, $datoss );
+			new USUARIO_SHOWALL( $lista, $datos );
 		}
 		break;
 	case 'SHOWCURRENT':

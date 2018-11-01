@@ -60,11 +60,9 @@ class PROM_SHOWALL {
 							<input type="hidden" name="Fecha" value="<?php echo $fila['Fecha']; ?>">
 							<input type="hidden" name="Hora" value="<?php echo $fila['Hora']; ?>">
 				
-								<button id ="buttonBien" type="submit" name="action" value="DELETE" ><img src="../Views/icon/eliminar.png" alt="<?php echo $strings['Eliminar']?>" width="20" height="20" /></button>				
-					<td>						
+								<button id ="buttonBien" type="submit" name="action" value="DELETE" ><img src="../Views/icon/eliminar.png" alt="<?php echo $strings['Eliminar']?>" width="20" height="20" /></button>										
 								<button id ="buttonBien" type="submit" name="action" value="SHOWCURRENT" ><img src="../Views/icon/verDetalles.png" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>
-						</form>
-				    <td>								
+						</form>							
 				</tr>
 <?php
 				}
