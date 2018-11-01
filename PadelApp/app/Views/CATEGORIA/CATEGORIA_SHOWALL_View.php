@@ -20,11 +20,13 @@ class CATEGORIA_SHOWALL {
 	include '../Views/Header.php';		
 ?>
 
-		<div class="seccion">
+		<div class="seccion" align="center">
 			<h2>
 				<?php echo $strings['Tabla de datos'];?>
 			</h2>
-			<table>
+			<div class="col-md-2">
+			<table class="table">
+				<thead class="thead-light">
 				<tr>
 <?php
 					foreach ( $lista as $atributo ) { 
@@ -35,7 +37,7 @@ class CATEGORIA_SHOWALL {
 <?php
 					}
 ?>
-					<th colspan="4" >
+					<th colspan="2" >
 						<?php echo $strings['Opciones']?>
 					</th>
 
@@ -60,16 +62,14 @@ class CATEGORIA_SHOWALL {
 							<input type="hidden" name="IdCampeonato" value="<?php echo $fila['IdCampeonato']; ?>">		
 							<input type="hidden" name="Tipo" value="<?php echo $fila['Tipo']; ?>">		
 							<input type="hidden" name="Nivel" value="<?php echo $fila['Nivel']; ?>">	
-					<td>	
 								<button id ="buttonBien" type="submit" name="action" value="SHOWCURRENT" ><img src="../Views/icon/verDetalles.png" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>			
-					<td>
 								<button id ="buttonBien" type="submit" name="action" value="INSCRIPTION" ><img src="../Views/icon/exito.png" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>		
-						</form>
-				    <td>													
+						</form>													
 				</tr>
 <?php
 				}
 ?>
+			</thead>
 			</table>
 			<form action='../Controllers/USUARIO_CONTROLLER.php' method="post">
 				<button id ="buttonBien" type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>

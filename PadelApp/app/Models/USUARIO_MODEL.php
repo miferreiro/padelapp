@@ -269,7 +269,21 @@ class USUARIO_MODEL{
 			return $tupla[ 'Dni' ];
 		}
 	}
-
- }
+	
+	function existLogin(){
+			$sql = "SELECT *
+			FROM USUARIO
+			WHERE (
+				(Login = '$this->Login') 
+			)";
+		
+		$resultado = $this->mysqli->query( $sql );
+		if ( $resultado->num_rows == 0 ) {
+			return false;
+		} else {		
+			return true;
+		}
+	}
+}
 
 ?>

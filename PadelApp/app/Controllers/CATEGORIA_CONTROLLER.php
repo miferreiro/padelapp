@@ -65,7 +65,6 @@ if ( !isset( $_REQUEST[ 'action' ] ) ) {
 
 switch ( $_REQUEST[ 'action' ] ) {
 	case 'INSCRIPTION' :
-		echo 'hola';
 		if($_SESSION['tipo'] == 'Deportista'){
 			if( !$_POST){
 				$valores['IdCampeonato'] = $_REQUEST['IdCampeonato'];
@@ -77,27 +76,48 @@ switch ( $_REQUEST[ 'action' ] ) {
 				$PAREJAAUX = new PAREJA_MODEL($_REQUEST['IdCampeonato'],$_REQUEST['Tipo'],$_REQUEST['Nivel'],'','');
 				$numPareja = $PAREJAAUX->getLastNumPareja();
 				
-				$PAREJA = get_data_form_pareja($numPareja + 1);
-				$respuesta = $PAREJA->ADD();
-
-				$USUARIO1 = new USUARIO_MODEL( $_REQUEST['Login1'],'','', '', '', '', '', '','');
-				$dniPareja1 = $USUARIO1->obtenerDni();
+				$USUARIO = new USUARIO_MODEL($_REQUEST['Login2'],'', '', '', '', '', '', '','');
 				
-				$USUARIO_PAREJA1 = get_data_form_usuario_pareja($numPareja + 1,$dniPareja1);
-				$respuesta1 = $USUARIO_PAREJA1->ADD();
-				echo $respuesta1;
 				
-				$USUARIO2 = new USUARIO_MODEL( $_REQUEST['Login2'], '', '', '', '', '', '', '','');
-				$dniPareja2 = $USUARIO2->obtenerDni();
-			
-				$USUARIO_PAREJA2 = get_data_form_usuario_pareja($numPareja + 1,$dniPareja2);
-				$respuesta2 = $USUARIO_PAREJA2->ADD();
-				echo $respuesta2;
-				
-				if($respuesta == 'Error en la inserción' || $respuesta1 == 'Error en la inserción' ||$respuesta2 == 'Error en la inserción'){
+				if($USUARIO->existLogin()){				
+					
+					$PAREJA = get_data_form_pareja($numPareja + 1);
+					$respuesta = $PAREJA->ADD();
+					
+					if($respuesta == 'Error en la inserción'){
 						new MESSAGE( 'Error en la inserción', '../Controllers/CATEGORIA_CONTROLLER.php' );
+					}else{
+						
+						$USUARIO1 = new USUARIO_MODEL( $_REQUEST['Login1'],'','', '', '', '', '', '','');
+						$dniPareja1 = $USUARIO1->obtenerDni();
+						
+						$USUARIO_PAREJA1 = get_data_form_usuario_pareja(($numPareja + 1),$dniPareja1);
+						$respuesta1 = $USUARIO_PAREJA1->ADD();
+				
+						if($respuesta1 == 'Error en la inserción'){
+							$PAREJA->DELETE();
+							new MESSAGE( $respuesta1, '../Controllers/CATEGORIA_CONTROLLER.php' );
+						}else{
+							
+							$USUARIO2 = new USUARIO_MODEL( $_REQUEST['Login2'], '', '', '', '', '', '', '','');
+							$dniPareja2 = $USUARIO2->obtenerDni();
+						
+							$USUARIO_PAREJA2 = get_data_form_usuario_pareja($numPareja + 1,$dniPareja2);
+							$respuesta2 = $USUARIO_PAREJA2->ADD();
+							
+							if($respuesta2 == 'Error en la inserción'){
+								$PAREJA->DELETE();
+								$USUARIO_PAREJA1->DELETE();									
+								new MESSAGE( $respuesta2, '../Controllers/CATEGORIA_CONTROLLER.php' );
+							}else{
+								new MESSAGE( $respuesta2, '../Controllers/CATEGORIA_CONTROLLER.php' );
+							}
+								
+						}
+					}
+					
 				}else{
-						new MESSAGE( $respuesta, '../Controllers/CATEGORIA_CONTROLLER.php' );
+					new MESSAGE( 'No existe el otro componente de la pareja', '../Controllers/CATEGORIA_CONTROLLER.php' );
 				}
 			}
 		}else{

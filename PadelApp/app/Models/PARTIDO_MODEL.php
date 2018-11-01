@@ -25,6 +25,51 @@ class PARTIDO_MODEL{
 
 	} 
 
+
+
+	function ADD() {
+		if ( ( $this->IdCampeonato <> '' ) &&  ( $this->Tipo <> '' ) && ( $this->Nivel <> '' ) && ( $this->Letra <> '' ) && ( $this->NumEnfrentamiento <> '' )) {         
+	
+			$sql = "SELECT * FROM PARTIDO WHERE (IdCampeonato = '$this->IdCampeonato') && (Tipo = '$this->Tipo') && (Nivel = '$this->Nivel') && (Grupo_Letra ='$this->Letra') && (NumEnfrentamiento = '$this->NumEnfrentamiento')";
+
+			if ( !$result = $this->mysqli->query( $sql ) ) { 
+				return 'Error en la inserción1'; 
+			} else { 
+				if ( $result->num_rows == 0 ) { 
+				
+							$sql = "INSERT INTO PARTIDO (
+									IdCampeonato,
+									Tipo,
+									Nivel,
+									Grupo_Letra,
+									NumEnfrentamiento,
+									Fecha,
+									Hora
+					             	) 
+								VALUES(
+								'$this->IdCampeonato',							
+								'$this->Tipo',
+								'$this->Nivel',
+								'$this->Letra',
+								'$this->NumEnfrentamiento',
+								NULL,
+								NULL
+								)";					
+					
+					if ( !$this->mysqli->query( $sql )) { 
+						return 'Error en la inserción';
+					} else {					
+						return 'Inserción realizada con éxito'; 				
+					}	
+				}else{
+					return 'Error en la inserción3';
+				}
+			}
+		} else { 
+			return 'Error en la inserción4';
+		}
+	} 
+    
 	function SEARCH() {
 
 		$sql = "select IdCampeonato,
@@ -52,46 +97,7 @@ class PARTIDO_MODEL{
 			return $resultado;
 		}
 	} 
-
-	function ADD() {
-		if ( ( $this->IdCampeonato <> '' ) &&  ( $this->Tipo <> '' ) && ( $this->Nivel <> '' ) && ( $this->Letra <> '' ) && ( $this->NumEnfrentamiento <> '' )) {         
 	
-			$sql = "SELECT * FROM PARTIDO WHERE (IdCampeonato = '$this->IdCampeonato') && (Tipo = '$this->Tipo') && (Nivel = '$this->Nivel') && (Grupo_Letra ='$this->Letra') && (NumEnfrentamiento = '$this->NumEnfrentamiento')";
-
-			if ( !$result = $this->mysqli->query( $sql ) ) { 
-				return 'Error en la inserción'; 
-			} else { 
-				if ( $result->num_rows == 0 ) { 
-							$sql = "INSERT INTO PARTIDO (
-									IdCampeonato,
-									Tipo,
-									Nivel,
-									Grupo_Letra,
-									NumEnfrentamiento,
-									Fecha,
-									Hora
-					             	) 
-								VALUES(
-								'$this->IdCampeonato',							
-								'$this->Tipo',
-								'$this->Nivel',
-								'$this->Letra',
-								'$this->NumEnfrentamiento',
-								STR_TO_DATE(REPLACE('$this->Fecha','/','.'),GET_FORMAT(date,'EUR')),
-								'$this->Hora'
-								)";					
-					}
-					if ( !$this->mysqli->query( $sql )) { 
-						return 'Error en la inserción';
-					} else {					
-						return 'Inserción realizada con éxito'; 				
-					}						
-			}
-		} else { 
-			return 'Error en la inserción';
-		}
-	} 
-    
 	function DELETE() {
 
 		$sql = "SELECT * FROM PARTIDO WHERE  (IdCampeonato = '$this->IdCampeonato') && (Tipo = '$this->Tipo') && (Nivel = '$this->Nivel') && (Grupo_Letra = '$this->Letra') && (NumEnfrentamiento = '$this->NumEnfrentamiento')";
@@ -183,6 +189,8 @@ class PARTIDO_MODEL{
 		}
 		
 	}
+	
+
 	
  	}
 

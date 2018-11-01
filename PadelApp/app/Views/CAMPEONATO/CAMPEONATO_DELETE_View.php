@@ -4,14 +4,14 @@ class CAMPEONATO_DELETE {
 
 	function __construct( $valores) {
 		$this->valores = $valores;
-		$this->render( $this->valores);//llamamos a la función render donde se mostrará el formulario DELETE con los campos correspondientes y sus valores
+		$this->render( $this->valores);
 	}
 
 	function render($valores) {
-		$this->valores = $valores;//pasamos los valores de cada uno de los campos
+		$this->valores = $valores;
 
-		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
-		include '../Views/Header.php';//incluimos la cabecera
+		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
+		include '../Views/Header.php';
 ?>
 		<div class="seccion" align="center">
 			<h2 align="center">
@@ -80,7 +80,8 @@ class CAMPEONATO_DELETE {
 			</div>
 		</div>
 <?php             
-		include '../Views/Footer.php';//incluimos el pie de la página
+		include '../Views/Footer.php';
+		
                
 	}
 }

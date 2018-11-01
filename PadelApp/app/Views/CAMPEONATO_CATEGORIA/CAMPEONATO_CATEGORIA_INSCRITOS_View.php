@@ -1,6 +1,6 @@
 <?php
 
-class CATEGORIA_INSCRITOS {
+class CAMPEONATO_CATEGORIA_INSCRITOS {
 
 	function __construct( $lista, $datos,$vuelta) {
 		$this->lista = $lista;

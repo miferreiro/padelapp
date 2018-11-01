@@ -117,9 +117,10 @@ class CATEGORIA_MODEL{
 		
 		$sql = "SELECT P.NumPareja as NumPareja,U.Login as Login,P.IdCampeonato as IdCampeonato,P.Tipo as Tipo, P.Nivel as Nivel
 		FROM PAREJA P, USUARIOPAREJAS UP, USUARIO U
-		WHERE  (P.IdCampeonato = '$this->IdCampeonato') && (P.Tipo = '$this->Tipo') && (P.Nivel = '$this->Nivel')
-		&& (U.Dni = UP.Usuario_Dni) 
-		&& (P.IdCampeonato = UP.Pareja_idCampeonato)	&& (P.Tipo = UP.Pareja_Tipo) && (P.Nivel = UP.Pareja_Nivel) 
+		WHERE  (
+		P.IdCampeonato = '$this->IdCampeonato') && (P.Tipo = '$this->Tipo') && (P.Nivel = '$this->Nivel')
+		&& (U.Dni = UP.Usuario_Dni) && (UP.Pareja_NumPareja = P.NumPareja)
+		&& (P.IdCampeonato = UP.Pareja_idCampeonato)  && (P.Tipo = UP.Pareja_Tipo) && (P.Nivel = UP.Pareja_Nivel) 
 		ORDER BY P.NumPareja	
 		";
 		

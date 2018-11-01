@@ -7,10 +7,15 @@ if (!IsAuthenticated()){
  	header('Location:../index.php');
 }
 
+include '../Models/CAMPEONATO_MODEL.php'; 
 include '../Models/PAREJA_MODEL.php'; 
 include '../Models/GRUPO_MODEL.php'; 
 include '../Models/PARTIDO_MODEL.php'; 
 include '../Models/ENFRENTAMIENTO_MODEL.php'; 
+
+include '../Views/CAMPEONATO_CATEGORIA/CAMPEONATO_CATEGORIA_SHOWALL_View.php';
+include '../Views/CAMPEONATO/CAMPEONATO_SHOWALL_View.php';
+
 
 include '../Views/DEFAULT_View.php';
 include '../Views/MESSAGE_View.php';
@@ -73,9 +78,24 @@ switch ( $_REQUEST[ 'action' ] ) {
 		$PAREJA = new PAREJA_MODEL($idCampeonato,$tipo,$nivel,'','');
 		$listaParejas = $PAREJA->getParejasCategoria();
 		$numParejas = $PAREJA->getLastNumPareja();		
+		
+		//Construyo el array
+		$q = 0;
+		$aux = array();
+		while ( $fila = mysqli_fetch_array( $listaParejas ) ) {
+			
+				$aux[$q] = $fila['NumPareja'];
+				echo $aux[$q];
+					?> <br> <?php
+				$q++;
 
+		}
+		
+		$numParejasSobrantes = $numParejas % 8;
+		$numParejas  -= $numParejasSobrantes;
+		
 		if($numParejas < 8){
-			new MESSAGE( 'No hay suficientes parejas para formar grupos', '../Controllers/CAMPEONATO_CATEGORIA_CONTROLLER.php' );
+			new MESSAGE( 'No hay suficientes parejas para formar grupos', '../Controllers/CAMPEONATO_CATEGORIA_CONTROLLER.php?IdCampeonato=' .$_REQUEST[ 'IdCampeonato' ] );
 		}else{
 			
 			$numGrupos = 1;
@@ -92,6 +112,14 @@ switch ( $_REQUEST[ 'action' ] ) {
 				
 			for($i = 1; $i <= $numGrupos; $i++){
 
+				
+				echo "----";
+				?> <br> <?php
+				echo "Num grupo:  " . $i;
+				?> <br> <?php
+				echo "----";
+				?> <br> <?php
+				
 				if($i == 1) $letra = 'A';
 				else if($i == 2) $letra = 'B';
 				else if($i == 3) $letra = 'C';
@@ -105,36 +133,88 @@ switch ( $_REQUEST[ 'action' ] ) {
 				$GRUPO->ADD();
 				$numEnfrentamiento = 1;
 				
-				for($p1 = 1 + (($numGrupos - 1)*8) ; $p1 <= 8 + (($numGrupos - 1)*8);$p1++){
+				for($p1 =  (($numGrupos - 1)*8) ; $p1 < 8 + (($numGrupos - 1)*8);$p1++){
 			//	for($p1 = 1 ; $p1 < 8;$p1++){	
-					for($p2 = $p1+1 ; $p2 <= 8 + (($numGrupos - 1)*8);$p2++){
+					for($p2 = $p1+1 ; $p2 < 8 + (($numGrupos - 1)*8);$p2++){
+	
+						$numPareja1 = $aux[$p1];
+						$numPareja2 = $aux[$p2];
+						echo $numPareja1;
+						echo "\n\n";
+						echo $numPareja2;
+						echo "\n\n";
 						
-						$numPareja1 = $listaParejas[$p1];
-						$numPareja2 = $listaParejas[$p2];
-									
 						$PARTIDO = create_partido($idCampeonato,$tipo,$nivel,$letra,$numEnfrentamiento);
 						$mensajeP = $PARTIDO->ADD();
-						echo "Mensaje Partido: " . $mensajeP . "(" . $numEnfrentamiento . ")";
-
+						echo "Mensaje Partido: " . $mensajeP . "(" . $numEnfrentamiento . ")" . "\n" ;
+						?> <br> <?php
+						
 						$ENFRENTAMIENTO = create_enfrentamiento($idCampeonato,$tipo,$nivel,$letra,$numEnfrentamiento,$numPareja1);
 						$mensajeE1 = $ENFRENTAMIENTO->ADD();
-						echo "Mensaje Partido: " . $mensajeE1 . "(" . $numPareja1 . ")";
-						$numParejasAsignadas++;
+						echo "Mensaje Partido: " . $mensajeE1 . "(" . $numPareja1 . ")" . "\n"; 
 						
+						?> <br> <?php
 						$ENFRENTAMIENTO = create_enfrentamiento($idCampeonato,$tipo,$nivel,$letra,$numEnfrentamiento,$numPareja2);
 						$mensajeE2 = $ENFRENTAMIENTO->ADD();		
-						echo "Mensaje Partido: " . $mensajeE2 . "(" . $numPareja2 . ")";
+						echo "Mensaje Partido: " . $mensajeE2 . "(" . $numPareja2 . ")" . "\n";
 						$numParejasAsignadas++;
-
+						?> <br> <?php
+						?> <br> <?php
 						$numEnfrentamiento++;
 							
 					}					
 				}
 			}
 			
-			echo $numEnfrentamiento;
-			echo $numParejasAsignadas;
-			new MESSAGE( 'Grupos creados', '../Controllers/CAMPEONATO_CATEGORIA_CONTROLLER.php' );
+			
+			if($numParejasSobrantes > 4){
+				$numParejasSobrantes = 1;
+				
+				$mensaje = 'Las parejas con un numero asociado mayor a ' . $aux[$numParejas + 3] . ", no pueden participar en el torneo" ;
+			}
+			
+				for($pa = 0; $pa < $numParejasSobrantes ; $pa++){
+					echo $numParejas . "--" . $pa;
+					$parejaSobrante = $aux[$numParejas + $pa];
+							
+					for($i = 0; $i < 8 + $pa; $i++){
+						$parejaContraria = $aux[$numParejas - 8 + $i ];
+						
+						echo $parejaSobrante;
+						echo $parejaContraria;
+						
+						$PARTIDO = create_partido($idCampeonato,$tipo,$nivel,$letra,$numEnfrentamiento);
+						$mensajeP1 = $PARTIDO->ADD();
+						echo "Mensaje Partido: " . $mensajeP1 . "(" . $numEnfrentamiento . ")" . "\n" ;
+						?> <br> <?php
+						
+						
+						$ENFRENTAMIENTO = create_enfrentamiento($idCampeonato,$tipo,$nivel,$letra,$numEnfrentamiento,$parejaSobrante );
+						$mensajeE11 = $ENFRENTAMIENTO->ADD();
+						echo "Mensaje Partido: " . $mensajeE11 . "(" . $parejaSobrante . ")" . "\n"; 
+						
+						?> <br> <?php
+						$ENFRENTAMIENTO = create_enfrentamiento($idCampeonato,$tipo,$nivel,$letra,$numEnfrentamiento,$parejaContraria );
+						$mensajeE22 = $ENFRENTAMIENTO->ADD();		
+						echo "Mensaje Partido: " . $mensajeE22 . "(" . $parejaContraria  . ")" . "\n";
+						
+						$numParejasAsignadas++;
+						?> <br> <?php
+						?> <br> <?php
+						$numEnfrentamiento++;
+				
+					}
+				}
+				
+				echo $numEnfrentamiento;
+				echo"\n\n";
+				echo $numParejasAsignadas;
+				echo"\n\n";
+				new MESSAGE( 'Grupos creados' . "\n" . $mensaje, '../Controllers/CAMPEONATO_CATEGORIA_CONTROLLER.php.?IdCampeonato='.$_REQUEST['IdCampeonato'] );
+		
+				
+			
+
 		}
 		
 		break;

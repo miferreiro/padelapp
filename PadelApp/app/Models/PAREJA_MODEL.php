@@ -25,10 +25,10 @@ class PAREJA_MODEL{
 	function ADD() {
 		if ( ( $this->IdCampeonato <> '' ) && ( $this->Tipo <> '' ) && ( $this->Nivel <> '' ) && ( $this->NumPareja <> '' ) ) {         
 	
-			$sql = "SELECT * FROM PAREJA WHERE (IdCampeonato = '$this->IdCampeonato') && (Tipo = '$this->Tipo') && (Nivel = '$this->Nivel')";
+			$sql = "SELECT * FROM PAREJA WHERE (IdCampeonato = '$this->IdCampeonato') && (Tipo = '$this->Tipo') && (Nivel = '$this->Nivel')&& (NumPareja = '$this->NumPareja')";
 
 			if ( !$result = $this->mysqli->query( $sql ) ) { 
-				return 'Error en la inserción3'; 
+				return 'Error en la inserción'; 
 			} else { 
 
 				if ( $result->num_rows == 0 ) { 
@@ -46,12 +46,15 @@ class PAREJA_MODEL{
 								'$this->NumPareja',
 								'$this->Capitan'
 								)";					
-					}
-					if ( !$this->mysqli->query( $sql )) { 
+					
+						if ( !$this->mysqli->query( $sql )) { 
+							return 'Error en la inserción';
+						} else {					
+							return 'Inserción realizada con éxito'; 				
+						}			
+					}else{
 						return 'Error en la inserción';
-					} else {					
-						return 'Inserción realizada con éxito'; 				
-					}						
+					}
 			}
 		} else { 
 			return 'Error en la inserción';
@@ -59,16 +62,34 @@ class PAREJA_MODEL{
 			
 	}   
 	
+	function DELETE() {
+
+		$sql = "SELECT * FROM PAREJA WHERE (idCampeonato = '$this->IdCampeonato') && (tipo = '$this->Tipo') && (Nivel = '$this->Nivel') && (NumPareja = '$this->NumPareja')";
+
+		$result = $this->mysqli->query( $sql );	
+
+		if ( $result->num_rows == 1 ) {
+				
+			$sql = "DELETE FROM PAREJA WHERE (idCampeonato = '$this->IdCampeonato') && (tipo = '$this->Tipo') && (Nivel = '$this->Nivel') && (NumPareja = '$this->NumPareja')";
+
+			$this->mysqli->query( $sql );
+	
+			return "Borrado correctamente";
+		}else{
+			return "No existe";
+		}
+	} 
+	
 	function getParejasCategoria(){
 		if ( ( $this->IdCampeonato <> '' ) && ( $this->Tipo <> '' ) && ( $this->Nivel <> '' )){
 				
-			$sql = "SELECT NumPareja FROM PAREJA WHERE (IdCampeonato = '$this->IdCampeonato') && (Tipo = '$this->Tipo') && (Nivel = '$this->Nivel') ORDER BY NumPareja";
+			$sql = "SELECT *  FROM PAREJA WHERE (IdCampeonato = '$this->IdCampeonato') && (Tipo = '$this->Tipo') && (Nivel = '$this->Nivel') ";
 		
 			if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 				return 'No existe en la base de datos'; // 
 			} else {            
-				$result = $resultado->fetch_array();	
-				return $result;
+				
+				return $resultado;
 			}
 
 		}else { 
@@ -78,17 +99,17 @@ class PAREJA_MODEL{
 	function getLastNumPareja(){
 		if ( ( $this->IdCampeonato <> '' ) && ( $this->Tipo <> '' ) && ( $this->Nivel <> '' )){
 			
-			$sql = "SELECT MAX(NumPareja) WHERE (IdCampeonato = '$this->IdCampeonato') && (Tipo = '$this->Tipo') && (Nivel = '$this->Nivel') FROM PAREJA";
+			$sql = "SELECT MAX(NumPareja) as num  FROM PAREJA WHERE (IdCampeonato = '$this->IdCampeonato') && (Tipo = '$this->Tipo') && (Nivel = '$this->Nivel')"; 
 			
 			if(!$this->mysqli->query( $sql )){
 				return 'Error en la busqueda';
 			}else{
 				$resultado = $this->mysqli->query( $sql );
-				$resul = $resultado->fetch_array();
-				if($resul == NULL){
+				$result = $resultado->fetch_array();
+				if($result['num'] == NULL){
 					return(0);
 				}else{
-					return($resul[0]);
+					return($result['num']);
 				}
 			}
 		}else { 

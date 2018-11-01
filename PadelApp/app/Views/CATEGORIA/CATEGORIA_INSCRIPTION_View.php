@@ -10,12 +10,14 @@ class CATEGORIA_INSCRIPTION {
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
 ?>
-		<div class="seccion">
+		<div class="seccion" align="center">
 			<h2>
 				<?php echo $strings['Formulario de inscripcion'];?>
 			</h2>
 			<form name="INSCRIPTION" action="../Controllers/CATEGORIA_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="">
-				<table>
+			<div class="col-sm-4">
+			<table class="table table-sm">
+			<thead class="thead-light">
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['IdCampeonato'];?>
@@ -38,19 +40,19 @@ class CATEGORIA_INSCRIPTION {
 						<th class="formThTd">
 							<?php echo $strings['Login del miembro 1 de la pareja'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="Login1" name="Login1" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $_SESSION['login']?>" maxlength="30" size="34" required readonly onBlur="comprobarVacio(this) && comprobarLongitud(this,'30') && comprobarTexto(this,'30') "/>
+						<td class="formThTd"><input type="text" id="Login1" name="Login1" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $_SESSION['login']?>" maxlength="25" size="25" required readonly onBlur="comprobarVacio(this) && comprobarLongitud(this,'30') && comprobarTexto(this,'30') "/>
 					</tr>
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['Login del miembro 2 de la pareja'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="Login2" name="Login2" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="45" size="60" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'45') && comprobarTexto(this,'45') "/>
+						<td class="formThTd"><input type="text" id="Login2" name="Login2" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="25" size="25" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'45') && comprobarTexto(this,'45') "/>
 					</tr>
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['Capitan de la pareja'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="Capitan" name="Capitan" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $_SESSION['login']?>" maxlength="30" size="34" required readonly onBlur="comprobarVacio(this) && comprobarLongitud(this,'30') && comprobarTexto(this,'30') "/>
+						<td class="formThTd"><input type="text" id="Capitan" name="Capitan" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $_SESSION['login']?>" maxlength="25" size="25" required readonly onBlur="comprobarVacio(this) && comprobarLongitud(this,'30') && comprobarTexto(this,'30') "/>
 					</tr>
 					<tr>
 						<td colspan="2">
@@ -60,7 +62,9 @@ class CATEGORIA_INSCRIPTION {
 							<button id ="buttonBien" type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 						</form>
 					</tr>
+				</thead>
 				</table>
+				</div>
 		</div>
 <?php
 		include '../Views/Footer.php';//incluimos el pie de la página

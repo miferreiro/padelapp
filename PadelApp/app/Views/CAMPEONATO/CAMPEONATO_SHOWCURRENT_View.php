@@ -3,10 +3,10 @@
 class CAMPEONATO_SHOWCURRENT {
 
 	function __construct( $valores ) {
-		$this->valores = $valores;//pasamos los valores de cada uno de los campos
+		$this->valores = $valores;
 		$this->render( $this->valores );
 	}
-	//funcion que mostrará la vista SHOWCURRENT con los campos correspondientes y sus valores
+	
 	function render( $valores ) {
 		$this->valores = $valores;
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';

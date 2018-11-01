@@ -21,7 +21,7 @@ class CAMPEONATO_CATEGORIA_SHOWALL {
 			<h2>
 				<?php echo $strings['Tabla de datos'];?>
 			</h2>
-			<div class="col-md-4">
+			<div class="col-md-3">
 			<table class="table">
 				<thead class="thead-light">
 				<tr>
@@ -59,17 +59,17 @@ class CAMPEONATO_CATEGORIA_SHOWALL {
 							<input type="hidden" name="IdCampeonato" value="<?php echo $fila['IdCampeonato']; ?>">		
 							<input type="hidden" name="Tipo" value="<?php echo $fila['Tipo']; ?>">		
 							<input type="hidden" name="Nivel" value="<?php echo $fila['Nivel']; ?>">	
-					<td>	
+						
 								<button id ="buttonBien" type="submit" name="action" value="INSCRITOS" ><img src="../Views/icon/verDetalles.png" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>			
 	
 						</form>
-					<td>
-						<form action="../Controllers/CAMPEONATO_GENERAR_CONTROLLER.php" method="get" style="display:inline" >
+					
+						<form action="../Controllers/CAMPEONATO_GENERAR_CONTROLLER.php" method="post" style="display:inline" >
 							<input type="hidden" name="IdCampeonato" value="<?php echo $fila['IdCampeonato']; ?>">		
 							<input type="hidden" name="Tipo" value="<?php echo $fila['Tipo']; ?>">		
 							<input type="hidden" name="Nivel" value="<?php echo $fila['Nivel']; ?>">	
-								<button id ="buttonBien"type="GENERAR" ><img src="../Views/icon/generar.png" width="20" height="20"/></button>
-							</td>
+								<button id ="buttonBien"type="submit"name="action" value="GENERAR"  ><img src="../Views/icon/generar.png" width="20" height="20"/></button>
+							
 						</form>	
 				</tr>
 <?php

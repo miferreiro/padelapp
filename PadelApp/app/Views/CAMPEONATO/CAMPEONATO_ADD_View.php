@@ -5,10 +5,9 @@ class CAMPEONATO_ADD {
 	function __construct() {
 		$this->render();
 	}
-	//funcion que mostrará el formulario ADD con los campos correspondientes y sus valores
 	function render() {
-		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
-		include '../Views/Header.php';//incluimos la cabecera
+		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
+		include '../Views/Header.php';
 ?>
 		<div class="seccion" align="center">
 			<h2 align="center">
@@ -119,9 +118,7 @@ class CAMPEONATO_ADD {
  						</td>        
 					</tr>	
 				</thead>
-					         					         					                    
-					                              
-					                                                  
+					         					         					                                                                    
 					<tr align="center">
 						<td colspan="2">
 							<button id ="buttonBien" type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="<?php echo $strings['Confirmar formulario']?>" /></button>
@@ -135,7 +132,7 @@ class CAMPEONATO_ADD {
 			</div>	
 		</div>
 <?php
-		include '../Views/Footer.php';//incluimos el pie de la página
+		include '../Views/Footer.php';
 		}
 		}
 ?>

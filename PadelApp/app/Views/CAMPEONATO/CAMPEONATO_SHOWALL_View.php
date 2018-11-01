@@ -25,7 +25,7 @@ class CAMPEONATO_SHOWALL {
 				<thead class="thead-light">
 				<tr>
 <?php
-					foreach ( $lista as $atributo ) {//muestra el nombre de cada uno de los campos
+					foreach ( $lista as $atributo ) {
 ?>
 					<th scope="col">
 						<?php echo $strings[$atributo]?>
@@ -39,19 +39,19 @@ class CAMPEONATO_SHOWALL {
 				</tr>
 				</thead>
 <?php
-				while ( $fila = mysqli_fetch_array( $this->datos ) ) {//este bucle se va a repetir mientras no se muestren todos los datos
+				while ( $fila = mysqli_fetch_array( $this->datos ) ) {
 ?>
 				
 				<tr>
 <?php
-					foreach ( $lista as $atributo ) {//este bucle sacará los valores de cada uno de los campos de una tupla
+					foreach ( $lista as $atributo ) {
 ?>
 					<td>
 <?php 					
-					if ( $atributo == 'FechaIni' ) {//Si es la fecha inicial del trabajo, cambiamos el formato de la fecha
+					if ( $atributo == 'FechaIni' ) {
 						$fila[ $atributo ] = date( "d/m/Y", strtotime( $fila[ $atributo ] ) );
 					} 
-					if ( $atributo == 'FechaFin' ) {//Si es la fecha inicial del trabajo, cambiamos el formato de la fecha
+					if ( $atributo == 'FechaFin' ) {
 							$fila[ $atributo ] = date( "d/m/Y", strtotime( $fila[ $atributo ] ) );
 					} 
 						echo $fila[ $atributo ];			
@@ -64,17 +64,14 @@ class CAMPEONATO_SHOWALL {
 					<td>
 						<form action="../Controllers/CAMPEONATO_CONTROLLER.php" method="get" style="display:inline" >
 							<input type="hidden" name="IdCampeonato" value="<?php echo $fila['IdCampeonato']; ?>">
-					<td>
+				
 								<button id ="buttonBien"type="submit" name="action" value="DELETE" ><img src="../Views/icon/eliminar.png" alt="<?php echo $strings['Eliminar']?>" width="20" height="20" /></button>
-					<td>
-								<button id ="buttonBien"type="submit" name="action" value="SHOWCURRENT" ><img src="../Views/icon/verDetalles.png" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>
-						</form>
-					<td>
-						<form action="../Controllers/CAMPEONATO_CATEGORIA_CONTROLLER.php" method="get" style="display:inline" >
 					
+								<button id ="buttonBien"type="submit" name="action" value="SHOWCURRENT" ><img src="../Views/icon/verDetalles.png" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>
+						</form>	
+						<form action="../Controllers/CAMPEONATO_CATEGORIA_CONTROLLER.php" method="get" style="display:inline" >				
 							<input type="hidden" name="IdCampeonato" value="<?php echo $fila['IdCampeonato']; ?>">
-								<button id ="buttonBien"type="submit" ><img src="../Views/icon/categoria.png" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>
-							</td>
+								<button id ="buttonBien"type="submit" ><img src="../Views/icon/categoria.png" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>	
 						</form>
 						
 

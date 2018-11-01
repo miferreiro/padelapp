@@ -139,11 +139,11 @@ DROP TABLE IF EXISTS `AbpBase`.`Partido` ;
 
 CREATE TABLE IF NOT EXISTS `AbpBase`.`Partido` (
   `IdCampeonato` INT NOT NULL,
-  `Tipo` VARCHAR(8) NOT NULL,
+  `Tipo` VARCHAR(9) NOT NULL,
   `Nivel` INT NOT NULL,
   `Grupo_Letra` CHAR NOT NULL,
   `NumEnfrentamiento` INT NOT NULL,
-  `Fecha` DATE NOT NULL,
+  `Fecha` DATE NULL,
   `Hora` TIME NULL,
   PRIMARY KEY (`IdCampeonato`, `Tipo`, `Nivel`, `Grupo_Letra`, `NumEnfrentamiento`),
   CONSTRAINT `fk_partido_grupo`
@@ -337,21 +337,27 @@ INSERT INTO `partido` (`IdCampeonato`, `Tipo`, `Nivel`, `Grupo_Letra`, `NumEnfre
 --
 
 INSERT INTO `usuario` (`Dni`, `Login`, `Password`, `Nombre`, `Apellidos`, `Sexo`, `Tipo`, `Telefono`) VALUES
-('10880946Z', 'leile', '06d1641fd3eb1d0589a6e6c83d4992e6', 'leile', 'le lei', 'Mujer', 'Deportista', '114658797'),
-('23293294K', 'luilu', 'cccfea6bb17ed97626af780bd3ffa3cf', 'luilu', 'lu lui', 'Mujer', 'Deportista', '452168792'),
-('50890587M', 'mfdiaz', '54cd358904ef041d1e89b6c73cc264a2', 'Miguel', 'Ferreiro Diaz', 'Hombre', 'Deportista', '123456789'),
-('72070206H', 'jaglez', '47747a3f07debbd856020e280fa2419e', 'Jacobo', 'Gonzalez Gonzalez', 'Hombre', 'Deportista', '765890434'),
 ('09291497A', 'davurin', '9de928ec1ef8601960385d3ef0e99940', 'David', 'Prieto Lopez', 'Hombre', 'Deportista', '443534545'),
+('52349897X', 'avcid7', '0b036829dd268bbbc8d8de5687d8542d', 'Alejan', 'Vila Cid', 'Hombre', 'Deportista', '647864188'),
+('52349898X', 'avcid8', '7fea9d45ba983d6ee1da12b16a8a5518', 'Alejand', 'Vila Cid', 'Hombre', 'Deportista', '647864189'),
+('52349899X', 'avcid9', 'b0a8da92935e2618d7d2d1ba11b37379', 'Alejandr', 'Vila Cid', 'Hombre', 'Deportista', '647864187'),
+('07971578P', 'c', '4a8a08f09d37b73795649038408b5f33', 'c', 'c', 'Hombre', 'Deportista', '999999999'),
+('10880946Z', 'leile', '06d1641fd3eb1d0589a6e6c83d4992e6', 'leile', 'le lei', 'Mujer', 'Deportista', '114658797'),
+('11970561G', 'f', '8fa14cdd754f91cc6554c9e71929cce7', 'f', 'f', 'Hombre', 'Deportista', '666666666'),
+('23293294K', 'luilu', 'cccfea6bb17ed97626af780bd3ffa3cf', 'luilu', 'lu lui', 'Mujer', 'Deportista', '452168792'),
+('44656257D', 'a', '0cc175b9c0f1b6a831c399e269772661', 'a', 'a', 'Hombre', 'Deportista', '999999999'),
+('47048522K', 'e', 'e1671797c52e15f763380b45e841ec32', 'e', 'e', 'Hombre', 'Deportista', '999999999'),
+('50890587M', 'mfdiaz', '54cd358904ef041d1e89b6c73cc264a2', 'Miguel', 'Ferreiro Diaz', 'Hombre', 'Deportista', '123456789'),
+('52349890X', 'avcid0', '21422e4b4af71034c9231c1f92ec1cb1', 'Alejandroo', 'Vila Cid', 'Hombre', 'Deportista', '647864180'),
 ('52349891X', 'avcid1', '8d175e3061a0cd33408e84885fd10062', 'A', 'Vila Cid', 'Hombre', 'Deportista', '647864181'),
 ('52349892X', 'avcid2', 'ae0dc71cb2989e2340b3ccb6c21ed811', 'Al', 'Vila Cid', 'Hombre', 'Deportista', '647864182'),
 ('52349893X', 'avcid4', '392bb0835f63a7ae3b68162630db12c1', 'Ale', 'Vila Cid', 'Hombre', 'Deportista', '647864183'),
 ('52349894X', 'avcid5', 'abbbb5d72fc74cf61ef31a32fe85e87d', 'Alej', 'Vila Cid', 'Hombre', 'Deportista', '647864185'),
 ('52349895X', 'avcid6', 'da2f8e0d863644b52092f9167cccfc82', 'Aleja', 'Vila Cid', 'Hombre', 'Deportista', '647864186'),
-('52349897X', 'avcid7', '0b036829dd268bbbc8d8de5687d8542d', 'Alejan', 'Vila Cid', 'Hombre', 'Deportista', '647864188'),
-('52349898X', 'avcid8', '7fea9d45ba983d6ee1da12b16a8a5518', 'Alejand', 'Vila Cid', 'Hombre', 'Deportista', '647864189'),
-('52349899X', 'avcid9', 'b0a8da92935e2618d7d2d1ba11b37379', 'Alejandr', 'Vila Cid', 'Hombre', 'Deportista', '647864187'),
-('52349890X', 'avcid0', '21422e4b4af71034c9231c1f92ec1cb1', 'Alejandroo', 'Vila Cid', 'Hombre', 'Deportista', '647864180'),
-('53042369E', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', 'admin', 'Hombre', 'Admin', '687654987');
+('53042369E', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', 'admin', 'Hombre', 'Admin', '687654987'),
+('72070206H', 'jaglez', '47747a3f07debbd856020e280fa2419e', 'Jacobo', 'Gonzalez Gonzalez', 'Hombre', 'Deportista', '765890434'),
+('78490815A', 'd', '8277e0910d750195b448797616e091ad', 'd', 'd', 'Mujer', 'Deportista', '666666666'),
+('78677468B', 'b', '92eb5ffee6ae2fec3ad71c777531578f', 'b', 'b', 'Mujer', 'Deportista', '999999999');
 
 --
 -- Volcado de datos para la tabla `usuarioparejas`

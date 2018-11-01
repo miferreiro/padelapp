@@ -22,6 +22,9 @@ class MESSAGE {
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos todos los strings de los idiomas:ingles,español y galego
 		include '../Views/Header.php';//incluimos la cabecera
 ?>
+	<div class="seccion" align="center">
+	<div class="col-md-2">
+	<thead class="thead-light">
 		<br>
 		<br>
 		<br>
@@ -36,8 +39,9 @@ class MESSAGE {
 		<form action='<?php echo $this->ruta?>' method="post">
 			<button id ="buttonBien" type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>"/></button>
 		</form>
-
-
+	</thead>
+	</div>
+	</div>
 <?php
 	include '../Views/Footer.php';//incluimos el footer
 	}

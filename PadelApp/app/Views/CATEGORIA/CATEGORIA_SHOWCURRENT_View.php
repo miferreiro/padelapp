@@ -12,10 +12,13 @@ class CATEGORIA_SHOWCURRENT {
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
 ?>
+<div class="seccion" align="center">
 		<h2>
 			<?php echo $strings['Vista detallada'];?>
 		</h2>
-		<table class="tablaDatos">
+		<div class="col-md-2">
+		<table class="table table-sm">
+			<thead class="thead-light">
 			<tr>
 				<th>
 					<?php echo $strings['IdCampeonato'];?>
@@ -72,13 +75,13 @@ class CATEGORIA_SHOWCURRENT {
 					<?php echo $this->valores['Nivel']?>
 				</td>
 			</tr>
-			</tr>
-			<caption style="margin-top:10px;" align="bottom">
+			</thead>
+			</table>
+		</div>
 				<form action='../Controllers/CATEGORIA_CONTROLLER.php' method="post">
 					<button id ="buttonBien" type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras'] ?>" /></button>
 				</form>
-			</caption>
-		</table>
+
 
 <?php
 		include '../Views/Footer.php';//incluimos el pie de página

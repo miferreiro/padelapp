@@ -1,15 +1,14 @@
 <?php
 
 class CAMPEONATO_SEARCH {
-	//es el constructor de la clase CAMPEONATO_SEARCH
+	
 	function __construct() {
-		$this->render();//llamamos a la función render donde se mostrará el formulario SEARCH con los campos correspondientes y sus valores
+		$this->render();
 	}
-	//funcion que mostrará el formulario SEARCH con los campos correspondientes y sus valores
 	function render() {
 
-		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
-		include '../Views/Header.php';//incluimos la cabecera
+		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
+		include '../Views/Header.php';
 ?>
 		<div align="center" class="seccion">
 			<h2 align="center">
@@ -23,7 +22,7 @@ class CAMPEONATO_SEARCH {
 						<th class="formThTd">
 							<?php echo $strings['IdCampeonato'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="IdCampeonato" name="IdCampeonato" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="11" size="11" onBlur="comprobarLongitud(this,'11') && comprobarTexto(this,'11') && comprobarEntero(this,0,999999999)"/>
+						<td class="formThTd"><input type="text" id="IdCampeonato" name="IdCampeonato" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="11" size="11" onBlur=""/>
 					</tr>
 					<tr>
 						<th class="formThTd">
@@ -64,7 +63,8 @@ class CAMPEONATO_SEARCH {
 			</div>
 		</div>
 <?php
-		include '../Views/Footer.php';//incluimos el pie de la página
+		include '../Views/Footer.php';
 		}
 		}
+
 ?>

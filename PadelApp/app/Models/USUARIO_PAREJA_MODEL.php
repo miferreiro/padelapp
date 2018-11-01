@@ -22,42 +22,64 @@ class USUARIO_PAREJA_MODEL{
 	} 
 
 	function ADD() {
-		if ( ( $this->IdCampeonato <> '' ) && ( $this->Tipo <> '' ) && ( $this->Nivel <> '' ) && ( $this->NumPareja <> '' ) ) {         
+		if ( ( $this->IdCampeonato <> '' ) && ( $this->Tipo <> '' ) && ( $this->Nivel <> '' ) && ( $this->NumPareja <> '' ) && ( $this->UsuDni <> '' ) ) {         
 	
-			$sql = "SELECT * FROM USUARIOPAREJAS WHERE  (Pareja_idCampeonato = '$this->IdCampeonato') && (Pareja_Tipo = '$this->Tipo') && (Pareja_Nivel = '$this->Nivel') && (Pareja_NumPareja = '$this->NumPareja')";
+			$sql = "SELECT * FROM USUARIOPAREJAS WHERE  (Pareja_idCampeonato = '$this->IdCampeonato') && (Pareja_Tipo = '$this->Tipo') && (Pareja_Nivel = '$this->Nivel') && (Usuario_Dni = '$this->UsuDni') && (Pareja_NumPareja = '$this->NumPareja')";
 
 			if ( !$result = $this->mysqli->query( $sql ) ) { 
-				return 'Error en la inserción3'; 
+				return 'Error en la inserción'; 
 			} else { 
 
-				if ( $result->num_rows <= 1 ) { 
-							$sql = "INSERT INTO USUARIOPAREJAS (
-									Usuario_Dni,
-									Pareja_idCampeonato,
-									Pareja_Tipo,
-									Pareja_Nivel,
-									Pareja_NumPareja
-					             	) 
-								VALUES(
-								'$this->UsuDni',
-								'$this->IdCampeonato',							
-								'$this->Tipo',
-								'$this->Nivel',
-								'$this->NumPareja'
-								)";					
-					}
+				if ( $result->num_rows == 0 ) { 
+						$sql = "INSERT INTO usuarioparejas (
+								Usuario_Dni,
+								Pareja_idCampeonato,
+								Pareja_Tipo,
+								Pareja_Nivel,
+								Pareja_NumPareja
+								) 
+							VALUES(
+							'$this->UsuDni',
+							'$this->IdCampeonato',							
+							'$this->Tipo',
+							'$this->Nivel',
+							'$this->NumPareja'
+							)";	
+							
+					
 					if ( !$this->mysqli->query( $sql )) { 
-						return 'Error en la inserción2';
+						return 'Error en la inserción';
 					} else {					
 						return 'Inserción realizada con éxito'; 				
-					}						
+					}	
+				}else{
+					return 'Error en la inserción';
+				}
 			}
 		} else { 
-			return 'Error en la inserción1';
+			return 'Error en la inserción';
 		}
 			
 	}   
 
- 	}//fin de clase
+	function DELETE() {
+
+		$sql = "SELECT * FROM USUARIOPAREJAS WHERE (Pareja_idCampeonato = '$this->IdCampeonato') && (Pareja_Tipo = '$this->Tipo') && (Pareja_Nivel = '$this->Nivel') && (Usuario_Dni = '$this->UsuDni') && (Pareja_NumPareja = '$this->NumPareja')";
+
+		$result = $this->mysqli->query( $sql );	
+
+		if ( $result->num_rows == 1 ) {
+				
+			$sql = "DELETE FROM USUARIOPAREJAS WHERE (Pareja_idCampeonato = '$this->IdCampeonato') && (Pareja_Tipo = '$this->Tipo') && (Pareja_Nivel = '$this->Nivel') && (Usuario_Dni = '$this->UsuDni') && (Pareja_NumPareja = '$this->NumPareja')";
+
+			$this->mysqli->query( $sql );
+	
+			return "Borrado correctamente";
+		}else{
+			return "No existe";
+		}
+	} 
+	
+ 	}
 
 ?>

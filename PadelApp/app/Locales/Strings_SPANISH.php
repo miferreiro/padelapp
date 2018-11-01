@@ -273,7 +273,9 @@ array(
 	'Usuario_Dni'=>'Dni',
 	'Pista_idPista'=>'Pista',
 	'Pista_Hora'=>'Hora',
-	'Pista_Fecha'=>'Fecha'
+	'Pista_Fecha'=>'Fecha',
+	'No existe el otro componente de la pareja' => 'No existe el otro componente de la pareja',
+	'No hay suficientes parejas para formar grupos' => 'No hay suficientes parejas para formar grupos'
 	)
 ;
 

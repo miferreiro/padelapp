@@ -44,11 +44,11 @@ switch ( $_REQUEST[ 'action' ] ) {
 				$valores = $CATEGORIA->ListaInscritos();
 
 				$lista = array( 'NumPareja','Login','IdCampeonato','Tipo','Nivel');
-				$vuelta['IdCampeonato'] =$_REQUEST['IdCampeonato'];
-				$vuelta['Tipo'] =$_REQUEST['Tipo'];
-				$vuelta['Nivel'] =$_REQUEST['Nivel'];
+				$vuelta['IdCampeonato'] = $_REQUEST['IdCampeonato'];
+				$vuelta['Tipo'] = $_REQUEST['Tipo'];
+				$vuelta['Nivel'] = $_REQUEST['Nivel'];
 			
-			   new CATEGORIA_INSCRITOS($lista , $valores ,$vuelta);
+			   new CAMPEONATO_CATEGORIA_INSCRITOS($lista , $valores ,$vuelta);
 		}else{
 			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/USUARIO_CONTROLLER.php' );
 		}

@@ -24,7 +24,49 @@ class ENFRENTAMIENTO_MODEL{
 		$this->mysqli = ConectarBD();
 
 	} 
+	function ADD() {
+		if ( ( $this->IdCampeonato <> '' ) &&  ( $this->Tipo <> '' ) && ( $this->Nivel <> '' ) && ( $this->Letra <> '' ) && ( $this->NumEnfrentamiento <> '' )
+		   && ( $this->NumPareja <> '' )) {         
+	
+			$sql = "SELECT * FROM ENFRENTAMIENTO WHERE (IdCampeonato = '$this->IdCampeonato') && (Tipo = '$this->Tipo') && (Nivel = '$this->Nivel') && (Letra ='$this->Letra') && (NumEnfrentamiento = '$this->NumEnfrentamiento') && (NumPareja = '$this->NumPareja')";
 
+			if ( !$result = $this->mysqli->query( $sql ) ) { 
+				return 'Error en la inserción11'; 
+			} else { 
+				if ( $result->num_rows == 0 ) { 
+							$sql = "INSERT INTO ENFRENTAMIENTO (
+									IdCampeonato,
+									Tipo,
+									Nivel,
+									Letra,
+									NumEnfrentamiento,
+									NumPareja,
+									Resultado
+					             	) 
+								VALUES(
+								'$this->IdCampeonato',							
+								'$this->Tipo',
+								'$this->Nivel',
+								'$this->Letra',
+								'$this->NumEnfrentamiento',
+								'$this->NumPareja',
+								NULL
+								)";					
+					
+					if ( !$this->mysqli->query( $sql )) { 
+						return 'Error en la inserción22';
+					} else {					
+						return 'Inserción realizada con éxito'; 				
+					}	
+				}else{
+						return 'Error en la insercion 44';
+				}
+			}
+		} else { 
+			return 'Error en la inserción33';
+		}
+	} 
+    
 	function SEARCH() {
 
 		$sql = "select IdCampeonato,
@@ -53,46 +95,7 @@ class ENFRENTAMIENTO_MODEL{
 		}
 	} 
 
-	function ADD() {
-		if ( ( $this->IdCampeonato <> '' ) &&  ( $this->Tipo <> '' ) && ( $this->Nivel <> '' ) && ( $this->Letra <> '' ) && ( $this->NumEnfrentamiento <> '' )
-		   && ( $this->NumPareja <> '' )) {         
-	
-			$sql = "SELECT * FROM PARTIDO WHERE (IdCampeonato = '$this->IdCampeonato') && (Tipo = '$this->Tipo') && (Nivel = '$this->Nivel') && (Letra ='$this->Letra') && (NumEnfrentamiento = '$this->NumEnfrentamiento') && (NumPareja = '$this->NumPareja')";
 
-			if ( !$result = $this->mysqli->query( $sql ) ) { 
-				return 'Error en la inserción'; 
-			} else { 
-				if ( $result->num_rows == 0 ) { 
-							$sql = "INSERT INTO ENFRENTAMIENTO (
-									IdCampeonato,
-									Tipo,
-									Nivel,
-									Letra,
-									NumEnfrentamiento,
-									NumPareja,
-									Resultado
-					             	) 
-								VALUES(
-								'$this->IdCampeonato',							
-								'$this->Tipo',
-								'$this->Nivel',
-								'$this->Letra',
-								'$this->NumEnfrentamiento',
-								'$this->NumPareja',
-								'$this->Resultado'
-								)";					
-					}
-					if ( !$this->mysqli->query( $sql )) { 
-						return 'Error en la inserción';
-					} else {					
-						return 'Inserción realizada con éxito'; 				
-					}						
-			}
-		} else { 
-			return 'Error en la inserción';
-		}
-	} 
-    
 	function DELETE() {
 
 		$sql = "SELECT * FROM ENFRENTAMIENTO WHERE  (IdCampeonato = '$this->IdCampeonato') && (Tipo = '$this->Tipo') && (Nivel = '$this->Nivel') && (Letra = '$this->Letra') && (NumEnfrentamiento = '$this->NumEnfrentamiento') && (NumPareja = '$this->NumPareja')";
