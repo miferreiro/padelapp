@@ -90,24 +90,39 @@ switch ( $_REQUEST[ 'action' ] ) {
 				$q++;
 
 		}
-		
-		$numParejasSobrantes = $numParejas % 8;
-		$numParejas  -= $numParejasSobrantes;
+
 		
 		if($numParejas < 8){
 			new MESSAGE( 'No hay suficientes parejas para formar grupos', '../Controllers/CAMPEONATO_CATEGORIA_CONTROLLER.php?IdCampeonato=' .$_REQUEST[ 'IdCampeonato' ] );
 		}else{
 			
+			
 			$numGrupos = 1;
 			$letra = '';
-			if($numParejas > 8 && $numParejas <= 16) $numGrupos = 2;	
-			else if($numParejas > 16 && $numParejas <= 24) $numGrupos = 3;	
-			else if($numParejas > 24 && $numParejas <= 32) $numGrupos = 4;	
-			else if($numParejas > 32 && $numParejas <= 40) $numGrupos = 5;	
-			else if($numParejas > 40 && $numParejas <= 48) $numGrupos = 6;	
-			else if($numParejas > 48 && $numParejas <= 56) $numGrupos = 7;	
-			else if($numParejas > 56) $numGrupos = 8;	
-				
+			//$numParejas = 95;
+			echo "Antes: " . $numParejas;
+			if($numParejas > 12 && $numParejas < 16) $numParejas -= $numParejas % 12;
+			/*else if($numParejas > 28 && $numParejas < 32) $numParejas -= $numParejas % 28 ;
+			else if($numParejas > 44 && $numParejas < 48) $numParejas -= $numParejas % 44 ;
+			else if($numParejas > 60 && $numParejas < 64) $numParejas -= $numParejas % 60 ;
+			else if($numParejas > 76 && $numParejas < 80) $numParejas -= $numParejas % 76 ;
+			else if($numParejas > 92 && $numParejas < 96) $numParejas -= $numParejas % 92;*/
+			echo "Despues: " . $numParejas;
+			
+			if($numParejas > 12 && $numParejas <= 24) $numGrupos = 2;	
+			else if($numParejas > 24 && $numParejas <= 36) $numGrupos = 3;	
+			else if($numParejas > 36 && $numParejas <= 48) $numGrupos = 4;	
+			else if($numParejas > 48 && $numParejas <= 60) $numGrupos = 5;	
+			else if($numParejas > 60 && $numParejas <= 72) $numGrupos = 6;	
+			else if($numParejas > 72 && $numParejas <= 84) $numGrupos = 7;	
+			else if($numParejas > 84 && $numParejas <= 96) $numGrupos = 8;	
+			
+			
+			$numParejasSobrantes = $numParejas % (8 * $numGrupos);
+			$numParejas  -= $numParejasSobrantes;
+			echo "Despues2: " . $numParejas;
+			echo $numParejasSobrantes;
+			
 			$numParejasAsignadas = 0;	
 				
 			for($i = 1; $i <= $numGrupos; $i++){
@@ -134,7 +149,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 				$numEnfrentamiento = 1;
 				
 				for($p1 =  (($numGrupos - 1)*8) ; $p1 < 8 + (($numGrupos - 1)*8);$p1++){
-			//	for($p1 = 1 ; $p1 < 8;$p1++){	
+
 					for($p2 = $p1+1 ; $p2 < 8 + (($numGrupos - 1)*8);$p2++){
 	
 						$numPareja1 = $aux[$p1];
@@ -167,12 +182,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 			}
 			
 			
-			if($numParejasSobrantes > 4){
-				$numParejasSobrantes = 1;
-				
-				$mensaje = 'Las parejas con un numero asociado mayor a ' . $aux[$numParejas + 3] . ", no pueden participar en el torneo" ;
-			}
-			
+				$contadorParejas= 0;
+				$contadorGrupos = 1;
+				$letra = 'A';
 				for($pa = 0; $pa < $numParejasSobrantes ; $pa++){
 					echo $numParejas . "--" . $pa;
 					$parejaSobrante = $aux[$numParejas + $pa];
@@ -182,6 +194,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 						
 						echo $parejaSobrante;
 						echo $parejaContraria;
+						
 						
 						$PARTIDO = create_partido($idCampeonato,$tipo,$nivel,$letra,$numEnfrentamiento);
 						$mensajeP1 = $PARTIDO->ADD();
@@ -202,20 +215,37 @@ switch ( $_REQUEST[ 'action' ] ) {
 						?> <br> <?php
 						?> <br> <?php
 						$numEnfrentamiento++;
-				
+						
+						$contadorParejas++;
+						if($contadorParejas == 4){
+						
+								$contadorGrupos++;
+								
+								if($contadorGrupos == 2) $letra = 'B';
+								else if($contadorGrupos == 3) $letra = 'C';
+								else if($$contadorGrupos == 4) $letra = 'D';
+								else if($contadorGrupos == 5) $letra = 'E';
+								else if($contadorGrupos == 6) $letra = 'F';
+								else if($contadorGrupos == 7) $letra = 'G';
+								else if($contadorGrupos == 8) $letra = 'H';
+							
+						}				
 					}
 				}
 				
-				echo $numEnfrentamiento;
+					echo $numEnfrentamiento;
 				echo"\n\n";
 				echo $numParejasAsignadas;
 				echo"\n\n";
-				new MESSAGE( 'Grupos creados' . "\n" . $mensaje, '../Controllers/CAMPEONATO_CATEGORIA_CONTROLLER.php.?IdCampeonato='.$_REQUEST['IdCampeonato'] );
+				new MESSAGE( 'Grupos creados','../Controllers/CAMPEONATO_CATEGORIA_CONTROLLER.php.?IdCampeonato='.$_REQUEST['IdCampeonato'] );
 		
+				
+			}
+			
 				
 			
 
-		}
+		
 		
 		break;
 	default: 
