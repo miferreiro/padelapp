@@ -74,7 +74,7 @@ que comprueba permisos para cada una de las acciones -->
 	<?php if (isset($_SESSION['login']) & isset($_SESSION['tipo'])) { 
 //Si el usuario tiene permisos de showall en gestión de usuarios se muestra la opción ?>
 		<li class="nav-item dropdown" style="display: block">
-			<a class="nav-link dropdown-toggle" style="color: lightgrey" href="<?php echo $strings['menuGestion']; ?>" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Menú de Gestión</a>
+			<a class="nav-link dropdown-toggle" style="color: lightgrey" href="<?php echo $strings['menuGestion']; ?>" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $strings['menuGestion']; ?></a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 				<?php if($_SESSION['tipo'] == 'Admin'){ ?>
 							<div class="dropdown-divider"></div>

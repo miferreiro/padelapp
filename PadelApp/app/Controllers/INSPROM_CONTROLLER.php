@@ -120,7 +120,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 				
 				new INSPROM_SHOWALL( $lista, $datos);//nos muestra una vista showall con todos los permisos
 			}else{//en el caso de que el usuario no tenga permisos le sale una vista vacía
-				new USUARIO_DEFAULT();
+				new INSPROM_SHOWALL();
 			}
    				
 			
