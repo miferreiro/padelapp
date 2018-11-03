@@ -4,7 +4,8 @@ class PROM_MODEL{
 	
 	var	$fecha;
 	var	$hora;
-
+	var $mysqli; 
+	
 	function __construct($fecha,$hora) {
 		$this->fecha = $fecha;
         $this->hora=$hora;
@@ -43,27 +44,25 @@ class PROM_MODEL{
 			if ( !$result = $this->mysqli->query( $sql ) ) { 
 				return 'No se ha podido conectar con la base de datos';
 			} else { 
-
-				if ( $result->num_rows == 0 ) { 
-
-
-							$sql = "INSERT INTO promociones (
-							     Fecha,
+					if ( $result->num_rows == 0 ) { 
+						$sql = "INSERT INTO promociones (
+								 Fecha,
 								 Hora
 								) 
 								VALUES(
 								'$this->fecha',
 								'$this->hora'
-								)";					
-						}else {
+								)";		
+						if ( !$this->mysqli->query( $sql )) { 
+							return 'Error en la inserción';
+						} else { 											
+							return 'Inserción realizada con éxito'; 
+						}										
+					}else {
 					
 						return 'Ya existe una promocion con la fecha y horas introducidas en la base de datos';// ya existe		
 					}
-					if ( !$this->mysqli->query( $sql )) { 
-						return 'Error en la inserción';
-					} else { 											
-						return 'Inserción realizada con éxito'; 
-					}		
+					
 				}
 		} else { 
 			return 'Introduzca un valor'; 
@@ -82,7 +81,7 @@ class PROM_MODEL{
 			$result = $this->mysqli->query( $sql );
 			
 			
-			if($result->num_rows == 1){
+			if($result->num_rows >= 1){
 				$sql = "DELETE FROM inscripcionpromociones WHERE (Promociones_Fecha = '$this->fecha' && Promociones_Hora = '$this->hora')";
 				$this->mysqli->query( $sql );
 			}

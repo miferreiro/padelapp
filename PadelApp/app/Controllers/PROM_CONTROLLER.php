@@ -11,10 +11,11 @@ if (!IsAuthenticated()){
 include '../Models/PROM_MODEL.php'; 
 include '../Models/INSPROM_MODEL.php'; 
 include '../Models/PISTA_MODEL.php'; 
-include '../Views/PROMOCIÓN/PROM_SHOWALL.php'; 
-include '../Views/PROMOCIÓN/PROM_DELETE.php';
-include '../Views/PROMOCIÓN/PROM_SHOWCURRENT.php'; 
-include '../Views/PROMOCIÓN/PROM_ADD.php'; 
+include '../Views/PROMOCION/PROM_SHOWALL_View.php'; 
+include '../Views/PROMOCION/PROM_DELETE_View.php';
+include '../Views/PROMOCION/PROM_SHOWCURRENT_View.php'; 
+include '../Views/PROMOCION/PROM_SEARCH_View.php'; 
+include '../Views/PROMOCION/PROM_ADD_View.php'; 
 include '../Views/DEFAULT_View.php'; 
 include '../Views/MESSAGE_View.php';
 
@@ -65,14 +66,34 @@ switch ( $_REQUEST[ 'action' ] ) {
 			new MESSAGE( $respuesta, '../Controllers/PROM_CONTROLLER.php' );
 		}
 		break;
+	case 'SEARCH':
+		if ( !$_POST ) {
+						
+			if($_SESSION['tipo'] == 'Admin'){
+				new PROM_SEARCH();
+			}else{
+				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/PROM_CONTROLLER.php' );
+			}
 
+		} else {
+			
+			$PROM = get_data_form();
+			$datos = $PROM->SEARCH();
+			$lista = array('Fecha','Hora');
+		
+			new PROM_SHOWALL( $lista, $datos );
+			
+			
+		}
+		//Final  boque
+		break;
 	case 'SHOWCURRENT':
-		           $PROM = new PROM_MODEL($_REQUEST[ 'Fecha' ], $_REQUEST[ 'Hora' ]);
-		           $lista = $PROM->RellenaDatos();
-				   $INSPROM = new INSPROM_MODEL('', $_REQUEST[ 'Fecha' ], $_REQUEST[ 'Hora' ]);
-				   $lista2 = array('Promociones_Fecha', 'Promociones_Hora', 'Usuario_Dni');
-				   $valores = $INSPROM->SEARCH();
-		           new PROM_SHOWCURRENT($lista, $lista2, $valores );
+		   $PROM = new PROM_MODEL($_REQUEST[ 'Fecha' ], $_REQUEST[ 'Hora' ]);
+		   $lista = $PROM->RellenaDatos();
+		   $INSPROM = new INSPROM_MODEL('', $_REQUEST[ 'Fecha' ], $_REQUEST[ 'Hora' ]);
+		   $lista2 = array('Promociones_Fecha', 'Promociones_Hora', 'Usuario_Dni');
+		   $valores = $INSPROM->SEARCH();
+		   new PROM_SHOWCURRENT($lista, $lista2, $valores );
 		break;
 	default: 
 						if ( !$_POST ) {
