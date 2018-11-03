@@ -34,7 +34,7 @@ class Pista_Showall{
 						$c++;
 ?>
 					<th>
-						<?php echo $li['idPista']?>
+						<?php echo $strings['idPista'];echo(' ');echo $li['idPista']?>
 						<form action="../Controllers/PISTA_CONTROLLER.php" method="get" style="display:inline" >
 						<input type="hidden" name="idPista" value="<?php echo $li['idPista'] ?>">
 						<button id ="buttonBien" type="submit" name="action" value="DELETE" ><img src="../Views/icon/eliminar.png" alt="<?php echo $strings['Eliminar']?>" width="20" height="20" /></button>

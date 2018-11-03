@@ -53,7 +53,32 @@ class PISTA_MODEL{
 			return $resultado;
 		}
 	} // fin metodo SEARCH
-	
+	function SEARCH2() {
+		// construimos la sentencia de busqueda con LIKE y los atributos de la entidad
+		$sql = "select  P.idPista,
+                    P.Fecha,
+					P.Hora,
+					P.Disponibilidad,
+					R.Usuario_Dni
+       			from PISTA P, RESERVA R
+    			where 
+    				(
+					(BINARY P.idPista LIKE '%$this->idPista%') &&
+                     R.Pista_idPista=P.idPista &&   
+                    (BINARY P.Fecha LIKE '%$this->fecha%') &&
+                       R.Pista_Fecha = P.Fecha &&
+    				(BINARY P.Hora LIKE '%$this->hora%') &&
+                       R.Pista_Hora = P.Hora &&
+					(BINARY P.Disponibilidad LIKE '%$this->disponibilidad%')
+    				)";
+		// si se produce un error en la busqueda mandamos el mensaje de error en la consulta
+		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
+			return 'Error en la consulta sobre la base de datos';
+		} else { // si la busqueda es correcta devolvemos el recordset resultado
+
+			return $resultado;
+		}
+	} // fin metodo SEARCH	
 	
 	function PISTAS() {
 		// construimos la sentencia de busqueda con LIKE y los atributos de la entidad
@@ -99,6 +124,7 @@ class PISTA_MODEL{
 		
 	} // fin metodo ComprobarDisp
 
+	
 	//Metodo ADD()
 	//Inserta en la tabla  de la bd  los valores
 	// de los atributos del objeto. Comprueba si la clave/s esta vacia y si 

@@ -2,14 +2,25 @@
 
 class USUARIO_DELETE {
 
-	function __construct( $valores) { 
+	function __construct( $valores,$lista,$lista2,$valores2,$valores3) { 
 		$this->valores = $valores;
+			$this->lista = $lista;
+		$this->lista2 = $lista2;
+		$this->valores2 = $valores2;
+		$this->valores3 = $valores3;
 
-		$this->render( $this->valores);
+
+		$this->render( $this->valores,$this->lista,$this->lista2,$this->valores2,$this->valores3);
 	}
 
-	function render( $valores) { 
+	function render( $valores,$lista,$lista2,$valores2,$valores3) { 
 		$this->valores = $valores;
+		$this->lista = $lista;
+		$this->lista2 = $lista2;
+		$this->valores2 = $valores2;
+		$this->valores3 = $valores3;
+
+
 	
 
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
@@ -36,14 +47,6 @@ class USUARIO_DELETE {
 					</th>
 					<td>
 						<?php echo $this->valores['Login']?>
-					</td>
-				</tr>
-				<tr>
-					<th>
-						<?php echo $strings['Contraseña'];?>
-					</th>
-					<td>
-						<?php echo $this->valores['Password']?>
 					</td>
 				</tr>
 				<tr>
@@ -89,6 +92,94 @@ class USUARIO_DELETE {
 				</thead>
 			</table>
 			</div>	
+<div class="seccion" align="center">
+			<h2>
+			<?php echo $strings['Promociones asociadas'];?>
+			</h2>
+			<div class="col-md-3">
+			<table class="table table-sm" align="center">
+			<thead class="thead-light">
+				<tr>
+<?php
+					foreach ( $lista as $atributo ) { 
+?>
+						<th>
+							<?php echo $strings[$atributo]?>
+						</th>
+<?php
+					}
+?>
+				</tr>
+				<tr>
+					<?php
+						while ( $fila = mysqli_fetch_array( $this->valores2 ) ) {
+						
+?>
+				<tr>
+<?php
+					foreach ( $lista as $atributo ) { 
+?>
+					<td>
+<?php 
+							echo $fila[ $atributo ];
+?>
+					</td>
+<?php
+					}
+?>
+														
+				</tr>
+<?php
+					}
+?>
+				</thead>
+			</table>
+		</div>
+
+	<div class="seccion" align="center">
+			<h2>
+			<?php echo $strings['Reservas asociadas'];?>
+			</h2>
+			<div class="col-md-3">
+			<table class="table table-sm" align="center">
+			<thead class="thead-light">
+				<tr>
+<?php
+					foreach ( $lista2 as $atributo ) { 
+?>
+						<th>
+							<?php echo $strings[$atributo]?>
+						</th>
+<?php
+					}
+?>
+				</tr>
+				<tr>
+					<?php
+						while ( $fila2 = mysqli_fetch_array( $this->valores3 ) ) {
+						
+?>
+				<tr>
+<?php
+					foreach ( $lista2 as $atributo ) { 
+?>
+					<td>
+<?php 
+							echo $fila2[ $atributo ];
+?>
+					</td>
+<?php
+					}
+?>
+														
+				</tr>
+<?php
+					}
+?>
+				</thead>
+			</table>
+		</div>
+
 <?php 
 			echo $strings['¿Está seguro de que quiere borrar esta tupla de la tabla?'];
 ?>

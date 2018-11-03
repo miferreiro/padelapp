@@ -3,20 +3,18 @@
 class PISTA_SHOWCURRENT{
 	
     //es el constructor de la clase Pista_Showall
-	function __construct( $lista, $valores, $lista1, $lista2) {
+	function __construct( $lista,$lista2,$valores,$valores2) {
 		$this->lista = $lista;//pasamos los campos de la tabla PISTAS
-		$this->lista1 = $lista1;
 		$this->lista2 = $lista2;
 		$this->valores = $valores;//pasamos los valores de cada campo
-
-		$this->render($this->lista,$this->valores,$this->lista1,$this->lista2);//llamamos a la función render donde se mostrará el formulario SHOWALL con los campos correspondientes
+		$this->valores2 = $valores2;
+		$this->render($this->lista,$this->lista2,$this->valores,$this->valores2);//llamamos a la función render donde se mostrará el formulario SHOWALL con los campos correspondientes
 	}
-	function render($lista,$valores,$lista1,$lista2){
+	function render($lista,$lista2,$valores,$valores2){
 		$this->lista = $lista;//pasamos los campos de la tabla PISTAS
-		$this->lista1 = $lista1;
 		$this->lista2 = $lista2;
 		$this->valores = $valores;//pasamos los valores de cada campo
-
+		$this->valores2 = $valores2;
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
 
   
@@ -46,6 +44,7 @@ class PISTA_SHOWCURRENT{
 				<tr>
 					<?php
 						while ( $fila = mysqli_fetch_array( $this->valores ) ) {
+						
 ?>
 				<tr>
 <?php
@@ -67,6 +66,51 @@ class PISTA_SHOWCURRENT{
 				</thead>
 			</table>
 		</div>
+
+<div class="seccion" align="center">
+			<h2>
+			<?php echo $strings['Reservas asociadas'];?>
+			</h2>
+			<div class="col-md-3">
+			<table class="table table-sm" align="center">
+			<thead class="thead-light">
+				<tr>
+<?php
+					foreach ( $lista2 as $atributo ) { 
+?>
+						<th>
+							<?php echo $strings[$atributo]?>
+						</th>
+<?php
+					}
+?>
+				</tr>
+				<tr>
+					<?php
+						while ( $fila2 = mysqli_fetch_array( $this->valores2 ) ) {
+						
+?>
+				<tr>
+<?php
+					foreach ( $lista2 as $atributo ) { 
+?>
+					<td>
+<?php 
+							echo $fila2[ $atributo ];
+?>
+					</td>
+<?php
+					}
+?>
+														
+				</tr>
+<?php
+					}
+?>
+				</thead>
+			</table>
+		</div>
+
 			<form action='../Controllers/PISTA_CONTROLLER.php' method="post">
 				<button id ="buttonBien" type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>

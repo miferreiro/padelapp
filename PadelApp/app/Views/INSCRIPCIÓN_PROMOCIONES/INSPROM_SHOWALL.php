@@ -62,8 +62,7 @@ class INSPROM_SHOWALL {
 							<input type="hidden" name="Promociones_Hora" value="<?php echo $fila['Promociones_Hora']; ?>">
 				
 								<button id ="buttonBien" type="submit" name="action" value="DELETE" ><img src="../Views/icon/eliminar.png" alt="<?php echo $strings['Eliminar']?>" width="20" height="20" /></button>				
-					<td>						
-								<button id ="buttonBien" type="submit" name="action" value="SHOWCURRENT" ><img src="../Views/icon/verDetalles.png" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>
+					<td>	
 						</form>
 				    <td>								
 				</tr>
@@ -77,9 +76,6 @@ class INSPROM_SHOWALL {
 				<tr align="center">
 						<td colspan="2">
 					<form action='../Controllers/INSPROM_CONTROLLER.php'>
-
-						<button id ="buttonBien"  type="submit" name="action" value="SEARCH"><img src="../Views/icon/buscar.png" alt="BUSCAR" /></button>	
-
 						<button id ="buttonBien"  type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="AÑADIR" /></button>
 					</form>
 					</td>

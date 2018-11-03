@@ -12,7 +12,6 @@ include '../Models/INSPROM_MODEL.php'; //incluye el contendio del modelo INSCRIP
 include '../Models/PROM_MODEL.php'; //incluye el contendio del modelo PISTAS
 include '../Views/INSCRIPCIÓN_PROMOCIONES/INSPROM_SHOWALL.php'; //incluye la vista del showall
 include '../Views/INSCRIPCIÓN_PROMOCIONES/INSPROM_DELETE.php'; //incluye la vista EDIT
-include '../Views/INSCRIPCIÓN_PROMOCIONES/INSPROM_SHOWCURRENT.php'; //incluye la vista SEARCH
 include '../Views/INSCRIPCIÓN_PROMOCIONES/INSPROM_ADD.php'; //incluye la vista SEARCH
 include '../Views/DEFAULT_View.php'; //incluye la vista por defecto
 include '../Views/MESSAGE_View.php'; //incluye la vista mensaje
@@ -41,8 +40,13 @@ if ( !isset( $_REQUEST[ 'action' ] ) ) {
 //Estructura de control, que realiza un determinado caso dependiendo del valor action
 switch ( $_REQUEST[ 'action' ] ) {
 	case 'ADD'://Caso añadir
-		if ( $_POST ) {//Si no se han recibido datos se envia a la vista del formulario ADD
+		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario ADD
 		
+			if($_SESSION['tipo'] == 'Deportista'){
+				new INSPROM_ADD();
+			}else{
+				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/USUARIO_CONTROLLER.php' );
+			}
 		} else {//Si recibe datos los recoge y mediante las funcionalidad de INSPROM_MODEL inserta los datos
 		    $INSPROM = new INSPROM_MODEL( $_REQUEST[ 'Usuario_Dni' ], $_REQUEST[ 'Promociones_Fecha' ], $_REQUEST[ 'Promociones_Hora' ]);
 			$respuesta = $INSPROM->ADD();//Variable que almacena la respuesta de la inserción
@@ -96,15 +100,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		}
 		//Final del bloque
 		break;
-	case 'SHOWCURRENT'://Caso showcurrent
-		           $INSPROM = new INSPROM_MODEL( $_REQUEST[ 'Usuario_Dni' ], $_REQUEST[ 'Promociones_Fecha' ], $_REQUEST[ 'Promociones_Hora' ]);
-					//Variable que almacena los valores rellenados a traves de login
-		           	$valores = $INSPROM->RellenaDatos($_REQUEST[ 'Usuario_Dni' ], $_REQUEST[ 'Promociones_Fecha' ], $_REQUEST[ 'Promociones_Hora' ]);
-		           //Creación de la vista showcurrent
-		           new INSPROM_SHOWCURRENT( $valores );
-			
-		//Final del bloque
-		break;
+
 	default: //Caso que se ejecuta por defecto
 			if($_SESSION['tipo'] == 'Deportista'){//miramos si el usuario es administrador
 				if ( !$_POST ) {//Si no se han recibido datos 
@@ -120,7 +116,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 				
 				new INSPROM_SHOWALL( $lista, $datos);//nos muestra una vista showall con todos los permisos
 			}else{//en el caso de que el usuario no tenga permisos le sale una vista vacía
-				new INSPROM_SHOWALL();
+				new USUARIO_DEFAULT();
 			}
    				
 			

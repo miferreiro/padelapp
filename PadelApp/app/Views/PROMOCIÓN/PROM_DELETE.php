@@ -2,15 +2,18 @@
 
 class PROM_DELETE {
 
-	function __construct( $valores) { 
+	function __construct( $valores, $lista, $lista2) { 
 		$this->valores = $valores;
+		$this->lista = $lista;
+		$this->lista2 = $lista2;
 
-		$this->render( $this->valores);
+		$this->render( $this->valores, $this->lista, $this->lista2);
 	}
 
-	function render( $valores) { 
+	function render( $valores, $lista, $lista2) { 
 		$this->valores = $valores;
-	
+	    $this->lista = $lista;
+		$this->lista2 = $lista2;
 
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
@@ -40,7 +43,50 @@ class PROM_DELETE {
 				</tr>
 				</thead>
 			</table>
-			</div>	
+			</div>
+<div class="seccion" align="center">
+			<h2>
+			<?php echo $strings['Reservas asociadas'];?>
+			</h2>
+			<div class="col-md-3">
+			<table class="table table-sm" align="center">
+			<thead class="thead-light">
+				<tr>
+<?php
+					foreach ( $lista as $atributo ) { 
+?>
+						<th>
+							<?php echo $strings[$atributo]?>
+						</th>
+<?php
+					}
+?>
+				</tr>
+				<tr>
+					<?php
+						while ( $fila = mysqli_fetch_array( $this->lista2 ) ) {
+						
+?>
+				<tr>
+<?php
+					foreach ( $lista as $atributo ) { 
+?>
+					<td>
+<?php 
+							echo $fila[ $atributo ];
+?>
+					</td>
+<?php
+					}
+?>
+														
+				</tr>
+<?php
+					}
+?>
+				</thead>
+			</table>
+		</div>
 <?php 
 			echo $strings['¿Está seguro de que quiere borrar esta tupla de la tabla?'];
 ?>

@@ -28,10 +28,23 @@ class PISTA_DELETE {
 					<th>
 						<?php echo $strings['idPista'];?>
 					</th>
+									
 					<td>
 						<?php echo $this->valores['idPista']?>
 					</td>
 				</tr>	
+				</thead>
+			</table>
+			</div>
+			
+<div class="seccion" align="center">
+			<h2>
+			<?php echo $strings['Reservas asociadas'];?>
+			</h2>
+			<div class="col-md-3">
+			<table class="table table-sm" align="center">
+			<thead class="thead-light">
+				<tr>
 <?php
 					foreach ( $lista as $atributo ) { 
 ?>
@@ -41,8 +54,11 @@ class PISTA_DELETE {
 <?php
 					}
 ?>
-<?php
-				while ( $fila = mysqli_fetch_array( $this->lista2 ) ) { 
+				</tr>
+				<tr>
+					<?php
+						while ( $fila = mysqli_fetch_array( $this->lista2 ) ) {
+						
 ?>
 				<tr>
 <?php
@@ -55,12 +71,15 @@ class PISTA_DELETE {
 					</td>
 <?php
 					}
-				}
 ?>
-		
+														
+				</tr>
+<?php
+					}
+?>
 				</thead>
 			</table>
-			</div>
+		</div>
 <?php 
 			echo $strings['¿Está seguro de que quiere borrar esta tupla de la tabla?'];
 ?>

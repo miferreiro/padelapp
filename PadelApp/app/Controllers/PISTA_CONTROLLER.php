@@ -114,11 +114,11 @@ switch ( $_REQUEST[ 'action' ] ) {
 		//Variable que almacena los valores rellenados a traves de login
 					$valores = $PISTA->SEARCH();
 				   	$lista = array('Fecha','Hora','Disponibilidad');
-					$lista1 = array('Usuario_Dni','Pista_idPista','Pista_Fecha','Pista_Hora');
-					$RESERVA = new RESERVA_MODEL('',$_REQUEST[ 'idPista' ],'',''); 
-					$lista2 = $RESERVA->SEARCH();
+					$lista2 = array('Pista_Fecha','Pista_Hora','Usuario_Dni');
+					$RESERVA = new RESERVA_MODEL('',$_REQUEST[ 'idPista' ],'','');
+					$valores2= $RESERVA->SEARCH();
 		           //Creación de la vista showcurrent
-		           new PISTA_SHOWCURRENT($lista, $valores, $lista1, $lista2 );
+		           new PISTA_SHOWCURRENT($lista,$lista2,$valores, $valores2);
 			
 		//Final del bloque
 		break;

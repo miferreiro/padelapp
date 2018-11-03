@@ -9,6 +9,7 @@ if (!IsAuthenticated()){
 }
 
 include '../Models/PROM_MODEL.php'; 
+include '../Models/INSPROM_MODEL.php'; 
 include '../Models/PISTA_MODEL.php'; 
 include '../Views/PROMOCIÓN/PROM_SHOWALL.php'; 
 include '../Views/PROMOCIÓN/PROM_DELETE.php';
@@ -51,8 +52,10 @@ switch ( $_REQUEST[ 'action' ] ) {
 
 			$PROM = new PROM_MODEL($_REQUEST[ 'Fecha' ], $_REQUEST[ 'Hora' ]);
 			$valores = $PROM->RellenaDatos();
-
-			new PROM_DELETE( $valores);
+			$lista= array('Promociones_Fecha', 'Promociones_Hora', 'Usuario_Dni');
+			$INSPROM = new INSPROM_MODEL('', $_REQUEST[ 'Fecha' ], $_REQUEST[ 'Hora' ]);
+			$lista2 = $INSPROM->SEARCH();
+			new PROM_DELETE( $valores, $lista, $lista2);
 			
 		} else {
 			$PROM = get_data_form();
@@ -65,8 +68,11 @@ switch ( $_REQUEST[ 'action' ] ) {
 
 	case 'SHOWCURRENT':
 		           $PROM = new PROM_MODEL($_REQUEST[ 'Fecha' ], $_REQUEST[ 'Hora' ]);
-		           $valores = $PROM->RellenaDatos();
-		           new PROM_SHOWCURRENT( $valores );
+		           $lista = $PROM->RellenaDatos();
+				   $INSPROM = new INSPROM_MODEL('', $_REQUEST[ 'Fecha' ], $_REQUEST[ 'Hora' ]);
+				   $lista2 = array('Promociones_Fecha', 'Promociones_Hora', 'Usuario_Dni');
+				   $valores = $INSPROM->SEARCH();
+		           new PROM_SHOWCURRENT($lista, $lista2, $valores );
 		break;
 	default: 
 			if($_SESSION['tipo'] == 'Admin'){

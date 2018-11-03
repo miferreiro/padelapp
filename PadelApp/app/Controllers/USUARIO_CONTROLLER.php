@@ -8,6 +8,8 @@ if (!IsAuthenticated()){
 }
 
 include '../Models/USUARIO_MODEL.php'; 
+include '../Models/RESERVA_MODEL.php'; 
+include '../Models/INSPROM_MODEL.php'; 
 include '../Views/USUARIO/USUARIO_SHOWALL_View.php'; 
 include '../Views/USUARIO/USUARIO_SEARCH_View.php';
 include '../Views/USUARIO/USUARIO_ADD_View.php'; 
@@ -96,7 +98,13 @@ switch ( $_REQUEST[ 'action' ] ) {
 				
 				$USUARIO = new USUARIO_MODEL( '', '', $_REQUEST[ 'Dni' ], '', '', '', '', '', '');
 				$valores = $USUARIO->RellenaDatos( $_REQUEST[ 'Dni' ] );
-				new USUARIO_DELETE( $valores);
+				$INSPROM = new INSPROM_MODEL($_REQUEST[ 'Dni' ], '', '');
+				$valores2 = $INSPROM->SEARCH();
+				$RESERVA = new RESERVA_MODEL( $_REQUEST[ 'Dni' ], '', '','');
+				$valores3 = $RESERVA->SEARCH();
+				$lista = array('Usuario_Dni','Promociones_Fecha','Promociones_Hora');
+				$lista2 = array('Usuario_Dni','Pista_idPista','Pista_Fecha','Pista_Hora');
+				new USUARIO_DELETE( $valores,$lista,$lista2,$valores2,$valores3);
 				
 			}else{
 				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/USUARIO_CONTROLLER.php' );	
@@ -142,9 +150,15 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'SHOWCURRENT':
 		if($_SESSION['tipo'] == 'Admin'){
-			   $USUARIO = new USUARIO_MODEL( '', '', $_REQUEST[ 'Dni' ], '', '', '', '', '');
-			   $valores = $USUARIO->RellenaDatos( $_REQUEST[ 'Dni' ] ); 
-			   new USUARIO_SHOWCURRENT( $valores );
+				$USUARIO = new USUARIO_MODEL( '', '', $_REQUEST[ 'Dni' ], '', '', '', '', '', '');
+				$valores = $USUARIO->RellenaDatos( $_REQUEST[ 'Dni' ] );
+				$INSPROM = new INSPROM_MODEL($_REQUEST[ 'Dni' ], '', '');
+				$valores2 = $INSPROM->SEARCH();
+				$RESERVA = new RESERVA_MODEL(  $_REQUEST[ 'Dni' ], '', '','');
+				$valores3 = $RESERVA->SEARCH();
+				$lista = array('Usuario_Dni','Promociones_Fecha','Promociones_Hora');
+				$lista2 = array('Usuario_Dni','Pista_idPista','Pista_Fecha','Pista_Hora');
+				new USUARIO_SHOWCURRENT( $valores,$lista,$lista2,$valores2,$valores3);
 			}else{
 				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/USUARIO_CONTROLLER.php' );
 			}
