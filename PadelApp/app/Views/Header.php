@@ -96,9 +96,16 @@ que comprueba permisos para cada una de las acciones -->
 								
 				<?php } } ?>
 				<?php if (isset($_SESSION['login']) &  isset($_SESSION['tipo'])){?>
-						<?php if($_SESSION['tipo'] == 'Deportista'){ ?>
+					<?php if($_SESSION['tipo'] == 'Deportista'){ ?>
 							<div class="dropdown-divider"></div>
-								<button id ="buttonBien" type="submit"  name="insPromociones"><a class="dropdown-item" href="../Controllers/INSPROM_CONTROLLER.php" /><?php echo 'Inscripción en Promociones' ?></a></button>
+	
+								<button id ="buttonBien" type="submit"  name="promociones"><a class="dropdown-item"  href="../Controllers/PROM_CONTROLLER.php" /><?php echo 'Inscribirse en promoción' ?></a></button>
+								
+				<?php } } ?>
+				<?php if (isset($_SESSION['login']) &  isset($_SESSION['tipo'])){?>
+						<?php if($_SESSION['tipo'] == 'Admin'){ ?>
+							<div class="dropdown-divider"></div>
+								<button id ="buttonBien" type="submit"  name="insPromociones"><a class="dropdown-item" href="../Controllers/INSPROM_CONTROLLER.php" /><?php echo 'Inscritos en promociones' ?></a></button>
 	
 				<?php } } ?>
 				<?php if (isset($_SESSION['login']) &  isset($_SESSION['tipo'])){?>

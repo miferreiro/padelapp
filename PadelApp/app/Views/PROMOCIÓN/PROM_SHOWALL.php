@@ -56,13 +56,27 @@ class PROM_SHOWALL {
 					}
 ?>
 					<td>
+<?php if($_SESSION['tipo'] == 'Admin'){ 
+?>
 						<form action="../Controllers/PROM_CONTROLLER.php" method="get" style="display:inline" >
 							<input type="hidden" name="Fecha" value="<?php echo $fila['Fecha']; ?>">
 							<input type="hidden" name="Hora" value="<?php echo $fila['Hora']; ?>">
 				
 								<button id ="buttonBien" type="submit" name="action" value="DELETE" ><img src="../Views/icon/eliminar.png" alt="<?php echo $strings['Eliminar']?>" width="20" height="20" /></button>										
 								<button id ="buttonBien" type="submit" name="action" value="SHOWCURRENT" ><img src="../Views/icon/verDetalles.png" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>
+						</form>	
+<?php  
+		  }else{						
+?>	
+						<form action="../Controllers/INSPROM_CONTROLLER.php" method="get" style="display:inline" >
+							<input type="hidden" name="Fecha" value="<?php echo $fila['Fecha']; ?>">
+							<input type="hidden" name="Hora" value="<?php echo $fila['Hora']; ?>">
+							<input type="hidden" name="Dni" value="<?php echo $_SESSION['Dni']; ?>">
+								<button id ="buttonBien" type="submit" name="action" value="ADD" ><img src="../Views/icon/añadir.png" alt="<?php echo $strings['Añadir']?>" width="20" 
 						</form>							
+<?php
+					}
+?>					
 				</tr>
 <?php
 				}
@@ -70,14 +84,7 @@ class PROM_SHOWALL {
 				
 				</thead>
 			</table>
-				
-				<tr align="center">
-						<td colspan="2">
-					<form action='../Controllers/PROM_CONTROLLER.php'>
-						<button id ="buttonBien"  type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="AÑADIR" /></button>
-					</form>
-					</td>
-				</tr>
+	
 			
 			</div>
 			<form action='../Controllers/PROM_CONTROLLER.php' method="post">

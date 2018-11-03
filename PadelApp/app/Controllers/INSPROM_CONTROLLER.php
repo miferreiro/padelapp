@@ -12,7 +12,6 @@ include '../Models/INSPROM_MODEL.php'; //incluye el contendio del modelo INSCRIP
 include '../Models/PROM_MODEL.php'; //incluye el contendio del modelo PISTAS
 include '../Views/INSCRIPCIÓN_PROMOCIONES/INSPROM_SHOWALL.php'; //incluye la vista del showall
 include '../Views/INSCRIPCIÓN_PROMOCIONES/INSPROM_DELETE.php'; //incluye la vista EDIT
-include '../Views/INSCRIPCIÓN_PROMOCIONES/INSPROM_ADD.php'; //incluye la vista SEARCH
 include '../Views/DEFAULT_View.php'; //incluye la vista por defecto
 include '../Views/MESSAGE_View.php'; //incluye la vista mensaje
 
@@ -40,19 +39,15 @@ if ( !isset( $_REQUEST[ 'action' ] ) ) {
 //Estructura de control, que realiza un determinado caso dependiendo del valor action
 switch ( $_REQUEST[ 'action' ] ) {
 	case 'ADD'://Caso añadir
-		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario ADD
-		
 			if($_SESSION['tipo'] == 'Deportista'){
-				new INSPROM_ADD();
-			}else{
-				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/USUARIO_CONTROLLER.php' );
-			}
-		} else {//Si recibe datos los recoge y mediante las funcionalidad de INSPROM_MODEL inserta los datos
-		    $INSPROM = new INSPROM_MODEL( $_REQUEST[ 'Usuario_Dni' ], $_REQUEST[ 'Promociones_Fecha' ], $_REQUEST[ 'Promociones_Hora' ]);
+		    $INSPROM = new INSPROM_MODEL( $_REQUEST[ 'Dni' ], $_REQUEST[ 'Fecha' ], $_REQUEST[ 'Hora' ]);
 			$respuesta = $INSPROM->ADD();//Variable que almacena la respuesta de la inserción
 			//Crea la vista con la respuesta y la ruta para volver
 			new MESSAGE( $respuesta, '../Controllers/INSPROM_CONTROLLER.php' );
-		}
+			}else{
+				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/USUARIO_CONTROLLER.php' );
+			}
+
 		//Finaliza el bloque
 		break;
 	case 'DELETE'://Caso borrar
@@ -91,7 +86,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			//Variable que almacena el resultado de la busqueda
 			$datos = $INSPROM->SEARCH();
 			//Variable que almacena array con el nombre de los atributos
-			$lista = array('Usuario_Dni','Promociones_Hora','Promociones_Fecha');
+			$lista = array('Promociones_Fecha','Promociones_Hora','Usuario_Dni');
 			//Creacion de la vista showall con el array $lista, los datos y la ruta de vuelta
 		
 				new INSPROM_SHOWCURRENT( $lista, $datos );
@@ -102,7 +97,6 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 
 	default: //Caso que se ejecuta por defecto
-			if($_SESSION['tipo'] == 'Deportista'){//miramos si el usuario es administrador
 				if ( !$_POST ) {//Si no se han recibido datos 
 					$INSPROM = new INSPROM_MODEL( '', '', '', '');//Variable que almacena la un objeto del modelo PISTA
 					//Si se reciben datos
@@ -112,12 +106,10 @@ switch ( $_REQUEST[ 'action' ] ) {
 				//Variable que almacena los datos de la busqueda
 				$datos = $INSPROM->SEARCH();
 				//Variable que almacena array con el nombre de los atributos
-				$lista = array( 'Usuario_Dni','Promociones_Hora','Promociones_Fecha');
+				$lista = array( 'Promociones_Fecha','Promociones_Hora','Usuario_Dni');
 				
 				new INSPROM_SHOWALL( $lista, $datos);//nos muestra una vista showall con todos los permisos
-			}else{//en el caso de que el usuario no tenga permisos le sale una vista vacía
-				new USUARIO_DEFAULT();
-			}
+	
    				
 			
 }

@@ -60,20 +60,53 @@ class INSPROM_MODEL{
 	// de los atributos del objeto. Comprueba si la clave/s esta vacia y si 
 	//existe ya en la tabla
 	function ADD() {
-		
-		
-					if ( !$this->mysqli->query( $sql )) { // si da error en la ejecución del insert devolvemos mensaje
-						return 'Error en la inserción';
-					} else { //si no da error en la insercion devolvemos mensaje de exito
-						
-						if($mensaje == 'Inserción realizada con éxito'){//miramos si la inserción en USU_GRUPO tuvo exito
-							return 'Inserción realizada con éxito'; //operacion de insertado correcta
-						}else{//si la insercion no tuvo exito
-							return $mensaje;
-						}	
+		if ( ( $this->Promociones_fecha <> '' ) && ( $this->Promociones_hora <> '' ) && ( $this->Usuario_Dni <> '' )) { 
+            			
+			$sql = "SELECT * FROM INSCRIPCIONPROMOCIONES WHERE (  Promociones_Fecha = '$this->Promociones_fecha' && Promociones_Hora = '$this->Promociones_Hora' && Usuario_Dni = '$this->Usuario_Dni')";
+
+			if ( !$result = $this->mysqli->query( $sql ) ) { 
+				return 'No se ha podido conectar con la base de datos';
+			} else { 
+
+				if ( $result->num_rows == 1 ) { 
+					
+					return 'Ya está inscrito en esa promoción';// ya existe	
+					
+				}else{
+					
+				  $sql = "SELECT * FROM inscripcionpromociones WHERE (  Promociones_Fecha = '$this->Promociones_fecha' && Promociones_Hora = '$this->Promociones_Hora')";
+				  if ( !$result = $this->mysqli->query( $sql ) ) { 
+					  
+						return 'No se ha podido conectar con la base de datos';
+					  
+				  } else { 
+					if ( $result->num_rows >= 4 ) {			
+						return 'Número máximo de inscritos alcanzado';// ya existe					
+					} else {
+
+							$sql = "INSERT INTO inscripcionpromociones (
+								Usuario_Dni,
+								Promociones_Fecha,
+								Promociones_Hora
+								) 
+								VALUES(
+									'$this->Usuario_Dni',
+									'$this->Promociones_fecha',
+									'$this->Promociones_hora'
+								)";					
+						}
+				  	  }
 					}
-	
-	} // fin del metodo ADD
+					if ( !$this->mysqli->query( $sql )) { 
+						return 'Error en la inserción';
+					} else { 											
+						return 'Inserción realizada con éxito'; 
+					}		
+				}
+		} else { 
+			return 'Introduzca un valor'; 
+		}			
+	} 
 
     
 

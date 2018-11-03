@@ -75,7 +75,6 @@ switch ( $_REQUEST[ 'action' ] ) {
 		           new PROM_SHOWCURRENT($lista, $lista2, $valores );
 		break;
 	default: 
-			if($_SESSION['tipo'] == 'Admin'){
 						if ( !$_POST ) {
 							$PROM = new PROM_MODEL( '', '');
 							
@@ -88,9 +87,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 						$lista = array('Fecha','Hora');
 						
 						new PROM_SHOWALL( $lista, $datos);
-			}else{
-				new USUARIO_DEFAULT();
-			}
+
    				
 			
 }

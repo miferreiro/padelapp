@@ -29,7 +29,7 @@ else{//si existe el y la password
 		
 		$_SESSION['tipo'] = $usuario->obtenerTipo();
 		$_SESSION['dni'] = $usuario->obtenerDni();
-		header('Location:../Controllers/USUARIO_CONTROLLER.php');//se redirige al controlador de USUARIOS_CONTROLLER.php
+		header('Location:../Controllers/DEFAULT_CONTROLLER.php');//se redirige al controlador de USUARIOS_CONTROLLER.php
 	}
 	//Si no esta en la base de datos, se muestra la respuesta en la vista mensaje
 	else{
