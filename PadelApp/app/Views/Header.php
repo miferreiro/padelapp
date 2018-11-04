@@ -124,6 +124,20 @@ que comprueba permisos para cada una de las acciones -->
 
 								<button id ="buttonBien" type="submit"  name="gesCampeonatos" ><a class="dropdown-item" href="../Controllers/CAMPEONATO_CONTROLLER.php"/><?php echo 'Gestion de campeonatos' ?></a></button>
 				<?php }} ?>
+				
+				
+				
+				<?php if (isset($_SESSION['login']) & isset($_SESSION['tipo'])) { 
+					//Si el usuario tiene permisos de showall en gestión de usuarios se muestra la opción ?>
+					<?php if($_SESSION['tipo'] == 'Deportista'){ ?>
+
+							<div class="dropdown-divider"></div>
+
+								<button id ="buttonBien" type="submit"  name="gesCalendario" ><a class="dropdown-item" href="../Controllers/CALENDARIO_CONTROLLER.php"/><?php echo 'Gestion de calendario' ?></a></button>
+				<?php }} ?>
+				
+				
+				
 				<?php if(isset($_SESSION['login']) & isset($_SESSION['tipo'])) {  ?>
 					<?php if($_SESSION['tipo'] == 'Deportista'){ ?>
 							<div class="dropdown-divider"></div>

@@ -1,6 +1,6 @@
 <?php
 
-class GRUPO_CATEGORIA_TABLA{
+class CALENDARIO_TABLA{
 
 	function __construct( $listaParejas, $listaEnfrentamientos,$vuelta) {
 		$this->listaParejas = $listaParejas;
@@ -114,38 +114,7 @@ class GRUPO_CATEGORIA_TABLA{
 			}
 			?></tr><?php
 		}
-/*
-		while($fila = mysqli_fetch_array( $this->listaEnfrentamientos )){?>
-					<tr>
-
-					<th><?php echo $arrayListadoParejas[$contadorfila] ;?></th>
-
-					<?php
-					echo fila['pareja1'];
-					if(fila['pareja1'] == $contadorfila){
-						for($x = 1;$x<= %numParejas;$x++){
-					?>
-					<td></td>   <td></td>     <td></td>      <td></td>      <td></td>    <td></td>      <td></td>     <td></td>
-					
-					
-					<?php $contadorcolumna++;
-						}
-					} ?>
-					</tr>
-					
-					
-					
-					
-					
-					
-		<?php 
-			$contadorfila++;
-			if($contadorfila >= $numParejas){
-				break;
-			}
-		}
-	
-		 */?>
+?>
 							
 				</thead>
 			</table>

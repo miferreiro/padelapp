@@ -138,6 +138,17 @@ class PARTIDO_MODEL{
 			return $result;
 		}
 	} 
+	function RellenaDatos2() { 
+
+		$sql = "SELECT * FROM PARTIDO WHERE (IdCampeonato = '$this->IdCampeonato') && (Tipo = '$this->Tipo') && (Nivel = '$this->Nivel')  && (Grupo_Letra = '$this->Letra')&& (NumEnfrentamiento = '$this->NumEnfrentamiento')";
+		
+		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
+			return 'No existe en la base de datos'; // 
+		} else {            
+			$result = $resultado->fetch_array();	
+			return $result;
+		}
+	} 
 	function EDIT() {
 		
 		$sql = "SELECT * FROM PARTIDO WHERE  (IdCampeonato = '$this->IdCampeonato') && (Tipo = '$this->Tipo') && (Nivel = '$this->Nivel') && (Grupo_Letra = '$this->Letra') && (NumEnfrentamiento = '$this->NumEnfrentamiento')";

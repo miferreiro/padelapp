@@ -58,7 +58,8 @@ function create_enfrentamiento($idCampeonato,$tipo,$nivel,$letra,$numEnfrentamie
 		$letra,
 		$numEnfrentamiento,
 		$numPareja,
-		NULL
+		NULL,
+		'0'
 	);
 	
 	return $ENFRENTAMIENTO;
