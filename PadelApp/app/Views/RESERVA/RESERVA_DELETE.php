@@ -43,7 +43,7 @@ class RESERVA_DELETE {
 						<?php echo $strings['Fecha'];?>
 					</th>
 					<td>
-						<?php echo $this->valores['Pista_Fecha']?>
+						<?php echo date( "d/m/Y", strtotime( $this->valores['Pista_Fecha']) )?>
 					</td>
 				</tr>
 				<tr>

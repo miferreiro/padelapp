@@ -80,14 +80,21 @@ que comprueba permisos para cada una de las acciones -->
 							<div class="dropdown-divider"></div>
 								<button id ="buttonBien" type="submit"  name="usuarios"><a class="dropdown-item" href="../Controllers/USUARIO_CONTROLLER.php" /><?php echo $strings['Gestion de usuarios']?></a></button>
 								  
-				<?php } ?>
-				<?php if (isset($_SESSION['login']) & isset($_SESSION['tipo'])) { 
-				//Si el usuario tiene permisos de showall en gestión de usuarios se muestra la opción ?>
-				<?php if($_SESSION['tipo'] == 'Admin'){ ?>
-							<div class="dropdown-divider"></div>	
-								<button id ="buttonBien" type="submit"  name="pistas"><a class="dropdown-item" href="../Controllers/PISTA_CONTROLLER.php" /><?php echo $strings['Gestión de pistas'] ?></a></button>
-				
-				<?php } }?>				
+				<?php }?>				
+				<?php if (isset($_SESSION['login']) &  isset($_SESSION['tipo'])){?>
+					<?php if($_SESSION['tipo'] == 'Admin'){ ?>
+							<div class="dropdown-divider"></div>
+	
+								<button id ="buttonBien" type="submit"  name="promociones"><a class="dropdown-item"  href="../Controllers/PISTA_CONTROLLER.php" /><?php echo 'Gestión de pistas' ?></a></button>
+								
+				<?php } } ?>
+				<?php if (isset($_SESSION['login']) &  isset($_SESSION['tipo'])){?>
+					<?php if($_SESSION['tipo'] == 'Deportista'){ ?>
+							<div class="dropdown-divider"></div>
+	
+								<button id ="buttonBien" type="submit"  name="promociones"><a class="dropdown-item"  href="../Controllers/PISTA_CONTROLLER.php" /><?php echo 'Reservar pista' ?></a></button>
+								
+				<?php } } ?>			
 				<?php if (isset($_SESSION['login']) &  isset($_SESSION['tipo'])){?>
 					<?php if($_SESSION['tipo'] == 'Admin'){ ?>
 							<div class="dropdown-divider"></div>

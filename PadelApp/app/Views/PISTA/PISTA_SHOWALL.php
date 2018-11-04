@@ -55,22 +55,56 @@ class Pista_Showall{
 					for($i=0;$i<$c;$i++){
 						if(Comprobar_Disponibilidad($i+1,$fila['Hora'],date("Y-m-d"))==1){
 ?>
-							<td bgcolor="#35B109" >					
+						<td bgcolor="#35B109" >	
+							
+<?php  if($_SESSION['tipo'] == 'Admin'){ ?>
+							
+						<form action="../Controllers/PISTA_CONTROLLER.php" method="get" style="display:inline" >
+						<button id ="buttonBien" type="submit" name="action" value="EDIT" style="background-color: #35B109">
+							<input type="hidden" name="idPista" value="<?php echo $i+1 ?>">
+							<input type="hidden" name="Hora" value="<?php echo $fila['Hora'] ?>">
+							<input type="hidden" name="Fecha" value="<?php echo date("Y-m-d") ?>">	
 <?php
 						}else{
-?>
-							<td bgcolor="#E80408">
+?>						    
+							<form action="../Controllers/RESERVA_CONTROLLER.php" method="get" style="display:inline" >
+							<button id ="buttonBien" type="submit" name="action" value="ADD" style="background-color: #35B109">
+							<input type="hidden" name="Usuario_Dni" value="<?php echo $_SESSION['dni']; ?>">
+							<input type="hidden" name="Pista_idPista" value="<?php echo $i+1 ?>">
+							<input type="hidden" name="Pista_Hora" value="<?php echo $fila['Hora'] ?>">
+							<input type="hidden" name="Pista_Fecha" value="<?php echo date("Y-m-d") ?>">
+<?php
+						}
+																						  
+						}else{
+							
+?>						
+						<td bgcolor="#E80408">
+							
+<?php  if($_SESSION['tipo'] == 'Admin'){ ?>
+							
+						<form action="../Controllers/PISTA_CONTROLLER.php" method="get" style="display:inline" >
+						<button id ="buttonBien" type="submit" name="action" value="EDIT" style="background-color: #E80408">
+							<input type="hidden" name="idPista" value="<?php echo $i+1 ?>">
+							<input type="hidden" name="Hora" value="<?php echo $fila['Hora'] ?>">
+							<input type="hidden" name="Fecha" value="<?php echo date("Y-m-d") ?>">	
+<?php
+						}else{
+?>	
+							<form action="../Controllers/RESERVA_CONTROLLER.php" method="get" style="display:inline" >
+							<button id ="buttonBien" type="submit" name="action" value="ADD" style="background-color: #E80408" >
+							<input type="hidden" name="Usuario_Dni" value="<?php echo $_SESSION['dni']; ?>">
+							<input type="hidden" name="Pista_idPista" value="<?php echo $i+1 ?>">
+							<input type="hidden" name="Pista_Hora" value="<?php echo $fila['Hora'] ?>">
+							<input type="hidden" name="Pista_Fecha" value="<?php echo date("Y-m-d") ?>">	
 <?php 
+						
+							}
 						}
 							echo $fila['Hora'];						
 ?>
 						
-							<form action="../Controllers/PISTA_CONTROLLER.php" method="get" style="display:inline" >
-							<input type="hidden" name="idPista" value="<?php echo $i+1 ?>">
-							<input type="hidden" name="Hora" value="<?php echo $fila['Hora'] ?>">
-							<input type="hidden" name="Fecha" value="<?php echo date("Y-m-d") ?>">	
-								<button id ="buttonBien" type="submit" name="action" value="EDIT" ><img src="../Views/icon/modificar.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" /></button>
-	
+						</button>
 						</form>	
 				</td>			   
 <?php

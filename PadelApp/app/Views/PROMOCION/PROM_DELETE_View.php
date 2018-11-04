@@ -30,7 +30,7 @@ class PROM_DELETE {
 						<?php echo $strings['Fecha'];?>
 					</th>
 					<td>
-						<?php echo $this->valores['Fecha']?>
+						<?php echo date( "d/m/Y", strtotime( $this->valores['Fecha'] ) )?>
 					</td>
 				</tr>
 				<tr>
@@ -73,7 +73,11 @@ class PROM_DELETE {
 ?>
 					<td>
 <?php 
+ 				if($atributo=='Promociones_Fecha'){
+					echo date( "d/m/Y", strtotime( $fila[ $atributo ] ) );
+				}else{
 							echo $fila[ $atributo ];
+				}
 ?>
 					</td>
 <?php

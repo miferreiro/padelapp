@@ -124,7 +124,11 @@ class USUARIO_SHOWCURRENT {
 ?>
 					<td>
 <?php 
+ 				if($atributo=='Promociones_Fecha'){
+					echo date( "d/m/Y", strtotime( $fila[ $atributo ] ) );
+				}else{
 							echo $fila[ $atributo ];
+				}
 ?>
 					</td>
 <?php
@@ -167,7 +171,11 @@ class USUARIO_SHOWCURRENT {
 ?>
 					<td>
 <?php 
+ 				if($atributo=='Pista_Fecha'){
+					echo date( "d/m/Y", strtotime( $fila2[ $atributo ] ) );
+				}else{
 							echo $fila2[ $atributo ];
+				}
 ?>
 					</td>
 <?php

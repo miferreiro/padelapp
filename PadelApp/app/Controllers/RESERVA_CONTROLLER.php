@@ -42,16 +42,14 @@ if ( !isset( $_REQUEST[ 'action' ] ) ) {
 }
 //Estructura de control, que realiza un determinado caso dependiendo del valor action
 switch ( $_REQUEST[ 'action' ] ) {
-	case 'ADD'://Caso añadir
-		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario ADD
-		
-		} else {//Si recibe datos los recoge y mediante las funcionalidad de RESERVA_MODEL inserta los datos
-		    $RESERVA = new RESERVA_MODEL( $_REQUEST[ 'Usuario_Dni' ], $_REQUEST[ 'Pista_idPista' ], $_REQUEST[ 'Pista_Fecha' ], $_REQUEST[ 'Pista_Hora' ]);
-			$respuesta = $RESERVA->ADD();//Variable que almacena la respuesta de la inserción
-			//Crea la vista con la respuesta y la ruta para volver
-			new MESSAGE( $respuesta, '../Controllers/RESERVA_CONTROLLER.php' );
-		}
-		//Finaliza el bloque
+	case 'ADD':
+			if($_SESSION['tipo'] == 'Deportista'){
+				$RESERVA = get_data_form();
+				$respuesta = $RESERVA->ADD();//Variable que almacena la respuesta de la inserción
+				new MESSAGE( $respuesta, '../Controllers/PISTA_CONTROLLER.php' );
+			}else{
+				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/PISTA_CONTROLLER.php' );
+			}
 		break;
 	case 'DELETE'://Caso borrar
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario DELETE

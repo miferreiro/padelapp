@@ -49,7 +49,11 @@ class RESERVA_SHOWALL {
 ?>
 					<td>
 <?php 
+ 				if($atributo=='Pista_Fecha'){
+					echo date( "d/m/Y", strtotime( $fila[ $atributo ] ) );
+				}else{
 							echo $fila[ $atributo ];
+				}
 ?>
 					</td>
 <?php
@@ -81,7 +85,6 @@ class RESERVA_SHOWALL {
 
 						<button id ="buttonBien"  type="submit" name="action" value="SEARCH"><img src="../Views/icon/buscar.png" alt="BUSCAR" /></button>	
 
-						<button id ="buttonBien"  type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="AÑADIR" /></button>
 					</form>
 					</td>
 				</tr>

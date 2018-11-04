@@ -49,7 +49,11 @@ class PROM_SHOWALL {
 ?>
 					<td>
 <?php 
+ 				if($atributo=='Fecha'){
+					echo date( "d/m/Y", strtotime( $fila[ $atributo ] ) );
+				}else{
 							echo $fila[ $atributo ];
+				}
 ?>
 					</td>
 <?php

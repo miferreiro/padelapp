@@ -64,20 +64,54 @@ class RESERVA_MODEL{
 	// de los atributos del objeto. Comprueba si la clave/s esta vacia y si 
 	//existe ya en la tabla
 	function ADD() {
-		
-		
-					if ( !$this->mysqli->query( $sql )) { // si da error en la ejecución del insert devolvemos mensaje
-						return 'Error en la inserción';
-					} else { //si no da error en la insercion devolvemos mensaje de exito
-						
-						if($mensaje == 'Inserción realizada con éxito'){//miramos si la inserción en USU_GRUPO tuvo exito
-							return 'Inserción realizada con éxito'; //operacion de insertado correcta
-						}else{//si la insercion no tuvo exito
-							return $mensaje;
-						}	
+		if ( ( $this->Pista_fecha <> '' ) && ( $this->Pista_hora <> '' ) && ( $this->Usuario_Dni <> '' )) { 
+            			
+			$sql = "SELECT * FROM RESERVA WHERE (  Pista_Fecha = '$this->Pista_fecha' && Pista_Hora = '$this->Pista_hora' && Usuario_Dni = '$this->Usuario_Dni')";
+
+			if ( !$result = $this->mysqli->query( $sql ) ) { 
+				return 'No se ha podido conectar con la base de datos';
+			} else { 
+
+				if ( $result->num_rows == 1 ) { 
+					
+					return 'Ya ha reservado esa pista';	
+					
+				}else{
+					
+					  $sql = "SELECT * FROM PISTA WHERE (  Fecha = '$this->Pista_fecha' && Hora = '$this->Pista_hora' && Disponibilidad = 1)";
+					  if ( !$result = $this->mysqli->query( $sql ) ) { 						  
+							return 'No se ha podido conectar con la base de datos';
+						  
+					  } else { 
+						if ( $result->num_rows == 0 ) {			
+							return 'La pista no está disponible';					
+						} else {
+								$sql = "INSERT INTO RESERVA (
+									Usuario_Dni,
+									Pista_idPista,
+									Pista_Fecha,
+									Pista_Hora
+									) 
+									VALUES(
+										'$this->Usuario_Dni',
+										'$this->Pista_idPista',
+										'$this->Pista_fecha',
+										'$this->Pista_hora'
+									)";	
+
+								if ( !$this->mysqli->query( $sql )) { 
+									return 'Error en la inserción';
+								} else { 											
+									return 'Inserción realizada con éxito'; 
+								}										
+							}
+						  }
 					}
-	
-	} // fin del metodo ADD
+				}
+		} else { 
+			return 'Introduzca un valor'; 
+		}			
+	} 
 
     
 

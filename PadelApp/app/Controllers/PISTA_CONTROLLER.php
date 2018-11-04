@@ -123,7 +123,6 @@ switch ( $_REQUEST[ 'action' ] ) {
 		//Final del bloque
 		break;
 	default: //Caso que se ejecuta por defecto
-			if($_SESSION['tipo'] == 'Admin'){//miramos si el usuario es administrador
 						if ( !$_POST ) {//Si no se han recibido datos 
 							$PISTA = new PISTA_MODEL( '', '', date("Y-m-d"), '');//Variable que almacena la un objeto del modelo PISTA
 							//Si se reciben datos
@@ -136,9 +135,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 						$lista = $PISTA->PISTAS();
 						
 						new PISTA_SHOWALL( $lista, $datos);//nos muestra una vista showall con todos los permisos
-			}else{//en el caso de que el usuario no tenga permisos le sale una vista vacía
-				new USUARIO_DEFAULT();
-			}
+
    				
 			
 }

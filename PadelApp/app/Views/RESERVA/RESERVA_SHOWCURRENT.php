@@ -41,7 +41,7 @@ class RESERVA_SHOWCURRENT {
 					<?php echo $strings['Fecha'];?>
 				</th>
 				<td>
-					<?php echo $this->lista['Pista_Fecha']?>
+					<?php echo date( "d/m/Y", strtotime( $this->lista['Pista_Fecha'] ) )?>
 				</td>
 			</tr>
 

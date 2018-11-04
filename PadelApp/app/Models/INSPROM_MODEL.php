@@ -64,12 +64,7 @@ class INSPROM_MODEL{
 						if ( $result->num_rows >= 4 ) {			
 							return 'Número máximo de inscritos alcanzado';					
 						} else {
-								echo $this->Usuario_Dni;
-								?> <br> <?php
-								echo $this->Promociones_fecha;
-								?> <br> <?php
-								echo $this->Promociones_hora;
-								?> <br> <?php
+
 								$sql = "INSERT INTO INSCRIPCIONPROMOCIONES (
 									Usuario_Dni,
 									Promociones_Fecha,

@@ -82,8 +82,7 @@ class PISTA_MODEL{
 	
 	function PISTAS() {
 		// construimos la sentencia de busqueda con LIKE y los atributos de la entidad
-		$sql = "select distinct idPista
-       			from PISTA";
+		$sql = "select distinct idPista from PISTA order by 1";
 		// si se produce un error en la busqueda mandamos el mensaje de error en la consulta
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'Error en la consulta sobre la base de datos';
@@ -95,8 +94,7 @@ class PISTA_MODEL{
 	
 	function HORAS() {
 		// construimos la sentencia de busqueda con LIKE y los atributos de la entidad
-		$sql = "select distinct Hora 
-       			from PISTA";
+		$sql = "select distinct Hora from PISTA order by 1";
 		// si se produce un error en la busqueda mandamos el mensaje de error en la consulta
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'Error en la consulta sobre la base de datos';
