@@ -114,7 +114,7 @@ class Pista_Showall{
 						</tr>											
 				</thead>
 			</table>
-					<form action='../Controllers/PISTA_CONTROLLER.php'>
+					<form action='../Controllers/PISTA_CONTROLLER.php' method="post" style="display:inline">
 						<button id ="buttonBien" type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="AÑADIR" /></button>
 					</form>
 		</div>

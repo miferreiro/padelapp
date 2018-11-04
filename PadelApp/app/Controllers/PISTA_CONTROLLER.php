@@ -43,22 +43,22 @@ if ( !isset( $_REQUEST[ 'action' ] ) ) {
 	$_REQUEST[ 'action' ] = '';
 	
 }
-//Estructura de control, que realiza un determinado caso dependiendo del valor action
 switch ( $_REQUEST[ 'action' ] ) {
-	case 'ADD'://Caso añadir
-		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario ADD
-		
-         
-			new MESSAGE( 'La PISTA no tiene los permisos necesarios', '../Controllers/PISTA_CONTROLLER.php' );
+	case 'ADD':
+		if ( $_POST ) {
 			
+         	$PISTA = new PISTA_MODEL( '', '', '', '');
+			$ultimaPista = $PISTA->	getLastIdPista();
+			$PISTA = new PISTA_MODEL( $ultimaPista, '', '', '');
+			$respuesta = $PISTA->ADD();
 			
-		} else {//Si recibe datos los recoge y mediante las funcionalidad de PISTA_MODEL inserta los datos
-		    $PISTA = new PISTA_MODEL( '', '', '', '');
-			$respuesta = $PISTA->ADD();//Variable que almacena la respuesta de la inserción
-			//Crea la vista con la respuesta y la ruta para volver
 			new MESSAGE( $respuesta, '../Controllers/PISTA_CONTROLLER.php' );
+			
+		
+		} else {
+			new MESSAGE( 'La PISTA no tiene los permisos necesarios', '../Controllers/PISTA_CONTROLLER.php' );
 		}
-		//Finaliza el bloque
+		
 		break;
 	case 'DELETE'://Caso borrar
 		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario DELETE
