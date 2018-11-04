@@ -82,6 +82,14 @@ class PISTA_MODEL{
 			return $resultado;
 		}
 	} 
+	function HORASPROMOCION() {
+		$sql = "select distinct Hora from PISTA WHERE (Fecha = '$this->fecha' && Disponibilidad = 1)order by 1";
+		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
+			return 'Error en la consulta sobre la base de datos';
+		} else { 
+			return $resultado;
+		}
+	} 
 	function ComprobarDisp($idPista,$hora,$fecha) {
 		$sql = "select Disponibilidad 
        			from PISTA
@@ -106,11 +114,8 @@ class PISTA_MODEL{
 			if ( !$result = $this->mysqli->query( $sql ) ) { 
 				return 'No se ha podido conectar con la base de datos';
 			} else { 
-					
-/*11:00 12:30 16:00 17:30  20:30 22:00*/
 						
 						for($i=0 ; $i<7 ; $i++){				
-									echo $i;
 							$sql = "INSERT INTO PISTA (
 							    idPista,
 								Fecha,
@@ -156,7 +161,37 @@ class PISTA_MODEL{
 								
 								if ( !$this->mysqli->query( $sql )) { 
 									return 'Error en la inserción';
-								}								
+								}
+							$sql = "INSERT INTO PISTA (
+							    idPista,
+								Fecha,
+								Hora,
+								Disponibilidad) 
+								VALUES(
+								'$this->idPista',
+                                ADDDATE(NOW(),$i),
+								'16:00',
+								'1'
+								)";		
+								
+								if ( !$this->mysqli->query( $sql )) { 
+									return 'Error en la inserción';
+								}
+							$sql = "INSERT INTO PISTA (
+							    idPista,
+								Fecha,
+								Hora,
+								Disponibilidad) 
+								VALUES(
+								'$this->idPista',
+                                ADDDATE(NOW(),$i),
+								'17:30',
+								'1'
+								)";		
+								
+								if ( !$this->mysqli->query( $sql )) { 
+									return 'Error en la inserción';
+								}
 							$sql = "INSERT INTO PISTA (
 							    idPista,
 								Fecha,
@@ -218,7 +253,7 @@ class PISTA_MODEL{
 			$sql = "SELECT * FROM RESERVA WHERE (Pista_idPista = '$this->idPista')";
 			$result = $this->mysqli->query( $sql );
 			
-			if($result->num_rows == 1){
+			if($result->num_rows >= 1){
 				$sql = "DELETE FROM RESERVA WHERE (Pista_idPista = '$this->idPista')";
 				$this->mysqli->query( $sql );
 			}
@@ -291,7 +326,7 @@ class PISTA_MODEL{
 	
 	function getLastIdPista(){
 			
-			$sql = "SELECT MAX(idPista) as num  FROM PISTA WHERE (idPista = '$this->idPista') "; 
+			$sql = "SELECT MAX(idPista) as num  FROM PISTA "; 
 			
 		if(!$this->mysqli->query( $sql )){
 			return 'Error en la busqueda';

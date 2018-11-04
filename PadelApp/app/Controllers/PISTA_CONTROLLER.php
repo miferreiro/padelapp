@@ -49,7 +49,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			
          	$PISTA = new PISTA_MODEL( '', '', '', '');
 			$ultimaPista = $PISTA->	getLastIdPista();
-			$PISTA = new PISTA_MODEL( $ultimaPista, '', '', '');
+			$PISTA = new PISTA_MODEL( $ultimaPista+1, '', '', '');
 			$respuesta = $PISTA->ADD();
 			
 			new MESSAGE( $respuesta, '../Controllers/PISTA_CONTROLLER.php' );

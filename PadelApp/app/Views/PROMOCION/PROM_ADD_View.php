@@ -2,11 +2,15 @@
 
 class PROM_ADD {
 
-	function __construct() {
-		$this->render();
+	function __construct( $lista ) {
+		$this->lista = $lista;
+		
+		$this->render( $this->lista );
 	}
 
-	function render() {
+	function render( $lista ) { 
+		$this->lista = $lista;
+		
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
 ?>
@@ -22,14 +26,32 @@ class PROM_ADD {
 						<th class="formThTd">
 							<?php echo $strings['Fecha'];?>
 						</th>
-						<td class="formThTd"><input type="date" id="Fecha" name="Fecha" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="12" size="12" required />
+						<td class="formThTd"><input type="time" id="Fecha" name="Fecha" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="25" size="25" required />
 					</tr>
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['Hora'];?>
 						</th>
-						<td class="formThTd"><input type="time" id="Hora" name="Hora" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="25" size="25" required />
+						<td class="formThTd">
+                   <select id="Hora" name="Hora" required>
+<?php
+				while ( $fila = mysqli_fetch_array( $this->lista ) ) { //este bucle se va a repetir mientras no se devuelvan todos los grupos
+?>
+				<option value="<?php echo $fila[ 'Hora' ]?>">
+
+<?php 
+			
+					echo $fila['Hora'];
+?>		
+               							
+
+               </option>
+	
+<?php } ?>					
+					</select>
+					</td>
 					</tr>
+
 					
 					<tr align="center">
 						<td colspan="2">

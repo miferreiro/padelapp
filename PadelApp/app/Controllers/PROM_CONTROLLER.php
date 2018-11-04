@@ -39,7 +39,9 @@ if ( !isset( $_REQUEST[ 'action' ] ) ) {
 switch ( $_REQUEST[ 'action' ] ) {
 	case 'ADD':
 		if ( !$_POST ) {
-			new PROM_ADD();
+			$PROM= new PISTA_MODEL('','',date("Y-m-d"),'');
+		 	$lista= $PROM->HORASPROMOCION();
+			new PROM_ADD($lista);
 		} else {
 		    $PROM = get_data_form();
 			$respuesta = $PROM->ADD();
