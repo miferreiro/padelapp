@@ -1,18 +1,18 @@
 <?php
 
-class CAMPEONATO_CATEGORIA_SHOWALL {
+class GRUPO_CATEGORIA_SHOWALL {
 
-	function __construct( $lista, $datos) {
+	function __construct( $lista, $datos,$vuelta) {
 		$this->lista = $lista;
 		$this->datos = $datos;
-
-		$this->render($this->lista,$this->datos);
+		$this->vuelta = $vuelta;
+		$this->render($this->lista,$this->datos,$this->vuelta);
 	}
 	
-	function render($lista,$datos){
+	function render($lista,$datos,$vuelta){
 		$this->lista = $lista;
 		$this->datos = $datos;
-
+		$this->vuelta = $vuelta;
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
       
@@ -39,11 +39,11 @@ class CAMPEONATO_CATEGORIA_SHOWALL {
 					</th>
 				</tr>
 <?php
-				while ( $fila = mysqli_fetch_array( $this->datos ) ) {//este bucle se va a repetir mientras no se muestren todos los datos
+				while ( $fila = mysqli_fetch_array( $this->datos ) ) {
 ?>
 				<tr>
 <?php
-					foreach ( $lista as $atributo ) {//este bucle sacará los valores de cada uno de los campos de una tupla
+					foreach ( $lista as $atributo ) {
 ?>
 					<td>
 <?php 		
@@ -55,30 +55,23 @@ class CAMPEONATO_CATEGORIA_SHOWALL {
 					}
 ?>			
 					<td>
-						<form action="../Controllers/CAMPEONATO_CATEGORIA_CONTROLLER.php" method="post" style="display:inline" >
-							<input type="hidden" name="IdCampeonato" value="<?php echo $fila['IdCampeonato']; ?>">		
-							<input type="hidden" name="Tipo" value="<?php echo $fila['Tipo']; ?>">		
-							<input type="hidden" name="Nivel" value="<?php echo $fila['Nivel']; ?>">	
-						
-								<button id ="buttonBien" type="submit" name="action" value="INSCRITOS" ><img src="../Views/icon/verDetalles.png" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>			
-	
-						</form>
-					
-						<form action="../Controllers/CAMPEONATO_GENERAR_CONTROLLER.php" method="post" style="display:inline" >
-							<input type="hidden" name="IdCampeonato" value="<?php echo $fila['IdCampeonato']; ?>">		
-							<input type="hidden" name="Tipo" value="<?php echo $fila['Tipo']; ?>">		
-							<input type="hidden" name="Nivel" value="<?php echo $fila['Nivel']; ?>">	
-								<button id ="buttonBien"type="submit"name="action" value="GENERAR"  ><img src="../Views/icon/generar.png" width="20" height="20"/></button>
-							
-						</form>	
 						<form action="../Controllers/GRUPO_CONTROLLER.php" method="post" style="display:inline" >
 							<input type="hidden" name="IdCampeonato" value="<?php echo $fila['IdCampeonato']; ?>">		
 							<input type="hidden" name="Tipo" value="<?php echo $fila['Tipo']; ?>">		
 							<input type="hidden" name="Nivel" value="<?php echo $fila['Nivel']; ?>">	
-								<button id ="buttonBien"type="submit"name="action"   ><img src="../Views/icon/grupo.png	" width="20" height="20"/></button>
-							
-						</form>	
-												
+							<input type="hidden" name="Letra" value="<?php echo $fila['Letra']; ?>">
+								<button id ="buttonBien" type="submit" name="action" value="PAREJAS" ><img src="../Views/icon/verDetalles.png" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>			
+	
+						</form>
+						<form action="../Controllers/GRUPO_CONTROLLER.php" method="post" style="display:inline" >
+							<input type="hidden" name="IdCampeonato" value="<?php echo $fila['IdCampeonato']; ?>">		
+							<input type="hidden" name="Tipo" value="<?php echo $fila['Tipo']; ?>">		
+							<input type="hidden" name="Nivel" value="<?php echo $fila['Nivel']; ?>">	
+							<input type="hidden" name="Letra" value="<?php echo $fila['Letra']; ?>">
+								<button id ="buttonBien" type="submit" name="action" value="TABLA" ><img src="../Views/icon/tabla.png" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>			
+	
+						</form>
+																	
 						
 				</tr>
 <?php
@@ -87,8 +80,10 @@ class CAMPEONATO_CATEGORIA_SHOWALL {
 				</thead>
 			</table>
 			</div>
-			<form action='../Controllers/CAMPEONATO_CONTROLLER.php' method="post">
-
+			<form action='../Controllers/CAMPEONATO_CATEGORIA_CONTROLLER.php' method="post">
+			<input type="hidden" name="IdCampeonato" value="<?php echo $vuelta['IdCampeonato']; ?>">		
+				<input type="hidden" name="Tipo" value="<?php echo $vuelta['Tipo']; ?>">		
+				<input type="hidden" name="Nivel" value="<?php echo $vuelta['Nivel']; ?>">
 				<button id ="buttonBien" type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>
 		</div>

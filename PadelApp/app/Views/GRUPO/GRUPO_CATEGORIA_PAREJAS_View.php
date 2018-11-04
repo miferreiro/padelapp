@@ -1,6 +1,6 @@
 <?php
 
-class CAMPEONATO_CATEGORIA_INSCRITOS{
+class GRUPO_CATEGORIA_PAREJAS {
 
 	function __construct( $lista, $datos,$vuelta) {
 		$this->lista = $lista;
@@ -93,7 +93,7 @@ class CAMPEONATO_CATEGORIA_INSCRITOS{
 				</thead>
 			</table>
 			</div>
-			<form action='../Controllers/CAMPEONATO_CATEGORIA_CONTROLLER.php' method="get">
+			<form action='../Controllers/GRUPO_CONTROLLER.php' method="get">
 				<input type="hidden" name="IdCampeonato" value="<?php echo $vuelta['IdCampeonato']; ?>">		
 				<input type="hidden" name="Tipo" value="<?php echo $vuelta['Tipo']; ?>">		
 				<input type="hidden" name="Nivel" value="<?php echo $vuelta['Nivel']; ?>">					

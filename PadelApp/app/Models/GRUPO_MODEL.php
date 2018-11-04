@@ -114,7 +114,46 @@ class GRUPO_MODEL{
 			return $result;
 		}
 	} 
-
- 	}//fin de clase
+	
+	function ListaParejasGrupo(){
+		
+		$sql = "SELECT P.NumPareja as NumPareja,U.Login as Login,P.IdCampeonato as IdCampeonato,P.Tipo as Tipo, P.Nivel as Nivel, G.Letra as Letra
+		FROM PAREJA P, USUARIOPAREJAS UP, USUARIO U,GRUPO G
+		WHERE  
+		(G.Letra = '$this->Letra') && (G.IdCampeonato = P.IdCampeonato) && (G.Tipo = P.Tipo) && (G.Nivel = P.Nivel) && 
+		(P.IdCampeonato = '$this->IdCampeonato') && (P.Tipo = '$this->Tipo') && (P.Nivel = '$this->Nivel')
+		&& (U.Dni = UP.Usuario_Dni) && (UP.Pareja_NumPareja = P.NumPareja)
+		&& (P.IdCampeonato = UP.Pareja_idCampeonato)  && (P.Tipo = UP.Pareja_Tipo) && (P.Nivel = UP.Pareja_Nivel) 
+		ORDER BY P.NumPareja	
+		";
+		
+		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
+			return 'No existe en la base de datos'; // 
+		} else {            
+			return $resultado;
+		}
+		
+	}
+	
+	function ListaParejasGrupoNum(){
+		
+		$sql = "SELECT  DISTINCT  P.NumPareja as NumPareja
+		FROM PAREJA P, USUARIOPAREJAS UP, USUARIO U,GRUPO G
+		WHERE  
+		(G.Letra = '$this->Letra') && (G.IdCampeonato = P.IdCampeonato) && (G.Tipo = P.Tipo) && (G.Nivel = P.Nivel) && 
+		(P.IdCampeonato = '$this->IdCampeonato') && (P.Tipo = '$this->Tipo') && (P.Nivel = '$this->Nivel')
+		&& (U.Dni = UP.Usuario_Dni) && (UP.Pareja_NumPareja = P.NumPareja)
+		&& (P.IdCampeonato = UP.Pareja_idCampeonato)  && (P.Tipo = UP.Pareja_Tipo) && (P.Nivel = UP.Pareja_Nivel) 
+		ORDER BY P.NumPareja	
+		";
+		
+		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
+			return 'No existe en la base de datos'; // 
+		} else {            
+			return $resultado;
+		}
+		
+	}
+ 	}
 
 ?>

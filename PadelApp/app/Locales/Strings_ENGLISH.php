@@ -292,7 +292,10 @@ array(
 	'Pista_Hora'=>'Hour',
 	'Pista_Fecha'=>'Date',
 	'No existe el otro componente de la pareja' => 'Dont exist the other component of the couple',
-	'No hay suficientes parejas para formar grupos' => 'There are not enough couples to form groups'
+	'No hay suficientes parejas para formar grupos' => 'There are not enough couples to form groups',
+	'Letra' => 'Letter',
+	'NumEnfrentamiento' => 'NumEnfrentamiento',
+	'Resultado' => 'Result'
 
 	)
 ;

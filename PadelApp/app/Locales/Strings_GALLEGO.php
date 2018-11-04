@@ -278,7 +278,10 @@ array(
 	'Pista_Hora'=>'Hora',
 	'Pista_Fecha'=>'Fecha',
 	'No existe el otro componente de la pareja' => 'Non existe o outro componente da parexa',
-	'No hay suficientes parejas para formar grupos' => 'Non hai suficientes parexas para formar grupos'
+	'No hay suficientes parejas para formar grupos' => 'Non hai suficientes parexas para formar grupos',
+	'Letra' => 'Letra',
+	'NumEnfrentamiento' => 'NumEnfrentamiento',
+	'Resultado' => 'Resultado'
 	
 	)
 ;

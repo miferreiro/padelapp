@@ -53,9 +53,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/USUARIO_CONTROLLER.php' );
 		}
 		
-		
-		
-		
+
 	break;	
 	default: 
 			if($_SESSION['tipo'] == 'Admin'){

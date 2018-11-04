@@ -121,7 +121,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 
 			if($_SESSION['tipo'] == 'Admin'){
 				$USUARIO = new USUARIO_MODEL( '', '', $_REQUEST[ 'Dni' ], '', '', '', '', '','');
-				$valores = $USUARIO->RellenaDatos( $_REQUEST[ 'Dni' ] );
+				$valores = $USUARIO->RellenaDatos();
 				new USUARIO_EDIT( $valores);
 			}else{
 				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/USUARIO_CONTROLLER.php' );
