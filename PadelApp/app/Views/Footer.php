@@ -24,7 +24,7 @@
 		</table>
 </div>
 	
-	<div id="capaFondo1" ></div>
+	<div id="capaFondo1"></div>
 		
 	<footer class="text-center" align="fixed" >
       <div class="container">

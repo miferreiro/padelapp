@@ -10,7 +10,7 @@
 
 <!doctype html>
 <html lang="es">
-  <head>	
+  <head>
 	<meta charset="UTF-8">
 	<script type="text/javascript" src="../Views/js/md5.js"></script>
 	<link rel="stylesheet" type="text/css" media="screen" href="../Views/css/bootstrap-4.0.0.css" hreflang="es">
@@ -24,6 +24,7 @@
     <script src="../Views/js/popper.min.js"></script>
     <script src="../Views/js/bootstrap-4.0.0.js"></script>
 	<?php include '../Views/js/validaciones.js' ?>
+	  
   </head>
   <body>
 	  <header>

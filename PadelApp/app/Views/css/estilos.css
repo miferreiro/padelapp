@@ -7,7 +7,7 @@
 	la apariencia de las diferentes secciones de la página web (cabecera, menú, tablas, formularios, etc). Además, se 
 	usa flex para la presentación de la página al redimensionar el tamaño de la misma.
 */
-	
+
 	#main {
 		min-height: 800px;
 		margin: 0px;
