@@ -1,18 +1,29 @@
 <script language="JavaScript" type="text/javascript" >
 
 
-var atributo = new Array(); /*Array que sirve para poder traducir el nombre de los atributos de los campos del formulario */
-//GESTION DE USUARIOS
-atributo['login'] = '<?php echo $strings["Usuario"]?>';
-atributo['password'] = '<?php echo $strings["password"]?>';
-atributo['Dni'] = '<?php echo $strings["Dni"]?>';
-atributo['nombre'] = '<?php echo $strings["Nombre"]?>';
-atributo['apellidos'] = '<?php echo $strings["Apellidos"]?>';
-atributo['telefono'] = '<?php echo $strings["Teléfono"]?>';
-atributo['email'] = '<?php echo $strings["email"]?>';
-atributo['FechaNacimiento'] = '<?php echo $strings["FechaNacimiento"]?>';
-atributo['direc'] = '<?php echo $strings["Direccion"]?>';
-atributo['sexo'] = '<?php echo $strings["Sexo"]?>';
+
+
+
+var atributo = new Array(); 
+
+//Registro
+atributo['login'] = 'Usuario';
+atributo['password'] = 'Contraseña';
+atributo['Dni'] = 'Dni';
+atributo['nombre'] = 'Nombre';
+atributo['apellidos'] = 'Apellidos';
+atributo['telefono'] = 'Teléfono';
+atributo['sexo'] = 'Sexo';
+
+//Campeonato
+atributo['IdCampeonato'] = 'IdCampeonato';
+atributo['FechaIni'] = 'FechaIni';
+atributo['HoraIni'] = 'HoraIni';
+atributo['FechaFin'] = 'FechaFin';
+atributo['HoraFin'] = 'HoraFin';
+
+
+
 
 
 // function hayEspacio(campo): Comprueba que no tenga espacios el campo
@@ -20,7 +31,7 @@ function sinEspacio(campo) {
 	//Comprueba si hay algun espacio
 	if (/[\s]/.test(campo.value)) {
 		//mensaje multidioma
-		msgError('<?php echo $strings["El atributo "];?>' + atributo[campo.name] + '<?php echo $strings[" no puede tener espacios "];?>');
+		msgError('El atributo ' + atributo[campo.name] + ' no puede tener espacios ');
 		campo.focus();
 		return false;
 	}
@@ -32,7 +43,7 @@ function sinEspacio(campo) {
 function comprobarVacio(campo) {
 	/*Si el campo es nulo, tiene longitud 0 o está compuesto por espacios en blanco, se muestra un mensaje de error y se retorna false*/
 	if (campo.value == null || campo.value.length == 0 || /^\s+$/.test(campo.value)) {
-		msgError('<?php echo $strings["El atributo "];?>' + atributo[campo.name] + '<?php echo $strings[" no puede ser vacio"];?>');
+		msgError('El atributo ' + atributo[campo.name] + ' no puede ser vacio');
 		campo.focus();
 		return false;
 	}
@@ -44,7 +55,7 @@ function comprobarVacio(campo) {
 function comprobarLongitud(campo, size) {
 	/*Si el campo tiene mayor longitud que size, se manda un aviso de error llamando a la función msgError y se retorna false */
 	if (campo.value.length > size) {
-		msgError('<?php echo $strings["Longitud incorrecta. El atributo "];?>' + atributo[campo.name] + '<?php echo $strings[" puede tener una longitud máxima de "];?>' + size + '<?php echo $strings[" y es de "];?>' + campo.value.length);
+		msgError('Longitud incorrecta. El atributo ' + atributo[campo.name] + ' puede tener una longitud máxima de ' + size + ' y es de ' + campo.value.length);
 		campo.focus();
 		return false;
 	}
@@ -60,7 +71,7 @@ function comprobarTexto(campo, size) {
 	for (i = 0; i < size; i++) {
 		/*Comprueba que el carácter seleccionado de campo no es un carácter especial, si es así muestra un mensaje de error y retorna false */
 		if (/[^!"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~ñáéíóúÑÁÉÍÓÚüÜ ]/.test(campo.value.charAt(i))) {
-			msgError('<?php echo $strings["El atributo "];?>' + atributo[campo.name] + '<?php echo $strings[" contiene algún carácter no válido: "];?>' + campo.value.charAt(i));
+			msgError('El atributo ' + atributo[campo.name] + '  contiene algún carácter no válido: ' + campo.value.charAt(i));
 			campo.focus();
 			return false;
 		}
@@ -77,7 +88,7 @@ function comprobarAlfabetico(campo, size) {
 	for (i = 0; i < size; i++) {
 		/*Comprueba que el carácter seleccionado de campo no es una letra o un espacio, si es así se muestra un mensaje de error y retorna false */
 		if (/[^A-Za-zñáéíóúÑÁÉÍÓÚüÜ -]/.test(campo.value.charAt(i))) {
-			msgError('<?php echo $strings["El atributo "];?>' + atributo[campo.name] + '<?php echo $strings[" solo admite carácteres alfabéticos"];?>');
+			msgError('El atributo ' + atributo[campo.name] + ' solo admite carácteres alfabéticos');
 			campo.focus();
 			return false;
 		}
@@ -120,19 +131,19 @@ function comprobarEntero(campo, valormenor, valormayor) {
 
 	/*Comprueba que campo es un dígito*/
 	if (!/^([0-9])*$/.test(campo.value)) {
-		msgError('<?php echo $strings["El atributo "];?>' + atributo[campo.name] + '<?php echo $strings[" tiene que ser un dígito"];?>');
+		msgError('El atributo ' + atributo[campo.name] + ' tiene que ser un dígito');
 		campo.focus();
 		return false;
 	} else {
 		/*Comprueba que el valor de campo es mayor que valormayor, si es así muestra un mensaje de error y retorna false */
 		if (campo.value > valormayor) {
-			msgError('<?php echo $strings["El atributo "];?>' + atributo[campo.name] + '<?php echo $strings[" no puede ser mayor que "];?>' + valormayor);
+			msgError('El atributo ' + atributo[campo.name] + ' no puede ser mayor que ' + valormayor);
 			campo.focus();
 			return false;
 		} else {
 			/*Comprueba que el valor de campo es menor que valormenor, si es así muestra un mensaje de error y retorna false */
 			if (campo.value < valormenor) {
-				msgError('<?php echo $strings["El atributo "];?>' + atributo[campo.name] + '<?php echo $strings[" no puede ser menor que "];?>' + valormenor);
+				msgError('El atributo ' + atributo[campo.name] + ' no puede ser menor que ' + valormenor);
 				campo.focus();
 				return false;
 			}
@@ -160,7 +171,7 @@ function comprobarReal(campo, numeroDecimales, valormenor, valormayor) {
 	control = true;
 	/*Comprueba que el formato del valor del campo se corresponde con el formato indicado con la expresión regular */
 	if (!(/^-?[0-9]+([,\.][0-9]*)?$/.test(num))) {
-		msgError('<?php echo $strings["El atributo "];?>' + atributo[campo.name] + '<?php echo $strings[" tiene un formato no válido"];?>');
+		msgError('El atributo ' + atributo[campo.name] + ' tiene un formato no válido ');
 		campo.focus();
 		return false;
 	} else {// si no cumple con la condición del if anterior,
@@ -179,19 +190,19 @@ function comprobarReal(campo, numeroDecimales, valormenor, valormayor) {
 		} while (control && (i < num.length));
 		/*Comprueba que si el numero de decimales del campo es mayor que el numeroDecimales establecido, muestra un mensaje de error y retorna false*/
 		if (numeroDecimalesCampo > numeroDecimales) {
-			msgError('<?php echo $strings["El atributo "];?>' + atributo[campo.name] + '<?php echo $strings[" no puede tener más de "];?>' + numeroDecimales);
+			msgError('El atributo ' + atributo[campo.name] + ' no puede tener más de ' + numeroDecimales);
 			campo.focus();
 			return false;
 		} else {// si no cumple con la condición del if anterior,
 			/*Comprueba que el valor de campo es mayor que valormayor, si es así muestra un mensaje de error y retorna false */
 			if (num > valormayor) {
-				msgError('<?php echo $strings["El atributo "];?>' + atributo[campo.name] + '<?php echo $strings[" no puede ser mayor que "];?>' + valormayor);
+				msgError('El atributo ' + atributo[campo.name] + ' no puede ser mayor que ' + valormayor);
 				campo.focus();
 				return false;
 			} else {// si no cumple con la condición del if anterior,
 				/*Comprueba que el valor de campo es menor que valormenor, si es así muestra un mensaje de error y retorna false */
 				if (num < valormenor) {
-					msgError('<?php echo $strings["El atributo "];?>' + atributo[campo.name] + '<?php echo $strings[" no puede ser menor que "];?>' + valormenor);
+					msgError('El atributo ' + atributo[campo.name] + ' no puede ser menor que ' + valormenor);
 					campo.focus();
 					return false;
 				}
@@ -219,14 +230,14 @@ function comprobarDni(campo) {
 		letra = letra.substring(numero, numero + 1);
 		/*Valida que la letra introducida en la variable campo sea correcta, si es así se devuelve devuelve true. Si no, muestra un mensaje de error y devuelve false*/
 		if (letra != letr.toUpperCase()) {
-			msgError('<?php echo $strings["El atributo "];?>' + atributo[campo.name] + '<?php echo $strings[" tiene un formato erróneo, la letra del NIF no se corresponde"];?>');
+			msgError('El atributo ' + atributo[campo.name] + ' tiene un formato erróneo, la letra del NIF no se corresponde');
 			campo.focus();
 			return false;
 		} else {// si no cumple con la condición del if anterior,
 			return true;
 		}
 	} else {// si no cumple con la condición del if anterior,
-		msgError('<?php echo $strings["El atributo "];?>' + atributo[campo.name] + '<?php echo $strings[" tiene un formato erróneo"];?>');
+		msgError('El atributo ' + atributo[campo.name] + ' tiene un formato erróneo');
 		campo.focus();
 		return false;
 	}
@@ -237,7 +248,7 @@ function comprobarDni(campo) {
 function comprobarTelf(campo) {
 	/*Si el valor del campo no cumple el formato de la expresión, se muestra un mensaje de error y se retorna false*/
 	if (!/^(34)?[6|7|9][0-9]{8}$/.test(campo.value)) {
-		msgError('<?php echo $strings["El atributo "];?>' + atributo[campo.name] + '<?php echo $strings[" tiene un formato erróneo"];?>');
+		msgError('El atributo ' + atributo[campo.name] + ' tiene un formato erróneo');
 		campo.focus();
 		return false;
 	}
@@ -249,7 +260,7 @@ function comprobarTelf(campo) {
 function comprobarEmail(campo) {
 	//Si el valor del campo no cumple el formato de la dirección de correo determinada por la expresión regular, muetra un mensaje de error y retorna false.
 	if (!/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/.test(campo.value)) {
-		msgError('<?php echo $strings["El atributo "];?>' + atributo[campo.name] + '<?php echo $strings[" tiene un formato erróneo"];?>');
+		msgError('El atributo ' + atributo[campo.name] + ' tiene un formato erróneo');
 		campo.focus();
 		return false;
 	}
@@ -269,7 +280,7 @@ function comprobarExtension(campo){
     //Si el archivo no tiene una extensión permitida ejecuta el código del "if"
     if(NotallowedExtensions.exec(filePath)){
     	//muestra mensaje de alerta
-        msgError('<?php echo $strings["El atributo "]?>' + atributo[campo.name] + '<?php echo $strings[" no permite las extensiones: .sh/.php"]; ?>');//mensaje multidioma
+        msgError('El atributo ' + atributo[campo.name] + ' no permite las extensiones: .sh/.php');//mensaje multidioma
         campo.focus();
         return false;//Devuelve false
     }
@@ -306,39 +317,31 @@ function msgError(msg) {
 	return true;
 }
 
-/*
-	function comprobarLogin():valida todos los campos del formulario login antes de realizar el submit
-*/
+
 function comprobarLogin() {
 
-	var login; /*variable que representa el elemento login del formulario de login */
-	var pwd; /*variable que representa el elemento password del formulario de login */
+	var login; 
+	var pwd; 
 
 	login = document.forms['Form'].elements[0];
 	pwd = document.forms['Form'].elements[1];
 
-	/*Comprueba si el login es vacio, retorna false*/
 	if (!comprobarVacio(login)) {
 		return false;
-	} else {// si no cumple con la condición del if anterior,
-		/*Comprobamos su longitud, si es mayor que 9, retorna false*/
-		if (!comprobarLongitud(login, 9)) {
+	} else {
+		if (!comprobarLongitud(login, 25)) {
 			return false;
-		} else {// si no cumple con la condición del if anterior,
-			/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
-			if (!comprobarTexto(login, 9)) {
+		} else {
+			if (!comprobarTexto(login, 25)) {
 				return false;
 			}
 		}
-		/*Comprueba si la password es vacio, retorna false*/
 		if (!comprobarVacio(pwd)) {
 			return false;
-		} else {// si no cumple con la condición del if anterior,
-			/*Comprueba su longitud, si es mayor que 20, retorna false*/
+		} else {
 			if (!comprobarLongitud(pwd, 20)) {
 				return false;
-			} else {// si no cumple con la condición del if anterior,
-				/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+			} else {
 				if (!comprobarTexto(pwd, 20)) {
 					return false;
 				}
@@ -357,19 +360,17 @@ function comprobarLogin() {
 function encriptar() {
 	document.getElementById('password').value = hex_md5(document.getElementById('password').value); //cambia el valor del campo password introducido por el usuario, 																							   //por el valor de la password encriptada
 }
-/*
-	function comprobarAdd():valida todos los campos del formulario add antes de realizar el submit
-*/
-function comprobarAddUsuario() {
 
-	var login; /*variable que representa el elemento login del formulario add */
-	var pwd; /*variable que representa el elemento password del formulario add */
-	var dni; /*variable que representa el elemento dni del formulario add */
-	var nombreuser; /*variable que representa el elemento nombresuser del formulario add */
-	var apellidosuser; /*variable que representa el elemento apellidosuser del formulario add */
-	var telefono; /*variable que representa el elemento telefono del formulario add */
-	var emailuser; /*variable que representa el elemento emailuser del formulario add */
-	var direccion /*variable que representa el elemento direccion del formulario add */
+
+function comprobarRegistrar() {
+
+	var login; 
+	var pwd; 
+	var dni;
+	var nombreuser; 
+	var apellidosuser;
+	var telefono; 
+	var sexo;
 
 
 	login = document.forms['ADD'].elements[0];
@@ -377,82 +378,73 @@ function comprobarAddUsuario() {
 	dni = document.forms['ADD'].elements[2];
 	nombreuser = document.forms['ADD'].elements[3];
 	apellidosuser = document.forms['ADD'].elements[4];
-	emailuser = document.forms['ADD'].elements[5];
-	direccion = document.forms['ADD'].elements[6];
+	hombre = document.forms['ADD'].elements[5];
+	mujer = document.forms['ADD'].elements[6];
 	telefono = document.forms['ADD'].elements[7];
 
 
 
-	/*Comprueba si login es vacio, retorna false*/
+
 	if (!comprobarVacio(login)) {
 		return false;
-	} else {// si no cumple con la condición del if anterior,
-		//Comprobamos que no hay espacio s intermedios
+	} else {
 		if (!sinEspacio(login)) {
 			return false;
-		} else {// si no cumple con la condición del if anterior,
-			/*Comprobamos su longitud, si es mayor que 15, retorna false*/
-			if (!comprobarLongitud(login, 9)) {
+		} else {
+			
+			if (!comprobarLongitud(login, 25)) {
 				return false;
-			} else {// si no cumple con la condición del if anterior,
-				/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
-				if (!comprobarTexto(login, 9)) {
+			} else {
+				
+				if (!comprobarTexto(login, 25)) {
 					return false;
 				}
 			}
 		}
 	}
-	/*Comprueba si password es vacio, retorna false*/
+
 	if (!comprobarVacio(pwd)) {
 		return false;
-	} else {// si no cumple con la condición del if anterior,
-		//Comprobamos que no hay espacio s intermedios
+	} else {
+		
 		if (!sinEspacio(pwd)) {
 			return false;
-		} else {// si no cumple con la condición del if anterior,
-			/*Comprueba su longitud, si es mayor que 20, retorna false*/
+		} else {
 			if (!comprobarLongitud(pwd, 20)) {
 				return false;
-			} else {// si no cumple con la condición del if anterior,
-				/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+			} else {
 				if (!comprobarTexto(pwd, 20)) {
 					return false;
 				}
 			}
 		}
 	}
-	/*Comprueba si dni es vacio, retorna false*/
+
 	if (!comprobarVacio(dni)) {
 		return false;
-	} else {// si no cumple con la condición del if anterior,
-		/*Comprueba su longitud, si es mayor que 9, retorna false*/
+	} else {
 		if (!comprobarLongitud(dni, 9)) {
 			return false;
-		} else {// si no cumple con la condición del if anterior,
-			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+		} else {
 			if (!comprobarTexto(dni, 9)) {
 				return false;
-			} else {// si no cumple con la condición del if anterior,
-				/*Comprueba si tiene un formato valido de dni */
+			} else {
 				if (!comprobarDni(dni)) {
 					return false;
 				}
 			}
 		}
 	}
-	/*Comprueba si nombreuser es vacio, retorna false*/
+	
 	if (!comprobarVacio(nombreuser)) {
 		return false;
-	} else {// si no cumple con la condición del if anterior,
-		/*Comprueba su longitud, si es mayor que 30, retorna false*/
+	} else {
 		if (!comprobarLongitud(nombreuser, 30)) {
 			return false;
-		} else {// si no cumple con la condición del if anterior,
-			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+		} else {
 			if (!comprobarTexto(nombreuser, 30)) {
 				return false;
-			} else {// si no cumple con la condición del if anterior,
-				/*Comprueba si tiene carácteres no alfanuméricos, si es así, retorna false */
+			} else {
 				if (!comprobarAlfabetico(nombreuser, 30)) {
 					return false;
 				}
@@ -460,20 +452,17 @@ function comprobarAddUsuario() {
 
 		}
 	}
-	/*Comprueba si apellidosuser es vacio, retorna false*/
+
 	if (!comprobarVacio(apellidosuser)) {
 		return false;
-	} else {// si no cumple con la condición del if anterior,
-		/*Comprueba su longitud, si es mayor que 50, retorna false*/
-		if (!comprobarLongitud(apellidosuser, 50)) {
+	} else {
+		if (!comprobarLongitud(apellidosuser, 45)) {
 			return false;
-		} else {// si no cumple con la condición del if anterior,
-			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
-			if (!comprobarTexto(apellidosuser, 50)) {
+		} else {
+			if (!comprobarTexto(apellidosuser, 45)) {
 				return false;
-			} else {// si no cumple con la condición del if anterior,
-				/*Comprueba si tiene carácteres no alfanuméricos, si es así, retorna false */
-				if (!comprobarAlfabetico(apellidosuser, 50)) {
+			} else {
+				if (!comprobarAlfabetico(apellidosuser, 45)) {
 					return false;
 				}
 
@@ -481,52 +470,20 @@ function comprobarAddUsuario() {
 		}
 	}
 
-	/*Comprueba si emailuser es vacio, retorna false*/
-	if (!comprobarVacio(emailuser)) {
-		return false;
-	} else {// si no cumple con la condición del if anterior,
-		/*Comprueba su longitud, si es mayor que 60, retorna false*/
-		if (!comprobarLongitud(emailuser, 40)) {
-			return false;
-		} else {// si no cumple con la condición del if anterior,
-			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
-			if (!comprobarTexto(emailuser, 40)) {
-				return false;
-			} else {// si no cumple con la condición del if anterior,
-				/*Comprueba si tiene su formato incorrecto, si es así, retorna false*/
-				if (!comprobarEmail(emailuser)) {
-					return false;
-				}
-			}
-		}
-	}
-	if (!comprobarVacio(direccion)) {
-		return false;
-	} else {// si no cumple con la condición del if anterior,
-		/*Comprueba su longitud, si es mayor que 60, retorna false*/
-		if (!comprobarLongitud(direccion, 60)) {
-			return false;
-		} else {// si no cumple con la condición del if anterior,
-			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
-			if (!comprobarTexto(direccion, 60)) {
-				return false;
-			}
-		}
-	}
 
-	/*Comprueba si telelefono es vacio, retorna false*/
+	if (!comprobarVacio(hombre) && !comprobarVacio(mujer) ) {
+		return false;
+	}	
+
 	if (!comprobarVacio(telefono)) {
 		return false;
-	} else {// si no cumple con la condición del if anterior,
-		/*Comprueba su longitud, si es mayor que 11, retorna false*/
+	} else {
 		if (!comprobarLongitud(telefono, 11)) {
 			return false;
-		} else {// si no cumple con la condición del if anterior,
-			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
+		} else {
 			if (!comprobarTexto(telefono, 11)) {
 				return false;
-			} else {// si no cumple con la condición del if anterior,
-				/*Comprueba si el formato no es correcto, si es así, retorna false */
+			} else {
 				if (!comprobarTelf(telefono)) {
 					return false;
 				}
@@ -537,343 +494,111 @@ function comprobarAddUsuario() {
 	encriptar();
 	return true;
 }
-/*
-	function comprobarSearch():valida todos los campos del formulario search antes de realizar el submit
-*/
-function comprobarSearchUsuario() {
 
 
-	var login; /*variable que representa el elemento login del formulario search*/
-	var pwd; /*variable que representa el elemento password del formulario search*/
-	var dni; /*variable que representa el elemento dni del formulario search */
-	var nombreuser; /*variable que representa el elemento nombresuser del formulario search */
-	var apellidosuser; /*variable que representa el elemento apellidosuser del formulario search */
-	var telefono; /*variable que representa el elemento telefono del formulario search */
-	var emailuser; /*variable que representa el elemento emailuser del formulario search */
-	var direccion /*variable que representa el elemento direccion del formulario search */
 
-	login = document.forms['SEARCH'].elements[0];
-	pwd = document.forms['SEARCH'].elements[1];
-	dni = document.forms['SEARCH'].elements[2];
-	nombreuser = document.forms['SEARCH'].elements[3];
-	apellidosuser = document.forms['SEARCH'].elements[4];
-	emailuser = document.forms['SEARCH'].elements[5];
-	direccion = document.forms['SEARCH'].elements[6];
-	telefono = document.forms['SEARCH'].elements[7];
 
-	/*Comprueba la longitud que tiene login, si es mayor que 15, retorna false*/
-	if (!comprobarLongitud(login, 9)) {
+function comprobarAddCampeonato(){
+	
+	var idCampeonato; 
+	var fechaIni; 
+	var horaIni;
+	var fechaFin; 
+	var horaFin;
+	var elementosTotales; 
+
+
+	idCampeonato = document.forms['ADD'].elements[0];
+	fechaIni = document.forms['ADD'].elements[1];
+	horaIni = document.forms['ADD'].elements[2];
+	fechaFin = document.forms['ADD'].elements[3];
+	horaFin = document.forms['ADD'].elements[4];
+	elementosTotales = document.forms['ADD'].elements.length;
+
+
+	if (!comprobarVacio(idCampeonato)) {
 		return false;
-	} else {// si no cumple con la condición del if anterior,
-		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
-		if (!comprobarTexto(login, 9)) {
+	} else {
+		if (!sinEspacio(idCampeonato)) {
 			return false;
-		}
-	}
-	/*Comprueba la longitud que tiene pwd, si es mayor que 128, retorna false*/
-	if (!comprobarLongitud(pwd, 128)) {
-		return false;
-	} else {// si no cumple con la condición del if anterior,
-		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
-		if (!comprobarTexto(pwd, 128)) {
-			return false;
-		}
-	}
-
-	/*Comprueba la longitud que tiene dni, si es mayor que 9, retorna false*/
-	if (!comprobarLongitud(dni, 9)) {
-		return false;
-	} else {// si no cumple con la condición del if anterior,
-		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
-		if (!comprobarTexto(dni, 9)) {
-			return false;
-		}
-	}
-	/*Comprueba la longitud que tiene nombreuser, si es mayor que 30, retorna false*/
-	if (!comprobarLongitud(nombreuser, 30)) {
-		return false;
-	} else {// si no cumple con la condición del if anterior,
-		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
-		if (!comprobarTexto(nombreuser, 30)) {
-			return false;
-		} else {// si no cumple con la condición del if anterior,
-			/*Comprueba si tiene carácteres no alfanuméricos, si es así, retorna false */
-			if (!comprobarAlfabetico(nombreuser, 30)) {
+		} else {
+			
+			if (!comprobarLongitud(idCampeonato, 11)) {
 				return false;
-			}
-		}
-	}
-	/*Comprueba la longitud que tiene apellidosuser, si es mayor que 50, retorna false*/
-	if (!comprobarLongitud(apellidosuser, 50)) {
-		return false;
-	} else {// si no cumple con la condición del if anterior,
-		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
-		if (!comprobarTexto(apellidosuser, 50)) {
-			return false;
-		} else {// si no cumple con la condición del if anterior,
-			/*Comprueba si tiene carácteres no alfanuméricos, si es así, retorna false */
-			if (!comprobarAlfabetico(apellidosuser, 50)) {
-				return false;
+			} else {
+				
+				if (!comprobarTexto(idCampeonato, 11)) {
+					return false;
+				}else{
+					if (!comprobarEntero(idCampeonato, 0,2147483647)) {
+						return false;
+					}
+				}
 			}
 		}
 	}
 
-	/*Comprueba la longitud que tiene emailuser, si es mayor que 60, retorna false*/
-	if (!comprobarLongitud(emailuser, 40)) {
+	if (!comprobarVacio(fechaIni)) {
 		return false;
-	} else{// si no cumple con la condición del if anterior,
-		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
-		if (!comprobarTexto(emailuser, 40)) {
-			return false;
-		}
 	}
-
-
-	/*Comprueba su longitud, si es mayor que 60, retorna false*/
-	if (!comprobarLongitud(direccion, 60)) {
+	if (!comprobarVacio(horaIni)) {
 		return false;
-	} else {// si no cumple con la condición del if anterior,
-		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
-		if (!comprobarTexto(direccion, 60)) {
-			return false;
-		}
+	}	
+	if (!comprobarVacio(fechaFin)) {
+		return false;
 	}
-
-
-	/*Comprueba la longitud que tiene telefono, si es mayor que 11, retorna false*/
-	if (!comprobarLongitud(telefono, 11)) {
+	if (!comprobarVacio(horaFin)) {
 		return false;
-	} else {// si no cumple con la condición del if anterior,
-		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
-		if (!comprobarTexto(telefono, 11)) {
-			return false;
-		}
+	}	
+	var total_checked = 0;
+      for(i=0;i<elementosTotales;i++)
+         {
+               if((document.forms['ADD'].elements[i].type=="checkbox")
+               &&(document.forms['ADD'].elements[i].checked))
+               { total_checked++; }
+         }
+	if(total_checked ==0){
+		msgError('El atributo ' + 'categoria' + ' no puede ser vacio');
+		//campo.focus();					
+		return false;
 	}
 	
 	return true;
 }
-/*
-	function comprobarEdit():valida todos los campos del formulario edit antes de realizar el submit
-*/
-function comprobarEditUsuario() {
 
-	var login; /*variable que representa el elemento login del formulario edit */
-	var pwd; /*variable que representa el elemento password del formulario edit */
-	var dni; /*variable que representa el elemento dni del formulario edit */
-	var nombreuser; /*variable que representa el elemento nombresuser del formulario edit */
-	var apellidosuser; /*variable que representa el elemento apellidosuser del formulario edit */
-	var telefono; /*variable que representa el elemento telefono del formulario edit */
-	var emailuser; /*variable que representa el elemento emailuser del formulario edit */
-	var direccion /*variable que representa el elemento direccion del formulario edit */
+function comprobarSearchCampeonato(){
+	
+	var idCampeonato; 
+	var fechaIni; 
+	var horaIni;
+	var fechaFin; 
+	var horaFin;
 
-	login = document.forms['EDIT'].elements[0];
-	pwd = document.forms['EDIT'].elements[1];
-	dni = document.forms['EDIT'].elements[2];
-	nombreuser = document.forms['EDIT'].elements[3];
-	apellidosuser = document.forms['EDIT'].elements[4];
-	emailuser = document.forms['EDIT'].elements[5];
-	direccion = document.forms['EDIT'].elements[6];
-	telefono = document.forms['EDIT'].elements[7];
 
-	/*Comprueba si login es vacio, retorna false*/
-	if (!comprobarVacio(login)) {
-		return false;
-	} else {// si no cumple con la condición del if anterior,
-		//Comprobamos que no hay espacio s intermedios
-		if (!sinEspacio(login)) {
-			return false;
-		} else {// si no cumple con la condición del if anterior,
-			/*Comprobamos su longitud, si es mayor que 15, retorna false*/
-			if (!comprobarLongitud(login, 9)) {
-				return false;
-			} else {// si no cumple con la condición del if anterior,
-				/*Comprobamos si tiene caracteres especiales, si es así, retorna false */
-				if (!comprobarTexto(login, 9)) {
-					return false;
-				}
-			}
-		}
-	}
-	/*Comprueba si password es vacio, retorna false*/
-	if (!comprobarVacio(pwd)) {
-		return false;
-	} else {// si no cumple con la condición del if anterior,
-		//Comprobamos que no hay espacio s intermedios
-		if (!sinEspacio(pwd)) {
-			return false;
-		} else {// si no cumple con la condición del if anterior,
-			/*Comprueba su longitud, si es mayor que 128, retorna false*/
-			if (!comprobarLongitud(pwd, 128)) {
-				return false;
-			} else {// si no cumple con la condición del if anterior,
-				/*Comprueba si tiene caracteres especiales, si es así, retorna false */
-				if (!comprobarTexto(pwd, 128)) {
-					return false;
-				}
-			}
-		}
-	}
-	/*Comprueba si dni es vacio, retorna false*/
-	if (!comprobarVacio(dni)) {
-		return false;
-	} else {// si no cumple con la condición del if anterior,
-		/*Comprueba su longitud, si es mayor que 9, retorna false*/
-		if (!comprobarLongitud(dni, 9)) {
-			return false;
-		} else {// si no cumple con la condición del if anterior,
-			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
-			if (!comprobarTexto(dni, 9)) {
-				return false;
-			} else {// si no cumple con la condición del if anterior,
-				/*Comprueba si tiene un formato valido de dni */
-				if (!comprobarDni(dni)) {
-					return false;
-				}
-			}
-		}
-	}
-	/*Comprueba si nombreuser es vacio, retorna false*/
-	if (!comprobarVacio(nombreuser)) {
-		return false;
-	} else {// si no cumple con la condición del if anterior,
-		/*Comprueba su longitud, si es mayor que 30, retorna false*/
-		if (!comprobarLongitud(nombreuser, 30)) {
-			return false;
-		} else {// si no cumple con la condición del if anterior,
-			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
-			if (!comprobarTexto(nombreuser, 30)) {
-				return false;
-			} else {// si no cumple con la condición del if anterior,
-				/*Comprueba si tiene carácteres no alfanuméricos, si es así, retorna false */
-				if (!comprobarAlfabetico(nombreuser, 30)) {
-					return false;
-				}
-			}
+	idCampeonato = document.forms['ADD'].elements[0];
+	fechaIni = document.forms['ADD'].elements[1];
+	horaIni = document.forms['ADD'].elements[2];
+	fechaFin = document.forms['ADD'].elements[3];
+	horaFin = document.forms['ADD'].elements[4];
 
-		}
-	}
-	/*Comprueba si apellidosuser es vacio, retorna false*/
-	if (!comprobarVacio(apellidosuser)) {
+	if (!comprobarLongitud(idCampeonato, 11)) {
 		return false;
-	} else {// si no cumple con la condición del if anterior,
-		/*Comprueba su longitud, si es mayor que 50, retorna false*/
-		if (!comprobarLongitud(apellidosuser, 50)) {
+	} else {
+		
+		if (!comprobarTexto(idCampeonato, 11)) {
 			return false;
-		} else {// si no cumple con la condición del if anterior,
-			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
-			if (!comprobarTexto(apellidosuser, 50)) {
-				return false;
-			} else {// si no cumple con la condición del if anterior,
-				/*Comprueba si tiene carácteres no alfanuméricos, si es así, retorna false */
-				if (!comprobarAlfabetico(apellidosuser, 50)) {
-					return false;
-				}
-
-			}
-		}
-	}
-
-	/*Comprueba si emailuser es vacio, retorna false*/
-	if (!comprobarVacio(emailuser)) {
-		return false;
-	} else {// si no cumple con la condición del if anterior,
-		/*Comprueba su longitud, si es mayor que 60, retorna false*/
-		if (!comprobarLongitud(emailuser, 40)) {
-			return false;
-		} else {// si no cumple con la condición del if anterior,
-			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
-			if (!comprobarTexto(emailuser, 40)) {
-				return false;
-			} else {// si no cumple con la condición del if anterior,
-				/*Comprueba si tiene su formato incorrecto, si es así, retorna false*/
-				if (!comprobarEmail(emailuser)) {
-					return false;
-				}
-			}
-		}
-	}
-
-	/*Comprueba si direccion es vacio, retorna false*/
-	if (!comprobarVacio(direccion)) {
-		return false;
-	} else {// si no cumple con la condición del if anterior,
-		/*Comprueba su longitud, si es mayor que 50, retorna false*/
-		if (!comprobarLongitud(direccion, 60)) {
-			return false;
-		} else {// si no cumple con la condición del if anterior,
-			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
-			if (!comprobarTexto(direccion, 60)) {
+		}else{
+			if (!comprobarEntero(idCampeonato, 0,2147483647)) {
 				return false;
 			}
 		}
 	}
-
-	/*Comprueba si telelefono es vacio, retorna false*/
-	if (!comprobarVacio(telefono)) {
-		return false;
-	} else {// si no cumple con la condición del if anterior,
-		/*Comprueba su longitud, si es mayor que 11, retorna false*/
-		if (!comprobarLongitud(telefono, 11)) {
-			return false;
-		} else {// si no cumple con la condición del if anterior,
-			/*Comprueba si tiene caracteres especiales, si es así, retorna false */
-			if (!comprobarTexto(telefono, 11)) {
-				return false;
-			} else {// si no cumple con la condición del if anterior,
-				/*Comprueba si tiene un formato incorrecto, si es así, retorna false */
-				if (!comprobarTelf(telefono)) {
-					return false;
-				}
-
-			}
-		}
-	}
+	
 	return true;
 
-
+	
+	
 }
-/*
-	function comprobarSearchAccion: valida todos los campos del formulario search antes de realizar el submit
-*/
-function comprobarSearchAccion() {
 
-	var IdAccion; /*variable que representa el elemento IdAccion del formulario search de gestión de accion*/
-	var NombreAccion; /*variable que representa el elemento NombreAccion del formulario search de gestión de accion*/
-	var DescripAccion; /*variable que representa el elemento DescripAccion del formulario search de gestión de accion*/
-
-	IdAccion = document.forms['SEARCH'].elements[0];
-	NombreAccion = document.forms['SEARCH'].elements[1];
-	DescripAccion = document.forms['SEARCH'].elements[2];
-
-	/*Comprueba su longitud, si es mayor que 6, retorna false*/
-	if (!comprobarLongitud(IdAccion, 6)) {
-		return false;
-	} else {// si no cumple con la condición del if anterior,
-		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
-		if (!comprobarTexto(IdAccion, 6)) {
-			return false;
-		}
-	}
-	/*Comprueba su longitud, si es mayor que 60, retorna false*/
-	if (!comprobarLongitud(NombreAccion, 60)) {
-		return false;
-	} else {// si no cumple con la condición del if anterior,
-		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
-		if (!comprobarTexto(NombreAccion, 60)) {
-			return false;
-		} 
-	}
-	/*Comprueba su longitud, si es mayor que 100, retorna false*/
-	if (!comprobarLongitud(DescripAccion, 100)) {
-		return false;
-	} else {// si no cumple con la condición del if anterior,
-		/*Comprueba si tiene caracteres especiales, si es así, retorna false */
-		if (!comprobarTexto(DescripAccion, 100)) {
-			return false;
-		}
-	}
-
-	return true;
-}
 
 </script>
