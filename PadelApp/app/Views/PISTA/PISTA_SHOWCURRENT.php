@@ -26,31 +26,32 @@ class PISTA_SHOWCURRENT{
 			<h2>
 				<?php echo $strings['Vista detallada'];?>
 			</h2>
-			<div class="col-md-3">
-			<table class="table table-sm" align="center">
-			<thead class="thead-light">
-				<tr>
+			<div class="col-md-4">
+			<table id="mydatatablePistas" class="table table-sm table-striped" align="center" style="width:100%">
+			<thead>
+			  <tr style="text-align: center">
 <?php
 					foreach ( $lista as $atributo ) { 
 ?>
 						<th>
 							<?php echo $strings[$atributo]?>
-						</th>
+				 		</th>
 <?php
 					}
 ?>
 
 				</tr>
-				<tr>
+				</thead>
+				
 					<?php
 						while ( $fila = mysqli_fetch_array( $this->valores ) ) {
 						
 ?>
-				<tr>
+				<tr style="text-align: center">
 <?php
 					foreach ( $lista as $atributo ) { 
 ?>
-					<td>
+					<td style="text-align: center">
 <?php 
  				if($atributo=='Fecha'){
 					echo date( "d/m/Y", strtotime( $fila[ $atributo ] ) );
@@ -68,7 +69,7 @@ class PISTA_SHOWCURRENT{
 <?php
 					}
 ?>
-				</thead>
+				
 			</table>
 		</div>
 

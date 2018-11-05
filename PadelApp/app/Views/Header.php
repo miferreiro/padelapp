@@ -23,15 +23,31 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="../Views/js/popper.min.js"></script>
     <script src="../Views/js/bootstrap-4.0.0.js"></script>
+	 <!-- Datables -->
+	  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+	  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+	  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+	  <script type="text/javascript">
+	$(document).ready( function () {
+    $('#mydatatablePistas').DataTable( {
+		'pageLength': 7,
+		'lengthMenu': [ 7, 14, 21, 28, 35, 42, 49, 56, 63, 70, "All" ],
+	} );
+	$('#mydatatableUsuarios').DataTable( {
+		
+	} );
+		} );
+	  </script>
 	<?php include '../Views/js/validaciones.js' ?>
 	  
+	 
   </head>
   <body>
 	  <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container">
 		<?php	if (IsAuthenticated()){ //miramos si el usuario esta autenticado ?> 
-		<p style="color: white"><?php 	echo $strings['Usuario'] . ' : ' . $_SESSION['login'] . '--' . $_SESSION['tipo'] . '<br>'; ?></p>
+		<p style="color: white"><?php 	echo $strings['Usuario'] . ' : ' . $_SESSION['login'] . ' como ' . $_SESSION['tipo'] . '<br>'; ?></p>
 		   
 			  
               <a class="nav-link disabled" href="../Functions/Desconectar.php" alt="<?php echo $strings['Desconectarse']?>"/>
@@ -75,7 +91,7 @@ que comprueba permisos para cada una de las acciones -->
 	<?php if (isset($_SESSION['login']) & isset($_SESSION['tipo'])) { 
 //Si el usuario tiene permisos de showall en gestión de usuarios se muestra la opción ?>
 		<li class="nav-item dropdown" style="display: block">
-			<a class="nav-link dropdown-toggle" style="color: lightgrey" href="<?php echo $strings['menuGestion']; ?>" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $strings['menuGestion']; ?></a>
+			<a class="nav-link dropdown-toggle" style="color: white" href="<?php echo $strings['menuGestion']; ?>" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $strings['menuGestion']; ?></a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 				<?php if($_SESSION['tipo'] == 'Admin'){ ?>
 							<div class="dropdown-divider"></div>
@@ -151,7 +167,7 @@ que comprueba permisos para cada una de las acciones -->
 
             <li class="nav-item dropdown" style="display: block">
 			<form name='idiomform' action="../Functions/CambioIdioma.php" method="post">
-              <a class="nav-link dropdown-toggle" style="color: lightgrey" href="<?php echo $strings['idioma']; ?>" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Idiomas</a>
+              <a class="nav-link dropdown-toggle" style="color: white" href="<?php echo $strings['idioma']; ?>" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Idiomas</a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <button id ="buttonBien" type="submit"  name="idioma" value="SPANISH" ><a class="dropdown-item"/> <?php echo $strings['Cambiar idioma a español']?></a></button>
 				
