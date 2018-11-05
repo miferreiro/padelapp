@@ -14,7 +14,7 @@ class Register {
 			<h2>
 				<?php echo $strings['Registro']; ?>
 			</h2>
-			<form name="ADD" action='../Controllers/Registro_Controller.php' method="post" enctype="multipart/form-data" onsubmit="return encriptar()">
+			<form name="ADD" action='../Controllers/Registro_Controller.php' method="post" enctype="multipart/form-data" onsubmit="return comprobarRegistrar()">
 			<div class="col-md-4">
 				<table class="table">
 				<thead class="thead-light">
@@ -22,31 +22,31 @@ class Register {
 						<th class="formThTd">
 							<?php echo $strings['Usuario']; ?>
 						</th>
-						<td class="formThTd"><input type="text" id="login" name="login" placeholder="<?php echo $strings['Escriba aqui...'] ?>" value="" maxlength="9" size="11" required /> <!--onBlur="comprobarVacio(this) && comprobarLongitud(this,'9') && comprobarTexto(this,'9')"/>-->
+						<td class="formThTd"><input type="text" id="login" name="login" placeholder="<?php echo $strings['Escriba aqui...'] ?>" value="" maxlength="25" size="25" required /> 
 					</tr>
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['Contraseña']; ?>
 						</th>
-						<td class="formThTd"><input type="password" id="password" name="password" placeholder="<?php echo $strings['Escriba aqui...'] ?>" value="" maxlength="20" size="20" required /> <!-- onBlur="comprobarVacio(this) && comprobarLongitud(this,'20') && comprobarTexto(this,'20')"/>-->
+						<td class="formThTd"><input type="password" id="password" name="password" placeholder="<?php echo $strings['Escriba aqui...'] ?>" value="" maxlength="20" size="20" required /> 
 					</tr>
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['Dni']; ?>
 						</th>
-						<td class="formThTd"><input type="text" id="Dni" name="Dni" placeholder="<?php echo $strings['Escriba aqui...'] ?>" value="" maxlength="9" size="9" required /><!-- onBlur="comprobarVacio(this) && comprobarLongitud(this,'9') && comprobarTexto(this,'9') && comprobarDni(this)"/> -->
+						<td class="formThTd"><input type="text" id="Dni" name="Dni" placeholder="<?php echo $strings['Escriba aqui...'] ?>" value="" maxlength="9" size="9" required />
 					</tr>
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['Nombre']; ?>
 						</th>
-						<td class="formThTd"><input type="text" id="nombre" name="nombre" placeholder="<?php echo $strings['Escriba aqui...'] ?>" value="" maxlength="30" size="34" required /> <!-- onBlur="comprobarVacio(this) && comprobarLongitud(this,'30') && comprobarTexto(this,'30') && comprobarAlfabetico(this,'30')"/> -->
+						<td class="formThTd"><input type="text" id="nombre" name="nombre" placeholder="<?php echo $strings['Escriba aqui...'] ?>" value="" maxlength="30" size="30" required /> 
 					</tr>
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['Apellidos']; ?>
 						</th>
-						<td class="formThTd"><input type="text" id="apellidos" name="apellidos" placeholder="<?php echo $strings['Escriba aqui...'] ?>" value="" maxlength="50" size="40" required /><!-- onBlur="comprobarVacio(this) && comprobarLongitud(this,'50') && comprobarTexto(this,'50') && comprobarAlfabetico(this,'50')"/>-->
+						<td class="formThTd"><input type="text" id="apellidos" name="apellidos" placeholder="<?php echo $strings['Escriba aqui...'] ?>" value="" maxlength="45" size="45" required />
 					</tr>
 
                     
@@ -55,15 +55,15 @@ class Register {
 							<?php echo $strings['Sexo']; ?>
 						</th>
 						<td class="formThTd">
-							<input type="radio" id="sexo" name="sexo" value="Hombre" maxlength="7" size="7" required  onBlur=" comprobarVacio(this) && comprobarLongitud(this,'6') && comprobarTexto(this,'6')"/><?php echo $strings['Hombre'] ?><br>
-							<input type="radio" id="sexo" name="sexo" value="Mujer" maxlength="7" size="7" required onBlur=" comprobarVacio(this) && comprobarLongitud(this,'6') && comprobarTexto(this,'6')"/><?php echo $strings['Mujer'] ?>
+							<input type="radio" id="sexo" name="sexo" value="Hombre" maxlength="7" size="7" required  /><?php echo $strings['Hombre'] ?><br>
+							<input type="radio" id="sexo" name="sexo" value="Mujer" maxlength="7" size="7" required /><?php echo $strings['Mujer'] ?>
 					</tr>
                     
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['Teléfono']; ?>
 						</th>
-						<td class="formThTd"><input type="text" id="telefono" name="telefono" placeholder="<?php echo $strings['Escriba aqui...'] ?>" value="" maxlength="11" size="13" required /><!-- onBlur="comprobarVacio(this) && comprobarLongitud(this,'11') && comprobarTexto(this,'11') && comprobarTelf(this)"/>-->
+						<td class="formThTd"><input type="text" id="telefono" name="telefono" placeholder="<?php echo $strings['Escriba aqui...'] ?>" value="" maxlength="11" size="11" required />
 					</tr>
 					
 					<tr align="center">
@@ -78,9 +78,9 @@ class Register {
 	</div>
 
 		<?php
-		include '../Views/Footer.php';//incluida la vista del footer
-		} //fin metodo render
+		include '../Views/Footer.php';
+		} 
 
-		} //fin REGISTER
+		} 
 
 		?>

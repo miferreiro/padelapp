@@ -8995,13 +8995,12 @@ a.text-dark:hover, a.text-dark:focus {
 	}
 	#tablaE{
 			
-			border:1px solid red; 
 			padding:0px ;
 			margin-top:0px;
 			border-spacing:0px;
 			font-family: Arial;
 			font-size: 20px;
-			border: 0px solid #000;
+			border: 4px solid #000;
 			text-align: center;
 
 	}
@@ -9010,7 +9009,7 @@ a.text-dark:hover, a.text-dark:focus {
 		padding: 5px;
 		text-align: center;
 		font-size: 18px;
-		border: 0px solid #000;
+		border: 4px solid #000;
 
 	}
 

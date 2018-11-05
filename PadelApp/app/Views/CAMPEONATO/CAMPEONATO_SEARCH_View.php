@@ -22,13 +22,13 @@ class CAMPEONATO_SEARCH {
 						<th class="formThTd">
 							<?php echo $strings['IdCampeonato'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="IdCampeonato" name="IdCampeonato" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="11" size="11" onBlur=""/>
+						<td class="formThTd"><input type="text" id="IdCampeonato" name="IdCampeonato" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="11" size="11" />
 					</tr>
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['FechaIni'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="FechaIni" class="tcal" name="FechaIni" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" size="20" onBlur="" readonly/>
+						<td class="formThTd"><input type="text" id="FechaIni" class="tcal" name="FechaIni" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" size="20" readonly />
 					</tr>
 					<tr>
                    	<th class="formThTd">
@@ -40,13 +40,13 @@ class CAMPEONATO_SEARCH {
 						<th class="formThTd">
 							<?php echo $strings['FechaFin'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="FechaFin" class="tcal" name="FechaFin" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" size="20" onBlur="" readonly/>
+						<td class="formThTd"><input type="text" id="FechaFin" class="tcal" name="FechaFin" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" size="20" readonly />
 					</tr>
                  	<tr>
 					<th class="formThTd">
 							<?php echo $strings['HoraFin'];?>
 						</th>
-						<td class="formThTd"><input type="time" id="HoraFin" name="HoraFin" placeholder="<?php echo $strings['Escriba aqui...']?>" value=""  size="20"   onBlur=""/>
+						<td class="formThTd"><input type="time" id="HoraFin" name="HoraFin" placeholder="<?php echo $strings['Escriba aqui...']?>" value=""  size="20"  />
 					</tr>
 				</thead>
                   		<tr align="center">

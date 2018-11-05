@@ -1,8 +1,8 @@
  <div id="capaVentana" 	>
 		
-		<table  id = "tablaE" width="250px" >
+		<table  id = "tablaE" width="250px">
 			<tr>
-				<td id = "tdE" colspan="2" style="background-color:red">
+				<td id = "tdE" colspan="2" style="background-color:#353839">
 						<font style="font-size:24px;color:white"><?php echo $strings['Alerta']?></font>
 				</td>
 			
