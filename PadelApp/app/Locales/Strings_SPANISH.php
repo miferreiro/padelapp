@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /*
 	Archivo php
 	Nombre: Strings_SPANISH.php
