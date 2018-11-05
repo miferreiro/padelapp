@@ -286,7 +286,15 @@ array(
 	'No hay suficientes parejas para formar grupos' => 'No hay suficientes parejas para formar grupos',
 	'Letra' => 'Letra',
 	'NumEnfrentamiento' => 'NumEnfrentamiento',
-	'Resultado' => 'Resultado'
+	'Resultado' => 'Resultado',
+	'Reservar pista'=>'Reservar pista',
+	'Gestión de promociones'=>'Gestión de promociones',
+	'Inscribirse en promoción'=>'Inscribirse en promoción',
+	'Gestión de reservas'=>'Gestión de reservas',
+	'Gestión de campeonatos'=>'Gestión de campeonatos',
+	'Gestión de calendario'=>'Gestión de calendario',
+	'Inscribirse en campeonato'=>'Inscribirse en campeonato'
+	
 	)
 ;
 

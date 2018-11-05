@@ -85,35 +85,35 @@ que comprueba permisos para cada una de las acciones -->
 					<?php if($_SESSION['tipo'] == 'Admin'){ ?>
 							<div class="dropdown-divider"></div>
 	
-								<button id ="buttonBien" type="submit"  name="promociones"><a class="dropdown-item"  href="../Controllers/PISTA_CONTROLLER.php" /><?php echo 'Gestión de pistas' ?></a></button>
+								<button id ="buttonBien" type="submit"  name="promociones"><a class="dropdown-item"  href="../Controllers/PISTA_CONTROLLER.php" /><?php echo $strings['Gestión de pistas'] ?></a></button>
 								
 				<?php } } ?>
 				<?php if (isset($_SESSION['login']) &  isset($_SESSION['tipo'])){?>
 					<?php if($_SESSION['tipo'] == 'Deportista'){ ?>
 							<div class="dropdown-divider"></div>
 	
-								<button id ="buttonBien" type="submit"  name="promociones"><a class="dropdown-item"  href="../Controllers/PISTA_CONTROLLER.php" /><?php echo 'Reservar pista' ?></a></button>
+								<button id ="buttonBien" type="submit"  name="promociones"><a class="dropdown-item"  href="../Controllers/PISTA_CONTROLLER.php" /><?php echo $strings['Reservar pista'] ?></a></button>
 								
 				<?php } } ?>			
 				<?php if (isset($_SESSION['login']) &  isset($_SESSION['tipo'])){?>
 					<?php if($_SESSION['tipo'] == 'Admin'){ ?>
 							<div class="dropdown-divider"></div>
 	
-								<button id ="buttonBien" type="submit"  name="promociones"><a class="dropdown-item"  href="../Controllers/PROM_CONTROLLER.php" /><?php echo 'Gestión de promociones' ?></a></button>
+								<button id ="buttonBien" type="submit"  name="promociones"><a class="dropdown-item"  href="../Controllers/PROM_CONTROLLER.php" /><?php echo $strings['Gestión de promociones'] ?></a></button>
 								
 				<?php } } ?>
 				<?php if (isset($_SESSION['login']) &  isset($_SESSION['tipo'])){?>
 					<?php if($_SESSION['tipo'] == 'Deportista'){ ?>
 							<div class="dropdown-divider"></div>
 	
-								<button id ="buttonBien" type="submit"  name="promociones"><a class="dropdown-item"  href="../Controllers/PROM_CONTROLLER.php" /><?php echo 'Inscribirse en promoción' ?></a></button>
+								<button id ="buttonBien" type="submit"  name="promociones"><a class="dropdown-item"  href="../Controllers/PROM_CONTROLLER.php" /><?php echo $strings['Inscribirse en promoción'] ?></a></button>
 								
 				<?php } } ?>
 				<?php if (isset($_SESSION['login']) &  isset($_SESSION['tipo'])){?>
 					<?php if($_SESSION['tipo'] == 'Admin'){ ?>
 							<div class="dropdown-divider"></div>
 
-								<button id ="buttonBien" type="submit"  name="gesReservas"><a class="dropdown-item"  href="../Controllers/RESERVA_CONTROLLER.php" /><?php echo 'Gestión de reservas' ?></a></button>
+								<button id ="buttonBien" type="submit"  name="gesReservas"><a class="dropdown-item"  href="../Controllers/RESERVA_CONTROLLER.php" /><?php echo $strings['Gestión de reservas'] ?></a></button>
 
 					<?php }  } ?>
 				<?php if (isset($_SESSION['login']) & isset($_SESSION['tipo'])) { 
@@ -122,7 +122,7 @@ que comprueba permisos para cada una de las acciones -->
 
 							<div class="dropdown-divider"></div>
 
-								<button id ="buttonBien" type="submit"  name="gesCampeonatos" ><a class="dropdown-item" href="../Controllers/CAMPEONATO_CONTROLLER.php"/><?php echo 'Gestion de campeonatos' ?></a></button>
+								<button id ="buttonBien" type="submit"  name="gesCampeonatos" ><a class="dropdown-item" href="../Controllers/CAMPEONATO_CONTROLLER.php"/><?php echo $strings['Gestión de campeonatos'] ?></a></button>
 				<?php }} ?>
 				
 				
@@ -133,7 +133,7 @@ que comprueba permisos para cada una de las acciones -->
 
 							<div class="dropdown-divider"></div>
 
-								<button id ="buttonBien" type="submit"  name="gesCalendario" ><a class="dropdown-item" href="../Controllers/CALENDARIO_CONTROLLER.php"/><?php echo 'Gestion de calendario' ?></a></button>
+								<button id ="buttonBien" type="submit"  name="gesCalendario" ><a class="dropdown-item" href="../Controllers/CALENDARIO_CONTROLLER.php"/><?php echo $strings['Gestión de calendario'] ?></a></button>
 				<?php }} ?>
 				
 				
@@ -142,7 +142,7 @@ que comprueba permisos para cada una de las acciones -->
 					<?php if($_SESSION['tipo'] == 'Deportista'){ ?>
 							<div class="dropdown-divider"></div>
 
-								<button id ="buttonBien" type="submit"  name="insCampeonato"><a class="dropdown-item" href="../Controllers/CATEGORIA_CONTROLLER.php" /><?php echo 'Inscribirse en campeonato' ?></a></button>
+								<button id ="buttonBien" type="submit"  name="insCampeonato"><a class="dropdown-item" href="../Controllers/CATEGORIA_CONTROLLER.php" /><?php echo $strings['Inscribirse en campeonato'] ?></a></button>
 
               	<?php } } }?>
               </div>
