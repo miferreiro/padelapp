@@ -99,10 +99,10 @@ class PROM_DELETE {
 				<input type="hidden" name="Fecha" value="<?php echo $this->valores['Fecha']; ?>">
 				<input type="hidden" name="Hora" value="<?php echo $this->valores['Hora']; ?>">
 
-				<button id ="buttonBien" type="submit" name="action" value="DELETE" ><img src="../Views/icon/confirmar.png" alt="<?php echo $strings['Confirmar'] ?>"/></button>
+				<button id ="buttonBien" type="submit" name="action" value="DELETE" ><img src="../Views/icon/accept_big.png" alt="<?php echo $strings['Confirmar'] ?>"/></button>
 			</form>
 			<form action='../Controllers/PROM_CONTROLLER.php' method="post" style="display: inline">
-				<button id ="buttonBien" type="submit"><img src="../Views/icon/cancelar.png" alt="<?php echo $strings['Atras'] ?>"/></button>
+				<button id ="buttonBien" type="submit"><img src="../Views/icon/cancel_big.png" alt="<?php echo $strings['Atras'] ?>"/></button>
 			</form>
 			</div>
 		</div>
