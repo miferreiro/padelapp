@@ -87,7 +87,7 @@ class PROM_SHOWALL {
 	
 			
 			</div>
-			<form action='../Controllers/PROM_CONTROLLER.php' method="post">
+			<form action='../Controllers/DEFAULT_CONTROLLER.php' method="post">
 				<button id ="buttonBien" type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>
 		</div>

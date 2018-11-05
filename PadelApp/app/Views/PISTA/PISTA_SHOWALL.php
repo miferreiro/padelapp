@@ -118,7 +118,7 @@ class Pista_Showall{
 						<button id ="buttonBien" type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="AÑADIR" /></button>
 					</form>
 		</div>
-			<form action='../Controllers/PISTA_CONTROLLER.php' method="post">
+			<form action='../Controllers/DEFAULT_CONTROLLER.php' method="post">
 				<button id ="buttonBien" type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>
 		</div>

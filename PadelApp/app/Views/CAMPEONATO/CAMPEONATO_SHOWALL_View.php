@@ -95,7 +95,7 @@ class CAMPEONATO_SHOWALL {
 			
 			
 
-			<form action='../Controllers/CAMPEONATO_CONTROLLER.php' method="post">
+			<form action='../Controllers/DEFAULT_CONTROLLER.php' method="post">
 				<button id ="buttonBien" type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>
 			</div>
