@@ -60,7 +60,7 @@ class Pista_Showall{
 <?php  if($_SESSION['tipo'] == 'Admin'){ ?>
 							
 						<form action="../Controllers/PISTA_CONTROLLER.php" method="get" style="display:inline" >
-						<button id ="buttonBien" type="submit" name="action" value="EDIT" style="background-color: #35B109">
+						<button type="submit" name="action" value="EDIT" style="background-color: #35B109; width: 100%">
 							<input type="hidden" name="idPista" value="<?php echo $i+1 ?>">
 							<input type="hidden" name="Hora" value="<?php echo $fila['Hora'] ?>">
 							<input type="hidden" name="Fecha" value="<?php echo date("Y-m-d") ?>">	
@@ -68,7 +68,7 @@ class Pista_Showall{
 						}else{
 ?>						    
 							<form action="../Controllers/RESERVA_CONTROLLER.php" method="get" style="display:inline" >
-							<button id ="buttonBien" type="submit" name="action" value="ADD" style="background-color: #35B109">
+							<button type="submit" name="action" value="ADD" style="background-color: #35B109; width: 100%">
 							<input type="hidden" name="Usuario_Dni" value="<?php echo $_SESSION['dni']; ?>">
 							<input type="hidden" name="Pista_idPista" value="<?php echo $i+1 ?>">
 							<input type="hidden" name="Pista_Hora" value="<?php echo $fila['Hora'] ?>">
@@ -84,7 +84,7 @@ class Pista_Showall{
 <?php  if($_SESSION['tipo'] == 'Admin'){ ?>
 							
 						<form action="../Controllers/PISTA_CONTROLLER.php" method="get" style="display:inline" >
-						<button id ="buttonBien" type="submit" name="action" value="EDIT" style="background-color: #E80408">
+						<button  type="submit" name="action" value="EDIT" style="background-color: #E80408; width: 100%">
 							<input type="hidden" name="idPista" value="<?php echo $i+1 ?>">
 							<input type="hidden" name="Hora" value="<?php echo $fila['Hora'] ?>">
 							<input type="hidden" name="Fecha" value="<?php echo date("Y-m-d") ?>">	
@@ -92,7 +92,7 @@ class Pista_Showall{
 						}else{
 ?>	
 							<form action="../Controllers/RESERVA_CONTROLLER.php" method="get" style="display:inline" >
-							<button id ="buttonBien" type="submit" name="action" value="ADD" style="background-color: #E80408" >
+							<button  type="submit" name="action" value="ADD" style="background-color: #E80408; width: 100%" disabled>
 							<input type="hidden" name="Usuario_Dni" value="<?php echo $_SESSION['dni']; ?>">
 							<input type="hidden" name="Pista_idPista" value="<?php echo $i+1 ?>">
 							<input type="hidden" name="Pista_Hora" value="<?php echo $fila['Hora'] ?>">
