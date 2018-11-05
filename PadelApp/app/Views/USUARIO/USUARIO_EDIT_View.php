@@ -82,13 +82,13 @@ class USUARIO_EDIT {
 					</tr>
 					<tr align="center">
 						<td colspan="2">
-							<button id ="buttonBien" type="submit" name="action" value="EDIT"><img src="../Views/icon/modificar.png" alt="<?php echo $strings['Confirmar formulario']?>" /></button>
+							<button id ="buttonBien" type="submit" name="action" value="EDIT"><img src="../Views/icon/edit_big.png" alt="<?php echo $strings['Confirmar formulario']?>" /></button>
 			</form>
 						</thead>
 				</table>
 			</div>
 			<form action='../Controllers/USUARIO_CONTROLLER.php' style="display: inline">
-				<button id ="buttonBien"type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
+				<button id ="buttonBien"type="submit"><img src="../Views/icon/back_big2.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>
 			</tr>
 			

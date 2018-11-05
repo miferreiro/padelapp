@@ -60,7 +60,7 @@ class CAMPEONATO_CATEGORIA_SHOWALL {
 							<input type="hidden" name="Tipo" value="<?php echo $fila['Tipo']; ?>">		
 							<input type="hidden" name="Nivel" value="<?php echo $fila['Nivel']; ?>">	
 						
-								<button id ="buttonBien" type="submit" name="action" value="INSCRITOS" ><img src="../Views/icon/verDetalles.png" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>			
+								<button id ="buttonBien" type="submit" name="action" value="INSCRITOS" ><img src="../Views/icon/verdetalles_2.jpg" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>			
 	
 						</form>
 					
@@ -68,14 +68,14 @@ class CAMPEONATO_CATEGORIA_SHOWALL {
 							<input type="hidden" name="IdCampeonato" value="<?php echo $fila['IdCampeonato']; ?>">		
 							<input type="hidden" name="Tipo" value="<?php echo $fila['Tipo']; ?>">		
 							<input type="hidden" name="Nivel" value="<?php echo $fila['Nivel']; ?>">	
-								<button id ="buttonBien"type="submit"name="action" value="GENERAR"  ><img src="../Views/icon/generar.png" width="20" height="20"/></button>
+								<button id ="buttonBien"type="submit"name="action" value="GENERAR"  ><img src="../Views/icon/group_add_big.png" width="20" height="20"/></button>
 							
 						</form>	
 						<form action="../Controllers/GRUPO_CONTROLLER.php" method="post" style="display:inline" >
 							<input type="hidden" name="IdCampeonato" value="<?php echo $fila['IdCampeonato']; ?>">		
 							<input type="hidden" name="Tipo" value="<?php echo $fila['Tipo']; ?>">		
 							<input type="hidden" name="Nivel" value="<?php echo $fila['Nivel']; ?>">	
-								<button id ="buttonBien"type="submit"name="action"   ><img src="../Views/icon/grupo.png	" width="20" height="20"/></button>
+								<button id ="buttonBien"type="submit"name="action"   ><img src="../Views/icon/consultar_grupo_big.png	" width="20" height="20"/></button>
 							
 						</form>	
 												
@@ -89,7 +89,7 @@ class CAMPEONATO_CATEGORIA_SHOWALL {
 			</div>
 			<form action='../Controllers/CAMPEONATO_CONTROLLER.php' method="post">
 
-				<button id ="buttonBien" type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
+				<button id ="buttonBien" type="submit"><img src="../Views/icon/back_big2.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>
 		</div>
 <?php

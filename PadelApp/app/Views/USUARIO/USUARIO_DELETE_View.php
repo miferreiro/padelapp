@@ -194,10 +194,10 @@ class USUARIO_DELETE {
 			<div>
 			<form action="../Controllers/USUARIO_CONTROLLER.php" method="post" style="display: inline" >
 				<input type="hidden" name="Dni" value=<?php echo $this->valores['Dni'] ?> />
-				<button id ="buttonBien" type="submit" name="action" value="DELETE" ><img src="../Views/icon/confirmar.png" alt="<?php echo $strings['Confirmar'] ?>"/></button>
+				<button id ="buttonBien" type="submit" name="action" value="DELETE" ><img src="../Views/icon/accept_big.png" alt="<?php echo $strings['Confirmar'] ?>"/></button>
 			</form>
 			<form action='../Controllers/USUARIO_CONTROLLER.php' method="post" style="display: inline">
-				<button id ="buttonBien" type="submit"><img src="../Views/icon/cancelar.png" alt="<?php echo $strings['Atras'] ?>"/></button>
+				<button id ="buttonBien" type="submit"><img src="../Views/icon/cancel_big.png" alt="<?php echo $strings['Atras'] ?>"/></button>
 			</form>
 			</div>
 		</div>

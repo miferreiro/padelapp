@@ -65,9 +65,9 @@ class CAMPEONATO_SHOWALL {
 						<form action="../Controllers/CAMPEONATO_CONTROLLER.php" method="get" style="display:inline" >
 							<input type="hidden" name="IdCampeonato" value="<?php echo $fila['IdCampeonato']; ?>">
 				
-								<button id ="buttonBien"type="submit" name="action" value="DELETE" ><img src="../Views/icon/eliminar.png" alt="<?php echo $strings['Eliminar']?>" width="20" height="20" /></button>
+								<button id ="buttonBien"type="submit" name="action" value="DELETE" ><img src="../Views/icon/delete_big.png" alt="<?php echo $strings['Eliminar']?>" width="20" height="20" /></button>
 					
-								<button id ="buttonBien"type="submit" name="action" value="SHOWCURRENT" ><img src="../Views/icon/verDetalles.png" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>
+								<button id ="buttonBien"type="submit" name="action" value="SHOWCURRENT" ><img src="../Views/icon/verdetalles_2.jpg" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>
 						</form>	
 						<form action="../Controllers/CAMPEONATO_CATEGORIA_CONTROLLER.php" method="get" style="display:inline" >				
 							<input type="hidden" name="IdCampeonato" value="<?php echo $fila['IdCampeonato']; ?>">
@@ -85,10 +85,10 @@ class CAMPEONATO_SHOWALL {
 					<form action='../Controllers/CAMPEONATO_CONTROLLER.php'>
 				
 
-						<button id ="buttonBien" type="submit" name="action" value="SEARCH"><img src="../Views/icon/buscar.png" alt="BUSCAR" /></button>
+						<button id ="buttonBien" type="submit" name="action" value="SEARCH"><img src="../Views/icon/search_big.png" alt="BUSCAR" /></button>
 
 	  
-						<button id ="buttonBien" type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="AÑADIR" /></button>
+						<button id ="buttonBien" type="submit" name="action" value="ADD"><img src="../Views/icon/add_big.png" alt="AÑADIR" /></button>
 
 					</form>
 			
@@ -96,7 +96,7 @@ class CAMPEONATO_SHOWALL {
 			
 
 			<form action='../Controllers/DEFAULT_CONTROLLER.php' method="post">
-				<button id ="buttonBien" type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
+				<button id ="buttonBien" type="submit"><img src="../Views/icon/back_big2.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>
 			</div>
 		</div>

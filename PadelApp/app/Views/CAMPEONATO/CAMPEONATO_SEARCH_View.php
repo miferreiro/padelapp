@@ -51,10 +51,10 @@ class CAMPEONATO_SEARCH {
 				</thead>
                   		<tr align="center">
 						<td colspan="2">
-							<button id ="buttonBien" type="submit" name="action" value="SEARCH"><img src="../Views/icon/buscar.png" alt="<?php echo $strings['Buscar formulario']?>" /></button>
+							<button id ="buttonBien" type="submit" name="action" value="SEARCH"><img src="../Views/icon/search_big.png" alt="BUSCAR" /></button>
 					</form>
 						<form action='../Controllers/CAMPEONATO_CONTROLLER.php' method="post" style="display:inline">
-							<button id ="buttonBien" type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
+							<button id ="buttonBien" type="submit"><img src="../Views/icon/back_big2.png" alt="<?php echo $strings['Atras']?>" /></button>
 						</form>
 						</td>
 					</tr>

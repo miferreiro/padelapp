@@ -37,9 +37,9 @@ class Pista_Showall{
 						<?php echo $strings['idPista'];echo(' ');echo $li['idPista']?>
 						<form action="../Controllers/PISTA_CONTROLLER.php" method="get" style="display:inline" >
 						<input type="hidden" name="idPista" value="<?php echo $li['idPista'] ?>">
-						<button id ="buttonBien" type="submit" name="action" value="DELETE" ><img src="../Views/icon/eliminar.png" alt="<?php echo $strings['Eliminar']?>" width="20" height="20" /></button>
+						<button id ="buttonBien" type="submit" name="action" value="DELETE" ><img src="../Views/icon/delete_big.png" alt="<?php echo $strings['Eliminar']?>" width="20" height="20" /></button>
 	
-						<button id ="buttonBien" type="submit" name="action" value="SHOWCURRENT"><img src="../Views/icon/verDetalles.png" alt="BUSCAR" width="20" height="20"/></button>	
+						<button id ="buttonBien" type="submit" name="action" value="SHOWCURRENT"><img src="../Views/icon/verdetalles_2.jpg" alt="BUSCAR" width="20" height="20"/></button>	
 						</form>
 					</th>
 <?php					
@@ -115,11 +115,11 @@ class Pista_Showall{
 				</thead>
 			</table>
 					<form action='../Controllers/PISTA_CONTROLLER.php' method="post" style="display:inline">
-						<button id ="buttonBien" type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="AÑADIR" /></button>
+						<button id ="buttonBien" type="submit" name="action" value="ADD"><img src="../Views/icon/add_big.png" alt="AÑADIR" /></button>
 					</form>
 		</div>
 			<form action='../Controllers/DEFAULT_CONTROLLER.php' method="post">
-				<button id ="buttonBien" type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
+				<button id ="buttonBien" type="submit"><img src="../Views/icon/back_big2.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>
 		</div>
 <?php

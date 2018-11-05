@@ -66,9 +66,9 @@ class RESERVA_SHOWALL {
 							<input type="hidden" name="Pista_Fecha" value="<?php echo $fila['Pista_Fecha']; ?>">
 							<input type="hidden" name="Pista_Hora" value="<?php echo $fila['Pista_Hora']; ?>">
 				
-								<button id ="buttonBien" type="submit" name="action" value="DELETE" ><img src="../Views/icon/eliminar.png" alt="<?php echo $strings['Eliminar']?>" width="20" height="20" /></button>				
+								<button id ="buttonBien" type="submit" name="action" value="DELETE" ><img src="../Views/icon/delete_big.png" alt="<?php echo $strings['Eliminar']?>" width="20" height="20" /></button>				
 					<td>						
-								<button id ="buttonBien" type="submit" name="action" value="SHOWCURRENT" ><img src="../Views/icon/verDetalles.png" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>
+								<button id ="buttonBien" type="submit" name="action" value="SHOWCURRENT" ><img src="../Views/icon/verdetalles_2.jpg" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>
 						</form>
 				    <td>								
 				</tr>
@@ -83,7 +83,7 @@ class RESERVA_SHOWALL {
 						<td colspan="2">
 					<form action='../Controllers/RESERVA_CONTROLLER.php'>
 
-						<button id ="buttonBien"  type="submit" name="action" value="SEARCH"><img src="../Views/icon/buscar.png" alt="BUSCAR" /></button>	
+						<button id ="buttonBien"  type="submit" name="action" value="SEARCH"><img src="../Views/icon/search_big.png" alt="BUSCAR" /></button>	
 
 					</form>
 					</td>
@@ -91,7 +91,7 @@ class RESERVA_SHOWALL {
 			
 			</div>
 			<form action='../Controllers/DEFAULT_CONTROLLER.php' method="post">
-				<button id ="buttonBien" type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
+				<button id ="buttonBien" type="submit"><img src="../Views/icon/back_big2.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>
 		</div>
 <?php

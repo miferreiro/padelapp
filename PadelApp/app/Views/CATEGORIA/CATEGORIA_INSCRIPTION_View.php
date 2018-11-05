@@ -56,10 +56,10 @@ class CATEGORIA_INSCRIPTION {
 					</tr>
 					<tr>
 						<td colspan="2">
-							<button id ="buttonBien" type="submit" name="action" value="INSCRIPTION"><img src="../Views/icon/añadir.png" alt="<?php echo $strings['Confirmar formulario']?>" /></button>
+							<button id ="buttonBien" type="submit" name="action" value="INSCRIPTION"><img src="../Views/icon/add_big.png" alt="<?php echo $strings['Confirmar formulario']?>" /></button>
 			</form>
 						<form action='../Controllers/CATEGORIA_CONTROLLER.php' method="post" style="display: inline">
-							<button id ="buttonBien" type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
+							<button id ="buttonBien" type="submit"><img src="../Views/icon/back_big2.png" alt="<?php echo $strings['Atras']?>" /></button>
 						</form>
 					</tr>
 				</thead>

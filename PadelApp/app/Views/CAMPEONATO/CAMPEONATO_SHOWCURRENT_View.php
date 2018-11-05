@@ -64,7 +64,7 @@ class CAMPEONATO_SHOWCURRENT {
 			</div>
 			
 				<form action='../Controllers/CAMPEONATO_CONTROLLER.php' method="post">
-					<button id ="buttonBien" type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras'] ?>" /></button>
+					<button id ="buttonBien" type="submit"><img src="../Views/icon/back_big2.png" alt="<?php echo $strings['Atras'] ?>" /></button>
 				</form>
 			
 		</div>

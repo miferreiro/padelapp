@@ -62,7 +62,7 @@ class CATEGORIA_SHOWALL {
 							<input type="hidden" name="IdCampeonato" value="<?php echo $fila['IdCampeonato']; ?>">		
 							<input type="hidden" name="Tipo" value="<?php echo $fila['Tipo']; ?>">		
 							<input type="hidden" name="Nivel" value="<?php echo $fila['Nivel']; ?>">	
-								<button id ="buttonBien" type="submit" name="action" value="SHOWCURRENT" ><img src="../Views/icon/verDetalles.png" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>			
+								<button id ="buttonBien" type="submit" name="action" value="SHOWCURRENT" ><img src="../Views/icon/verdetalles_2.jpg" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>			
 								<button id ="buttonBien" type="submit" name="action" value="INSCRIPTION" ><img src="../Views/icon/exito.png" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>		
 						</form>													
 				</tr>
@@ -72,7 +72,7 @@ class CATEGORIA_SHOWALL {
 			</thead>
 			</table>
 			<form action='../Controllers/USUARIO_CONTROLLER.php' method="post">
-				<button id ="buttonBien" type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
+				<button id ="buttonBien" type="submit"><img src="../Views/icon/bacK_big2.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>
 		</div>
 <?php

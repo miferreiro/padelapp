@@ -35,7 +35,7 @@
 		   
 			  
               <a class="nav-link disabled" href="../Functions/Desconectar.php" alt="<?php echo $strings['Desconectarse']?>"/>
-              <img src="../Views/icon/desconexion.png" width="32" height="32" alt="<?php echo $strings['Desconectarse']?>" style="float:right;">
+              <img src="../Views/icon/desconectarse_big.png" width="32" height="32" alt="<?php echo $strings['Desconectarse']?>" style="float:right;">
                </a>
             
 		  <?php
