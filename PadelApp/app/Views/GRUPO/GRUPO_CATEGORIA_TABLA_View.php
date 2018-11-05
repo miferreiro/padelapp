@@ -1,6 +1,6 @@
 <?php
 
-class CALENDARIO_TABLA{
+class GRUPO_CATEGORIA_TABLA{
 
 	function __construct( $listaParejas, $listaEnfrentamientos,$vuelta) {
 		$this->listaParejas = $listaParejas;

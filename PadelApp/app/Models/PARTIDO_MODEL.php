@@ -178,7 +178,30 @@ class PARTIDO_MODEL{
 			return 'No existe en la base de datos';
 		}
 	} 
+	function EDIT2() {
+		
+		$sql = "SELECT * FROM PARTIDO WHERE  (IdCampeonato = '$this->IdCampeonato') && (Tipo = '$this->Tipo') && (Nivel = '$this->Nivel') && (Grupo_Letra = '$this->Letra') && (NumEnfrentamiento = '$this->NumEnfrentamiento')";
 	
+		$result = $this->mysqli->query( $sql );
+
+		if ( $result->num_rows == 1 ) {
+
+			$sql = "UPDATE PARTIDO SET 
+					Fecha = NULL,
+					Hora = NULL
+				WHERE (IdCampeonato = '$this->IdCampeonato') && (Tipo = '$this->Tipo') && (Nivel = '$this->Nivel') && (Grupo_Letra = '$this->Letra') && (NumEnfrentamiento = '$this->NumEnfrentamiento')
+				)";
+	echo $sql;
+			if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
+				return 'Error en la modificación';
+			} else { 
+				return 'Modificado correctamente';
+			}
+		} 
+		else {
+			return 'No existe en la base de datos';
+		}
+	} 	
 	function getLastNumEnfrentamiento(){
 		if (( $this->IdCampeonato <> '' ) &&  ( $this->Tipo <> '' ) && ( $this->Nivel <> '' ) && ( $this->Letra <> '' )){
 			

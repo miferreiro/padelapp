@@ -76,15 +76,15 @@ switch ( $_REQUEST[ 'action' ] ) {
 	break;
 	case "DENEGAR" :
 		if ( $_POST ) {
-			$PARTIDO = new PARTIDO_MODEL($_REQUEST['IdCampeonato'],$_REQUEST['Tipo'],$_REQUEST['Nivel'],$_REQUEST['Letra'],$_REQUEST['NumEnfrentamiento'],$_REQUEST['Fecha'],$_REQUEST['Hora']);
-			$respuesta = $PARTIDO->EDIT();
+			$PARTIDO = new PARTIDO_MODEL($_REQUEST['IdCampeonato'],$_REQUEST['Tipo'],$_REQUEST['Nivel'],$_REQUEST['Letra'],$_REQUEST['NumEnfrentamiento'],'','');
+			$respuesta1 = $PARTIDO->EDIT2();
 			
 			$ENFRENTAMIENTO = new ENFRENTAMIENTO_MODEL($_REQUEST['IdCampeonato'],$_REQUEST['Tipo'],$_REQUEST['Nivel'],$_REQUEST['Letra'],$_REQUEST['NumEnfrentamiento'],$_REQUEST['pareja1'],'',0);
 			$respuesta = $ENFRENTAMIENTO->EDIT2();
 			$ENFRENTAMIENTO = new ENFRENTAMIENTO_MODEL($_REQUEST['IdCampeonato'],$_REQUEST['Tipo'],$_REQUEST['Nivel'],$_REQUEST['Letra'],$_REQUEST['NumEnfrentamiento'],$_REQUEST['pareja2'],'',0);
 			$respuesta = $ENFRENTAMIENTO->EDIT2();
 			
-			new MESSAGE( $respuesta, '../Controllers/CALENDARIO_CONTROLLER.php?IdCampeonato=' . $_REQUEST['IdCampeonato'] . '&Tipo='.$_REQUEST['Tipo']. '&Nivel='.$_REQUEST['Nivel'] . '&Letra='.$_REQUEST['Letra'] . '&action=TABLA' );
+			new MESSAGE( $respuesta1, '../Controllers/CALENDARIO_CONTROLLER.php?IdCampeonato=' . $_REQUEST['IdCampeonato'] . '&Tipo='.$_REQUEST['Tipo']. '&Nivel='.$_REQUEST['Nivel'] . '&Letra='.$_REQUEST['Letra'] . '&action=TABLA' );
 		
 		}
 	
@@ -101,7 +101,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$valores = $ENFRENTAMIENTO->RellenaDatos();
 		
 			$PARTIDO = new PARTIDO_MODEL($_REQUEST['IdCampeonato'],$_REQUEST['Tipo'],$_REQUEST['Nivel'],$_REQUEST['Letra'],$_REQUEST['numEnfrentamiento'],'','');
-			$valores2 = $PARTIDO->RellenaDatos();
+			$valores2 = $PARTIDO->RellenaDatos2();
 		
 			new CALENDARIO_INFORMACION($valores,$valores2);
 		}else{

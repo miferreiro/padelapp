@@ -250,7 +250,7 @@ class ENFRENTAMIENTO_MODEL{
 				WHERE 
 				(E1.NumEnfrentamiento = E2.NumEnfrentamiento) && (E1.NumPareja != E2.NumPareja)
 				&&(E1.IdCampeonato = '$this->IdCampeonato') && (E1.Tipo = '$this->Tipo') && (E1.Nivel = '$this->Nivel') && (E1.Letra = '$this->Letra')
-				&&(U.Pareja_idCampeonato = E1.IdCampeonato) && (U.Pareja_Tipo = E1.Tipo) && (U.Pareja_Nivel = E1.Nivel) && (U.Usuario_Dni = '$dni') && (U.Pareja_NumPareja = E2.NumPareja)
+				&&(U.Pareja_idCampeonato = E1.IdCampeonato) && (U.Pareja_Tipo = E1.Tipo) && (U.Pareja_Nivel = E1.Nivel) && (U.Usuario_Dni = '$dni') && (U.Pareja_NumPareja = E2.NumPareja || U.Pareja_NumPareja = E1.NumPareja)
 				
 				GROUP BY E1.NumEnfrentamiento  
 				ORDER BY E1.NumEnfrentamiento ASC, E1.NumPareja ASC
