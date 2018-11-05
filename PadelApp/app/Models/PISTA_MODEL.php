@@ -147,21 +147,7 @@ class PISTA_MODEL{
 								if ( !$this->mysqli->query( $sql )) { 
 									return 'Error en la inserción';
 								} 
-							$sql = "INSERT INTO PISTA (
-							    idPista,
-								Fecha,
-								Hora,
-								Disponibilidad) 
-								VALUES(
-								'$this->idPista',
-                                ADDDATE(NOW(),$i),
-								'15:30',
-								'1'
-								)";		
-								
-								if ( !$this->mysqli->query( $sql )) { 
-									return 'Error en la inserción';
-								}
+
 							$sql = "INSERT INTO PISTA (
 							    idPista,
 								Fecha,
@@ -340,6 +326,123 @@ class PISTA_MODEL{
 			}
 		}		
 	}
-} 
+	
+	
+	function ACTUALIZAR(){
+			$fecha = date("Y-m-d");
+			$sql = "DELETE FROM PISTA WHERE Fecha < '$fecha'"; 
+			$this->mysqli->query( $sql );
+			$sql = "DELETE FROM RESERVA WHERE Fecha < '$fecha'"; 
+			$this->mysqli->query( $sql );
+			$sql = "DELETE FROM PROMOCIONES WHERE Fecha < '$fecha'"; 
+			$this->mysqli->query( $sql );
+		    $sql = "DELETE FROM INSCRIPCIONPROMOCIONES WHERE Fecha < '$fecha'"; 
+			$this->mysqli->query( $sql );
+			
+			$sql= "SELECT COUNT(DISTINCT FECHA) as fech FROM PISTA WHERE FECHA >= '$fecha'";
+		    $dias = $this->mysqli->query( $sql );
+			$dia= $dias->fetch_array();
+			$sql= "SELECT MAX(idPista) as num  FROM PISTA ";
+		    $pistas = $this->mysqli->query( $sql );
+			$pista = $pistas->fetch_array();
+		for($x=1 ; $x<=$pista['num'] ; $x++){	
+		for($i=$dia['fech'] ; $i<7 ; $i++){				
+							$sql = "INSERT INTO PISTA (
+							    idPista,
+								Fecha,
+								Hora,
+								Disponibilidad) 
+								VALUES(
+								'$x',
+                                ADDDATE(NOW(),$i),
+								'11:00',
+								'1'
+								)";										
+								$this->mysqli->query( $sql );
 
+								
+							$sql = "INSERT INTO PISTA (
+							    idPista,
+								Fecha,
+								Hora,
+								Disponibilidad) 
+								VALUES(
+								'$x',
+                                ADDDATE(NOW(),$i),
+								'12:30',
+								'1'
+								)";		
+								
+								$this->mysqli->query( $sql );
+
+							$sql = "INSERT INTO PISTA (
+							    idPista,
+								Fecha,
+								Hora,
+								Disponibilidad) 
+								VALUES(
+								'$x',
+                                ADDDATE(NOW(),$i),
+								'16:00',
+								'1'
+								)";		
+								
+								 $this->mysqli->query( $sql );
+							$sql = "INSERT INTO PISTA (
+							    idPista,
+								Fecha,
+								Hora,
+								Disponibilidad) 
+								VALUES(
+								'$x',
+                                ADDDATE(NOW(),$i),
+								'17:30',
+								'1'
+								)";		
+								
+								$this->mysqli->query( $sql );
+							$sql = "INSERT INTO PISTA (
+							    idPista,
+								Fecha,
+								Hora,
+								Disponibilidad) 
+								VALUES(
+								'$x',
+                                ADDDATE(NOW(),$i),
+								'19:00',
+								'1'
+								)";		
+								
+								$this->mysqli->query( $sql );						
+							$sql = "INSERT INTO PISTA (
+							    idPista,
+								Fecha,
+								Hora,
+								Disponibilidad) 
+								VALUES(
+								'$x',
+                                ADDDATE(NOW(),$i),
+								'20:30',
+								'1'
+								)";		
+								
+								$this->mysqli->query( $sql ); 							
+							$sql = "INSERT INTO PISTA (
+							    idPista,
+								Fecha,
+								Hora,
+								Disponibilidad) 
+								VALUES(
+								'$x',
+                                ADDDATE(NOW(),$i),
+								'22:00',
+								'1'
+								)";		
+								
+								$this->mysqli->query( $sql );
+						
+	  }
+	}
+  } 
+}
 ?>
