@@ -97,92 +97,98 @@ switch ( $_REQUEST[ 'action' ] ) {
 			new MESSAGE( 'No hay suficientes parejas para formar grupos', '../Controllers/CAMPEONATO_CATEGORIA_CONTROLLER.php?IdCampeonato=' .$_REQUEST[ 'IdCampeonato' ] );
 		}else{
 			
+			$aux = new GRUPO_MODEL($idCampeonato,$tipo,$nivel,'');
+			$existen = $aux->existenGrupos();
 			
-			$numGrupos = 1;
-			$letra = '';
-			//$numParejas = 95;
-			echo "Antes: " . $numParejas;
-			if($numParejas > 12 && $numParejas < 16) $numParejas -= $numParejas % 12;
-			/*else if($numParejas > 28 && $numParejas < 32) $numParejas -= $numParejas % 28 ;
-			else if($numParejas > 44 && $numParejas < 48) $numParejas -= $numParejas % 44 ;
-			else if($numParejas > 60 && $numParejas < 64) $numParejas -= $numParejas % 60 ;
-			else if($numParejas > 76 && $numParejas < 80) $numParejas -= $numParejas % 76 ;
-			else if($numParejas > 92 && $numParejas < 96) $numParejas -= $numParejas % 92;*/
-			echo "Despues: " . $numParejas;
+			if($existen){
+				new MESSAGE( 'Ya existen grupos generados', '../Controllers/CAMPEONATO_CATEGORIA_CONTROLLER.php?IdCampeonato=' .$_REQUEST[ 'IdCampeonato' ] );
+			}else{
 			
-			if($numParejas > 12 && $numParejas <= 24) $numGrupos = 2;	
-			else if($numParejas > 24 && $numParejas <= 36) $numGrupos = 3;	
-			else if($numParejas > 36 && $numParejas <= 48) $numGrupos = 4;	
-			else if($numParejas > 48 && $numParejas <= 60) $numGrupos = 5;	
-			else if($numParejas > 60 && $numParejas <= 72) $numGrupos = 6;	
-			else if($numParejas > 72 && $numParejas <= 84) $numGrupos = 7;	
-			else if($numParejas > 84 && $numParejas <= 96) $numGrupos = 8;	
-			
-			
-			$numParejasSobrantes = $numParejas % (8 * $numGrupos);
-			$numParejas  -= $numParejasSobrantes;
-			echo "Despues2: " . $numParejas;
-			echo $numParejasSobrantes;
-			
-			$numParejasAsignadas = 0;	
+				$numGrupos = 1;
+				$letra = '';
+				//$numParejas = 95;
+				echo "Antes: " . $numParejas;
+				if($numParejas > 12 && $numParejas < 16) $numParejas -= $numParejas % 12;
+				/*else if($numParejas > 28 && $numParejas < 32) $numParejas -= $numParejas % 28 ;
+				else if($numParejas > 44 && $numParejas < 48) $numParejas -= $numParejas % 44 ;
+				else if($numParejas > 60 && $numParejas < 64) $numParejas -= $numParejas % 60 ;
+				else if($numParejas > 76 && $numParejas < 80) $numParejas -= $numParejas % 76 ;
+				else if($numParejas > 92 && $numParejas < 96) $numParejas -= $numParejas % 92;*/
+				echo "Despues: " . $numParejas;
 				
-			for($i = 1; $i <= $numGrupos; $i++){
+				if($numParejas > 12 && $numParejas <= 24) $numGrupos = 2;	
+				else if($numParejas > 24 && $numParejas <= 36) $numGrupos = 3;	
+				else if($numParejas > 36 && $numParejas <= 48) $numGrupos = 4;	
+				else if($numParejas > 48 && $numParejas <= 60) $numGrupos = 5;	
+				else if($numParejas > 60 && $numParejas <= 72) $numGrupos = 6;	
+				else if($numParejas > 72 && $numParejas <= 84) $numGrupos = 7;	
+				else if($numParejas > 84 && $numParejas <= 96) $numGrupos = 8;	
+				
+				
+				$numParejasSobrantes = $numParejas % (8 * $numGrupos);
+				$numParejas  -= $numParejasSobrantes;
+				echo "Despues2: " . $numParejas;
+				echo $numParejasSobrantes;
+				
+				$numParejasAsignadas = 0;	
+					
+				for($i = 1; $i <= $numGrupos; $i++){
 
-				
-				echo "----";
-				?> <br> <?php
-				echo "Num grupo:  " . $i;
-				?> <br> <?php
-				echo "----";
-				?> <br> <?php
-				
-				if($i == 1) $letra = 'A';
-				else if($i == 2) $letra = 'B';
-				else if($i == 3) $letra = 'C';
-				else if($i == 4) $letra = 'D';
-				else if($i == 5) $letra = 'E';
-				else if($i == 6) $letra = 'F';
-				else if($i == 7) $letra = 'G';
-				else if($i == 8) $letra = 'H';
+					
+					echo "----";
+					?> <br> <?php
+					echo "Num grupo:  " . $i;
+					?> <br> <?php
+					echo "----";
+					?> <br> <?php
+					
+					if($i == 1) $letra = 'A';
+					else if($i == 2) $letra = 'B';
+					else if($i == 3) $letra = 'C';
+					else if($i == 4) $letra = 'D';
+					else if($i == 5) $letra = 'E';
+					else if($i == 6) $letra = 'F';
+					else if($i == 7) $letra = 'G';
+					else if($i == 8) $letra = 'H';
 
-				$GRUPO = create_grupo($idCampeonato,$tipo,$nivel,$letra);
-				$GRUPO->ADD();
-				$numEnfrentamiento = 1;
-				
-				for($p1 =  (($numGrupos - 1)*8) ; $p1 < 8 + (($numGrupos - 1)*8);$p1++){
+					$GRUPO = create_grupo($idCampeonato,$tipo,$nivel,$letra);
+					$GRUPO->ADD();
+					$numEnfrentamiento = 1;
+					
+					for($p1 =  (($numGrupos - 1)*8) ; $p1 < 8 + (($numGrupos - 1)*8);$p1++){
 
-					for($p2 = $p1+1 ; $p2 < 8 + (($numGrupos - 1)*8);$p2++){
-	
-						$numPareja1 = $aux[$p1];
-						$numPareja2 = $aux[$p2];
-						echo $numPareja1;
-						echo "\n\n";
-						echo $numPareja2;
-						echo "\n\n";
-						
-						$PARTIDO = create_partido($idCampeonato,$tipo,$nivel,$letra,$numEnfrentamiento);
-						$mensajeP = $PARTIDO->ADD();
-						echo "Mensaje Partido: " . $mensajeP . "(" . $numEnfrentamiento . ")" . "\n" ;
-						?> <br> <?php
-						
-						$ENFRENTAMIENTO = create_enfrentamiento($idCampeonato,$tipo,$nivel,$letra,$numEnfrentamiento,$numPareja1);
-						$mensajeE1 = $ENFRENTAMIENTO->ADD();
-						echo "Mensaje Partido: " . $mensajeE1 . "(" . $numPareja1 . ")" . "\n"; 
-						
-						?> <br> <?php
-						$ENFRENTAMIENTO = create_enfrentamiento($idCampeonato,$tipo,$nivel,$letra,$numEnfrentamiento,$numPareja2);
-						$mensajeE2 = $ENFRENTAMIENTO->ADD();		
-						echo "Mensaje Partido: " . $mensajeE2 . "(" . $numPareja2 . ")" . "\n";
-						$numParejasAsignadas++;
-						?> <br> <?php
-						?> <br> <?php
-						$numEnfrentamiento++;
+						for($p2 = $p1+1 ; $p2 < 8 + (($numGrupos - 1)*8);$p2++){
+		
+							$numPareja1 = $aux[$p1];
+							$numPareja2 = $aux[$p2];
+							echo $numPareja1;
+							echo "\n\n";
+							echo $numPareja2;
+							echo "\n\n";
 							
-					}					
+							$PARTIDO = create_partido($idCampeonato,$tipo,$nivel,$letra,$numEnfrentamiento);
+							$mensajeP = $PARTIDO->ADD();
+							echo "Mensaje Partido: " . $mensajeP . "(" . $numEnfrentamiento . ")" . "\n" ;
+							?> <br> <?php
+							
+							$ENFRENTAMIENTO = create_enfrentamiento($idCampeonato,$tipo,$nivel,$letra,$numEnfrentamiento,$numPareja1);
+							$mensajeE1 = $ENFRENTAMIENTO->ADD();
+							echo "Mensaje Partido: " . $mensajeE1 . "(" . $numPareja1 . ")" . "\n"; 
+							
+							?> <br> <?php
+							$ENFRENTAMIENTO = create_enfrentamiento($idCampeonato,$tipo,$nivel,$letra,$numEnfrentamiento,$numPareja2);
+							$mensajeE2 = $ENFRENTAMIENTO->ADD();		
+							echo "Mensaje Partido: " . $mensajeE2 . "(" . $numPareja2 . ")" . "\n";
+							$numParejasAsignadas++;
+							?> <br> <?php
+							?> <br> <?php
+							$numEnfrentamiento++;
+								
+						}					
+					}
 				}
-			}
-			
-			
+				
+				
 				$contadorParejas= 0;
 				$contadorGrupos = 1;
 				$letra = 'A';
@@ -239,10 +245,10 @@ switch ( $_REQUEST[ 'action' ] ) {
 				echo $numParejasAsignadas;
 				echo"\n\n";
 				new MESSAGE( 'Grupos creados','../Controllers/CAMPEONATO_CATEGORIA_CONTROLLER.php.?IdCampeonato='.$_REQUEST['IdCampeonato'] );
-		
-				
-			}
 			
+			}			
+		}
+				
 				
 			
 

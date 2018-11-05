@@ -154,6 +154,21 @@ class GRUPO_MODEL{
 		}
 		
 	}
+	
+	function existenGrupos(){
+		
+		$sql = "SELECT * FROM GRUPO WHERE  (IdCampeonato = '$this->IdCampeonato') && (Tipo = '$this->Tipo') && (Nivel = '$this->Nivel') ";
+		$result = $this->mysqli->query( $sql );	
+
+		if ( $result->num_rows >= 1 ) {
+			return True;
+		}
+		else{
+			return False;		
+		}
+	
  	}
+
+}
 
 ?>
