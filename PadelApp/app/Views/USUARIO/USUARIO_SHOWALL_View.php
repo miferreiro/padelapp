@@ -22,7 +22,7 @@ class USUARIO_SHOWALL {
 				<?php echo $strings['Tabla de datos'];?>
 			</h2>
 			<div class="col-md-6">
-			<table class="table">
+			<table class="table" id="mydatatableUsuarios">
 				<thead class="thead-light">
 				
 				<tr>
@@ -35,11 +35,12 @@ class USUARIO_SHOWALL {
 <?php
 					}
 ?>
-					<th colspan="3" >
+					<th>
 						<?php echo $strings['Opciones']?>
 					</th>
 
 				</tr>
+				</thead>
 <?php
 				while ( $fila = mysqli_fetch_array( $this->datos ) ) { 
 ?>
@@ -55,23 +56,24 @@ class USUARIO_SHOWALL {
 <?php
 					}
 ?>
+					
 					<td>
 						<form action="../Controllers/USUARIO_CONTROLLER.php" method="get" style="display:inline" >
 							<input type="hidden" name="Dni" value="<?php echo $fila['Dni']; ?>">
 							
 								<button id ="buttonBien" type="submit" name="action" value="EDIT" ><img src="../Views/icon/edit_big.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" /></button>
-								<td>		
+										
 								<button id ="buttonBien" type="submit" name="action" value="DELETE" ><img src="../Views/icon/delete_big.png" alt="<?php echo $strings['Eliminar']?>" width="20" height="20" /></button>				
-								<td>			
+										
 								<button id ="buttonBien" type="submit" name="action" value="SHOWCURRENT" ><img src="../Views/icon/verdetalles_2.jpg" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>
-						</form>
-				    								
+						</form>						
+					</td>								
 				</tr>
 <?php
 				}
 ?>
 				
-				</thead>
+				
 			</table>
 				
 				<tr align="center">
