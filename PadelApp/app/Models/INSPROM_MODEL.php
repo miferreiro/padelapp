@@ -41,17 +41,19 @@ class INSPROM_MODEL{
 		}
 	} 
 	function ComprobarInscritos($fecha,$hora) {
-		$sql = "select * 
+		$sql = "select COUNT(*)  as num
        			from INSCRIPCIONPROMOCIONES
 				where 
     				(
 					Promociones_Fecha='$fecha' && 
 					Promociones_Hora ='$hora'
     				)";
-		 $resultado = $this->mysqli->query( $sql ) ;
-			if($resultado->num_rows==4){
+			$resultado = $this->mysqli->query( $sql ) ;
+			$result = $resultado->fetch_array();
+			if($result['num']==4){
+				echo 'aqui';
 				return 0;
-			}else {
+			}else {echo 'aqui2';
 				return 1;
 			}
 	}
@@ -91,13 +93,16 @@ class INSPROM_MODEL{
 										'$this->Promociones_fecha',
 										'$this->Promociones_hora'
 									)";	
+								if ( !$this->mysqli->query( $sql)) { 
+									return 'Error en la inserción';
+								}
+								
 							if ( $result->num_rows == 3 ) {	
-								$sql = "SELECT Dni FROM Usuario WHERE Login == admin";
-								$admin1 = $this->mysqli->query($sql);
+								$sql = "SELECT Dni FROM Usuario WHERE Login = 'admin'";
+								$admin1 = $this->mysqli->query($sql);							
 								$admin2 = $admin1->fetch_array();
-								echo $admin2;
 								$a =  $admin2 ['Dni'];
-								$Pista = "SELECT DISTINCT idPista FROM `pista` WHERE Fecha = '2018-11-07' && Disponibilidad = 1 LIMIT 1";
+								$Pista = "SELECT DISTINCT idPista FROM pista WHERE Fecha = '$this->Promociones_fecha' && Disponibilidad = 1 LIMIT 1";
 								$idpistas = $this->mysqli->query($Pista);
 								$pista1 = $idpistas->fetch_array();
 								$p = $pista1 ['idPista'];
@@ -113,15 +118,22 @@ class INSPROM_MODEL{
 										'$this->Promociones_fecha',
 										'$this->Promociones_hora'
 									)";
-								$this->mysqli->query($sql2);
+
+								if ( !$this->mysqli->query( $sql2 )) { 
+									return 'Error en la inserción';
+								} 
+								echo $this->Promociones_fecha;
 								$sql3 = "UPDATE PISTA SET 
 										idPista = '$p',
-										Hora='$this->Promociones_hora',
 										Fecha = '$this->Promociones_fecha',
+										Hora='$this->Promociones_hora',
 										Disponibilidad = '0'
-									WHERE ( idPista = '$p' && Hora = '$this->Promociones_hora' && Fecha = '$this->Promociones_fecha'
+									WHERE ( idPista = '$p' && Hora = '$this->Promociones_hora' && Fecha ='$this->Promociones_fecha'
 									)";	
-								$this->mysqli->query($sql3);
+								
+								if ( !$this->mysqli->query( $sql3 )) { 
+									return 'Error en la inserción';
+								}
 							}
 								if ( !$this->mysqli->query( $sql )) { 
 									return 'Error en la inserción';

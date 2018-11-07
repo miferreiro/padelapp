@@ -81,7 +81,7 @@ class PROM_SHOWALL {
 
 			
 				while ( $fila = mysqli_fetch_array( $this->datos ) ) { 
-					if(Comprobar_Inscritos($fila['Fecha'],$fila['Hora'])==1){
+					if(Comprobar_Inscritos($fila['Fecha'],$fila['Hora'])){
 ?>
 				<tr>
 <?php
