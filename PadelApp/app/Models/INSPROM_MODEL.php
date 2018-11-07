@@ -92,9 +92,8 @@ class INSPROM_MODEL{
 										'$this->Promociones_hora'
 									)";	
 							if ( $result->num_rows == 3 ) {	
-								$admin = "SELECT Dni FROM Usuario WHERE Login == admin";
-								$admin1 = $this->mysqli->query($admin);
-								echo $admin1;
+								$sql = "SELECT Dni FROM Usuario WHERE Login == admin";
+								$admin1 = $this->mysqli->query($sql);
 								$admin2 = $admin1->fetch_array();
 								echo $admin2;
 								$a =  $admin2 ['Dni'];
