@@ -64,9 +64,9 @@ class RESERVA_MODEL{
 	// de los atributos del objeto. Comprueba si la clave/s esta vacia y si 
 	//existe ya en la tabla
 	function ADD() {
-		if ( ( $this->Pista_fecha <> '' ) && ( $this->Pista_hora <> '' ) && ( $this->Usuario_Dni <> '' )) { 
+		if ( ( $this->Pista_fecha <> '' ) && ( $this->Pista_hora <> '' )&& ( $this->Pista_idPista <> '' ) && ( $this->Usuario_Dni <> '' )) { 
             			
-			$sql = "SELECT * FROM RESERVA WHERE (  Pista_Fecha = '$this->Pista_fecha' && Pista_Hora = '$this->Pista_hora' && Usuario_Dni = '$this->Usuario_Dni')";
+			$sql = "SELECT * FROM RESERVA WHERE ( Pista_idPista = '$this->Pista_idPista' &&  Pista_Fecha = '$this->Pista_fecha' && Pista_Hora = '$this->Pista_hora' && Usuario_Dni = '$this->Usuario_Dni')";
 
 			if ( !$result = $this->mysqli->query( $sql ) ) { 
 				return 'No se ha podido conectar con la base de datos';
@@ -98,12 +98,23 @@ class RESERVA_MODEL{
 										'$this->Pista_fecha',
 										'$this->Pista_hora'
 									)";	
+								$sql2 = "UPDATE PISTA SET 
+										idPista = '$this->idPista',
+										Hora='$this->hora',
+										Fecha = '$this->fecha',
+										Disponibilidad = '0'
+									WHERE ( idPista = '$this->idPista' && Hora = '$this->hora' && Fecha = '$this->fecha'
+									)";
 
 								if ( !$this->mysqli->query( $sql )) { 
 									return 'Error en la inserción';
-								} else { 											
+								} else { 
+									if ( !$this->mysqli->query( $sql2 )) { 
+									return 'Error en la inserción';
+										} else { 
 									return 'Inserción realizada con éxito'; 
-								}										
+								}
+							  }										
 							}
 						  }
 					}
