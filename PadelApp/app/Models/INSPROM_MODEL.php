@@ -92,6 +92,14 @@ class INSPROM_MODEL{
 										'$this->Promociones_hora'
 									)";	
 							if ( $result->num_rows == 3 ) {	
+								$admin = "SELECT Dni FROM Usuario WHERE Login == admin ";
+								$admin1 = $this->mysqli->query($admin);
+								$admin2 = $admin1->fetch_array();
+								$a = $admin['Dni'];
+								$Pista = "SELECT DISTINCT idPista FROM `pista` WHERE Fecha = '2018-11-07' && Disponibilidad = 1 LIMIT 1";
+								$idpistas = $this->mysqli->query( $Pista );
+								$pista1 = $idpistas->fetch_array();
+								$p = $pista1 ['idPista'];
 								$sql2 = "INSERT INTO RESERVA (
 									Usuario_Dni,
 									Pista_idPista,
@@ -99,18 +107,20 @@ class INSPROM_MODEL{
 									Pista_Hora
 									) 
 									VALUES(
-										'$admin',
-										'$Pista',
-										'$this->Pista_fecha',
-										'$this->Pista_hora'
-									)";	
-								$sql2 = "UPDATE PISTA SET 
-										idPista = '$Pista',
-										Hora='$this->hora',
-										Fecha = '$this->fecha',
+										'$a',
+										'$p',
+										'$this->Promociones_fecha',
+										'$this->Promociones_hora'
+									)";
+								$this->mysqli->query($sql2);
+								$sql3 = "UPDATE PISTA SET 
+										idPista = '$p',
+										Hora='$this->Promociones_hora',
+										Fecha = '$this->Promociones_fecha',
 										Disponibilidad = '0'
-									WHERE ( idPista = '$Pista' && Hora = '$this->hora' && Fecha = '$this->fecha'
+									WHERE ( idPista = '$p' && Hora = '$this->Promociones_hora' && Fecha = '$this->Promociones_fecha'
 									)";	
+								$this->mysqli->query($sql3);
 							}
 								if ( !$this->mysqli->query( $sql )) { 
 									return 'Error en la inserción';
