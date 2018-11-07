@@ -92,12 +92,14 @@ class INSPROM_MODEL{
 										'$this->Promociones_hora'
 									)";	
 							if ( $result->num_rows == 3 ) {	
-								$admin = "SELECT Dni FROM Usuario WHERE Login == admin ";
+								$admin = "SELECT Dni FROM Usuario WHERE Login == admin";
 								$admin1 = $this->mysqli->query($admin);
+								echo $admin1;
 								$admin2 = $admin1->fetch_array();
-								$a = $admin['Dni'];
+								echo $admin2;
+								$a =  $admin2 ['Dni'];
 								$Pista = "SELECT DISTINCT idPista FROM `pista` WHERE Fecha = '2018-11-07' && Disponibilidad = 1 LIMIT 1";
-								$idpistas = $this->mysqli->query( $Pista );
+								$idpistas = $this->mysqli->query($Pista);
 								$pista1 = $idpistas->fetch_array();
 								$p = $pista1 ['idPista'];
 								$sql2 = "INSERT INTO RESERVA (

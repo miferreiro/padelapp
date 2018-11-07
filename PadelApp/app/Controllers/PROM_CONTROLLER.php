@@ -2,6 +2,7 @@
 
 session_start(); 
 include '../Functions/Authentication.php';
+include '../Functions/ComprobarInscritos.php'; 
 
 if (!IsAuthenticated()){
 	
