@@ -69,7 +69,7 @@ class ENFRENTAMIENTO_EDIT {
 					</tr>
 					<tr align="center">
 						<td colspan="2">
-							<button id ="buttonBien" type="submit" name="action" value="EDITAR"><img src="../Views/icon/modificar.png" alt="<?php echo $strings['Confirmar formulario']?>" /></button>
+							<button id ="buttonBien" type="submit" name="action" value="EDITAR"><img src="../Views/icon/edit_big.png" alt="<?php echo $strings['Confirmar formulario']?>" /></button>
 			</form>
 						</thead>
 				</table>
@@ -79,7 +79,7 @@ class ENFRENTAMIENTO_EDIT {
 				<input type="hidden" name="Tipo" value="<?php echo $this->valores['Tipo']; ?>">		
 				<input type="hidden" name="Nivel" value="<?php echo $this->valores['Nivel']; ?>">
 				<input type="hidden" name="Letra" value="<?php echo $this->valores['Letra']; ?>">
-				<button id ="buttonBien"type="submit" name="action" value="TABLA"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
+				<button id ="buttonBien"type="submit" name="action" value="TABLA"><img src="../Views/icon/back_big2.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>
 			</tr>
 			

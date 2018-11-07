@@ -116,8 +116,8 @@ class CALENDARIO_ACEPTAR {
 					<input type="hidden" name="pareja2" value="<?php echo $this->valores['pareja2']; ?>">
 										
 					
-				<button id ="buttonBien" type="submit" name="action" value="ACEPTAR" ><img src="../Views/icon/confirmar.png" alt="<?php echo $strings['Confirmar'] ?>"/></button>
-				<button id ="buttonBien" type="submit" name="action" value="DENEGAR" ><img src="../Views/icon/cancelar.png" alt="<?php echo $strings['Cancelar'] ?>"/></button>
+				<button id ="buttonBien" type="submit" name="action" value="ACEPTAR" ><img src="../Views/icon/check_big2.png" alt="<?php echo $strings['Confirmar'] ?>"/></button>
+				<button id ="buttonBien" type="submit" name="action" value="DENEGAR" ><img src="../Views/icon/cancel_big.png" alt="<?php echo $strings['Cancelar'] ?>"/></button>
 			</form>
 
 			</div>
@@ -126,7 +126,7 @@ class CALENDARIO_ACEPTAR {
 					<input type="hidden" name="Tipo" value="<?php echo $this->valores['Tipo']; ?>">		
 					<input type="hidden" name="Nivel" value="<?php echo $this->valores['Nivel']; ?>">
 					<input type="hidden" name="Letra" value="<?php echo $this->valores['Grupo_Letra']; ?>">
-				<button id ="buttonBien" name="action" type="submit" value="TABLA"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras'] ?>"/></button>
+				<button id ="buttonBien" name="action" type="submit" value="TABLA"><img src="../Views/icon/back_big2.png" alt="<?php echo $strings['Atras'] ?>"/></button>
 			</form>
 		</div>
 <?php           

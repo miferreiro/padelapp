@@ -95,7 +95,7 @@ class GRUPO_CATEGORIA_TABLA{
 									<input type="hidden" name="pareja2" value="<?php echo $fila['pareja2']; ?>">
 									<input type="hidden" name="resultado" value="<?php echo $fila['resultado']; ?>">
 									<?php echo $fila['resultado'];?> 
-										<button id ="buttonBien"  type="submit" name="action" value="EDITAR" ><img src="../Views/icon/modificar.png" alt="<?php echo $strings['modificar']?>"  width="15" height="15" /></button>			
+										<button id ="buttonBien"  type="submit" name="action" value="EDITAR" ><img src="../Views/icon/edit_big.png" alt="<?php echo $strings['modificar']?>"  width="15" height="15" /></button>			
 									</form>
 								</td><?php
 								$NoEncontrado = False;
@@ -124,7 +124,7 @@ class GRUPO_CATEGORIA_TABLA{
 				<input type="hidden" name="Tipo" value="<?php echo $this->vuelta['Tipo']; ?>">		
 				<input type="hidden" name="Nivel" value="<?php echo $this->vuelta['Nivel']; ?>">					
 				<input type="hidden" name="Letra" value="<?php echo $this->vuelta['Letra']; ?>">	
-				<button id ="buttonBien" type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
+				<button id ="buttonBien" type="submit"><img src="../Views/icon/back_big2.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>
 		</div>
 <?php

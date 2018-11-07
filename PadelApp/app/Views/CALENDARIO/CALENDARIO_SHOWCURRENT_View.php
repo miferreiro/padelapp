@@ -79,7 +79,7 @@ class CALENDARIO_SHOWCURRENT {
 			</table>
 		</div>
 				<form action='../Controllers/CALENDARIO_CONTROLLER.php' method="post">
-					<button id ="buttonBien" type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras'] ?>" /></button>
+					<button id ="buttonBien" type="submit"><img src="../Views/icon/back_big2.png" alt="<?php echo $strings['Atras'] ?>" /></button>
 				</form>
 
 

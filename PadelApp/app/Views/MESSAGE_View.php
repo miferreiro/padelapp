@@ -37,7 +37,7 @@ class MESSAGE {
 		<br>
 
 		<form action='<?php echo $this->ruta?>' method="post">
-			<button id ="buttonBien" type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>"/></button>
+			<button id ="buttonBien" type="submit"><img src="../Views/icon/back_big2.png" alt="<?php echo $strings['Atras']?>"/></button>
 		</form>
 	</thead>
 	</div>
