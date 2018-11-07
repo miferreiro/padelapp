@@ -30,8 +30,11 @@ class Pista_Showall{
 				<tr>
 <?php
 		$c=0;
+		$aux= array();
+		
 					while( $li = mysqli_fetch_array( $this->lista) ){
-						$c++;
+						
+						$c++;$aux[$c] =  $li['idPista'];
 ?>
 					<th>
 						<?php echo $strings['idPista'];echo(' ');echo $li['idPista']?>
@@ -53,7 +56,7 @@ class Pista_Showall{
 					<tr>
 <?php
 					for($i=0;$i<$c;$i++){
-						if(Comprobar_Disponibilidad($i+1,$fila['Hora'],date("Y-m-d"))==1){
+						if(Comprobar_Disponibilidad($aux[$i+1],$fila['Hora'],date("Y-m-d"))==1){
 ?>
 						<td bgcolor="#35B109" >	
 							
@@ -61,7 +64,7 @@ class Pista_Showall{
 							
 						<form action="../Controllers/PISTA_CONTROLLER.php" method="get" style="display:inline" >
 						<button type="submit" name="action" value="EDIT" style="background-color: #35B109; width: 100%">
-							<input type="hidden" name="idPista" value="<?php echo $i+1 ?>">
+							<input type="hidden" name="idPista" value="<?php echo $aux[$i+1] ?>">
 							<input type="hidden" name="Hora" value="<?php echo $fila['Hora'] ?>">
 							<input type="hidden" name="Fecha" value="<?php echo date("Y-m-d") ?>">	
 <?php
@@ -70,7 +73,7 @@ class Pista_Showall{
 							<form action="../Controllers/RESERVA_CONTROLLER.php" method="get" style="display:inline" >
 							<button type="submit" name="action" value="ADD" style="background-color: #35B109; width: 100%">
 							<input type="hidden" name="Usuario_Dni" value="<?php echo $_SESSION['dni']; ?>">
-							<input type="hidden" name="Pista_idPista" value="<?php echo $i+1 ?>">
+							<input type="hidden" name="Pista_idPista" value="<?php echo $aux[$i+1] ?>">
 							<input type="hidden" name="Pista_Hora" value="<?php echo $fila['Hora'] ?>">
 							<input type="hidden" name="Pista_Fecha" value="<?php echo date("Y-m-d") ?>">
 <?php
@@ -85,7 +88,7 @@ class Pista_Showall{
 							
 						<form action="../Controllers/PISTA_CONTROLLER.php" method="get" style="display:inline" >
 						<button  type="submit" name="action" value="EDIT" style="background-color: #E80408; width: 100%">
-							<input type="hidden" name="idPista" value="<?php echo $i+1 ?>">
+							<input type="hidden" name="idPista" value="<?php echo $aux[$i+1] ?>">
 							<input type="hidden" name="Hora" value="<?php echo $fila['Hora'] ?>">
 							<input type="hidden" name="Fecha" value="<?php echo date("Y-m-d") ?>">	
 <?php
@@ -94,7 +97,7 @@ class Pista_Showall{
 							<form action="../Controllers/RESERVA_CONTROLLER.php" method="get" style="display:inline" >
 							<button  type="submit" name="action" value="ADD" style="background-color: #E80408; width: 100%" disabled>
 							<input type="hidden" name="Usuario_Dni" value="<?php echo $_SESSION['dni']; ?>">
-							<input type="hidden" name="Pista_idPista" value="<?php echo $i+1 ?>">
+							<input type="hidden" name="Pista_idPista" value="<?php echo $aux[$i+1] ?>">
 							<input type="hidden" name="Pista_Hora" value="<?php echo $fila['Hora'] ?>">
 							<input type="hidden" name="Pista_Fecha" value="<?php echo date("Y-m-d") ?>">	
 <?php 
@@ -114,7 +117,7 @@ class Pista_Showall{
 						</tr>											
 				</thead>
 			</table>
-					<form action='../Controllers/PISTA_CONTROLLER.php' method="post" style="display:inline">
+					<form action='../Controllers/PISTA_CONTROLLER.php' method="get" style="display:inline">
 						<button id ="buttonBien" type="submit" name="action" value="ADD"><img src="../Views/icon/add_big.png" alt="AÑADIR" /></button>
 					</form>
 		</div>

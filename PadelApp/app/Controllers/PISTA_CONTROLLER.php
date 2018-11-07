@@ -45,7 +45,7 @@ if ( !isset( $_REQUEST[ 'action' ] ) ) {
 }
 switch ( $_REQUEST[ 'action' ] ) {
 	case 'ADD':
-		if ( $_POST ) {
+		if ( !$_POST ) {
 			
          	$PISTA = new PISTA_MODEL( '', '', '', '');
 			$ultimaPista = $PISTA->	getLastIdPista();
