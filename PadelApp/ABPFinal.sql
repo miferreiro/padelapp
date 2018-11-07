@@ -76,7 +76,7 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `AbpBase`.`Categoría`
+-- Table `AbpBase`.`Categoria`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `AbpBase`.`Categoria` ;
 
@@ -85,7 +85,8 @@ CREATE TABLE IF NOT EXISTS `AbpBase`.`Categoria` (
   `Tipo` VARCHAR(10) NOT NULL,
   `Nivel` INT NOT NULL,
   PRIMARY KEY (`IdCampeonato`, `Tipo`, `Nivel`),
-  CONSTRAINT `fk_cat_campeonato`
+  INDEX `fk_Campeonato_has_Categoria_idx` (`IdCampeonato` ASC) ,
+  CONSTRAINT `fk_Campeonato_has_Categoria_idx`
     FOREIGN KEY (`IdCampeonato`)
     REFERENCES `AbpBase`.`Campeonato` (`IdCampeonato`)
     ON DELETE NO ACTION
@@ -124,7 +125,8 @@ CREATE TABLE IF NOT EXISTS `AbpBase`.`Grupo` (
   `Nivel` INT NOT NULL,
   `Letra` CHAR NOT NULL,
   PRIMARY KEY (`IdCampeonato`, `Tipo`, `Nivel`, `Letra`),
-  CONSTRAINT `fk_cat_grupo`
+  INDEX `fk_Categoria_has_Grupo_idx` (`IdCampeonato` ASC, `Tipo` ASC,`Nivel` ASC) ,
+  CONSTRAINT `fk_Categoria_has_Grupo_idx`
     FOREIGN KEY (`IdCampeonato` , `Tipo` , `Nivel`)
     REFERENCES `AbpBase`.`Categoria` (`IdCampeonato` , `Tipo` , `Nivel`)
     ON DELETE NO ACTION
@@ -146,7 +148,8 @@ CREATE TABLE IF NOT EXISTS `AbpBase`.`Partido` (
   `Fecha` DATE NULL,
   `Hora` TIME NULL,
   PRIMARY KEY (`IdCampeonato`, `Tipo`, `Nivel`, `Grupo_Letra`, `NumEnfrentamiento`),
-  CONSTRAINT `fk_partido_grupo`
+    INDEX `fk_Grupo_has_Partido_idx` (`IdCampeonato` ASC, `Tipo` ASC,`Nivel` ASC,`Grupo_Letra` ASC) ,
+  CONSTRAINT `fk_Grupo_has_Partido_idx`
     FOREIGN KEY (`IdCampeonato` , `Tipo` , `Nivel` , `Grupo_Letra`)
     REFERENCES `AbpBase`.`Grupo` (`IdCampeonato` , `Tipo` , `Nivel` , `Letra`)
     ON DELETE NO ACTION
