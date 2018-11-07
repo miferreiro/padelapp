@@ -34,7 +34,6 @@ class PROM_MODEL{
 		}
 	} 
 
-
 	function ADD() {
 		
 	if ( ( $this->fecha <> '' ) && ( $this->hora <> '' )  ) { 

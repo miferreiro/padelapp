@@ -26,7 +26,7 @@ class PROM_ADD {
 						<th class="formThTd">
 							<?php echo $strings['Fecha'];?>
 						</th>
-						<td class="formThTd"><input type="time" id="Fecha" name="Fecha" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="25" size="25" required />
+						<td class="formThTd"><input type="date" id="Fecha" name="Fecha" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="25" size="25" required />
 					</tr>
 					<tr>
 						<th class="formThTd">

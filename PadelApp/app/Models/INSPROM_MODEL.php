@@ -40,7 +40,22 @@ class INSPROM_MODEL{
 			return $resultado;
 		}
 	} 
+	function SEARCH2() {
+		$sql = "select  COUNT(*)
+       			from inscripcionpromociones 
+    			where 
+    				((BINARY Usuario_Dni LIKE '%$this->Usuario_Dni%')&&
+                    (BINARY Promociones_Fecha LIKE '%$this->Promociones_fecha%') &&
+    				(BINARY Promociones_Hora LIKE '%$this->Promociones_hora%') 
+					
+    				)";
+		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
+			return 'Error en la consulta sobre la base de datos';
+		} else { 
 
+			return $resultado;
+		}
+	}
 	function ADD() {
 		if ( ( $this->Promociones_fecha <> '' ) && ( $this->Promociones_hora <> '' ) && ( $this->Usuario_Dni <> '' )) { 
             			

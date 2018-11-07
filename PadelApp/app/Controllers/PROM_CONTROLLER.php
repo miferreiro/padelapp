@@ -104,8 +104,11 @@ switch ( $_REQUEST[ 'action' ] ) {
 						} else {
 							$PROM = get_data_form();
 						}
-						
+					if($_SESSION['tipo'] == 'Admin'){		
 						$datos = $PROM->SEARCH();
+					}else{
+						$datos = $PROM->SEARCH();
+					}
 						
 						$lista = array('Fecha','Hora');
 						
