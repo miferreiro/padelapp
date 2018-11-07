@@ -15,7 +15,7 @@ class USUARIO_EDIT {
 			<h2>
 				<?php echo $strings['Formulario de modificación'];?>
 			</h2>
-			<form name="EDIT" action="../Controllers/USUARIO_CONTROLLER.php" method="post" enctype="multipart/form-data" /><!--onsubmit="return comprobarEditUsuario()">-->
+			<form name="EDIT" action="../Controllers/USUARIO_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="return comprobarEditUsuario()">
 				<div class="col-sm-4">
 				<table class="table table-sm">
 					<thead class="thead-light">
@@ -23,32 +23,32 @@ class USUARIO_EDIT {
 						<th class="formThTd">
 							<?php echo $strings['Dni'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="Dni" name="Dni" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['Dni']?>" maxlength="12" size="12"  required /> <!-- onBlur="comprobarVacio(this) && comprobarLongitud(this,'12') && comprobarTexto(this,'12') && comprobarDni(this)"-->  
+						<td class="formThTd"><input type="text" id="Dni" name="Dni" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['Dni']?>" maxlength="9" size="9"  required readonly/>
 					</tr>
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['Usuario'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="login" name="login" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['Login']?>" maxlength="25" size="25" readonly required /> <!-- onBlur="comprobarVacio(this) && sinEspacio(this) && comprobarLongitud(this,'25') && comprobarTexto(this,'25')"--> 
+						<td class="formThTd"><input type="text" id="login" name="login" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['Login']?>" maxlength="25" size="25" readonly required /> 
 					</tr>
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['Contraseña'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="password" name="password" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['Password']?>" maxlength="128" size="40" required />  <!-- onBlur="comprobarVacio(this) && sinEspacio(this) && comprobarLongitud(this,128) && comprobarTexto(this,128)"--> 
+						<td class="formThTd"><input type="text" id="password" name="password" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['Password']?>" maxlength="128" size="40" required /> 
 					</tr>
 
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['Nombre'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="nombre" name="nombre" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['Nombre']?>" maxlength="30" size="31" required  /><!-- onBlur="comprobarVacio(this) && comprobarLongitud(this,'30') && comprobarTexto(this,'30') && comprobarAlfabetico(this,'30')"-->					</tr>
+						<td class="formThTd"><input type="text" id="nombre" name="nombre" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['Nombre']?>" maxlength="30" size="30" required  />
+					</tr>
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['Apellidos'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="apellidos" name="apellidos" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['Apellidos']?>" maxlength="45" size="40" required /> <!-- onBlur="comprobarVacio(this) && comprobarLongitud(this,'45') && comprobarTexto(this,'45') && comprobarAlfabetico(this,'45')"-->
-					</tr>
+						<td class="formThTd"><input type="text" id="apellidos" name="apellidos" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['Apellidos']?>" maxlength="45" size="45" required />
 					<tr>
 						<th class="formThTd">
 							<?php echo "Sexo"?>
@@ -72,13 +72,13 @@ class USUARIO_EDIT {
 						<th class="formThTd">
 							<?php echo $strings['Teléfono'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="telefono" name="telefono" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['Telefono']?>" maxlength="14" size="14" required /> <!-- onBlur="comprobarVacio(this) && comprobarLongitud(this,'14') && comprobarTexto(this,'14') && comprobarTelf(this)"-->
+						<td class="formThTd"><input type="text" id="telefono" name="telefono" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['Telefono']?>" maxlength="14" size="14" required /> 
 					</tr>
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['Tipo'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="Tipo" name="Tipo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['Tipo']?>" maxlength="12" size="12" required readonly /> <!-- onBlur="comprobarVacio(this) && comprobarLongitud(this,'12') && comprobarTexto(this,'12') "-->
+						<td class="formThTd"><input type="text" id="Tipo" name="Tipo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['Tipo']?>" maxlength="12" size="12" required readonly />
 					</tr>
 					<tr align="center">
 						<td colspan="2">

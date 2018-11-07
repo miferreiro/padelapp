@@ -46,7 +46,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `AbpBase`.`Usuario` ;
 
 CREATE TABLE IF NOT EXISTS `AbpBase`.`Usuario` (
-  `Dni` VARCHAR(12) NOT NULL,
+  `Dni` VARCHAR(9) NOT NULL,
   `Login` VARCHAR(25) NOT NULL,
   `Password` VARCHAR(128) NOT NULL,
   `Nombre` VARCHAR(30) NOT NULL,
@@ -175,7 +175,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `AbpBase`.`InscripcionPromociones` ;
 
 CREATE TABLE IF NOT EXISTS `AbpBase`.`InscripcionPromociones` (
-  `Usuario_Dni` VARCHAR(12) NOT NULL,
+  `Usuario_Dni` VARCHAR(9) NOT NULL,
   `Promociones_Fecha` DATE NOT NULL,
   `Promociones_Hora` TIME NOT NULL,
   PRIMARY KEY (`Usuario_Dni`, `Promociones_Fecha`, `Promociones_Hora`),
@@ -200,7 +200,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `AbpBase`.`UsuarioParejas` ;
 
 CREATE TABLE IF NOT EXISTS `AbpBase`.`UsuarioParejas` (
-  `Usuario_Dni` VARCHAR(12) NOT NULL,
+  `Usuario_Dni` VARCHAR(9) NOT NULL,
   `Pareja_idCampeonato` INT NOT NULL,
   `Pareja_Tipo` VARCHAR(10) NOT NULL,
   `Pareja_Nivel` INT NOT NULL,
@@ -256,7 +256,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `AbpBase`.`Reserva` ;
 
 CREATE TABLE IF NOT EXISTS `AbpBase`.`Reserva` (
-  `Usuario_Dni` VARCHAR(12) NOT NULL,
+  `Usuario_Dni` VARCHAR(9) NOT NULL,
   `Pista_idPista` INT NOT NULL,
   `Pista_Fecha` DATE NOT NULL,
   `Pista_Hora` TIME NOT NULL,

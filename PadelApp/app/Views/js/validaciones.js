@@ -495,6 +495,369 @@ function comprobarRegistrar() {
 	return true;
 }
 
+function comprobarAddUsuario() {
+
+	var dni;
+	var login; 
+	var pwd; 
+	var nombreuser; 
+	var apellidosuser; 
+	var sexo;
+	var telefono;
+	var tipo;
+	
+	dni = document.forms['ADD'].elements[0];
+	login = document.forms['ADD'].elements[1];
+	pwd = document.forms['ADD'].elements[2];
+	nombreuser = document.forms['ADD'].elements[3];
+	apellidosuser = document.forms['ADD'].elements[4];
+	sexo = document.forms['ADD'].elements[5];
+	telefono = document.forms['ADD'].elements[6];
+	tipo = document.forms['ADD'].elements[7];
+
+
+	if (!comprobarVacio(dni)) {
+		return false;
+	} else {
+		if (!comprobarLongitud(dni, 9)) {
+			return false;
+		} else {
+			if (!comprobarTexto(dni, 9)) {
+				return false;
+			} else {
+				if (!comprobarDni(dni)) {
+					return false;
+				}
+			}
+		}
+	}
+	if (!comprobarVacio(login)) {
+		return false;
+	} else {
+		if (!sinEspacio(login)) {
+			return false;
+		} else {
+			if (!comprobarLongitud(login,25)) {
+				return false;
+			} else {
+				if (!comprobarTexto(login, 25)) {
+					return false;
+				}
+			}
+		}
+	}
+
+	if (!comprobarVacio(pwd)) {
+		return false;
+	} else {
+		if (!sinEspacio(pwd)) {
+			return false;
+		} else {
+			if (!comprobarLongitud(pwd, 20)) {
+				return false;
+			} else {
+				if (!comprobarTexto(pwd, 20)) {
+					return false;
+				}
+			}
+		}
+	}
+
+	
+	if (!comprobarVacio(nombreuser)) {
+		return false;
+	} else {
+		if (!comprobarLongitud(nombreuser, 30)) {
+			return false;
+		} else {
+			if (!comprobarTexto(nombreuser, 30)) {
+				return false;
+			} else {
+				if (!comprobarAlfabetico(nombreuser, 30)) {
+					return false;
+				}
+			}
+
+		}
+	}
+	
+	if (!comprobarVacio(apellidosuser)) {
+		return false;
+	} else {
+		if (!comprobarLongitud(apellidosuser, 45)) {
+			return false;
+		} else {
+			if (!comprobarTexto(apellidosuser, 45)) {
+				return false;
+			} else {
+				if (!comprobarAlfabetico(apellidosuser, 45)) {
+					return false;
+				}
+
+			}
+		}
+	}
+
+
+	if (!comprobarVacio(telefono)) {
+		return false;
+	} else {
+		if (!comprobarLongitud(telefono, 12)) {
+			return false;
+		} else {
+			if (!comprobarTexto(telefono, 12)) {
+				return false;
+			} else {
+				if (!comprobarTelf(telefono)) {
+					return false;
+				}
+
+			}
+		}
+	}
+	if (!comprobarVacio(sexo)) {
+		return false;
+	} 
+	
+
+	encriptar();
+	return true;
+}
+
+function comprobarSearchUsuario() {
+
+
+	var dni;
+	var login; 
+	var pwd; 
+	var nombreuser; 
+	var apellidosuser; 
+	var sexo;
+	var telefono;
+	var tipo;
+
+	dni = document.forms['SEARCH'].elements[0];
+	login = document.forms['SEARCH'].elements[1];
+	pwd = document.forms['SEARCH'].elements[2];
+	nombreuser = document.forms['SEARCH'].elements[3];
+	apellidosuser = document.forms['SEARCH'].elements[4];
+	sexo = document.forms['SEARCH'].elements[5];
+	telefono = document.forms['SEARCH'].elements[6];
+	tipo = document.forms['SEARCH'].elements[7];
+
+
+	if (!comprobarLongitud(dni, 9)) {
+		return false;
+	} else {
+		if (!comprobarTexto(dni, 9)) {
+			return false;
+		}
+	}
+
+
+	if (!comprobarLongitud(pwd, 128)) {
+		return false;
+	} else {
+		if (!comprobarTexto(pwd, 128)) {
+			return false;
+		}
+	}
+
+	if (!comprobarLongitud(login, 25)) {
+		return false;
+	} else {
+		if (!comprobarTexto(login, 25)) {
+			return false;
+		}
+	}
+
+	if (!comprobarLongitud(nombreuser, 30)) {
+		return false;
+	} else {
+		if (!comprobarTexto(nombreuser, 30)) {
+			return false;
+		} else {
+			if (!comprobarAlfabetico(nombreuser, 30)) {
+				return false;
+			}
+		}
+	}
+
+	if (!comprobarLongitud(apellidosuser, 45)) {
+		return false;
+	} else {
+		if (!comprobarTexto(apellidosuser, 45)) {
+			return false;
+		} else {
+			if (!comprobarAlfabetico(apellidosuser, 45)) {
+				return false;
+			}
+		}
+	}
+	if (!comprobarLongitud(telefono, 14)) {
+		return false;
+	} else {
+		if (!comprobarTexto(telefono, 14)) {
+			return false;
+		}
+	}
+	if (!comprobarLongitud(tipo, 12)) {
+		return false;
+	} else{
+		if (!comprobarTexto(tipo, 12)) {
+			return false;
+		}
+	}
+
+
+	
+	return true;
+}
+
+function comprobarEditUsuario() {
+
+	var dni;
+	var login; 
+	var pwd; 
+	var nombreuser; 
+	var apellidosuser; 
+	var sexo;
+	var telefono;
+	var tipo;
+
+	dni = document.forms['EDIT'].elements[0];
+	login = document.forms['EDIT'].elements[1];
+	pwd = document.forms['EDIT'].elements[2];
+	nombreuser = document.forms['EDIT'].elements[3];
+	apellidosuser = document.forms['EDIT'].elements[4];
+	sexo = document.forms['EDIT'].elements[5];
+	telefono = document.forms['EDIT'].elements[6];
+	tipo = document.forms['EDIT'].elements[7];
+
+
+	if (!comprobarVacio(dni)) {
+		return false;
+	} else {
+		if (!comprobarLongitud(dni, 9)) {
+			return false;
+		} else {
+			if (!comprobarTexto(dni, 9)) {
+				return false;
+			} else {
+				if (!comprobarDni(dni)) {
+					return false;
+				}
+			}
+		}
+	}
+	
+
+	if (!comprobarVacio(login)) {
+		return false;
+	} else {
+		if (!sinEspacio(login)) {
+			return false;
+		} else {
+			if (!comprobarLongitud(login, 25)) {
+				return false;
+			} else {
+				if (!comprobarTexto(login, 25)) {
+					return false;
+				}
+			}
+		}
+	}
+
+	if (!comprobarVacio(pwd)) {
+		return false;
+	} else {
+		if (!sinEspacio(pwd)) {
+			return false;
+		} else {
+			if (!comprobarLongitud(pwd, 128)) {
+				return false;
+			} else {
+				if (!comprobarTexto(pwd, 128)) {
+					return false;
+				}
+			}
+		}
+	}
+
+
+	if (!comprobarVacio(nombreuser)) {
+		return false;
+	} else {
+		if (!comprobarLongitud(nombreuser, 30)) {
+			return false;
+		} else {
+			if (!comprobarTexto(nombreuser, 30)) {
+				return false;
+			} else {
+				if (!comprobarAlfabetico(nombreuser, 30)) {
+					return false;
+				}
+			}
+
+		}
+	}
+
+	if (!comprobarVacio(apellidosuser)) {
+		return false;
+	} else {
+		if (!comprobarLongitud(apellidosuser, 45)) {
+			return false;
+		} else {
+			if (!comprobarTexto(apellidosuser, 45)) {
+				return false;
+			} else {
+				if (!comprobarAlfabetico(apellidosuser, 45)) {
+					return false;
+				}
+
+			}
+		}
+	}
+
+
+	if (!comprobarVacio(sexo)) {
+		return false;
+	} 
+	
+	if (!comprobarVacio(telefono)) {
+		return false;
+	} else {
+		if (!comprobarLongitud(telefono, 12)) {
+			return false;
+		} else {
+			if (!comprobarTexto(telefono, 12)) {
+				return false;
+			} else {
+				if (!comprobarTelf(telefono)) {
+					return false;
+				}
+
+			}
+		}
+	}
+	
+	if (!comprobarVacio(tipo)) {
+		return false;
+	} else {
+		if (!comprobarLongitud(tipo, 12)) {
+			return false;
+		} else {
+			if (!comprobarTexto(tipo, 12)) {
+				return false;
+			}
+		}
+	}
+	return true;
+
+
+}
+
+
 
 
 
@@ -599,6 +962,8 @@ function comprobarSearchCampeonato(){
 	
 	
 }
+
+
 
 
 </script>

@@ -23,31 +23,31 @@ class USUARIO_SEARCH {
 						<th class="formThTd">
 							<?php echo $strings['Dni'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="Dni" name="Dni" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="9" size="11" /> <!-- onBlur="comprobarLongitud(this,'9') && comprobarTexto(this,'9')"-->
+						<td class="formThTd"><input type="text" id="Dni" name="Dni" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="9" size="11" /> 
 					</tr>
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['Usuario'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="login" name="login" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="9" size="11" /><!-- onBlur="comprobarLongitud(this,'9') && comprobarTexto(this,'9')"-->
+						<td class="formThTd"><input type="text" id="login" name="login" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="25" size="25" />
 					</tr>
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['Contraseña'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="password" name="password" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="128" size="40" /><!-- onBlur="comprobarLongitud(this,'128') && comprobarTexto(this,'128')" -->
+						<td class="formThTd"><input type="text" id="password" name="password" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="128" size="40" />
 					</tr>
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['nombre'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="nombre" name="nombre" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="30" size="34" /><!-- onBlur="comprobarLongitud(this,'30') && comprobarTexto(this,'30') && comprobarAlfabetico(this,'30')"-->
+						<td class="formThTd"><input type="text" id="nombre" name="nombre" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="30" size="34" />
 					</tr>
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['Apellidos'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="apellidos" name="apellidos" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="50" size="40" /><!-- onBlur="comprobarLongitud(this,'50') && comprobarTexto(this,'50') && comprobarAlfabetico(this,'50')"-->
+						<td class="formThTd"><input type="text" id="apellidos" name="apellidos" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="45" size="45" />
 					</tr>
 					<tr>
 						<th class="formThTd">
@@ -61,13 +61,13 @@ class USUARIO_SEARCH {
 						<th class="formThTd">
 							<?php echo $strings['Teléfono'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="telefono" name="telefono" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="11" size="13" /><!-- onBlur="comprobarLongitud(this,'11') && comprobarTexto(this,'11')"-->
+						<td class="formThTd"><input type="text" id="telefono" name="telefono" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="14" size="14" />
 					</tr>
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['Tipo'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="Tipo" name="Tipo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="11" size="13" /><!-- onBlur="comprobarLongitud(this,'11') && comprobarTexto(this,'11')"-->
+						<td class="formThTd"><input type="text" id="Tipo" name="Tipo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="12" size="12" />
 					</tr>
 					<tr align="center">
 						<td colspan="2">
