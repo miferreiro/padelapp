@@ -145,12 +145,8 @@ switch ( $_REQUEST[ 'action' ] ) {
 		
 		if($_SESSION['tipo'] == 'Deportista'){
 			
-			if ( !$_POST ) {
-				$CATEGORIA= new CATEGORIA_MODEL( '', '', '');
-				//Si se reciben datos
-			} else {
-				//$USUARIO = get_data_form();
-			}
+			$CATEGORIA= new CATEGORIA_MODEL( '', '', '');
+
 			$datos = $CATEGORIA->SEARCH();
 			$lista = array( 'IdCampeonato','Tipo','Nivel');
 			new CATEGORIA_SHOWALL( $lista, $datos);

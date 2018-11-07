@@ -19,16 +19,25 @@ class CATEGORIA_MODEL{
 
 	function SEARCH() {
 
-		$sql = "select IdCampeonato,
-					Tipo,
-					Nivel
-       			from CATEGORIA 
+		$sql = "select Cat.IdCampeonato as IdCampeonato,
+					Cat.Tipo as Tipo,
+					Cat.Nivel as Nivel,
+					Cam.FechaIni as FechaIni,
+					Cam.FechaFin as FechaFin,
+					Cam.HoraIni as HoraIni,
+					Cam.HoraFin as HoraFin,
+					(select count(numPareja)  from Pareja where  IdCampeonato = Cat.IdCampeonato  && Tipo = Cat.Tipo  && Nivel LIKE Cat.Nivel) as numInscritos
+					
+       			from CATEGORIA Cat, CAMPEONATO Cam
     			where 
     				(
-					(BINARY IdCampeonato LIKE '%$this->IdCampeonato%') &&
-					(BINARY Tipo LIKE '%$this->Tipo%') &&
-					(BINARY Nivel LIKE '%$this->Nivel%')			
-    				)";
+					(BINARY Cat.IdCampeonato LIKE '%$this->IdCampeonato%') &&
+					(BINARY Cat.Tipo LIKE '%$this->Tipo%') &&
+					(BINARY Cat.Nivel LIKE '%$this->Nivel%')	
+					&& (Cat.IdCampeonato = Cam.IdCampeonato))
+					group by Cat.IdCampeonato
+    				";
+		
 
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'Error en la consulta sobre la base de datos';

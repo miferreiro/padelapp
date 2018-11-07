@@ -99,11 +99,11 @@ class RESERVA_MODEL{
 										'$this->Pista_hora'
 									)";	
 								$sql2 = "UPDATE PISTA SET 
-										idPista = '$this->idPista',
-										Hora='$this->hora',
-										Fecha = '$this->fecha',
+										idPista = '$this->Pista_idPista',
+										Hora='$this->Pista_hora',
+										Fecha = '$this->Pista_fecha',
 										Disponibilidad = '0'
-									WHERE ( idPista = '$this->idPista' && Hora = '$this->hora' && Fecha = '$this->fecha'
+									WHERE ( idPista = '$this->Pista_idPista' && Hora = '$this->Pista_hora' && Fecha = '$this->Pista_fecha'
 									)";
 
 								if ( !$this->mysqli->query( $sql )) { 
