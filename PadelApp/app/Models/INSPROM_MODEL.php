@@ -40,22 +40,23 @@ class INSPROM_MODEL{
 			return $resultado;
 		}
 	} 
-	function SEARCH2() {
-		$sql = "select  COUNT(*)
-       			from inscripcionpromociones 
-    			where 
-    				((BINARY Usuario_Dni LIKE '%$this->Usuario_Dni%')&&
-                    (BINARY Promociones_Fecha LIKE '%$this->Promociones_fecha%') &&
-    				(BINARY Promociones_Hora LIKE '%$this->Promociones_hora%') 
-					
+	function ComprobarInscritos($fecha,$hora) {
+		$sql = "select * 
+       			from INSCRIPCIONPROMOCIONES
+				where 
+    				(
+					Promociones_Fecha='$fecha' && 
+					Promociones_Hora ='$hora'
     				)";
-		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
-			return 'Error en la consulta sobre la base de datos';
-		} else { 
-
-			return $resultado;
-		}
+		 $resultado = $this->mysqli->query( $sql ) ;
+			if($resultado->num_rows==4){
+				return 0;
+			}else {
+				return 1;
+			}
 	}
+	
+	
 	function ADD() {
 		if ( ( $this->Promociones_fecha <> '' ) && ( $this->Promociones_hora <> '' ) && ( $this->Usuario_Dni <> '' )) { 
             			
@@ -79,7 +80,7 @@ class INSPROM_MODEL{
 						if ( $result->num_rows >= 4 ) {			
 							return 'Número máximo de inscritos alcanzado';					
 						} else {
-
+							
 								$sql = "INSERT INTO INSCRIPCIONPROMOCIONES (
 									Usuario_Dni,
 									Promociones_Fecha,
@@ -90,13 +91,33 @@ class INSPROM_MODEL{
 										'$this->Promociones_fecha',
 										'$this->Promociones_hora'
 									)";	
-
+							if ( $result->num_rows == 3 ) {	
+								$sql2 = "INSERT INTO RESERVA (
+									Usuario_Dni,
+									Pista_idPista,
+									Pista_Fecha,
+									Pista_Hora
+									) 
+									VALUES(
+										'$admin',
+										'$Pista',
+										'$this->Pista_fecha',
+										'$this->Pista_hora'
+									)";	
+								$sql2 = "UPDATE PISTA SET 
+										idPista = '$Pista',
+										Hora='$this->hora',
+										Fecha = '$this->fecha',
+										Disponibilidad = '0'
+									WHERE ( idPista = '$Pista' && Hora = '$this->hora' && Fecha = '$this->fecha'
+									)";	
+							}
 								if ( !$this->mysqli->query( $sql )) { 
 									return 'Error en la inserción';
 								} else { 											
 									return 'Inserción realizada con éxito'; 
-								}										
-							}
+								}	
+						    }
 						  }
 					}
 				}

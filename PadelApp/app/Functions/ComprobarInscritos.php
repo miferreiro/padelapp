@@ -1,7 +1,7 @@
 <?php
-//include_once'../Models/PISTA_MODEL.php';
-function Comprobar_Inscritos($hora,$fecha){
-$INSPROM=new INSPROM_MODEL('','','','');
-	return $PISTA->ComprobarDisp($hora,$fecha);
+//include_once'../Models/INSPROM_MODEL.php';
+function Comprobar_Inscritos($fecha,$hora){
+$INSPROM=new INSPROM_MODEL('','','');
+	return $INSPROM->ComprobarInscritos($fecha,$hora);
 }
 ?>
