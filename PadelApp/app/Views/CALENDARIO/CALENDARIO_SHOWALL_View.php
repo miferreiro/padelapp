@@ -63,7 +63,7 @@ class CALENDARIO_SHOWALL {
 							<input type="hidden" name="Tipo" value="<?php echo $fila['Tipo']; ?>">		
 							<input type="hidden" name="Nivel" value="<?php echo $fila['Nivel']; ?>">						
 							<input type="hidden" name="Letra" value="<?php echo $fila['Letra']; ?>">
-								<button id ="buttonBien" type="submit" name="action" value="SHOWCURRENT" ><img src="../Views/icon/verDetalles.png" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>			
+								<button id ="buttonBien" type="submit" name="action" value="SHOWCURRENT" ><img src="../Views/icon/verdetalles_2.jpg" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>			
 								<button id ="buttonBien" type="submit" name="action" value="TABLA" ><img src="../Views/icon/tabla.png" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>			
 						</form>													
 				</tr>
@@ -73,7 +73,7 @@ class CALENDARIO_SHOWALL {
 			</thead>
 			</table>
 			<form action='../Controllers/USUARIO_CONTROLLER.php' method="post">
-				<button id ="buttonBien" type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
+				<button id ="buttonBien" type="submit"><img src="../Views/icon/back_big2.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>
 		</div>
 <?php

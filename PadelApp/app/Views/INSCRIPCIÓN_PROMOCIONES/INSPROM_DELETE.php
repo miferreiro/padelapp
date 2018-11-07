@@ -58,10 +58,10 @@ class INSPROM_DELETE {
 				<input type="hidden" name="Promociones_Fecha" value="<?php echo $fila['Promociones_Fecha']; ?>">
 				<input type="hidden" name="Promociones_Hora" value="<?php echo $fila['Promociones_Hora']; ?>">
 
-				<button id ="buttonBien" type="submit" name="action" value="DELETE" ><img src="../Views/icon/confirmar.png" alt="<?php echo $strings['Confirmar'] ?>"/></button>
+				<button id ="buttonBien" type="submit" name="action" value="DELETE" ><img src="../Views/icon/check_big.png" alt="<?php echo $strings['Confirmar'] ?>"/></button>
 			</form>
 			<form action='../Controllers/INSPROM_CONTROLLER.php' method="post" style="display: inline">
-				<button id ="buttonBien" type="submit"><img src="../Views/icon/cancelar.png" alt="<?php echo $strings['Atras'] ?>"/></button>
+				<button id ="buttonBien" type="submit"><img src="../Views/icon/cancel_big.png" alt="<?php echo $strings['Atras'] ?>"/></button>
 			</form>
 			</div>
 		</div>

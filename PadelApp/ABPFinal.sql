@@ -352,7 +352,7 @@ INSERT INTO `pareja` (`idCampeonato`, `Tipo`, `Nivel`, `NumPareja`, `Capitan`) V
 (3, 'Masculino', 1, 38, 'usuario61'),
 (3, 'Masculino', 1, 39, 'usuario63'),
 (3, 'Masculino', 1, 40, 'usuario65'),
-(3, 'Masculino', 1, 41, 'usuario67',
+(3, 'Masculino', 1, 41, 'usuario67'),
 (3, 'Masculino', 1, 42, 'usuario70'),
 (3, 'Masculino', 1, 43, 'usuario72'),
 (3, 'Masculino', 1, 44, 'usuario74'),

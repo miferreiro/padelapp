@@ -61,7 +61,7 @@ class INSPROM_SHOWALL {
 							<input type="hidden" name="Promociones_Fecha" value="<?php echo $fila['Promociones_Fecha']; ?>">
 							<input type="hidden" name="Promociones_Hora" value="<?php echo $fila['Promociones_Hora']; ?>">
 				
-								<button id ="buttonBien" type="submit" name="action" value="DELETE" ><img src="../Views/icon/eliminar.png" alt="<?php echo $strings['Eliminar']?>" width="20" height="20" /></button>				
+								<button id ="buttonBien" type="submit" name="action" value="DELETE" ><img src="../Views/icon/delete_big.png" alt="<?php echo $strings['Eliminar']?>" width="20" height="20" /></button>				
 					<td>	
 						</form>
 				    <td>								
@@ -76,14 +76,14 @@ class INSPROM_SHOWALL {
 				<tr align="center">
 						<td colspan="2">
 					<form action='../Controllers/INSPROM_CONTROLLER.php'>
-						<button id ="buttonBien"  type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="AÑADIR" /></button>
+						<button id ="buttonBien"  type="submit" name="action" value="ADD"><img src="../Views/icon/add_big.png" alt="AÑADIR" /></button>
 					</form>
 					</td>
 				</tr>
 			
 			</div>
 			<form action='../Controllers/DEFAULT_CONTROLLER.php' method="post">
-				<button id ="buttonBien" type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
+				<button id ="buttonBien" type="submit"><img src="../Views/icon/back_big2.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>
 		</div>
 <?php

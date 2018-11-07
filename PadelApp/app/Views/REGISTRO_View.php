@@ -68,9 +68,9 @@ class Register {
 					
 					<tr align="center">
 						<td colspan="2">
-							<button id ="buttonBien" type="submit" name="action" value="REGISTER"><img src="../Views/icon/añadir.png" alt="<?php echo $strings['Confirmar formulario'] ?>" /></button>
+							<button id ="buttonBien" type="submit" name="action" value="REGISTER"><img src="../Views/icon/add_big.png" alt="<?php echo $strings['Confirmar formulario'] ?>" /></button>
 					</form>
-				<a href='../index.php'><img src="../Views/icon/atras.png" width="32" height="32" alt="<?php echo $strings['Atras'] ?>"></a>
+				<a href='../index.php'><img src="../Views/icon/back_big2.png" width="32" height="32" alt="<?php echo $strings['Atras'] ?>"></a>
 					</tr>
 					</thead>
 			</table>

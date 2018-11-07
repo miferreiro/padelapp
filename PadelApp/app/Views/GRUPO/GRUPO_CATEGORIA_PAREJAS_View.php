@@ -98,7 +98,7 @@ class GRUPO_CATEGORIA_PAREJAS {
 				<input type="hidden" name="Tipo" value="<?php echo $vuelta['Tipo']; ?>">		
 				<input type="hidden" name="Nivel" value="<?php echo $vuelta['Nivel']; ?>">					
 				<input type="hidden" name="Letra" value="<?php echo $vuelta['Letra']; ?>">	
-				<button id ="buttonBien" type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
+				<button id ="buttonBien" type="submit"><img src="../Views/icon/back_big2.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>
 		</div>
 <?php
