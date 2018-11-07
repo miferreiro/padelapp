@@ -137,15 +137,12 @@ class GRUPO_MODEL{
 	
 	function ListaParejasGrupoNum(){
 		
-		$sql = "SELECT  DISTINCT  P.NumPareja as NumPareja
-		FROM PAREJA P, USUARIOPAREJAS UP, USUARIO U,GRUPO G
+		$sql = "SELECT DISTINCT  E.NumPareja as NumPareja
+		FROM GRUPO G,Enfrentamiento E
 		WHERE  
-		(G.Letra = '$this->Letra') && (G.IdCampeonato = P.IdCampeonato) && (G.Tipo = P.Tipo) && (G.Nivel = P.Nivel) && 
-		(P.IdCampeonato = '$this->IdCampeonato') && (P.Tipo = '$this->Tipo') && (P.Nivel = '$this->Nivel')
-		&& (U.Dni = UP.Usuario_Dni) && (UP.Pareja_NumPareja = P.NumPareja)
-		&& (P.IdCampeonato = UP.Pareja_idCampeonato)  && (P.Tipo = UP.Pareja_Tipo) && (P.Nivel = UP.Pareja_Nivel) 
-		ORDER BY P.NumPareja	
-		";
+		 (G.IdCampeonato = E.IdCampeonato) && (G.Tipo = E.Tipo) && (G.Nivel = E.Nivel) && (G.Letra = E.Letra)
+         && (G.IdCampeonato = '$this->IdCampeonato') && (G.Tipo = '$this->Tipo') && (G.Nivel = '$this->Nivel') && (G.Letra = '$this->Letra')
+		ORDER BY E.NumPareja";
 		
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'No existe en la base de datos'; // 

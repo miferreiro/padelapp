@@ -44,7 +44,7 @@ class ENFRENTAMIENTO_MODEL{
 									NumEnfrentamiento,
 									NumPareja,
 									Resultado,
-									EstadoPropuesta;
+									EstadoPropuesta
 					             	) 
 								VALUES(
 								'$this->IdCampeonato',							

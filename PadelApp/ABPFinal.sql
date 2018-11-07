@@ -303,10 +303,10 @@ INSERT INTO `categoria` (`IdCampeonato`, `Tipo`, `Nivel`) VALUES
 --
 -- Volcado de datos para la tabla `grupo`
 --
-
+/*
 INSERT INTO `grupo` (`IdCampeonato`, `Tipo`, `Nivel`, `Letra`) VALUES
 (3, 'Masculino', 1, 'A');
-
+*/
 --
 -- Volcado de datos para la tabla `pareja`
 --
@@ -407,7 +407,8 @@ INSERT INTO `pareja` (`idCampeonato`, `Tipo`, `Nivel`, `NumPareja`, `Capitan`) V
 (3, 'Masculino', 1, 93, 'usuario173'),
 (3, 'Masculino', 1, 94, 'usuario175'),
 (3, 'Masculino', 1, 95, 'usuario177'),
-(3, 'Masculino', 1, 96, 'usuario179'),
+(3, 'Masculino', 1, 96, 'usuario179');
+/*,
 (3, 'Masculino', 1, 97, 'usuario181'),
 (3, 'Masculino', 1, 98, 'usuario183'),
 (3, 'Masculino', 1, 99, 'usuario185'),
@@ -424,42 +425,15 @@ INSERT INTO `pareja` (`idCampeonato`, `Tipo`, `Nivel`, `NumPareja`, `Capitan`) V
 (3, 'Masculino', 1, 110, 'usuario207'),
 (3, 'Masculino', 1, 111, 'usuario209'),
 (3, 'Masculino', 1, 112, 'usuario211');
-
+*/
 
 
 --
 -- Volcado de datos para la tabla `partido`
 --
-
+/*
 INSERT INTO `partido` (`IdCampeonato`, `Tipo`, `Nivel`, `Grupo_Letra`, `NumEnfrentamiento`, `Fecha`, `Hora`) VALUES
-(3, 'Masculino', 1, 'A', 1, NULL, NULL),
-(3, 'Masculino', 1, 'A', 2, NULL, NULL),
-(3, 'Masculino', 1, 'A', 3, NULL, NULL),
-(3, 'Masculino', 1, 'A', 4, NULL, NULL),
-(3, 'Masculino', 1, 'A', 5, NULL, NULL),
-(3, 'Masculino', 1, 'A', 6, NULL, NULL),
-(3, 'Masculino', 1, 'A', 7, NULL, NULL),
-(3, 'Masculino', 1, 'A', 8, NULL, NULL),
-(3, 'Masculino', 1, 'A', 9, NULL, NULL),
-(3, 'Masculino', 1, 'A', 10, NULL, NULL),
-(3, 'Masculino', 1, 'A', 11, NULL, NULL),
-(3, 'Masculino', 1, 'A', 12, NULL, NULL),
-(3, 'Masculino', 1, 'A', 13, NULL, NULL),
-(3, 'Masculino', 1, 'A', 14, NULL, NULL),
-(3, 'Masculino', 1, 'A', 15, NULL, NULL),
-(3, 'Masculino', 1, 'A', 16, NULL, NULL),
-(3, 'Masculino', 1, 'A', 17, NULL, NULL),
-(3, 'Masculino', 1, 'A', 18, NULL, NULL),
-(3, 'Masculino', 1, 'A', 19, NULL, NULL),
-(3, 'Masculino', 1, 'A', 20, NULL, NULL),
-(3, 'Masculino', 1, 'A', 21, NULL, NULL),
-(3, 'Masculino', 1, 'A', 22, NULL, NULL),
-(3, 'Masculino', 1, 'A', 23, NULL, NULL),
-(3, 'Masculino', 1, 'A', 24, NULL, NULL),
-(3, 'Masculino', 1, 'A', 25, NULL, NULL),
-(3, 'Masculino', 1, 'A', 26, NULL, NULL),
-(3, 'Masculino', 1, 'A', 27, NULL, NULL),
-(3, 'Masculino', 1, 'A', 28, NULL, NULL);
+;*/
 --
 -- Volcado de datos para la tabla `usuario`
 --
@@ -901,7 +875,7 @@ INSERT INTO `usuarioparejas` (`Usuario_Dni`, `Pareja_idCampeonato`, `Pareja_Tipo
 ('77777777J', 3, 'Masculino', 1, 91),
 ('77777777K', 3, 'Masculino', 1, 92),
 ('77777777L', 3, 'Masculino', 1, 92),
-('77777777M', 3, 'Masculino', 1, 93),
+('77777777M', 3, 'Masculino', 1, 93);/*,
 ('77777777N', 3, 'Masculino', 1, 93),
 ('77777777O', 3, 'Masculino', 1, 94),
 ('77777777P', 3, 'Masculino', 1, 94),
@@ -941,7 +915,7 @@ INSERT INTO `usuarioparejas` (`Usuario_Dni`, `Pareja_idCampeonato`, `Pareja_Tipo
 ('88888888W', 3, 'Masculino', 1, 111),
 ('88888888X', 3, 'Masculino', 1, 111),
 ('88888888Y', 3, 'Masculino', 1, 112),
-('88888888Z', 3, 'Masculino', 1, 112);
+('88888888Z', 3, 'Masculino', 1, 112);*/
 
 
 --
@@ -1178,65 +1152,10 @@ INSERT INTO `promociones` (`Fecha`, `Hora`) VALUES
 INSERT INTO `reserva` (`Usuario_Dni`, `Pista_idPista`, `Pista_Fecha`, `Pista_Hora`) VALUES
 ('52349896X', 1, '2018-10-23', '11:00'),
 ('50890587M', 1, '2018-10-23', '17:30');
-
+/*
 INSERT INTO `enfrentamiento` (`IdCampeonato`, `Tipo`, `Nivel`, `Letra`, `NumEnfrentamiento`, `NumPareja`, `Resultado`,`EstadoPropuesta`) VALUES
-(3, 'Masculino', 1, 'A', 1, 1, NULL,0),
-(3, 'Masculino', 1, 'A', 1, 2, NULL,0),
-(3, 'Masculino', 1, 'A', 2, 1, NULL,0),
-(3, 'Masculino', 1, 'A', 2, 3, NULL,0),
-(3, 'Masculino', 1, 'A', 3, 1, NULL,0),
-(3, 'Masculino', 1, 'A', 3, 4, NULL,0),
-(3, 'Masculino', 1, 'A', 4, 1, NULL,0),
-(3, 'Masculino', 1, 'A', 4, 5, NULL,0),
-(3, 'Masculino', 1, 'A', 5, 1, NULL,0),
-(3, 'Masculino', 1, 'A', 5, 6, NULL,0),
-(3, 'Masculino', 1, 'A', 6, 1, NULL,0),
-(3, 'Masculino', 1, 'A', 6, 7, NULL,0),
-(3, 'Masculino', 1, 'A', 7, 1, NULL,0),
-(3, 'Masculino', 1, 'A', 7, 8, NULL,0),
-(3, 'Masculino', 1, 'A', 8, 2, NULL,0),
-(3, 'Masculino', 1, 'A', 8, 3, NULL,0),
-(3, 'Masculino', 1, 'A', 9, 2, NULL,0),
-(3, 'Masculino', 1, 'A', 9, 4, NULL,0),
-(3, 'Masculino', 1, 'A', 10, 2, NULL,0),
-(3, 'Masculino', 1, 'A', 10, 5, NULL,0),
-(3, 'Masculino', 1, 'A', 11, 2, NULL,0),
-(3, 'Masculino', 1, 'A', 11, 6, NULL,0),
-(3, 'Masculino', 1, 'A', 12, 2, '12-33',0),
-(3, 'Masculino', 1, 'A', 12, 7, '12-33',0),
-(3, 'Masculino', 1, 'A', 13, 2, NULL,0),
-(3, 'Masculino', 1, 'A', 13, 8, NULL,0),
-(3, 'Masculino', 1, 'A', 14, 3, NULL,0),
-(3, 'Masculino', 1, 'A', 14, 4, NULL,0),
-(3, 'Masculino', 1, 'A', 15, 3, NULL,0),
-(3, 'Masculino', 1, 'A', 15, 5, NULL,0),
-(3, 'Masculino', 1, 'A', 16, 3, '23',0),
-(3, 'Masculino', 1, 'A', 16, 6, '23',0),
-(3, 'Masculino', 1, 'A', 17, 3, NULL,0),
-(3, 'Masculino', 1, 'A', 17, 7, NULL,0),
-(3, 'Masculino', 1, 'A', 18, 3, NULL,0),
-(3, 'Masculino', 1, 'A', 18, 8, NULL,0),
-(3, 'Masculino', 1, 'A', 19, 4, NULL,0),
-(3, 'Masculino', 1, 'A', 19, 5, NULL,0),
-(3, 'Masculino', 1, 'A', 20, 4, NULL,0),
-(3, 'Masculino', 1, 'A', 20, 6, NULL,0),
-(3, 'Masculino', 1, 'A', 21, 4, NULL,0),
-(3, 'Masculino', 1, 'A', 21, 7, NULL,0),
-(3, 'Masculino', 1, 'A', 22, 4, NULL,0),
-(3, 'Masculino', 1, 'A', 22, 8, NULL,0),
-(3, 'Masculino', 1, 'A', 23, 5, NULL,0),
-(3, 'Masculino', 1, 'A', 23, 6, NULL,0),
-(3, 'Masculino', 1, 'A', 24, 5, NULL,0),
-(3, 'Masculino', 1, 'A', 24, 7, NULL,0),
-(3, 'Masculino', 1, 'A', 25, 5, NULL,0),
-(3, 'Masculino', 1, 'A', 25, 8, NULL,0),
-(3, 'Masculino', 1, 'A', 26, 6, NULL,0),
-(3, 'Masculino', 1, 'A', 26, 7, NULL,0),
-(3, 'Masculino', 1, 'A', 27, 6, NULL,0),
-(3, 'Masculino', 1, 'A', 27, 8, NULL,0),
-(3, 'Masculino', 1, 'A', 28, 7, NULL,0),
-(3, 'Masculino', 1, 'A', 28, 8, NULL,0);
- 
+;
+ */
  
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;

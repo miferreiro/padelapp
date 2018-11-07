@@ -19,11 +19,14 @@ class GRUPO_CATEGORIA_TABLA{
 		while ( $fila = mysqli_fetch_array( $listaParejas ) ) {
 			
 				$arrayListadoParejas[$q] = $fila['NumPareja'];
+				echo $fila['NumPareja'];
+			?><br><?php
 				$q++;
 
 		}
 		$numParejas = sizeof($arrayListadoParejas);
-		
+		//echo 'numParejas:' . $numParejas;
+		?><br><?php
 		$arrayEnfrentamientos= array();
 
 		while($row = mysqli_fetch_array($this->listaEnfrentamientos)) { 
@@ -32,7 +35,9 @@ class GRUPO_CATEGORIA_TABLA{
 		$pareja2=$row['pareja2'];
 		$numEnfrentamiento=$row['numEnfrentamiento'];
 		$resultado=$row['resultado'];
-
+			
+			//?echo $row['pareja1'];
+			
 		$arrayEnfrentamientos[] = array('pareja1'=> $pareja1, 'pareja2'=> $pareja2, 'numEnfrentamiento'=> $numEnfrentamiento, 'resultado'=> $resultado); 
 		}
 		
@@ -76,14 +81,17 @@ class GRUPO_CATEGORIA_TABLA{
 				<th><?php echo $arrayListadoParejas[$i-1] ;?></th>
 			<?php
 			for($j = 1;$j <= $numParejas;$j++){ //echo $j;?><?php
-				
-				if($i == $j){
+				//echo '...' . $arrayListadoParejas[$i-1];
+				//echo '---' . $arrayListadoParejas[$j-1];
+				if($arrayListadoParejas[$i-1] == $arrayListadoParejas[$j-1]){
 					?><td style="background-color: #ccc;"></td> <?php
 				}else{
 						$NoEncontrado = True;
 						foreach($arrayEnfrentamientos as $fila){
+						//	echo  $fila['pareja1'] . '-' . $fila['pareja2'] . ' ';
 							
-							if($j == $fila['pareja1'] && $i == $fila['pareja2']){
+							
+							if($arrayListadoParejas[$j-1] == $fila['pareja1'] && $arrayListadoParejas[$i-1] == $fila['pareja2']){
 								?><td>
 									<form action="../Controllers/GRUPO_CONTROLLER.php" method="get" style="display:inline" >
 									<input type="hidden" name="IdCampeonato" value="<?php echo $vuelta['IdCampeonato']; ?>">		
