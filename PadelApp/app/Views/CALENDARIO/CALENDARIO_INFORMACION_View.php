@@ -79,7 +79,7 @@ class CALENDARIO_INFORMACION{
 			</tr>
 			<tr>
 				<th>
-					<?php echo 'propuestaPareja' . "1";?>
+					<?php echo $strings['propuestaPareja'] . "1";?>
 				</th>
 				<td>
 					<?php echo $this->valores['propuestaPareja1']?>
@@ -87,7 +87,7 @@ class CALENDARIO_INFORMACION{
 			</tr>
 			<tr>
 				<th>
-					<?php echo 'propuestaPareja' . "2";?>
+					<?php echo $strings['propuestaPareja'] . "2";?>
 				</th>
 				<td>
 					<?php echo $this->valores['propuestaPareja2']?>

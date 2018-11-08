@@ -306,7 +306,12 @@ array(
 	'Gestión de reservas'=>'Reservs management',
 	'Gestión de campeonatos'=>'Management of championships',
 	'Gestión de calendario'=>'Calendar management',
-	'Inscribirse en campeonato'=>'Register in championship'
+	'Inscribirse en campeonato'=>'Register in championship',
+	'Pareja'=>'Couple',
+	'propuestaPareja'=>'Proposed date',
+	'Ya existen grupos generados'=>'Generated groups already exist',
+	'Error en la busqueda'=>'Search error',
+	'Ya existe una promocion con la fecha y horas introducidas en la base de datos'=>'There is already a promotion with the date and hours entered in the database'
 	)
 ;
 

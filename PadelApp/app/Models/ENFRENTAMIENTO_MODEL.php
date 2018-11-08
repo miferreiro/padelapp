@@ -33,7 +33,7 @@ class ENFRENTAMIENTO_MODEL{
 			$sql = "SELECT * FROM ENFRENTAMIENTO WHERE (IdCampeonato = '$this->IdCampeonato') && (Tipo = '$this->Tipo') && (Nivel = '$this->Nivel') && (Letra ='$this->Letra') && (NumEnfrentamiento = '$this->NumEnfrentamiento') && (NumPareja = '$this->NumPareja')";
 
 			if ( !$result = $this->mysqli->query( $sql ) ) { 
-				return 'Error en la inserción11'; 
+				return 'Error en la inserción'; 
 			} else { 
 				if ( $result->num_rows == 0 ) { 
 							$sql = "INSERT INTO ENFRENTAMIENTO (
@@ -58,16 +58,16 @@ class ENFRENTAMIENTO_MODEL{
 								)";					
 					
 					if ( !$this->mysqli->query( $sql )) { 
-						return 'Error en la inserción22';
+						return 'Error en la inserción';
 					} else {					
 						return 'Inserción realizada con éxito'; 				
 					}	
 				}else{
-						return 'Error en la insercion 44';
+						return 'Error en la insercion';
 				}
 			}
 		} else { 
-			return 'Error en la inserción33';
+			return 'Error en la inserción';
 		}
 	} 
     

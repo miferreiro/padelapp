@@ -33,7 +33,7 @@ class PARTIDO_MODEL{
 			$sql = "SELECT * FROM PARTIDO WHERE (IdCampeonato = '$this->IdCampeonato') && (Tipo = '$this->Tipo') && (Nivel = '$this->Nivel') && (Grupo_Letra ='$this->Letra') && (NumEnfrentamiento = '$this->NumEnfrentamiento')";
 
 			if ( !$result = $this->mysqli->query( $sql ) ) { 
-				return 'Error en la inserción1'; 
+				return 'Error en la inserción'; 
 			} else { 
 				if ( $result->num_rows == 0 ) { 
 				
@@ -62,11 +62,11 @@ class PARTIDO_MODEL{
 						return 'Inserción realizada con éxito'; 				
 					}	
 				}else{
-					return 'Error en la inserción3';
+					return 'Error en la inserción';
 				}
 			}
 		} else { 
-			return 'Error en la inserción4';
+			return 'Error en la inserción';
 		}
 	} 
     

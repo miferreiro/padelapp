@@ -293,8 +293,12 @@ array(
 	'Gestión de reservas'=>'Gestión de reservas',
 	'Gestión de campeonatos'=>'Gestión de campeonatos',
 	'Gestión de calendario'=>'Gestión de calendario',
-	'Inscribirse en campeonato'=>'Inscribirse en campeonato'
-	
+	'Inscribirse en campeonato'=>'Inscribirse en campeonato',
+	'Pareja'=>'Pareja',
+	'propuestaPareja'=>'Fecha propuesta',
+	'Ya existen grupos generados'=>'Ya existen grupos generados',
+	'Error en la busqueda'=>'Error en la busqueda',
+	'Ya existe una promocion con la fecha y horas introducidas en la base de datos'=>'Ya existe una promoción con la fecha y horas introducidas en la base de datos'
 	)
 ;
 
