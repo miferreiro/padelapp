@@ -117,15 +117,17 @@ class GRUPO_MODEL{
 	
 	function ListaParejasGrupo(){
 		
-		$sql = "SELECT P.NumPareja as NumPareja,U.Login as Login,P.IdCampeonato as IdCampeonato,P.Tipo as Tipo, P.Nivel as Nivel, G.Letra as Letra
-		FROM PAREJA P, USUARIOPAREJAS UP, USUARIO U,GRUPO G
-		WHERE  
-		(G.Letra = '$this->Letra') && (G.IdCampeonato = P.IdCampeonato) && (G.Tipo = P.Tipo) && (G.Nivel = P.Nivel) && 
-		(P.IdCampeonato = '$this->IdCampeonato') && (P.Tipo = '$this->Tipo') && (P.Nivel = '$this->Nivel')
-		&& (U.Dni = UP.Usuario_Dni) && (UP.Pareja_NumPareja = P.NumPareja)
-		&& (P.IdCampeonato = UP.Pareja_idCampeonato)  && (P.Tipo = UP.Pareja_Tipo) && (P.Nivel = UP.Pareja_Nivel) 
-		ORDER BY P.NumPareja	
+
+	
+		$sql = "SELECT DISTINCT P.NumPareja as NumPareja,U.Login as Login,P.IdCampeonato as IdCampeonato,P.Tipo as Tipo, P.Nivel as Nivel, G.Letra as Letra
+		from USUARIOPAREJAS UP, USUARIO U,PAREJA P,GRUPO G,ENFRENTAMIENTO E
+		where 
+		(U.Dni = UP.Usuario_Dni) && (UP.Pareja_NumPareja = P.NumPareja) && (P.IdCampeonato = UP.Pareja_idCampeonato)  && (P.Tipo = UP.Pareja_Tipo) && (P.Nivel = UP.Pareja_Nivel) 
+		&&(P.IdCampeonato = '$this->IdCampeonato') && (P.Tipo = '$this->Tipo') && (P.Nivel = '$this->Nivel') &&
+		(G.IdCampeonato = '$this->IdCampeonato') && (G.Tipo = '$this->Tipo') && (G.Nivel = '$this->Nivel') && (G.Letra = '$this->Letra') &&
+		(E.IdCampeonato = '$this->IdCampeonato') && (E.Tipo = '$this->Tipo') && (E.Nivel = '$this->Nivel') && (E.Letra = '$this->Letra') && (E.NumPareja = P.NumPareja)
 		";
+
 		
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'No existe en la base de datos'; // 

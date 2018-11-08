@@ -91,6 +91,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		
 		if($_SESSION['tipo'] == 'Admin'){
 
+				
 				$GRUPO =  get_data_form();
 
 				$valores = $GRUPO ->ListaParejasGrupo();
@@ -100,6 +101,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 				$vuelta['Tipo'] = $_REQUEST['Tipo'];
 				$vuelta['Nivel'] = $_REQUEST['Nivel'];
 				$vuelta['Letra'] = $_REQUEST['Letra'];
+				
 			   new GRUPO_CATEGORIA_PAREJAS($lista , $valores ,$vuelta);
 		}else{
 			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/USUARIO_CONTROLLER.php' );
