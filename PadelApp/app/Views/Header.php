@@ -34,13 +34,12 @@
 		'lengthMenu': [ 7, 14, 21, 28, 35, 42, 49, 56, 63, 70, "All" ],
 	} );
 	$('#mydatatableUsuarios').DataTable( {
-		
+		 "searching": false
 	} );
 		} );
 	  </script>
 	<?php include '../Views/js/validaciones.js' ?>
 	  
-	 
   </head>
   <body>
 	  <header>
