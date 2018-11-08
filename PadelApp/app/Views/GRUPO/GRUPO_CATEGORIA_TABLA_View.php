@@ -17,10 +17,10 @@ class GRUPO_CATEGORIA_TABLA{
 		$arrayListadoParejas = array();
 		$q = 0;
 		while ( $fila = mysqli_fetch_array( $listaParejas ) ) {
-			
+				
 				$arrayListadoParejas[$q] = $fila['NumPareja'];
-				echo $fila['NumPareja'];
-			?><br><?php
+			//	echo $fila['NumPareja'];
+			//<br><?php
 				$q++;
 
 		}

@@ -39,8 +39,7 @@ class PISTA_EDIT {
 						<th class="formThTd">
 							<?php echo $strings['Fecha'];?>
 						</th>
-						<td class="formThTd"><input type="text" value="<?php echo date( "d/m/Y", strtotime( $this->valores['Fecha'] ) ) ?>" readonly required />
-				
+						<td class="formThTd"><input type="text" id="Fecha" name="Fecha" value="<?php echo $this->valores['Fecha']?>" readonly required />
 					</tr>
 			<tr>
 						<th class="formThTd">
@@ -68,7 +67,6 @@ class PISTA_EDIT {
 
 							<tr align="center">
 						<td colspan="2">
-							<input type="hidden" name="Fecha" value="<?php echo $this->valores['Fecha'] ?>">
 							<button id ="buttonBien" type="submit" name="action" value="EDIT"><img src="../Views/icon/edit_big.png" alt="<?php echo $strings['Confirmar formulario']?>" /></button>
 					    </form>
 						<form action='../Controllers/PISTA_CONTROLLER.php' method="post" style="display: inline">

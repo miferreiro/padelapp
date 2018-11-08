@@ -225,15 +225,13 @@ class ENFRENTAMIENTO_MODEL{
 	} 
 	function listaEnfrentamiento(){
 				
-		$sql = "SELECT DISTINCT E2.NumPareja as pareja1, E1.NumPareja as pareja2,  E1.NumEnfrentamiento as numEnfrentamiento, E1.Resultado as resultado
-				FROM ENFRENTAMIENTO E1,ENFRENTAMIENTO E2
-				WHERE 
-				(E1.NumEnfrentamiento = E2.NumEnfrentamiento) && (E1.NumPareja != E2.NumPareja)
-				&&(E1.IdCampeonato = '$this->IdCampeonato') && (E1.Tipo = '$this->Tipo') && (E1.Nivel = '$this->Nivel') && (E1.Letra = '$this->Letra')
-				GROUP BY E1.NumEnfrentamiento  
-				ORDER BY E1.NumEnfrentamiento ASC, E1.NumPareja ASC
-		
-		";
+		$sql = "SELECT DISTINCT E1.NumPareja as pareja1,  E2.NumPareja as pareja2,E1.NumEnfrentamiento as numEnfrentamiento, E1.Resultado as resultado,E1.Letra FROM ENFRENTAMIENTO E1,ENFRENTAMIENTO E2 
+					WHERE (E1.NumEnfrentamiento = E2.NumEnfrentamiento) &&(E1.IdCampeonato = '$this->IdCampeonato') && (E1.Tipo = '$this->Tipo') && (E1.Nivel = '$this->Nivel') && (E1.Letra = '$this->Letra') &&
+					(E1.IdCampeonato = E2.IdCampeonato) && (E1.Tipo = E2.Tipo) && (E1.Nivel = E2.Nivel) && (E1.Letra = E2.Letra)
+					&&(E1.NumPareja != E2.NumPareja)
+					group by E1.NumEnfrentamiento
+					ORDER BY E1.NumEnfrentamiento ASC, E1.NumPareja ASC";
+
 		
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'No existe en la base de datos'; // 
