@@ -35,6 +35,8 @@ class CALENDARIO_TABLA{
 
 			$pareja1=$row['pareja1'];
 			$pareja2=$row['pareja2'];
+
+			
 			$numEnfrentamiento=$row['numEnfrentamiento'];
 			$resultado=$row['resultado'];
 
@@ -47,6 +49,7 @@ class CALENDARIO_TABLA{
 
 			$pareja1=$row['pareja1'];
 			$pareja2=$row['pareja2'];
+			
 			$numEnfrentamiento=$row['numEnfrentamiento'];
 			$resultado=$row['resultado'];
 			$propuestaPareja1=$row['propuestaPareja1'];
@@ -107,9 +110,9 @@ $cont = 0;
 						$NoEncontrado = True;
 						$aux = True;						
 						foreach($arrayEnfrentamientos as $fila){							
-							if($j == $fila['pareja1'] && $i == $fila['pareja2'] ){			
+							if($arrayListadoParejas[$j-1] == $fila['pareja1'] && $arrayListadoParejas[$i-1] == $fila['pareja2'] ){			
 								foreach($arrayEnfrentamientos2 as $fila2){		
-									if( $j == $fila2['pareja1'] && $i == $fila2['pareja2'] ){										
+									if( $arrayListadoParejas[$j-1]== $fila2['pareja1'] && $arrayListadoParejas[$i-1] == $fila2['pareja2'] ){										
 										if($fila2['propuestaPareja1'] == 3){?> 
 											<td style ="background-color: #7BB661;">
 										<form action="../Controllers/CALENDARIO_CONTROLLER.php" method="get" style="display:inline" >
