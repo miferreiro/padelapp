@@ -137,6 +137,31 @@ class PAREJA_MODEL{
 		}			
 		
 	}
+	
+	function estaInscito($login1,$login2){
+	
+		if ( ( $this->IdCampeonato <> '' ) && ( $this->Tipo <> '' ) && ( $this->Nivel <> '' )){
+			
+			$sql = "SELECT * FROM USUARIOPAREJAS UP, USUARIO U 
+			WHERE (IdCampeonato = '$this->IdCampeonato') && (Tipo = '$this->Tipo') && (Nivel = '$this->Nivel') && (UP.Usuario_Dni = U.Login)
+			&& ((U.login = '$login1' ) || (U.login = '$login2'))";
+			
+			echo $sql;
+			if(!$result =$this->mysqli->query( $sql )){
+				return 'Error en la busqueda';
+			}else{
+				
+				if ( $result->num_rows == 0 ) { 
+					return false;
+				}else{
+					return true;
+				}
+			}
+		}else { 
+			return 'Error en la busqueda';
+		}
+	
+	}
 
  	}//fin de clase
 
