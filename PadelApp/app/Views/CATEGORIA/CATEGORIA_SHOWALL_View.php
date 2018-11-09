@@ -24,7 +24,7 @@ class CATEGORIA_SHOWALL {
 			<h2>
 				<?php echo $strings['Tabla de datos'];?>
 			</h2>
-			<div class="col-md-3">
+			<div class="col-md-4">
 			<table class="table">
 				<thead class="thead-light">
 				<tr>
@@ -100,10 +100,11 @@ class CATEGORIA_SHOWALL {
 ?>
 			</thead>
 			</table>
+			</div>
 			<form action='../Controllers/USUARIO_CONTROLLER.php' method="post">
 				<button id ="buttonBien" type="submit"><img src="../Views/icon/back_big2.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>
-			</div>
+			
 		</div>
 <?php
 		include '../Views/Footer.php';//incluimos el pie de la página
