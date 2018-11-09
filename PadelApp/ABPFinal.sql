@@ -489,7 +489,7 @@ INSERT INTO `usuario` (`Dni`, `Login`, `Password`, `Nombre`, `Apellidos`, `Sexo`
 ('37932435F', 'usuario24', 'f8032d5cae3de20fcec887f395ec9a6a', 'usuario24', 'usu24 usu1', 'Hombre', 'Deportista', '654654654'),
 ('35548048F', 'usuario25', 'f8032d5cae3de20fcec887f395ec9a6a', 'usuario25', 'usu25 usu1', 'Hombre', 'Deportista', '654654654'),
 ('89777657D', 'usuario26', 'f8032d5cae3de20fcec887f395ec9a6a', 'usuario26', 'usu26 usu1', 'Hombre', 'Deportista', '654654654'),
-('61233894M', 'usuario27', 'f8032d5cae3de20fcec887f395ec9a6a', 'usuario27', 'usu27 usu1', 'Hombre', 'Deportista', '654654654'),
+('57191504A', 'usuario27', 'f8032d5cae3de20fcec887f395ec9a6a', 'usuario27', 'usu27 usu1', 'Hombre', 'Deportista', '654654654'),
 
 ('61233894M', 'usuario28', 'f8032d5cae3de20fcec887f395ec9a6a', 'usuario28', 'usu28 usu1', 'Hombre', 'Deportista', '654654654'),
 ('91971188F', 'usuario29', 'f8032d5cae3de20fcec887f395ec9a6a', 'usuario29', 'usu28 usu1', 'Hombre', 'Deportista', '654654654'),
@@ -516,7 +516,7 @@ INSERT INTO `usuario` (`Dni`, `Login`, `Password`, `Nombre`, `Apellidos`, `Sexo`
 ('80829720S', 'usuario51', 'f8032d5cae3de20fcec887f395ec9a6a', 'usuario51', 'usu28 usu1', 'Hombre', 'Deportista', '654654654'),
 ('92393863B', 'usuario52', 'f8032d5cae3de20fcec887f395ec9a6a', 'usuario52', 'usu28 usu1', 'Hombre', 'Deportista', '654654654'),
 ('23153718D', 'usuario53', 'f8032d5cae3de20fcec887f395ec9a6a', 'usuario53', 'usu28 usu1', 'Hombre', 'Deportista', '654654654'),
-('66608158C', 'usuario54', 'f8032d5cae3de20fcec887f395ec9a6a', 'usuario54', 'usu28 usu1', 'Hombre', 'Deportista', '654654654'),
+('08169083N', 'usuario54', 'f8032d5cae3de20fcec887f395ec9a6a', 'usuario54', 'usu28 usu1', 'Hombre', 'Deportista', '654654654'),
 
 ('66608158C', 'usuario55', 'f8032d5cae3de20fcec887f395ec9a6a', 'usuario55', 'usu28 usu1', 'Hombre', 'Deportista', '654654654'),
 ('53644402F', 'usuario56', 'f8032d5cae3de20fcec887f395ec9a6a', 'usuario56', 'usu28 usu1', 'Hombre', 'Deportista', '654654654'),
