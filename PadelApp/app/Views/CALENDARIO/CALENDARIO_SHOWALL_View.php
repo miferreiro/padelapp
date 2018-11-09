@@ -24,7 +24,7 @@ class CALENDARIO_SHOWALL {
 			<h2>
 				<?php echo $strings['Tabla de datos'] . ' 1 ' ;?>
 			</h2>
-			<div class="col-md-2">
+			<div class="col-md-5">
 			<table class="table">
 				<thead class="thead-light">
 				<tr>
@@ -72,6 +72,7 @@ class CALENDARIO_SHOWALL {
 ?>
 			</thead>
 			</table>
+			</div>
 			<form action='../Controllers/USUARIO_CONTROLLER.php' method="post">
 				<button id ="buttonBien" type="submit"><img src="../Views/icon/back_big2.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>
