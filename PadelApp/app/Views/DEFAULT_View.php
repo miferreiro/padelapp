@@ -1,27 +1,20 @@
 <?php
-/*  Archivo php
-	Nombre: USUARIOS_SHOWALL_View.php
-	Autor: 	Alejandro Vila
-	Fecha de creación: 29/11/2017 
-	Función:se muestra una vista por defecto que no tiene nada
-*/
 
-//es la clase donde se muestra una vista por defecto
 class USUARIO_DEFAULT {
-//es el constructor de la clase
+
 	function __construct( ) { 
 
-		$this->render();//llamamos a esta función para mostrar la vista
+		$this->render();
 	}
-	//función para mostrar la vista
+	
 	function render(){
-	if (!isset($_SESSION['idioma'])) { //miramos si existe algún idioma
-		$_SESSION['idioma'] = 'SPANISH';//si no existe ponemos por defecto el español
+	if (!isset($_SESSION['idioma'])) { 
+		$_SESSION['idioma'] = 'SPANISH';
 
 	}
 		
-		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
-		include '../Views/Header.php';//incluimos la cabecera
+		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
+		include '../Views/Header.php';
 ?>
 		<style>
 	  
@@ -176,7 +169,7 @@ class USUARIO_DEFAULT {
       </div>
 </div>
 <?php
-		include 'Footer.php';//incluimos el pie de la página
+		include 'Footer.php';
 		}
 		}
 ?>
