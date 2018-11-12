@@ -27,7 +27,9 @@ class PISTA_SHOWCURRENT{
 				<?php echo $strings['Vista detallada'];?>
 			</h2>
 			<div class="col-md-4">
-			<table id="mydatatablePistas" class="table table-sm table-striped" align="center" style="width:100%">
+			<div class="datepicker"></div>
+				<br>
+			<table id="mydatatablePistas" name="mydatatablePistas" class="table table-sm table-striped" align="center" style="width:100%">
 			<thead>
 			  <tr style="text-align: center">
 <?php

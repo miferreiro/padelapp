@@ -24,6 +24,8 @@ class Pista_Showall{
 			<h2>
 				<?php echo $strings['Tabla de datos'];?>
 			</h2>
+			<div class="datepicker"></div>
+			<br>
 			<div class="col-md-4">
 			<table class="table table-sm" align="center">
 			<thead class="thead-light">
@@ -118,7 +120,7 @@ class Pista_Showall{
 				</thead>
 			</table>
 					<form action='../Controllers/PISTA_CONTROLLER.php' method="get" style="display:inline">
-						<button id ="buttonBien" type="submit" name="action" value="ADD"><img src="../Views/icon/add_big.png" alt="AÑADIR" /></button>
+						<button id="buttonBien" type="submit" name="action" value="ADD"><img src="../Views/icon/add_big.png" alt="AÑADIR" /></button>
 					</form>
 		</div>
 			<form action='../Controllers/DEFAULT_CONTROLLER.php' method="post">

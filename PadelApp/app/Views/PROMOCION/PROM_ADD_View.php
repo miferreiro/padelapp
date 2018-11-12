@@ -19,8 +19,9 @@ class PROM_ADD {
 				<?php echo $strings['Formulario de inserción'];?>
 			</h2>
 			<form name="ADD" action="../Controllers/PROM_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="">
+			<div class="datepicker"></div>
 			<div class="col-sm-4">
-			<table class="table table-sm">
+			<table id="mydatatableAddPromo" class="table table-sm" id="mydatatablePromociones">
 				<thead class="thead-light">
 					<tr>
 						<th class="formThTd">

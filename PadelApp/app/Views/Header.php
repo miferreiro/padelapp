@@ -27,17 +27,73 @@
 	  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
 	  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
 	  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
-	  <script type="text/javascript">
+	<!-- datepicker -->
+		
+		<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+		 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	
+	 <script type="text/javascript">	  
 	$(document).ready( function () {
-    $('#mydatatablePistas').DataTable( {
+   	$('#mydatatablePistas').DataTable( {
 		'pageLength': 7,
 		'lengthMenu': [ 7, 14, 21, 28, 35, 42, 49, 56, 63, 70, "All" ],
-	} );
+			} );
+		});
+		</script>
+	  
+	  <script type="text/javascript">
+	  $(document).ready( function () {
 	$('#mydatatableUsuarios').DataTable( {
 		'searching':false
-	} );
+				} );
 		} );
 	  </script>
+	  <script>
+	  $(document).ready(function(){
+		  $('#mydatatableAddPromo').DataTable(
+		  )
+	  })
+	  </script>
+		<script>
+	  $(document).ready(function (){
+		  $('#mydatatableUsuAll').DataTable({
+			  
+		  })
+	  });
+	  
+	  </script>
+	  
+	  <script>
+	  $(document).ready(function() {		  
+     $( ".datepicker" ).datepicker({
+        dateFormat: "dd/mm/yy",
+        showOn: "button",
+        showAnim: 'slideDown',
+        showButtonPanel: true ,
+        autoSize: true,
+        buttonImage: "//jqueryui.com/resources/demos/datepicker/images/calendar.gif",
+        buttonImageOnly: true,
+        buttonText: "Select date",
+        closeText: "Clear",
+		onSelect: function() {
+			if ($('#mydatatablePistas') != null) {
+				$('#mydatatablePistas').DataTable().search( $(this).val() ).draw();
+			}
+			if ($('#mydatatableAddPromo') != null) {
+				$('#mydatatableAddPromo').DataTable().search( $(this).val() ).draw();
+			}
+		}
+    });
+    $(document).on("click", ".ui-datepicker-close", function(){
+        $('.datepicker').val("");
+        dataTable.columns(0).search("").draw();
+    });
+} );
+	  
+	  
+	  </script>
+	  
+	  
 	<?php include '../Views/js/validaciones.js' ?>
 	  
 	 

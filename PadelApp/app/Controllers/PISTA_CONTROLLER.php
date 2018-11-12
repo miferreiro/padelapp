@@ -1,4 +1,4 @@
-<?php
+  <?php
 
 session_start(); //solicito trabajar con la session
 include '../Functions/Authentication.php'; //incluye el contenido de la función de autentificación
@@ -124,7 +124,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	default: //Caso que se ejecuta por defecto
 						if ( !$_POST ) {//Si no se han recibido datos 
-							$PISTA = new PISTA_MODEL( '', '', date("Y-m-d"), '');//Variable que almacena la un objeto del modelo PISTA
+							$PISTA = new PISTA_MODEL( '', '', '', '');//Variable que almacena la un objeto del modelo PISTA
 							//Si se reciben datos
 						} else {
 							$PISTA = get_data_form();//Variable que almacena los valores de un objeto PISTA_MODEL
