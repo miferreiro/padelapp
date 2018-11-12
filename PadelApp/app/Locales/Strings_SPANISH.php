@@ -298,7 +298,9 @@ array(
 	'propuestaPareja'=>'Fecha propuesta',
 	'Ya existen grupos generados'=>'Ya existen grupos generados',
 	'Error en la busqueda'=>'Error en la busqueda',
-	'Ya existe una promocion con la fecha y horas introducidas en la base de datos'=>'Ya existe una promoción con la fecha y horas introducidas en la base de datos'
+	'Ya existe una promocion con la fecha y horas introducidas en la base de datos'=>'Ya existe una promoción con la fecha y horas introducidas en la base de datos',
+	'Ver mis reservas' => 'Ver mis reservas',
+	'Ver mis promociones' => 'Ver mis promociones'
 	)
 ;
 

@@ -45,7 +45,7 @@
    	$('#mydatatablePistasShowAll').DataTable( {
 		'pageLength': 7,
 		'lengthMenu': [ 7, 14, 21, 28, 35, 42, 49, 56, 63, 70 ],
-	} );
+	} )
 		});
 		</script>
 	  <script type="text/javascript">
@@ -200,18 +200,31 @@ que comprueba permisos para cada una de las acciones -->
 
 								<button id ="buttonBien" type="submit"  name="gesReservas"><a class="dropdown-item"  href="../Controllers/RESERVA_CONTROLLER.php" /><?php echo $strings['Gestión de reservas'] ?></a></button>
 
+				<?php }  } ?>
+				<?php if (isset($_SESSION['login']) &  isset($_SESSION['tipo'])){?>
+
+					<?php if($_SESSION['tipo'] == 'Deportista'){ ?>
+							<div class="dropdown-divider"></div>
+								<form action="../Controllers/RESERVA_CONTROLLER.php" method="get" style="display:inline">
+								<input type="hidden" name="Usuario_Dni" value="<?php echo $_SESSION['Dni']; ?>">
+								<button id="buttonBien" type="submit"  name="verRes"><a class="dropdown-item"/><?php echo $strings['Ver mis reservas'] ?></a></button></form>
+
 					<?php }  } ?>
+					<?php if (isset($_SESSION['login']) &  isset($_SESSION['tipo'])){?>
+					<?php if($_SESSION['tipo'] == 'Deportista'){ ?>
+							<div class="dropdown-divider"></div>
+								<form action="../Controllers/INSPROM_CONTROLLER.php" method="get" style="display:inline">
+								<input type="hidden" name="Usuario_Dni" value="<?php echo $_SESSION['Dni']; ?>">
+								<button id="buttonBien" type="submit"  name="verPromo"><a class="dropdown-item"/><?php echo $strings['Ver mis promociones'] ?></a></button></form>
+
+				<?php }  } ?>
 				<?php if (isset($_SESSION['login']) & isset($_SESSION['tipo'])) { 
 					//Si el usuario tiene permisos de showall en gestión de usuarios se muestra la opción ?>
 					<?php if($_SESSION['tipo'] == 'Admin'){ ?>
 
-							<div class="dropdown-divider"></div>
-
-								<button id ="buttonBien" type="submit"  name="gesCampeonatos" ><a class="dropdown-item" href="../Controllers/CAMPEONATO_CONTROLLER.php"/><?php echo $strings['Gestión de campeonatos'] ?></a></button>
-				<?php }} ?>
-				
-				
-				
+						<div class="dropdown-divider"></div>
+							<button id ="buttonBien" type="submit"  name="gesCampeonatos" ><a class="dropdown-item" href="../Controllers/CAMPEONATO_CONTROLLER.php"/><?php echo $strings['Gestión de campeonatos'] ?></a></button>
+				<?php }} ?>			
 				<?php if (isset($_SESSION['login']) & isset($_SESSION['tipo'])) { 
 					//Si el usuario tiene permisos de showall en gestión de usuarios se muestra la opción ?>
 					<?php if($_SESSION['tipo'] == 'Deportista'){ ?>
@@ -220,9 +233,6 @@ que comprueba permisos para cada una de las acciones -->
 
 								<button id ="buttonBien" type="submit"  name="gesCalendario" ><a class="dropdown-item" href="../Controllers/CALENDARIO_CONTROLLER.php"/><?php echo $strings['Gestión de calendario'] ?></a></button>
 				<?php }} ?>
-				
-				
-				
 				<?php if(isset($_SESSION['login']) & isset($_SESSION['tipo'])) {  ?>
 					<?php if($_SESSION['tipo'] == 'Deportista'){ ?>
 							<div class="dropdown-divider"></div>

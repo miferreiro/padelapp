@@ -106,7 +106,6 @@ switch ( $_REQUEST[ 'action' ] ) {
 		//Final del bloque
 		break;
 	default: //Caso que se ejecuta por defecto
-			if($_SESSION['tipo'] == 'Admin'){//miramos si el usuario es administrador
 						if ( !$_POST ) {//Si no se han recibido datos 
 							$RESERVA = new RESERVA_MODEL( '', '', '', '');//Variable que almacena la un objeto del modelo PISTA
 							//Si se reciben datos
@@ -117,12 +116,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 						$datos = $RESERVA->SEARCH();
 						//Variable que almacena array con el nombre de los atributos
 						$lista = array( 'Usuario_Dni','Pista_idPista','Pista_Hora','Pista_Fecha');
-						
-						new RESERVA_SHOWALL( $lista, $datos);//nos muestra una vista showall con todos los permisos
-			}else{//en el caso de que el usuario no tenga permisos le sale una vista vacía
-				new USUARIO_DEFAULT();
-			}
-   				
+						new RESERVA_SHOWALL( $lista, $datos);//nos muestra una vista showall con todos los permisos			
 			
 }
 

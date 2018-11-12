@@ -7,7 +7,7 @@ include '../Functions/ComprobarInscritos.php';
 if (!IsAuthenticated()){
  	header('Location:../index.php');
 }
-
+include '../Views/INSCRIPCIÓN_PROMOCIONES/INSPROM_SHOWALL.php'; 
 include '../Models/INSPROM_MODEL.php'; 
 include '../Models/PROM_MODEL.php'; 
 include '../Views/PROMOCION/PROM_SHOWALL_View.php'; 
@@ -41,16 +41,23 @@ switch ( $_REQUEST[ 'action' ] ) {
 			}
 		break;
 	default: 
-			if($_SESSION['tipo'] == 'Deportista'){
-			
-				$PROM = new PROM_MODEL( '', '');
-				
-				$datos = $PROM->SEARCH();
-				$lista = array( 'Fecha','Hora');
-				
-				new PROM_SHOWALL( $lista, $datos);
-	
-   			}else{
+						if($_SESSION['tipo'] == 'Deportista'){
+						if ( !$_POST ) {
+							$PROM = new PROM_MODEL( '', '');
+							
+						} else {
+							$PROM = get_data_form();
+						}
+					if($_SESSION['tipo'] == 'Admin'){		
+						$datos = $PROM->SEARCH();
+					}else{
+						$datos = $PROM->SEARCH();
+					}
+						
+						$lista = array('Fecha','Hora');
+						
+						new INSPROM_SHOWALL( $lista, $datos);
+				}else{
 					new DEFAULT_View();
 			}
 			

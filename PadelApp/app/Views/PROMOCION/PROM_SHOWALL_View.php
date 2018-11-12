@@ -34,14 +34,14 @@ class PROM_SHOWALL {
 						</th>
 <?php
 					}
+			
 ?>
 					<th>
 						<?php echo $strings['Opciones']?>
 					</th>
-
 				</tr>
 <?php
-		if($_SESSION['tipo'] == 'Admin'){				
+					
 				while ( $fila = mysqli_fetch_array( $this->datos ) ) { 
 ?>
 				<tr>
@@ -59,6 +59,7 @@ class PROM_SHOWALL {
 					</td>
 <?php
 					}
+					if($_SESSION['tipo'] == 'Admin'){		
 ?>
 					<td align="center">
 
@@ -71,37 +72,10 @@ class PROM_SHOWALL {
 						</form>	
 						
 <?php
-
-				}
-?>					
-				</tr>
-					
-<?php
-				}else{
-
-			
-				while ( $fila = mysqli_fetch_array( $this->datos ) ) { 
-					if(Comprobar_Inscritos($fila['Fecha'],$fila['Hora'])){
+														 
+					}else{
 ?>
-				<tr>
-<?php
-					foreach ( $lista as $atributo ) { 
-?>
-					<td>
-<?php 
-
- 				if($atributo == 'Fecha'){
-					echo date( "d/m/Y", strtotime( $fila[ $atributo ] ) );
-				}else{
-							echo $fila[ $atributo ];
-				}
-?>
-					</td>
-<?php
-					}
-?>
-					<td>
-			
+						<td align="center">
 						<form action="../Controllers/INSPROM_CONTROLLER.php" method="get" style="display:inline" >
 							<input type="hidden" name="Promociones_Fecha" value="<?php echo $fila['Fecha']; ?>">
 							<input type="hidden" name="Promociones_Hora" value="<?php echo $fila['Hora']; ?>">
@@ -110,12 +84,15 @@ class PROM_SHOWALL {
 								<button id ="buttonBien" type="submit" name="action" value="INSCRIPCION" ><img src="../Views/icon/add_big.png" alt="<?php echo $strings['Añadir']?>" width="20" height="20"/></button>
 						</form>	
 						
-				
-				</tr>
+<?php					
+				}
+?>					
+				</tr>	
+			
 <?php			
 					   }
-					    }
-					   }
+					    
+					   
 ?>
 							
 				</thead>
