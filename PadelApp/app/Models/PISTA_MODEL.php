@@ -91,13 +91,14 @@ class PISTA_MODEL{
 			return $resultado;
 		}
 	} 
-	function HORASPROMOCION() {
-		$sql = "select distinct Hora from PISTA WHERE (Fecha = '$this->fecha' && Disponibilidad = 1)order by 1";
-		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
-			return 'Error en la consulta sobre la base de datos';
-		} else { 
-			return $resultado;
-		}
+	function HORASPROMOCION($hora,$fecha) {
+		$sql = "select distinct Hora from PISTA WHERE (Fecha = '$fecha' && Hora = '$hora'&& Disponibilidad = 1)order by 1";
+	 $resultado = $this->mysqli->query( $sql );				
+	if($resultado->num_rows==1){
+				return 1;
+			}else {
+				return 0;
+			}
 	} 
 	function ComprobarDisp($idPista,$hora,$fecha) {
 		$sql = "select Disponibilidad 

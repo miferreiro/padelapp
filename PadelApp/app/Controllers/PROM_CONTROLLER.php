@@ -3,6 +3,7 @@
 session_start(); 
 include '../Functions/Authentication.php';
 include '../Functions/ComprobarInscritos.php'; 
+include '../Functions/Comprobar_Disponibilidad.php'; 
 
 if (!IsAuthenticated()){
 	
@@ -40,17 +41,21 @@ if ( !isset( $_REQUEST[ 'action' ] ) ) {
 switch ( $_REQUEST[ 'action' ] ) {
 	case 'ADD':
 		if ( !$_POST ) {
-			$PROM= new PISTA_MODEL('','',date("Y-m-d"),'');
-		 	$lista= $PROM->HORASPROMOCION();
-			new PROM_ADD($lista);
+			$PISTA= new PISTA_MODEL('','','','');
+			$PROM= new PROM_MODEL('','');
+			$datos = $PISTA->HORAS();
+			$datos2 = $PISTA->FECHAS();
+			//Variable que almacena array con el nombre de los atributos
+			new PROM_ADD($datos, $datos2);//nos muestra una vista showall con todos los permisos
 		} else {
-		    $PROM = get_data_form();
+		    $PROM= get_data_form();	
 			$respuesta = $PROM->ADD();
-			
 			new MESSAGE( $respuesta, '../Controllers/PROM_CONTROLLER.php' );
 		}
 	
 		break;
+		
+		
 	case 'DELETE':
 		if ( !$_POST ) {
 

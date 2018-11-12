@@ -17,7 +17,27 @@ class Pista_Showall{
 
   
 	include '../Views/Header.php';//incluimos la cabecera
-	
+		
+		$horas = array();
+		$q = 0;
+		while ( $fila = mysqli_fetch_array( $datos ) ) {
+				
+				$horas[$q] = $fila['Hora'];
+			//	echo $fila[''];
+			//<br><?php
+				$q++;
+
+		}
+			$fechas = array();
+		$z = 0;
+		while ( $fila = mysqli_fetch_array( $datos2 ) ) {
+				
+				$fechas[$z] = $fila['Fecha'];
+			//	echo $fila[''];
+			//<br><?php
+				$z++;
+
+		}
 
 ?>
 <div class="seccion" align="center">
@@ -57,21 +77,24 @@ class Pista_Showall{
 				</thead>	
 				
 <?php
-						while ($fila2 = mysqli_fetch_array( $this->datos2) ) {
+						for($j=0;$j<$z;$j++){
 
-						while ( $fila = mysqli_fetch_array( $this->datos ) ) {
+						for($x=0;$x<$q;$x++){ 
+							
+						
+							
 ?>
 				<tr>
 					<td>
 					
 <?php
-							echo date( "d/m/Y", strtotime( $fila2[ 'Fecha' ] ) );
-?>
+							echo date( "d/m/Y", strtotime( $fechas[$j] ) );
+?>	
 					
 					</td>
 <?php
 					for($i=0;$i<$c;$i++){
-						if(Comprobar_Disponibilidad($aux[$i+1],$fila['Hora'],$fila2['Fecha'])==1){
+						if(Comprobar_Disponibilidad($aux[$i+1],$horas[$x],$fechas[$j])==1){
 ?>
 						<td bgcolor="#35B109">
 							
@@ -80,8 +103,8 @@ class Pista_Showall{
 						<form action="../Controllers/PISTA_CONTROLLER.php" method="get" style="display:inline" >
 						<button type="submit" name="action" value="EDIT" style="background-color: #35B109; width: 100%">
 							<input type="hidden" name="idPista" value="<?php echo $aux[$i+1] ?>">
-							<input type="hidden" name="Hora" value="<?php echo $fila['Hora'] ?>">
-							<input type="hidden" name="Fecha" value="<?php echo $fila2['Fecha'] ?>">	
+							<input type="hidden" name="Hora" value="<?php echo $horas[$x] ?>">
+							<input type="hidden" name="Fecha" value="<?php echo $fechas[$j] ?>">	
 <?php
 						}else{
 ?>						    
@@ -89,8 +112,8 @@ class Pista_Showall{
 							<button type="submit" name="action" value="ADD" style="background-color: #35B109; width: 100%">
 							<input type="hidden" name="Usuario_Dni" value="<?php echo $_SESSION['dni']; ?>">
 							<input type="hidden" name="Pista_idPista" value="<?php echo $aux[$i+1] ?>">
-							<input type="hidden" name="Pista_Hora" value="<?php echo $fila['Hora'] ?>">
-							<input type="hidden" name="Pista_Fecha" value="<?php echo $fila2['Fecha'] ?>">
+							<input type="hidden" name="Pista_Hora" value="<?php echo $horas[$x] ?>">
+							<input type="hidden" name="Pista_Fecha" value="<?php echo $fechas[$j] ?>">
 <?php
 						}
 																						  
@@ -104,8 +127,8 @@ class Pista_Showall{
 						<form action="../Controllers/PISTA_CONTROLLER.php" method="get" style="display:inline" >
 						<button  type="submit" name="action" value="EDIT" style="background-color: #E80408; width: 100%">
 							<input type="hidden" name="idPista" value="<?php echo $aux[$i+1] ?>">
-							<input type="hidden" name="Hora" value="<?php echo $fila['Hora'] ?>">
-							<input type="hidden" name="Fecha" value="<?php echo $fila2['Fecha'] ?>">	
+							<input type="hidden" name="Hora" value="<?php echo $horas[$x] ?>">
+							<input type="hidden" name="Fecha" value="<?php echo $fechas[$j] ?>">	
 <?php
 						}else{
 ?>	
@@ -113,13 +136,12 @@ class Pista_Showall{
 							<button  type="submit" name="action" value="ADD" style="background-color: #E80408; width: 100%" disabled>
 							<input type="hidden" name="Usuario_Dni" value="<?php echo $_SESSION['dni']; ?>">
 							<input type="hidden" name="Pista_idPista" value="<?php echo $aux[$i+1] ?>">
-							<input type="hidden" name="Pista_Hora" value="<?php echo $fila['Hora'] ?>">
-							<input type="hidden" name="Pista_Fecha" value="<?php echo $fila2['Fecha'] ?>">	
+							<input type="hidden" name="Pista_Hora" value="<?php echo $horas[$x] ?>">
+							<input type="hidden" name="Pista_Fecha" value="<?php echo $fechas[$j] ?>">	
 <?php 
-						
 							}
 						}
-							echo $fila['Hora'];						
+							echo $horas[$x];						
 ?>
 						
 						</button>

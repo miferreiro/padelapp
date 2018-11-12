@@ -36,13 +36,15 @@
 	$(document).ready( function () {
    	$('#mydatatablePistas').DataTable( {
 		'pageLength': 7,
-		'lengthMenu': [ 7, 14, 21, 28, 35, 42, 49, 56, 63, 70, "All" ],
+		'lengthMenu': [ 7, 14, 21, 28, 35, 42, 49, 56, 63, 70 ],
 			} );
 		});
 		</script>
 	  	 <script type="text/javascript">	  
 	$(document).ready( function () {
    	$('#mydatatablePistasShowAll').DataTable( {
+		'pageLength': 7,
+		'lengthMenu': [ 7, 14, 21, 28, 35, 42, 49, 56, 63, 70 ],
 	} );
 		});
 		</script>
@@ -55,8 +57,10 @@
 	  </script>
 	  <script>
 	  $(document).ready(function(){
-		  $('#mydatatableAddPromo').DataTable(
-		  )
+		  $('#mydatatableAddPromo').DataTable( {
+		'pageLength': 7,
+		'lengthMenu': [ 7, 14, 21, 28, 35, 42, 49, 56, 63, 70 ],
+		  })
 	  })
 	  </script>
 		<script>

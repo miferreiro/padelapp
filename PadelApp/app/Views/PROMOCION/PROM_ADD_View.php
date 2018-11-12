@@ -2,72 +2,111 @@
 
 class PROM_ADD {
 
-	function __construct( $lista ) {
-		$this->lista = $lista;
-		
-		$this->render( $this->lista );
+	function __construct($datos,$datos2) {
+		$this->datos = $datos;//pasamos los valores de cada campo
+		$this->datos2 = $datos2;//pasamos los valores de cada campo
+		$this->render($this->datos,$this->datos2);//llamamos a la función render donde se mostrará el formulario SHOWALL con los campos correspondientes
 	}
-
-	function render( $lista ) { 
-		$this->lista = $lista;
+	function render($datos,$datos2){
+		$this->datos = $datos;//pasamos los valores de cada campo
+		$this->datos2 = $datos2;
 		
-		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
-		include '../Views/Header.php';
+		
+		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
+		include '../Views/Header.php';//incluimos la cabecera
+		
+		$horas = array();
+		$q = 0;
+		while ( $fila = mysqli_fetch_array( $datos ) ) {
+				
+				$horas[$q] = $fila['Hora'];
+			//	echo $fila[''];
+			//<br><?php
+				$q++;
+
+		}
+			$fechas = array();
+		$z = 0;
+		while ( $fila = mysqli_fetch_array( $datos2 ) ) {
+				
+				$fechas[$z] = $fila['Fecha'];
+			//	echo $fila[''];
+			//<br><?php
+				$z++;
+
+		}
 ?>
-		<div class="seccion" align="center">
+
+<div class="seccion" align="center">
 			<h2>
 				<?php echo $strings['Formulario de inserción'];?>
 			</h2>
-			<form name="ADD" action="../Controllers/PROM_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="">
 			<div class="datepicker"></div>
-			<div class="col-sm-4">
-			<table id="mydatatableAddPromo" class="table table-sm" id="mydatatablePromociones">
-				<thead class="thead-light">
-					<tr>
-						<th class="formThTd">
-							<?php echo $strings['Fecha'];?>
-						</th>
-						<td class="formThTd"><input type="date" id="Fecha" name="Fecha" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="25" size="25" required />
-					</tr>
-					<tr>
-						<th class="formThTd">
-							<?php echo $strings['Hora'];?>
-						</th>
-						<td class="formThTd">
-                   <select id="Hora" name="Hora" required>
+			<br>
+			<div class="col-md-6">
+			<table id="mydatatableAddPromo" name="mydatatableAddPromo" class="table table-sm table-striped" align="center" style="width:100%">
+			<thead>				
+				<tr>
+					<th>
+					<?php echo $strings['Fecha'];?>
+					</th>
+
+					<th>
+						<?php echo $strings['Hora']?>
+				
+					</th>
+				</tr>
+				</thead>	
+				
 <?php
-				while ( $fila = mysqli_fetch_array( $this->lista ) ) { //este bucle se va a repetir mientras no se devuelvan todos los grupos
+						for($j=0;$j<$z;$j++){
+
+						for($x=0;$x<$q;$x++){ 
+							
+				if(Comprobar_Disponibilidad2($horas[$x],$fechas[$j])==1){		
+							
 ?>
-				<option value="<?php echo $fila[ 'Hora' ]?>">
-
-<?php 
-			
-					echo $fila['Hora'];
-?>		
-               							
-
-               </option>
-	
-<?php } ?>					
-					</select>
-					</td>
-					</tr>
-
+				
+				<tr>
+					<td>
 					
-					<tr align="center">
-						<td colspan="2">
-							<button id ="buttonBien" type="submit" name="action" value="ADD"><img src="../Views/icon/add_big.png" alt="<?php echo $strings['Confirmar formulario']?>" /></button>
-			</form>
+<?php
+							echo date( "d/m/Y", strtotime( $fechas[$j] ) );
+?>	
+					
+					</td>
+
+						<td>
+				
+						<form action="../Controllers/PROM_CONTROLLER.php" method="post" style="display:inline" >
+						<button type="submit" name="action" value="ADD" style="width: 100%">
+							<input type="hidden" name="Hora" value="<?php echo $horas[$x] ?>">
+							<input type="hidden" name="Fecha" value="<?php echo $fechas[$j] ?>">	
+<?php
+							echo $horas[$x];						
+?>
+						
+						</button>
+						</form>	
+				</td>
+<?php
+					}
+					}	
+						}
+?>
+				</tr>									
+										
+			</table>
 						<form action='../Controllers/PROM_CONTROLLER.php' method="post" style="display: inline">
 							<button id ="buttonBien" type="submit"><img src="../Views/icon/back_big2.png" alt="<?php echo $strings['Atras']?>" /></button>
 						</form>
-					</tr>
-				</thead>
-				</table>
-				</div>
 		</div>
+
+
+
+
 <?php
 		include '../Views/Footer.php';
 		}
-		}
-?>
+	}
+	?>
