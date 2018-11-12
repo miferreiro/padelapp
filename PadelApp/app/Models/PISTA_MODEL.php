@@ -74,6 +74,15 @@ class PISTA_MODEL{
 		}
 	} 
 	
+	function FECHAS() {
+		$sql = "select distinct Fecha from PISTA order by 1";
+		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
+			return 'Error en la consulta sobre la base de datos';
+		} else { 
+			return $resultado;
+		}
+	} 
+	
 	function HORAS() {
 		$sql = "select distinct Hora from PISTA order by 1";
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {

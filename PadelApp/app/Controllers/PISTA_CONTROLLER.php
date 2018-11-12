@@ -124,17 +124,18 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	default: //Caso que se ejecuta por defecto
 						if ( !$_POST ) {//Si no se han recibido datos 
-							$PISTA = new PISTA_MODEL( '', '', '', '');//Variable que almacena la un objeto del modelo PISTA
+							$PISTA = new PISTA_MODEL( '', '','', '');//Variable que almacena la un objeto del modelo PISTA
 							//Si se reciben datos
 						} else {
 							$PISTA = get_data_form();//Variable que almacena los valores de un objeto PISTA_MODEL
 						}
 						//Variable que almacena los datos de la busqueda
 						$datos = $PISTA->HORAS();
+						$datos2 = $PISTA->FECHAS();
 						//Variable que almacena array con el nombre de los atributos
 						$lista = $PISTA->PISTAS();
 						
-						new PISTA_SHOWALL( $lista, $datos);//nos muestra una vista showall con todos los permisos
+						new PISTA_SHOWALL( $lista, $datos, $datos2);//nos muestra una vista showall con todos los permisos
 
    				
 			

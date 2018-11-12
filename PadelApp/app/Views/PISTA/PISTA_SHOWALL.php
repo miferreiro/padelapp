@@ -3,16 +3,16 @@
 class Pista_Showall{
 	
     //es el constructor de la clase Pista_Showall
-	function __construct( $lista, $datos) {
+	function __construct( $lista, $datos,$datos2) {
 		$this->lista = $lista;//pasamos los campos de la tabla PISTAS
 		$this->datos = $datos;//pasamos los valores de cada campo
-
-		$this->render($this->lista,$this->datos);//llamamos a la función render donde se mostrará el formulario SHOWALL con los campos correspondientes
+		$this->datos2 = $datos2;//pasamos los valores de cada campo
+		$this->render($this->lista,$this->datos,$this->datos2);//llamamos a la función render donde se mostrará el formulario SHOWALL con los campos correspondientes
 	}
-	function render($lista,$datos){
+	function render($lista,$datos,$datos2){
 		$this->lista = $lista;//pasamos los campos de la tabla PISTAS
 		$this->datos = $datos;//pasamos los valores de cada campo
-
+		$this->datos2 = $datos2;
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
 
   
@@ -26,10 +26,13 @@ class Pista_Showall{
 			</h2>
 			<div class="datepicker"></div>
 			<br>
-			<div class="col-md-4">
-			<table class="table table-sm" align="center">
-			<thead class="thead-light">
+			<div class="col-md-6">
+			<table id="mydatatablePistasShowAll" name="mydatatablePistasShowAll" class="table table-sm table-striped" align="center" style="width:100%">
+			<thead>				
 				<tr>
+					<th>
+					<?php echo $strings['Fecha'];?>
+					</th>
 <?php
 		$c=0;
 		$aux= array();
@@ -51,16 +54,26 @@ class Pista_Showall{
 				}
 ?>
 				</tr>
-				<tr>
-					<?php
+				</thead>	
+				
+<?php
+						while ($fila2 = mysqli_fetch_array( $this->datos2) ) {
+
 						while ( $fila = mysqli_fetch_array( $this->datos ) ) {
 ?>
-					<tr>
+				<tr>
+					<td>
+					
+<?php
+							echo date( "d/m/Y", strtotime( $fila2[ 'Fecha' ] ) );
+?>
+					
+					</td>
 <?php
 					for($i=0;$i<$c;$i++){
-						if(Comprobar_Disponibilidad($aux[$i+1],$fila['Hora'],date("Y-m-d"))==1){
+						if(Comprobar_Disponibilidad($aux[$i+1],$fila['Hora'],$fila2['Fecha'])==1){
 ?>
-						<td bgcolor="#35B109" >	
+						<td bgcolor="#35B109">
 							
 <?php  if($_SESSION['tipo'] == 'Admin'){ ?>
 							
@@ -68,7 +81,7 @@ class Pista_Showall{
 						<button type="submit" name="action" value="EDIT" style="background-color: #35B109; width: 100%">
 							<input type="hidden" name="idPista" value="<?php echo $aux[$i+1] ?>">
 							<input type="hidden" name="Hora" value="<?php echo $fila['Hora'] ?>">
-							<input type="hidden" name="Fecha" value="<?php echo date("Y-m-d") ?>">	
+							<input type="hidden" name="Fecha" value="<?php echo $fila2['Fecha'] ?>">	
 <?php
 						}else{
 ?>						    
@@ -77,7 +90,7 @@ class Pista_Showall{
 							<input type="hidden" name="Usuario_Dni" value="<?php echo $_SESSION['dni']; ?>">
 							<input type="hidden" name="Pista_idPista" value="<?php echo $aux[$i+1] ?>">
 							<input type="hidden" name="Pista_Hora" value="<?php echo $fila['Hora'] ?>">
-							<input type="hidden" name="Pista_Fecha" value="<?php echo date("Y-m-d") ?>">
+							<input type="hidden" name="Pista_Fecha" value="<?php echo $fila2['Fecha'] ?>">
 <?php
 						}
 																						  
@@ -92,7 +105,7 @@ class Pista_Showall{
 						<button  type="submit" name="action" value="EDIT" style="background-color: #E80408; width: 100%">
 							<input type="hidden" name="idPista" value="<?php echo $aux[$i+1] ?>">
 							<input type="hidden" name="Hora" value="<?php echo $fila['Hora'] ?>">
-							<input type="hidden" name="Fecha" value="<?php echo date("Y-m-d") ?>">	
+							<input type="hidden" name="Fecha" value="<?php echo $fila2['Fecha'] ?>">	
 <?php
 						}else{
 ?>	
@@ -101,7 +114,7 @@ class Pista_Showall{
 							<input type="hidden" name="Usuario_Dni" value="<?php echo $_SESSION['dni']; ?>">
 							<input type="hidden" name="Pista_idPista" value="<?php echo $aux[$i+1] ?>">
 							<input type="hidden" name="Pista_Hora" value="<?php echo $fila['Hora'] ?>">
-							<input type="hidden" name="Pista_Fecha" value="<?php echo date("Y-m-d") ?>">	
+							<input type="hidden" name="Pista_Fecha" value="<?php echo $fila2['Fecha'] ?>">	
 <?php 
 						
 							}
@@ -111,13 +124,15 @@ class Pista_Showall{
 						
 						</button>
 						</form>	
-				</td>			   
+				</td>	
+									   
 <?php
 					}
-					}												 
+					}	
+						}
 ?>
-						</tr>											
-				</thead>
+								</tr>									
+										
 			</table>
 					<form action='../Controllers/PISTA_CONTROLLER.php' method="get" style="display:inline">
 						<button id="buttonBien" type="submit" name="action" value="ADD"><img src="../Views/icon/add_big.png" alt="AÑADIR" /></button>

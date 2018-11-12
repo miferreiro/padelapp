@@ -40,7 +40,12 @@
 			} );
 		});
 		</script>
-	  
+	  	 <script type="text/javascript">	  
+	$(document).ready( function () {
+   	$('#mydatatablePistasShowAll').DataTable( {
+	} );
+		});
+		</script>
 	  <script type="text/javascript">
 	  $(document).ready( function () {
 	$('#mydatatableUsuarios').DataTable( {
@@ -81,6 +86,9 @@
 			}
 			if ($('#mydatatableAddPromo') != null) {
 				$('#mydatatableAddPromo').DataTable().search( $(this).val() ).draw();
+			}
+			if ($('#mydatatablePistasShowAll') != null) {
+				$('#mydatatablePistasShowAll').DataTable().search( $(this).val() ).draw();
 			}
 		}
     });
