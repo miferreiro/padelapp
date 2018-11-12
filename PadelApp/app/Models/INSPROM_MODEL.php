@@ -51,9 +51,8 @@ class INSPROM_MODEL{
 			$resultado = $this->mysqli->query( $sql ) ;
 			$result = $resultado->fetch_array();
 			if($result['num']==4){
-				echo 'aqui';
 				return 0;
-			}else {echo 'aqui2';
+			}else {;
 				return 1;
 			}
 	}

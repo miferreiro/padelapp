@@ -18,10 +18,10 @@ array(
 	'Registro' => 'Register',
 	'Elija sexo' => 'Choose sex',
 	'Promociones_Fecha' => 'Date',
-	'Reservas asociadas' => 'Associated reserves',
+	'Reservas asociadas' => 'Associated bookings',
 	'Promociones asociadas' => 'Associated promotions',
 	'Número máximo de inscritos alcanzado' => 'Maximum number of enrollees reached',
-	'Ya ha reservado esa pista' => 'You have already reserved that court',
+	'Ya ha reservado esa pista' => 'You have already booked that court',
 	'La pista no está disponible' => 'The court is not available',
 	'Ya está inscrito en esa promoción' => 'You are already enrolled in that promotion',
 	'Hombre' => 'Man',
@@ -300,10 +300,10 @@ array(
 	'Letra' => 'Letter',
 	'NumEnfrentamiento' => 'NumEnfrentamiento',
 	'Resultado' => 'Result',
-	'Reservar pista'=>'Reserve track',
+	'Reservar pista'=>'Booking track',
 	'Gestión de promociones'=>'Promotion management',
 	'Inscribirse en promoción'=>'Register in promotion',
-	'Gestión de reservas'=>'Reservs management',
+	'Gestión de reservas'=>'Booking management',
 	'Gestión de campeonatos'=>'Management of championships',
 	'Gestión de calendario'=>'Calendar management',
 	'Inscribirse en campeonato'=>'Register in championship',
@@ -311,7 +311,9 @@ array(
 	'propuestaPareja'=>'Proposed date',
 	'Ya existen grupos generados'=>'Generated groups already exist',
 	'Error en la busqueda'=>'Search error',
-	'Ya existe una promocion con la fecha y horas introducidas en la base de datos'=>'There is already a promotion with the date and hours entered in the database'
+	'Ya existe una promocion con la fecha y horas introducidas en la base de datos'=>'There is already a promotion with the date and hours entered in the database',
+	'Ver mis reservas' => 'Check your bookings',
+	'Ver mis promociones' => 'Check your promotions'
 	)
 ;
 
