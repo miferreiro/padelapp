@@ -52,7 +52,7 @@ class INSPROM_MODEL{
 			$result = $resultado->fetch_array();
 			if($result['num']==4){
 				return 0;
-			}else {;
+			}else {
 				return 1;
 			}
 	}
