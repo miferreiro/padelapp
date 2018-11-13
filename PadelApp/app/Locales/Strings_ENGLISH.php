@@ -1,11 +1,5 @@
 <?php
-/*
-	Archivo php
-	Nombre: Strings_ENGLISH.php
-	Autores:Miguel Ferreiro,Alejandro Vila,Brais Rodriguez,Jonatan Couto,Brais Santos
-	Fecha de creación: 23/10/2017 
-	Función: contiene el array que permite la traducción de los textos a inglés
-*/
+
 $strings=
 array(
 	'Portal de Gestión' => 'PadelApp',
@@ -313,7 +307,9 @@ array(
 	'Error en la busqueda'=>'Search error',
 	'Ya existe una promocion con la fecha y horas introducidas en la base de datos'=>'There is already a promotion with the date and hours entered in the database',
 	'Ver mis reservas' => 'Check your bookings',
-	'Ver mis promociones' => 'Check your promotions'
+	'Ver mis promociones' => 'Check your promotions',
+	'¿Quieres aceptar el horario de este partido propuesto por la otra pareja?' => 'Do you want to accept the schedule of this match proposed by the other couple?',
+	'¿Quieres ofrecer este horario de este partido a la otra pareja?' => 'Do you want to offer this time of this game to the other couple?'
 	)
 ;
 

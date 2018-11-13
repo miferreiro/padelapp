@@ -1,11 +1,5 @@
 <?php
-/*
-	Archivo php
-	Nombre: Strings_GALLEGO.php
-    Autores:Miguel Ferreiro,Alejandro Vila,Brais Rodriguez,Jonatan Couto,Brais Santos
-	Fecha de creación: 23/10/2017 
-	Función: contiene el array que permite la traducción de los textos a gallego
-*/
+
 $strings=
 array(
 	'Portal de Gestión' => 'PadelApp',
@@ -299,7 +293,9 @@ array(
 	'Error en la busqueda'=>'Error na busqueda',
 	'Ya existe una promocion con la fecha y horas introducidas en la base de datos'=>'Xa existe unha promoción coa fecha e horas introducidas na base de datos',
 	'Ver mis reservas' => 'Ver as miñas reservas'
-	'Ver mis promociones' => 'Ver as miñas promocións'
+	'Ver mis promociones' => 'Ver as miñas promocións',
+	'¿Quieres aceptar el horario de este partido propuesto por la otra pareja?' => '¿Queres aceptar o horario deste partido proposto pola outra parexa?',
+	'¿Quieres ofrecer este horario de este partido a la otra pareja?' => '¿Queres ofrecer este horario deste partido á outra parexa?'
 	)
 ;
 

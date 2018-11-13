@@ -211,7 +211,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 				?> <!--<br>--> <?php
 				for($pa = 0; $pa < $numParejasSobrantes ; $pa++){
 					//echo '------------------------------------------';
-					?> <br> <?php
+					?> <!--<br>--> <?php
 					//echo 'Grupo: ' . $letra;
 					//echo '------------------------------------------';
 					?><!-- <br> --><?php

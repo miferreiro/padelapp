@@ -104,21 +104,21 @@ switch ( $_REQUEST[ 'action' ] ) {
 		   new PROM_SHOWCURRENT($lista, $lista2, $valores );
 		break;
 	default: 
-						if ( !$_POST ) {
-							$PROM = new PROM_MODEL( '', '');
-							
-						} else {
-							$PROM = get_data_form();
-						}
-					if($_SESSION['tipo'] == 'Admin'){		
-						$datos = $PROM->SEARCH();
-					}else{
-						$datos = $PROM->SEARCH();
-					}
-						
-						$lista = array('Fecha','Hora');
-						
-						new PROM_SHOWALL( $lista, $datos);
+				if ( !$_POST ) {
+					$PROM = new PROM_MODEL( '', '');
+					
+				} else {
+					$PROM = get_data_form();
+				}
+			if($_SESSION['tipo'] == 'Admin'){		
+				$datos = $PROM->SEARCH();
+			}else{
+				$datos = $PROM->SEARCH();
+			}
+				
+				$lista = array('Fecha','Hora');
+				
+				new PROM_SHOWALL( $lista, $datos);
 
    				
 			

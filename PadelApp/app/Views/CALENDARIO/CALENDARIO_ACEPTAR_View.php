@@ -116,7 +116,7 @@ class CALENDARIO_ACEPTAR {
 					<input type="hidden" name="pareja2" value="<?php echo $this->valores['pareja2']; ?>">
 										
 					
-				<button id ="buttonBien" type="submit" name="action" value="ACEPTAR" ><img src="../Views/icon/check_big2.png" alt="<?php echo $strings['Confirmar'] ?>"/></button>
+				<button id ="buttonBien" type="submit" name="action" value="ACEPTAR" ><img src="../Views/icon/accept_big.png" alt="<?php echo $strings['Confirmar'] ?>"/></button>
 				<button id ="buttonBien" type="submit" name="action" value="DENEGAR" ><img src="../Views/icon/cancel_big.png" alt="<?php echo $strings['Cancelar'] ?>"/></button>
 			</form>
 

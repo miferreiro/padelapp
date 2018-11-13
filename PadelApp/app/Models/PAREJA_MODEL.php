@@ -163,6 +163,26 @@ class PAREJA_MODEL{
 	
 	}
 
+	function numPareja($dni){
+					
+			$sql = "SELECT Pareja_NumPareja as num  FROM USUARIOPAREJAS WHERE (Pareja_idCampeonato = '$this->IdCampeonato') && (Pareja_Tipo = '$this->Tipo') && (Pareja_Nivel = '$this->Nivel')&& (Usuario_Dni = '$dni')"; 
+			
+			if(!$this->mysqli->query( $sql )){
+				return 'Error en la busqueda';
+			}else{
+				$resultado = $this->mysqli->query( $sql );
+				$result = $resultado->fetch_array();
+				if($result['num'] == NULL){
+					return(0);
+				}else{
+					return($result['num']);
+				}
+			}
+
+		
+	
+	}
+	
  	}//fin de clase
 
 ?>

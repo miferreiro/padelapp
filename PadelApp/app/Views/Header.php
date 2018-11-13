@@ -71,7 +71,14 @@
 	  });
 	  
 	  </script>
-	  
+	  <script>
+	  $(document).ready(function(){
+		  $('#mydatatableProponerHora').DataTable( {
+		'pageLength': 7,
+		'lengthMenu': [ 7, 14, 21, 28, 35, 42, 49, 56, 63, 70 ],
+		  })
+	  })
+	  </script>  
 	  <script>
 	  $(document).ready(function() {		  
      $( ".datepicker" ).datepicker({
@@ -94,7 +101,9 @@
 			if ($('#mydatatablePistasShowAll') != null) {
 				$('#mydatatablePistasShowAll').DataTable().search( $(this).val() ).draw();
 			}
-		}
+			if($('#mydatatableProponerHora')!= null)}
+				$('#mydatatableProponerHora').DataTable().search( $(this).val() ).draw();
+			}
     });
     $(document).on("click", ".ui-datepicker-close", function(){
         $('.datepicker').val("");
@@ -104,7 +113,7 @@
 	  
 	  
 	  </script>
-	  
+
 	  
 	<?php include '../Views/js/validaciones.js' ?>
 	  

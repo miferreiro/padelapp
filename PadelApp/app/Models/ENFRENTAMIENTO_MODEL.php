@@ -151,6 +151,26 @@ class ENFRENTAMIENTO_MODEL{
 			return $result;
 		}
 	} 
+	function RellenaDatos2() { 
+
+		$sql = "SELECT DISTINCT E1.IdCampeonato as IdCampeonato,E1.Tipo as Tipo,E1.Nivel as Nivel,E1.Letra as Letra, E1.NumPareja as pareja1, E2.NumPareja as pareja2, E1.NumEnfrentamiento as NumEnfrentamiento, E1.Resultado as Resultado, E1.EstadoPropuesta as propuestaPareja1,  E2.EstadoPropuesta as propuestaPareja2
+		, E1.EstadoPropuesta as propuestaPareja1,  E2.EstadoPropuesta as propuestaPareja2, E1.Resultado as Resultado
+		FROM ENFRENTAMIENTO E1,ENFRENTAMIENTO E2
+		WHERE
+		(E1.NumEnfrentamiento = E2.NumEnfrentamiento) && (E1.NumPareja != E2.NumPareja) &&
+		(E1.IdCampeonato = '$this->IdCampeonato') && (E1.Tipo = '$this->Tipo') && (E1.Nivel = '$this->Nivel')  && (E1.Letra = '$this->Letra') 
+		&&(E1.NumEnfrentamiento = '$this->NumEnfrentamiento') && (E1.NumPareja = '$this->NumPareja')
+		GROUP BY E1.NumEnfrentamiento  
+
+		";
+		
+		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
+			return 'No existe en la base de datos'; // 
+		} else {            
+			$result = $resultado->fetch_array();	
+			return $result;
+		}
+	} 
 	function EDIT() {
 		
 		$sql = 
@@ -236,8 +256,6 @@ class ENFRENTAMIENTO_MODEL{
 					group by E1.NumEnfrentamiento
 					ORDER BY E1.NumEnfrentamiento ASC, E1.NumPareja ASC";
 
-		echo $sql;
-		?><br><?php
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'No existe en la base de datos'; // 
 		} else {            
@@ -248,7 +266,7 @@ class ENFRENTAMIENTO_MODEL{
 	function listaEnfrentamientoCalendario($dni){
 		
 		
-		$sql = "SELECT DISTINCT E2.NumPareja as pareja1, E1.NumPareja as pareja2,  E1.NumEnfrentamiento as numEnfrentamiento, E1.Resultado as resultado, E1.EstadoPropuesta as propuestaPareja1,  E2.EstadoPropuesta as propuestaPareja2
+		$sql = "SELECT DISTINCT E2.NumPareja as pareja1, E1.NumPareja as pareja2,  E1.NumEnfrentamiento as numEnfrentamiento, E1.Resultado as resultado, E2.EstadoPropuesta as propuestaPareja1,  E1.EstadoPropuesta as propuestaPareja2
 				FROM ENFRENTAMIENTO E1,ENFRENTAMIENTO E2, USUARIOPAREJAS U
 				WHERE 
 				(E1.NumEnfrentamiento = E2.NumEnfrentamiento) 
@@ -258,11 +276,9 @@ class ENFRENTAMIENTO_MODEL{
 				(E1.IdCampeonato = E2.IdCampeonato) && (E1.Tipo = E2.Tipo) && (E1.Nivel = E2.Nivel) && (E1.Letra = E2.Letra)
 				&&(E1.NumPareja != E2.NumPareja)
 				GROUP BY E1.NumEnfrentamiento  
-				ORDER BY E1.NumEnfrentamiento ASC, E1.NumPareja ASC
-		
+				ORDER BY E1.NumEnfrentamiento ASC		
 		";
-		echo $sql;
-		?><br><?php
+#echo $sql;
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'No existe en la base de datos'; // 
 		} else {            

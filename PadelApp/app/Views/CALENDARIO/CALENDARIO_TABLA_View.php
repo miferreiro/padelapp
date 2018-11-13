@@ -2,22 +2,23 @@
 
 class CALENDARIO_TABLA{
 
-	function __construct( $listaParejas, $listaEnfrentamientos,$listaEnfrentamientos2,$vuelta,$capitan) {
+	function __construct( $listaParejas, $listaEnfrentamientos,$listaEnfrentamientos2,$vuelta,$capitan,$numParejaActual) {
 		$this->listaParejas = $listaParejas;
 		$this->listaEnfrentamientos = $listaEnfrentamientos;
 		$this->listaEnfrentamientos2 = $listaEnfrentamientos2;
 		$this->vuelta = $vuelta;
 		$this->capitan = $capitan;
-		$this->render($this->listaParejas,$this->listaEnfrentamientos,$this->listaEnfrentamientos2,$this->vuelta,$this->capitan);
+		$this->numParejaActual = $numParejaActual;
+		$this->render($this->listaParejas,$this->listaEnfrentamientos,$this->listaEnfrentamientos2,$this->vuelta,$this->capitan,$this->numParejaActual);
 	}
 	
-	function render($listaParejas,$listaEnfrentamientos,$listaEnfrentamientos2,$vuelta,$capitan){
+	function render($listaParejas,$listaEnfrentamientos,$listaEnfrentamientos2,$vuelta,$capitan,$numParejaActual){
 		$this->listaParejas = $listaParejas;
 		$this->listaEnfrentamientos = $listaEnfrentamientos;
 		$this->listaEnfrentamientos2 = $listaEnfrentamientos2;
 		$this->vuelta = $vuelta;
 		$this->capitan = $capitan;
-		
+		$this->numParejaActual = $numParejaActual;
 		
 		$arrayListadoParejas = array();
 		$q = 0;
@@ -96,7 +97,7 @@ class CALENDARIO_TABLA{
 		?>
 		<tr></tr>
 		<?php
-	
+
 $cont = 0;
 		for($i = 1;$i <= $numParejas;$i++){//echo 'i ' . $i;
 			?><tr>
@@ -129,7 +130,7 @@ $cont = 0;
 											</form>											
 <?php 
 										} else { 
-											if($fila2['propuestaPareja2'] == 2){//Naranja
+											if(($fila2['propuestaPareja1'] == 2 && $fila2['pareja1'] == $this->numParejaActual) || ( $fila2['propuestaPareja2'] == 2 && $fila2['pareja2'] == $this->numParejaActual)){//Naranja
 ?> 
 												<td style ="background-color: #E49E56;"> 
 											<form action="../Controllers/CALENDARIO_CONTROLLER.php" method="get" style="display:inline" >
@@ -149,7 +150,7 @@ $cont = 0;
 												</form>												
 <?php 
 											}else{ 
-												if($fila2['propuestaPareja1'] == 1){ //Amarillo
+											if(($fila2['propuestaPareja1'] == 1 && $fila2['pareja1'] == $this->numParejaActual) || ( $fila2['propuestaPareja2'] == 1 && $fila2['pareja2'] == $this->numParejaActual)){//Naranja
 ?> 
 													<td style ="background-color: #FDFD96;"> 
 												<form action="../Controllers/CALENDARIO_CONTROLLER.php" method="get" style="display:inline" >
