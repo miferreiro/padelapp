@@ -76,12 +76,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		//Finaliza el bloque
 		break;
 
-	case 'SEARCH'://Caso buscar
-		if ( !$_POST ) {//Si no se han recibido datos se envia a la vista del formulario SEARCH
-			
-		//Si se reciben datos	
-		} else {
-			
+	case 'SEARCH'://Caso buscar	
 			//Variable que almacena los datos recogidos de los atributos
 			$RESERVA = get_data_form();
 			//Variable que almacena el resultado de la busqueda
@@ -92,8 +87,6 @@ switch ( $_REQUEST[ 'action' ] ) {
 		
 				new RESERVA_SHOWCURRENT( $lista, $datos );
 			
-			
-		}
 		//Final del bloque
 		break;
 	case 'SHOWCURRENT'://Caso showcurrent
@@ -106,12 +99,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		//Final del bloque
 		break;
 	default: //Caso que se ejecuta por defecto
-						if ( !$_POST ) {//Si no se han recibido datos 
-							$RESERVA = new RESERVA_MODEL( '', '', '', '');//Variable que almacena la un objeto del modelo PISTA
-							//Si se reciben datos
-						} else {
-							$RESERVA = get_data_form();//Variable que almacena los valores de un objeto PISTA_MODEL
-						}
+						$RESERVA = new RESERVA_MODEL( $_REQUEST['Usuario_Dni'], '', '', '');//Variable que almacena la un objeto del modelo PISTA
 						//Variable que almacena los datos de la busqueda
 						$datos = $RESERVA->SEARCH();
 						//Variable que almacena array con el nombre de los atributos

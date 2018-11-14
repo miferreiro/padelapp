@@ -56,13 +56,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	default: 
 			if($_SESSION['tipo'] == 'Deportista'){
-						if ( !$_POST ) {
-							$INSPROM = new INSPROM_MODEL('','', '');
-							
-						} else {
-							$INSPROM = get_data_form();
-						}
 
+						$INSPROM = new INSPROM_MODEL($_REQUEST['Usuario_Dni'],'', '');
+	
 						$datos = $INSPROM->SEARCH();
 						
 						$lista = array('Promociones_Fecha','Promociones_Hora','Usuario_Dni');

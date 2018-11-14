@@ -166,7 +166,7 @@ class INSPROM_MODEL{
 
 	function RellenaDatos() { 
 
-		$sql = "SELECT * FROM inscripcionpromociones WHERE (Usuario_Dni='$this->Usuario_Dni' && Promociones_Fecha = '$this->Promociones_fecha' && Promociones_Hora = '$this->Promociones_hora')";
+		$sql = "SELECT * FROM inscripcionpromociones WHERE (Usuario_Dni='$this->Usuario_Dni')";
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'No existe en la base de datos'; // 
 		} else { 
