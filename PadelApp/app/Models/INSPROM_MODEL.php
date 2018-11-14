@@ -121,7 +121,6 @@ class INSPROM_MODEL{
 								if ( !$this->mysqli->query( $sql2 )) { 
 									return 'Error en la inserción';
 								} 
-								echo $this->Promociones_fecha;
 								$sql3 = "UPDATE PISTA SET 
 										idPista = '$p',
 										Fecha = '$this->Promociones_fecha',
@@ -133,12 +132,13 @@ class INSPROM_MODEL{
 								if ( !$this->mysqli->query( $sql3 )) { 
 									return 'Error en la inserción';
 								}
+								
+								
 							}
+							
 								if ( !$this->mysqli->query( $sql )) { 
-									return 'Error en la inserción';
-								} else { 											
-									return 'Inserción realizada con éxito'; 
-								}	
+									return 'Inserción realizada con éxito';
+								}
 						    }
 						  }
 					}
