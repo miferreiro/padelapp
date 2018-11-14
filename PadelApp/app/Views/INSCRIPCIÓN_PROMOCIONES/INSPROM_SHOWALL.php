@@ -35,13 +35,12 @@ class INSPROM_SHOWALL {
 <?php
 					}
 			if($_SESSION['tipo'] == 'Deportista'){
-				if(date("Y-m-d")<>$fila['Promociones_Fecha']){
+
 ?>
 					<th>
 						<?php echo $strings['Opciones']?>
 					</th>
 <?php
-													   }
 				}
 ?>
 				</tr>
