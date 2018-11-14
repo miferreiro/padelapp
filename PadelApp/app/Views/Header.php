@@ -220,7 +220,7 @@ que comprueba permisos para cada una de las acciones -->
 					<?php if($_SESSION['tipo'] == 'Deportista'){ ?>
 							<div class="dropdown-divider"></div>
 								<form action="../Controllers/RESERVA_CONTROLLER.php" method="get" style="display:inline">
-								<input type="hidden" name="Usuario_Dni" value="<?php echo $_SESSION['Dni']; ?>">
+								<input type="hidden" name="Usuario_Dni" value="<?php echo $_SESSION['dni']; ?>">
 								<button id="buttonBien" type="submit"  name="verRes"><a class="dropdown-item"/><?php echo $strings['Ver mis reservas'] ?></a></button></form>
 
 					<?php }  } ?>
@@ -228,8 +228,8 @@ que comprueba permisos para cada una de las acciones -->
 					<?php if($_SESSION['tipo'] == 'Deportista'){ ?>
 							<div class="dropdown-divider"></div>
 								<form action="../Controllers/INSPROM_CONTROLLER.php" method="get" style="display:inline">
-								<input type="hidden" name="Usuario_Dni" value="<?php echo $_SESSION['Dni']; ?>">
-								<button id="buttonBien" type="submit"  name="verPromo"><a class="dropdown-item"/><?php echo $strings['Ver mis promociones'] ?></a></button></form>
+								<input type="hidden" name="Usuario_Dni" value="<?php echo $_SESSION['dni']; ?>">
+								<button id="buttonBien" type="submit"><a class="dropdown-item"/><?php echo $strings['Ver mis promociones'] ?></a></button></form>
 
 				<?php }  } ?>
 				<?php if (isset($_SESSION['login']) & isset($_SESSION['tipo'])) { 

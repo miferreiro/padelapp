@@ -35,26 +35,37 @@ switch ( $_REQUEST[ 'action' ] ) {
 			if($_SESSION['tipo'] == 'Deportista'){
 				$INSPROM = get_data_form();
 				$respuesta = $INSPROM->ADD();//Variable que almacena la respuesta de la inserción
-				new MESSAGE( $respuesta, '../Controllers/INSPROM_CONTROLLER.php' );
+				new MESSAGE( $respuesta, '../Controllers/PROM_CONTROLLER.php' );
+			}else{
+				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/PROM_CONTROLLER.php' );
+			}
+		break;
+		
+	case 'DELETE':
+	if($_SESSION['tipo'] == 'Deportista'){
+
+			$INSPROM = get_data_form();
+			
+			$respuesta = $INSPROM->DELETE();
+			
+			new MESSAGE( $respuesta, '../Controllers/PROM_CONTROLLER.php' );
+
 			}else{
 				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/INSPROM_CONTROLLER.php' );
 			}
 		break;
 	default: 
-						if($_SESSION['tipo'] == 'Deportista'){
+			if($_SESSION['tipo'] == 'Deportista'){
 						if ( !$_POST ) {
-							$PROM = new PROM_MODEL( '', '');
+							$INSPROM = new INSPROM_MODEL('','', '');
 							
 						} else {
-							$PROM = get_data_form();
+							$INSPROM = get_data_form();
 						}
-					if($_SESSION['tipo'] == 'Admin'){		
-						$datos = $PROM->SEARCH();
-					}else{
-						$datos = $PROM->SEARCH();
-					}
+
+						$datos = $INSPROM->SEARCH();
 						
-						$lista = array('Fecha','Hora');
+						$lista = array('Promociones_Fecha','Promociones_Hora','Usuario_Dni');
 						
 						new INSPROM_SHOWALL( $lista, $datos);
 				}else{
