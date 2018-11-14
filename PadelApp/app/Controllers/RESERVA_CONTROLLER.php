@@ -99,7 +99,11 @@ switch ( $_REQUEST[ 'action' ] ) {
 		//Final del bloque
 		break;
 	default: //Caso que se ejecuta por defecto
+		           if($_SESSION['tipo'] == 'Deportista'){
 						$RESERVA = new RESERVA_MODEL( $_REQUEST['Usuario_Dni'], '', '', '');//Variable que almacena la un objeto del modelo PISTA
+				   }else{
+					   $RESERVA = new RESERVA_MODEL( '', '', '', '');//Variable que almacena la un objeto del modelo PISTA
+				   }
 						//Variable que almacena los datos de la busqueda
 						$datos = $RESERVA->SEARCH();
 						//Variable que almacena array con el nombre de los atributos

@@ -11,6 +11,7 @@ array(
 	'Opciones' => ' Opcións ',
 	'Registro' => 'Rexistro',
 	'Elija sexo' => 'Elixa sexo',
+	'Inscritos en la promoción' => 'Inscritos na promoción',
 	'Número máximo de inscritos alcanzado' => 'Número máximo de inscritos acadado',
 	'Ya ha reservado esa pista' => 'Xa reservou esa pista',
 	'La pista no está disponible' => 'A pista non está dispoñible',

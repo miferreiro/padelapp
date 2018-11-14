@@ -35,11 +35,13 @@ class INSPROM_SHOWALL {
 <?php
 					}
 			if($_SESSION['tipo'] == 'Deportista'){
+				if(date("Y-m-d")<>$fila['Promociones_Fecha']){
 ?>
 					<th>
 						<?php echo $strings['Opciones']?>
 					</th>
 <?php
+													   }
 				}
 ?>
 				</tr>
@@ -62,7 +64,8 @@ class INSPROM_SHOWALL {
 					</td>
 <?php
 					}
-					if($_SESSION['tipo'] == 'Deportista'){		
+					if($_SESSION['tipo'] == 'Deportista'){	
+						if(date("Y-m-d")<>$fila['Promociones_Fecha']){
 ?>
 					<td align="center">
 
@@ -74,7 +77,7 @@ class INSPROM_SHOWALL {
 						</form>	
 						
 <?php
-														 
+																 }
 					}
 ?>
 			

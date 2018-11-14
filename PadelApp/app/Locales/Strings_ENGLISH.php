@@ -12,6 +12,7 @@ array(
 	'Registro' => 'Register',
 	'Elija sexo' => 'Choose sex',
 	'Promociones_Fecha' => 'Date',
+	'Inscritos en la promoción' => 'Enrolled in promotion',
 	'Reservas asociadas' => 'Associated bookings',
 	'Promociones asociadas' => 'Associated promotions',
 	'Número máximo de inscritos alcanzado' => 'Maximum number of enrollees reached',

@@ -48,7 +48,7 @@ class PROM_SHOWCURRENT {
 	</div>
 <div class="seccion" align="center">
 			<h2>
-			<?php echo $strings['Reservas asociadas'];?>
+			<?php echo $strings['Inscritos en la promoción'];?>
 			</h2>
 			<div class="col-md-3">
 			<table class="table table-sm" align="center">

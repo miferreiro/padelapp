@@ -149,13 +149,20 @@ class INSPROM_MODEL{
 	} 
 
 	function DELETE() {
-		$sql = "SELECT * FROM inscripcionpromociones WHERE (Usuario_Dni='$this->Usuario_Dni' && Promociones_Fecha = '$this->Promociones_fecha' && Promociones_Hora = '$this->Promociones_hora')";
+		$fecha = date("Y-m-d");
+		$sql = "SELECT * FROM inscripcionpromociones WHERE (Usuario_Dni='$this->Usuario_Dni' && Promociones_Fecha = '$this->Promociones_fecha' && Promociones_Fecha > '$fecha' && Promociones_Hora = '$this->Promociones_hora')";
 		$result = $this->mysqli->query( $sql );	
 
 		if ( $result->num_rows == 1 ) {
-	
-			$sql = "DELETE FROM inscripcionpromociones WHERE (Usuario_Dni='$this->Usuario_Dni' && Promociones_Fecha = '$this->Promociones_fecha' && Promociones_Hora = '$this->Promociones_hora')";
+	        $sql = "SELECT Dni FROM Usuario WHERE Login = 'admin'";
+			$admin1 = $this->mysqli->query($sql);							
+			$admin2 = $admin1->fetch_array();
+			$a =  $admin2 ['Dni'];
 			
+			$sql = "DELETE FROM reserva WHERE (Usuario_Dni='$a' && Pista_Fecha = '$this->Promociones_fecha' && Pista_Hora = '$this->Promociones_hora')";
+			$this->mysqli->query( $sql );
+			
+			$sql = "DELETE FROM inscripcionpromociones WHERE (Usuario_Dni='$this->Usuario_Dni' && Promociones_Fecha = '$this->Promociones_fecha' && Promociones_Hora = '$this->Promociones_hora')";
 			$this->mysqli->query( $sql );
 	
 			return "Borrado correctamente";

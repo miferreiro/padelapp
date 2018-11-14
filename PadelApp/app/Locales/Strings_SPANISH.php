@@ -9,6 +9,7 @@ array(
 	'QA' => 'QA',
 	'Promociones_Hora' => 'Hora',
 	'Promociones_Fecha' => 'Fecha',
+	'Inscritos en la promoción' => 'Inscritos en la promoción',
 	'Ya está inscrito en esa promoción' => 'Ya está inscrito en esa promoción',
 	'Número máximo de inscritos alcanzado' => 'Número máximo de inscritos alcanzado',
 	'Ya ha reservado esa pista' => 'Ya ha reservado esa pista',
