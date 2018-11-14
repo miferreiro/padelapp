@@ -34,15 +34,12 @@ class RESERVA_SHOWALL {
 							<?php echo $strings[$atributo]?>
 						</th>
 <?php
-					}
-	 if($_SESSION['tipo'] == 'Deportista'){		
+					}	
 ?>
 					<th>
 						<?php echo $strings['Opciones']?>
 					</th>
-<?php
-				  }
-?>
+
 				</tr>
 			</thead>
 <?php
