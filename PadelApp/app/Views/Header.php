@@ -77,7 +77,15 @@
 		'pageLength': 7,
 		'lengthMenu': [ 7, 14, 21, 28, 35, 42, 49, 56, 63, 70 ],
 		  })
-	  })
+	  });
+	  </script>
+	  <script>
+	  $(document).ready(function(){
+		  $('#mydatatableReservaPistas').DataTable( {
+		'pageLength': 7,
+		'lengthMenu': [ 7, 14, 21, 28, 35, 42, 49, 56, 63, 70 ],
+		  })
+	  });
 	  </script>  
 	  <script>
 	  $(document).ready(function() {		  
