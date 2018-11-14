@@ -85,12 +85,13 @@
         dateFormat: "dd/mm/yy",
         showOn: "button",
         showAnim: 'slideDown',
-        showButtonPanel: true ,
+        showButtonPanel: true,
+		closeText: "Clear",
         autoSize: true,
         buttonImage: "//jqueryui.com/resources/demos/datepicker/images/calendar.gif",
         buttonImageOnly: true,
         buttonText: "Select date",
-        closeText: "Clear",
+        
 		onSelect: function() {
 			if ($('#mydatatablePistas') != null) {
 				$('#mydatatablePistas').DataTable().search( $(this).val() ).draw();
@@ -101,9 +102,13 @@
 			if ($('#mydatatablePistasShowAll') != null) {
 				$('#mydatatablePistasShowAll').DataTable().search( $(this).val() ).draw();
 			}
-			if($('#mydatatableProponerHora')!= null)}
+			if($('#mydatatableProponerHora')!= null){
 				$('#mydatatableProponerHora').DataTable().search( $(this).val() ).draw();
 			}
+			if($('#mydatatableReservaPistas')!= null){
+				$('#mydatatableReservaPistas').DataTable().search( $(this).val() ).draw();
+			}
+		}
     });
     $(document).on("click", ".ui-datepicker-close", function(){
         $('.datepicker').val("");

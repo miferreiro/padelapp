@@ -21,8 +21,9 @@ class RESERVA_SHOWALL {
 			<h2>
 				<?php echo $strings['Tabla de datos'];?>
 			</h2>
+			<div class="datepicker"></div>
 			<div class="col-md-6">
-			<table class="table">
+			<table id="mydatatableReservaPistas" name="mydatatableReservaPistas" class="table table-sm" align="center" style="width:100%">
 				<thead class="thead-light">
 				
 				<tr>
