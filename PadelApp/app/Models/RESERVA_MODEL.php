@@ -108,8 +108,8 @@ class RESERVA_MODEL{
 
     
 	function DELETE() {
-		
-		$sql = "SELECT * FROM RESERVA WHERE (Usuario_Dni='$this->Usuario_Dni' && Pista_idPista = '$this->Pista_idPista' && Pista_Fecha = '$this->Pista_fecha' && Pista_Hora = '$this->Pista_hora')";
+		$fecha = date("Y-m-d");
+		$sql = "SELECT * FROM RESERVA WHERE (Usuario_Dni='$this->Usuario_Dni' && Pista_idPista = '$this->Pista_idPista' && Pista_Fecha = '$this->Pista_fecha' && Pista_Fecha > '$fecha'  && Pista_Hora = '$this->Pista_hora')";
 	
 		$result = $this->mysqli->query( $sql );
 	

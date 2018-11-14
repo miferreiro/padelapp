@@ -35,12 +35,16 @@ class RESERVA_SHOWALL {
 						</th>
 <?php
 					}
+	 if($_SESSION['tipo'] == 'Deportista'){		
 ?>
-					<th colspan="4" >
+					<th>
 						<?php echo $strings['Opciones']?>
 					</th>
-
+<?php
+				  }
+?>
 				</tr>
+			</thead>
 <?php
 				while ( $fila = mysqli_fetch_array( $this->datos ) ) { 
 ?>
@@ -61,6 +65,10 @@ class RESERVA_SHOWALL {
 					}
 ?>
 					<td>
+<?php
+			if($_SESSION['tipo'] == 'Deportista'){	
+				if(date("Y-m-d")<>$fila['Pista_Fecha']){
+?>
 						<form action="../Controllers/RESERVA_CONTROLLER.php" method="get" style="display:inline" >
 							<input type="hidden" name="Usuario_Dni" value="<?php echo $fila['Usuario_Dni']; ?>">
 							<input type="hidden" name="Pista_idPista" value="<?php echo $fila['Pista_idPista']; ?>">
@@ -68,16 +76,17 @@ class RESERVA_SHOWALL {
 							<input type="hidden" name="Pista_Hora" value="<?php echo $fila['Pista_Hora']; ?>">
 				
 								<button id ="buttonBien" type="submit" name="action" value="DELETE" ><img src="../Views/icon/delete_big.png" alt="<?php echo $strings['Eliminar']?>" width="20" height="20" /></button>				
-					<td>						
-								<button id ="buttonBien" type="submit" name="action" value="SHOWCURRENT" ><img src="../Views/icon/verdetalles_2.jpg" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>
 						</form>
-				    <td>								
+<?php 
+													   }
+			}
+?>						
 				</tr>
 <?php
-				}
+						 }
+								   
 ?>
 				
-				</thead>
 			</table>
 				
 				<tr align="center">

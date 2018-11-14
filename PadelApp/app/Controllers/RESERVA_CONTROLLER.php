@@ -115,7 +115,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 						//Variable que almacena los datos de la busqueda
 						$datos = $RESERVA->SEARCH();
 						//Variable que almacena array con el nombre de los atributos
-						$lista = array( 'Usuario_Dni','Pista_idPista','Pista_Hora','Pista_Fecha');
+						$lista = array( 'Pista_Fecha','Pista_Hora','Pista_idPista','Usuario_Dni');
 						new RESERVA_SHOWALL( $lista, $datos);//nos muestra una vista showall con todos los permisos			
 			
 }

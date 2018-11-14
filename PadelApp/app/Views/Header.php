@@ -259,7 +259,7 @@ que comprueba permisos para cada una de las acciones -->
 
             <li class="nav-item dropdown" style="display: block">
 			<form name='idiomform' action="../Functions/CambioIdioma.php" method="post">
-              <a class="nav-link dropdown-toggle" style="color: white" href="<?php echo $strings['idioma']; ?>" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Idiomas</a>
+              <a class="nav-link dropdown-toggle" style="color: white" href="<?php echo $strings['idioma']; ?>" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $strings['idioma']; ?></a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <button id ="buttonBien" type="submit"  name="idioma" value="SPANISH" ><a class="dropdown-item"/> <?php echo $strings['Cambiar idioma a español']?></a></button>
 				

@@ -109,7 +109,7 @@ class Pista_Showall{
 						}else{
 ?>						    
 							<form action="../Controllers/RESERVA_CONTROLLER.php" method="get" style="display:inline" >
-							<button type="submit" name="action" value="ADD" style="background-color: #35B109; width: 100%">
+							<button type="submit" name="action" value="ADD" alt="<?php echo $strings['Reservar pista'] ?>" style="background-color: #35B109; width: 100%" >
 							<input type="hidden" name="Usuario_Dni" value="<?php echo $_SESSION['dni']; ?>">
 							<input type="hidden" name="Pista_idPista" value="<?php echo $aux[$i+1] ?>">
 							<input type="hidden" name="Pista_Hora" value="<?php echo $horas[$x] ?>">
