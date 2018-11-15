@@ -230,7 +230,55 @@ class ENFRENTAMIENTO_MODEL{
 		else {
 			return 'No existe en la base de datos';
 		}
-	} 
+	}
+	function ganador($ResultadoSet1Par1,$ResultadoSet2Par1,$ResultadoSet3Par1,$ResultadoSet1Par2,$ResultadoSet2Par2,$ResultadoSet3Par2,$NumPareja1){
+		$countPar1=0;
+		$countPar2=0;
+		if($ResultadoSet1Par1>$ResultadoSet1Par2){
+			$countPar1++;
+		}else{
+			$countPar2++;
+		}
+		if($ResultadoSet2Par1>$ResultadoSet2Par2){
+			$countPar1++;
+		}else{
+			$countPar2++;
+		}
+		if($ResultadoSet3Par1!=0 || $ResultadoSet3Par2!=0){
+			
+		if($ResultadoSet3Par1>$ResultadoSet3Par2){
+			$countPar1++;
+		}else{
+			$countPar2++;
+		}
+		}
+		
+		if($countPar1>$countPar2){
+			$sql = "UPDATE PARTIDO SET ,
+					ParejaGanadora = '$NumPareja1',
+					ParejaPerdedora = '$this->NumPareja'
+				WHERE ((IdCampeonato = '$this->IdCampeonato') && (Tipo = '$this->Tipo') && (Nivel = '$this->Nivel') && (Grupo_Letra = '$this->Letra') && (NumEnfrentamiento = '$this->NumEnfrentamiento')
+				)";
+
+			if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
+				return 'Error en la modificación';
+			} else { 
+				return 'Modificado correctamente';
+			}
+		}else{
+			$sql = "UPDATE PARTIDO SET 
+					ParejaGanadora = '$this->NumPareja',
+					ParejaPerdedora = '$NumPareja1'
+				WHERE ((IdCampeonato = '$this->IdCampeonato') && (Tipo = '$this->Tipo') && (Nivel = '$this->Nivel') && (Grupo_Letra = '$this->Letra') && (NumEnfrentamiento = '$this->NumEnfrentamiento')
+				)";
+
+			if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
+				return 'Error en la modificación';
+			} else { 
+				return 'Modificado correctamente';
+			}
+		}
+	}	
 	function EDIT2() {
 		
 		$sql = 

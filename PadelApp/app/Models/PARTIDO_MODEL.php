@@ -161,7 +161,8 @@ class PARTIDO_MODEL{
 			$result = $resultado->fetch_array();	
 			return $result;
 		}
-	} 
+	}
+
 	function EDIT() {
 		
 		$sql = "SELECT * FROM PARTIDO WHERE  (IdCampeonato = '$this->IdCampeonato') && (Tipo = '$this->Tipo') && (Nivel = '$this->Nivel') && (Grupo_Letra = '$this->Letra') && (NumEnfrentamiento = '$this->NumEnfrentamiento')";
@@ -180,7 +181,7 @@ class PARTIDO_MODEL{
 					Hora = '$this->Hora',
 					ParejaGanadora = '$this->ParejaGanadora',
 					ParejaPerdedora = '$this->ParejaPerdedora'
-				WHERE (IdCampeonato = '$this->IdCampeonato') && (Tipo = '$this->Tipo') && (Nivel = '$this->Nivel') && (Grupo_Letra = '$this->Letra') && (NumEnfrentamiento = '$this->NumEnfrentamiento')
+				WHERE ((IdCampeonato = '$this->IdCampeonato') && (Tipo = '$this->Tipo') && (Nivel = '$this->Nivel') && (Grupo_Letra = '$this->Letra') && (NumEnfrentamiento = '$this->NumEnfrentamiento')
 				)";
 
 			if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
@@ -204,7 +205,7 @@ class PARTIDO_MODEL{
 			$sql = "UPDATE PARTIDO SET 
 					Fecha = NULL,
 					Hora = NULL
-				WHERE (IdCampeonato = '$this->IdCampeonato') && (Tipo = '$this->Tipo') && (Nivel = '$this->Nivel') && (Grupo_Letra = '$this->Letra') && (NumEnfrentamiento = '$this->NumEnfrentamiento')
+				WHERE ((IdCampeonato = '$this->IdCampeonato') && (Tipo = '$this->Tipo') && (Nivel = '$this->Nivel') && (Grupo_Letra = '$this->Letra') && (NumEnfrentamiento = '$this->NumEnfrentamiento')
 				)";
 	echo $sql;
 			if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {

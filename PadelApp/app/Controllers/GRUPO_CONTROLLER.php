@@ -7,6 +7,7 @@ if (!IsAuthenticated()){
  	header('Location:../index.php');
 }
 
+include '../Models/PARTIDO_MODEL.php';
 include '../Models/GRUPO_MODEL.php';
 include '../Models/ENFRENTAMIENTO_MODEL.php';
 include '../Views/GRUPO/GRUPO_CATEGORIA_SHOWALL_View.php';
@@ -56,10 +57,11 @@ switch ( $_REQUEST[ 'action' ] ) {
 		} else {
 				$ENFRENTAMIENTO1 = new ENFRENTAMIENTO_MODEL($_REQUEST['IdCampeonato'],$_REQUEST['Tipo'],$_REQUEST['Nivel'],$_REQUEST['Letra'],$_REQUEST['NumEnfrentamiento'],$_REQUEST['pareja1'],$_REQUEST['ResultadoSet1Par1'],$_REQUEST['ResultadoSet2Par1'],$_REQUEST['ResultadoSet3Par1'],'');
 				$respuesta = $ENFRENTAMIENTO1->EDIT();
+				
 			
 				$ENFRENTAMIENTO2 = new ENFRENTAMIENTO_MODEL($_REQUEST['IdCampeonato'],$_REQUEST['Tipo'],$_REQUEST['Nivel'],$_REQUEST['Letra'],$_REQUEST['NumEnfrentamiento'],$_REQUEST['pareja2'],$_REQUEST['ResultadoSet1Par2'],$_REQUEST['ResultadoSet2Par2'],$_REQUEST['ResultadoSet3Par2'],'');
 				$respuesta2 = $ENFRENTAMIENTO2->EDIT();
-				echo $respuesta2;
+			    $ENFRENTAMIENTO2->ganador($_REQUEST['ResultadoSet1Par1'],$_REQUEST['ResultadoSet2Par1'],$_REQUEST['ResultadoSet3Par1'],$_REQUEST['ResultadoSet1Par2'],$_REQUEST['ResultadoSet2Par2'],$_REQUEST['ResultadoSet3Par2'],$_REQUEST['pareja1']);
 			new MESSAGE( $respuesta, '../Controllers/GRUPO_CONTROLLER.php?IdCampeonato=' . $_REQUEST['IdCampeonato'] . '&Tipo='.$_REQUEST['Tipo']. '&Nivel='.$_REQUEST['Nivel'] . '&Letra='.$_REQUEST['Letra'] . '&action=TABLA');
 		}
 		break;
