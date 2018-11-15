@@ -146,7 +146,8 @@ class ENFRENTAMIENTO_MODEL{
 
 	function RellenaDatos() { 
 
-		$sql = "SELECT DISTINCT E1.IdCampeonato as IdCampeonato,E1.Tipo as Tipo,E1.Nivel as Nivel,E1.Letra as Letra, E2.NumPareja as pareja1, E1.NumPareja as pareja2,
+		$sql = "SELECT DISTINCT E1.IdCampeonato as IdCampeonato,E1.Tipo as Tipo,E1.Nivel as Nivel,E1.Letra as Letra,
+		E1.NumEnfrentamiento,E2.NumPareja as pareja1, E1.NumPareja as pareja2,
 		E1.ResultadoSet1 as ResultadoSet1Par1, E1.ResultadoSet2 as ResultadoSet2Par1, E1.ResultadoSet3 as ResultadoSet3Par1, 
 		E2.ResultadoSet1 as ResultadoSet1Par2, E2.ResultadoSet2 as ResultadoSet2Par2, E2.ResultadoSet3 as ResultadoSet3Par2,
 		E1.EstadoPropuesta as propuestaPareja1,  E2.EstadoPropuesta as propuestaPareja2
@@ -169,7 +170,7 @@ class ENFRENTAMIENTO_MODEL{
 	} 
 	function RellenaDatos2() { 
 
-		$sql = "SELECT DISTINCT E1.IdCampeonato as IdCampeonato,E1.Tipo as Tipo,E1.Nivel as Nivel,E1.Letra as Letra, E1.NumPareja as pareja1, E2.NumPareja as pareja2, 
+		$sql = "SELECT DISTINCT E1.IdCampeonato as IdCampeonato,E1.Tipo as Tipo,E1.Nivel as Nivel,E1.Letra as Letra,E1.NumEnfrentamiento, E1.NumPareja as pareja1, E2.NumPareja as pareja2, 
 		E1.NumEnfrentamiento as NumEnfrentamiento, 
 		E1.ResultadoSet1 as ResultadoSet1Par1, E1.ResultadoSet2 as ResultadoSet2Par1, E1.ResultadoSet3 as ResultadoSet3Par1, 
 		E2.ResultadoSet1 as ResultadoSet1Par2, E2.ResultadoSet2 as ResultadoSet2Par2, E2.ResultadoSet3 as ResultadoSet3Par2,
