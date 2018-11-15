@@ -38,14 +38,14 @@ class CALENDARIO_TABLA{
 			$pareja2=$row['pareja2'];
 
 			
-			$numEnfrentamiento=$row['numEnfrentamiento'];
+			$NumEnfrentamiento=$row['NumEnfrentamiento'];
 			$resultado11=$row['1ResultadoSet1'];
 			$resultado21=$row['1ResultadoSet2'];
 			$resultado31=$row['1ResultadoSet3'];
 			$resultado12=$row['2ResultadoSet1'];
 			$resultado22=$row['2ResultadoSet2'];
 			$resultado32=$row['2ResultadoSet3'];
-			$arrayEnfrentamientos[] = array('pareja1'=> $pareja1, 'pareja2'=> $pareja2, 'numEnfrentamiento'=> $numEnfrentamiento,
+			$arrayEnfrentamientos[] = array('pareja1'=> $pareja1, 'pareja2'=> $pareja2, 'NumEnfrentamiento'=> $NumEnfrentamiento,
 			'1ResultadoSet1'=> $resultado11, '1ResultadoSet2'=> $resultado21, '1ResultadoSet3'=> $resultado31, 
 			'2ResultadoSet1'=> $resultado12, '2ResultadoSet2'=> $resultado22, '2ResultadoSet3'=> $resultado32, 
 			
@@ -59,7 +59,7 @@ class CALENDARIO_TABLA{
 			$pareja1=$row['pareja1'];
 			$pareja2=$row['pareja2'];
 			
-			$numEnfrentamiento=$row['numEnfrentamiento'];
+			$NumEnfrentamiento=$row['NumEnfrentamiento'];
 			$resultado11=$row['1ResultadoSet1'];
 			$resultado21=$row['1ResultadoSet2'];
 			$resultado31=$row['1ResultadoSet3'];
@@ -68,7 +68,7 @@ class CALENDARIO_TABLA{
 			$resultado32=$row['2ResultadoSet3'];
 			$propuestaPareja1=$row['propuestaPareja1'];
 			$propuestaPareja2=$row['propuestaPareja2'];
-			$arrayEnfrentamientos2[] = array('pareja1'=> $pareja1, 'pareja2'=> $pareja2, 'numEnfrentamiento'=> $numEnfrentamiento,
+			$arrayEnfrentamientos2[] = array('pareja1'=> $pareja1, 'pareja2'=> $pareja2, 'NumEnfrentamiento'=> $NumEnfrentamiento,
 			'1ResultadoSet1'=> $resultado11, '1ResultadoSet2'=> $resultado21, '1ResultadoSet3'=> $resultado31, 
 			'2ResultadoSet1'=> $resultado12, '2ResultadoSet2'=> $resultado22, '2ResultadoSet3'=> $resultado32, 
 			
@@ -138,7 +138,7 @@ $cont = 0;
 											<input type="hidden" name="Tipo" value="<?php echo $this->vuelta['Tipo']; ?>">		
 											<input type="hidden" name="Nivel" value="<?php echo $this->vuelta['Nivel']; ?>">	
 											<input type="hidden" name="Letra" value="<?php echo $this->vuelta['Letra']; ?>">
-											<input type="hidden" name="numEnfrentamiento" value="<?php echo $fila2['numEnfrentamiento']; ?>">
+											<input type="hidden" name="NumEnfrentamiento" value="<?php echo $fila2['NumEnfrentamiento']; ?>">
 											<input type="hidden" name="pareja1" value="<?php echo $fila2['pareja1']; ?>">
 											<input type="hidden" name="pareja2" value="<?php echo $fila2['pareja2']; ?>">
 												<input type="hidden" name="1ResultadoSet1" value="<?php echo $fila2['1ResultadoSet1']; ?>">
@@ -147,7 +147,7 @@ $cont = 0;
 												<input type="hidden" name="2ResultadoSet1" value="<?php echo $fila2['2ResultadoSet1']; ?>">
 													<input type="hidden" name="2ResultadoSet2" value="<?php echo $fila2['2ResultadoSet2']; ?>">
 														<input type="hidden" name="2ResultadoSet3" value="<?php echo $fila2['2ResultadoSet3']; ?>">
-											<?php echo $fila2['1ResultadoSet1'] . " PP1: " . $fila2['propuestaPareja1']. " PP2: " . $fila2['propuestaPareja2'] . " enfre: " . $fila2['numEnfrentamiento'];?> 
+											<?php echo $fila2['1ResultadoSet1'] . " PP1: " . $fila2['propuestaPareja1']. " PP2: " . $fila2['propuestaPareja2'] . " enfre: " . $fila2['NumEnfrentamiento'];?> 
 												<button id ="buttonBien"  type="submit" name="action" value="INFORMACION" ><img src="../Views/icon/calendario.png" alt="<?php echo $strings['modificar']?>"  width="20" height="20" /></button>	
 											</form>											
 <?php 
@@ -160,7 +160,7 @@ $cont = 0;
 												<input type="hidden" name="Tipo" value="<?php echo $this->vuelta['Tipo']; ?>">		
 												<input type="hidden" name="Nivel" value="<?php echo $this->vuelta['Nivel']; ?>">	
 												<input type="hidden" name="Letra" value="<?php echo $this->vuelta['Letra']; ?>">
-												<input type="hidden" name="numEnfrentamiento" value="<?php echo $fila2['numEnfrentamiento']; ?>">
+												<input type="hidden" name="NumEnfrentamiento" value="<?php echo $fila2['NumEnfrentamiento']; ?>">
 												<input type="hidden" name="pareja1" value="<?php echo $fila2['pareja1']; ?>">
 												<input type="hidden" name="pareja2" value="<?php echo $fila2['pareja2']; ?>">
 												<input type="hidden" name="1ResultadoSet1" value="<?php echo $fila2['1ResultadoSet1']; ?>">
@@ -169,7 +169,7 @@ $cont = 0;
 												<input type="hidden" name="2ResultadoSet1" value="<?php echo $fila2['2ResultadoSet1']; ?>">
 													<input type="hidden" name="2ResultadoSet2" value="<?php echo $fila2['2ResultadoSet2']; ?>">
 														<input type="hidden" name="2ResultadoSet3" value="<?php echo $fila2['2ResultadoSet3']; ?>">
-													<?php echo $fila2['1ResultadoSet1'] . " PP1: " . $fila2['propuestaPareja1']. " PP2: " . $fila2['propuestaPareja2'] . " enfre: " . $fila2['numEnfrentamiento'];?> 
+													<?php echo $fila2['1ResultadoSet1'] . " PP1: " . $fila2['propuestaPareja1']. " PP2: " . $fila2['propuestaPareja2'] . " enfre: " . $fila2['NumEnfrentamiento'];?> 
 													<button id ="buttonBien"  type="submit" name="action" value="INFORMACION" ><img src="../Views/icon/calendario.png" alt="<?php echo $strings['modificar']?>"  width="20" height="20" /></button>			
 													<?php if($this->capitan){ ?>
 													<button id ="buttonBien"  type="submit" name="action" value="ACEPTAR" ><img src="../Views/icon/recibido.png" alt="<?php echo $strings['modificar']?>"  width="20" height="20" /></button>			
@@ -185,7 +185,7 @@ $cont = 0;
 													<input type="hidden" name="Tipo" value="<?php echo $this->vuelta['Tipo']; ?>">		
 													<input type="hidden" name="Nivel" value="<?php echo $this->vuelta['Nivel']; ?>">	
 													<input type="hidden" name="Letra" value="<?php echo $this->vuelta['Letra']; ?>">
-													<input type="hidden" name="numEnfrentamiento" value="<?php echo $fila2['numEnfrentamiento']; ?>">
+													<input type="hidden" name="NumEnfrentamiento" value="<?php echo $fila2['NumEnfrentamiento']; ?>">
 													<input type="hidden" name="pareja1" value="<?php echo $fila2['pareja1']; ?>">
 													<input type="hidden" name="pareja2" value="<?php echo $fila2['pareja2']; ?>">
 												<input type="hidden" name="1ResultadoSet1" value="<?php echo $fila2['1ResultadoSet1']; ?>">
@@ -194,7 +194,7 @@ $cont = 0;
 												<input type="hidden" name="2ResultadoSet1" value="<?php echo $fila2['2ResultadoSet1']; ?>">
 													<input type="hidden" name="2ResultadoSet2" value="<?php echo $fila2['2ResultadoSet2']; ?>">
 														<input type="hidden" name="2ResultadoSet3" value="<?php echo $fila2['2ResultadoSet3']; ?>">
-													<?php echo $fila2['1ResultadoSet1'] . " PP1: " . $fila2['propuestaPareja1']. " PP2: " . $fila2['propuestaPareja2'] . " enfre: " . $fila2['numEnfrentamiento'];?> 
+													<?php echo $fila2['1ResultadoSet1'] . " PP1: " . $fila2['propuestaPareja1']. " PP2: " . $fila2['propuestaPareja2'] . " enfre: " . $fila2['NumEnfrentamiento'];?> 
 														<button id ="buttonBien"  type="submit" name="action" value="INFORMACION" ><img src="../Views/icon/calendario.png" alt="<?php echo $strings['modificar']?>"  width="20" height="20" /></button>			
 													</form>														
 <?php 
@@ -206,7 +206,7 @@ $cont = 0;
 														<input type="hidden" name="Tipo" value="<?php echo $this->vuelta['Tipo']; ?>">		
 														<input type="hidden" name="Nivel" value="<?php echo $this->vuelta['Nivel']; ?>">	
 														<input type="hidden" name="Letra" value="<?php echo $this->vuelta['Letra']; ?>">
-														<input type="hidden" name="numEnfrentamiento" value="<?php echo $fila2['numEnfrentamiento']; ?>">
+														<input type="hidden" name="NumEnfrentamiento" value="<?php echo $fila2['NumEnfrentamiento']; ?>">
 														<input type="hidden" name="pareja1" value="<?php echo $fila2['pareja1']; ?>">
 														<input type="hidden" name="pareja2" value="<?php echo $fila2['pareja2']; ?>">
 												<input type="hidden" name="1ResultadoSet1" value="<?php echo $fila2['1ResultadoSet1']; ?>">
@@ -215,7 +215,7 @@ $cont = 0;
 												<input type="hidden" name="2ResultadoSet1" value="<?php echo $fila2['2ResultadoSet1']; ?>">
 													<input type="hidden" name="2ResultadoSet2" value="<?php echo $fila2['2ResultadoSet2']; ?>">
 														<input type="hidden" name="2ResultadoSet3" value="<?php echo $fila2['2ResultadoSet3']; ?>">
-														<?php echo $fila2['1ResultadoSet1'] . " PP1: " . $fila2['propuestaPareja1']. " PP2: " . $fila2['propuestaPareja2'] . " enfre: " . $fila2['numEnfrentamiento'];?> 
+														<?php echo $fila2['1ResultadoSet1'] . " PP1: " . $fila2['propuestaPareja1']. " PP2: " . $fila2['propuestaPareja2'] . " enfre: " . $fila2['NumEnfrentamiento'];?> 
 															<button id ="buttonBien"  type="submit" name="action" value="INFORMACION" ><img src="../Views/icon/calendario.png" alt="<?php echo $strings['modificar']?>"  width="20" height="20" /></button>			
 															<?php if($this->capitan){ ?>
 															<button id ="buttonBien"  type="submit" name="action" value="PROPONER" ><img src="../Views/icon/enviar.png" alt="<?php echo $strings['modificar']?>"  width="20" height="20" /></button>															

@@ -34,14 +34,14 @@ function create_grupo($idCampeonato,$tipo,$nivel,$letra) {
 	return $GRUPO;
 }
 
-function create_partido($idCampeonato,$tipo,$nivel,$letra,$numEnfrentamiento) {
+function create_partido($idCampeonato,$tipo,$nivel,$letra,$NumEnfrentamiento) {
 	 
 	$PARTIDO = new PARTIDO_MODEL(
 		$idCampeonato,
 		$tipo,
 		$nivel,
 		$letra,
-		$numEnfrentamiento,
+		$NumEnfrentamiento,
 		NULL,
 		NULL,
 		NULL,
@@ -51,14 +51,14 @@ function create_partido($idCampeonato,$tipo,$nivel,$letra,$numEnfrentamiento) {
 	return $PARTIDO;
 }
 
-function create_enfrentamiento($idCampeonato,$tipo,$nivel,$letra,$numEnfrentamiento,$numPareja) {
+function create_enfrentamiento($idCampeonato,$tipo,$nivel,$letra,$NumEnfrentamiento,$numPareja) {
 	 
 	$ENFRENTAMIENTO = new ENFRENTAMIENTO_MODEL(
 		$idCampeonato,
 		$tipo,
 		$nivel,
 		$letra,
-		$numEnfrentamiento,
+		$NumEnfrentamiento,
 		$numPareja,
 		NULL,
 		NULL,
@@ -168,7 +168,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 
 					$GRUPO = create_grupo($idCampeonato,$tipo,$nivel,$letra);
 					$GRUPO->ADD();
-					$numEnfrentamiento = 1;
+					$NumEnfrentamiento = 1;
 					
 					for($p1 =  (($i )*8) ; $p1 < 8 + (($i)*8);$p1++){
 
@@ -181,23 +181,23 @@ switch ( $_REQUEST[ 'action' ] ) {
 							//echo 'Pareja 2: ' . $numPareja2 . ' -- $p2; ' . $p2;
 								?><!--<br>-->  <?php
 							
-							$PARTIDO = create_partido($idCampeonato,$tipo,$nivel,$letra,$numEnfrentamiento);
+							$PARTIDO = create_partido($idCampeonato,$tipo,$nivel,$letra,$NumEnfrentamiento);
 							$mensajeP = $PARTIDO->ADD();
-							//echo "Mensaje Partido: " . $mensajeP . "(" . $numEnfrentamiento . ")" . "\n" ;
+							//echo "Mensaje Partido: " . $mensajeP . "(" . $NumEnfrentamiento . ")" . "\n" ;
 							?><!--<br>-->  <?php
 							
-							$ENFRENTAMIENTO = create_enfrentamiento($idCampeonato,$tipo,$nivel,$letra,$numEnfrentamiento,$numPareja1);
+							$ENFRENTAMIENTO = create_enfrentamiento($idCampeonato,$tipo,$nivel,$letra,$NumEnfrentamiento,$numPareja1);
 							$mensajeE1 = $ENFRENTAMIENTO->ADD();
 							//echo "Mensaje Enfrentamiento: " . $mensajeE1 . "(" . $numPareja1 . ")" . "\n"; 
 							
 							?><!--<br>-->  <?php
-							$ENFRENTAMIENTO = create_enfrentamiento($idCampeonato,$tipo,$nivel,$letra,$numEnfrentamiento,$numPareja2);
+							$ENFRENTAMIENTO = create_enfrentamiento($idCampeonato,$tipo,$nivel,$letra,$NumEnfrentamiento,$numPareja2);
 							$mensajeE2 = $ENFRENTAMIENTO->ADD();		
 							//echo "Mensaje Enfrentamiento: " . $mensajeE2 . "(" . $numPareja2 . ")" . "\n";
 							$numParejasAsignadas++;
 							?><!--<br>-->  <?php
 							?><!--<br>-->  <?php
-							$numEnfrentamiento++;
+							$NumEnfrentamiento++;
 								
 						}					
 					}
@@ -254,25 +254,25 @@ switch ( $_REQUEST[ 'action' ] ) {
 						//echo 'ParejaContraria: ' . $parejaContraria2 . ' -- $i; ' . $i;
 								?><!-- <br> --><?php
 						
-						$PARTIDO = create_partido($idCampeonato,$tipo,$nivel,$letra,$numEnfrentamiento);
+						$PARTIDO = create_partido($idCampeonato,$tipo,$nivel,$letra,$NumEnfrentamiento);
 						$mensajeP1 = $PARTIDO->ADD();
-						//echo "Mensaje Partido: " . $mensajeP1 . "(" . $numEnfrentamiento . ")" . "\n" ;
+						//echo "Mensaje Partido: " . $mensajeP1 . "(" . $NumEnfrentamiento . ")" . "\n" ;
 						?><!-- <br> --><?php
 						
 						
-						$ENFRENTAMIENTO = create_enfrentamiento($idCampeonato,$tipo,$nivel,$letra,$numEnfrentamiento,$parejaSobrante1 );
+						$ENFRENTAMIENTO = create_enfrentamiento($idCampeonato,$tipo,$nivel,$letra,$NumEnfrentamiento,$parejaSobrante1 );
 						$mensajeE11 = $ENFRENTAMIENTO->ADD();
 						//echo "Mensaje Enfrentamiento2: " . $mensajeE11 . "(" . $parejaSobrante1 . ")" . "\n"; 
 						
 						?> <!--<br>--> <?php
-						$ENFRENTAMIENTO = create_enfrentamiento($idCampeonato,$tipo,$nivel,$letra,$numEnfrentamiento,$parejaContraria2 );
+						$ENFRENTAMIENTO = create_enfrentamiento($idCampeonato,$tipo,$nivel,$letra,$NumEnfrentamiento,$parejaContraria2 );
 						$mensajeE22 = $ENFRENTAMIENTO->ADD();		
 						//echo "Mensaje Enfrentamiento2: " . $mensajeE22 . "(" . $parejaContraria2  . ")" . "\n";
 						
 						//$numParejasAsignadas++;
 						?> <!--<br>--> <?php
 						?> <!--<br>--> <?php
-						$numEnfrentamiento++;
+						$NumEnfrentamiento++;
 			
 					}
 					
@@ -294,7 +294,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 					
 				}
 				
-				//echo $numEnfrentamiento;
+				//echo $NumEnfrentamiento;
 				//echo"\n\n";
 				//echo $numParejasAsignadas;
 				//echo"\n\n";

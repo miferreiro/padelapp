@@ -68,6 +68,7 @@ class ENFRENTAMIENTO_EDIT {
 						<td class="formThTd">
 
 							<select name="ResultadoSet1Par1" required>
+							  <option > </option>
 							  <option value="1">1</option>
 							  <option value="2">2</option>
 							  <option value="3">3</option>
@@ -82,6 +83,7 @@ class ENFRENTAMIENTO_EDIT {
 
 
 							<select name="ResultadoSet1Par2" required>
+							  <option > </option>
 							  <option value="1">1</option>
 							  <option value="2">2</option>
 							  <option value="3">3</option>
@@ -98,6 +100,7 @@ class ENFRENTAMIENTO_EDIT {
 						<td class="formThTd">
 
 							<select name="ResultadoSet2Par1" required>
+							  <option > </option>
 							  <option value="1">1</option>
 							  <option value="2">2</option>
 							  <option value="3">3</option>
@@ -112,6 +115,7 @@ class ENFRENTAMIENTO_EDIT {
 
 
 							<select name="ResultadoSet2Par2" required>
+							  <option > </option>
 							  <option value="1">1</option>
 							  <option value="2">2</option>
 							  <option value="3">3</option>
@@ -128,6 +132,7 @@ class ENFRENTAMIENTO_EDIT {
 						<td class="formThTd">
 
 							<select name="ResultadoSet3Par1">
+							  <option > </option>
 							  <option value="1">1</option>
 							  <option value="2">2</option>
 							  <option value="3">3</option>
@@ -142,6 +147,7 @@ class ENFRENTAMIENTO_EDIT {
 
 
 							<select name="ResultadoSet3Par2">
+							  <option > </option>
 							  <option value="1">1</option>
 							  <option value="2">2</option>
 							  <option value="3">3</option>
