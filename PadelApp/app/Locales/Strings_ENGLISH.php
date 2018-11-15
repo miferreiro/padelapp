@@ -313,7 +313,32 @@ array(
 	'Ver mis reservas' => 'Check your bookings',
 	'Ver mis promociones' => 'Check your promotions',
 	'¿Quieres aceptar el horario de este partido propuesto por la otra pareja?' => 'Do you want to accept the schedule of this match proposed by the other couple?',
-	'¿Quieres ofrecer este horario de este partido a la otra pareja?' => 'Do you want to offer this time of this game to the other couple?'
+	'¿Quieres ofrecer este horario de este partido a la otra pareja?' => 'Do you want to offer this time of this game to the other couple?',
+	'Datos Usuario' => 'User Information',
+	'Tabla de borrado de usuario' => 'Delette user table',
+	'Formulario de modificación de usuario' => 'Modification user table',
+	'Formulario de inserción de usuario' => 'Formulario de inserción de usuario',
+	'Formulario de búsqueda de usuario' => 'User find table',
+	'Tabla de usuarios' => 'Users table',
+	'Tabla de pistas' => 'Court table',
+	'Información de pista' => 'Court information',
+	'Formulario de modificación de pista' => 'Modification court table',
+	'Tabla de borrado de pista' => 'Delete court table',
+	'Tabla de promociones' => 'Promotion table',
+	'Información de la promoción' => 'Promotion infomation',
+	'Búsqueda de una promoción' => 'Find a promotion',
+	'Añade una promoción' => 'Add a promotion',
+	'Borra una promoción' => 'Delete a promotion',
+	'Borra una reserva' => 'Delete a reservation',
+	'Tabla de reservas' => 'Reservation table',
+	'Información de una reserva' => 'Reservation information',
+	'Tabla de campeonatos' => 'Championship tables',
+	'Información de un campeonato' => 'Championship information',
+	'Formulario de inserción de un campeonato' => 'Championship add',
+	'Borrado de campeonato' => 'Delete championship',
+	'Búsqueda de campeonato' => 'Find a championship',
+	'Tabla de categorías' => 'Category table',
+	'Tabla de inscritos en la categoría' => 'Table of inscribed in a category'
 	)
 ;
 

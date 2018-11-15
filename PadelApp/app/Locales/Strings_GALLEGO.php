@@ -299,7 +299,32 @@ array(
 	'Ver mis reservas' => 'Ver as miñas reservas',
 	'Ver mis promociones' => 'Ver as miñas promocións',
 	'¿Quieres aceptar el horario de este partido propuesto por la otra pareja?' => '¿Queres aceptar o horario deste partido proposto pola outra parexa?',
-	'¿Quieres ofrecer este horario de este partido a la otra pareja?' => '¿Queres ofrecer este horario deste partido á outra parexa?'
+	'¿Quieres ofrecer este horario de este partido a la otra pareja?' => '¿Queres ofrecer este horario deste partido á outra parexa?',
+	'Datos Usuario' => 'Datos Usuario',
+	'Tabla de borrado de usuario' => 'Tabla de borrado de usuario',
+	'Formulario de modificación de usuario' => 'Formulario de modificación dun usuario',
+	'Formulario de búsqueda de usuario' => 'Formulario de búsqueda dun usuario',
+	'Tabla de usuarios' => 'Tabla de usuarios',
+	'Tabla de pistas' => 'Tabla de pistas',
+	'Información de pista' => 'Información dunha pista',
+	'Formulario de modificación de pista' => 'Formulario de modificación dunha pista',
+	'Tabla de borrado de pista' => 'Tabla de borrado dunha pista',
+	'Tabla de promociones' => 'Tabla das promocións',
+	'Información de la promoción' => 'Información da promoción',
+	'Búsqueda de una promoción' => 'Búsqueda dunha promoción',
+	'Añade una promoción' => 'Engade unha promoción',
+	'Borra una promoción' => 'Borra unha promoción',
+	'Borra una reserva' => 'Borra unha reserva',
+	'Tabla de reservas' => 'Tabla de reservas',
+	'Información de una reserva' => 'Información dunha reserva',
+	'Tabla de campeonatos' => 'Tabla de campeonatos',
+	'Información de un campeonato' => 'Información dun campeonato',
+	'Formulario de inserción de un campeonato' => 'Formulario de inserción dun campeonato',
+	'Borrado de campeonato' => 'Borrado dun campeonato',
+	'Búsqueda de campeonato' => 'Búsqueda dun campeonato',
+	'Tabla de categorías' => 'Tabla das categorías',
+	'Tabla de inscritos en la categoría' => 'Tabla de inscritos nunha categoría'
+	
 	)
 ;
 

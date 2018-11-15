@@ -16,7 +16,7 @@ class ENFRENTAMIENTO_EDIT {
 				<?php echo $strings['Formulario de modificación'];?>
 			</h2>
 			<form name="EDIT" action="../Controllers/GRUPO_CONTROLLER.php" method="post" enctype="multipart/form-data" /><!--onsubmit="return comprobarEditUsuario()">-->
-				<div class="col-sm-4">
+				<div class="col-sm-5">
 				<table class="table table-sm">
 					<thead class="thead-light">
 					<tr>
@@ -80,9 +80,38 @@ class ENFRENTAMIENTO_EDIT {
 
 							<?php echo(":")?>
 
-						<td class="formThTd">
 
 							<select name="ResultadoSet1Par2" required>
+							  <option value="1">1</option>
+							  <option value="2">2</option>
+							  <option value="3">3</option>
+							  <option value="4">4</option>
+							  <option value="5">5</option>
+							  <option value="6">6</option>
+							  <option value="7">7</option>
+							</select>							
+					</tr>
+						<tr>
+						<th class="formThTd">
+							<?php echo $strings['Resultado segundo set'];?>
+						</th>
+						<td class="formThTd">
+
+							<select name="ResultadoSet2Par1" required>
+							  <option value="1">1</option>
+							  <option value="2">2</option>
+							  <option value="3">3</option>
+							  <option value="4">4</option>
+							  <option value="5">5</option>
+							  <option value="6">6</option>
+							  <option value="7">7</option>
+							</select>
+							
+
+							<?php echo(":")?>
+
+
+							<select name="ResultadoSet2Par2" required>
 							  <option value="1">1</option>
 							  <option value="2">2</option>
 							  <option value="3">3</option>
@@ -96,7 +125,31 @@ class ENFRENTAMIENTO_EDIT {
 						<th class="formThTd">
 							<?php echo $strings['Resultado tercer set'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="Resultado" name="Resultado" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['Resultado']?>" maxlength="12" size="12" required  /> <!-- onBlur="comprobarVacio(this) && comprobarLongitud(this,'12') && comprobarTexto(this,'12') "-->
+						<td class="formThTd">
+
+							<select name="ResultadoSet3Par1">
+							  <option value="1">1</option>
+							  <option value="2">2</option>
+							  <option value="3">3</option>
+							  <option value="4">4</option>
+							  <option value="5">5</option>
+							  <option value="6">6</option>
+							  <option value="7">7</option>
+							</select>
+							
+
+							<?php echo(":")?>
+
+
+							<select name="ResultadoSet3Par2">
+							  <option value="1">1</option>
+							  <option value="2">2</option>
+							  <option value="3">3</option>
+							  <option value="4">4</option>
+							  <option value="5">5</option>
+							  <option value="6">6</option>
+							  <option value="7">7</option>
+							</select>		
 					</tr>
 					<tr align="center">
 						<td colspan="2">

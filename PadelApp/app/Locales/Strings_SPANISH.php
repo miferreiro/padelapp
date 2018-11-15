@@ -300,7 +300,32 @@ array(
 	'Ver mis reservas' => 'Ver mis reservas',
 	'Ver mis promociones' => 'Ver mis promociones',
 	'¿Quieres aceptar el horario de este partido propuesto por la otra pareja?' => '¿Quieres aceptar el horario de este partido propuesto por la otra pareja?',
-	'¿Quieres ofrecer este horario de este partido a la otra pareja?' => '¿Quieres ofrecer este horario de este partido a la otra pareja?'
+	'¿Quieres ofrecer este horario de este partido a la otra pareja?' => '¿Quieres ofrecer este horario de este partido a la otra pareja?',
+	'Datos Usuario' => 'Datos Usuario',
+	'Tabla de borrado de usuario' => 'Tabla de borrado de usuario',
+	'Formulario de modificación de usuario' => 'Formulario de modificación de usuario',
+	'Formulario de inserción de usuario' => 'Formulario de inserción de usuario',
+	'Formulario de búsqueda de usuario' => 'Formulario de búsqueda de usuario',
+	'Tabla de usuarios' => 'Tabla de usuarios',
+	'Tabla de pistas' => 'Tabla de pistas',
+	'Información de pista' => 'Información de pista',
+	'Formulario de modificación de pista' => 'Formulario de modificación de pista',
+	'Tabla de borrado de pista' => 'Tabla de borrado de pista',
+	'Tabla de promociones' => 'Tabla de promociones',
+	'Información de la promoción' => 'Información de la promoción',
+	'Búsqueda de una promoción' => 'Búsqueda de una promoción',
+	'Añade una promoción' => 'Añade una promoción',
+	'Borra una promoción' => 'Borra una promoción',
+	'Borra una reserva' => 'Borra una reserva',
+	'Tabla de reservas' => 'Tabla de reservas',
+	'Información de una reserva' => 'Información de una reserva',
+	'Tabla de campeonatos' => 'Tabla de campeonatos',
+	'Información de un campeonato' => 'Información de un campeonato',
+	'Formulario de inserción de un campeonato' => 'Formulario de inserción de un campeonato',
+	'Borrado de campeonato' => 'Borrado de campeonato',
+	'Búsqueda de campeonato' => 'Búsqueda de campeonato',
+	'Tabla de categorías' => 'Tabla de categorías',
+	'Tabla de inscritos en la categoría' => 'Tabla de inscritos en la categoría'
 	)
 ;
 
