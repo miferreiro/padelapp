@@ -43,6 +43,8 @@ function create_partido($idCampeonato,$tipo,$nivel,$letra,$numEnfrentamiento) {
 		$letra,
 		$numEnfrentamiento,
 		NULL,
+		NULL,
+		NULL,
 		NULL
 	);
 	
@@ -58,6 +60,8 @@ function create_enfrentamiento($idCampeonato,$tipo,$nivel,$letra,$numEnfrentamie
 		$letra,
 		$numEnfrentamiento,
 		$numPareja,
+		NULL,
+		NULL,
 		NULL,
 		'0'
 	);

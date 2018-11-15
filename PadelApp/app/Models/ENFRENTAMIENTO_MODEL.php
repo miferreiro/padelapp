@@ -10,9 +10,12 @@ class ENFRENTAMIENTO_MODEL{
 	var $NumPareja;
 	var $Resultado;
 	var $EstadoPropuesta;
+	var $ResultadoSet1;
+	var $ResultadoSet2;
+	var $ResultadoSet3;
 	var $mysqli; 
 
-	function __construct($IdCampeonato,$Tipo,$Nivel,$Letra,$NumEnfrentamiento,$NumPareja,$Resultado,$EstadoPropuesta) {
+	function __construct($IdCampeonato,$Tipo,$Nivel,$Letra,$NumEnfrentamiento,$NumPareja,$ResultadoSet1,$ResultadoSet2,$ResultadoSet3,$EstadoPropuesta) {
 
 		$this->IdCampeonato = $IdCampeonato;
 		$this->Tipo = $Tipo;
@@ -20,7 +23,9 @@ class ENFRENTAMIENTO_MODEL{
 		$this->Letra = $Letra;
 		$this->NumEnfrentamiento = $NumEnfrentamiento;
 		$this->NumPareja = $NumPareja;
-		$this->Resultado = $Resultado;
+		$this->ResultadoSet1 = $ResultadoSet1;		
+		$this->ResultadoSet2 = $ResultadoSet2;		
+		$this->ResultadoSet3 = $ResultadoSet3;
 		$this->EstadoPropuesta = $EstadoPropuesta;
 		include_once '../Functions/BdAdmin.php';
 		$this->mysqli = ConectarBD();
@@ -43,7 +48,9 @@ class ENFRENTAMIENTO_MODEL{
 									Letra,
 									NumEnfrentamiento,
 									NumPareja,
-									Resultado,
+									ResultadoSet1,
+									ResultadoSet2,
+									ResultadoSet3,
 									EstadoPropuesta
 					             	) 
 								VALUES(
@@ -53,6 +60,8 @@ class ENFRENTAMIENTO_MODEL{
 								'$this->Letra',
 								'$this->NumEnfrentamiento',
 								'$this->NumPareja',
+								NULL,
+								NULL,
 								NULL,
 								'0'
 								)";					
@@ -79,7 +88,9 @@ class ENFRENTAMIENTO_MODEL{
 					Letra,
 					NumEnfrentamiento,
 					NumPareja,
-					Resultado,
+					ResultadoSet1,
+					ResultadoSet2,
+					ResultadoSet3,
 					EstadoPropuesta;					
        			from ENFRENTAMIENTO
     			where 
@@ -90,7 +101,9 @@ class ENFRENTAMIENTO_MODEL{
 					(BINARY Grupo_Letra LIKE '%$this->Letra%') &&
 					(BINARY NumEnfrentamiento LIKE '%$this->NumEnfrentamiento%') &&
 					(BINARY NumPareja LIKE '%$this->NumPareja%') &&
-					(BINARY Resultado LIKE '%$this->Resultado%') &&		
+					(BINARY ResultadoSet1 LIKE '%$this->ResultadoSet1%') &&		
+					(BINARY ResultadoSet2 LIKE '%$this->ResultadoSet2%') &&		
+					(BINARY ResultadoSet3 LIKE '%$this->ResultadoSet3%') &&		
 					(BINARY EstadoPropuesta LIKE '%$this->EstadoPropuesta%') 
     				)";
 
@@ -133,8 +146,11 @@ class ENFRENTAMIENTO_MODEL{
 
 	function RellenaDatos() { 
 
-		$sql = "SELECT DISTINCT E1.IdCampeonato as IdCampeonato,E1.Tipo as Tipo,E1.Nivel as Nivel,E1.Letra as Letra, E2.NumPareja as pareja1, E1.NumPareja as pareja2, E1.NumEnfrentamiento as NumEnfrentamiento, E1.Resultado as Resultado, E1.EstadoPropuesta as propuestaPareja1,  E2.EstadoPropuesta as propuestaPareja2
-		, E1.EstadoPropuesta as propuestaPareja1,  E2.EstadoPropuesta as propuestaPareja2, E1.Resultado as Resultado
+		$sql = "SELECT DISTINCT E1.IdCampeonato as IdCampeonato,E1.Tipo as Tipo,E1.Nivel as Nivel,E1.Letra as Letra, E2.NumPareja as pareja1, E1.NumPareja as pareja2,
+		E1.ResultadoSet1 as 1ResultadoSet1, E1.ResultadoSet2 as 1ResultadoSet2, E1.ResultadoSet3 as 1ResultadoSet3, 
+		E2.ResultadoSet1 as 2ResultadoSet1, E2.ResultadoSet2 as 2ResultadoSet2, E2.ResultadoSet3 as 2ResultadoSet3,
+		E1.EstadoPropuesta as propuestaPareja1,  E2.EstadoPropuesta as propuestaPareja2
+
 		FROM ENFRENTAMIENTO E1,ENFRENTAMIENTO E2
 		WHERE
 		(E1.NumEnfrentamiento = E2.NumEnfrentamiento) && (E1.NumPareja != E2.NumPareja) &&
@@ -153,8 +169,12 @@ class ENFRENTAMIENTO_MODEL{
 	} 
 	function RellenaDatos2() { 
 
-		$sql = "SELECT DISTINCT E1.IdCampeonato as IdCampeonato,E1.Tipo as Tipo,E1.Nivel as Nivel,E1.Letra as Letra, E1.NumPareja as pareja1, E2.NumPareja as pareja2, E1.NumEnfrentamiento as NumEnfrentamiento, E1.Resultado as Resultado, E1.EstadoPropuesta as propuestaPareja1,  E2.EstadoPropuesta as propuestaPareja2
-		, E1.EstadoPropuesta as propuestaPareja1,  E2.EstadoPropuesta as propuestaPareja2, E1.Resultado as Resultado
+		$sql = "SELECT DISTINCT E1.IdCampeonato as IdCampeonato,E1.Tipo as Tipo,E1.Nivel as Nivel,E1.Letra as Letra, E1.NumPareja as pareja1, E2.NumPareja as pareja2, 
+		E1.NumEnfrentamiento as NumEnfrentamiento, 
+		E1.ResultadoSet1 as 1ResultadoSet1, E1.ResultadoSet2 as 1ResultadoSet2, E1.ResultadoSet3 as 1ResultadoSet3, 
+		E2.ResultadoSet1 as 2ResultadoSet1, E2.ResultadoSet2 as 2ResultadoSet2, E2.ResultadoSet3 as 2ResultadoSet3,
+		
+		E1.EstadoPropuesta as propuestaPareja1,  E2.EstadoPropuesta as propuestaPareja2
 		FROM ENFRENTAMIENTO E1,ENFRENTAMIENTO E2
 		WHERE
 		(E1.NumEnfrentamiento = E2.NumEnfrentamiento) && (E1.NumPareja != E2.NumPareja) &&
@@ -192,7 +212,9 @@ class ENFRENTAMIENTO_MODEL{
 					Letra='$this->Letra',
 					NumEnfrentamiento='$this->NumEnfrentamiento',
 					NumPareja = '$this->NumPareja',
-					Resultado = '$this->Resultado',
+					ResultadoSet1 = '$this->ResultadoSet1',
+					ResultadoSet2 = '$this->ResultadoSet2',
+					ResultadoSet3 = '$this->ResultadoSet3',
 					EstadoPropuesta = '$this->EstadoPropuesta'
 				WHERE (IdCampeonato = '$this->IdCampeonato') && (Tipo = '$this->Tipo') && (Nivel = '$this->Nivel') && (Letra = '$this->Letra') 
 				&& (NumEnfrentamiento = '$this->NumEnfrentamiento') && (NumPareja = '$this->NumPareja')
@@ -245,8 +267,11 @@ class ENFRENTAMIENTO_MODEL{
 	} 
 	function listaEnfrentamiento(){
 				
-		$sql = "SELECT DISTINCT E1.NumPareja as pareja1,  E2.NumPareja as pareja2,E1.NumEnfrentamiento as numEnfrentamiento
-					, E1.Resultado as resultado,E1.Letra FROM ENFRENTAMIENTO E1,ENFRENTAMIENTO E2 
+		$sql = "SELECT DISTINCT E1.NumPareja as pareja1,  E2.NumPareja as pareja2,E1.NumEnfrentamiento as numEnfrentamiento,
+				E1.ResultadoSet1 as 1ResultadoSet1, E1.ResultadoSet2 as 1ResultadoSet2, E1.ResultadoSet3 as 1ResultadoSet3, 
+				E2.ResultadoSet1 as 2ResultadoSet1, E2.ResultadoSet2 as 2ResultadoSet2, E2.ResultadoSet3 as 2ResultadoSet3,
+					
+					E1.Letra FROM ENFRENTAMIENTO E1,ENFRENTAMIENTO E2 
 				
 				WHERE (E1.NumEnfrentamiento = E2.NumEnfrentamiento) &&(E1.IdCampeonato = '$this->IdCampeonato') && (E1.Tipo = '$this->Tipo') 
 				&& (E1.Nivel = '$this->Nivel') && (E1.Letra = '$this->Letra') &&
@@ -255,7 +280,7 @@ class ENFRENTAMIENTO_MODEL{
 					
 					group by E1.NumEnfrentamiento
 					ORDER BY E1.NumEnfrentamiento ASC, E1.NumPareja ASC";
-
+	//echo $sql;
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'No existe en la base de datos'; // 
 		} else {            
@@ -266,7 +291,12 @@ class ENFRENTAMIENTO_MODEL{
 	function listaEnfrentamientoCalendario($dni){
 		
 		
-		$sql = "SELECT DISTINCT E2.NumPareja as pareja1, E1.NumPareja as pareja2,  E1.NumEnfrentamiento as numEnfrentamiento, E1.Resultado as resultado, E2.EstadoPropuesta as propuestaPareja1,  E1.EstadoPropuesta as propuestaPareja2
+		$sql = "SELECT DISTINCT E2.NumPareja as pareja1, E1.NumPareja as pareja2,  E1.NumEnfrentamiento as numEnfrentamiento,
+
+
+				E1.ResultadoSet1 as 1ResultadoSet1, E1.ResultadoSet2 as 1ResultadoSet2, E1.ResultadoSet3 as 1ResultadoSet3, 
+				E2.ResultadoSet1 as 2ResultadoSet1, E2.ResultadoSet2 as 2ResultadoSet2, E2.ResultadoSet3 as 2ResultadoSet3,
+				E2.EstadoPropuesta as propuestaPareja1,  E1.EstadoPropuesta as propuestaPareja2
 				FROM ENFRENTAMIENTO E1,ENFRENTAMIENTO E2, USUARIOPAREJAS U
 				WHERE 
 				(E1.NumEnfrentamiento = E2.NumEnfrentamiento) 
@@ -278,7 +308,7 @@ class ENFRENTAMIENTO_MODEL{
 				GROUP BY E1.NumEnfrentamiento  
 				ORDER BY E1.NumEnfrentamiento ASC		
 		";
-#echo $sql;
+//echo $sql;
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'No existe en la base de datos'; // 
 		} else {            

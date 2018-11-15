@@ -9,9 +9,11 @@ class PARTIDO_MODEL{
 	var $NumEnfrentamiento;
 	var $Fecha;
 	var $Hora;
+	var $ParejaGanadora;
+	var $ParejaPerdedora;
 	var $mysqli; 
 
-	function __construct($IdCampeonato,$Tipo,$Nivel,$Letra,$NumEnfrentamiento,$Fecha,$Hora) {
+	function __construct($IdCampeonato,$Tipo,$Nivel,$Letra,$NumEnfrentamiento,$Fecha,$Hora,$ParejaGanadora,$ParejaPerdedora) {
 
 		$this->IdCampeonato = $IdCampeonato;
 		$this->Tipo = $Tipo;
@@ -20,6 +22,9 @@ class PARTIDO_MODEL{
 		$this->NumEnfrentamiento = $NumEnfrentamiento;
 		$this->Fecha = $Fecha;
 		$this->Hora = $Hora;
+		$this->ParejaGanadora = $ParejaGanadora;
+		$this->ParejaPerdedora = $ParejaPerdedora;
+		
 		include_once '../Functions/BdAdmin.php';
 		$this->mysqli = ConectarBD();
 
@@ -44,7 +49,9 @@ class PARTIDO_MODEL{
 									Grupo_Letra,
 									NumEnfrentamiento,
 									Fecha,
-									Hora
+									Hora,
+									ParejaGanadora,
+									ParejaPerdedora
 					             	) 
 								VALUES(
 								'$this->IdCampeonato',							
@@ -52,6 +59,8 @@ class PARTIDO_MODEL{
 								'$this->Nivel',
 								'$this->Letra',
 								'$this->NumEnfrentamiento',
+								NULL,
+								NULL,
 								NULL,
 								NULL
 								)";					
@@ -78,7 +87,9 @@ class PARTIDO_MODEL{
 					Grupo_Letra,
 					NumEnfrentamiento,
 					Fecha,
-					Hora					
+					Hora,
+					ParejaGanadora,
+					ParejaPerdedora
        			from PARTIDO 
     			where 
     				(
@@ -88,7 +99,9 @@ class PARTIDO_MODEL{
 					(BINARY Grupo_Letra LIKE '%$this->Letra%') &&
 					(BINARY NumEnfrentamiento LIKE '%$this->NumEnfrentamiento%') &&
 					(BINARY DATE_FORMAT(Fecha,'%d/%m/%Y') LIKE '%$this->Fecha%') &&
-					(BINARY Hora LIKE '%$this->Hora%') 				
+					(BINARY Hora LIKE '%$this->Hora%') &&
+					(BINARY ParejaGanadora LIKE '%$this->ParejaGanadora%') 	&&
+					(BINARY ParejaPerdedora LIKE '%$this->ParejaPerdedora%') 
     				)";
 
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
@@ -164,7 +177,9 @@ class PARTIDO_MODEL{
 					Grupo_Letra='$this->Letra',
 					NumEnfrentamiento='$this->NumEnfrentamiento',
 					Fecha = STR_TO_DATE(REPLACE('$this->Fecha','/','.') ,GET_FORMAT(date,'EUR')),
-					Hora = '$this->Hora'
+					Hora = '$this->Hora',
+					ParejaGanadora = '$this->ParejaGanadora',
+					ParejaPerdedora = '$this->ParejaPerdedora'
 				WHERE (IdCampeonato = '$this->IdCampeonato') && (Tipo = '$this->Tipo') && (Nivel = '$this->Nivel') && (Grupo_Letra = '$this->Letra') && (NumEnfrentamiento = '$this->NumEnfrentamiento')
 				)";
 
@@ -218,7 +233,9 @@ class PARTIDO_MODEL{
 					Grupo_Letra='$this->Letra',
 					NumEnfrentamiento='$this->NumEnfrentamiento',
 					Fecha = '$this->Fecha',
-					Hora = '$this->Hora'
+					Hora = '$this->Hora',
+					ParejaGanadora = '$this->ParejaGanadora',
+					ParejaPerdedora = '$this->ParejaPerdedora'
 				WHERE (IdCampeonato = '$this->IdCampeonato') && (Tipo = '$this->Tipo') && (Nivel = '$this->Nivel') && (Grupo_Letra = '$this->Letra') && (NumEnfrentamiento = '$this->NumEnfrentamiento')
 				";
 
