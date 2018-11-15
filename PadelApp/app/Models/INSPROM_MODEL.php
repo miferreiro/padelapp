@@ -131,14 +131,14 @@ class INSPROM_MODEL{
 								
 								if ( !$this->mysqli->query( $sql3 )) { 
 									return 'Error en la inserción';
-								}
-								
-								
+								}else{
+								return 'Inserción realizada con éxito';
 							}
-							
-								if ( !$this->mysqli->query( $sql )) { 
-									return 'Inserción realizada con éxito';
-								}
+								
+								
+							}else{
+								return 'Inserción realizada con éxito';
+							}
 						    }
 						  }
 					}
