@@ -7,7 +7,7 @@ if (!IsAuthenticated()){
  	header('Location:../index.php');
 }
 
-
+include '../Models/USUARIO_MODEL.php';
 include '../Models/PARTIDO_MODEL.php';
 include '../Models/CAMPEONATO_MODEL.php';
 include '../Models/CATEGORIA_MODEL.php';
@@ -75,7 +75,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 			
 			//Añadir  reserva
 			
-			$RESERVA = new RESERVA_MODEL($_SESSION['dni'],'',$_REQUEST['Fecha'],$_REQUEST['Hora']);
+			$USUARIO = new USUARIO_MODEL('admin','','','','','','','');
+			$dniAdmin = $USUARIO->obtenerDni();
+			$RESERVA = new RESERVA_MODEL($dniAdmin,'',$_REQUEST['Fecha'],$_REQUEST['Hora']);
 			$respuesta = $RESERVA->RESERVACAMP();
 			
 			new MESSAGE( $respuesta, '../Controllers/CALENDARIO_CONTROLLER.php?IdCampeonato=' . $_REQUEST['IdCampeonato'] . '&Tipo='.$_REQUEST['Tipo']. '&Nivel='.$_REQUEST['Nivel'] . '&Letra='.$_REQUEST['Letra'] . '&action=TABLA' );
