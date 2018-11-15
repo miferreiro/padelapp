@@ -63,7 +63,38 @@ class ENFRENTAMIENTO_EDIT {
 					</tr>
 					<tr>
 						<th class="formThTd">
-							<?php echo $strings['Resultado'];?>
+							<?php echo $strings['Resultado primer set'];?>
+						</th>
+						<td class="formThTd">
+
+							<select name="ResultadoSet1Par1" required>
+							  <option value="1">1</option>
+							  <option value="2">2</option>
+							  <option value="3">3</option>
+							  <option value="4">4</option>
+							  <option value="5">5</option>
+							  <option value="6">6</option>
+							  <option value="7">7</option>
+							</select>
+							
+
+							<?php echo(":")?>
+
+						<td class="formThTd">
+
+							<select name="ResultadoSet1Par2" required>
+							  <option value="1">1</option>
+							  <option value="2">2</option>
+							  <option value="3">3</option>
+							  <option value="4">4</option>
+							  <option value="5">5</option>
+							  <option value="6">6</option>
+							  <option value="7">7</option>
+							</select>							
+					</tr>
+					<tr>
+						<th class="formThTd">
+							<?php echo $strings['Resultado tercer set'];?>
 						</th>
 						<td class="formThTd"><input type="text" id="Resultado" name="Resultado" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['Resultado']?>" maxlength="12" size="12" required  /> <!-- onBlur="comprobarVacio(this) && comprobarLongitud(this,'12') && comprobarTexto(this,'12') "-->
 					</tr>
