@@ -323,7 +323,9 @@ array(
 	'Borrado de campeonato' => 'Borrado dun campeonato',
 	'Búsqueda de campeonato' => 'Búsqueda dun campeonato',
 	'Tabla de categorías' => 'Tabla das categorías',
-	'Tabla de inscritos en la categoría' => 'Tabla de inscritos nunha categoría'
+	'Tabla de inscritos en la categoría' => 'Tabla de inscritos nunha categoría',
+	'Ya existe algun componente de la pareja inscrita en el campeonato' => 'Xa existe algún componente da parexa inscrita no campeonato',
+	'Grupos creados' => 'Grupos creados'
 	
 	)
 ;

@@ -157,8 +157,7 @@ class RESERVA_MODEL{
 					$idPista = $fila['idPista'];
 					break;
 				}
-				echo $idPista;
-				echo "aqwq";
+
 				$sql = "INSERT INTO RESERVA (
 					Usuario_Dni,
 					Pista_idPista,

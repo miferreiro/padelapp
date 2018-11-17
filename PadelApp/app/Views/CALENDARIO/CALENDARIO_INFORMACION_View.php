@@ -95,14 +95,7 @@ class CALENDARIO_INFORMACION{
 					<?php echo $this->valores['propuestaPareja2'];?>
 				</td>
 			</tr>		
-			<tr>
-				<th>
-					<?php echo $strings['Resultado'];?>
-				</th>
-				<td>
-					<?php echo $this->valores['Resultado'];?>
-				</td>
-			</tr>
+
 
 				<?php if($this->valores['propuestaPareja1'] == 3){?> 
 					<tr>
@@ -161,7 +154,7 @@ class CALENDARIO_INFORMACION{
 							<?php echo $this->valores2['Hora'];?>
 						</td>	
 					</tr>						
-					<?php}else{ ?>
+					<?php }else{ ?>
 					<?php if(($this->valores['propuestaPareja1'] == 0)){?>
 					<tr>
 						<th>
@@ -179,11 +172,23 @@ class CALENDARIO_INFORMACION{
 							<?php echo $this->valores2['Hora'];?>
 						</td>
 						</tr>
-					<?php	}}
+					<?php	}
+							  }
 					}
 				}	?>		
 					
-
+			<tr>
+				<th>
+					<?php echo $strings['Resultado'];?>
+				</th>
+				<td>
+					<?php echo 'Set 1: ' . $this->valores['ResultadoSet1Par1'] . '-' . $this->valores['ResultadoSet1Par2'] ;?>
+					<br>
+					<?php echo 'Set 2: ' .$this->valores['ResultadoSet2Par1'] . '-' . $this->valores['ResultadoSet2Par2'] ;?>
+					<br>
+					<?php echo 'Set 3: ' .$this->valores['ResultadoSet3Par1'] . '-' . $this->valores['ResultadoSet3Par2'] ;?>
+				</td>
+			</tr>
 		
 			</thead>
 			</table>

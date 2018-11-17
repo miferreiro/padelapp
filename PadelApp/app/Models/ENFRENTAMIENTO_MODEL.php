@@ -329,7 +329,7 @@ class ENFRENTAMIENTO_MODEL{
 					
 					group by E1.NumEnfrentamiento
 					ORDER BY E1.NumEnfrentamiento ASC, E1.NumPareja ASC";
-	//echo $sql;
+	
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'No existe en la base de datos'; // 
 		} else {            
@@ -340,12 +340,12 @@ class ENFRENTAMIENTO_MODEL{
 	function listaEnfrentamientoCalendario($dni){
 		
 		
-		$sql = "SELECT DISTINCT E2.NumPareja as pareja1, E1.NumPareja as pareja2,  E1.NumEnfrentamiento as NumEnfrentamiento,
+		$sql = "SELECT DISTINCT E2.NumPareja as pareja2, E1.NumPareja as pareja1,  E1.NumEnfrentamiento as NumEnfrentamiento,
 
 
 				E1.ResultadoSet1 as ResultadoSet1Par1, E1.ResultadoSet2 as ResultadoSet2Par1, E1.ResultadoSet3 as ResultadoSet3Par1, 
 				E2.ResultadoSet1 as ResultadoSet1Par2, E2.ResultadoSet2 as ResultadoSet2Par2, E2.ResultadoSet3 as ResultadoSet3Par2,
-				E2.EstadoPropuesta as propuestaPareja1,  E1.EstadoPropuesta as propuestaPareja2
+				E2.EstadoPropuesta as propuestaPareja2,  E1.EstadoPropuesta as propuestaPareja1
 				FROM ENFRENTAMIENTO E1,ENFRENTAMIENTO E2, USUARIOPAREJAS U
 				WHERE 
 				(E1.NumEnfrentamiento = E2.NumEnfrentamiento) 
@@ -357,7 +357,7 @@ class ENFRENTAMIENTO_MODEL{
 				GROUP BY E1.NumEnfrentamiento  
 				ORDER BY E1.NumEnfrentamiento ASC		
 		";
-//echo $sql;
+
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'No existe en la base de datos'; // 
 		} else {            

@@ -66,7 +66,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		} else {
 			
 			$PARTIDO = new PARTIDO_MODEL($_REQUEST['IdCampeonato'],$_REQUEST['Tipo'],$_REQUEST['Nivel'],$_REQUEST['Letra'],$_REQUEST['NumEnfrentamiento'],$_REQUEST['Fecha'],$_REQUEST['Hora'],'','');
-			$respuesta = $PARTIDO->EDIT();
+			$respuesta = $PARTIDO->EDIT3();
 			
 			$ENFRENTAMIENTO = new ENFRENTAMIENTO_MODEL($_REQUEST['IdCampeonato'],$_REQUEST['Tipo'],$_REQUEST['Nivel'],$_REQUEST['Letra'],$_REQUEST['NumEnfrentamiento'],$_REQUEST['pareja1'],'','','',3);
 			$respuesta = $ENFRENTAMIENTO->EDIT2();

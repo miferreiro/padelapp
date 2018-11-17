@@ -111,24 +111,17 @@ switch ( $_REQUEST[ 'action' ] ) {
 				$numGrupos = 1;
 				$letra = '';
 				//$numParejas = 95;
-				//echo "Antes: " . $numParejas;
+				echo "Antes: " . $numParejas;
 					?><!--<br>-->  <?php
 					$stringParejas = '';
 				if($numParejas > 12 && $numParejas < 16){
 				
-					 $numParejasDesInscritas-= $numParejas % 12;  
+					 $numParejasDesInscritas= $numParejas % 12;  
 					 
-					 for($i=0; $i < $numParejasDesInscritas;$i++){
-						$stringParejas .=  $aux[$numParejasDesInscritas - $i] . ', ';
-					 }
-					 $numParejas -= $numParejasDesInscritas;
+					 $numParejas = $numParejas - $numParejasDesInscritas;
 				}
-				/*else if($numParejas > 28 && $numParejas < 32) $numParejas -= $numParejas % 28 ;
-				else if($numParejas > 44 && $numParejas < 48) $numParejas -= $numParejas % 44 ;
-				else if($numParejas > 60 && $numParejas < 64) $numParejas -= $numParejas % 60 ;
-				else if($numParejas > 76 && $numParejas < 80) $numParejas -= $numParejas % 76 ;
-				else if($numParejas > 92 && $numParejas < 96) $numParejas -= $numParejas % 92;*/
-				//echo "Despues: " . $numParejas;
+
+				echo "Despues: " . $numParejas;
 					?><!--<br>-->  <?php
 				if($numParejas > 12 && $numParejas <= 24) $numGrupos = 2;	
 				else if($numParejas > 24 && $numParejas <= 36) $numGrupos = 3;	

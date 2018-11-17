@@ -47,7 +47,7 @@ class CALENDARIO_TABLA{
 			$resultado32=$row['ResultadoSet3Par2'];
 			$arrayEnfrentamientos[] = array('pareja1'=> $pareja1, 'pareja2'=> $pareja2, 'NumEnfrentamiento'=> $NumEnfrentamiento,
 			'ResultadoSet1Par1'=> $resultado11, 'ResultadoSet2Par1'=> $resultado21, 'ResultadoSet3Par1'=> $resultado31, 
-			'ResultadoSet1Par2'=> $resultado12, 'ResultadoSet2Par2'=> $resultado22, 'ResultadoSet3Par2'=> $resultado32, 
+			'ResultadoSet1Par2'=> $resultado12, 'ResultadoSet2Par2'=> $resultado22, 'ResultadoSet3Par2'=> $resultado32
 			
 			); 
 		}
@@ -58,7 +58,7 @@ class CALENDARIO_TABLA{
 
 			$pareja1=$row['pareja1'];
 			$pareja2=$row['pareja2'];
-			
+
 			$NumEnfrentamiento=$row['NumEnfrentamiento'];
 			$resultado11=$row['ResultadoSet1Par1'];
 			$resultado21=$row['ResultadoSet2Par1'];
@@ -127,7 +127,8 @@ $cont = 0;
 				}else{
 						$NoEncontrado = True;
 						$aux = True;						
-						foreach($arrayEnfrentamientos as $fila){							
+						foreach($arrayEnfrentamientos as $fila){	
+							
 							if($arrayListadoParejas[$j-1] == $fila['pareja1'] && $arrayListadoParejas[$i-1] == $fila['pareja2'] ){			
 								foreach($arrayEnfrentamientos2 as $fila2){		
 									if( $arrayListadoParejas[$j-1]== $fila2['pareja1'] && $arrayListadoParejas[$i-1] == $fila2['pareja2'] ){										
@@ -147,7 +148,7 @@ $cont = 0;
 											<input type="hidden" name="ResultadoSet1Par2" value="<?php echo $fila2['ResultadoSet1Par2']; ?>">
 											<input type="hidden" name="ResultadoSet2Par2" value="<?php echo $fila2['ResultadoSet2Par2']; ?>">
 														<input type="hidden" name="ResultadoSet3Par2" value="<?php echo $fila2['ResultadoSet3Par2']; ?>">
-											<?php echo $fila2['ResultadoSet1Par1'] . " PP1: " . $fila2['propuestaPareja1']. " PP2: " . $fila2['propuestaPareja2'] . " enfre: " . $fila2['NumEnfrentamiento'];?> 
+											<?php //echo $fila2['ResultadoSet1Par1'] . " PP1: " . $fila2['propuestaPareja1']. " PP2: " . $fila2['propuestaPareja2'] . " enfre: " . $fila2['NumEnfrentamiento'];?> 
 												<button id ="buttonBien"  type="submit" name="action" value="INFORMACION" ><img src="../Views/icon/calendario.png" alt="<?php echo $strings['modificar']?>"  width="20" height="20" /></button>	
 											</form>											
 <?php 
@@ -169,7 +170,7 @@ $cont = 0;
 												<input type="hidden" name="ResultadoSet1Par2" value="<?php echo $fila2['ResultadoSet1Par2']; ?>">
 													<input type="hidden" name="ResultadoSet2Par2" value="<?php echo $fila2['ResultadoSet2Par2']; ?>">
 														<input type="hidden" name="ResultadoSet3Par2" value="<?php echo $fila2['ResultadoSet3Par2']; ?>">
-													<?php echo $fila2['ResultadoSet1Par1'] . " PP1: " . $fila2['propuestaPareja1']. " PP2: " . $fila2['propuestaPareja2'] . " enfre: " . $fila2['NumEnfrentamiento'];?> 
+													<?php //echo $fila2['ResultadoSet1Par1'] . " PP1: " . $fila2['propuestaPareja1']. " PP2: " . $fila2['propuestaPareja2'] . " enfre: " . $fila2['NumEnfrentamiento'];?> 
 													<button id ="buttonBien"  type="submit" name="action" value="INFORMACION" ><img src="../Views/icon/calendario.png" alt="<?php echo $strings['modificar']?>"  width="20" height="20" /></button>			
 													<?php if($this->capitan){ ?>
 													<button id ="buttonBien"  type="submit" name="action" value="ACEPTAR" ><img src="../Views/icon/recibido.png" alt="<?php echo $strings['modificar']?>"  width="20" height="20" /></button>			
@@ -194,7 +195,7 @@ $cont = 0;
 												<input type="hidden" name="ResultadoSet1Par2" value="<?php echo $fila2['ResultadoSet1Par2']; ?>">
 													<input type="hidden" name="ResultadoSet2Par2" value="<?php echo $fila2['ResultadoSet2Par2']; ?>">
 														<input type="hidden" name="ResultadoSet3Par2" value="<?php echo $fila2['ResultadoSet3Par2']; ?>">
-													<?php echo $fila2['ResultadoSet1Par1'] . " PP1: " . $fila2['propuestaPareja1']. " PP2: " . $fila2['propuestaPareja2'] . " enfre: " . $fila2['NumEnfrentamiento'];?> 
+													<?php// echo $fila2['ResultadoSet1Par1'] . " PP1: " . $fila2['propuestaPareja1']. " PP2: " . $fila2['propuestaPareja2'] . " enfre: " . $fila2['NumEnfrentamiento'];?> 
 														<button id ="buttonBien"  type="submit" name="action" value="INFORMACION" ><img src="../Views/icon/calendario.png" alt="<?php echo $strings['modificar']?>"  width="20" height="20" /></button>			
 													</form>														
 <?php 
@@ -215,7 +216,7 @@ $cont = 0;
 												        <input type="hidden" name="ResultadoSet1Par2" value="<?php echo $fila2['ResultadoSet1Par2']; ?>">
 													    <input type="hidden" name="ResultadoSet2Par2" value="<?php echo $fila2['ResultadoSet2Par2']; ?>">
 														<input type="hidden" name="ResultadoSet3Par2" value="<?php echo $fila2['ResultadoSet3Par2']; ?>">
-														<?php echo $fila2['ResultadoSet1Par1'] . " PP1: " . $fila2['propuestaPareja1']. " PP2: " . $fila2['propuestaPareja2'] . " enfre: " . $fila2['NumEnfrentamiento'];?> 
+														<?php// echo $fila2['ResultadoSet1Par1'] . " PP1: " . $fila2['propuestaPareja1']. " PP2: " . $fila2['propuestaPareja2'] . " enfre: " . $fila2['NumEnfrentamiento'];?> 
 															<button id ="buttonBien"  type="submit" name="action" value="INFORMACION" ><img src="../Views/icon/calendario.png" alt="<?php echo $strings['modificar']?>"  width="20" height="20" /></button>			
 															<?php if($this->capitan){ ?>
 															<button id ="buttonBien"  type="submit" name="action" value="PROPONER" ><img src="../Views/icon/enviar.png" alt="<?php echo $strings['modificar']?>"  width="20" height="20" /></button>															
