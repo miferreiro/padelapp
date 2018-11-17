@@ -75,7 +75,7 @@ if ( !isset( $_REQUEST[ 'action' ] ) ) {
 }
 switch ( $_REQUEST[ 'action' ] ) {
 	case 'GENERAR':
-	
+	if($_SESSION['tipo'] == 'Admin'){
 		$idCampeonato = $_REQUEST[ 'IdCampeonato' ]; 
 		$tipo = $_REQUEST[ 'Tipo' ];
 		$nivel = $_REQUEST[ 'Nivel' ]; 
@@ -296,7 +296,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 			
 			}			
 		}
-				
+	}else{
+		new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/USUARIO_CONTROLLER.php' );
+	}
 
 		break;
 	default: 
