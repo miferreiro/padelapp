@@ -14,6 +14,7 @@ atributo['nombre'] = 'Nombre';
 atributo['apellidos'] = 'Apellidos';
 atributo['telefono'] = 'Teléfono';
 atributo['sexo'] = 'Sexo';
+atributo['Tipo'] = 'Tipo';
 
 //Campeonato
 atributo['IdCampeonato'] = 'IdCampeonato';
@@ -317,7 +318,7 @@ function msgError(msg) {
 	return true;
 }
 
-
+//Funciona
 function comprobarLogin() {
 
 	var login; 
@@ -361,7 +362,7 @@ function encriptar() {
 	document.getElementById('password').value = hex_md5(document.getElementById('password').value); //cambia el valor del campo password introducido por el usuario, 																							   //por el valor de la password encriptada
 }
 
-
+//Funciona
 function comprobarRegistrar() {
 
 	var login; 
@@ -494,7 +495,7 @@ function comprobarRegistrar() {
 	encriptar();
 	return true;
 }
-
+//Funciona
 function comprobarAddUsuario() {
 
 	var dni;
@@ -502,7 +503,7 @@ function comprobarAddUsuario() {
 	var pwd; 
 	var nombreuser; 
 	var apellidosuser; 
-	var sexo;
+
 	var telefono;
 	var tipo;
 	
@@ -511,9 +512,9 @@ function comprobarAddUsuario() {
 	pwd = document.forms['ADD'].elements[2];
 	nombreuser = document.forms['ADD'].elements[3];
 	apellidosuser = document.forms['ADD'].elements[4];
-	sexo = document.forms['ADD'].elements[5];
-	telefono = document.forms['ADD'].elements[6];
-	tipo = document.forms['ADD'].elements[7];
+
+	telefono = document.forms['ADD'].elements[7];
+	tipo = document.forms['ADD'].elements[8];
 
 
 	if (!comprobarVacio(dni)) {
@@ -615,15 +616,13 @@ function comprobarAddUsuario() {
 			}
 		}
 	}
-	if (!comprobarVacio(sexo)) {
-		return false;
-	} 
+
 	
 
 	encriptar();
 	return true;
 }
-
+//Funciona
 function comprobarSearchUsuario() {
 
 
@@ -632,7 +631,7 @@ function comprobarSearchUsuario() {
 	var pwd; 
 	var nombreuser; 
 	var apellidosuser; 
-	var sexo;
+
 	var telefono;
 	var tipo;
 
@@ -641,9 +640,9 @@ function comprobarSearchUsuario() {
 	pwd = document.forms['SEARCH'].elements[2];
 	nombreuser = document.forms['SEARCH'].elements[3];
 	apellidosuser = document.forms['SEARCH'].elements[4];
-	sexo = document.forms['SEARCH'].elements[5];
-	telefono = document.forms['SEARCH'].elements[6];
-	tipo = document.forms['SEARCH'].elements[7];
+
+	telefono = document.forms['SEARCH'].elements[7];
+	tipo = document.forms['SEARCH'].elements[8];
 
 
 	if (!comprobarLongitud(dni, 9)) {
@@ -721,18 +720,18 @@ function comprobarEditUsuario() {
 	var pwd; 
 	var nombreuser; 
 	var apellidosuser; 
-	var sexo;
+
 	var telefono;
-	var tipo;
+
 
 	dni = document.forms['EDIT'].elements[0];
 	login = document.forms['EDIT'].elements[1];
 	pwd = document.forms['EDIT'].elements[2];
 	nombreuser = document.forms['EDIT'].elements[3];
 	apellidosuser = document.forms['EDIT'].elements[4];
-	sexo = document.forms['EDIT'].elements[5];
-	telefono = document.forms['EDIT'].elements[6];
-	tipo = document.forms['EDIT'].elements[7];
+
+	telefono = document.forms['EDIT'].elements[7];
+
 
 
 	if (!comprobarVacio(dni)) {
@@ -820,10 +819,6 @@ function comprobarEditUsuario() {
 	}
 
 
-	if (!comprobarVacio(sexo)) {
-		return false;
-	} 
-	
 	if (!comprobarVacio(telefono)) {
 		return false;
 	} else {
@@ -841,17 +836,7 @@ function comprobarEditUsuario() {
 		}
 	}
 	
-	if (!comprobarVacio(tipo)) {
-		return false;
-	} else {
-		if (!comprobarLongitud(tipo, 12)) {
-			return false;
-		} else {
-			if (!comprobarTexto(tipo, 12)) {
-				return false;
-			}
-		}
-	}
+
 	return true;
 
 

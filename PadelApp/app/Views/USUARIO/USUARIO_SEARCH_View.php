@@ -51,7 +51,7 @@ class USUARIO_SEARCH {
 					</tr>
 					<tr>
 						<th class="formThTd">
-							<?php echo "Sexo"?>
+							<?php echo $strings['Sexo'];?>
 						</th>
 						<td class="formThTd">
 							<input type="radio"  id="sexo" name="sexo" value="Hombre"/>Hombre<br>

@@ -31,18 +31,12 @@ class USUARIO_EDIT {
 						</th>
 						<td class="formThTd"><input type="text" id="login" name="login" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['Login']?>" maxlength="25" size="25" readonly required /> 
 					</tr>
-						<?php
-										if($_SESSION['tipo'] == 'Deportista'){
-									?>
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['Contraseña'];?>
 						</th>
 						<td class="formThTd"><input type="text" id="password" name="password" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['Password']?>" maxlength="128" size="40" required /> 
 					</tr>
-						<?php
-										}
-									?>
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['Nombre'];?>
@@ -73,19 +67,13 @@ class USUARIO_EDIT {
 								}
 ?>											
 					</tr>
-							<?php
-										if($_SESSION['tipo'] == 'Deportista'){
-									?>
+
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['Teléfono'];?>
 						</th>
 						<td class="formThTd"><input type="text" id="telefono" name="telefono" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['Telefono']?>" maxlength="14" size="14" required /> 
 					</tr>
-							<?php
-										}
-										if($_SESSION['tipo'] == 'Admin'){
-									?>
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['Tipo'];?>
@@ -94,20 +82,17 @@ class USUARIO_EDIT {
 <?php
 								if($this->valores['Tipo'] == "Deportista"){
 ?>	
-									<input type="radio"  id="tipo" name="tipo" value="Deportista" checked/>Deportista<br>
-									<input type="radio"  id="tipo" name="tipo" value="Entrenador"/>Entrenador<br>
+									<input type="radio"  id="Tipo" name="Tipo" value="Deportista" checked/>Deportista<br>
+									<input type="radio"  id="Tipo" name="Tipo" value="Entrenador"/>Entrenador<br>
 <?php
 								}else{
 ?>
-									<input type="radio"  id="tipo" name="tipo" value="Deportista"/>Deportista<br>
-									<input type="radio"  id="tipo" name="tipo" value="Entrenador" checked/>Entrenador<br>
+									<input type="radio"  id="Tipo" name="Tipo" value="Deportista"/>Deportista<br>
+									<input type="radio"  id="Tipo" name="Tipo" value="Entrenador" checked/>Entrenador<br>
 <?php
 								}
 ?>											
-					</tr>
-						<?php
-								}
-?>				
+					</tr>			
 					<tr align="center">
 						<td colspan="2">
 							<button id ="buttonBien" type="submit" name="action" value="EDIT"><img src="../Views/icon/edit_big.png" alt="<?php echo $strings['Confirmar formulario']?>" /></button>

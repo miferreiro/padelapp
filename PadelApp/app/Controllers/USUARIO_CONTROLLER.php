@@ -27,7 +27,13 @@ function get_data_form() {
 	$password = $_REQUEST[ 'password' ];
 	$nombre = $_REQUEST[ 'nombre' ]; 
 	$apellidos = $_REQUEST[ 'apellidos' ]; 
-	$sexo = $_REQUEST[ 'sexo' ]; 
+	if(!isset($_REQUEST['sexo'])){
+		$sexo = '';
+	}else{
+		$sexo = $_REQUEST[ 'sexo' ]; 
+	}
+	
+
 	$tipo = $_REQUEST[ 'Tipo' ];	
 	$telefono = $_REQUEST[ 'telefono' ]; 
 	$action = $_REQUEST[ 'action' ]; 
@@ -77,23 +83,26 @@ if ( !isset( $_REQUEST[ 'action' ] ) ) {
 switch ( $_REQUEST[ 'action' ] ) {
 	case 'ADD':
 		if ( !$_POST ) {
-
 			if($_SESSION['tipo'] == 'Admin'){
 				new USUARIO_ADD();
 			}else{
 				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/USUARIO_CONTROLLER.php' );
 			}
-		} else {
-			$USUARIO = get_data_form_add();
-			$respuesta = $USUARIO->ADD();
+		}else{
+			if($_SESSION['tipo'] == 'Admin'){
+				
+				$USUARIO = get_data_form_add();
+				$respuesta = $USUARIO->ADD();
 
-			new MESSAGE( $respuesta, '../Controllers/USUARIO_CONTROLLER.php' );
+				new MESSAGE( $respuesta, '../Controllers/USUARIO_CONTROLLER.php' );
+			}else{
+				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/USUARIO_CONTROLLER.php' );
+			}
 		}
 
 		break;
 	case 'DELETE':
 		if ( !$_POST ) {
-
 			if($_SESSION['tipo'] == 'Admin'){
 				
 				$USUARIO = new USUARIO_MODEL( '', '', $_REQUEST[ 'Dni' ], '', '', '', '', '', '');
@@ -109,16 +118,18 @@ switch ( $_REQUEST[ 'action' ] ) {
 			}else{
 				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/USUARIO_CONTROLLER.php' );	
 			}
-		} else {
-			
-			$USUARIO = new USUARIO_MODEL( '', '', $_REQUEST[ 'Dni' ], '', '', '', '', '', '');
-			$respuesta = $USUARIO->DELETE();
-			new MESSAGE( $respuesta, '../Controllers/USUARIO_CONTROLLER.php' );
+		}else{
+			if($_SESSION['tipo'] == 'Admin'){			
+				$USUARIO = new USUARIO_MODEL( '', '', $_REQUEST[ 'Dni' ], '', '', '', '', '', '');
+				$respuesta = $USUARIO->DELETE();
+				new MESSAGE( $respuesta, '../Controllers/USUARIO_CONTROLLER.php' );
+			}else{
+				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/USUARIO_CONTROLLER.php' );
+			}
 		}
 		break;
 	case 'EDIT':
 		if ( !$_POST ) {
-
 			if($_SESSION['tipo'] == 'Admin'){
 				$USUARIO = new USUARIO_MODEL( '', '', $_REQUEST[ 'Dni' ], '', '', '', '', '','');
 				$valores = $USUARIO->RellenaDatos();
@@ -127,21 +138,23 @@ switch ( $_REQUEST[ 'action' ] ) {
 				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/USUARIO_CONTROLLER.php' );
 			}
 		} else {
-			$USUARIO = get_data_form();
-			$respuesta = $USUARIO->EDIT();
-			new MESSAGE( $respuesta, '../Controllers/USUARIO_CONTROLLER.php' );
+			if($_SESSION['tipo'] == 'Admin'){
+				$USUARIO = get_data_form();
+				$respuesta = $USUARIO->EDIT();
+				new MESSAGE( $respuesta, '../Controllers/USUARIO_CONTROLLER.php' );
+			}else{
+				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/USUARIO_CONTROLLER.php' );				
+			}
 		}
 		break;
 	case 'SEARCH':
-		if ( !$_POST ) {
-			
+		if ( !$_POST ) {			
 			if($_SESSION['tipo'] == 'Admin'){
 				new USUARIO_SEARCH();
 			}else{
 				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/USUARIO_CONTROLLER.php' );
 			}
-		} else {
-			
+		} else {			
 			$USUARIO = get_data_form();
 			$datos = $USUARIO->SEARCH();
 			$lista = array( 'Login','Dni','Nombre','Apellidos');
@@ -177,8 +190,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 
 		}else{
 			new USUARIO_DEFAULT();
-		}
-			
+		}			
 }
-
 ?>
+

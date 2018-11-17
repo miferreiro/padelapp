@@ -2,23 +2,22 @@
 
 class PISTA_SHOWCURRENT{
 	
-    //es el constructor de la clase Pista_Showall
+    
 	function __construct( $lista,$lista2,$valores,$valores2) {
-		$this->lista = $lista;//pasamos los campos de la tabla PISTAS
+		$this->lista = $lista;
 		$this->lista2 = $lista2;
-		$this->valores = $valores;//pasamos los valores de cada campo
+		$this->valores = $valores;
 		$this->valores2 = $valores2;
-		$this->render($this->lista,$this->lista2,$this->valores,$this->valores2);//llamamos a la función render donde se mostrará el formulario SHOWALL con los campos correspondientes
+		$this->render($this->lista,$this->lista2,$this->valores,$this->valores2);
 	}
 	function render($lista,$lista2,$valores,$valores2){
-		$this->lista = $lista;//pasamos los campos de la tabla PISTAS
+		$this->lista = $lista;
 		$this->lista2 = $lista2;
-		$this->valores = $valores;//pasamos los valores de cada campo
+		$this->valores = $valores;
 		$this->valores2 = $valores2;
-		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
-
+		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
   
-	include '../Views/Header.php';//incluimos la cabecera
+	include '../Views/Header.php';
 	
 
 ?>
@@ -129,7 +128,7 @@ class PISTA_SHOWCURRENT{
 			</form>
 		</div>
 <?php
-		include '../Views/Footer.php';//incluimos el pie de la página
+		include '../Views/Footer.php';
 		}
 		}
 ?>

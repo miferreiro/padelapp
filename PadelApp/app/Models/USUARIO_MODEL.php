@@ -73,7 +73,7 @@ class USUARIO_MODEL{
 				if ( $result->num_rows == 0 ) { 
 					
 					$sql = "SELECT * FROM USUARIO WHERE (Login = '$this->Login')";
-					
+					$result = $this->mysqli->query( $sql );
 					if ( $result->num_rows != 0 ) {			
 						return 'Ya existe un usuario con el Login introducido en la base de datos';// ya existe					
 					} else {
@@ -97,14 +97,15 @@ class USUARIO_MODEL{
 								'$this->Sexo',
 								'$this->Tipo',
 								'$this->Telefono'
-								)";					
+								)";		
+							if ( !$this->mysqli->query( $sql )) { 
+								return 'Error en la inserción';
+							} else { 											
+								return 'Inserción realizada con éxito'; 
+							}	
 						}
 					}
-					if ( !$this->mysqli->query( $sql )) { 
-						return 'Error en la inserción';
-					} else { 											
-						return 'Inserción realizada con éxito'; 
-					}		
+	
 				}
 		} else { 
 			return 'Introduzca un valor'; 

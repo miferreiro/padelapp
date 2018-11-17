@@ -50,7 +50,7 @@ class USUARIO_ADD {
 					</tr>
 					<tr>
 						<th class="formThTd">
-							<?php echo "Sexo"?>
+							<?php echo $strings['Sexo'];?>
 						</th>
 						<td class="formThTd">
 							<input type="radio"  id="sexo" name="sexo" value="Hombre" checked />Hombre<br>

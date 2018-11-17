@@ -265,7 +265,7 @@ class PISTA_MODEL{
 
 	function RellenaDatos() { 
 
-		$sql = "SELECT * FROM PISTA WHERE (idPista = '$this->idPista')";// se construye la sentencia de busqueda de la tupla
+		$sql = "SELECT * FROM PISTA WHERE (idPista = '$this->idPista')";
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'No existe en la base de datos'; // 
 		} else { 

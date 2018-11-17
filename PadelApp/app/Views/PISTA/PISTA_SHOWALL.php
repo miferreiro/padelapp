@@ -2,41 +2,32 @@
 
 class Pista_Showall{
 	
-    //es el constructor de la clase Pista_Showall
+
 	function __construct( $lista, $datos,$datos2) {
-		$this->lista = $lista;//pasamos los campos de la tabla PISTAS
-		$this->datos = $datos;//pasamos los valores de cada campo
-		$this->datos2 = $datos2;//pasamos los valores de cada campo
-		$this->render($this->lista,$this->datos,$this->datos2);//llamamos a la función render donde se mostrará el formulario SHOWALL con los campos correspondientes
+		$this->lista = $lista;
+		$this->datos = $datos;
+		$this->datos2 = $datos2;
+		$this->render($this->lista,$this->datos,$this->datos2);
 	}
 	function render($lista,$datos,$datos2){
-		$this->lista = $lista;//pasamos los campos de la tabla PISTAS
-		$this->datos = $datos;//pasamos los valores de cada campo
+		$this->lista = $lista;
+		$this->datos = $datos;
 		$this->datos2 = $datos2;
-		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';//incluimos los strings de idiomas, para que la página pueda estar en español,inglés y galego
-
-  
-	include '../Views/Header.php';//incluimos la cabecera
+		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
+		include '../Views/Header.php';
 		
 		$horas = array();
 		$q = 0;
-		while ( $fila = mysqli_fetch_array( $datos ) ) {
-				
+		while ( $fila = mysqli_fetch_array( $datos ) ) {				
 				$horas[$q] = $fila['Hora'];
-			//	echo $fila[''];
-			//<br><?php
 				$q++;
 
 		}
-			$fechas = array();
+		$fechas = array();
 		$z = 0;
-		while ( $fila = mysqli_fetch_array( $datos2 ) ) {
-				
+		while ( $fila = mysqli_fetch_array( $datos2 ) ) {				
 				$fechas[$z] = $fila['Fecha'];
-			//	echo $fila[''];
-			//<br><?php
 				$z++;
-
 		}
 
 ?>
@@ -65,8 +56,9 @@ class Pista_Showall{
 						<?php echo $strings['idPista'];echo(' ');echo $li['idPista']?>
 						<form action="../Controllers/PISTA_CONTROLLER.php" method="get" style="display:inline" >
 						<input type="hidden" name="idPista" value="<?php echo $li['idPista'] ?>">
+<?php  if($_SESSION['tipo'] == 'Admin'){ ?>
 						<button id ="buttonBien" type="submit" name="action" value="DELETE" ><img src="../Views/icon/delete_big.png" alt="<?php echo $strings['Eliminar']?>" width="20" height="20" /></button>
-	
+<?php } ?>	
 						<button id ="buttonBien" type="submit" name="action" value="SHOWCURRENT"><img src="../Views/icon/verdetalles_2.jpg" alt="BUSCAR" width="20" height="20"/></button>	
 						</form>
 					</th>
@@ -156,16 +148,18 @@ class Pista_Showall{
 								</tr>									
 										
 			</table>
+<?php  if($_SESSION['tipo'] == 'Admin'){ ?>
 					<form action='../Controllers/PISTA_CONTROLLER.php' method="get" style="display:inline">
 						<button id="buttonBien" type="submit" name="action" value="ADD"><img src="../Views/icon/add_big.png" alt="AÑADIR" /></button>
 					</form>
+<?php }?>
 		</div>
 			<form action='../Controllers/DEFAULT_CONTROLLER.php' method="post">
 				<button id ="buttonBien" type="submit"><img src="../Views/icon/back_big2.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>
 		</div>
 <?php
-		include '../Views/Footer.php';//incluimos el pie de la página
+		include '../Views/Footer.php';
 		}
 		}
 ?>
