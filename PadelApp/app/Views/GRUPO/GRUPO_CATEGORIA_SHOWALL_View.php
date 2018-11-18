@@ -19,7 +19,7 @@ class GRUPO_CATEGORIA_SHOWALL {
 ?>
 		<div class="seccion" align="center">
 			<h2>
-				<?php echo $strings['Tabla de datos'];?>
+				<?php echo $strings['Tabla de grupos del campeonato'];?>
 			</h2>
 			<div class="col-md-3">
 			<table class="table">
