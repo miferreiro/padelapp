@@ -327,7 +327,8 @@ array(
 	'Tabla de categorías' => 'Tabla de categorías',
 	'Tabla de inscritos en la categoría' => 'Tabla de inscritos en la categoría',
 	'Ya existe algun componente de la pareja inscrita en el campeonato' => 'Ya existe algun componente de la pareja inscrita en el campeonato',
-	'Grupos creados' => 'Grupos creados'
+	'Grupos creados' => 'Grupos creados',
+	'Puntos' => 'Puntos'
 	)
 ;
 

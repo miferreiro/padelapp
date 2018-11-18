@@ -340,7 +340,8 @@ array(
 	'Tabla de categorías' => 'Category table',
 	'Tabla de inscritos en la categoría' => 'Table of inscribed in a category',
 	'Ya existe algun componente de la pareja inscrita en el campeonato' => 'There is already a component of the couple registered in the championship',
-	'Grupos creados' => 'Create groups'
+	'Grupos creados' => 'Create groups',
+	'Puntos' => 'Points'
 	)
 ;
 

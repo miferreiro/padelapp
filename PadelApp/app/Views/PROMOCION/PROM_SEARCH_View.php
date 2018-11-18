@@ -12,7 +12,7 @@ class PROM_SEARCH {
 ?>
 		<div class="seccion" align="center">
 			<h2>
-				<?php echo $strings['Formulario de inserción'];?>
+				<?php echo $strings['Búsqueda de una promoción'];?>
 			</h2>
 			<form name="ADD" action="../Controllers/PROM_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="">
 			<div class="col-sm-4">
