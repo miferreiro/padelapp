@@ -17,7 +17,7 @@ class CAMPEONATO_SHOWALL {
 ?>
 		<div align="center" class="seccion">
 			<h2 align="center">
-				<?php echo $strings['Tabla de datos'];?>
+				<?php echo $strings['Tabla de campeonatos'];?>
 			</h2>
 			<div class="col-md-7">
 			<table align="center" class="table">

@@ -19,7 +19,7 @@ class RESERVA_SHOWALL {
 
 		<div class="seccion" align="center">
 			<h2>
-				<?php echo $strings['Tabla de datos'];?>
+				<?php echo $strings['Tabla de reservas'];?>
 			</h2>
 			<div class="datepicker"></div>
 			<div class="col-md-6">

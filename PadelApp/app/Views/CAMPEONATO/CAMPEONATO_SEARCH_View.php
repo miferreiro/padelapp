@@ -12,7 +12,7 @@ class CAMPEONATO_SEARCH {
 ?>
 		<div align="center" class="seccion">
 			<h2 align="center">
-				<?php echo $strings['Formulario de búsqueda'];?>
+				<?php echo $strings['Búsqueda de campeonato'];?>
 			</h2>
 			<form id="SEARCH"name="SEARCH" action="../Controllers/CAMPEONATO_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="return comprobarSearchCampeonato()">
 				<div class="col-md-4">

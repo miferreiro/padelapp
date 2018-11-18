@@ -19,9 +19,9 @@ class CAMPEONATO_CATEGORIA_SHOWALL {
 ?>
 		<div class="seccion" align="center">
 			<h2>
-				<?php echo $strings['Tabla de datos'];?>
+				<?php echo $strings['Tabla de categorías'];?>
 			</h2>
-			<div class="col-md-3">
+			<div class="col-md-4">
 			<table class="table">
 				<thead class="thead-light">
 				<tr>

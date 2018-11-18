@@ -39,7 +39,7 @@ class PROM_ADD {
 
 <div class="seccion" align="center">
 			<h2>
-				<?php echo $strings['Formulario de inserción'];?>
+				<?php echo $strings['Añade una promoción'];?>
 			</h2>
 			<div class="datepicker"></div>
 			<br>
