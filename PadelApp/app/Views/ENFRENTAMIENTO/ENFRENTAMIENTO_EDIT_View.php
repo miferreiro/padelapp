@@ -70,6 +70,7 @@ class ENFRENTAMIENTO_EDIT {
 
 							<select name="ResultadoSet1Par1" required>
 							  <option value = "<?php echo $this->valores['ResultadoSet1Par1']?>"><?php echo $this->valores['ResultadoSet1Par1']?></option>
+							  <option value="0">0</option>
 							  <option value="1">1</option>
 							  <option value="2">2</option>
 							  <option value="3">3</option>
@@ -85,6 +86,7 @@ class ENFRENTAMIENTO_EDIT {
 
 							<select name="ResultadoSet1Par2" required>
 							   <option value = "<?php echo $this->valores['ResultadoSet1Par2']?>"><?php echo $this->valores['ResultadoSet1Par2']?></option>
+							  <option value="0">0</option>
 							  <option value="1">1</option>
 							  <option value="2">2</option>
 							  <option value="3">3</option>
@@ -102,6 +104,7 @@ class ENFRENTAMIENTO_EDIT {
 
 							<select name="ResultadoSet2Par1" required>
 							   <option value = "<?php echo $this->valores['ResultadoSet2Par1']?>"><?php echo $this->valores['ResultadoSet2Par1']?></option>
+							  <option value="0">0</option>
 							  <option value="1">1</option>
 							  <option value="2">2</option>
 							  <option value="3">3</option>
@@ -117,6 +120,7 @@ class ENFRENTAMIENTO_EDIT {
 
 							<select name="ResultadoSet2Par2" required>
 							   <option value = "<?php echo $this->valores['ResultadoSet2Par2']?>"><?php echo $this->valores['ResultadoSet2Par2']?></option>
+							  <option value="0">0</option>
 							  <option value="1">1</option>
 							  <option value="2">2</option>
 							  <option value="3">3</option>
@@ -134,6 +138,7 @@ class ENFRENTAMIENTO_EDIT {
 
 							<select name="ResultadoSet3Par1">
 							   <option value = "<?php echo $this->valores['ResultadoSet3Par1']?>"><?php echo $this->valores['ResultadoSet3Par1']?></option>
+							  <option value="0">0</option>
 							  <option value="1">1</option>
 							  <option value="2">2</option>
 							  <option value="3">3</option>
@@ -149,6 +154,7 @@ class ENFRENTAMIENTO_EDIT {
 
 							<select name="ResultadoSet3Par2">
 							   <option value = "<?php echo $this->valores['ResultadoSet3Par2']?>"><?php echo $this->valores['ResultadoSet3Par2']?></option>
+							  <option value="0">0</option>
 							  <option value="1">1</option>
 							  <option value="2">2</option>
 							  <option value="3">3</option>

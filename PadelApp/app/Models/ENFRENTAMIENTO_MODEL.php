@@ -147,7 +147,7 @@ class ENFRENTAMIENTO_MODEL{
 	function RellenaDatos() { 
 
 		$sql = "SELECT DISTINCT E1.IdCampeonato as IdCampeonato,E1.Tipo as Tipo,E1.Nivel as Nivel,E1.Letra as Letra,
-		E1.NumEnfrentamiento,E2.NumPareja as pareja1, E1.NumPareja as pareja2,
+		E1.NumEnfrentamiento,E2.NumPareja as pareja2, E1.NumPareja as pareja1,
 		E1.ResultadoSet1 as ResultadoSet1Par1, E1.ResultadoSet2 as ResultadoSet2Par1, E1.ResultadoSet3 as ResultadoSet3Par1, 
 		E2.ResultadoSet1 as ResultadoSet1Par2, E2.ResultadoSet2 as ResultadoSet2Par2, E2.ResultadoSet3 as ResultadoSet3Par2,
 		E1.EstadoPropuesta as propuestaPareja1,  E2.EstadoPropuesta as propuestaPareja2
@@ -252,13 +252,13 @@ class ENFRENTAMIENTO_MODEL{
 			$countPar2++;
 		}
 		}
-		
+
 		if($countPar1>$countPar2){
-			$sql = "UPDATE PARTIDO SET ,
+			$sql = "UPDATE PARTIDO SET
 					ParejaGanadora = '$NumPareja1',
 					ParejaPerdedora = '$this->NumPareja'
-				WHERE ((IdCampeonato = '$this->IdCampeonato') && (Tipo = '$this->Tipo') && (Nivel = '$this->Nivel') && (Grupo_Letra = '$this->Letra') && (NumEnfrentamiento = '$this->NumEnfrentamiento')
-				)";
+				WHERE (IdCampeonato = '$this->IdCampeonato') && (Tipo = '$this->Tipo') && (Nivel = '$this->Nivel') && (Grupo_Letra = '$this->Letra') && (NumEnfrentamiento = '$this->NumEnfrentamiento')
+				";
 
 			if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 				return 'Error en la modificación';
@@ -269,8 +269,8 @@ class ENFRENTAMIENTO_MODEL{
 			$sql = "UPDATE PARTIDO SET 
 					ParejaGanadora = '$this->NumPareja',
 					ParejaPerdedora = '$NumPareja1'
-				WHERE ((IdCampeonato = '$this->IdCampeonato') && (Tipo = '$this->Tipo') && (Nivel = '$this->Nivel') && (Grupo_Letra = '$this->Letra') && (NumEnfrentamiento = '$this->NumEnfrentamiento')
-				)";
+				WHERE (IdCampeonato = '$this->IdCampeonato') && (Tipo = '$this->Tipo') && (Nivel = '$this->Nivel') && (Grupo_Letra = '$this->Letra') && (NumEnfrentamiento = '$this->NumEnfrentamiento')
+				";
 
 			if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 				return 'Error en la modificación';
