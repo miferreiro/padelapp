@@ -14,6 +14,7 @@ include '../Views/GRUPO/GRUPO_CATEGORIA_SHOWALL_View.php';
 include '../Views/GRUPO/GRUPO_CATEGORIA_PAREJAS_View.php';
 include '../Views/GRUPO/GRUPO_CATEGORIA_TABLA_View.php';
 include '../Views/ENFRENTAMIENTO/ENFRENTAMIENTO_EDIT_View.php';
+include '../Views/GRUPO/Clasificacion_View.php';
 include '../Views/DEFAULT_View.php'; 
 include '../Views/MESSAGE_View.php';
 
@@ -109,6 +110,17 @@ switch ( $_REQUEST[ 'action' ] ) {
 			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/USUARIO_CONTROLLER.php' );
 		}
 	break;
+	case "CLASIFICACION":
+		
+				$GRUPO =  get_data_form();
+
+				$datos = $GRUPO ->Clasif();
+
+				$lista = array( 'Letra','NumPareja','Puntos');
+				
+		
+			   new CLASIFICACION_SHOWALL($lista, $datos);
+	break;	
 	default: 
 			if($_SESSION['tipo'] == 'Admin'){
 			
