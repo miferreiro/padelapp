@@ -129,7 +129,7 @@ $cont = 0;
 						$aux = True;						
 						foreach($arrayEnfrentamientos as $fila){	
 							
-							if($arrayListadoParejas[$j-1] == $fila['pareja1'] && $arrayListadoParejas[$i-1] == $fila['pareja2'] ){			
+							if($arrayListadoParejas[$j-1] == $fila['pareja1'] && $arrayListadoParejas[$i-1] == $fila['pareja2'] ){			echo $fila['pareja1'];
 								foreach($arrayEnfrentamientos2 as $fila2){		
 									if( $arrayListadoParejas[$j-1]== $fila2['pareja1'] && $arrayListadoParejas[$i-1] == $fila2['pareja2'] ){										
 										if($fila2['propuestaPareja1'] == 3){?> 
@@ -237,7 +237,7 @@ $cont = 0;
 								}
 								if($aux){
 									$NoEncontrado = False;	
-									?><td style="background-color: #f4f4f4;"><?php echo $fila['ResultadoSet1Par1'];?> </td> <?php
+									?><td style="background-color: #f4f4f4;"><?php //echo $fila['ResultadoSet1Par1'];?> </td> <?php
 								}
 							}							
 						}										

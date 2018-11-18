@@ -20,7 +20,6 @@ include '../Models/USUARIO_PAREJA_MODEL.php';
 include '../Views/CALENDARIO/CALENDARIO_SHOWALL_View.php';
 include '../Views/CALENDARIO/CALENDARIO_SHOWCURRENT_View.php';
 include '../Views/CALENDARIO/CALENDARIO_TABLA_View.php';
-include '../Views/CALENDARIO/CALENDARIO_EDIT_View.php';
 include '../Views/CALENDARIO/CALENDARIO_INFORMACION_View.php';
 include '../Views/CALENDARIO/CALENDARIO_ACEPTAR_View.php';
 include '../Views/CALENDARIO/CALENDARIO_PROPONER_View.php';

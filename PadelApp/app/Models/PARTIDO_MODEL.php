@@ -207,7 +207,7 @@ class PARTIDO_MODEL{
 					Hora = NULL
 				WHERE ((IdCampeonato = '$this->IdCampeonato') && (Tipo = '$this->Tipo') && (Nivel = '$this->Nivel') && (Grupo_Letra = '$this->Letra') && (NumEnfrentamiento = '$this->NumEnfrentamiento')
 				)";
-	echo $sql;
+	
 			if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 				return 'Error en la modificación';
 			} else { 
