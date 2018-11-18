@@ -19,7 +19,7 @@ class CLASIFICACION_SHOWALL {
 
 		<div class="seccion" align="center">
 			<h2>
-				<?php echo $strings['Tabla de datos'];?>
+				<?php echo $strings['Tabla de clasificación'];?>
 			</h2>
 			<div class="col-md-3">
 			<table class="table">
@@ -36,9 +36,7 @@ class CLASIFICACION_SHOWALL {
 					}
 			
 ?>
-					<th>
-						<?php echo $strings['Opciones']?>
-					</th>
+					
 				</tr>
 <?php
 					
@@ -49,7 +47,11 @@ class CLASIFICACION_SHOWALL {
 					foreach ( $lista as $atributo ) { 
 ?>
 					<td>
-<?php 
+<?php 	
+							$IdCampeonato = $fila['IdCampeonato'];
+							$Tipo = $fila['Tipo'];
+							$Nivel = $fila['Nivel'];
+							$Letra = $fila['Letra'];
 							echo $fila[ $atributo ];
 				
 ?>
@@ -64,16 +66,17 @@ class CLASIFICACION_SHOWALL {
 					    
 					   
 ?>
-							
 				</thead>
-			</table>		
-			<form action='../Controllers/GRUPO_CONTROLLER.php' method="post">
-				<input type="hidden" name="IdCampeonato" value="<?php echo $this->datos['IdCampeonato']; ?>">		
-				<input type="hidden" name="Tipo" value="<?php echo $this->datos['Tipo']; ?>">		
-				<input type="hidden" name="Nivel" value="<?php echo $this->datos['Nivel']; ?>">					
-				<input type="hidden" name="Letra" value="<?php echo $this->datos['Letra']; ?>">
+			</table>
+				</div>
+				<form action='../Controllers/GRUPO_CONTROLLER.php' method="get">
+				<input type="hidden" name="IdCampeonato" value="<?php echo $IdCampeonato; ?>">		
+				<input type="hidden" name="Tipo" value="<?php echo $Tipo; ?>">		
+				<input type="hidden" name="Nivel" value="<?php echo $Nivel; ?>">					
+				<input type="hidden" name="Letra" value="<?php echo $Letra; ?>">
 				<button id ="buttonBien" type="submit"><img src="../Views/icon/back_big2.png" alt="<?php echo $strings['Atras']?>" /></button>
-			</form>
+			</form>			
+			
 		</div>
 <?php
 		include '../Views/Footer.php';
