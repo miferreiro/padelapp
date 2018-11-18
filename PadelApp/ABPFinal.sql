@@ -292,9 +292,10 @@ CREATE TABLE IF NOT EXISTS `AbpBase`.`Clasificacion` (`IdCampeonato` INT, `Tipo`
 DROP TABLE IF EXISTS `AbpBase`.`Clasificacion`;
 DROP VIEW IF EXISTS `AbpBase`.`Clasificacion` ;
 USE `AbpBase`;
-CREATE OR REPLACE VIEW `Clasificacion` AS select E.IdCampeonato,E.Tipo,E.Nivel,E.Letra,E.NumEnfrentamiento,E.NumPareja,U.Login 
-from Enfrentamiento E, UsuarioParejas UP, Usuario U 
-where UP.Pareja_idCampeonato = E.IdCampeonato AND UP.Pareja_Tipo=E.Tipo AND UP.Pareja_Nivel=E.Nivel AND UP.Pareja_NumPareja=E.NumPareja AND U.Dni=UP.Usuario_Dni;
+CREATE OR REPLACE VIEW `Clasificacion` AS SELECT
+DISTINCT E.IdCampeonato,E.Tipo, E.Nivel,E.Letra,E.NumPareja, ((SELECT COUNT(*)*3 FROM partido WHERE ParejaGanadora = E.NumPareja)+ (SELECT COUNT(*) FROM partido WHERE ParejaPerdedora = E.NumPareja)) as Puntos
+FROM ENFRENTAMIENTO E,PARTIDO P
+ORDER BY E.Letra,Puntos DESC;
 
 
 
