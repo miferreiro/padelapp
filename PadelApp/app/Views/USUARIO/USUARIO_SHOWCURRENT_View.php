@@ -27,7 +27,7 @@ class USUARIO_SHOWCURRENT {
 ?>
 <div class="seccion" align="center">
 		<h2>
-			<?php echo $strings['Vista detallada'];?>
+			<?php echo $strings['Datos Usuario'];?>
 		</h2>
 		<div class="col-md-4">
 		<table class="table table-sm">

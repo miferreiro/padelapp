@@ -13,7 +13,7 @@ class USUARIO_SEARCH {
 ?>
 		<div class="seccion" align="center">
 			<h2>
-				<?php echo $strings['Formulario de búsqueda'];?>
+				<?php echo $strings['Formulario de búsqueda de usuario'];?>
 			</h2>
 			<form id="SEARCH" name="SEARCH" action="../Controllers/USUARIO_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="return comprobarSearchUsuario()">
 			<div class="col-sm-4">

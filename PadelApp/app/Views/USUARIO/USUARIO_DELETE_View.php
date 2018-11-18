@@ -28,7 +28,7 @@ class USUARIO_DELETE {
 ?>
 		<div class="seccion" align="center">
 			<h2>
-				<?php echo $strings['Tabla de borrado'];?>
+				<?php echo $strings['Tabla de borrado de usuario'];?>
 			</h2>
 			<div class="col-sm-4">
 			<table class="table table-sm">

@@ -16,7 +16,7 @@ class PISTA_EDIT {
 		<div class="seccion" align="center">
 			
 		<h2>
-				<?php echo $strings['Formulario de modificación'];?>
+				<?php echo $strings['Formulario de modificación de pista'];?>
 			</h2>
 			<form name="EDIT" action="../Controllers/PISTA_CONTROLLER.php" method="post" enctype="multipart/form-data">
 				<div class="col-md-4">

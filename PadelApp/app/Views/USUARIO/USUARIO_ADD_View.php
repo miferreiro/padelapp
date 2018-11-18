@@ -12,7 +12,7 @@ class USUARIO_ADD {
 ?>
 		<div class="seccion" align="center">
 			<h2>
-				<?php echo $strings['Formulario de inserción'];?>
+				<?php echo $strings['Formulario de inserción de usuario'];?>
 			</h2>
 			<form name="ADD" action="../Controllers/USUARIO_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="return comprobarAddUsuario()"/> 
 			<div class="col-sm-4">

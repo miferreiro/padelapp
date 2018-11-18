@@ -292,7 +292,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 				//echo $numParejasAsignadas;
 				//echo"\n\n";
 				
-				new MESSAGE('Grupos creados','../Controllers/CAMPEONATO_CATEGORIA_CONTROLLER.php.?IdCampeonato='.$_REQUEST['IdCampeonato'] );
+				new MESSAGE( 'Grupos creados','../Controllers/CAMPEONATO_CATEGORIA_CONTROLLER.php.?IdCampeonato='.$_REQUEST['IdCampeonato'] );
 			
 			}			
 		}
