@@ -333,7 +333,10 @@ array(
 	'Tabla de grupos del campeonato' => 'Tabla de grupos del campeonato',
 	'Tabla de enfrentamientos' => 'Tabla de enfrentamientos',
 	'Ha alcanzado el número máximo de reservas activas' => 'Ha alcanzado el número máximo de reservas activas',
-	'Tabla de parejas en la categoría' => 'Tabla de parejas en la categoría'
+	'Tabla de parejas en la categoría' => 'Tabla de parejas en la categoría',
+	'Antes: ' => 'Antes: ',
+	'Después: ' => 'Después: ',
+	'Ver clasificación'=>'Ver clasificación'
 	)
 ;
 

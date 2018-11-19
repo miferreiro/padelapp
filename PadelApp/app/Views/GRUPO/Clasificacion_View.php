@@ -69,14 +69,25 @@ class CLASIFICACION_SHOWALL {
 				</thead>
 			</table>
 				</div>
+<?php			
+			if($_SESSION['tipo'] == 'Admin'){
+				?>
 				<form action='../Controllers/GRUPO_CONTROLLER.php' method="get">
 				<input type="hidden" name="IdCampeonato" value="<?php echo $IdCampeonato; ?>">		
 				<input type="hidden" name="Tipo" value="<?php echo $Tipo; ?>">		
 				<input type="hidden" name="Nivel" value="<?php echo $Nivel; ?>">					
 				<input type="hidden" name="Letra" value="<?php echo $Letra; ?>">
 				<button id ="buttonBien" type="submit"><img src="../Views/icon/back_big2.png" alt="<?php echo $strings['Atras']?>" /></button>
-			</form>			
-			
+			</form>
+			<?php }			
+			if($_SESSION['tipo'] == 'Deportista'){
+				?>
+			<form action='../Controllers/CALENDARIO_CONTROLLER.php' method="post">
+					<button id ="buttonBien" type="submit"><img src="../Views/icon/back_big2.png" alt="<?php echo $strings['Atras'] ?>" /></button>
+				</form>
+			<?php 		
+					}	
+				?>
 		</div>
 <?php
 		include '../Views/Footer.php';

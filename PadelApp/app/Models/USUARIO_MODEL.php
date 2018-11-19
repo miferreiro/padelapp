@@ -152,8 +152,6 @@ class USUARIO_MODEL{
 			
 			// se construye la sentencia sql de borrado
 			if($result->num_rows >= 1){
-				$NumEnf=$result->fetch_array();
-				$NumEnfrentamiento=$NumEnf['NumEnfrentamiento'];
 				$sql = "DELETE FROM Enfrentamiento WHERE (NumPareja = '$NumPareja')";
 				$this->mysqli->query( $sql );
 			}	
@@ -164,15 +162,6 @@ class USUARIO_MODEL{
 			// se construye la sentencia sql de borrado
 			if($result->num_rows >= 1){
 				$sql = "DELETE FROM Pareja WHERE (NumPareja = '$NumPareja')";
-				$this->mysqli->query( $sql );
-			}
-
-			$sql = "SELECT * FROM Partido WHERE (NumEnfrentamiento = '$NumEnfrentamiento')";
-			$result = $this->mysqli->query( $sql );
-			
-			// se construye la sentencia sql de borrado
-			if($result->num_rows >= 1){
-				$sql = "DELETE FROM Partido WHERE (NumEnfrentamiento = '$NumEnfrentamiento')";
 				$this->mysqli->query( $sql );
 			}
 			$sql = "DELETE FROM USUARIO WHERE (Dni = '$this->Dni' )";

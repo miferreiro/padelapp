@@ -111,7 +111,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 				$numGrupos = 1;
 				$letra = '';
 				//$numParejas = 95;
-				echo "Antes: " . $numParejas;
+				echo  $strings['Antes: '].$numParejas;
 					?><!--<br>-->  <?php
 					$stringParejas = '';
 				if($numParejas > 12 && $numParejas < 16){
@@ -121,7 +121,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 					 $numParejas = $numParejas - $numParejasDesInscritas;
 				}
 
-				echo "Despues: " . $numParejas;
+				echo $strings['Después: '].$numParejas;
 					?><!--<br>-->  <?php
 				if($numParejas > 12 && $numParejas <= 24) $numGrupos = 2;	
 				else if($numParejas > 24 && $numParejas <= 36) $numGrupos = 3;	

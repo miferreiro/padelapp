@@ -307,6 +307,10 @@ class PISTA_MODEL{
 					Disponibilidad = '$this->disponibilidad'
 				WHERE ( idPista = '$this->idPista' && Hora = '$this->hora' && Fecha = '$this->fecha'
 				)";
+			if($this->disponibilidad==1){
+				$sql2= "DELETE FROM RESERVA WHERE (Pista_idPista = '$this->idPista' && Pista_Hora = '$this->hora' && Pista_Fecha = '$this->fecha')";
+				$resultado = $this->mysqli->query( $sql2 );
+			}
 			if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 				return 'Error en la modificación';
 			} else { 

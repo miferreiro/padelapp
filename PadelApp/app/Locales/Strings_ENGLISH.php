@@ -345,7 +345,10 @@ array(
 	'Puntos' => 'Points',
 	'Tabla de clasificación' => 'Clasification table',
 	'Tabla de grupos del campeonato' => 'Table group from a championship',
-	'Tabla de enfrentamientos' => 'Engages table'
+	'Tabla de enfrentamientos' => 'Engages table',
+	'Antes: ' => 'Before: ',
+	'Después: ' => 'After: ',
+	'Ver clasificación'=>'Show classification'
 	)
 ;
 

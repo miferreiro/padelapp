@@ -331,7 +331,10 @@ array(
 	'Tabla de clasificación' => 'Tabla de clasificación',
 	'Tabla de grupos del campeonato' => 'Tabla dos grupos dun campionato',
 	'Tabla de enfrentamientos' => 'Tabla dos enfrentamentos',
-	'Tabla de parejas en la categoría' => 'Tabla das parexas na categoría'
+	'Tabla de parejas en la categoría' => 'Tabla das parexas na categoría',
+	'Antes: ' => 'Antes: ',
+	'Después: ' => 'Despois: ',
+	'Ver clasificación'=>'Ver clasificación'
 	)
 ;
 

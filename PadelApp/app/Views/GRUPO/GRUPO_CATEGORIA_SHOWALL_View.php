@@ -76,7 +76,7 @@ class GRUPO_CATEGORIA_SHOWALL {
 							<input type="hidden" name="Tipo" value="<?php echo $fila['Tipo']; ?>">		
 							<input type="hidden" name="Nivel" value="<?php echo $fila['Nivel']; ?>">	
 							<input type="hidden" name="Letra" value="<?php echo $fila['Letra']; ?>">
-								<button id ="buttonBien" type="submit" name="action" value="CLASIFICACION" ><img src="../Views/icon/tabla.png" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>			
+								<button id ="buttonBien" type="submit" name="action" value="CLASIFICACION" ><img src="../Views/icon/exito.png" alt="<?php echo $strings['Ver clasificación']?>" width="20" height="20"/></button>			
 	
 						</form>
 												
