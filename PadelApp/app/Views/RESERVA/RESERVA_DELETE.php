@@ -62,10 +62,10 @@ class RESERVA_DELETE {
 ?>
 			<div>
 			<form action="../Controllers/RESERVA_CONTROLLER.php" method="post" style="display: inline" >
-				<input type="hidden" name="Usuario_Dni" value="<?php echo $fila['Usuario_Dni']; ?>">
-				<input type="hidden" name="Pista_idPista" value="<?php echo $fila['Pista_idPista']; ?>">
-				<input type="hidden" name="Pista_Fecha" value="<?php echo $fila['Pista_Fecha']; ?>">
-				<input type="hidden" name="Pista_Hora" value="<?php echo $fila['Pista_Hora']; ?>">
+				<input type="hidden" name="Usuario_Dni" value="<?php echo $this->valores['Usuario_Dni']; ?>">
+				<input type="hidden" name="Pista_idPista" value="<?php echo $this->valores['Pista_idPista']; ?>">
+				<input type="hidden" name="Pista_Fecha" value="<?php echo $this->valores['Pista_Fecha']; ?>">
+				<input type="hidden" name="Pista_Hora" value="<?php echo $this->valores['Pista_Hora']; ?>">
 
 				<button id ="buttonBien" type="submit" name="action" value="DELETE" ><img src="../Views/icon/accept_big.png" alt="<?php echo $strings['Confirmar'] ?>"/></button>
 			</form>

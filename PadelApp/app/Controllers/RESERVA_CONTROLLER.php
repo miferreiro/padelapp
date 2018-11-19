@@ -66,22 +66,12 @@ switch ( $_REQUEST[ 'action' ] ) {
 
 			$respuesta = $RESERVA->DELETE();
 
-			new MESSAGE( $respuesta, '../Controllers/RESERVA_CONTROLLER.php' );
+			new MESSAGE( $respuesta, '../Controllers/RESERVA_CONTROLLER.php'.'?Usuario_Dni='.$_REQUEST[ 'Usuario_Dni' ] );
 		}
 
 		break;
 
-	case 'SEARCH':
-			$RESERVA = get_data_form();
 
-			$datos = $RESERVA->SEARCH();
-
-			$lista = array('Usuario_Dni','Pista_idPista','Pista_Hora','Pista_Fecha');
-			
-		
-			new RESERVA_SHOWCURRENT( $lista, $datos );
-
-		break;
 	case 'SHOWCURRENT':
 		           $RESERVA = new RESERVA_MODEL( $_REQUEST[ 'Usuario_Dni' ], $_REQUEST[ 'Pista_idPista' ], $_REQUEST[ 'Pista_Fecha' ], $_REQUEST[ 'Pista_Hora' ]);
 

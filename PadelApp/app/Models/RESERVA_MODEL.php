@@ -110,7 +110,6 @@ class RESERVA_MODEL{
 	function DELETE() {
 		$fecha = date("Y-m-d");
 		$sql = "SELECT * FROM RESERVA WHERE (Usuario_Dni='$this->Usuario_Dni' && Pista_idPista = '$this->Pista_idPista' && Pista_Fecha = '$this->Pista_fecha' && Pista_Fecha > '$fecha'  && Pista_Hora = '$this->Pista_hora')";
-	
 		$result = $this->mysqli->query( $sql );
 	
 
@@ -120,7 +119,22 @@ class RESERVA_MODEL{
 			
 			$this->mysqli->query( $sql );
 			
-			return "Borrado correctamente";
+			$sql2 = "UPDATE PISTA SET 
+						idPista = '$this->Pista_idPista',
+						Hora='$this->Pista_hora',
+						Fecha = '$this->Pista_fecha',
+						Disponibilidad = '1'
+				WHERE ( idPista = '$this->Pista_idPista' && Hora = '$this->Pista_hora' && Fecha = '$this->Pista_fecha')";
+
+					if ( !$this->mysqli->query( $sql )) { 
+									return 'Error en el borrado';
+								} else { 
+									if ( !$this->mysqli->query( $sql2 )) { 
+									return 'Error en el borrado';
+										} else { 
+									return 'Borrado correctamente'; 
+								}
+							  }	
 		} 
 		else
 			return "No existe";
