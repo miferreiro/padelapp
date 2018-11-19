@@ -99,6 +99,7 @@ array(
 	'Gestión de pistas' => 'Xestión de pistas',
 	'Aceptar' => 'Aceptar',
 	'Conectarse' => 'Conectarse',
+	'Ha alcanzado el número máximo de reservas activas' => 'Acadou o número máximo de reservas activas',
 	'Desconectarse' => 'Desconectarse',
 	'Cambiar idioma a español' => 'Cambiar idioma a español',
 	'Cambiar idioma a inglés' => 'Cambiar idioma a inglés',

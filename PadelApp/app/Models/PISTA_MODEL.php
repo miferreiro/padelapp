@@ -357,8 +357,8 @@ class PISTA_MODEL{
 			$this->mysqli->query( $sql );
 			$sql = "DELETE FROM PROMOCIONES WHERE Fecha < '$fecha'"; 
 			$this->mysqli->query( $sql );
-
-
+		
+			
 		for($x=1 ; $x<=$pista['num'] ; $x++){	
 		for($i=$dia['fech'] ; $i<7 ; $i++){				
 							$sql = "INSERT INTO PISTA (

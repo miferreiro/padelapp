@@ -24,6 +24,7 @@ array(
 	'Ya está inscrito en esa promoción' => 'You are already enrolled in that promotion',
 	'Hombre' => 'Man',
 	'Mujer' => 'Woman',
+	'Ha alcanzado el número máximo de reservas activas' => 'You have reached the maximum number of active reservations',
 	'idPista' => 'Court',
 	'Promociones_Hora' => 'Hour',
 	'Fecha'=> 'Date',

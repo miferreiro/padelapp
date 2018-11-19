@@ -68,6 +68,9 @@ class RESERVA_MODEL{
 						if ( $result->num_rows == 0 ) {			
 							return 'La pista no está disponible';					
 						} else {
+							$sql = "SELECT * FROM RESERVA WHERE ( Usuario_Dni = '$this->Usuario_Dni')";
+							$result = $this->mysqli->query( $sql );
+							if($result->num_rows < 5){
 								$sql = "INSERT INTO RESERVA (
 									Usuario_Dni,
 									Pista_idPista,
@@ -97,7 +100,11 @@ class RESERVA_MODEL{
 									return 'Inserción realizada con éxito'; 
 								}
 							  }										
+							}else{
+								return 'Ha alcanzado el número máximo de reservas activas';
 							}
+						}
+						  
 						  }
 					}
 				}
