@@ -49,6 +49,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			}
 		break;
 	case 'DELETE':
+		if($_SESSION['tipo'] == 'Deportista'){	
 		if ( !$_POST ) {
 				$RESERVA = new RESERVA_MODEL( $_REQUEST[ 'Usuario_Dni' ], $_REQUEST[ 'Pista_idPista' ], $_REQUEST[ 'Pista_Fecha' ], $_REQUEST[ 'Pista_Hora' ]);
 
@@ -62,6 +63,8 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$respuesta = $RESERVA->DELETE();
 
 			new MESSAGE( $respuesta, '../Controllers/RESERVA_CONTROLLER.php'.'?Usuario_Dni='.$_REQUEST[ 'Usuario_Dni' ] );
+		}}else{
+			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/PISTA_CONTROLLER.php' );
 		}
 
 		break;
