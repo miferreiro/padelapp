@@ -169,7 +169,7 @@ class GRUPO_MODEL{
 	
  	}
 	function Clasif(){
-		$sql = "SELECT * FROM CLASIFICACION WHERE  (Letra='$this->Letra') ";
+		$sql = "SELECT * FROM CLASIFICACION WHERE (IdCampeonato = '$this->IdCampeonato') && (Tipo = '$this->Tipo') && (Nivel = '$this->Nivel') && (Letra='$this->Letra') ";
 
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'Error en la consulta sobre la base de datos';
