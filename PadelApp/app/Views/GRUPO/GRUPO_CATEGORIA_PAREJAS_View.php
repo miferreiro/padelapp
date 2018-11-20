@@ -22,7 +22,7 @@ class GRUPO_CATEGORIA_PAREJAS {
 
 		<div class="seccion" align="center">
 			<h2>
-				<?php echo $strings['Tabla de parejas categoría'];?>
+				<?php echo $strings['Tabla de parejas en la categoría'];?>
 			</h2>
 			<div class="col-md-4">
 			<table class="table table-sm">
