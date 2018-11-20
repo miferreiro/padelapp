@@ -54,7 +54,7 @@ class CATEGORIA_INSCRIPTION {
 						</th>
 						<td class="formThTd"><input type="text" id="Capitan" name="Capitan" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $_SESSION['login']?>" maxlength="25" size="25" required readonly onBlur="comprobarVacio(this) && comprobarLongitud(this,'30') && comprobarTexto(this,'30') "/>
 					</tr>
-					<tr>
+					<tr align="center">
 						<td colspan="2">
 							<button id ="buttonBien" type="submit" name="action" value="INSCRIPTION"><img src="../Views/icon/add_big.png" alt="<?php echo $strings['Confirmar formulario']?>" /></button>
 			</form>

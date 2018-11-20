@@ -24,6 +24,7 @@ array(
 	'Ya está inscrito en esa promoción' => 'You are already enrolled in that promotion',
 	'Hombre' => 'Man',
 	'Mujer' => 'Woman',
+	'Ha alcanzado el número máximo de reservas activas' => 'You have reached the maximum number of active reservations',
 	'idPista' => 'Court',
 	'Promociones_Hora' => 'Hour',
 	'Fecha'=> 'Date',
@@ -340,7 +341,14 @@ array(
 	'Tabla de categorías' => 'Category table',
 	'Tabla de inscritos en la categoría' => 'Table of inscribed in a category',
 	'Ya existe algun componente de la pareja inscrita en el campeonato' => 'There is already a component of the couple registered in the championship',
-	'Grupos creados' => 'Create groups'
+	'Grupos creados' => 'Create groups',
+	'Puntos' => 'Points',
+	'Tabla de clasificación' => 'Clasification table',
+	'Tabla de grupos del campeonato' => 'Table group from a championship',
+	'Tabla de enfrentamientos' => 'Engages table',
+	'Antes: ' => 'Before: ',
+	'Después: ' => 'After: ',
+	'Ver clasificación'=>'Show classification'
 	)
 ;
 

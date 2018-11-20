@@ -19,7 +19,7 @@ class PISTA_DELETE {
 ?>
 		<div class="seccion" align="center">
 			<h2>
-				<?php echo $strings['Tabla de borrado'];?>
+				<?php echo $strings['Tabla de borrado de pista'];?>
 			</h2>
 			<div class="col-md-4">
 			<table class="table table-sm">

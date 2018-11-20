@@ -33,7 +33,7 @@ class Pista_Showall{
 ?>
 <div class="seccion" align="center">
 			<h2>
-				<?php echo $strings['Tabla de datos'];?>
+				<?php echo $strings['Tabla de pistas'];?>
 			</h2>
 			<div class="datepicker"></div>
 			<br>

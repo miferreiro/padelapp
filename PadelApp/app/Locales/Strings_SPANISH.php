@@ -327,7 +327,16 @@ array(
 	'Tabla de categorías' => 'Tabla de categorías',
 	'Tabla de inscritos en la categoría' => 'Tabla de inscritos en la categoría',
 	'Ya existe algun componente de la pareja inscrita en el campeonato' => 'Ya existe algun componente de la pareja inscrita en el campeonato',
-	'Grupos creados' => 'Grupos creados'
+	'Grupos creados' => 'Grupos creados',
+	'Puntos' => 'Puntos',
+	'Tabla de clasificación' => 'Tabla de clasificación',
+	'Tabla de grupos del campeonato' => 'Tabla de grupos del campeonato',
+	'Tabla de enfrentamientos' => 'Tabla de enfrentamientos',
+	'Ha alcanzado el número máximo de reservas activas' => 'Ha alcanzado el número máximo de reservas activas',
+	'Tabla de parejas en la categoría' => 'Tabla de parejas en la categoría',
+	'Antes: ' => 'Antes: ',
+	'Después: ' => 'Después: ',
+	'Ver clasificación'=>'Ver clasificación'
 	)
 ;
 

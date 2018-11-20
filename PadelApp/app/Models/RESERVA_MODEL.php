@@ -68,6 +68,9 @@ class RESERVA_MODEL{
 						if ( $result->num_rows == 0 ) {			
 							return 'La pista no está disponible';					
 						} else {
+							$sql = "SELECT * FROM RESERVA WHERE ( Usuario_Dni = '$this->Usuario_Dni')";
+							$result = $this->mysqli->query( $sql );
+							if($result->num_rows < 5){
 								$sql = "INSERT INTO RESERVA (
 									Usuario_Dni,
 									Pista_idPista,
@@ -97,7 +100,11 @@ class RESERVA_MODEL{
 									return 'Inserción realizada con éxito'; 
 								}
 							  }										
+							}else{
+								return 'Ha alcanzado el número máximo de reservas activas';
 							}
+						}
+						  
 						  }
 					}
 				}
@@ -110,7 +117,6 @@ class RESERVA_MODEL{
 	function DELETE() {
 		$fecha = date("Y-m-d");
 		$sql = "SELECT * FROM RESERVA WHERE (Usuario_Dni='$this->Usuario_Dni' && Pista_idPista = '$this->Pista_idPista' && Pista_Fecha = '$this->Pista_fecha' && Pista_Fecha > '$fecha'  && Pista_Hora = '$this->Pista_hora')";
-	
 		$result = $this->mysqli->query( $sql );
 	
 
@@ -120,7 +126,22 @@ class RESERVA_MODEL{
 			
 			$this->mysqli->query( $sql );
 			
-			return "Borrado correctamente";
+			$sql2 = "UPDATE PISTA SET 
+						idPista = '$this->Pista_idPista',
+						Hora='$this->Pista_hora',
+						Fecha = '$this->Pista_fecha',
+						Disponibilidad = '1'
+				WHERE ( idPista = '$this->Pista_idPista' && Hora = '$this->Pista_hora' && Fecha = '$this->Pista_fecha')";
+
+					if ( !$this->mysqli->query( $sql )) { 
+									return 'Error en el borrado';
+								} else { 
+									if ( !$this->mysqli->query( $sql2 )) { 
+									return 'Error en el borrado';
+										} else { 
+									return 'Borrado correctamente'; 
+								}
+							  }	
 		} 
 		else
 			return "No existe";

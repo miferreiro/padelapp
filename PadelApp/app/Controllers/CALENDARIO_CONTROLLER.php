@@ -84,6 +84,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 
 	break;
 	case "DENEGAR" :
+		if($_SESSION['tipo'] == 'Deportista'){
 		if ( $_POST ) {
 			$PARTIDO = new PARTIDO_MODEL($_REQUEST['IdCampeonato'],$_REQUEST['Tipo'],$_REQUEST['Nivel'],$_REQUEST['Letra'],$_REQUEST['NumEnfrentamiento'],'','','','');
 			$respuesta1 = $PARTIDO->EDIT2();
@@ -95,6 +96,8 @@ switch ( $_REQUEST[ 'action' ] ) {
 			
 			new MESSAGE( $respuesta1, '../Controllers/CALENDARIO_CONTROLLER.php?IdCampeonato=' . $_REQUEST['IdCampeonato'] . '&Tipo='.$_REQUEST['Tipo']. '&Nivel='.$_REQUEST['Nivel'] . '&Letra='.$_REQUEST['Letra'] . '&action=TABLA' );
 		
+		}}else{
+			new MESSAGE( 'El usuario no tiene los permisos necesarios','../Controllers/CALENDARIO_CONTROLLER.php?IdCampeonato=' . $_REQUEST['IdCampeonato'] . '&Tipo='.$_REQUEST['Tipo']. '&Nivel='.$_REQUEST['Nivel'] . '&Letra='.$_REQUEST['Letra'] . '&action=TABLA' );
 		}
 	
 	break;

@@ -19,10 +19,10 @@ class RESERVA_SHOWALL {
 
 		<div class="seccion" align="center">
 			<h2>
-				<?php echo $strings['Tabla de datos'];?>
+				<?php echo $strings['Tabla de reservas'];?>
 			</h2>
 			<div class="datepicker"></div>
-			<div class="col-md-6">
+			<div class="col-md-4">
 			<table id="mydatatableReservaPistas" name="mydatatableReservaPistas" class="table table-sm" align="center" style="width:100%">
 				<thead class="thead-light">
 				
@@ -85,16 +85,6 @@ class RESERVA_SHOWALL {
 ?>
 				
 			</table>
-				
-				<tr align="center">
-						<td colspan="2">
-					<form action='../Controllers/RESERVA_CONTROLLER.php'>
-
-						<button id ="buttonBien"  type="submit" name="action" value="SEARCH"><img src="../Views/icon/search_big.png" alt="BUSCAR" /></button>	
-
-					</form>
-					</td>
-				</tr>
 			
 			</div>
 			<form action='../Controllers/DEFAULT_CONTROLLER.php' method="post">

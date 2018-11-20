@@ -13,7 +13,7 @@ class USUARIO_EDIT {
 		?>
 		<div class="seccion" align="center">
 			<h2>
-				<?php echo $strings['Formulario de modificación'];?>
+				<?php echo $strings['Formulario de modificación de usuario'];?>
 			</h2>
 			<form name="EDIT" action="../Controllers/USUARIO_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="return comprobarEditUsuario()">
 				<div class="col-sm-4">

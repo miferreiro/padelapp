@@ -21,7 +21,7 @@ class INSPROM_SHOWALL {
 			<h2>
 				<?php echo $strings['Tabla de datos'];?>
 			</h2>
-			<div class="col-md-3">
+			<div class="col-md-4">
 			<table class="table">
 				<thead class="thead-light">
 				
@@ -54,7 +54,7 @@ class INSPROM_SHOWALL {
 ?>
 					<td>
 <?php 
- 				if($atributo == 'Fecha'){
+ 				if($atributo == 'Promociones_Fecha'){
 					echo date( "d/m/Y", strtotime( $fila[ $atributo ] ) );
 				}else{
 							echo $fila[ $atributo ];

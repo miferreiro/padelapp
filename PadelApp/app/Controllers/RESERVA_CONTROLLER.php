@@ -12,8 +12,6 @@ include '../Models/RESERVA_MODEL.php';
 include '../Models/PISTA_MODEL.php'; 
 include '../Views/RESERVA/RESERVA_SHOWALL.php'; 
 include '../Views/RESERVA/RESERVA_DELETE.php'; 
-include '../Views/RESERVA/RESERVA_SHOWCURRENT.php'; 
-include '../Views/RESERVA/RESERVA_ADD.php'; 
 include '../Views/DEFAULT_View.php';
 include '../Views/MESSAGE_View.php'; 
 
@@ -51,45 +49,26 @@ switch ( $_REQUEST[ 'action' ] ) {
 			}
 		break;
 	case 'DELETE':
+		if($_SESSION['tipo'] == 'Deportista'){	
 		if ( !$_POST ) {
-
-
 				$RESERVA = new RESERVA_MODEL( $_REQUEST[ 'Usuario_Dni' ], $_REQUEST[ 'Pista_idPista' ], $_REQUEST[ 'Pista_Fecha' ], $_REQUEST[ 'Pista_Hora' ]);
 
 				$valores = $RESERVA->RellenaDatos($_REQUEST[ 'Usuario_Dni' ], $_REQUEST[ 'Pista_idPista' ], $_REQUEST[ 'Pista_Fecha' ], $_REQUEST[ 'Pista_Hora' ]);
 
 				new RESERVA_DELETE($valores);
 			
-
 		} else {
 			$RESERVA = get_data_form();
 
 			$respuesta = $RESERVA->DELETE();
 
-			new MESSAGE( $respuesta, '../Controllers/RESERVA_CONTROLLER.php' );
+			new MESSAGE( $respuesta, '../Controllers/RESERVA_CONTROLLER.php'.'?Usuario_Dni='.$_REQUEST[ 'Usuario_Dni' ] );
+		}}else{
+			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/PISTA_CONTROLLER.php' );
 		}
 
 		break;
 
-	case 'SEARCH':
-			$RESERVA = get_data_form();
-
-			$datos = $RESERVA->SEARCH();
-
-			$lista = array('Usuario_Dni','Pista_idPista','Pista_Hora','Pista_Fecha');
-			
-		
-			new RESERVA_SHOWCURRENT( $lista, $datos );
-
-		break;
-	case 'SHOWCURRENT':
-		           $RESERVA = new RESERVA_MODEL( $_REQUEST[ 'Usuario_Dni' ], $_REQUEST[ 'Pista_idPista' ], $_REQUEST[ 'Pista_Fecha' ], $_REQUEST[ 'Pista_Hora' ]);
-
-		           	$valores = $RESERVA->RellenaDatos($_REQUEST[ 'Usuario_Dni' ], $_REQUEST[ 'Pista_idPista' ], $_REQUEST[ 'Pista_Fecha' ], $_REQUEST[ 'Pista_Hora' ]);
-
-		           new RESERVA_SHOWCURRENT( $valores );
-			
-		break;
 	default:
 		           if($_SESSION['tipo'] == 'Deportista'){
 						$RESERVA = new RESERVA_MODEL( $_REQUEST['Usuario_Dni'], '', '', '');

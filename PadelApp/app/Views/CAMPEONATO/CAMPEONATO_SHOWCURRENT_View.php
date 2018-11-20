@@ -14,7 +14,7 @@ class CAMPEONATO_SHOWCURRENT {
 ?>
 		<div align="center">
 		<h2 align="center">
-			<?php echo $strings['Vista detallada'];?>
+			<?php echo $strings['Información de un campeonato'];?>
 		</h2>
 		<div class="col-md-3">
 		<table class="table table-sm" >

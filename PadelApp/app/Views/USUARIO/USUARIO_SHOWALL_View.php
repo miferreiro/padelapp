@@ -19,7 +19,7 @@ class USUARIO_SHOWALL {
 
 		<div class="seccion" align="center">
 			<h2>
-				<?php echo $strings['Tabla de datos'];?>
+				<?php echo $strings['Tabla de usuarios'];?>
 			</h2>
 			<div class="col-md-6">
 			<table class="table" id="mydatatableUsuarios">

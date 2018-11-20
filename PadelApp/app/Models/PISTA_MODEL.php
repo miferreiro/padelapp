@@ -307,6 +307,10 @@ class PISTA_MODEL{
 					Disponibilidad = '$this->disponibilidad'
 				WHERE ( idPista = '$this->idPista' && Hora = '$this->hora' && Fecha = '$this->fecha'
 				)";
+			if($this->disponibilidad==1){
+				$sql2= "DELETE FROM RESERVA WHERE (Pista_idPista = '$this->idPista' && Pista_Hora = '$this->hora' && Pista_Fecha = '$this->fecha')";
+				$resultado = $this->mysqli->query( $sql2 );
+			}
 			if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 				return 'Error en la modificación';
 			} else { 
@@ -357,8 +361,8 @@ class PISTA_MODEL{
 			$this->mysqli->query( $sql );
 			$sql = "DELETE FROM PROMOCIONES WHERE Fecha < '$fecha'"; 
 			$this->mysqli->query( $sql );
-
-
+		
+			
 		for($x=1 ; $x<=$pista['num'] ; $x++){	
 		for($i=$dia['fech'] ; $i<7 ; $i++){				
 							$sql = "INSERT INTO PISTA (

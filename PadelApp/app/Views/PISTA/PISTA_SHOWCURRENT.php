@@ -23,7 +23,7 @@ class PISTA_SHOWCURRENT{
 ?>
 <div class="seccion" align="center">
 			<h2>
-				<?php echo $strings['Vista detallada'];?>
+				<?php echo $strings['Información de pista'];?>
 			</h2>
 			<div class="col-md-4">
 			<div class="datepicker"></div>

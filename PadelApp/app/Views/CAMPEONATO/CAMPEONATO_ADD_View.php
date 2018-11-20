@@ -11,7 +11,7 @@ class CAMPEONATO_ADD {
 ?>
 		<div class="seccion" align="center">
 			<h2 align="center">
-				<?php echo $strings['Formulario de inserción'];?>
+				<?php echo $strings['Formulario de inserción de un campeonato'];?>
 			</h2>
 			<form name="ADD" action="../Controllers/CAMPEONATO_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="return comprobarAddCampeonato()">
 				<div class="col-md-4">

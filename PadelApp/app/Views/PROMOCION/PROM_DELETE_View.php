@@ -20,7 +20,7 @@ class PROM_DELETE {
 ?>
 		<div class="seccion" align="center">
 			<h2>
-				<?php echo $strings['Tabla de borrado'];?>
+				<?php echo $strings['Borra una promoción'];?>
 			</h2>
 			<div class="col-sm-4">
 			<table class="table table-sm">

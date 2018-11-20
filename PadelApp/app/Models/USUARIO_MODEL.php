@@ -136,15 +136,34 @@ class USUARIO_MODEL{
 				$sql = "DELETE FROM RESERVA WHERE (Usuario_Dni = '$this->Dni')";
 				$this->mysqli->query( $sql );
 			}
-			$sql = "SELECT * FROM UsuarioParejas WHERE (Usuario_Dni = '$this->Dni')";
+			$sql = "SELECT Pareja_NumPareja FROM UsuarioParejas WHERE (Usuario_Dni = '$this->Dni')";
 			$result = $this->mysqli->query( $sql );
 			
 			// se construye la sentencia sql de borrado
 			if($result->num_rows >= 1){
+				$NumPar=$result->fetch_array();
+				$NumPareja=$NumPar['Pareja_NumPareja'];
 				$sql = "DELETE FROM UsuarioParejas WHERE (Usuario_Dni = '$this->Dni')";
 				$this->mysqli->query( $sql );
 			}
+		
+			$sql = "SELECT * FROM Enfrentamiento WHERE (NumPareja = '$NumPareja')";
+			$result = $this->mysqli->query( $sql );
 			
+			// se construye la sentencia sql de borrado
+			if($result->num_rows >= 1){
+				$sql = "DELETE FROM Enfrentamiento WHERE (NumPareja = '$NumPareja')";
+				$this->mysqli->query( $sql );
+			}	
+			
+			$sql = "SELECT * FROM Pareja WHERE (NumPareja = '$NumPareja')";
+			$result = $this->mysqli->query( $sql );
+			
+			// se construye la sentencia sql de borrado
+			if($result->num_rows >= 1){
+				$sql = "DELETE FROM Pareja WHERE (NumPareja = '$NumPareja')";
+				$this->mysqli->query( $sql );
+			}
 			$sql = "DELETE FROM USUARIO WHERE (Dni = '$this->Dni' )";
 
 			$this->mysqli->query( $sql );

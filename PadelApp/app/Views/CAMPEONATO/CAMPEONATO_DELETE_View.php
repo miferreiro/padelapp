@@ -22,7 +22,7 @@ class CAMPEONATO_DELETE {
 				<thead class="thead-light">
 				<tr>
 					<th>
-						<?php echo $strings['IdCampeonato'];?>
+						<?php echo $strings['Borrado de campeonato'];?>
 					</th>
 					<td>
 						<?php echo $this->valores['IdCampeonato']?>

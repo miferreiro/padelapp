@@ -19,7 +19,7 @@ class GRUPO_CATEGORIA_SHOWALL {
 ?>
 		<div class="seccion" align="center">
 			<h2>
-				<?php echo $strings['Tabla de datos'];?>
+				<?php echo $strings['Tabla de grupos del campeonato'];?>
 			</h2>
 			<div class="col-md-3">
 			<table class="table">
@@ -71,6 +71,15 @@ class GRUPO_CATEGORIA_SHOWALL {
 								<button id ="buttonBien" type="submit" name="action" value="TABLA" ><img src="../Views/icon/tabla.png" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>			
 	
 						</form>
+						<form action="../Controllers/GRUPO_CONTROLLER.php" method="post" style="display:inline" >
+							<input type="hidden" name="IdCampeonato" value="<?php echo $fila['IdCampeonato']; ?>">		
+							<input type="hidden" name="Tipo" value="<?php echo $fila['Tipo']; ?>">		
+							<input type="hidden" name="Nivel" value="<?php echo $fila['Nivel']; ?>">	
+							<input type="hidden" name="Letra" value="<?php echo $fila['Letra']; ?>">
+								<button id ="buttonBien" type="submit" name="action" value="CLASIFICACION" ><img src="../Views/icon/exito.png" alt="<?php echo $strings['Ver clasificación']?>" width="20" height="20"/></button>			
+	
+						</form>
+												
 																	
 						
 				</tr>

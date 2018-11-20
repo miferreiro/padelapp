@@ -168,6 +168,15 @@ class GRUPO_MODEL{
 		}
 	
  	}
+	function Clasif(){
+		$sql = "SELECT * FROM CLASIFICACION WHERE  (Letra='$this->Letra') ";
+
+		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
+			return 'Error en la consulta sobre la base de datos';
+		} else { 
+			return $resultado;
+		}
+	}
 
 }
 
