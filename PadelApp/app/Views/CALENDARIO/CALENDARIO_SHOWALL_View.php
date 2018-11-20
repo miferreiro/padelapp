@@ -22,7 +22,7 @@ class CALENDARIO_SHOWALL {
 
 		<div class="seccion" align="center">
 			<h2>
-				<?php echo $strings['Calendario'] . ' 1 ' ;?>
+				<?php echo $strings['Calendario '] . ' 1 ' ;?>
 			</h2>
 			<div class="col-md-5">
 			<table class="table">
