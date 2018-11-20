@@ -183,6 +183,7 @@ class PAREJA_MODEL{
 	
 	}
 	
+	
  	}//fin de clase
 
 ?>

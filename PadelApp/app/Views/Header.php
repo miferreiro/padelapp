@@ -137,7 +137,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container">
 		<?php	if (IsAuthenticated()){ //miramos si el usuario esta autenticado ?> 
-		<p style="color: white"><?php 	echo $strings['Usuario'] . ' : ' . $_SESSION['login'] . ' como ' . $_SESSION['tipo'] . '<br>'; ?></p>
+		<p style="color: white"><?php 	echo $strings['Usuario'] . ' : ' . $_SESSION['login'] . '<br>'; ?></p>
 		   
 			  
               <a class="nav-link disabled" href="../Functions/Desconectar.php" alt="<?php echo $strings['Desconectarse']?>"/>
@@ -254,6 +254,15 @@ que comprueba permisos para cada una de las acciones -->
 							<div class="dropdown-divider"></div>
 
 								<button id ="buttonBien" type="submit"  name="gesCalendario" ><a class="dropdown-item" href="../Controllers/CALENDARIO_CONTROLLER.php"/><?php echo $strings['Gestión de calendario'] ?></a></button>
+				<?php }} ?>
+				
+				<?php if (isset($_SESSION['login']) & isset($_SESSION['tipo'])) { 
+					//Si el usuario tiene permisos de showall en gestión de usuarios se muestra la opción ?>
+					<?php if($_SESSION['tipo'] == 'Deportista'){ ?>
+
+							<div class="dropdown-divider"></div>
+
+								<button id ="buttonBien" type="submit"  name="verInscripciones" ><a class="dropdown-item" href="../Controllers/CATEGORIA_CONTROLLER.php?action=MISINCRIPCIONES"/><?php echo $strings['Participacion en campeonatos'] ?></a></button>
 				<?php }} ?>
 				<?php if(isset($_SESSION['login']) & isset($_SESSION['tipo'])) {  ?>
 					<?php if($_SESSION['tipo'] == 'Deportista'){ ?>

@@ -26,7 +26,7 @@ class GRUPO_CATEGORIA_TABLA{
 		}
 		$numParejas = sizeof($arrayListadoParejas);
 		//echo 'numParejas:' . $numParejas;
-		?><br><?php
+		?><?php
 		$arrayEnfrentamientos= array();
 
 		while($row = mysqli_fetch_array($this->listaEnfrentamientos)) { 

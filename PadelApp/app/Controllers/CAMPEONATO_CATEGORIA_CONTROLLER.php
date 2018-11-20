@@ -8,8 +8,11 @@ if (!IsAuthenticated()){
 }
 
 include '../Models/CATEGORIA_MODEL.php';
+
 include '../Views/CAMPEONATO_CATEGORIA/CAMPEONATO_CATEGORIA_SHOWALL_View.php';
 include '../Views/CAMPEONATO_CATEGORIA/CAMPEONATO_CATEGORIA_INSCRITOS_View.php';
+
+
 include '../Views/DEFAULT_View.php'; 
 include '../Views/MESSAGE_View.php';
 
@@ -55,6 +58,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		
 
 	break;	
+
 	default: 
 			if($_SESSION['tipo'] == 'Admin'){
 				if ( !$_POST ) {

@@ -335,7 +335,9 @@ array(
 	'Antes: ' => 'Antes: ',
 	'Después: ' => 'Despois: ',
 	'Ver clasificación'=>'Ver clasificación',
-	'Calendario ' => 'Calendario '
+	'Calendario ' => 'Calendario ',
+	'Participacion en campeonatos' => 'Participacion en campeonatos',
+	'No se ha cerrado el plazo de inscripcion' => 'Non se ha pechado o prazo de inscripcion'
 	)
 ;
 

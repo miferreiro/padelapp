@@ -16,6 +16,8 @@ include '../Models/USUARIO_PAREJA_MODEL.php';
 include '../Views/CATEGORIA/CATEGORIA_SHOWALL_View.php';
 include '../Views/CATEGORIA/CATEGORIA_INSCRIPTION_View.php';
 include '../Views/CATEGORIA/CATEGORIA_SHOWCURRENT_View.php';
+include '../Views/CATEGORIA/CATEGORIA_MIS_INSCRIPCIONES_View.php';
+
 include '../Views/DEFAULT_View.php'; 
 include '../Views/MESSAGE_View.php'; 
 
@@ -149,6 +151,42 @@ switch ( $_REQUEST[ 'action' ] ) {
 		
 		//Final del bloque
 		break;		
+		
+		
+		
+		
+	case "MISINCRIPCIONES":
+		
+				
+		if($_SESSION['tipo'] == 'Deportista'){
+
+			$USUARIO_PAREJA =  new USUARIO_PAREJA_MODEL( $_SESSION['dni'], '', '', '', '');
+			$participaciones = $USUARIO_PAREJA->obtenerParticipaciones();
+				
+			
+			$lista = array( 'IdCampeonato','Tipo','Nivel', 'NumPareja');
+			
+			
+			new CATEGORIA_MIS_INSCRIPCIONES($lista,$participaciones);
+			
+		}else{
+			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/USUARIO_CONTROLLER.php' );
+		}	
+			
+	break;		
+	
+	case "DESINSCRIBIRSE":
+		
+		$PAREJA = new PAREJA_MODEL($_REQUEST['IdCampeonato'],$_REQUEST['Tipo'],$_REQUEST['Nivel'],$_REQUEST['NumPareja'],'');
+		$mensaje = $PAREJA->DELETE();
+		
+		$USUARIO_PAREJA = new USUARIO_PAREJA_MODEL('',$_REQUEST['IdCampeonato'],$_REQUEST['Tipo'],$_REQUEST['Nivel'],$_REQUEST['NumPareja']);
+		$respuesta = $USUARIO_PAREJA->DELETE2();
+		
+		new MESSAGE( $respuesta, '../Controllers/CATEGORIA_CONTROLLER.php?action=MISINCRIPCIONES' );
+		
+		
+	break;	
 	default: 
 		
 		if($_SESSION['tipo'] == 'Deportista'){

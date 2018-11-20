@@ -84,7 +84,7 @@ class CATEGORIA_SHOWCURRENT {
 
 
 <?php
-		include '../Views/Footer.php';//incluimos el pie de página
+		include '../Views/Footer.php';
 	}
 }
 ?>

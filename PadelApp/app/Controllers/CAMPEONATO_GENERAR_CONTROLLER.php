@@ -87,16 +87,23 @@ switch ( $_REQUEST[ 'action' ] ) {
 		//Construyo el array
 		$q = 0;
 		$aux = array();
-		while ( $fila = mysqli_fetch_array( $listaParejas ) ) {
-			
-				$aux[$q] = $fila['NumPareja'];
-				//echo $aux[$q];
-					// <br> <?php
-				$q++;
-
+		while ( $fila = mysqli_fetch_array( $listaParejas ) ) {		
+			$aux[$q] = $fila['NumPareja'];
+			$q++;
 		}
-	
 		
+		$CAMPEONATO = new CAMPEONATO_MODEL($idCampeonato,'','','','');
+		$datos = $CAMPEONATO->RellenaDatos();
+		
+		if($fila['FechaFin'] < date("d/m/Y"))
+		{
+			new MESSAGE( 'No se ha cerrado el plazo de inscripcion', '../Controllers/CAMPEONATO_CATEGORIA_CONTROLLER.php?IdCampeonato=' .$_REQUEST[ 'IdCampeonato' ] );								
+		}else{
+			if($fila['FechaFin'] == date("d/m/Y") && ($fila['HoraFin'] > date("H:i:s"))){
+				new MESSAGE( 'No se ha cerrado el plazo de inscripcion', '../Controllers/CAMPEONATO_CATEGORIA_CONTROLLER.php?IdCampeonato=' .$_REQUEST[ 'IdCampeonato' ] );								
+			}else{
+					
+	
 		if($numParejas < 8){
 			new MESSAGE( 'No hay suficientes parejas para formar grupos', '../Controllers/CAMPEONATO_CATEGORIA_CONTROLLER.php?IdCampeonato=' .$_REQUEST[ 'IdCampeonato' ] );
 		}else{
@@ -294,7 +301,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 				
 				new MESSAGE( 'Grupos creados','../Controllers/CAMPEONATO_CATEGORIA_CONTROLLER.php.?IdCampeonato='.$_REQUEST['IdCampeonato'] );
 			
-			}			
+				}			
+			}
+			}		
 		}
 	}else{
 		new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/USUARIO_CONTROLLER.php' );

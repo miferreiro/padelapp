@@ -79,6 +79,40 @@ class USUARIO_PAREJA_MODEL{
 			return "No existe";
 		}
 	} 
+	function DELETE2() {
+
+		$sql = "SELECT * FROM USUARIOPAREJAS WHERE (Pareja_idCampeonato = '$this->IdCampeonato') && (Pareja_Tipo = '$this->Tipo') && (Pareja_Nivel = '$this->Nivel') && (Pareja_NumPareja = '$this->NumPareja')";
+
+		$result = $this->mysqli->query( $sql );	
+
+		if ( $result->num_rows == 2 ) {
+				
+			$sql = "DELETE FROM USUARIOPAREJAS WHERE (Pareja_idCampeonato = '$this->IdCampeonato') && (Pareja_Tipo = '$this->Tipo') && (Pareja_Nivel = '$this->Nivel')  && (Pareja_NumPareja = '$this->NumPareja')";
+
+			$this->mysqli->query( $sql );
+	
+			return "Borrado correctamente";
+		}else{
+			return "No existe";
+		}
+	} 	
+	
+	function obtenerParticipaciones(){
+		 
+			$sql = "SELECT U.Pareja_idCampeonato as IdCampeonato,U.Pareja_Tipo as Tipo, U.Pareja_Nivel as Nivel, U.Pareja_NumPareja as NumPareja, C.FechaIni as FechaIni, C.FechaFin as FechaFin, C.HoraIni as HoraIni, C.HoraFin as HoraFin  
+			FROM USUARIOPAREJAS U, CAMPEONATO C
+			
+			WHERE (Usuario_Dni = '$this->UsuDni') && (C.IdCampeonato = U.Pareja_idCampeonato)"; 
+
+			if(!$this->mysqli->query( $sql )){
+				return 'Error en la busqueda';
+			}else{
+				$resultado = $this->mysqli->query( $sql );
+				
+				return $resultado;
+			}
+	}
+	
 	
  	}
 

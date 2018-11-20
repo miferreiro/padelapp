@@ -349,7 +349,9 @@ array(
 	'Antes: ' => 'Before: ',
 	'Después: ' => 'After: ',
 	'Ver clasificación'=>'Show classification',
-	'Calendario ' => 'Calendar '
+	'Calendario ' => 'Calendar ',
+	'Participacion en campeonatos' => 'Participation in championships',
+	'No se ha cerrado el plazo de inscripcion' => 'The registration period has not been closed'
 	)
 ;
 
