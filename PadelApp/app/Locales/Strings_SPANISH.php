@@ -336,7 +336,8 @@ array(
 	'Tabla de parejas en la categoría' => 'Tabla de parejas en la categoría',
 	'Antes: ' => 'Antes: ',
 	'Después: ' => 'Después: ',
-	'Ver clasificación'=>'Ver clasificación'
+	'Ver clasificación'=>'Ver clasificación',
+	'Calendario ' => 'Calendario '
 	)
 ;
 

@@ -348,7 +348,8 @@ array(
 	'Tabla de enfrentamientos' => 'Engages table',
 	'Antes: ' => 'Before: ',
 	'Después: ' => 'After: ',
-	'Ver clasificación'=>'Show classification'
+	'Ver clasificación'=>'Show classification',
+	'Calendario ' => 'Calendar '
 	)
 ;
 

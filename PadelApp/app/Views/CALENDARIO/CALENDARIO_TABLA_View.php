@@ -129,7 +129,7 @@ $cont = 0;
 						$aux = True;						
 						foreach($arrayEnfrentamientos as $fila){	
 							
-							if($arrayListadoParejas[$j-1] == $fila['pareja1'] && $arrayListadoParejas[$i-1] == $fila['pareja2'] ){			echo $fila['pareja1'];
+							if($arrayListadoParejas[$j-1] == $fila['pareja1'] && $arrayListadoParejas[$i-1] == $fila['pareja2'] ){			//echo $fila['pareja1'];
 								foreach($arrayEnfrentamientos2 as $fila2){		
 									if( $arrayListadoParejas[$j-1]== $fila2['pareja1'] && $arrayListadoParejas[$i-1] == $fila2['pareja2'] ){										
 										if($fila2['propuestaPareja1'] == 3){?> 
@@ -216,7 +216,7 @@ $cont = 0;
 												        <input type="hidden" name="ResultadoSet1Par2" value="<?php echo $fila2['ResultadoSet1Par2']; ?>">
 													    <input type="hidden" name="ResultadoSet2Par2" value="<?php echo $fila2['ResultadoSet2Par2']; ?>">
 														<input type="hidden" name="ResultadoSet3Par2" value="<?php echo $fila2['ResultadoSet3Par2']; ?>">
-														<?php// echo $fila2['ResultadoSet1Par1'] . " PP1: " . $fila2['propuestaPareja1']. " PP2: " . $fila2['propuestaPareja2'] . " enfre: " . $fila2['NumEnfrentamiento'];?> 
+														<?php //echo $fila2['ResultadoSet1Par1'] . " PP1: " . $fila2['propuestaPareja1']. " PP2: " . $fila2['propuestaPareja2'] . " enfre: " . $fila2['NumEnfrentamiento'];?> 
 															<button id ="buttonBien"  type="submit" name="action" value="INFORMACION" ><img src="../Views/icon/calendario.png" alt="<?php echo $strings['modificar']?>"  width="20" height="20" /></button>			
 															<?php if($this->capitan){ ?>
 															<button id ="buttonBien"  type="submit" name="action" value="PROPONER" ><img src="../Views/icon/enviar.png" alt="<?php echo $strings['modificar']?>"  width="20" height="20" /></button>															
