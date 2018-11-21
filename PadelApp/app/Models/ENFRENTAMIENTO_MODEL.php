@@ -154,6 +154,7 @@ class ENFRENTAMIENTO_MODEL{
 
 		FROM ENFRENTAMIENTO E1,ENFRENTAMIENTO E2
 		WHERE
+		(E1.IdCampeonato = E2.IdCampeonato) && (E1.Tipo = E2.Tipo) && (E1.Nivel = E2.Nivel) && (E1.Letra = E2.Letra) &&
 		(E1.NumEnfrentamiento = E2.NumEnfrentamiento) && (E1.NumPareja != E2.NumPareja) &&
 		(E1.IdCampeonato = '$this->IdCampeonato') && (E1.Tipo = '$this->Tipo') && (E1.Nivel = '$this->Nivel')  && (E1.Letra = '$this->Letra') 
 		&&(E1.NumEnfrentamiento = '$this->NumEnfrentamiento') && (E1.NumPareja = '$this->NumPareja')
@@ -178,6 +179,7 @@ class ENFRENTAMIENTO_MODEL{
 		E1.EstadoPropuesta as propuestaPareja1,  E2.EstadoPropuesta as propuestaPareja2
 		FROM ENFRENTAMIENTO E1,ENFRENTAMIENTO E2
 		WHERE
+		(E1.IdCampeonato = E2.IdCampeonato) && (E1.Tipo = E2.Tipo) && (E1.Nivel = E2.Nivel) && (E1.Letra = E2.Letra) &&
 		(E1.NumEnfrentamiento = E2.NumEnfrentamiento) && (E1.NumPareja != E2.NumPareja) &&
 		(E1.IdCampeonato = '$this->IdCampeonato') && (E1.Tipo = '$this->Tipo') && (E1.Nivel = '$this->Nivel')  && (E1.Letra = '$this->Letra') 
 		&&(E1.NumEnfrentamiento = '$this->NumEnfrentamiento') && (E1.NumPareja = '$this->NumPareja')

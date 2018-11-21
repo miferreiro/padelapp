@@ -108,17 +108,23 @@ class GRUPO_CATEGORIA_TABLA{
 									<input type="hidden" name="NumEnfrentamiento" value="<?php echo $fila['NumEnfrentamiento']; ?>">
 									<input type="hidden" name="pareja1" value="<?php echo $fila['pareja1']; ?>">
 									<input type="hidden" name="pareja2" value="<?php echo $fila['pareja2']; ?>">
-									<input type="hidden" name="ResultadoSet1Par1" value="<?php echo $fila2['ResultadoSet1Par1']; ?>">
-									<input type="hidden" name="ResultadoSet2Par1" value="<?php echo $fila2['ResultadoSet2Par1']; ?>">
-									<input type="hidden" name="ResultadoSet3Par1" value="<?php echo $fila2['ResultadoSet3Par1']; ?>">
-									<input type="hidden" name="ResultadoSet1Par2" value="<?php echo $fila2['ResultadoSet1Par2']; ?>">
-									<input type="hidden" name="ResultadoSet2Par2" value="<?php echo $fila2['ResultadoSet2Par2']; ?>">
-									<input type="hidden" name="ResultadoSet3Par2" value="<?php echo $fila2['ResultadoSet3Par2']; ?>">
+									<input type="hidden" name="ResultadoSet1Par1" value="<?php echo $fila['ResultadoSet1Par1']; ?>">
+									<input type="hidden" name="ResultadoSet2Par1" value="<?php echo $fila['ResultadoSet2Par1']; ?>">
+									<input type="hidden" name="ResultadoSet3Par1" value="<?php echo $fila['ResultadoSet3Par1']; ?>">
+									<input type="hidden" name="ResultadoSet1Par2" value="<?php echo $fila['ResultadoSet1Par2']; ?>">
+									<input type="hidden" name="ResultadoSet2Par2" value="<?php echo $fila['ResultadoSet2Par2']; ?>">
+									<input type="hidden" name="ResultadoSet3Par2" value="<?php echo $fila['ResultadoSet3Par2']; ?>">
 											
-									<?php //echo $fila['ResultadoSet1'];?> 
-										<button id ="buttonBien"  type="submit" name="action" value="EDITAR" ><img src="../Views/icon/edit_big.png" alt="<?php echo $strings['modificar']?>"  width="15" height="15" /></button>			
+									<?php if($fila['ResultadoSet1Par1']!=''&&$fila['ResultadoSet1Par2']!=''&&$fila['ResultadoSet2Par1']!=''&&$fila['ResultadoSet2Par2']!=''){?>
+										<button id ="buttonBien"  type="submit" name="action" value="EDITAR" ><?php echo $fila['ResultadoSet1Par1'].":".$fila['ResultadoSet1Par2'].'/'.$fila['ResultadoSet2Par1'].":".$fila['ResultadoSet2Par2'].'/'.$fila['ResultadoSet3Par1'].":".$fila['ResultadoSet3Par2'];?></button>
+								<?php
+																													}else{
+										?>
+										<button id ="buttonBien"  type="submit" name="action" value="EDITAR" ><img src="../Views/icon/edit_big.png" alt="<?php echo $strings['modificar']?>"  width="15" height="15" /></button>
+										<?php } ?>
 									</form>
 								</td><?php
+								
 								$NoEncontrado = False;
 							}
 						}

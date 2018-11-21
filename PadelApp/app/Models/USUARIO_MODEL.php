@@ -145,8 +145,7 @@ class USUARIO_MODEL{
 				$NumPareja=$NumPar['Pareja_NumPareja'];
 				$sql = "DELETE FROM UsuarioParejas WHERE (Usuario_Dni = '$this->Dni')";
 				$this->mysqli->query( $sql );
-			}
-		
+				
 			$sql = "SELECT * FROM Enfrentamiento WHERE (NumPareja = '$NumPareja')";
 			$result = $this->mysqli->query( $sql );
 			
@@ -164,10 +163,12 @@ class USUARIO_MODEL{
 				$sql = "DELETE FROM Pareja WHERE (NumPareja = '$NumPareja')";
 				$this->mysqli->query( $sql );
 			}
+			}
+		
 			$sql = "DELETE FROM USUARIO WHERE (Dni = '$this->Dni' )";
 
 			$this->mysqli->query( $sql );
-	
+		
 			return "Borrado correctamente";
 		}else{
 			return "No existe";
