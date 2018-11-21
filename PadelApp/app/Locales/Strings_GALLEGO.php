@@ -337,7 +337,11 @@ array(
 	'Ver clasificación'=>'Ver clasificación',
 	'Calendario ' => 'Calendario ',
 	'Participacion en campeonatos' => 'Participacion en campeonatos',
-	'No se ha cerrado el plazo de inscripcion' => 'Non se ha pechado o prazo de inscripcion'
+	'No se ha cerrado el plazo de inscripcion' => 'Non se ha pechado o prazo de inscripcion',
+	'Color blanco : no hay ofertas lanzadas ni recibidas' => 'Color branco : non hai ofertas lanzadas nin recibidas',
+	'Color Verde : hora y fecha establecidas' => 'Color Verde : hora e data establecidas',
+	'Color amarillo : hora y fecha propuestas a la otra pareja' => 'Color amarelo : hora e data proposta á outra parexa',
+	'Color naranja : hora y fechas propuestas por la otra pareja' => 'Color naranxa : hora e data propostas pola outra parexa'
 	)
 ;
 

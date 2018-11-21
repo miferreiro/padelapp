@@ -352,7 +352,13 @@ array(
 	'Calendario ' => 'Calendar ',
 	'Participacion en campeonatos' => 'Participation in championships',
 	'No se ha cerrado el plazo de inscripcion' => 'The registration period has not been closed',
-	'Tabla de parejas en la categoría' => 'Table of couples in the category'
+	'Tabla de parejas en la categoría' => 'Table of couples in the category',
+	'Color blanco : no hay ofertas lanzadas ni recibidas' => 'White color: no offers launched or received',
+	'Color Verde : hora y fecha establecidas' => 'Green Color: time and date established',
+	'Color amarillo : hora y fecha propuestas a la otra pareja' => 'Yellow color: proposed time and date for the other couple',
+	'Color naranja : hora y fechas propuestas por la otra pareja' => 'Orange color: time and date proposed by the other couple'
+	
+	
 	)
 ;
 

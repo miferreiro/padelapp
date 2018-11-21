@@ -85,10 +85,10 @@ class CALENDARIO_TABLA{
 				<?php echo $strings['Tabla de datos'];?>
 			</h2>
 			<p>
-				Color blanco 0 : no hay ofertas lanzadas ni recibidas<br>
-				Color Verde  3: hora y fecha establecidas<br>
-				Color amarillo 1: hora y fecha propuestas a la otra pareja<br>
-				Color naranja 2: hora y fechas propuestas por la otra pareja<br>
+				<?php echo $strings['Color blanco : no hay ofertas lanzadas ni recibidas'];?><br>
+				<?php echo $strings['Color Verde : hora y fecha establecidas'];?><br>
+				<?php echo $strings['Color amarillo : hora y fecha propuestas a la otra pareja'];?><br>
+				<?php echo $strings['Color naranja : hora y fechas propuestas por la otra pareja'];?><br>
 			</p>
 			<div class="col-md-4">
 			<table class="table table-sm">
