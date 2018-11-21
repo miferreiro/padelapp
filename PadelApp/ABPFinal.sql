@@ -293,9 +293,9 @@ DROP TABLE IF EXISTS `AbpBase`.`Clasificacion`;
 DROP VIEW IF EXISTS `AbpBase`.`Clasificacion` ;
 USE `AbpBase`;
 CREATE OR REPLACE VIEW `Clasificacion` AS SELECT
-DISTINCT E.IdCampeonato,E.Tipo, E.Nivel,E.Letra,E.NumPareja, ((SELECT COUNT(*)*3 FROM partido WHERE ParejaGanadora = E.NumPareja)+ (SELECT COUNT(*) FROM partido WHERE ParejaPerdedora = E.NumPareja)) as Puntos
+DISTINCT E.IdCampeonato,E.Tipo, E.Nivel,E.Letra,E.NumPareja, ((SELECT COUNT(*)*3 FROM partido WHERE E.IdCampeonato = IdCampeonato && E.Tipo = Tipo && E.Nivel = Nivel && E.Letra = Grupo_Letra && ParejaGanadora = E.NumPareja)+ (SELECT COUNT(*) FROM partido WHERE E.IdCampeonato = IdCampeonato && E.Tipo = Tipo && E.Nivel = Nivel && E.Letra = Grupo_Letra && ParejaPerdedora = E.NumPareja)) as Puntos
 FROM ENFRENTAMIENTO E,PARTIDO P
-WHERE E.IdCampeonato = P.IdCampeonato && E.Tipo = P.Tipo && E.Nivel = P.Nivel && E.Letra = P.Grupo_Letra && E.NumEnfrentamiento = P.NumEnfrentamiento
+WHERE  E.NumEnfrentamiento = P.NumEnfrentamiento
 ORDER BY E.Letra,Puntos DESC;
 
 
