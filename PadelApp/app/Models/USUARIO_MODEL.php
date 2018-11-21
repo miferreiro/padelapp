@@ -217,7 +217,6 @@ class USUARIO_MODEL{
 		}
 	}
 
-
 	function Register() {
         
 		$sql = "select * from USUARIO where Dni = '" . $this->Dni . "'";

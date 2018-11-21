@@ -8,6 +8,7 @@ if (!IsAuthenticated()){
  	header('Location:../index.php');
 }
 include '../Views/INSCRIPCIÓN_PROMOCIONES/INSPROM_SHOWALL.php'; 
+include '../Views/INSCRIPCIÓN_PROMOCIONES/INSPROM_SHOWCURRENT.php'; 
 include '../Models/INSPROM_MODEL.php'; 
 include '../Models/PROM_MODEL.php'; 
 include '../Views/PROMOCION/PROM_SHOWALL_View.php'; 
@@ -48,12 +49,27 @@ switch ( $_REQUEST[ 'action' ] ) {
 			
 			$respuesta = $INSPROM->DELETE();
 			
-			new MESSAGE( $respuesta, '../Controllers/PROM_CONTROLLER.php' );
+			new MESSAGE( $respuesta, '../Controllers/INSPROM_CONTROLLER.php?Usuario_Dni='.$_SESSION['dni'] );
 
 			}else{
 				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/INSPROM_CONTROLLER.php' );
 			}
 		break;
+		
+	case 'SHOWCURRENT':
+		if($_SESSION['tipo'] == 'Deportista'){
+		   $PROM = new PROM_MODEL($_REQUEST[ 'Fecha' ], $_REQUEST[ 'Hora' ]);
+		   $lista = $PROM->RellenaDatos();
+		   $INSPROM = new INSPROM_MODEL('', $_REQUEST[ 'Fecha' ], $_REQUEST[ 'Hora' ]);
+		   $lista2 = array('Promociones_Fecha', 'Promociones_Hora', 'Usuario_Dni');
+		   $valores = $INSPROM->SEARCH();
+		   new INSPROM_SHOWCURRENT($lista, $lista2, $valores );
+		}else{
+				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/USUARIO_CONTROLLER.php' );
+			}
+		break;		
+		
+		
 	default: 
 			if($_SESSION['tipo'] == 'Deportista'){
 
@@ -62,7 +78,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 						$datos = $INSPROM->SEARCH();
 						
 						$lista = array('Promociones_Fecha','Promociones_Hora','Usuario_Dni');
-						
+					
 						new INSPROM_SHOWALL( $lista, $datos);
 				}else{
 					new DEFAULT_View();
