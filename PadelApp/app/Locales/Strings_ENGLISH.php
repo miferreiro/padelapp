@@ -299,7 +299,7 @@ array(
 	'Letra' => 'Letter',
 	'NumEnfrentamiento' => 'NumEnfrentamiento',
 	'Resultado' => 'Result',
-	'Reservar pista'=>'Booking track',
+	'Reservar pista'=>'Booking padel court',
 	'Gestión de promociones'=>'Promotion management',
 	'Inscribirse en promoción'=>'Register in promotion',
 	'Gestión de reservas'=>'Booking management',
