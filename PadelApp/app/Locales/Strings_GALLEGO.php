@@ -341,7 +341,8 @@ array(
 	'Color blanco : no hay ofertas lanzadas ni recibidas' => 'Color branco : non hai ofertas lanzadas nin recibidas',
 	'Color Verde : hora y fecha establecidas' => 'Color Verde : hora e data establecidas',
 	'Color amarillo : hora y fecha propuestas a la otra pareja' => 'Color amarelo : hora e data proposta á outra parexa',
-	'Color naranja : hora y fechas propuestas por la otra pareja' => 'Color naranxa : hora e data propostas pola outra parexa'
+	'Color naranja : hora y fechas propuestas por la otra pareja' => 'Color naranxa : hora e data propostas pola outra parexa',
+	'Borrado incorrectamente' => 'Borrado incorrectamente'
 	)
 ;
 

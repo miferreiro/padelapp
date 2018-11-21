@@ -56,7 +56,7 @@ class CAMPEONATO_CATEGORIA_SHOWALL {
 					}
 ?>			
 					<td colspan="3">
-						<form action="../Controllers/CAMPEONATO_CATEGORIA_CONTROLLER.php" method="post" style="display:inline" >
+						<form action="../Controllers/CAMPEONATO_CATEGORIA_CONTROLLER.php" method="get" style="display:inline" >
 							<input type="hidden" name="IdCampeonato" value="<?php echo $fila['IdCampeonato']; ?>">		
 							<input type="hidden" name="Tipo" value="<?php echo $fila['Tipo']; ?>">		
 							<input type="hidden" name="Nivel" value="<?php echo $fila['Nivel']; ?>">	
@@ -72,7 +72,7 @@ class CAMPEONATO_CATEGORIA_SHOWALL {
 								<button id ="buttonBien"type="submit"name="action" value="GENERAR"  ><img src="../Views/icon/group_add_big.png" width="20" height="20"/></button>
 							
 						</form>	
-						<form action="../Controllers/GRUPO_CONTROLLER.php" method="post" style="display:inline" >
+						<form action="../Controllers/GRUPO_CONTROLLER.php" method="get" style="display:inline" >
 							<input type="hidden" name="IdCampeonato" value="<?php echo $fila['IdCampeonato']; ?>">		
 							<input type="hidden" name="Tipo" value="<?php echo $fila['Tipo']; ?>">		
 							<input type="hidden" name="Nivel" value="<?php echo $fila['Nivel']; ?>">	
