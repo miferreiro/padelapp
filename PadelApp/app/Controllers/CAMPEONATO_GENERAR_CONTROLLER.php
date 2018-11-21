@@ -95,7 +95,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		$CAMPEONATO = new CAMPEONATO_MODEL($idCampeonato,'','','','');
 		$datos = $CAMPEONATO->RellenaDatos();
 		
-		if($fila['FechaFin'] < date("d/m/Y"))
+		if($fila['FechaFin'] > date("d/m/Y"))
 		{
 			new MESSAGE( 'No se ha cerrado el plazo de inscripcion', '../Controllers/CAMPEONATO_CATEGORIA_CONTROLLER.php?IdCampeonato=' .$_REQUEST[ 'IdCampeonato' ] );								
 		}else{
