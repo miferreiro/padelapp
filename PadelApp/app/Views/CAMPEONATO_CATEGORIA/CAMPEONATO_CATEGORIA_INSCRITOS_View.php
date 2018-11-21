@@ -24,7 +24,7 @@ class CAMPEONATO_CATEGORIA_INSCRITOS{
 			<h2>
 				<?php echo $strings['Tabla de inscritos en la categoría'];?>
 			</h2>
-			<div class="col-md-4">
+			<div class="col-md-4" style="text-align: center">
 			<table class="table table-sm">
 				<thead class="thead-light">
 

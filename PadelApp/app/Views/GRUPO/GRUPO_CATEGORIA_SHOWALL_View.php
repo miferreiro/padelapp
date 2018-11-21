@@ -17,16 +17,16 @@ class GRUPO_CATEGORIA_SHOWALL {
 		include '../Views/Header.php';
       
 ?>
-		<div class="seccion" align="center">
+		<div class="seccion" align="center" >
 			<h2>
 				<?php echo $strings['Tabla de grupos del campeonato'];?>
 			</h2>
-			<div class="col-md-4">
-			<table class="table">
+			<div class="col-md-4" style="text-align: center">
+			<table class="table ">
 				<thead class="thead-light">
 				<tr>
 <?php
-					foreach ( $lista as $atributo ) {//muestra el nombre de cada uno de los campos
+					foreach ( $lista as $atributo ) {
 ?>
 					<th>
 						<?php echo $strings[$atributo]?>
@@ -54,7 +54,7 @@ class GRUPO_CATEGORIA_SHOWALL {
 <?php
 					}
 ?>			
-					<td>
+					<td colspan="3">
 						<form action="../Controllers/GRUPO_CONTROLLER.php" method="post" style="display:inline" >
 							<input type="hidden" name="IdCampeonato" value="<?php echo $fila['IdCampeonato']; ?>">		
 							<input type="hidden" name="Tipo" value="<?php echo $fila['Tipo']; ?>">		
@@ -97,7 +97,7 @@ class GRUPO_CATEGORIA_SHOWALL {
 			</form>
 		</div>
 <?php
-		include '../Views/Footer.php';//incluimos el pie de la página
+		include '../Views/Footer.php';
 		}
 		}
 ?>

@@ -19,7 +19,7 @@ class CAMPEONATO_SHOWALL {
 			<h2 align="center">
 				<?php echo $strings['Tabla de campeonatos'];?>
 			</h2>
-			<div class="col-md-7">
+			<div class="col-md-7" style="text-align: center">
 			<table align="center" class="table">
 		
 				<thead class="thead-light">
