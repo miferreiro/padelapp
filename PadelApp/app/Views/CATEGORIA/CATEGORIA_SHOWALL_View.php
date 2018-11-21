@@ -24,7 +24,7 @@ class CATEGORIA_SHOWALL {
 			<h2>
 				<?php echo $strings['Tabla de datos'];?>
 			</h2>
-			<div class="col-md-3" >
+			<div class="col-md-4" style="text-align: center">
 			<table class="table">
 				<thead class="thead-light">
 				<tr>

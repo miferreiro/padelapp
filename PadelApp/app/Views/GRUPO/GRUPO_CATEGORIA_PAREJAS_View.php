@@ -24,7 +24,7 @@ class GRUPO_CATEGORIA_PAREJAS {
 			<h2>
 				<?php echo $strings['Tabla de parejas en la categoría'];?>
 			</h2>
-			<div class="col-md-4">
+			<div class="col-md-4" style="text-align: center">
 			<table class="table table-sm">
 				<thead class="thead-light">
 

@@ -16,7 +16,7 @@ class CALENDARIO_SHOWCURRENT {
 		<h2>
 			<?php echo $strings['Vista detallada'];?>
 		</h2>
-		<div class="col-md-2">
+		<div class="col-md-2" style="text-align: center">
 		<table class="table table-sm">
 			<thead class="thead-light">
 			<tr>
