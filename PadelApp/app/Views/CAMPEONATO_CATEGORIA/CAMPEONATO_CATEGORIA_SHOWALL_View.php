@@ -26,7 +26,7 @@ class CAMPEONATO_CATEGORIA_SHOWALL {
 				<thead class="thead-light">
 				<tr>
 <?php
-					foreach ( $lista as $atributo ) {//muestra el nombre de cada uno de los campos
+					foreach ( $lista as $atributo ) {
 ?>
 					<th>
 						<?php echo $strings[$atributo]?>
@@ -39,11 +39,12 @@ class CAMPEONATO_CATEGORIA_SHOWALL {
 					</th>
 				</tr>
 <?php
-				while ( $fila = mysqli_fetch_array( $this->datos ) ) {//este bucle se va a repetir mientras no se muestren todos los datos
+				while ( $fila = mysqli_fetch_array( $this->datos ) ) {
+					
 ?>
 				<tr>
 <?php
-					foreach ( $lista as $atributo ) {//este bucle sacará los valores de cada uno de los campos de una tupla
+					foreach ( $lista as $atributo ) {
 ?>
 					<td>
 <?php 		
@@ -54,7 +55,7 @@ class CAMPEONATO_CATEGORIA_SHOWALL {
 <?php
 					}
 ?>			
-					<td>
+					<td colspan="3">
 						<form action="../Controllers/CAMPEONATO_CATEGORIA_CONTROLLER.php" method="post" style="display:inline" >
 							<input type="hidden" name="IdCampeonato" value="<?php echo $fila['IdCampeonato']; ?>">		
 							<input type="hidden" name="Tipo" value="<?php echo $fila['Tipo']; ?>">		
