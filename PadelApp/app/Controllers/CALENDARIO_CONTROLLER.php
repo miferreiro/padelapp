@@ -144,9 +144,16 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$PARTIDO = new PARTIDO_MODEL($_REQUEST['IdCampeonato'],$_REQUEST['Tipo'],$_REQUEST['Nivel'],$_REQUEST['Letra'],$_REQUEST['NumEnfrentamiento'],$_REQUEST['Fecha'],$_REQUEST['Hora'],'','');
 			$respuesta = $PARTIDO->EDIT3();
 			
-			$ENFRENTAMIENTO = new ENFRENTAMIENTO_MODEL($_REQUEST['IdCampeonato'],$_REQUEST['Tipo'],$_REQUEST['Nivel'],$_REQUEST['Letra'],$_REQUEST['NumEnfrentamiento'],$_REQUEST['pareja1'],'','','',1);
+			$PAREJA2 = new PAREJA_MODEL($_REQUEST['IdCampeonato'],$_REQUEST['Tipo'],$_REQUEST['Nivel'],'','');
+			$numParejaActual = $PAREJA2->numPareja($_SESSION['dni']);
+
+			$num1 =  $_REQUEST['pareja1'];
+			$num2 =  $_REQUEST['pareja2'];
+
+			
+			$ENFRENTAMIENTO = new ENFRENTAMIENTO_MODEL($_REQUEST['IdCampeonato'],$_REQUEST['Tipo'],$_REQUEST['Nivel'],$_REQUEST['Letra'],$_REQUEST['NumEnfrentamiento'],$num1,'','','',2);
 			$respuesta = $ENFRENTAMIENTO->EDIT2();
-			$ENFRENTAMIENTO = new ENFRENTAMIENTO_MODEL($_REQUEST['IdCampeonato'],$_REQUEST['Tipo'],$_REQUEST['Nivel'],$_REQUEST['Letra'],$_REQUEST['NumEnfrentamiento'],$_REQUEST['pareja2'],'','','',2);
+			$ENFRENTAMIENTO = new ENFRENTAMIENTO_MODEL($_REQUEST['IdCampeonato'],$_REQUEST['Tipo'],$_REQUEST['Nivel'],$_REQUEST['Letra'],$_REQUEST['NumEnfrentamiento'],$num2,'','','',1);
 			$respuesta = $ENFRENTAMIENTO->EDIT2();
 			
 			new MESSAGE( $respuesta, '../Controllers/CALENDARIO_CONTROLLER.php?IdCampeonato=' . $_REQUEST['IdCampeonato'] . '&Tipo='.$_REQUEST['Tipo']. '&Nivel='.$_REQUEST['Nivel'] . '&Letra='.$_REQUEST['Letra'] . '&action=TABLA' );
@@ -189,7 +196,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 				
 				$PAREJA2 = new PAREJA_MODEL($_REQUEST['IdCampeonato'],$_REQUEST['Tipo'],$_REQUEST['Nivel'],'','');
 				$numParejaActual = $PAREJA2->numPareja($_SESSION['dni']);		
-				
+
 				//$lista = array( 'NumPareja','Login','IdCampeonato','Tipo','Nivel','Letra');
 				$vuelta['IdCampeonato'] = $_REQUEST['IdCampeonato'];
 				$vuelta['Tipo'] = $_REQUEST['Tipo'];

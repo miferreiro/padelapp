@@ -128,11 +128,12 @@ $cont = 0;
 						$NoEncontrado = True;
 						$aux = True;						
 						foreach($arrayEnfrentamientos as $fila){	
-							
+
 							if($arrayListadoParejas[$j-1] == $fila['pareja1'] && $arrayListadoParejas[$i-1] == $fila['pareja2'] ){			//echo $fila['pareja1'];
 								foreach($arrayEnfrentamientos2 as $fila2){		
 									if( $arrayListadoParejas[$j-1]== $fila2['pareja1'] && $arrayListadoParejas[$i-1] == $fila2['pareja2'] ){		
-							
+
+
 										if($fila2['propuestaPareja1'] == 3){?> 
 											<td style ="background-color: #7BB661;">
 										<form action="../Controllers/CALENDARIO_CONTROLLER.php" method="get" style="display:inline" >
@@ -154,7 +155,13 @@ $cont = 0;
 											</form>											
 <?php 
 										} else { 
-											if(($fila2['propuestaPareja1'] == 2 && $fila2['pareja1'] == $this->numParejaActual) || ( $fila2['propuestaPareja2'] == 2 && $fila2['pareja2'] == $this->numParejaActual)){//Naranja
+											if(($fila2['propuestaPareja1'] == 2 && $fila2['pareja1'] == $this->numParejaActual) || ( $fila2['propuestaPareja2'] == 2 && $fila2['pareja2'] == $this->numParejaActual)){							
+							if($this->numParejaActual == $fila['pareja2']){
+								$aux = $fila2['pareja1'];
+								$fila2['pareja1'] = $this->numParejaActual;
+								$fila2['pareja2'] = $aux;
+								
+							}
 ?> 
 												<td style ="background-color: #E49E56;"> 
 											<form action="../Controllers/CALENDARIO_CONTROLLER.php" method="get" style="display:inline" >
@@ -179,7 +186,13 @@ $cont = 0;
 												</form>												
 <?php 
 											}else{ 
-											if(($fila2['propuestaPareja1'] == 1 && $fila2['pareja1'] == $this->numParejaActual) || ( $fila2['propuestaPareja2'] == 1 && $fila2['pareja2'] == $this->numParejaActual)){//Naranja
+											if(($fila2['propuestaPareja1'] == 1 && $fila2['pareja1'] == $this->numParejaActual) || ( $fila2['propuestaPareja2'] == 1 && $fila2['pareja2'] == $this->numParejaActual)){							
+							if($this->numParejaActual == $fila2['pareja2']){
+								$aux = $fila2['pareja1'];
+								$fila2['pareja1'] = $this->numParejaActual;
+								$fila2['pareja2'] = $aux;
+								
+							}
 ?> 
 													<td style ="background-color: #FDFD96;"> 
 												<form action="../Controllers/CALENDARIO_CONTROLLER.php" method="get" style="display:inline" >
@@ -200,7 +213,13 @@ $cont = 0;
 														<button id ="buttonBien"  type="submit" name="action" value="INFORMACION" ><img src="../Views/icon/calendario.png" alt="<?php echo $strings['modificar']?>"  width="20" height="20" /></button>			
 													</form>														
 <?php 
-												}else{ 																																
+												}else{ 											
+							if($this->numParejaActual == $fila2['pareja2']){
+								$aux = $fila2['pareja1'];
+								$fila2['pareja1'] = $this->numParejaActual;
+								$fila2['pareja2'] = $aux;
+								
+							}																										
 ?>
 														<td> 
 													<form action="../Controllers/CALENDARIO_CONTROLLER.php" method="get" style="display:inline" >

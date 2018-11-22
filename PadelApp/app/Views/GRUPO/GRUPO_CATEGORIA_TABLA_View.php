@@ -95,7 +95,7 @@ class GRUPO_CATEGORIA_TABLA{
 				}else{
 						$NoEncontrado = True;
 						foreach($arrayEnfrentamientos as $fila){
-						//	echo  $fila['pareja1'] . '-' . $fila['pareja2'] . ' ';
+							echo  $fila['pareja1'] . '-' . $fila['pareja2'] . ' ';
 							
 							
 							if($arrayListadoParejas[$j-1] == $fila['pareja1'] && $arrayListadoParejas[$i-1] == $fila['pareja2']){
