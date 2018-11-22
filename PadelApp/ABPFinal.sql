@@ -515,7 +515,7 @@ INSERT INTO `pareja` (`idCampeonato`, `Tipo`, `Nivel`, `NumPareja`, `Capitan`) V
 (5, 'Masculino', 1, 93, 'usuario173'),
 (5, 'Masculino', 1, 94, 'usuario175'),
 (5, 'Masculino', 1, 95, 'usuario177'),
-(5, 'Masculino', 1, 96, 'usuario179'),
+(5, 'Masculino', 1, 96, 'usuario179');
 /*,
 (3, 'Masculino', 1, 97, 'usuario181'),
 (3, 'Masculino', 1, 98, 'usuario183'),
@@ -534,7 +534,7 @@ INSERT INTO `pareja` (`idCampeonato`, `Tipo`, `Nivel`, `NumPareja`, `Capitan`) V
 (3, 'Masculino', 1, 111, 'usuario209'),
 (3, 'Masculino', 1, 112, 'usuario211');*/
 
-(3, 'Femenino', 1, 113, 'usuario213'),
+/*(3, 'Femenino', 1, 113, 'usuario213'),
 (3, 'Femenino', 1, 114, 'usuario215'),
 (3, 'Femenino', 1, 115, 'usuario217'),
 (3, 'Femenino', 1, 116, 'usuario219'),
@@ -654,7 +654,7 @@ INSERT INTO `pareja` (`idCampeonato`, `Tipo`, `Nivel`, `NumPareja`, `Capitan`) V
 (3, 'Femenino', 1, 205, 'usuario397'),
 (3, 'Femenino', 1, 206, 'usuario399'),
 (3, 'Femenino', 1, 207, 'usuario401'),
-(3, 'Femenino', 1, 208, 'usuario403');
+(3, 'Femenino', 1, 208, 'usuario403');*/
 
 
 
@@ -906,9 +906,9 @@ INSERT INTO `usuario` (`Dni`, `Login`, `Password`, `Nombre`, `Apellidos`, `Sexo`
 ('49332241R', 'usuario209', 'f8032d5cae3de20fcec887f395ec9a6a', 'usuario', 'usu usu ', 'Hombre', 'Deportista', '654654654'),
 ('21549236F', 'usuario210', 'f8032d5cae3de20fcec887f395ec9a6a', 'usuario', 'usu usu ', 'Hombre', 'Deportista', '654654654'),
 ('38383345W', 'usuario211', 'f8032d5cae3de20fcec887f395ec9a6a', 'usuario', 'usu usu ', 'Hombre', 'Deportista', '654654654'),
-('09789679M', 'usuario212', 'f8032d5cae3de20fcec887f395ec9a6a', 'usuario', 'usu usu ', 'Hombre', 'Deportista', '654654654'),
+('09789679M', 'usuario212', 'f8032d5cae3de20fcec887f395ec9a6a', 'usuario', 'usu usu ', 'Hombre', 'Deportista', '654654654');
 
-('50442636W', 'usuario213', 'f8032d5cae3de20fcec887f395ec9a6a', 'usuario', 'usu usu ', 'Mujer', 'Deportista', '654654654'),
+/*('50442636W', 'usuario213', 'f8032d5cae3de20fcec887f395ec9a6a', 'usuario', 'usu usu ', 'Mujer', 'Deportista', '654654654'),
 ('57077672K', 'usuario214', 'f8032d5cae3de20fcec887f395ec9a6a', 'usuario', 'usu usu ', 'Mujer', 'Deportista', '654654654'),
 ('22883598R', 'usuario215', 'f8032d5cae3de20fcec887f395ec9a6a', 'usuario', 'usu usu ', 'Mujer', 'Deportista', '654654654'),
 ('24780186D', 'usuario216', 'f8032d5cae3de20fcec887f395ec9a6a', 'usuario', 'usu usu ', 'Mujer', 'Deportista', '654654654'),
@@ -1122,7 +1122,7 @@ INSERT INTO `usuario` (`Dni`, `Login`, `Password`, `Nombre`, `Apellidos`, `Sexo`
 ('57098432N', 'usuario401', 'f8032d5cae3de20fcec887f395ec9a6a', 'usuario', 'usu usu ', 'Mujer', 'Deportista', '654654654'),
 ('68869688Y', 'usuario402', 'f8032d5cae3de20fcec887f395ec9a6a', 'usuario', 'usu usu ', 'Mujer', 'Deportista', '654654654'),
 ('22917241H', 'usuario403', 'f8032d5cae3de20fcec887f395ec9a6a', 'usuario', 'usu usu ', 'Mujer', 'Deportista', '654654654'),
-('72124156C', 'usuario404', 'f8032d5cae3de20fcec887f395ec9a6a', 'usuario', 'usu usu ', 'Mujer', 'Deportista', '654654654');
+('72124156C', 'usuario404', 'f8032d5cae3de20fcec887f395ec9a6a', 'usuario', 'usu usu ', 'Mujer', 'Deportista', '654654654');*/
 
 
 
@@ -1332,7 +1332,7 @@ INSERT INTO `usuarioparejas` (`Usuario_Dni`, `Pareja_idCampeonato`, `Pareja_Tipo
 ('46787159F', 3, 'Masculino', 1, 95),
 ('01789972C', 3, 'Masculino', 1, 95),
 ('43403750J', 3, 'Masculino', 1, 96),
-('49620426L', 3, 'Masculino', 1, 96),
+('49620426L', 3, 'Masculino', 1, 96);
 /*
 ('00890506S', 3, 'Masculino', 1, 97),
 ('93484445W', 3, 'Masculino', 1, 97),
@@ -1368,7 +1368,7 @@ INSERT INTO `usuarioparejas` (`Usuario_Dni`, `Pareja_idCampeonato`, `Pareja_Tipo
 ('38383345W', 3, 'Masculino', 1, 112),
 ('09789679M', 3, 'Masculino', 1, 112);*/
 
-('50442636W', 3, 'Femenino', 1, 113),
+/*('50442636W', 3, 'Femenino', 1, 113),
 ('57077672K', 3, 'Femenino', 1, 113),
 ('22883598R', 3, 'Femenino', 1, 114),
 ('24780186D', 3, 'Femenino', 1, 114),
@@ -1583,7 +1583,7 @@ INSERT INTO `usuarioparejas` (`Usuario_Dni`, `Pareja_idCampeonato`, `Pareja_Tipo
 ('57098432N', 3, 'Femenino', 1, 207),
 ('68869688Y', 3, 'Femenino', 1, 207),
 ('22917241H', 3, 'Femenino', 1, 208),
-('72124156C', 3, 'Femenino', 1, 208);
+('72124156C', 3, 'Femenino', 1, 208);*/
 
 
 --
@@ -2509,10 +2509,10 @@ INSERT INTO `partido` (`IdCampeonato`, `Tipo`, `Nivel`, `Grupo_Letra`, `NumEnfre
 (3, 'Masculino', 1, 'H', 329, '2018-11-4', '20:30:00', NULL, NULL),
 (3, 'Masculino', 1, 'H', 330, '2018-11-4', '20:30:00', NULL, NULL),
 (3, 'Masculino', 1, 'H', 331, '2018-11-4', '20:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'H', 332, '2018-11-4', '20:30:00', NULL, NULL),
+(3, 'Masculino', 1, 'H', 332, '2018-11-4', '20:30:00', NULL, NULL);
 
 
-(3, 'Femenino', 1, 'A', 1, NULL, NULL, 1, 2),
+/*(3, 'Femenino', 1, 'A', 1, NULL, NULL, 1, 2),
 (3, 'Femenino', 1, 'A', 2, NULL, NULL, 1, 3),
 (3, 'Femenino', 1, 'A', 3, NULL, NULL, 4, 1),
 (3, 'Femenino', 1, 'A', 4, NULL, NULL, 1, 5),
@@ -3039,7 +3039,7 @@ INSERT INTO `partido` (`IdCampeonato`, `Tipo`, `Nivel`, `Grupo_Letra`, `NumEnfre
 (3, 'Femenino', 1, 'H', 329, NULL, NULL, NULL, NULL),
 (3, 'Femenino', 1, 'H', 330, NULL, NULL, NULL, NULL),
 (3, 'Femenino', 1, 'H', 331, NULL, NULL, NULL, NULL),
-(3, 'Femenino', 1, 'H', 332, NULL, NULL, NULL, NULL);
+(3, 'Femenino', 1, 'H', 332, NULL, NULL, NULL, NULL);*/
 
 
 -- --------------------------------------------------------
@@ -4104,8 +4104,9 @@ INSERT INTO `enfrentamiento` (`IdCampeonato`, `Tipo`, `Nivel`, `Letra`, `NumEnfr
 (3, 'Masculino', 1, 'H', 331, 94, NULL, NULL, NULL, 0),
 (3, 'Masculino', 1, 'H', 331, 96, NULL, NULL, NULL, 0),
 (3, 'Masculino', 1, 'H', 332, 95, NULL, NULL, NULL, 0),
-(3, 'Masculino', 1, 'H', 332, 96, NULL, NULL, NULL, 0),
-(3, 'Femenino', 1, 'A', 1, 113, NULL, NULL, NULL, 0),
+(3, 'Masculino', 1, 'H', 332, 96, NULL, NULL, NULL, 0);
+
+/*(3, 'Femenino', 1, 'A', 1, 113, NULL, NULL, NULL, 0),
 (3, 'Femenino', 1, 'A', 1, 114, NULL, NULL, NULL, 0),
 (3, 'Femenino', 1, 'A', 2, 113, NULL, NULL, NULL, 0),
 (3, 'Femenino', 1, 'A', 2, 115, NULL, NULL, NULL, 0),
@@ -5161,7 +5162,7 @@ INSERT INTO `enfrentamiento` (`IdCampeonato`, `Tipo`, `Nivel`, `Letra`, `NumEnfr
 (3, 'Femenino', 1, 'H', 331, 206, NULL, NULL, NULL, 0),
 (3, 'Femenino', 1, 'H', 331, 208, NULL, NULL, NULL, 0),
 (3, 'Femenino', 1, 'H', 332, 207, NULL, NULL, NULL, 0),
-(3, 'Femenino', 1, 'H', 332, 208, NULL, NULL, NULL, 0);
+(3, 'Femenino', 1, 'H', 332, 208, NULL, NULL, NULL, 0);*/
 
 
 
