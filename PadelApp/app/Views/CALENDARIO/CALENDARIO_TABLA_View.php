@@ -80,7 +80,7 @@ class CALENDARIO_TABLA{
       
 ?>
 
-		<div class="seccion" align="center">
+		<div class="seccion" align="left">
 			<h2>
 				<?php echo $strings['Tabla de datos'];?>
 			</h2>
@@ -90,7 +90,7 @@ class CALENDARIO_TABLA{
 				<?php echo $strings['Color amarillo : hora y fecha propuestas a la otra pareja'];?><br>
 				<?php echo $strings['Color naranja : hora y fechas propuestas por la otra pareja'];?><br>
 			</p>
-			<div class="col-md-4">
+			<div class="col-md-4" align="left">
 			<table class="table table-sm">
 				<thead class="thead-light">
 			<tr>
