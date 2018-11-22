@@ -101,7 +101,7 @@ class CATEGORIA_SHOWALL {
 ?>
 			</thead>
 			</table>
-			<form action='../Controllers/USUARIO_CONTROLLER.php' method="post">
+			<form action='../Controllers/USUARIO_CONTROLLER.php' method="get">
 				<button id ="buttonBien" type="submit"><img src="../Views/icon/back_big2.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>
 			</div>

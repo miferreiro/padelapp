@@ -89,7 +89,7 @@ class GRUPO_CATEGORIA_SHOWALL {
 				</thead>
 			</table>
 			</div>
-			<form action='../Controllers/CAMPEONATO_CATEGORIA_CONTROLLER.php' method="post">
+			<form action='../Controllers/CAMPEONATO_CATEGORIA_CONTROLLER.php' method="get">
 			<input type="hidden" name="IdCampeonato" value="<?php echo $vuelta['IdCampeonato']; ?>">		
 				<input type="hidden" name="Tipo" value="<?php echo $vuelta['Tipo']; ?>">		
 				<input type="hidden" name="Nivel" value="<?php echo $vuelta['Nivel']; ?>">

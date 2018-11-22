@@ -88,7 +88,7 @@ class CAMPEONATO_CATEGORIA_SHOWALL {
 				</thead>
 			</table>
 			</div>
-			<form action='../Controllers/CAMPEONATO_CONTROLLER.php' method="post">
+			<form action='../Controllers/CAMPEONATO_CONTROLLER.php' method="get">
 
 				<button id ="buttonBien" type="submit"><img src="../Views/icon/back_big2.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>
