@@ -82,7 +82,7 @@ class CALENDARIO_TABLA{
 
 		<div class="seccion" align="left">
 			<h2>
-				<?php echo $strings['Tabla de datos'];?>
+				<?php echo $strings['Tabla de enfrentamientos'];?>
 			</h2>
 			<p>
 				<?php echo $strings['Color blanco : no hay ofertas lanzadas ni recibidas'];?><br>

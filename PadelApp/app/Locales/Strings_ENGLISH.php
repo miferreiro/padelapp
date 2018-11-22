@@ -357,7 +357,8 @@ array(
 	'Color Verde : hora y fecha establecidas' => 'Green Color: time and date established',
 	'Color amarillo : hora y fecha propuestas a la otra pareja' => 'Yellow color: proposed time and date for the other couple',
 	'Color naranja : hora y fechas propuestas por la otra pareja' => 'Orange color: time and date proposed by the other couple',
-	'Borrado incorrectamente' => 'Wrongly deleted'
+	'Borrado incorrectamente' => 'Wrongly deleted',
+	'Tabla de enfrentamientos' => 'Confrontation table'
 	
 	
 	)

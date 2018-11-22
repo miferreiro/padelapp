@@ -55,7 +55,7 @@ class GRUPO_CATEGORIA_TABLA{
 
 		<div class="seccion" align="center">
 			<h2>
-				<?php echo $strings['Tabla de datos'];?>
+				<?php echo $strings['Tabla de enfrentamientos'];?>
 			</h2>
 			<div class="col-md-4">
 			<table class="table table-sm">
