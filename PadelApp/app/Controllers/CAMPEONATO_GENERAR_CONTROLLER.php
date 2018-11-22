@@ -95,11 +95,11 @@ switch ( $_REQUEST[ 'action' ] ) {
 		$CAMPEONATO = new CAMPEONATO_MODEL($idCampeonato,'','','','');
 		$datos = $CAMPEONATO->RellenaDatos();
 
-		if(strtotime($datos['FechaFin']) > strtotime(date("d/m/Y")))
+		if(($datos['FechaFin']) > (date("d/m/Y")))
 		{
 			new MESSAGE( 'No se ha cerrado el plazo de inscripcion', '../Controllers/CAMPEONATO_CATEGORIA_CONTROLLER.php?IdCampeonato=' .$_REQUEST[ 'IdCampeonato' ] );								
 		}else{
-			if(strtotime($datos['FechaFin']) == strtotime(date("d/m/Y")) && (strtotime($datos['HoraFin']) > date("H:i:s"))){
+			if($datos['FechaFin'] == date("d/m/Y") && (($datos['HoraFin']) > date("H:i:s"))){
 				new MESSAGE( 'No se ha cerrado el plazo de inscripcion', '../Controllers/CAMPEONATO_CATEGORIA_CONTROLLER.php?IdCampeonato=' .$_REQUEST[ 'IdCampeonato' ] );								
 			}else{
 					
