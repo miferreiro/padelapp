@@ -2,7 +2,8 @@
 
 session_start(); 
 include '../Functions/Authentication.php'; 
-include '../Functions/Comprobar_Disponibilidad.php'; 
+include '../Functions/Comprobar_Disponibilidad.php';
+
 if (!IsAuthenticated()){
  	header('Location:../index.php');
 }
