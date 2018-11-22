@@ -79,24 +79,6 @@ class CALENDARIO_INFORMACION{
 					<?php echo $this->valores['pareja2'];?>
 				</td>
 			</tr>
-			<tr>
-				<th>
-					<?php echo $strings['propuestaPareja'] . "1";?>
-				</th>
-				<td>
-					<?php echo $this->valores['propuestaPareja1'];?>
-				</td>
-			</tr>
-			<tr>
-				<th>
-					<?php echo $strings['propuestaPareja'] . "2";?>
-				</th>
-				<td>
-					<?php echo $this->valores['propuestaPareja2'];?>
-				</td>
-			</tr>		
-
-
 				<?php if($this->valores['propuestaPareja1'] == 3){?> 
 					<tr>
 						<th>
@@ -193,13 +175,15 @@ class CALENDARIO_INFORMACION{
 			</thead>
 			</table>
 			
-			<p>
-				Color blanco 0 : no hay ofertas lanzadas ni recibidas<br>
-				Color Verde  3: hora y fecha establecidas<br>
-				Color amarillo 1: hora y fecha propuestas a la otra pareja<br>
-				Color naranja 2: hora y fechas propuestas por la otra pareja<br>
-			</p>
+
 		</div>
+			<p>
+				<?php echo $strings['Color blanco : no hay ofertas lanzadas ni recibidas'];?><br>
+				<?php echo $strings['Color Verde : hora y fecha establecidas'];?><br>
+				<?php echo $strings['Color amarillo : hora y fecha propuestas a la otra pareja'];?><br>
+				<?php echo $strings['Color naranja : hora y fechas propuestas por la otra pareja'];?><br>
+				
+			</p>
 				<form action='../Controllers/CALENDARIO_CONTROLLER.php' method="post">
 					<input type="hidden" name="IdCampeonato" value="<?php echo $this->valores['IdCampeonato']; ?>">		
 					<input type="hidden" name="Tipo" value="<?php echo $this->valores['Tipo']; ?>">		

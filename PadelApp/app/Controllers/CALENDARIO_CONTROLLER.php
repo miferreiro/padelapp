@@ -2,7 +2,8 @@
 
 session_start(); 
 include '../Functions/Authentication.php'; 
-include '../Functions/Comprobar_Disponibilidad.php'; 
+include '../Functions/Comprobar_Disponibilidad.php';
+
 if (!IsAuthenticated()){
  	header('Location:../index.php');
 }
@@ -79,7 +80,25 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$RESERVA = new RESERVA_MODEL($dniAdmin,'',$_REQUEST['Fecha'],$_REQUEST['Hora']);
 			$respuesta = $RESERVA->RESERVACAMP();
 			
-			new MESSAGE( $respuesta, '../Controllers/CALENDARIO_CONTROLLER.php?IdCampeonato=' . $_REQUEST['IdCampeonato'] . '&Tipo='.$_REQUEST['Tipo']. '&Nivel='.$_REQUEST['Nivel'] . '&Letra='.$_REQUEST['Letra'] . '&action=TABLA' );
+			if($respuesta != 'Inserción realizada con éxito'){
+				
+				$PARTIDO = new PARTIDO_MODEL($_REQUEST['IdCampeonato'],$_REQUEST['Tipo'],$_REQUEST['Nivel'],$_REQUEST['Letra'],$_REQUEST['NumEnfrentamiento'],NULL,NULL,'','');
+				$respuesta2 = $PARTIDO->EDIT3();
+
+				$ENFRENTAMIENTO = new ENFRENTAMIENTO_MODEL($_REQUEST['IdCampeonato'],$_REQUEST['Tipo'],$_REQUEST['Nivel'],$_REQUEST['Letra'],$_REQUEST['NumEnfrentamiento'],$_REQUEST['pareja1'],'','','',0);
+				$respuesta3 = $ENFRENTAMIENTO->EDIT2();
+				$ENFRENTAMIENTO = new ENFRENTAMIENTO_MODEL($_REQUEST['IdCampeonato'],$_REQUEST['Tipo'],$_REQUEST['Nivel'],$_REQUEST['Letra'],$_REQUEST['NumEnfrentamiento'],$_REQUEST['pareja2'],'','','',0);
+				$respuesta4 = $ENFRENTAMIENTO->EDIT2();
+
+				new MESSAGE( $respuesta, '../Controllers/CALENDARIO_CONTROLLER.php?IdCampeonato=' . $_REQUEST['IdCampeonato'] . '&Tipo='.$_REQUEST['Tipo']. '&Nivel='.$_REQUEST['Nivel'] . '&Letra='.$_REQUEST['Letra'] . '&action=TABLA' );
+				
+			}else{
+					new MESSAGE( $respuesta, '../Controllers/CALENDARIO_CONTROLLER.php?IdCampeonato=' . $_REQUEST['IdCampeonato'] . '&Tipo='.$_REQUEST['Tipo']. '&Nivel='.$_REQUEST['Nivel'] . '&Letra='.$_REQUEST['Letra'] . '&action=TABLA' );
+			}
+			
+			
+			
+
 		}
 
 	break;

@@ -73,7 +73,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 	default: 
 			if($_SESSION['tipo'] == 'Deportista'){
 
-						$INSPROM = new INSPROM_MODEL($_REQUEST['Usuario_Dni'],'', '');
+						$INSPROM = new INSPROM_MODEL($_SESSION['dni'],'', '');
 	
 						$datos = $INSPROM->SEARCH();
 						

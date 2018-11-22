@@ -72,7 +72,7 @@ class CLASIFICACION_SHOWALL {
 <?php			
 			if($_SESSION['tipo'] == 'Admin'){
 				?>
-				<form action='../Controllers/GRUPO_CONTROLLER.php' method="get">
+				<form action='../Controllers/GRUPO_CONTROLLER.php' method="post">
 				<input type="hidden" name="IdCampeonato" value="<?php echo $IdCampeonato; ?>">		
 				<input type="hidden" name="Tipo" value="<?php echo $Tipo; ?>">		
 				<input type="hidden" name="Nivel" value="<?php echo $Nivel; ?>">					

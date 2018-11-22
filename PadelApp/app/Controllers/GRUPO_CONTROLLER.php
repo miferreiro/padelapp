@@ -111,7 +111,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		}
 	break;
 	case "CLASIFICACION":
-		
+		if($_SESSION['tipo'] == 'Admin'||$_SESSION['tipo'] == 'Deportista'){	
 				$GRUPO =  get_data_form();
 
 				$datos = $GRUPO ->Clasif();
@@ -120,6 +120,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 				
 		
 			   new CLASIFICACION_SHOWALL($lista, $datos);
+		}else{
+			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/USUARIO_CONTROLLER.php' );
+		}
 	break;	
 	default: 
 			if($_SESSION['tipo'] == 'Admin'){
