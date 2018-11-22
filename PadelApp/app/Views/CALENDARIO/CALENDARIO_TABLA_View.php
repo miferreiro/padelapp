@@ -79,19 +79,19 @@ class CALENDARIO_TABLA{
 		include '../Views/Header.php';
       
 ?>
-
-		<div class="seccion" align="left">
-			<h2>
+			<h2 align="center">
 				<?php echo $strings['Tabla de enfrentamientos'];?>
 			</h2>
-			<p>
+			<p align="center">
 				<?php echo $strings['Color blanco : no hay ofertas lanzadas ni recibidas'];?><br>
 				<?php echo $strings['Color Verde : hora y fecha establecidas'];?><br>
 				<?php echo $strings['Color amarillo : hora y fecha propuestas a la otra pareja'];?><br>
 				<?php echo $strings['Color naranja : hora y fechas propuestas por la otra pareja'];?><br>
 			</p>
+		<div class="seccion" align="center">
+
 			<div class="col-md-4" align="left">
-			<table class="table table-sm">
+			<table class="table table-sm" style="text-align:center">
 				<thead class="thead-light">
 			<tr>
 				<th></th>
@@ -131,7 +131,8 @@ $cont = 0;
 							
 							if($arrayListadoParejas[$j-1] == $fila['pareja1'] && $arrayListadoParejas[$i-1] == $fila['pareja2'] ){			//echo $fila['pareja1'];
 								foreach($arrayEnfrentamientos2 as $fila2){		
-									if( $arrayListadoParejas[$j-1]== $fila2['pareja1'] && $arrayListadoParejas[$i-1] == $fila2['pareja2'] ){										
+									if( $arrayListadoParejas[$j-1]== $fila2['pareja1'] && $arrayListadoParejas[$i-1] == $fila2['pareja2'] ){		
+							
 										if($fila2['propuestaPareja1'] == 3){?> 
 											<td style ="background-color: #7BB661;">
 										<form action="../Controllers/CALENDARIO_CONTROLLER.php" method="get" style="display:inline" >
@@ -252,14 +253,15 @@ $cont = 0;
 				</thead>
 			</table>
 			</div>
-			<form action='../Controllers/CALENDARIO_CONTROLLER.php' method="get">
+
+		</div>
+			<form action='../Controllers/CALENDARIO_CONTROLLER.php' method="get" align="center">
 				<input type="hidden" name="IdCampeonato" value="<?php echo $vuelta['IdCampeonato']; ?>">		
 				<input type="hidden" name="Tipo" value="<?php echo $this->vuelta['Tipo']; ?>">		
 				<input type="hidden" name="Nivel" value="<?php echo $this->vuelta['Nivel']; ?>">					
 				<input type="hidden" name="Letra" value="<?php echo $this->vuelta['Letra']; ?>">	
 				<button id ="buttonBien" type="submit"><img src="../Views/icon/back_big2.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>
-		</div>
 <?php
 		include '../Views/Footer.php';//incluimos el pie de la página
 		}

@@ -52,13 +52,13 @@ class GRUPO_CATEGORIA_TABLA{
 		include '../Views/Header.php';
       
 ?>
-
-		<div class="seccion" align="center">
-			<h2>
+			<h2  align="center"> 
 				<?php echo $strings['Tabla de enfrentamientos'];?>
 			</h2>
-			<div class="col-md-4">
-			<table class="table table-sm">
+		<div class="seccion" align="left" style="transform: translate(15%, 0%)">
+
+			<div class="col-md-4"  >
+			<table class="table table-sm" style="text-align:center">
 				<thead class="thead-light">
 			<tr>
 				<th></th>
@@ -146,14 +146,15 @@ class GRUPO_CATEGORIA_TABLA{
 				</thead>
 			</table>
 			</div>
-			<form action='../Controllers/GRUPO_CONTROLLER.php' method="get">
+
+		</div>
+		<form action='../Controllers/GRUPO_CONTROLLER.php' method="get" align="center">
 				<input type="hidden" name="IdCampeonato" value="<?php echo $vuelta['IdCampeonato']; ?>">		
 				<input type="hidden" name="Tipo" value="<?php echo $this->vuelta['Tipo']; ?>">		
 				<input type="hidden" name="Nivel" value="<?php echo $this->vuelta['Nivel']; ?>">					
 				<input type="hidden" name="Letra" value="<?php echo $this->vuelta['Letra']; ?>">	
 				<button id ="buttonBien" type="submit"><img src="../Views/icon/back_big2.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>
-		</div>
 <?php
 		include '../Views/Footer.php';//incluimos el pie de la página
 		}
