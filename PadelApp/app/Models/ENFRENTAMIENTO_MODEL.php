@@ -342,7 +342,7 @@ class ENFRENTAMIENTO_MODEL{
 	function listaEnfrentamientoCalendario($dni){
 		
 		
-		$sql = "SELECT DISTINCT E1.NumPareja as pareja1,E2.NumPareja as pareja2,  E1.NumEnfrentamiento as NumEnfrentamiento,
+		$sql = "SELECT DISTINCT E1.NumPareja as pareja2,E2.NumPareja as pareja1,  E1.NumEnfrentamiento as NumEnfrentamiento,
 
 
 				E1.ResultadoSet1 as ResultadoSet1Par2, E1.ResultadoSet2 as ResultadoSet2Par2, E1.ResultadoSet3 as ResultadoSet3Par2, 

@@ -156,12 +156,11 @@ $cont = 0;
 <?php 
 										} else { 
 											if(($fila2['propuestaPareja1'] == 2 && $fila2['pareja1'] == $this->numParejaActual) || ( $fila2['propuestaPareja2'] == 2 && $fila2['pareja2'] == $this->numParejaActual)){							
-							if($this->numParejaActual == $fila['pareja2']){
-								$aux = $fila2['pareja1'];
-								$fila2['pareja1'] = $this->numParejaActual;
-								$fila2['pareja2'] = $aux;
-								
-							}
+	if($this->numParejaActual == $fila['pareja2']){
+		$aux = $fila2['pareja1'];
+		$fila2['pareja1'] = $this->numParejaActual;
+		$fila2['pareja2'] = $aux;								
+	}
 ?> 
 												<td style ="background-color: #E49E56;"> 
 											<form action="../Controllers/CALENDARIO_CONTROLLER.php" method="get" style="display:inline" >
@@ -187,12 +186,12 @@ $cont = 0;
 <?php 
 											}else{ 
 											if(($fila2['propuestaPareja1'] == 1 && $fila2['pareja1'] == $this->numParejaActual) || ( $fila2['propuestaPareja2'] == 1 && $fila2['pareja2'] == $this->numParejaActual)){							
-							if($this->numParejaActual == $fila2['pareja2']){
-								$aux = $fila2['pareja1'];
-								$fila2['pareja1'] = $this->numParejaActual;
-								$fila2['pareja2'] = $aux;
-								
-							}
+		if($this->numParejaActual == $fila2['pareja2']){
+			$aux = $fila2['pareja1'];
+			$fila2['pareja1'] = $this->numParejaActual;
+			$fila2['pareja2'] = $aux;
+
+		}
 ?> 
 													<td style ="background-color: #FDFD96;"> 
 												<form action="../Controllers/CALENDARIO_CONTROLLER.php" method="get" style="display:inline" >
@@ -214,12 +213,12 @@ $cont = 0;
 													</form>														
 <?php 
 												}else{ 											
-							if($this->numParejaActual == $fila2['pareja2']){
-								$aux = $fila2['pareja1'];
-								$fila2['pareja1'] = $this->numParejaActual;
-								$fila2['pareja2'] = $aux;
-								
-							}																										
+	if($this->numParejaActual == $fila2['pareja2']){
+		$aux = $fila2['pareja1'];
+		$fila2['pareja1'] = $this->numParejaActual;
+		$fila2['pareja2'] = $aux;
+
+	}																										
 ?>
 														<td> 
 													<form action="../Controllers/CALENDARIO_CONTROLLER.php" method="get" style="display:inline" >
@@ -246,10 +245,7 @@ $cont = 0;
 												} 
 											}
 										}
-?>
-									
-										
-										
+?>																													
 										</td><?php
 											$NoEncontrado = False;	
 											$aux = False;
@@ -282,7 +278,7 @@ $cont = 0;
 				<button id ="buttonBien" type="submit"><img src="../Views/icon/back_big2.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>
 <?php
-		include '../Views/Footer.php';//incluimos el pie de la página
+		include '../Views/Footer.php';
 		}
 		}
 ?>
