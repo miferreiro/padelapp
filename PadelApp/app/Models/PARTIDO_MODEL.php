@@ -116,7 +116,226 @@ class PARTIDO_MODEL{
 			return $resultado;
 		}
 	} 
-	
+	function ELIMINATORIAS(){
+	  $sql="SELECT * FROM `partido` WHERE IdCampeonato = '$this->IdCampeonato' && Tipo = '$this->Tipo' && Nivel='$this->Nivel' && Grupo_Letra = '$this->Letra' && Disputado = 0";
+		$result = $this->mysqli->query( $sql );	
+		if ( $result->num_rows == 0 ) {
+		$sql="SELECT * FROM `clasificacion` WHERE IdCampeonato='$this->IdCampeonato'&& Tipo='$this->Tipo' && Nivel='$this->Nivel' GROUP BY IdCampeonato,Tipo,Nivel,Letra";
+			$result = $this->mysqli->query( $sql );	
+			$grupos = array();
+			$q = 0;
+			while ( $resultado = mysqli_fetch_array( $datos ) ) {				
+					$grupos[$q] = $resultado['NumPareja'];
+					$q++;
+
+			}
+			$sql="INSERT INTO ELIMINATORIAS(
+									IdCampeonato,
+									Tipo,
+									Nivel,
+									Letra,
+									NumEnfrentamiento,
+									NumPareja,
+									Fase,
+									ResultadoSet1,
+									ResultadoSet2,
+									ResultadoSet3
+					             	) 
+								VALUES(
+								'$this->IdCampeonato',							
+								'$this->Tipo',
+								'$this->Nivel',
+								'A',
+								'1',
+								'$grupos[0]',
+								'Cuartos',
+								NULL,
+								NULL,
+								NULL
+								)";
+			$result = $this->mysqli->query( $sql );	
+			$sql="INSERT INTO ELIMINATORIAS(
+									IdCampeonato,
+									Tipo,
+									Nivel,
+									Letra,
+									NumEnfrentamiento,
+									NumPareja,
+									Fase,
+									ResultadoSet1,
+									ResultadoSet2,
+									ResultadoSet3
+					             	) 
+								VALUES(
+								'$this->IdCampeonato',							
+								'$this->Tipo',
+								'$this->Nivel',
+								'H',
+								'1',
+								'$grupos[7]',
+								'Cuartos',
+								NULL,
+								NULL,
+								NULL
+								)";
+			$result = $this->mysqli->query( $sql );	
+			
+			$sql="INSERT INTO ELIMINATORIAS(
+									IdCampeonato,
+									Tipo,
+									Nivel,
+									Letra,
+									NumEnfrentamiento,
+									NumPareja,
+									Fase,
+									ResultadoSet1,
+									ResultadoSet2,
+									ResultadoSet3
+					             	) 
+								VALUES(
+								'$this->IdCampeonato',							
+								'$this->Tipo',
+								'$this->Nivel',
+								'B',
+								'2',
+								'$grupos[1]',
+								'Cuartos',
+								NULL,
+								NULL,
+								NULL
+								)";
+			$result = $this->mysqli->query( $sql );	
+			$sql="INSERT INTO ELIMINATORIAS(
+									IdCampeonato,
+									Tipo,
+									Nivel,
+									Letra,
+									NumEnfrentamiento,
+									NumPareja,
+									Fase,
+									ResultadoSet1,
+									ResultadoSet2,
+									ResultadoSet3
+					             	) 
+								VALUES(
+								'$this->IdCampeonato',							
+								'$this->Tipo',
+								'$this->Nivel',
+								'G',
+								'2',
+								'$grupos[6]',
+								'Cuartos',
+								NULL,
+								NULL,
+								NULL
+								)";
+			$result = $this->mysqli->query( $sql );
+			
+			
+			$sql="INSERT INTO ELIMINATORIAS(
+									IdCampeonato,
+									Tipo,
+									Nivel,
+									Letra,
+									NumEnfrentamiento,
+									NumPareja,
+									Fase,
+									ResultadoSet1,
+									ResultadoSet2,
+									ResultadoSet3
+					             	) 
+								VALUES(
+								'$this->IdCampeonato',							
+								'$this->Tipo',
+								'$this->Nivel',
+								'C',
+								'3',
+								'$grupos[2]',
+								'Cuartos',
+								NULL,
+								NULL,
+								NULL
+								)";
+			$result = $this->mysqli->query( $sql );	
+			$sql="INSERT INTO ELIMINATORIAS(
+									IdCampeonato,
+									Tipo,
+									Nivel,
+									Letra,
+									NumEnfrentamiento,
+									NumPareja,
+									Fase,
+									ResultadoSet1,
+									ResultadoSet2,
+									ResultadoSet3
+					             	) 
+								VALUES(
+								'$this->IdCampeonato',							
+								'$this->Tipo',
+								'$this->Nivel',
+								'F',
+								'3',
+								'$grupos[5]',
+								'Cuartos',
+								NULL,
+								NULL,
+								NULL
+								)";
+			$result = $this->mysqli->query( $sql );
+			
+			
+		    $sql="INSERT INTO ELIMINATORIAS(
+									IdCampeonato,
+									Tipo,
+									Nivel,
+									Letra,
+									NumEnfrentamiento,
+									NumPareja,
+									Fase,
+									ResultadoSet1,
+									ResultadoSet2,
+									ResultadoSet3
+					             	) 
+								VALUES(
+								'$this->IdCampeonato',							
+								'$this->Tipo',
+								'$this->Nivel',
+								'D',
+								'4',
+								'$grupos[3]',
+								'Cuartos',
+								NULL,
+								NULL,
+								NULL
+								)";
+			$result = $this->mysqli->query( $sql );	
+			$sql="INSERT INTO ELIMINATORIAS(
+									IdCampeonato,
+									Tipo,
+									Nivel,
+									Letra,
+									NumEnfrentamiento,
+									NumPareja,
+									Fase,
+									ResultadoSet1,
+									ResultadoSet2,
+									ResultadoSet3
+					             	) 
+								VALUES(
+								'$this->IdCampeonato',							
+								'$this->Tipo',
+								'$this->Nivel',
+								'E',
+								'4',
+								'$grupos[4]',
+								'Cuartos',
+								NULL,
+								NULL,
+								NULL
+								)";
+			$result = $this->mysqli->query( $sql );
+		}
+	}
 	function DELETE() {
 
 		$sql = "SELECT * FROM PARTIDO WHERE  (IdCampeonato = '$this->IdCampeonato') && (Tipo = '$this->Tipo') && (Nivel = '$this->Nivel') && (Grupo_Letra = '$this->Letra') && (NumEnfrentamiento = '$this->NumEnfrentamiento')";

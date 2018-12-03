@@ -90,6 +90,32 @@ switch ( $_REQUEST[ 'action' ] ) {
 		}
 	
 	break;
+		
+	case "ELIMINATORIAS":
+		if($_SESSION['tipo'] == 'Admin'){
+
+			
+			
+				$GRUPO =  get_data_form();
+
+				$listaParejas = $GRUPO ->ListaParejasGrupoNum();
+
+				$ENFRENTAMIENTO = new ENFRENTAMIENTO_MODEL($_REQUEST['IdCampeonato'],$_REQUEST['Tipo'],$_REQUEST['Nivel'],$_REQUEST['Letra'],'','','','','','');
+				
+				$listaEnfrentamientos = $ENFRENTAMIENTO->listaEnfrentamiento();
+				
+				
+				//$lista = array( 'NumPareja','Login','IdCampeonato','Tipo','Nivel','Letra');
+				$vuelta['IdCampeonato'] = $_REQUEST['IdCampeonato'];
+				$vuelta['Tipo'] = $_REQUEST['Tipo'];
+				$vuelta['Nivel'] = $_REQUEST['Nivel'];
+				$vuelta['Letra'] = $_REQUEST['Letra'];
+			   new GRUPO_CATEGORIA_ELIMINATORIAS($listaParejas , $listaEnfrentamientos);
+		}else{
+			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/USUARIO_CONTROLLER.php' );
+		}
+	
+	break;
 	case "PAREJAS":
 		
 		if($_SESSION['tipo'] == 'Admin'){
