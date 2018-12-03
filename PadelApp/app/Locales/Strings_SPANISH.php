@@ -345,7 +345,18 @@ array(
 	'Color amarillo : hora y fecha propuestas a la otra pareja' => 'Color amarillo : hora y fecha propuestas a la otra pareja',
 	'Color naranja : hora y fechas propuestas por la otra pareja' => 'Color naranja : hora y fechas propuestas por la otra pareja',
 	'Borrado incorrectamente' => 'Borrado incorrectamente',
-	'Tabla de enfrentamientos' => 'Tabla de enfrentamientos'
+	'Tabla de enfrentamientos' => 'Tabla de enfrentamientos',
+	'Ya existe una actividad con la fecha y horas introducidas en la base de datos'=>'Ya existe una actividad con la fecha y horas introducidas en la base de datos',
+	'Añade una actividad'=>'Añade una actividad',
+	'Tabla de actividades'=>'Tabla de actividades',
+	'Información de las clases'=>'Información de las clases',
+	'Inscritos en la clase'=>'Inscritos en la clase',
+	'Búsqueda de una clase'=> 'Búsqueda de una clase',
+	'Actividad'=>'Actividad',
+	'Borra una clase'=>'Borra una clase',
+	'EscuelaDeportiva_Fecha'=>'Fecha',
+	'EscuelaDeportiva_Hora'=>'Hora',
+	'EscuelaDeportiva_Actividad'=>'Actividad'
 	
 	
 	)

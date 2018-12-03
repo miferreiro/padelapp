@@ -10,28 +10,30 @@ if (!IsAuthenticated()){
  	header('Location:../index.php');
 }
 
-include '../Models/PROM_MODEL.php'; 
-include '../Models/INSPROM_MODEL.php'; 
+include '../Models/ACT_MODEL.php'; 
+include '../Models/INSACT_MODEL.php'; 
 include '../Models/PISTA_MODEL.php'; 
-include '../Views/PROMOCION/PROM_SHOWALL_View.php'; 
-include '../Views/PROMOCION/PROM_DELETE_View.php';
-include '../Views/PROMOCION/PROM_SHOWCURRENT_View.php'; 
-include '../Views/PROMOCION/PROM_SEARCH_View.php'; 
-include '../Views/PROMOCION/PROM_ADD_View.php'; 
+include '../Views/ACTIVIDADES/ACT_SHOWALL_View.php'; 
+include '../Views/ACTIVIDADES/ACT_DELETE_View.php';
+include '../Views/ACTIVIDADES/ACT_SHOWCURRENT_View.php'; 
+include '../Views/ACTIVIDADES/ACT_SEARCH_View.php'; 
+include '../Views/ACTIVIDADES/ACT_ADD_View.php'; 
 include '../Views/DEFAULT_View.php'; 
 include '../Views/MESSAGE_View.php';
 
 function get_data_form() {
 	$fecha = $_REQUEST[ 'Fecha' ]; 
 	$hora = $_REQUEST[ 'Hora' ];
+	$actividad = $_REQUEST[ 'Actividad' ];
 	$action = $_REQUEST[ 'action' ]; 
 
-	$PROM = new PROM_MODEL(
+	$ACT = new ACT_MODEL(
 		$fecha,
-		$hora
+		$hora,
+		$actividad
 );
 	
-	return $PROM;
+	return $ACT;
 }
 
 if ( !isset( $_REQUEST[ 'action' ] ) ) {
@@ -43,15 +45,15 @@ switch ( $_REQUEST[ 'action' ] ) {
 		if($_SESSION['tipo'] == 'Admin'){
 		if ( !$_POST ) {
 			$PISTA= new PISTA_MODEL('','','','');
-			$PROM= new PROM_MODEL('','');
+			$ACT= new ACT_MODEL('','','');
 			$datos = $PISTA->HORAS();
 			$datos2 = $PISTA->FECHAS();
 		
-			new PROM_ADD($datos, $datos2);
+			new ACT_ADD($datos, $datos2);
 		} else {
-		    $PROM= get_data_form();	
-			$respuesta = $PROM->ADD();
-			new MESSAGE( $respuesta, '../Controllers/PROM_CONTROLLER.php' );
+		    $ACT= get_data_form();
+			$respuesta = $ACT->ADD();
+			new MESSAGE( $respuesta, '../Controllers/ACT_CONTROLLER.php' );
 		}
 			}else{
 				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/USUARIO_CONTROLLER.php' );
@@ -63,19 +65,19 @@ switch ( $_REQUEST[ 'action' ] ) {
 		if($_SESSION['tipo'] == 'Admin'){
 			if ( !$_POST ) {
 
-				$PROM = new PROM_MODEL($_REQUEST[ 'Fecha' ], $_REQUEST[ 'Hora' ]);
-				$valores = $PROM->RellenaDatos();
-				$lista= array('Promociones_Fecha', 'Promociones_Hora', 'Usuario_Dni');
-				$INSPROM = new INSPROM_MODEL('', $_REQUEST[ 'Fecha' ], $_REQUEST[ 'Hora' ]);
-				$lista2 = $INSPROM->SEARCH();
-				new PROM_DELETE( $valores, $lista, $lista2);
+				$ACT = new ACT_MODEL($_REQUEST[ 'Fecha' ], $_REQUEST[ 'Hora' ], $_REQUEST[ 'Actividad' ]);
+				$valores = $ACT->RellenaDatos();
+				$lista= array('EscuelaDeportiva_Fecha', 'EscuelaDeportiva_Hora', 'EscuelaDeportiva_Actividad', 'Usuario_Dni');
+				$INSACT = new INSACT_MODEL('', $_REQUEST[ 'Fecha' ], $_REQUEST[ 'Hora' ], $_REQUEST[ 'Actividad' ]);
+				$lista2 = $INSACT->SEARCH();
+				new ACT_DELETE( $valores, $lista, $lista2);
 
 			} else {
-				$PROM = get_data_form();
+				$ACT = get_data_form();
 
-				$respuesta = $PROM->DELETE();
+				$respuesta = $ACT->DELETE();
 
-				new MESSAGE( $respuesta, '../Controllers/PROM_CONTROLLER.php' );
+				new MESSAGE( $respuesta, '../Controllers/ACT_CONTROLLER.php' );
 			}
 		}else{
 				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/USUARIO_CONTROLLER.php' );
@@ -86,17 +88,17 @@ switch ( $_REQUEST[ 'action' ] ) {
 			if ( !$_POST ) {
 
 				if($_SESSION['tipo'] == 'Admin'){
-					new PROM_SEARCH();
+					new ACT_SEARCH();
 				}else{
-					new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/PROM_CONTROLLER.php' );
+					new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/ACT_CONTROLLER.php' );
 				}
 
 			} else {			
-				$PROM = get_data_form();
-				$datos = $PROM->SEARCH();
-				$lista = array('Fecha','Hora');
+				$ACT = get_data_form();
+				$datos = $ACT->SEARCH();
+				$lista = array('Fecha','Hora','Actividad');
 
-				new PROM_SHOWALL( $lista, $datos );			
+				new ACT_SHOWALL( $lista, $datos );			
 			}
 		}else{
 				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/USUARIO_CONTROLLER.php' );
@@ -104,12 +106,12 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'SHOWCURRENT':
 		if($_SESSION['tipo'] == 'Admin'){
-		   $PROM = new PROM_MODEL($_REQUEST[ 'Fecha' ], $_REQUEST[ 'Hora' ]);
-		   $lista = $PROM->RellenaDatos();
-		   $INSPROM = new INSPROM_MODEL('', $_REQUEST[ 'Fecha' ], $_REQUEST[ 'Hora' ]);
-		   $lista2 = array('Promociones_Fecha', 'Promociones_Hora', 'Usuario_Dni');
-		   $valores = $INSPROM->SEARCH();
-		   new PROM_SHOWCURRENT($lista, $lista2, $valores );
+		   $ACT = new ACT_MODEL($_REQUEST[ 'Fecha' ], $_REQUEST[ 'Hora' ], $_REQUEST[ 'Actividad' ]);
+		   $lista = $ACT->RellenaDatos();
+		   $INSACT = new INSACT_MODEL('', $_REQUEST[ 'Fecha' ], $_REQUEST[ 'Hora' ], $_REQUEST[ 'Actividad' ]);
+		   $lista2 = array('EscuelaDeportiva_Fecha', 'EscuelaDeportiva_Hora', 'EscuelaDeportiva_Actividad', 'Usuario_Dni');
+		   $valores = $INSACT->SEARCH();
+		   new ACT_SHOWCURRENT($lista, $lista2, $valores );
 		}else{
 				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/USUARIO_CONTROLLER.php' );
 			}
@@ -117,20 +119,20 @@ switch ( $_REQUEST[ 'action' ] ) {
 	default: 
 		if($_SESSION['tipo'] == 'Admin' ||$_SESSION['tipo'] == 'Deportista'){
 				if ( !$_POST ) {
-					$PROM = new PROM_MODEL( '', '');
+					$ACT = new ACT_MODEL( '', '', '');
 					
 				} else {
-					$PROM = get_data_form();
+					$ACT = get_data_form();
 				}
 				if($_SESSION['tipo'] == 'Admin'){		
-					$datos = $PROM->SEARCH();
+					$datos = $ACT->SEARCH();
 				}else{
-					$datos = $PROM->SEARCH();
+					$datos = $ACT->SEARCH();
 				}
 				
-				$lista = array('Fecha','Hora');
+				$lista = array('Fecha','Hora', 'Actividad');
 				
-				new PROM_SHOWALL( $lista, $datos);
+				new ACT_SHOWALL( $lista, $datos);
 		}else{
 			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/USUARIO_CONTROLLER.php' );
 		}	

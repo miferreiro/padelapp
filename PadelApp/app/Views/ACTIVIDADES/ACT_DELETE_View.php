@@ -1,6 +1,6 @@
 <?php
 
-class PROM_DELETE {
+class ACT_DELETE {
 
 	function __construct( $valores, $lista, $lista2) { 
 		$this->valores = $valores;
@@ -20,7 +20,7 @@ class PROM_DELETE {
 ?>
 		<div class="seccion" align="center">
 			<h2>
-				<?php echo $strings['Borra una promoción'];?>
+				<?php echo $strings['Borra una clase'];?>
 			</h2>
 			<div class="col-sm-4">
 			<table class="table table-sm">
@@ -39,6 +39,14 @@ class PROM_DELETE {
 					</th>
 					<td>
 						<?php echo $this->valores['Hora']?>
+					</td>
+				</tr>
+					<tr>
+					<th>
+						<?php echo $strings['Actividad'];?>
+					</th>
+					<td>
+						<?php echo $this->valores['Actividad']?>
 					</td>
 				</tr>
 				</thead>
@@ -73,7 +81,7 @@ class PROM_DELETE {
 ?>
 					<td>
 <?php 
- 				if($atributo=='Promociones_Fecha'){
+ 				if($atributo=='EscuelaDeportiva_Fecha'){
 					echo date( "d/m/Y", strtotime( $fila[ $atributo ] ) );
 				}else{
 							echo $fila[ $atributo ];
@@ -95,13 +103,14 @@ class PROM_DELETE {
 			echo $strings['¿Está seguro de que quiere borrar esta tupla de la tabla?'];
 ?>
 			<div>
-			<form action="../Controllers/PROM_CONTROLLER.php" method="post" style="display: inline" >
+			<form action="../Controllers/ACT_CONTROLLER.php" method="post" style="display: inline" >
 				<input type="hidden" name="Fecha" value="<?php echo $this->valores['Fecha']; ?>">
 				<input type="hidden" name="Hora" value="<?php echo $this->valores['Hora']; ?>">
+				<input type="hidden" name="Actividad" value="<?php echo $this->valores['Actividad']; ?>">
 
 				<button id ="buttonBien" type="submit" name="action" value="DELETE" ><img src="../Views/icon/accept_big.png" alt="<?php echo $strings['Confirmar'] ?>"/></button>
 			</form>
-			<form action='../Controllers/PROM_CONTROLLER.php' method="post" style="display: inline">
+			<form action='../Controllers/ACT_CONTROLLER.php' method="post" style="display: inline">
 				<button id ="buttonBien" type="submit"><img src="../Views/icon/cancel_big.png" alt="<?php echo $strings['Atras'] ?>"/></button>
 			</form>
 			</div>

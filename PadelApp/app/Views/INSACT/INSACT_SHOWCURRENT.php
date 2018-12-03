@@ -1,6 +1,6 @@
 <?php
 
-class ACT_SHOWCURRENT {
+class INSPROM_SHOWCURRENT {
 
 
 	function __construct( $lista,$lista2,$valores ) {
@@ -19,7 +19,7 @@ class ACT_SHOWCURRENT {
 ?>
 <div class="seccion" align="center">
 		<h2>
-			<?php echo $strings['Información de las clases'];?>
+			<?php echo $strings['Información de la promoción'];?>
 		</h2>
 		<div class="col-md-4">
 		<table class="table table-sm">
@@ -41,14 +41,6 @@ class ACT_SHOWCURRENT {
 					<?php echo $this->lista['Hora']?>
 				</td>
 			</tr>
-			<tr>
-				<th>
-					<?php echo $strings['Actividad'];?>
-				</th>
-				<td>
-					<?php echo $this->lista['Actividad']?>
-				</td>
-			</tr>
 						
 			
 			</thead>
@@ -56,7 +48,7 @@ class ACT_SHOWCURRENT {
 	</div>
 <div class="seccion" align="center">
 			<h2>
-			<?php echo $strings['Inscritos en la clase'];?>
+			<?php echo $strings['Inscritos en la promoción'];?>
 			</h2>
 			<div class="col-md-3">
 			<table class="table table-sm" align="center">
@@ -83,7 +75,7 @@ class ACT_SHOWCURRENT {
 ?>
 					<td>
 <?php 
- 				if($atributo=='EscuelaDeportiva_Fecha'){
+ 				if($atributo=='Promociones_Fecha'){
 					echo date( "d/m/Y", strtotime( $fila[ $atributo ] ) );
 				}else{
 							echo $fila[ $atributo ];
@@ -101,8 +93,9 @@ class ACT_SHOWCURRENT {
 				</thead>
 			</table>
 		</div>
-				<form action='../Controllers/ACT_CONTROLLER.php' method="post">
-					<button id ="buttonBien" type="submit"><img src="../Views/icon/back_big2.png" alt="<?php echo $strings['Atras'] ?>" /></button>
+				<form action='../Controllers/INSPROM_CONTROLLER.php' method="post">
+					<input type="hidden" name="Usuario_Dni" value="<?php echo $_SESSION['dni']; ?>">
+						<button id ="buttonBien" type="submit"><img src="../Views/icon/back_big2.png" alt="<?php echo $strings['Atras'] ?>" /></button>
 				</form>
 			
 </div>

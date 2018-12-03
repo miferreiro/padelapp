@@ -1,6 +1,6 @@
 <?php
 
-class PROM_ADD {
+class ACT_ADD {
 
 	function __construct($datos,$datos2) {
 		$this->datos = $datos;//pasamos los valores de cada campo
@@ -39,7 +39,7 @@ class PROM_ADD {
 
 <div class="seccion" align="center">
 			<h2>
-				<?php echo $strings['Añade una promoción'];?>
+				<?php echo $strings['Añade una actividad'];?>
 			</h2>
 			<div class="datepicker"></div>
 			<br>
@@ -50,11 +50,16 @@ class PROM_ADD {
 					<th>
 					<?php echo $strings['Fecha'];?>
 					</th>
-
+					
+					<th>
+					<?php echo $strings['Actividad']?>
+					</th>
+					
 					<th>
 						<?php echo $strings['Hora']?>
 				
 					</th>
+
 				</tr>
 				</thead>	
 				
@@ -74,11 +79,15 @@ class PROM_ADD {
 							echo date( "d/m/Y", strtotime( $fechas[$j] ) );
 ?>	
 					
+					</td>						
+<form action="../Controllers/ACT_CONTROLLER.php" method="post" style="display:inline" >
+					<td>
+					<input type="text" name="Actividad" placeholder="<?php echo $strings['Escriba aqui...']?>" required maxlength="45">
 					</td>
-
+	
 						<td>
 				
-						<form action="../Controllers/PROM_CONTROLLER.php" method="post" style="display:inline" >
+
 						<button type="submit" name="action" value="ADD" style="width: 100%">
 							<input type="hidden" name="Hora" value="<?php echo $horas[$x] ?>">
 							<input type="hidden" name="Fecha" value="<?php echo $fechas[$j] ?>">	
@@ -97,7 +106,7 @@ class PROM_ADD {
 				</tr>									
 										
 			</table>
-						<form action='../Controllers/PROM_CONTROLLER.php' method="post" style="display: inline">
+						<form action='../Controllers/ACT_CONTROLLER.php' method="post" style="display: inline">
 							<button id ="buttonBien" type="submit"><img src="../Views/icon/back_big2.png" alt="<?php echo $strings['Atras']?>" /></button>
 						</form>
 		</div>

@@ -1,14 +1,16 @@
 <?php
 
-class PROM_MODEL{ 
+class ACT_MODEL{ 
 	
 	var	$fecha;
 	var	$hora;
+	var $actividad;
 	var $mysqli; 
 	
-	function __construct($fecha,$hora) {
+	function __construct($fecha,$hora,$actividad) {
 		$this->fecha = $fecha;
         $this->hora=$hora;
+		$this->actividad=$actividad;
 
 		include_once '../Functions/BdAdmin.php';
 		$this->mysqli = ConectarBD();
@@ -18,13 +20,14 @@ class PROM_MODEL{
 	function SEARCH() {
 		$sql = "select
 					Hora,
-					Fecha
-       			from promociones 
+					Fecha,
+					Actividad
+       			from EscuelaDeportiva 
     			where 
     				(
                     (BINARY Fecha LIKE '%$this->fecha%') &&
-    				(BINARY Hora LIKE '%$this->hora%') 
-					
+    				(BINARY Hora LIKE '%$this->hora%') &&
+					(BINARY Actividad LIKE '%$this->actividad%')
     				)";
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'Error en la consulta sobre la base de datos';
@@ -38,20 +41,23 @@ class PROM_MODEL{
 		
 	if ( ( $this->fecha <> '' ) && ( $this->hora <> '' )  ) { 
             			
-			$sql = "SELECT * FROM promociones WHERE (  Fecha = '$this->fecha' && Hora = '$this->hora')";
+			$sql = "SELECT * FROM EscuelaDeportiva WHERE (  Fecha = '$this->fecha' && Hora = '$this->hora' && Actividad = '$this->actividad')";
 
 			if ( !$result = $this->mysqli->query( $sql ) ) { 
 				return 'No se ha podido conectar con la base de datos';
 			} else { 
 					if ( $result->num_rows == 0 ) { 
-						$sql = "INSERT INTO promociones (
+						$sql = "INSERT INTO EscuelaDeportiva (
 								 Fecha,
-								 Hora
+								 Hora,
+								 Actividad
 								) 
 								VALUES(
 								'$this->fecha',
-								'$this->hora'
-								)";		
+								'$this->hora',
+								'$this->actividad'
+								)";	
+						echo($sql);
 						if ( !$this->mysqli->query( $sql )) { 
 							return 'Error en la inserción';
 						} else { 											
@@ -59,7 +65,7 @@ class PROM_MODEL{
 						}										
 					}else {
 					
-						return 'Ya existe una promocion con la fecha y horas introducidas en la base de datos';// ya existe		
+						return 'Ya existe una actividad con la fecha y horas introducidas en la base de datos';// ya existe		
 					}
 					
 				}
@@ -71,21 +77,21 @@ class PROM_MODEL{
 
 
 	function DELETE() {
-		$sql = "SELECT * FROM promociones WHERE (Fecha = '$this->fecha' && Hora = '$this->hora')";
+		$sql = "SELECT * FROM EscuelaDeportiva WHERE (Fecha = '$this->fecha' && Hora = '$this->hora' && Actividad = '$this->actividad')";
 		$result = $this->mysqli->query( $sql );
 	
 
 		if ( $result->num_rows == 1 ) {
-			$sql = "SELECT * FROM inscripcionpromociones WHERE (Promociones_Fecha = '$this->fecha' && Promociones_Hora = '$this->hora')";
+			$sql = "SELECT * FROM AlumnosEscuela WHERE (EscuelaDeportiva_Fecha = '$this->fecha' && EscuelaDeportiva_Hora = '$this->hora' && EscuelaDeportiva_Actividad = '$this->actividad')";
 			$result = $this->mysqli->query( $sql );
 			
 			
 			if($result->num_rows >= 1){
-				$sql = "DELETE FROM inscripcionpromociones WHERE (Promociones_Fecha = '$this->fecha' && Promociones_Hora = '$this->hora')";
+				$sql = "DELETE FROM AlumnosEscuela WHERE (EscuelaDeportiva_Fecha = '$this->fecha' && EscuelaDeportiva_Hora = '$this->hora' && EscuelaDeportiva_Actividad = '$this->actividad')";
 				$this->mysqli->query( $sql );
 			}
 			
-			$sql = "DELETE FROM promociones WHERE (Fecha = '$this->fecha' && Hora = '$this->hora')";
+			$sql = "DELETE FROM EscuelaDeportiva WHERE (Fecha = '$this->fecha' && Hora = '$this->hora' && Actividad = '$this->actividad')";
 			
 			$this->mysqli->query( $sql );
 			
@@ -98,7 +104,7 @@ class PROM_MODEL{
 
 	function RellenaDatos() { 
 
-		$sql = "SELECT * FROM promociones WHERE (Fecha = '$this->fecha' && Hora = '$this->hora')";// se construye la sentencia de busqueda de la tupla
+		$sql = "SELECT * FROM EscuelaDeportiva WHERE (Fecha = '$this->fecha' && Hora = '$this->hora')";// se construye la sentencia de busqueda de la tupla
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'No existe en la base de datos'; // 
 		} else {

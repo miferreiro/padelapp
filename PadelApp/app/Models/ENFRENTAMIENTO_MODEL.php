@@ -258,7 +258,8 @@ class ENFRENTAMIENTO_MODEL{
 		if($countPar1>$countPar2){
 			$sql = "UPDATE PARTIDO SET
 					ParejaGanadora = '$NumPareja1',
-					ParejaPerdedora = '$this->NumPareja'
+					ParejaPerdedora = '$this->NumPareja',
+					Disputado = '1'
 				WHERE (IdCampeonato = '$this->IdCampeonato') && (Tipo = '$this->Tipo') && (Nivel = '$this->Nivel') && (Grupo_Letra = '$this->Letra') && (NumEnfrentamiento = '$this->NumEnfrentamiento')
 				";
 
@@ -270,7 +271,8 @@ class ENFRENTAMIENTO_MODEL{
 		}else{
 			$sql = "UPDATE PARTIDO SET 
 					ParejaGanadora = '$this->NumPareja',
-					ParejaPerdedora = '$NumPareja1'
+					ParejaPerdedora = '$NumPareja1',
+					Disputado = '1'
 				WHERE (IdCampeonato = '$this->IdCampeonato') && (Tipo = '$this->Tipo') && (Nivel = '$this->Nivel') && (Grupo_Letra = '$this->Letra') && (NumEnfrentamiento = '$this->NumEnfrentamiento')
 				";
 

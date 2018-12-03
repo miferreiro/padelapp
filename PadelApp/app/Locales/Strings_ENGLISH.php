@@ -358,8 +358,18 @@ array(
 	'Color amarillo : hora y fecha propuestas a la otra pareja' => 'Yellow color: proposed time and date for the other couple',
 	'Color naranja : hora y fechas propuestas por la otra pareja' => 'Orange color: time and date proposed by the other couple',
 	'Borrado incorrectamente' => 'Wrongly deleted',
-	'Tabla de enfrentamientos' => 'Confrontation table'
-	
+	'Tabla de enfrentamientos' => 'Confrontation table',
+	'Ya existe una actividad con la fecha y horas introducidas en la base de datos'=> 'An activity already exists with the date and hours entered in the database',
+	'Añade una actividad' => 'Add an Activity',
+	'Tabla de actividades' => 'Activity table',
+	'Información de las clases'=> 'Class information',
+	'Inscritos en la clase'=>'Enrolled in class',
+	'Búsqueda de una clase'=> 'Class search',
+	'Actividad'=>'Activity',
+	'Borra una clase'=>'Delete a class',
+	'EscuelaDeportiva_Fecha'=>'Date',
+	'EscuelaDeportiva_Hora'=>'Hour',
+	'EscuelaDeportiva_Actividad'=>'Activity'
 	
 	)
 ;

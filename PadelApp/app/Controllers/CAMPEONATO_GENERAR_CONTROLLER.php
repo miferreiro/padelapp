@@ -45,7 +45,8 @@ function create_partido($idCampeonato,$tipo,$nivel,$letra,$NumEnfrentamiento) {
 		NULL,
 		NULL,
 		NULL,
-		NULL
+		NULL,
+		'0'
 	);
 	
 	return $PARTIDO;
