@@ -149,6 +149,7 @@ CREATE TABLE IF NOT EXISTS `AbpBase`.`Partido` (
   `Hora` TIME NULL,
   `ParejaGanadora` INT NULL,
   `ParejaPerdedora`INT NULL,
+  `Disputado` TINYINT NOT NULL, 
   PRIMARY KEY (`IdCampeonato`, `Tipo`, `Nivel`, `Grupo_Letra`, `NumEnfrentamiento`),
     INDEX `fk_Grupo_has_Partido_idx` (`IdCampeonato` ASC, `Tipo` ASC,`Nivel` ASC,`Grupo_Letra` ASC) ,
   CONSTRAINT `fk_Grupo_has_Partido_idx`
@@ -218,6 +219,77 @@ CREATE TABLE IF NOT EXISTS `AbpBase`.`UsuarioParejas` (
   CONSTRAINT `fk_Usuario_has_Pareja_Pareja1`
     FOREIGN KEY (`Pareja_idCampeonato` , `Pareja_Tipo` , `Pareja_Nivel` , `Pareja_NumPareja`)
     REFERENCES `AbpBase`.`Pareja` (`idCampeonato` , `Tipo` , `Nivel` , `NumPareja`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `AbpBase`.`EscuelaDeportiva`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `AbpBase`.`EscuelaDeportiva` ;
+
+CREATE TABLE IF NOT EXISTS `AbpBase`.`EscuelaDeportiva` (
+  `Fecha` DATE NOT NULL,
+  `Hora` TIME NOT NULL,
+  `Actividad` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`Fecha`, `Hora`, `Actividad`))
+ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+-- Table `AbpBase`.`AlumnosEscuela`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `AbpBase`.`AlumnosEscuela` ;
+
+CREATE TABLE IF NOT EXISTS `AbpBase`.`AlumnosEscuela` (
+  `EscuelaDeportiva_Fecha` DATE NOT NULL,
+  `EscuelaDeportiva_Hora` TIME NOT NULL,
+  `EscuelaDeportiva_Actividad` VARCHAR(45) NOT NULL,
+  `Usuario_Dni` VARCHAR(12) NOT NULL,
+  PRIMARY KEY (`EscuelaDeportiva_Fecha`, `EscuelaDeportiva_Hora`, `EscuelaDeportiva_Actividad`, `Usuario_Dni`),
+  INDEX `fk_EscuelaDeportiva_has_Usuario_Usuario1_idx` (`Usuario_Dni` ASC),
+  INDEX `fk_EscuelaDeportiva_has_Usuario_EscuelaDeportiva1_idx` (`EscuelaDeportiva_Fecha` ASC, `EscuelaDeportiva_Hora` ASC, `EscuelaDeportiva_Actividad` ASC),
+  CONSTRAINT `fk_EscuelaDeportiva_has_Usuario_EscuelaDeportiva1`
+    FOREIGN KEY (`EscuelaDeportiva_Fecha` , `EscuelaDeportiva_Hora` , `EscuelaDeportiva_Actividad`)
+    REFERENCES `AbpBase`.`EscuelaDeportiva` (`Fecha` , `Hora` , `Actividad`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_EscuelaDeportiva_has_Usuario_Usuario1`
+    FOREIGN KEY (`Usuario_Dni`)
+    REFERENCES `AbpBase`.`Usuario` (`Dni`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+-- Table `AbpBase`.`Eliminatorias`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `AbpBase`.`Eliminatorias` ;
+
+CREATE TABLE IF NOT EXISTS `AbpBase`.`Eliminatorias` (
+  `IdCampeonato` INT NOT NULL,
+  `Tipo` VARCHAR(9) NOT NULL,
+  `Nivel` INT NOT NULL,
+  `Letra` CHAR NOT NULL,
+  `NumEnfrentamiento` INT NOT NULL,
+  `NumPareja` INT NOT NULL,
+  `Fase` VARCHAR(45) NOT NULL,
+  `Set1Par1` INT NULL,
+  `Set1Par2` INT NULL,
+  `Set2Par1` INT NULL,
+  `Set2Par2` INT NULL,
+  `Set3Par1` INT NULL,
+  `Set3Par2` INT NULL,
+  PRIMARY KEY (`IdCampeonato`, `Tipo`, `Nivel`, `Letra`, `NumEnfrentamiento`, `NumPareja`),
+  INDEX `fk_Pareja_has_Partido_Pareja1_idx` (`IdCampeonato` ASC, `Tipo` ASC, `Nivel` ASC, `NumPareja` ASC),
+  CONSTRAINT `fk_Pareja_has_Partido_Pareja10`
+    FOREIGN KEY (`IdCampeonato` , `Tipo` , `Nivel` , `NumPareja`)
+    REFERENCES `AbpBase`.`Pareja` (`idCampeonato` , `Tipo` , `Nivel` , `NumPareja`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Pareja_has_Partido_Partido10`
+    FOREIGN KEY (`IdCampeonato` , `Tipo` , `Nivel` , `Letra` , `NumEnfrentamiento`)
+    REFERENCES `AbpBase`.`Partido` (`IdCampeonato` , `Tipo` , `Nivel` , `Grupo_Letra` , `NumEnfrentamiento`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -4186,672 +4258,672 @@ INSERT INTO `grupo` (`IdCampeonato`, `Tipo`, `Nivel`, `Letra`) VALUES
 -- Volcado de datos para la tabla `partido`
 --
 
-INSERT INTO `partido` (`IdCampeonato`, `Tipo`, `Nivel`, `Grupo_Letra`, `NumEnfrentamiento`, `Fecha`, `Hora`, `ParejaGanadora`, `ParejaPerdedora`) VALUES
-(3, 'Masculino', 1, 'A', 1, '2018-10-16', '11:00:00', 1, 2),
-(3, 'Masculino', 1, 'A', 2, '2018-10-20', '11:00:00', 1, 3),
-(3, 'Masculino', 1, 'A', 3, '2018-10-16', '11:00:00', 4, 1),
-(3, 'Masculino', 1, 'A', 4, '2018-10-21', '11:00:00', 1, 5),
-
-(3, 'Masculino', 1, 'A', 5, '2018-10-16', '12:30:00', 1, 6),
-(3, 'Masculino', 1, 'A', 6, '2018-10-16', '12:30:00', 7, 1),
-(3, 'Masculino', 1, 'A', 7, '2018-10-20', '12:30:00', 1, 8),
-(3, 'Masculino', 1, 'A', 8, '2018-10-16', '12:30:00', 3, 2),
-
-(3, 'Masculino', 1, 'A', 9, '2018-10-16', '16:00:00', 4, 2),
-(3, 'Masculino', 1, 'A', 10, '2018-10-16', '16:00:00', 5, 2),
-(3, 'Masculino', 1, 'A', 11, '2018-10-16', '16:00:00', 2, 6),
-(3, 'Masculino', 1, 'A', 12, '2018-10-20', '16:00:00', 2, 7),
-
-(3, 'Masculino', 1, 'A', 13, '2018-10-16', '17:30:00', 2, 8),
-(3, 'Masculino', 1, 'A', 14, '2018-10-16', '17:30:00', 3, 4),
-(3, 'Masculino', 1, 'A', 15, '2018-10-16', '17:30:00', 5, 3),
-(3, 'Masculino', 1, 'A', 16, '2018-10-20', '17:30:00', 3, 6),
-
-(3, 'Masculino', 1, 'A', 17, '2018-10-16', '19:00:00', 7, 3),
-(3, 'Masculino', 1, 'A', 18, '2018-10-16', '19:00:00', 8, 3),
-(3, 'Masculino', 1, 'A', 19, '2018-10-16', '19:00:00', 5, 4),
-(3, 'Masculino', 1, 'A', 20, '2018-10-16', '19:00:00', 4, 6),
-
-(3, 'Masculino', 1, 'A', 21, NULL, NULL, NULL, NULL),
-(3, 'Masculino', 1, 'A', 22, '2018-10-16', '20:30:00', 8, 4),
-(3, 'Masculino', 1, 'A', 23, '2018-10-16', '20:30:00', 6, 5),
-(3, 'Masculino', 1, 'A', 24, '2018-10-16', '20:30:00', 7, 5),
-
-(3, 'Masculino', 1, 'A', 25, '2018-10-16', '22:00:00', 5, 8),
-(3, 'Masculino', 1, 'A', 26, '2018-10-16', '22:00:00', 6, 7),
-(3, 'Masculino', 1, 'A', 27, '2018-10-20', '22:00:00', 6, 8),
-(3, 'Masculino', 1, 'A', 28, '2018-10-16', '22:00:00', 7, 8),
-
-(3, 'Masculino', 1, 'A', 29, '2018-10-17', '11:00:00', 1, 65),
-(3, 'Masculino', 1, 'A', 30, '2018-10-17', '11:00:00', 65, 2),
-(3, 'Masculino', 1, 'A', 31, '2018-10-20', '11:00:00', 65, 3),
-(3, 'Masculino', 1, 'A', 32, '2018-10-21', '11:00:00', 65, 4),
-
-(3, 'Masculino', 1, 'A', 33, '2018-10-17', '12:30:00', 65, 5),
-(3, 'Masculino', 1, 'A', 34, '2018-10-17', '12:30:00', 6, 65),
-(3, 'Masculino', 1, 'A', 35, '2018-10-20', '12:30:00', 65, 7),
-(3, 'Masculino', 1, 'A', 36, NULL, NULL, NULL, NULL),
-
-(3, 'Masculino', 1, 'A', 37, '2018-10-17', '16:00:00', 66, 1),
-(3, 'Masculino', 1, 'A', 38, '2018-10-17', '16:00:00', 2, 66),
-(3, 'Masculino', 1, 'A', 39, '2018-10-17', '16:00:00', 3, 66),
-(3, 'Masculino', 1, 'A', 40, '2018-10-17', '16:00:00', 4, 66),
-
-(3, 'Masculino', 1, 'A', 41, '2018-10-17', '17:30:00', 66, 5),
-(3, 'Masculino', 1, 'A', 42, '2018-10-17', '17:30:00', 66, 6),
-(3, 'Masculino', 1, 'A', 43, '2018-10-17', '17:30:00', 66, 7),
-(3, 'Masculino', 1, 'A', 44, '2018-10-17', '17:30:00', 8, 66),
-
-(3, 'Masculino', 1, 'A', 45, '2018-10-17', '19:00:00', 66, 65),
-(3, 'Masculino', 1, 'A', 46, '2018-10-17', '19:00:00', 1, 67),
-(3, 'Masculino', 1, 'A', 47, '2018-10-17', '19:00:00', 67, 2),
-(3, 'Masculino', 1, 'A', 48, '2018-10-20', '19:00:00', 67, 3),
-
-(3, 'Masculino', 1, 'A', 49, '2018-10-17', '20:30:00', 67, 4),
-(3, 'Masculino', 1, 'A', 50, '2018-10-17', '20:30:00', 5, 67),
-(3, 'Masculino', 1, 'A', 51, '2018-10-17', '20:30:00', 6, 67),
-(3, 'Masculino', 1, 'A', 52, '2018-10-17', '20:30:00', 7, 67),
-
-(3, 'Masculino', 1, 'A', 53, '2018-10-17', '22:00:00', 8, 67),
-(3, 'Masculino', 1, 'A', 54, '2018-10-17', '22:00:00', 67, 65),
-(3, 'Masculino', 1, 'A', 55, '2018-10-20', '22:00:00', 67, 66),
-(3, 'Masculino', 1, 'A', 56, '2018-10-17', '22:00:00', 1, 68),
-
-(3, 'Masculino', 1, 'A', 57, '2018-10-18', '11:00:00', 68, 2),
-(3, 'Masculino', 1, 'A', 58, '2018-10-18', '11:00:00', 3, 68),
-(3, 'Masculino', 1, 'A', 59, '2018-10-20', '11:00:00', 68, 4),
-(3, 'Masculino', 1, 'A', 60, '2018-10-21', '11:00:00', 68, 5),
-
-(3, 'Masculino', 1, 'A', 61, '2018-10-18', '12:30:00', 6, 68),
-(3, 'Masculino', 1, 'A', 62, '2018-10-18', '12:30:00', 7, 68),
-(3, 'Masculino', 1, 'A', 63, '2018-10-18', '12:30:00', 68, 8),
-(3, 'Masculino', 1, 'A', 64, '2018-10-20', '12:30:00', 68, 65),
-
-(3, 'Masculino', 1, 'A', 65, '2018-10-18', '16:00:00', 66, 68),
-(3, 'Masculino', 1, 'A', 66, '2018-10-18', '16:00:00', 68, 67),
-
-
-(3, 'Masculino', 1, 'B', 1, '2018-10-18', '16:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'B', 2, '2018-10-18', '16:00:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'B', 3, '2018-10-18', '17:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'B', 4, '2018-10-18', '17:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'B', 5, '2018-10-18', '17:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'B', 6, '2018-10-18', '17:30:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'B', 7, '2018-10-18', '19:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'B', 8, '2018-10-18', '19:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'B', 9, '2018-10-18', '19:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'B', 10, '2018-10-18', '19:00:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'B', 11, '2018-10-18', '20:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'B', 12, '2018-10-18', '20:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'B', 13, '2018-10-18', '20:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'B', 14, '2018-10-18', '20:30:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'B', 15, '2018-10-18', '22:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'B', 16, '2018-10-18', '22:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'B', 17, '2018-10-18', '22:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'B', 18, '2018-10-18', '22:00:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'B', 19, '2018-10-19', '11:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'B', 20, '2018-10-19', '11:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'B', 21, '2018-10-19', '11:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'B', 22, '2018-10-19', '11:00:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'B', 23, '2018-10-19', '12:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'B', 24, '2018-10-19', '12:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'B', 25, '2018-10-19', '12:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'B', 26, '2018-10-19', '12:30:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'B', 27, '2018-10-19', '16:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'B', 28, '2018-10-19', '16:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'B', 67, '2018-10-19', '16:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'B', 68, '2018-10-19', '16:00:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'B', 69, '2018-10-19', '17:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'B', 70, '2018-10-19', '17:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'B', 71, '2018-10-19', '17:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'B', 72, '2018-10-19', '17:30:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'B', 73, '2018-10-19', '19:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'B', 74, '2018-10-19', '19:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'B', 75, '2018-10-19', '19:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'B', 76, '2018-10-19', '19:00:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'B', 77, '2018-10-19', '20:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'B', 78, '2018-10-19', '20:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'B', 79, '2018-10-19', '20:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'B', 80, '2018-10-19', '20:30:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'B', 81, '2018-10-19', '22:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'B', 82, '2018-10-19', '22:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'B', 83, '2018-10-19', '22:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'B', 84, '2018-10-19', '22:00:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'B', 85, '2018-10-20', '11:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'B', 86, '2018-10-20', '11:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'B', 87, '2018-10-20', '11:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'B', 88, '2018-10-20', '11:00:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'B', 89, '2018-10-20', '12:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'B', 90, '2018-10-20', '12:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'B', 91, '2018-10-20', '12:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'B', 92, '2018-10-20', '12:30:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'B', 93, '2018-10-20', '16:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'B', 94, '2018-10-20', '16:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'B', 95, '2018-10-20', '16:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'B', 96, '2018-10-20', '16:00:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'B', 97, '2018-10-20', '17:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'B', 98, '2018-10-20', '17:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'B', 99, '2018-10-20', '17:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'B', 100, '2018-10-20', '17:30:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'B', 101, '2018-10-20', '19:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'B', 102, '2018-10-20', '19:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'B', 103, '2018-10-20', '19:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'B', 104, '2018-10-20', '19:00:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'C', 1, '2018-10-20', '20:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'C', 2, '2018-10-20', '20:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'C', 3, '2018-10-20', '20:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'C', 4, '2018-10-20', '20:30:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'C', 5, '2018-10-20', '22:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'C', 6, '2018-10-20', '22:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'C', 7, '2018-10-20', '22:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'C', 8, '2018-10-20', '22:00:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'C', 9, '2018-10-21', '11:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'C', 10, '2018-10-21', '11:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'C', 11, '2018-10-21', '11:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'C', 12, '2018-10-21', '11:00:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'C', 13, '2018-10-21', '12:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'C', 14, '2018-10-21', '12:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'C', 15, '2018-10-21', '12:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'C', 16, '2018-10-21', '12:30:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'C', 17, '2018-10-21', '16:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'C', 18, '2018-10-21', '16:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'C', 19, '2018-10-21', '16:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'C', 20, '2018-10-21', '16:00:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'C', 21, '2018-10-21', '17:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'C', 22, '2018-10-21', '17:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'C', 23, '2018-10-21', '17:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'C', 24, '2018-10-21', '17:30:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'C', 25, '2018-10-21', '19:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'C', 26, '2018-10-21', '19:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'C', 27, '2018-10-21', '19:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'C', 28, '2018-10-21', '19:00:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'C', 105, '2018-10-21', '20:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'C', 106, '2018-10-21', '20:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'C', 107, '2018-10-21', '20:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'C', 108, '2018-10-21', '20:30:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'C', 109, '2018-10-21', '22:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'C', 110, '2018-10-21', '22:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'C', 111, '2018-10-21', '22:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'C', 112, '2018-10-21', '22:00:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'C', 113, '2018-10-22', '11:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'C', 114, '2018-10-22', '11:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'C', 115, '2018-10-22', '11:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'C', 116, '2018-10-22', '11:00:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'C', 117, '2018-10-22', '12:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'C', 118, '2018-10-22', '12:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'C', 119, '2018-10-22', '12:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'C', 120, '2018-10-22', '12:30:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'C', 121, '2018-10-22', '16:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'C', 122, '2018-10-22', '16:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'C', 123, '2018-10-22', '16:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'C', 124, '2018-10-22', '16:00:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'C', 125, '2018-10-22', '17:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'C', 126, '2018-10-22', '17:30:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'C', 127, '2018-10-22', '17:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'C', 128, '2018-10-22', '17:30:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'C', 129, '2018-10-22', '19:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'C', 130, '2018-10-22', '19:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'C', 131, '2018-10-22', '19:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'C', 132, '2018-10-22', '19:00:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'C', 133, '2018-10-22', '20:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'C', 134, '2018-10-22', '20:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'C', 135, '2018-10-22', '20:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'C', 136, '2018-10-22', '20:30:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'C', 137, '2018-10-22', '22:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'C', 138, '2018-10-22', '22:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'C', 139, '2018-10-22', '22:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'C', 140, '2018-10-22', '22:00:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'C', 141, '2018-10-23', '11:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'C', 142, '2018-10-23', '11:00:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'D', 1, '2018-10-23', '11:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'D', 2, '2018-10-23', '11:00:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'D', 3, '2018-10-23', '12:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'D', 4, '2018-10-23', '12:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'D', 5, '2018-10-23', '12:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'D', 6, '2018-10-23', '12:30:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'D', 7, '2018-10-23', '16:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'D', 8, '2018-10-23', '16:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'D', 9, '2018-10-23', '16:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'D', 10, '2018-10-23', '16:00:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'D', 11, '2018-10-23', '17:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'D', 12, '2018-10-23', '17:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'D', 13, '2018-10-23', '17:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'D', 14, '2018-10-23', '17:30:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'D', 15, '2018-10-23', '19:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'D', 16, '2018-10-23', '19:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'D', 17, '2018-10-23', '19:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'D', 18, '2018-10-23', '19:00:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'D', 19, '2018-10-23', '20:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'D', 20, '2018-10-23', '20:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'D', 21, '2018-10-23', '20:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'D', 22, '2018-10-23', '20:30:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'D', 23, '2018-10-23', '22:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'D', 24, '2018-10-23', '22:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'D', 25, '2018-10-23', '22:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'D', 26, '2018-10-23', '22:00:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'D', 27, '2018-10-24', '11:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'D', 28, '2018-10-24', '11:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'D', 143, '2018-10-24', '11:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'D', 144, '2018-10-24', '11:00:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'D', 145, '2018-10-24', '12:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'D', 146, '2018-10-24', '12:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'D', 147, '2018-10-24', '12:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'D', 148, '2018-10-24', '12:30:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'D', 149, '2018-10-24', '16:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'D', 150, '2018-10-24', '16:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'D', 151, '2018-10-24', '16:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'D', 152, '2018-10-24', '16:00:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'D', 153, '2018-10-24', '17:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'D', 154, '2018-10-24', '17:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'D', 155, '2018-10-24', '17:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'D', 156, '2018-10-24', '17:30:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'D', 157, '2018-10-24', '19:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'D', 158, '2018-10-24', '19:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'D', 159, '2018-10-24', '19:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'D', 160, '2018-10-24', '19:00:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'D', 161, '2018-10-24', '20:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'D', 162, '2018-10-24', '20:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'D', 163, '2018-10-24', '20:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'D', 164, '2018-10-24', '20:30:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'D', 165, '2018-10-24', '22:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'D', 166, '2018-10-24', '22:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'D', 167, '2018-10-24', '22:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'D', 168, '2018-10-24', '22:00:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'D', 169, '2018-10-25', '11:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'D', 170, '2018-10-25', '11:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'D', 171, '2018-10-25', '11:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'D', 172, '2018-10-25', '11:00:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'D', 173, '2018-10-25', '12:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'D', 174, '2018-10-25', '12:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'D', 175, '2018-10-25', '12:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'D', 176, '2018-10-25', '12:30:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'D', 177, '2018-10-25', '16:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'D', 178, '2018-10-25', '16:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'D', 179, '2018-10-25', '16:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'D', 180, '2018-10-25', '16:00:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'E', 1, '2018-10-25', '17:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'E', 2, '2018-10-25', '17:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'E', 3, '2018-10-25', '17:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'E', 4, '2018-10-25', '17:30:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'E', 5, '2018-10-25', '19:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'E', 6, '2018-10-25', '19:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'E', 7, '2018-10-25', '19:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'E', 8, '2018-10-25', '19:00:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'E', 9, '2018-10-25', '20:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'E', 10, '2018-10-25', '20:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'E', 11, '2018-10-25', '20:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'E', 12, '2018-10-25', '20:30:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'E', 13, '2018-10-25', '22:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'E', 14, '2018-10-25', '22:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'E', 15, '2018-10-25', '22:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'E', 16, '2018-10-25', '22:00:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'E', 17, '2018-10-26', '11:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'E', 18, '2018-10-26', '11:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'E', 19, '2018-10-26', '11:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'E', 20, '2018-10-26', '11:00:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'E', 21, '2018-10-26', '12:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'E', 22, '2018-10-26', '12:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'E', 23, '2018-10-26', '12:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'E', 24, '2018-10-26', '12:30:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'E', 25, '2018-10-26', '16:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'E', 26, '2018-10-26', '16:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'E', 27, '2018-10-26', '16:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'E', 28, '2018-10-26', '16:00:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'E', 181, '2018-10-26', '17:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'E', 182, '2018-10-26', '17:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'E', 183, '2018-10-26', '17:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'E', 184, '2018-10-26', '17:30:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'E', 185, '2018-10-26', '19:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'E', 186, '2018-10-26', '19:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'E', 187, '2018-10-26', '19:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'E', 188, '2018-10-26', '19:00:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'E', 189, '2018-10-26', '20:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'E', 190, '2018-10-26', '20:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'E', 191, '2018-10-26', '20:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'E', 192, '2018-10-26', '20:30:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'E', 193, '2018-10-26', '22:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'E', 194, '2018-10-26', '22:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'E', 195, '2018-10-26', '22:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'E', 196, '2018-10-26', '22:00:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'E', 197, '2018-10-27', '11:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'E', 198, '2018-10-27', '11:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'E', 199, '2018-10-27', '11:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'E', 200, '2018-10-27', '11:00:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'E', 201, '2018-10-27', '12:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'E', 202, '2018-10-27', '12:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'E', 203, '2018-10-27', '12:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'E', 204, '2018-10-27', '12:30:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'E', 205, '2018-10-27', '16:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'E', 206, '2018-10-27', '16:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'E', 207, '2018-10-27', '16:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'E', 208, '2018-10-27', '16:00:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'E', 209, '2018-10-27', '17:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'E', 210, '2018-10-27', '17:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'E', 211, '2018-10-27', '17:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'E', 212, '2018-10-27', '17:30:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'E', 213, '2018-10-27', '19:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'E', 214, '2018-10-27', '19:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'E', 215, '2018-10-27', '19:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'E', 216, '2018-10-27', '19:00:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'E', 217, '2018-10-27', '20:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'E', 218, '2018-10-27', '20:30:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'F', 1, '2018-10-27', '20:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'F', 2, '2018-10-27', '20:30:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'F', 3, '2018-10-27', '22:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'F', 4, '2018-10-27', '22:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'F', 5, '2018-10-27', '22:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'F', 6, '2018-10-27', '22:00:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'F', 7, '2018-10-28', '11:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'F', 8, '2018-10-28', '11:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'F', 9, '2018-10-28', '11:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'F', 10, '2018-10-28', '11:00:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'F', 11, '2018-10-28', '12:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'F', 12, '2018-10-28', '12:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'F', 13, '2018-10-28', '12:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'F', 14, '2018-10-28', '12:30:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'F', 15, '2018-10-28', '16:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'F', 16, '2018-10-28', '16:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'F', 17, '2018-10-28', '16:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'F', 18, '2018-10-28', '16:00:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'F', 19, '2018-10-28', '17:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'F', 20, '2018-10-28', '17:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'F', 21, '2018-10-28', '17:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'F', 22, '2018-10-28', '17:30:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'F', 23, '2018-10-28', '19:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'F', 24, '2018-10-28', '19:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'F', 25, '2018-10-28', '19:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'F', 26, '2018-10-28', '19:00:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'F', 27, '2018-10-28', '20:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'F', 28, '2018-10-28', '20:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'F', 219, '2018-10-28', '20:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'F', 220, '2018-10-28', '20:30:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'F', 221, '2018-10-28', '22:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'F', 222, '2018-10-28', '22:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'F', 223, '2018-10-28', '22:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'F', 224, '2018-10-28', '22:00:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'F', 225, '2018-10-29', '11:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'F', 226, '2018-10-29', '11:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'F', 227, '2018-10-29', '11:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'F', 228, '2018-10-29', '11:00:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'F', 229, '2018-10-29', '12:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'F', 230, '2018-10-29', '12:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'F', 231, '2018-10-29', '12:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'F', 232, '2018-10-29', '12:30:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'F', 233, '2018-10-29', '16:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'F', 234, '2018-10-29', '16:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'F', 235, '2018-10-29', '16:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'F', 236, '2018-10-29', '16:00:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'F', 237, '2018-10-29', '17:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'F', 238, '2018-10-29', '17:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'F', 239, '2018-10-29', '17:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'F', 240, '2018-10-29', '17:30:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'F', 241, '2018-10-29', '19:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'F', 242, '2018-10-29', '19:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'F', 243, '2018-10-29', '19:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'F', 244, '2018-10-29', '19:00:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'F', 245, '2018-10-29', '20:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'F', 246, '2018-10-29', '20:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'F', 247, '2018-10-29', '20:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'F', 248, '2018-10-29', '20:30:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'F', 249, '2018-10-29', '22:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'F', 250, '2018-10-29', '22:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'F', 251, '2018-10-29', '22:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'F', 252, '2018-10-29', '22:00:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'F', 253, '2018-10-30', '11:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'F', 254, '2018-10-30', '11:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'F', 255, '2018-10-30', '11:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'F', 256, '2018-10-30', '11:00:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'G', 1, '2018-10-30', '12:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'G', 2, '2018-10-30', '12:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'G', 3, '2018-10-30', '12:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'G', 4, '2018-10-30', '12:30:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'G', 5, '2018-10-30', '16:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'G', 6, '2018-10-30', '16:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'G', 7, '2018-10-30', '16:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'G', 8, '2018-10-30', '16:00:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'G', 9, '2018-10-30', '17:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'G', 10, '2018-10-30', '17:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'G', 11, '2018-10-30', '17:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'G', 12, '2018-10-30', '17:30:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'G', 13, '2018-10-30', '19:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'G', 14, '2018-10-30', '19:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'G', 15, '2018-10-30', '19:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'G', 16, '2018-10-30', '19:00:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'G', 17, '2018-10-30', '20:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'G', 18, '2018-10-30', '20:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'G', 19, '2018-10-30', '20:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'G', 20, '2018-10-30', '20:30:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'G', 21, '2018-10-30', '22:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'G', 22, '2018-10-30', '22:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'G', 23, '2018-10-30', '22:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'G', 24, '2018-10-30', '22:00:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'G', 25, '2018-11-1', '11:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'G', 26, '2018-11-1', '11:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'G', 27, '2018-11-1', '11:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'G', 28, '2018-11-1', '11:00:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'G', 257, '2018-11-1', '12:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'G', 258, '2018-11-1', '12:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'G', 259, '2018-11-1', '12:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'G', 260, '2018-11-1', '12:30:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'G', 261, '2018-11-1', '16:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'G', 262, '2018-11-1', '16:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'G', 263, '2018-11-1', '16:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'G', 264, '2018-11-1', '16:00:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'G', 265, '2018-11-1', '17:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'G', 266, '2018-11-1', '17:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'G', 267, '2018-11-1', '17:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'G', 268, '2018-11-1', '17:30:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'G', 269, '2018-11-1', '19:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'G', 270, '2018-11-1', '19:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'G', 271, '2018-11-1', '19:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'G', 272, '2018-11-1', '19:00:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'G', 273, '2018-11-1', '20:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'G', 274, '2018-11-1', '20:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'G', 275, '2018-11-1', '20:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'G', 276, '2018-11-1', '20:30:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'G', 277, '2018-11-1', '22:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'G', 278, '2018-11-1', '22:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'G', 279, '2018-11-1', '22:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'G', 280, '2018-11-1', '22:00:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'G', 281, '2018-11-2', '11:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'G', 282, '2018-11-2', '11:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'G', 283, '2018-11-2', '11:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'G', 284, '2018-11-2', '11:00:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'G', 285, '2018-11-2', '12:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'G', 286, '2018-11-2', '12:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'G', 287, '2018-11-2', '12:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'G', 288, '2018-11-2', '12:30:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'G', 289, '2018-11-2', '16:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'G', 290, '2018-11-2', '16:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'G', 291, '2018-11-2', '16:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'G', 292, '2018-11-2', '16:00:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'G', 293, '2018-11-2', '17:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'G', 294, '2018-11-2', '17:30:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'H', 1, '2018-11-2', '17:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'H', 2, '2018-11-2', '17:30:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'H', 3, '2018-11-2', '19:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'H', 4, '2018-11-2', '19:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'H', 5, '2018-11-2', '19:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'H', 6, '2018-11-2', '19:00:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'H', 7, '2018-11-2', '20:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'H', 8, '2018-11-2', '20:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'H', 9, '2018-11-2', '20:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'H', 10, '2018-11-2', '20:30:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'H', 11, '2018-11-2', '22:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'H', 12, '2018-11-2', '22:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'H', 13, '2018-11-2', '22:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'H', 14, '2018-11-2', '22:00:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'H', 15, '2018-11-3', '11:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'H', 16, '2018-11-3', '11:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'H', 17, '2018-11-3', '11:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'H', 18, '2018-11-3', '11:00:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'H', 19, '2018-11-3', '12:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'H', 20, '2018-11-3', '12:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'H', 21, '2018-11-3', '12:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'H', 22, '2018-11-3', '12:30:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'H', 23, '2018-11-3', '16:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'H', 24, '2018-11-3', '16:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'H', 25, '2018-11-3', '16:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'H', 26, '2018-11-3', '16:00:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'H', 27, '2018-11-3', '17:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'H', 28, '2018-11-3', '17:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'H', 295, '2018-11-3', '17:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'H', 296, '2018-11-3', '17:30:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'H', 297, '2018-11-3', '19:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'H', 298, '2018-11-3', '19:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'H', 299, '2018-11-3', '19:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'H', 300, '2018-11-3', '19:00:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'H', 301, '2018-11-3', '20:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'H', 302, '2018-11-3', '20:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'H', 303, '2018-11-3', '20:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'H', 304, '2018-11-3', '20:30:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'H', 305, '2018-11-3', '22:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'H', 306, '2018-11-3', '22:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'H', 307, '2018-11-3', '22:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'H', 308, '2018-11-3', '22:00:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'H', 309, '2018-11-4', '11:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'H', 310, '2018-11-4', '11:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'H', 311, '2018-11-4', '11:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'H', 312, '2018-11-4', '11:00:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'H', 313, '2018-11-4', '12:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'H', 314, '2018-11-4', '12:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'H', 315, '2018-11-4', '12:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'H', 316, '2018-11-4', '12:30:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'H', 317, '2018-11-4', '16:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'H', 318, '2018-11-4', '16:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'H', 319, '2018-11-4', '16:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'H', 320, '2018-11-4', '16:00:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'H', 321, '2018-11-4', '17:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'H', 322, '2018-11-4', '17:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'H', 323, '2018-11-4', '17:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'H', 324, '2018-11-4', '17:30:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'H', 325, '2018-11-4', '19:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'H', 326, '2018-11-4', '19:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'H', 327, '2018-11-4', '19:00:00', NULL, NULL),
-(3, 'Masculino', 1, 'H', 328, '2018-11-4', '19:00:00', NULL, NULL),
-
-(3, 'Masculino', 1, 'H', 329, '2018-11-4', '20:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'H', 330, '2018-11-4', '20:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'H', 331, '2018-11-4', '20:30:00', NULL, NULL),
-(3, 'Masculino', 1, 'H', 332, '2018-11-4', '20:30:00', NULL, NULL);
+INSERT INTO `partido` (`IdCampeonato`, `Tipo`, `Nivel`, `Grupo_Letra`, `NumEnfrentamiento`, `Fecha`, `Hora`, `ParejaGanadora`, `ParejaPerdedora`, `Disputado`) VALUES
+(3, 'Masculino', 1, 'A', 1, '2018-10-16', '11:00:00', 1, 2, 1),
+(3, 'Masculino', 1, 'A', 2, '2018-10-20', '11:00:00', 1, 3, 1),
+(3, 'Masculino', 1, 'A', 3, '2018-10-16', '11:00:00', 4, 1, 1),
+(3, 'Masculino', 1, 'A', 4, '2018-10-21', '11:00:00', 1, 5, 1),
+
+(3, 'Masculino', 1, 'A', 5, '2018-10-16', '12:30:00', 1, 6, 1),
+(3, 'Masculino', 1, 'A', 6, '2018-10-16', '12:30:00', 7, 1, 1),
+(3, 'Masculino', 1, 'A', 7, '2018-10-20', '12:30:00', 1, 8, 1),
+(3, 'Masculino', 1, 'A', 8, '2018-10-16', '12:30:00', 3, 2, 1),
+
+(3, 'Masculino', 1, 'A', 9, '2018-10-16', '16:00:00', 4, 2, 1),
+(3, 'Masculino', 1, 'A', 10, '2018-10-16', '16:00:00', 5, 2, 1),
+(3, 'Masculino', 1, 'A', 11, '2018-10-16', '16:00:00', 2, 6, 1),
+(3, 'Masculino', 1, 'A', 12, '2018-10-20', '16:00:00', 2, 7, 1),
+
+(3, 'Masculino', 1, 'A', 13, '2018-10-16', '17:30:00', 2, 8, 1),
+(3, 'Masculino', 1, 'A', 14, '2018-10-16', '17:30:00', 3, 4, 1),
+(3, 'Masculino', 1, 'A', 15, '2018-10-16', '17:30:00', 5, 3, 1),
+(3, 'Masculino', 1, 'A', 16, '2018-10-20', '17:30:00', 3, 6, 1),
+
+(3, 'Masculino', 1, 'A', 17, '2018-10-16', '19:00:00', 7, 3, 1),
+(3, 'Masculino', 1, 'A', 18, '2018-10-16', '19:00:00', 8, 3, 1),
+(3, 'Masculino', 1, 'A', 19, '2018-10-16', '19:00:00', 5, 4, 1),
+(3, 'Masculino', 1, 'A', 20, '2018-10-16', '19:00:00', 4, 6, 1),
+
+(3, 'Masculino', 1, 'A', 21, NULL, NULL, NULL, NULL, 1),
+(3, 'Masculino', 1, 'A', 22, '2018-10-16', '20:30:00', 8, 4, 1),
+(3, 'Masculino', 1, 'A', 23, '2018-10-16', '20:30:00', 6, 5, 1),
+(3, 'Masculino', 1, 'A', 24, '2018-10-16', '20:30:00', 7, 5, 1),
+
+(3, 'Masculino', 1, 'A', 25, '2018-10-16', '22:00:00', 5, 8, 1),
+(3, 'Masculino', 1, 'A', 26, '2018-10-16', '22:00:00', 6, 7, 1),
+(3, 'Masculino', 1, 'A', 27, '2018-10-20', '22:00:00', 6, 8, 1),
+(3, 'Masculino', 1, 'A', 28, '2018-10-16', '22:00:00', 7, 8, 1),
+
+(3, 'Masculino', 1, 'A', 29, '2018-10-17', '11:00:00', 1, 65, 1),
+(3, 'Masculino', 1, 'A', 30, '2018-10-17', '11:00:00', 65, 2, 1),
+(3, 'Masculino', 1, 'A', 31, '2018-10-20', '11:00:00', 65, 3, 1),
+(3, 'Masculino', 1, 'A', 32, '2018-10-21', '11:00:00', 65, 4, 1),
+
+(3, 'Masculino', 1, 'A', 33, '2018-10-17', '12:30:00', 65, 5, 1),
+(3, 'Masculino', 1, 'A', 34, '2018-10-17', '12:30:00', 6, 65, 1),
+(3, 'Masculino', 1, 'A', 35, '2018-10-20', '12:30:00', 65, 7, 1),
+(3, 'Masculino', 1, 'A', 36, NULL, NULL, NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'A', 37, '2018-10-17', '16:00:00', 66, 1, 1),
+(3, 'Masculino', 1, 'A', 38, '2018-10-17', '16:00:00', 2, 66, 1),
+(3, 'Masculino', 1, 'A', 39, '2018-10-17', '16:00:00', 3, 66, 1),
+(3, 'Masculino', 1, 'A', 40, '2018-10-17', '16:00:00', 4, 66, 1),
+
+(3, 'Masculino', 1, 'A', 41, '2018-10-17', '17:30:00', 66, 5, 1),
+(3, 'Masculino', 1, 'A', 42, '2018-10-17', '17:30:00', 66, 6, 1),
+(3, 'Masculino', 1, 'A', 43, '2018-10-17', '17:30:00', 66, 7, 1),
+(3, 'Masculino', 1, 'A', 44, '2018-10-17', '17:30:00', 8, 66, 1),
+
+(3, 'Masculino', 1, 'A', 45, '2018-10-17', '19:00:00', 66, 65, 1),
+(3, 'Masculino', 1, 'A', 46, '2018-10-17', '19:00:00', 1, 67, 1),
+(3, 'Masculino', 1, 'A', 47, '2018-10-17', '19:00:00', 67, 2, 1),
+(3, 'Masculino', 1, 'A', 48, '2018-10-20', '19:00:00', 67, 3, 1),
+
+(3, 'Masculino', 1, 'A', 49, '2018-10-17', '20:30:00', 67, 4, 1),
+(3, 'Masculino', 1, 'A', 50, '2018-10-17', '20:30:00', 5, 67, 1),
+(3, 'Masculino', 1, 'A', 51, '2018-10-17', '20:30:00', 6, 67, 1),
+(3, 'Masculino', 1, 'A', 52, '2018-10-17', '20:30:00', 7, 67, 1),
+
+(3, 'Masculino', 1, 'A', 53, '2018-10-17', '22:00:00', 8, 67, 1),
+(3, 'Masculino', 1, 'A', 54, '2018-10-17', '22:00:00', 67, 65, 1),
+(3, 'Masculino', 1, 'A', 55, '2018-10-20', '22:00:00', 67, 66, 1),
+(3, 'Masculino', 1, 'A', 56, '2018-10-17', '22:00:00', 1, 68, 1),
+
+(3, 'Masculino', 1, 'A', 57, '2018-10-18', '11:00:00', 68, 2, 1),
+(3, 'Masculino', 1, 'A', 58, '2018-10-18', '11:00:00', 3, 68, 1),
+(3, 'Masculino', 1, 'A', 59, '2018-10-20', '11:00:00', 68, 4, 1),
+(3, 'Masculino', 1, 'A', 60, '2018-10-21', '11:00:00', 68, 5, 1),
+
+(3, 'Masculino', 1, 'A', 61, '2018-10-18', '12:30:00', 6, 68, 1),
+(3, 'Masculino', 1, 'A', 62, '2018-10-18', '12:30:00', 7, 68, 1),
+(3, 'Masculino', 1, 'A', 63, '2018-10-18', '12:30:00', 68, 8, 1),
+(3, 'Masculino', 1, 'A', 64, '2018-10-20', '12:30:00', 68, 65, 1),
+
+(3, 'Masculino', 1, 'A', 65, '2018-10-18', '16:00:00', 66, 68, 1),
+(3, 'Masculino', 1, 'A', 66, '2018-10-18', '16:00:00', 68, 67, 1),
+
+
+(3, 'Masculino', 1, 'B', 1, '2018-10-18', '16:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'B', 2, '2018-10-18', '16:00:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'B', 3, '2018-10-18', '17:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'B', 4, '2018-10-18', '17:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'B', 5, '2018-10-18', '17:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'B', 6, '2018-10-18', '17:30:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'B', 7, '2018-10-18', '19:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'B', 8, '2018-10-18', '19:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'B', 9, '2018-10-18', '19:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'B', 10, '2018-10-18', '19:00:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'B', 11, '2018-10-18', '20:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'B', 12, '2018-10-18', '20:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'B', 13, '2018-10-18', '20:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'B', 14, '2018-10-18', '20:30:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'B', 15, '2018-10-18', '22:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'B', 16, '2018-10-18', '22:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'B', 17, '2018-10-18', '22:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'B', 18, '2018-10-18', '22:00:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'B', 19, '2018-10-19', '11:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'B', 20, '2018-10-19', '11:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'B', 21, '2018-10-19', '11:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'B', 22, '2018-10-19', '11:00:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'B', 23, '2018-10-19', '12:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'B', 24, '2018-10-19', '12:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'B', 25, '2018-10-19', '12:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'B', 26, '2018-10-19', '12:30:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'B', 27, '2018-10-19', '16:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'B', 28, '2018-10-19', '16:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'B', 67, '2018-10-19', '16:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'B', 68, '2018-10-19', '16:00:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'B', 69, '2018-10-19', '17:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'B', 70, '2018-10-19', '17:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'B', 71, '2018-10-19', '17:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'B', 72, '2018-10-19', '17:30:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'B', 73, '2018-10-19', '19:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'B', 74, '2018-10-19', '19:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'B', 75, '2018-10-19', '19:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'B', 76, '2018-10-19', '19:00:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'B', 77, '2018-10-19', '20:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'B', 78, '2018-10-19', '20:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'B', 79, '2018-10-19', '20:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'B', 80, '2018-10-19', '20:30:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'B', 81, '2018-10-19', '22:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'B', 82, '2018-10-19', '22:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'B', 83, '2018-10-19', '22:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'B', 84, '2018-10-19', '22:00:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'B', 85, '2018-10-20', '11:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'B', 86, '2018-10-20', '11:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'B', 87, '2018-10-20', '11:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'B', 88, '2018-10-20', '11:00:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'B', 89, '2018-10-20', '12:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'B', 90, '2018-10-20', '12:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'B', 91, '2018-10-20', '12:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'B', 92, '2018-10-20', '12:30:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'B', 93, '2018-10-20', '16:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'B', 94, '2018-10-20', '16:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'B', 95, '2018-10-20', '16:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'B', 96, '2018-10-20', '16:00:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'B', 97, '2018-10-20', '17:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'B', 98, '2018-10-20', '17:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'B', 99, '2018-10-20', '17:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'B', 100, '2018-10-20', '17:30:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'B', 101, '2018-10-20', '19:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'B', 102, '2018-10-20', '19:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'B', 103, '2018-10-20', '19:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'B', 104, '2018-10-20', '19:00:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'C', 1, '2018-10-20', '20:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'C', 2, '2018-10-20', '20:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'C', 3, '2018-10-20', '20:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'C', 4, '2018-10-20', '20:30:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'C', 5, '2018-10-20', '22:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'C', 6, '2018-10-20', '22:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'C', 7, '2018-10-20', '22:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'C', 8, '2018-10-20', '22:00:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'C', 9, '2018-10-21', '11:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'C', 10, '2018-10-21', '11:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'C', 11, '2018-10-21', '11:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'C', 12, '2018-10-21', '11:00:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'C', 13, '2018-10-21', '12:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'C', 14, '2018-10-21', '12:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'C', 15, '2018-10-21', '12:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'C', 16, '2018-10-21', '12:30:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'C', 17, '2018-10-21', '16:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'C', 18, '2018-10-21', '16:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'C', 19, '2018-10-21', '16:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'C', 20, '2018-10-21', '16:00:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'C', 21, '2018-10-21', '17:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'C', 22, '2018-10-21', '17:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'C', 23, '2018-10-21', '17:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'C', 24, '2018-10-21', '17:30:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'C', 25, '2018-10-21', '19:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'C', 26, '2018-10-21', '19:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'C', 27, '2018-10-21', '19:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'C', 28, '2018-10-21', '19:00:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'C', 105, '2018-10-21', '20:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'C', 106, '2018-10-21', '20:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'C', 107, '2018-10-21', '20:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'C', 108, '2018-10-21', '20:30:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'C', 109, '2018-10-21', '22:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'C', 110, '2018-10-21', '22:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'C', 111, '2018-10-21', '22:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'C', 112, '2018-10-21', '22:00:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'C', 113, '2018-10-22', '11:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'C', 114, '2018-10-22', '11:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'C', 115, '2018-10-22', '11:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'C', 116, '2018-10-22', '11:00:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'C', 117, '2018-10-22', '12:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'C', 118, '2018-10-22', '12:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'C', 119, '2018-10-22', '12:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'C', 120, '2018-10-22', '12:30:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'C', 121, '2018-10-22', '16:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'C', 122, '2018-10-22', '16:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'C', 123, '2018-10-22', '16:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'C', 124, '2018-10-22', '16:00:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'C', 125, '2018-10-22', '17:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'C', 126, '2018-10-22', '17:30:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'C', 127, '2018-10-22', '17:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'C', 128, '2018-10-22', '17:30:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'C', 129, '2018-10-22', '19:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'C', 130, '2018-10-22', '19:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'C', 131, '2018-10-22', '19:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'C', 132, '2018-10-22', '19:00:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'C', 133, '2018-10-22', '20:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'C', 134, '2018-10-22', '20:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'C', 135, '2018-10-22', '20:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'C', 136, '2018-10-22', '20:30:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'C', 137, '2018-10-22', '22:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'C', 138, '2018-10-22', '22:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'C', 139, '2018-10-22', '22:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'C', 140, '2018-10-22', '22:00:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'C', 141, '2018-10-23', '11:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'C', 142, '2018-10-23', '11:00:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'D', 1, '2018-10-23', '11:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'D', 2, '2018-10-23', '11:00:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'D', 3, '2018-10-23', '12:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'D', 4, '2018-10-23', '12:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'D', 5, '2018-10-23', '12:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'D', 6, '2018-10-23', '12:30:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'D', 7, '2018-10-23', '16:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'D', 8, '2018-10-23', '16:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'D', 9, '2018-10-23', '16:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'D', 10, '2018-10-23', '16:00:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'D', 11, '2018-10-23', '17:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'D', 12, '2018-10-23', '17:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'D', 13, '2018-10-23', '17:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'D', 14, '2018-10-23', '17:30:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'D', 15, '2018-10-23', '19:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'D', 16, '2018-10-23', '19:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'D', 17, '2018-10-23', '19:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'D', 18, '2018-10-23', '19:00:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'D', 19, '2018-10-23', '20:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'D', 20, '2018-10-23', '20:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'D', 21, '2018-10-23', '20:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'D', 22, '2018-10-23', '20:30:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'D', 23, '2018-10-23', '22:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'D', 24, '2018-10-23', '22:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'D', 25, '2018-10-23', '22:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'D', 26, '2018-10-23', '22:00:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'D', 27, '2018-10-24', '11:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'D', 28, '2018-10-24', '11:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'D', 143, '2018-10-24', '11:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'D', 144, '2018-10-24', '11:00:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'D', 145, '2018-10-24', '12:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'D', 146, '2018-10-24', '12:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'D', 147, '2018-10-24', '12:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'D', 148, '2018-10-24', '12:30:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'D', 149, '2018-10-24', '16:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'D', 150, '2018-10-24', '16:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'D', 151, '2018-10-24', '16:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'D', 152, '2018-10-24', '16:00:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'D', 153, '2018-10-24', '17:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'D', 154, '2018-10-24', '17:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'D', 155, '2018-10-24', '17:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'D', 156, '2018-10-24', '17:30:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'D', 157, '2018-10-24', '19:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'D', 158, '2018-10-24', '19:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'D', 159, '2018-10-24', '19:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'D', 160, '2018-10-24', '19:00:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'D', 161, '2018-10-24', '20:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'D', 162, '2018-10-24', '20:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'D', 163, '2018-10-24', '20:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'D', 164, '2018-10-24', '20:30:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'D', 165, '2018-10-24', '22:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'D', 166, '2018-10-24', '22:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'D', 167, '2018-10-24', '22:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'D', 168, '2018-10-24', '22:00:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'D', 169, '2018-10-25', '11:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'D', 170, '2018-10-25', '11:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'D', 171, '2018-10-25', '11:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'D', 172, '2018-10-25', '11:00:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'D', 173, '2018-10-25', '12:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'D', 174, '2018-10-25', '12:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'D', 175, '2018-10-25', '12:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'D', 176, '2018-10-25', '12:30:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'D', 177, '2018-10-25', '16:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'D', 178, '2018-10-25', '16:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'D', 179, '2018-10-25', '16:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'D', 180, '2018-10-25', '16:00:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'E', 1, '2018-10-25', '17:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'E', 2, '2018-10-25', '17:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'E', 3, '2018-10-25', '17:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'E', 4, '2018-10-25', '17:30:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'E', 5, '2018-10-25', '19:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'E', 6, '2018-10-25', '19:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'E', 7, '2018-10-25', '19:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'E', 8, '2018-10-25', '19:00:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'E', 9, '2018-10-25', '20:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'E', 10, '2018-10-25', '20:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'E', 11, '2018-10-25', '20:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'E', 12, '2018-10-25', '20:30:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'E', 13, '2018-10-25', '22:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'E', 14, '2018-10-25', '22:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'E', 15, '2018-10-25', '22:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'E', 16, '2018-10-25', '22:00:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'E', 17, '2018-10-26', '11:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'E', 18, '2018-10-26', '11:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'E', 19, '2018-10-26', '11:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'E', 20, '2018-10-26', '11:00:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'E', 21, '2018-10-26', '12:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'E', 22, '2018-10-26', '12:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'E', 23, '2018-10-26', '12:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'E', 24, '2018-10-26', '12:30:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'E', 25, '2018-10-26', '16:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'E', 26, '2018-10-26', '16:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'E', 27, '2018-10-26', '16:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'E', 28, '2018-10-26', '16:00:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'E', 181, '2018-10-26', '17:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'E', 182, '2018-10-26', '17:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'E', 183, '2018-10-26', '17:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'E', 184, '2018-10-26', '17:30:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'E', 185, '2018-10-26', '19:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'E', 186, '2018-10-26', '19:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'E', 187, '2018-10-26', '19:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'E', 188, '2018-10-26', '19:00:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'E', 189, '2018-10-26', '20:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'E', 190, '2018-10-26', '20:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'E', 191, '2018-10-26', '20:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'E', 192, '2018-10-26', '20:30:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'E', 193, '2018-10-26', '22:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'E', 194, '2018-10-26', '22:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'E', 195, '2018-10-26', '22:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'E', 196, '2018-10-26', '22:00:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'E', 197, '2018-10-27', '11:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'E', 198, '2018-10-27', '11:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'E', 199, '2018-10-27', '11:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'E', 200, '2018-10-27', '11:00:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'E', 201, '2018-10-27', '12:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'E', 202, '2018-10-27', '12:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'E', 203, '2018-10-27', '12:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'E', 204, '2018-10-27', '12:30:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'E', 205, '2018-10-27', '16:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'E', 206, '2018-10-27', '16:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'E', 207, '2018-10-27', '16:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'E', 208, '2018-10-27', '16:00:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'E', 209, '2018-10-27', '17:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'E', 210, '2018-10-27', '17:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'E', 211, '2018-10-27', '17:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'E', 212, '2018-10-27', '17:30:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'E', 213, '2018-10-27', '19:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'E', 214, '2018-10-27', '19:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'E', 215, '2018-10-27', '19:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'E', 216, '2018-10-27', '19:00:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'E', 217, '2018-10-27', '20:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'E', 218, '2018-10-27', '20:30:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'F', 1, '2018-10-27', '20:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'F', 2, '2018-10-27', '20:30:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'F', 3, '2018-10-27', '22:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'F', 4, '2018-10-27', '22:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'F', 5, '2018-10-27', '22:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'F', 6, '2018-10-27', '22:00:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'F', 7, '2018-10-28', '11:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'F', 8, '2018-10-28', '11:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'F', 9, '2018-10-28', '11:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'F', 10, '2018-10-28', '11:00:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'F', 11, '2018-10-28', '12:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'F', 12, '2018-10-28', '12:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'F', 13, '2018-10-28', '12:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'F', 14, '2018-10-28', '12:30:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'F', 15, '2018-10-28', '16:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'F', 16, '2018-10-28', '16:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'F', 17, '2018-10-28', '16:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'F', 18, '2018-10-28', '16:00:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'F', 19, '2018-10-28', '17:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'F', 20, '2018-10-28', '17:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'F', 21, '2018-10-28', '17:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'F', 22, '2018-10-28', '17:30:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'F', 23, '2018-10-28', '19:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'F', 24, '2018-10-28', '19:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'F', 25, '2018-10-28', '19:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'F', 26, '2018-10-28', '19:00:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'F', 27, '2018-10-28', '20:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'F', 28, '2018-10-28', '20:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'F', 219, '2018-10-28', '20:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'F', 220, '2018-10-28', '20:30:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'F', 221, '2018-10-28', '22:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'F', 222, '2018-10-28', '22:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'F', 223, '2018-10-28', '22:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'F', 224, '2018-10-28', '22:00:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'F', 225, '2018-10-29', '11:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'F', 226, '2018-10-29', '11:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'F', 227, '2018-10-29', '11:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'F', 228, '2018-10-29', '11:00:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'F', 229, '2018-10-29', '12:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'F', 230, '2018-10-29', '12:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'F', 231, '2018-10-29', '12:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'F', 232, '2018-10-29', '12:30:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'F', 233, '2018-10-29', '16:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'F', 234, '2018-10-29', '16:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'F', 235, '2018-10-29', '16:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'F', 236, '2018-10-29', '16:00:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'F', 237, '2018-10-29', '17:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'F', 238, '2018-10-29', '17:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'F', 239, '2018-10-29', '17:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'F', 240, '2018-10-29', '17:30:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'F', 241, '2018-10-29', '19:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'F', 242, '2018-10-29', '19:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'F', 243, '2018-10-29', '19:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'F', 244, '2018-10-29', '19:00:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'F', 245, '2018-10-29', '20:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'F', 246, '2018-10-29', '20:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'F', 247, '2018-10-29', '20:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'F', 248, '2018-10-29', '20:30:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'F', 249, '2018-10-29', '22:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'F', 250, '2018-10-29', '22:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'F', 251, '2018-10-29', '22:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'F', 252, '2018-10-29', '22:00:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'F', 253, '2018-10-30', '11:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'F', 254, '2018-10-30', '11:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'F', 255, '2018-10-30', '11:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'F', 256, '2018-10-30', '11:00:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'G', 1, '2018-10-30', '12:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'G', 2, '2018-10-30', '12:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'G', 3, '2018-10-30', '12:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'G', 4, '2018-10-30', '12:30:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'G', 5, '2018-10-30', '16:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'G', 6, '2018-10-30', '16:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'G', 7, '2018-10-30', '16:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'G', 8, '2018-10-30', '16:00:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'G', 9, '2018-10-30', '17:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'G', 10, '2018-10-30', '17:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'G', 11, '2018-10-30', '17:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'G', 12, '2018-10-30', '17:30:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'G', 13, '2018-10-30', '19:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'G', 14, '2018-10-30', '19:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'G', 15, '2018-10-30', '19:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'G', 16, '2018-10-30', '19:00:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'G', 17, '2018-10-30', '20:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'G', 18, '2018-10-30', '20:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'G', 19, '2018-10-30', '20:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'G', 20, '2018-10-30', '20:30:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'G', 21, '2018-10-30', '22:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'G', 22, '2018-10-30', '22:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'G', 23, '2018-10-30', '22:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'G', 24, '2018-10-30', '22:00:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'G', 25, '2018-11-1', '11:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'G', 26, '2018-11-1', '11:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'G', 27, '2018-11-1', '11:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'G', 28, '2018-11-1', '11:00:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'G', 257, '2018-11-1', '12:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'G', 258, '2018-11-1', '12:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'G', 259, '2018-11-1', '12:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'G', 260, '2018-11-1', '12:30:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'G', 261, '2018-11-1', '16:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'G', 262, '2018-11-1', '16:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'G', 263, '2018-11-1', '16:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'G', 264, '2018-11-1', '16:00:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'G', 265, '2018-11-1', '17:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'G', 266, '2018-11-1', '17:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'G', 267, '2018-11-1', '17:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'G', 268, '2018-11-1', '17:30:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'G', 269, '2018-11-1', '19:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'G', 270, '2018-11-1', '19:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'G', 271, '2018-11-1', '19:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'G', 272, '2018-11-1', '19:00:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'G', 273, '2018-11-1', '20:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'G', 274, '2018-11-1', '20:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'G', 275, '2018-11-1', '20:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'G', 276, '2018-11-1', '20:30:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'G', 277, '2018-11-1', '22:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'G', 278, '2018-11-1', '22:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'G', 279, '2018-11-1', '22:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'G', 280, '2018-11-1', '22:00:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'G', 281, '2018-11-2', '11:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'G', 282, '2018-11-2', '11:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'G', 283, '2018-11-2', '11:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'G', 284, '2018-11-2', '11:00:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'G', 285, '2018-11-2', '12:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'G', 286, '2018-11-2', '12:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'G', 287, '2018-11-2', '12:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'G', 288, '2018-11-2', '12:30:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'G', 289, '2018-11-2', '16:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'G', 290, '2018-11-2', '16:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'G', 291, '2018-11-2', '16:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'G', 292, '2018-11-2', '16:00:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'G', 293, '2018-11-2', '17:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'G', 294, '2018-11-2', '17:30:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'H', 1, '2018-11-2', '17:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'H', 2, '2018-11-2', '17:30:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'H', 3, '2018-11-2', '19:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'H', 4, '2018-11-2', '19:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'H', 5, '2018-11-2', '19:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'H', 6, '2018-11-2', '19:00:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'H', 7, '2018-11-2', '20:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'H', 8, '2018-11-2', '20:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'H', 9, '2018-11-2', '20:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'H', 10, '2018-11-2', '20:30:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'H', 11, '2018-11-2', '22:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'H', 12, '2018-11-2', '22:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'H', 13, '2018-11-2', '22:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'H', 14, '2018-11-2', '22:00:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'H', 15, '2018-11-3', '11:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'H', 16, '2018-11-3', '11:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'H', 17, '2018-11-3', '11:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'H', 18, '2018-11-3', '11:00:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'H', 19, '2018-11-3', '12:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'H', 20, '2018-11-3', '12:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'H', 21, '2018-11-3', '12:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'H', 22, '2018-11-3', '12:30:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'H', 23, '2018-11-3', '16:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'H', 24, '2018-11-3', '16:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'H', 25, '2018-11-3', '16:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'H', 26, '2018-11-3', '16:00:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'H', 27, '2018-11-3', '17:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'H', 28, '2018-11-3', '17:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'H', 295, '2018-11-3', '17:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'H', 296, '2018-11-3', '17:30:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'H', 297, '2018-11-3', '19:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'H', 298, '2018-11-3', '19:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'H', 299, '2018-11-3', '19:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'H', 300, '2018-11-3', '19:00:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'H', 301, '2018-11-3', '20:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'H', 302, '2018-11-3', '20:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'H', 303, '2018-11-3', '20:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'H', 304, '2018-11-3', '20:30:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'H', 305, '2018-11-3', '22:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'H', 306, '2018-11-3', '22:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'H', 307, '2018-11-3', '22:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'H', 308, '2018-11-3', '22:00:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'H', 309, '2018-11-4', '11:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'H', 310, '2018-11-4', '11:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'H', 311, '2018-11-4', '11:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'H', 312, '2018-11-4', '11:00:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'H', 313, '2018-11-4', '12:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'H', 314, '2018-11-4', '12:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'H', 315, '2018-11-4', '12:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'H', 316, '2018-11-4', '12:30:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'H', 317, '2018-11-4', '16:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'H', 318, '2018-11-4', '16:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'H', 319, '2018-11-4', '16:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'H', 320, '2018-11-4', '16:00:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'H', 321, '2018-11-4', '17:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'H', 322, '2018-11-4', '17:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'H', 323, '2018-11-4', '17:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'H', 324, '2018-11-4', '17:30:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'H', 325, '2018-11-4', '19:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'H', 326, '2018-11-4', '19:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'H', 327, '2018-11-4', '19:00:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'H', 328, '2018-11-4', '19:00:00', NULL, NULL, 1),
+
+(3, 'Masculino', 1, 'H', 329, '2018-11-4', '20:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'H', 330, '2018-11-4', '20:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'H', 331, '2018-11-4', '20:30:00', NULL, NULL, 1),
+(3, 'Masculino', 1, 'H', 332, '2018-11-4', '20:30:00', NULL, NULL, 1);
 
 
 
