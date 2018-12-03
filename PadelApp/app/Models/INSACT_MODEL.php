@@ -43,7 +43,7 @@ class INSACT_MODEL{
 			return $resultado;
 		}
 	} 
-	function ComprobarInscritos($fecha,$hora,$actividad) {
+	function ComprobarInscritos2($fecha,$hora,$actividad) {
 		$sql = "select COUNT(*)  as num
        			from AlumnosEscuela
 				where 

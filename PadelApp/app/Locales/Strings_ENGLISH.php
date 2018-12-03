@@ -369,7 +369,11 @@ array(
 	'Borra una clase'=>'Delete a class',
 	'EscuelaDeportiva_Fecha'=>'Date',
 	'EscuelaDeportiva_Hora'=>'Hour',
-	'EscuelaDeportiva_Actividad'=>'Activity'
+	'EscuelaDeportiva_Actividad'=>'Activity',
+	'Ver mis clases'=> 'View my classes',
+	'Inscribirse en actividad'=>'Register for Activity',
+	'Gestión de clases'=>'Class Management',
+	'Ya está inscrito en esa actividad'=>'You are already enrolled in this activity'
 	
 	)
 ;

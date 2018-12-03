@@ -1,6 +1,6 @@
 <?php
 
-class INSPROM_SHOWCURRENT {
+class INSACT_SHOWCURRENT {
 
 
 	function __construct( $lista,$lista2,$valores ) {
@@ -19,7 +19,7 @@ class INSPROM_SHOWCURRENT {
 ?>
 <div class="seccion" align="center">
 		<h2>
-			<?php echo $strings['Información de la promoción'];?>
+			<?php echo $strings['Información de las clases'];?>
 		</h2>
 		<div class="col-md-4">
 		<table class="table table-sm">
@@ -41,6 +41,14 @@ class INSPROM_SHOWCURRENT {
 					<?php echo $this->lista['Hora']?>
 				</td>
 			</tr>
+				<tr>
+				<th>
+					<?php echo $strings['Actividad'];?>
+				</th>
+				<td>
+					<?php echo $this->lista['Actividad']?>
+				</td>
+			</tr>
 						
 			
 			</thead>
@@ -48,7 +56,7 @@ class INSPROM_SHOWCURRENT {
 	</div>
 <div class="seccion" align="center">
 			<h2>
-			<?php echo $strings['Inscritos en la promoción'];?>
+			<?php echo $strings['Inscritos en la clase'];?>
 			</h2>
 			<div class="col-md-3">
 			<table class="table table-sm" align="center">
@@ -75,7 +83,7 @@ class INSPROM_SHOWCURRENT {
 ?>
 					<td>
 <?php 
- 				if($atributo=='Promociones_Fecha'){
+ 				if($atributo=='EscuelaDeportiva_Fecha'){
 					echo date( "d/m/Y", strtotime( $fila[ $atributo ] ) );
 				}else{
 							echo $fila[ $atributo ];
@@ -93,7 +101,7 @@ class INSPROM_SHOWCURRENT {
 				</thead>
 			</table>
 		</div>
-				<form action='../Controllers/INSPROM_CONTROLLER.php' method="post">
+				<form action='../Controllers/INSACT_CONTROLLER.php' method="post">
 					<input type="hidden" name="Usuario_Dni" value="<?php echo $_SESSION['dni']; ?>">
 						<button id ="buttonBien" type="submit"><img src="../Views/icon/back_big2.png" alt="<?php echo $strings['Atras'] ?>" /></button>
 				</form>

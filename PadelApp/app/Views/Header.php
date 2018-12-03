@@ -210,6 +210,20 @@ que comprueba permisos para cada una de las acciones -->
 								
 				<?php } } ?>
 				<?php if (isset($_SESSION['login']) &  isset($_SESSION['tipo'])){?>
+					<?php if($_SESSION['tipo'] == 'Admin'){ ?>
+							<div class="dropdown-divider"></div>
+	
+								<button id ="buttonBien" type="submit"  name="actividades"><a class="dropdown-item"  href="../Controllers/ACT_CONTROLLER.php" /><?php echo $strings['Gestión de clases'] ?></a></button>
+								
+				<?php } } ?>
+				<?php if (isset($_SESSION['login']) &  isset($_SESSION['tipo'])){?>
+					<?php if($_SESSION['tipo'] == 'Deportista'){ ?>
+							<div class="dropdown-divider"></div>
+	
+								<button id ="buttonBien" type="submit"  name="insact"><a class="dropdown-item"  href="../Controllers/ACT_CONTROLLER.php" /><?php echo $strings['Inscribirse en actividad'] ?></a></button>
+								
+				<?php } } ?>
+				<?php if (isset($_SESSION['login']) &  isset($_SESSION['tipo'])){?>
 					<?php if($_SESSION['tipo'] == 'Deportista'){ ?>
 							<div class="dropdown-divider"></div>
 	
@@ -238,6 +252,14 @@ que comprueba permisos para cada una de las acciones -->
 								<form action="../Controllers/INSPROM_CONTROLLER.php" method="post" style="display:inline">
 								<input type="hidden" name="Usuario_Dni" value="<?php echo $_SESSION['dni']; ?>">
 								<button id="buttonBien" type="submit"><a class="dropdown-item"/><?php echo $strings['Ver mis promociones'] ?></a></button></form>
+
+				<?php }  } ?>
+				<?php if (isset($_SESSION['login']) &  isset($_SESSION['tipo'])){?>
+					<?php if($_SESSION['tipo'] == 'Deportista'){ ?>
+							<div class="dropdown-divider"></div>
+								<form action="../Controllers/INSACT_CONTROLLER.php" method="post" style="display:inline">
+								<input type="hidden" name="Usuario_Dni" value="<?php echo $_SESSION['dni']; ?>">
+								<button id="buttonBien" type="submit"><a class="dropdown-item"/><?php echo $strings['Ver mis clases'] ?></a></button></form>
 
 				<?php }  } ?>
 				<?php if (isset($_SESSION['login']) & isset($_SESSION['tipo'])) { 

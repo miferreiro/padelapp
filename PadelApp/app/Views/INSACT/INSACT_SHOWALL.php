@@ -1,6 +1,6 @@
 <?php
 
-class INSPROM_SHOWALL {
+class INSACT_SHOWALL {
 
 	function __construct( $lista, $datos) {
 		$this->lista = $lista;
@@ -54,7 +54,7 @@ class INSPROM_SHOWALL {
 ?>
 					<td>
 <?php 
- 				if($atributo == 'Promociones_Fecha'){
+ 				if($atributo == 'EscuelaDeportiva_Fecha'){
 					echo date( "d/m/Y", strtotime( $fila[ $atributo ] ) );
 				}else{
 							echo $fila[ $atributo ];
@@ -65,19 +65,21 @@ class INSPROM_SHOWALL {
 <?php
 					}
 					if($_SESSION['tipo'] == 'Deportista'){	
-						if(date("Y-m-d")<>$fila['Promociones_Fecha']){
+						if(date("Y-m-d")<>$fila['EscuelaDeportiva_Fecha']){
 ?>
 					
 					<td align="center">
-						<form action="../Controllers/INSPROM_CONTROLLER.php" method="get" style="display:inline" >
-							<input type="hidden" name="Promociones_Fecha" value="<?php echo $fila['Promociones_Fecha']; ?>">
-							<input type="hidden" name="Promociones_Hora" value="<?php echo $fila['Promociones_Hora']; ?>">
+						<form action="../Controllers/INSACT_CONTROLLER.php" method="get" style="display:inline" >
+							<input type="hidden" name="EscuelaDeportiva_Fecha" value="<?php echo $fila['EscuelaDeportiva_Fecha']; ?>">
+							<input type="hidden" name="EscuelaDeportiva_Hora" value="<?php echo $fila['EscuelaDeportiva_Hora']; ?>">
+							<input type="hidden" name="EscuelaDeportiva_Actividad" value="<?php echo $fila['EscuelaDeportiva_Actividad']; ?>">
 							<input type="hidden" name="Usuario_Dni" value="<?php echo $fila['Usuario_Dni']; ?>">
 								<button id ="buttonBien" type="submit" name="action" value="DELETE" ><img src="../Views/icon/delete_big.png" alt="<?php echo $strings['Eliminar']?>" width="20" height="20" /></button>	
 						</form>	
-						<form action="../Controllers/INSPROM_CONTROLLER.php" method="get" style="display:inline" >
-							<input type="hidden" name="Fecha" value="<?php echo $fila['Promociones_Fecha']; ?>">
-							<input type="hidden" name="Hora" value="<?php echo $fila['Promociones_Hora']; ?>">
+						<form action="../Controllers/INSACT_CONTROLLER.php" method="get" style="display:inline" >
+							<input type="hidden" name="Fecha" value="<?php echo $fila['EscuelaDeportiva_Fecha']; ?>">
+							<input type="hidden" name="Hora" value="<?php echo $fila['EscuelaDeportiva_Hora']; ?>">
+							<input type="hidden" name="Actividad" value="<?php echo $fila['EscuelaDeportiva_Actividad']; ?>">
 													
 								<button id ="buttonBien" type="submit" name="action" value="SHOWCURRENT" ><img src="../Views/icon/verdetalles_2.jpg" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>
 						</form>	
@@ -87,9 +89,10 @@ class INSPROM_SHOWALL {
 					}else{
 ?>						
 					<td align="center">
-						<form action="../Controllers/INSPROM_CONTROLLER.php" method="get" style="display:inline" >
-							<input type="hidden" name="Fecha" value="<?php echo $fila['Promociones_Fecha']; ?>">
-							<input type="hidden" name="Hora" value="<?php echo $fila['Promociones_Hora']; ?>">
+						<form action="../Controllers/INSACT_CONTROLLER.php" method="get" style="display:inline" >
+							<input type="hidden" name="Fecha" value="<?php echo $fila['EscuelaDeportiva_Fecha']; ?>">
+							<input type="hidden" name="Hora" value="<?php echo $fila['EscuelaDeportiva_Hora']; ?>">
+							<input type="hidden" name="Actividad" value="<?php echo $fila['EscuelaDeportiva_Actividad']; ?>">
 													
 								<button id ="buttonBien" type="submit" name="action" value="SHOWCURRENT" ><img src="../Views/icon/verdetalles_2.jpg" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>
 						</form>	

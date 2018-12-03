@@ -1,6 +1,6 @@
 <?php
 
-class INSPROM_ADD {
+class INSACT_ADD {
 
 	function __construct() {
 		$this->render();

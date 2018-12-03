@@ -354,7 +354,11 @@ array(
 	'Borra una clase'=>'Borra unha clase',
 	'EscuelaDeportiva_Fecha'=>'Fecha',
 	'EscuelaDeportiva_Hora'=>'Hora',
-	'EscuelaDeportiva_Actividad'=>'Actividade'
+	'EscuelaDeportiva_Actividad'=>'Actividade',
+	'Ver mis clases' => 'Ver as miñas clases',
+	'Inscribirse en actividad'=>'Inscribirse nunha actividade',
+	'Gestión de clases'=>'Xestión de clases',
+	'Ya está inscrito en esa actividad'=>'Xa está inscrito nesa actividade'
 	
 	)
 ;
