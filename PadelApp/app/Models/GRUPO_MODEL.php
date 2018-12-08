@@ -177,6 +177,23 @@ class GRUPO_MODEL{
 			return $resultado;
 		}
 	}
+	
+	function numGrupos(){
+		$sql = "SELECT COUNT(*) as num FROM GRUPO WHERE  (IdCampeonato = '$this->IdCampeonato') && (Tipo = '$this->Tipo') && (Nivel = '$this->Nivel') ";
+		
+		
+		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
+			return 'Error en la consulta sobre la base de datos';
+		} else { 
+				$result = $resultado->fetch_array();
+				if($result['num'] == NULL){
+					return(0);
+				}else{
+					return($result['num']);
+				}
+		}
+		
+	}
 
 }
 

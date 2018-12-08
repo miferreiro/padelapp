@@ -365,7 +365,7 @@ CREATE OR REPLACE VIEW `Clasificacion` AS SELECT
 DISTINCT E.IdCampeonato,E.Tipo, E.Nivel,E.Letra,E.NumPareja, ((SELECT COUNT(*)*3 FROM partido WHERE E.IdCampeonato = IdCampeonato && E.Tipo = Tipo && E.Nivel = Nivel && E.Letra = Grupo_Letra && ParejaGanadora = E.NumPareja)+ (SELECT COUNT(*) FROM partido WHERE E.IdCampeonato = IdCampeonato && E.Tipo = Tipo && E.Nivel = Nivel && E.Letra = Grupo_Letra && ParejaPerdedora = E.NumPareja)) as Puntos
 FROM ENFRENTAMIENTO E,PARTIDO P
 WHERE  E.NumEnfrentamiento = P.NumEnfrentamiento
-ORDER BY E.Letra,Puntos DESC;
+ORDER BY E.Letra,Puntos DESC, E.NumPareja DESC;
 
 
 

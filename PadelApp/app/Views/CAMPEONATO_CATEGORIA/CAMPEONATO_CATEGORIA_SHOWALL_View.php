@@ -80,6 +80,20 @@ class CAMPEONATO_CATEGORIA_SHOWALL {
 							
 						</form>	
 												
+						<form action="../Controllers/ELIMINATORIA_CONTROLLER.php" method="get" style="display:inline" >
+							<input type="hidden" name="IdCampeonato" value="<?php echo $fila['IdCampeonato']; ?>">		
+							<input type="hidden" name="Tipo" value="<?php echo $fila['Tipo']; ?>">		
+							<input type="hidden" name="Nivel" value="<?php echo $fila['Nivel']; ?>">	
+								<button id ="buttonBien" type="submit" name="action" value="GENERAR" ><img src="../Views/icon/exito.png" alt="<?php echo $strings['Ver clasificación']?>" width="20" height="20"/></button>			
+	
+						</form>		
+						<form action="../Controllers/ELIMINATORIA_CONTROLLER.php" method="get" style="display:inline" >
+							<input type="hidden" name="IdCampeonato" value="<?php echo $fila['IdCampeonato']; ?>">		
+							<input type="hidden" name="Tipo" value="<?php echo $fila['Tipo']; ?>">		
+							<input type="hidden" name="Nivel" value="<?php echo $fila['Nivel']; ?>">	
+								<button id ="buttonBien" type="submit" name="action" value="CUADRO" ><img src="../Views/icon/calendario.png" alt="<?php echo $strings['Ver clasificación']?>" width="20" height="20"/></button>			
+	
+						</form>							
 						
 				</tr>
 <?php

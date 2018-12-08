@@ -79,7 +79,7 @@ class GRUPO_CATEGORIA_SHOWALL {
 								<button id ="buttonBien" type="submit" name="action" value="CLASIFICACION" ><img src="../Views/icon/exito.png" alt="<?php echo $strings['Ver clasificación']?>" width="20" height="20"/></button>			
 	
 						</form>
-												
+										
 																	
 						
 				</tr>
