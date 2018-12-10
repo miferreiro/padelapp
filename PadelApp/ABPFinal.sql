@@ -59,7 +59,17 @@ CREATE TABLE IF NOT EXISTS `AbpBase`.`Usuario` (
   UNIQUE INDEX `Login_UNIQUE` (`Login` ASC) )
 ENGINE = InnoDB;
 
+-- -----------------------------------------------------
+-- Table `AbpBase`.`Noticia`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `AbpBase`.`Noticia` ;
 
+CREATE TABLE IF NOT EXISTS `AbpBase`.`Noticia` (
+  `Titulo` VARCHAR(25) NOT NULL,
+  `Contenido` VARCHAR(500) NOT NULL,
+  `fotopersonal` VARCHAR(70) NULL,
+  PRIMARY KEY (`Titulo`))
+ENGINE = InnoDB;
 
 -- -----------------------------------------------------
 -- Table `AbpBase`.`Campeonato`
