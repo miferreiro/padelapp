@@ -62,6 +62,12 @@ class USUARIO_ADD {
 						</th>
 						<td class="formThTd"><input type="text" id="telefono" name="telefono" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="14" size="14" required />
 					</tr>
+					<tr>
+						<th class="formThTd">
+							<?php echo $strings['Email'];?>
+						</th>
+						<td class="formThTd"><input type="text" id="email" name="email" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="50" size="20" required />
+					</tr>
 					<tr align="center">
 						<td colspan="2">
 							<button id ="buttonBien" type="submit" name="action" value="ADD"><img src="../Views/icon/accept_big.png" alt="<?php echo $strings['Confirmar formulario']?>" /></button>

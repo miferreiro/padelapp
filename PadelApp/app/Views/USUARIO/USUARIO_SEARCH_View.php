@@ -62,12 +62,18 @@ class USUARIO_SEARCH {
 							<?php echo $strings['Teléfono'];?>
 						</th>
 						<td class="formThTd"><input type="text" id="telefono" name="telefono" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="14" size="14" />
-					</tr>
+					</tr>	
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['Tipo'];?>
 						</th>
 						<td class="formThTd"><input type="text" id="Tipo" name="Tipo" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="12" size="12" />
+					</tr>
+					<tr>
+						<th class="formThTd">
+							<?php echo $strings['Email'];?>
+						</th>
+						<td class="formThTd"><input type="text" id="email" name="email" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="50" size="20" />
 					</tr>
 					<tr align="center">
 						<td colspan="2">

@@ -32,6 +32,7 @@ function get_data_form() {
 	}else{
 		$sexo = $_REQUEST[ 'sexo' ]; 
 	}
+	$email = $_REQUEST['email'];
 	
 
 	$tipo = $_REQUEST[ 'Tipo' ];	
@@ -46,7 +47,8 @@ function get_data_form() {
 		$apellidos,
 		$telefono,
 		$sexo,
-		$tipo
+		$tipo,
+		$email
 	);
 	
 	return $USUARIO;
@@ -61,6 +63,7 @@ function get_data_form_add() {
 	$sexo = $_REQUEST[ 'sexo' ]; 
 	$tipo = 'Deportista';	
 	$telefono = $_REQUEST[ 'telefono' ]; 
+	$email = $_REQUEST[ 'email' ]; 
 	$action = $_REQUEST[ 'action' ]; 
 
 	$USUARIO = new USUARIO_MODEL(
@@ -71,7 +74,8 @@ function get_data_form_add() {
 		$apellidos,
 		$telefono,
 		$sexo,
-		$tipo
+		$tipo,
+		$email
 	);
 	
 	return $USUARIO;
@@ -131,7 +135,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 	case 'EDIT':
 		if ( !$_POST ) {
 			if($_SESSION['tipo'] == 'Admin'){
-				$USUARIO = new USUARIO_MODEL( '', '', $_REQUEST[ 'Dni' ], '', '', '', '', '','');
+				$USUARIO = new USUARIO_MODEL( '', '', $_REQUEST[ 'Dni' ], '', '', '', '', '', '');
 				$valores = $USUARIO->RellenaDatos();
 				new USUARIO_EDIT( $valores);
 			}else{
@@ -185,7 +189,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			}
 
 			$datos = $USUARIO->SEARCH();
-			$lista = array( 'Dni','Login','Nombre','Apellidos','Sexo','Telefono','Tipo');
+			$lista = array( 'Dni','Login','Nombre','Apellidos','Sexo','Telefono','Tipo','Email');
 			new USUARIO_SHOWALL( $lista, $datos);
 
 		}else{

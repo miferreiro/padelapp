@@ -92,7 +92,13 @@ class USUARIO_EDIT {
 <?php
 								}
 ?>											
-					</tr>			
+					</tr>	
+					<tr>
+						<th class="formThTd">
+							<?php echo $strings['Email'];?>
+						</th>
+						<td class="formThTd"><input type="text" id="email" name="email" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['Telefono']?>" maxlength="50" size="20" required /> 
+					</tr>
 					<tr align="center">
 						<td colspan="2">
 							<button id ="buttonBien" type="submit" name="action" value="EDIT"><img src="../Views/icon/edit_big.png" alt="<?php echo $strings['Confirmar formulario']?>" /></button>
