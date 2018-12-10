@@ -10,12 +10,13 @@ class USUARIO_MODEL{
     var $Sexo;
 	var $Tipo;
 	var $Telefono;
+	var $Email;
    
 	var $mysqli; 
 
 
 
-	function __construct($Login,$Password,$Dni,$Nombre,$Apellidos,$Telefono,$Sexo,$Tipo) {
+	function __construct($Login,$Password,$Dni,$Nombre,$Apellidos,$Telefono,$Sexo,$Tipo,$Email) {
 	
 		$this->Login = $Login;
         $this->Password=$Password;
@@ -25,7 +26,8 @@ class USUARIO_MODEL{
         $this->Sexo = $Sexo;
         $this->Tipo=$Tipo;
 		$this->Telefono = $Telefono;
-        
+        $this->Email = $Email;
+		
 		include_once '../Functions/BdAdmin.php';
 		$this->mysqli = ConectarBD();
 
@@ -40,7 +42,8 @@ class USUARIO_MODEL{
 					Apellidos,
                     Sexo,
 					Telefono,
-                    Tipo
+                    Tipo,
+					Email
        			from USUARIO 
     			where 
     				(
@@ -51,7 +54,8 @@ class USUARIO_MODEL{
 	 				(BINARY Apellidos LIKE '%$this->Apellidos%') &&
                     (BINARY Sexo LIKE '%$this->Sexo%') &&
 	 				(BINARY Telefono LIKE '%$this->Telefono%') &&
-					(BINARY Tipo LIKE '%$this->Tipo%')
+					(BINARY Tipo LIKE '%$this->Tipo%')&&
+					(BINARY Tipo LIKE '%$this->Email%')
     				)";
 
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
@@ -86,7 +90,8 @@ class USUARIO_MODEL{
 					             Apellidos,
                                  Sexo,
 								 Tipo,
-					             Telefono
+					             Telefono,
+								 Email
 								) 
 								VALUES(
 								'$this->Dni',
@@ -96,7 +101,8 @@ class USUARIO_MODEL{
 								'$this->Apellidos',
 								'$this->Sexo',
 								'$this->Tipo',
-								'$this->Telefono'
+								'$this->Telefono',
+								'$this->Email'
 								)";		
 							if ( !$this->mysqli->query( $sql )) { 
 								return 'Error en la inserción';
@@ -204,7 +210,8 @@ class USUARIO_MODEL{
 					Apellidos = '$this->Apellidos',
                     Sexo ='$this->Sexo',
 					Tipo = '$this->Tipo',
-					Telefono = '$this->Telefono'
+					Telefono = '$this->Telefono',
+					Email = '$this->Email'
 				WHERE ( Dni = '$this->Dni'
 				)";
 			if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {

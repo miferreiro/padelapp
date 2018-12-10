@@ -89,6 +89,14 @@ class USUARIO_SHOWCURRENT {
 					<?php echo $this->valores['Telefono']?>
 				</td>
 			</tr>
+				<tr>
+				<th>
+					<?php echo $strings['Email'];?>
+				</th>
+				<td>
+					<?php echo $this->valores['Email']?>
+				</td>
+			</tr>
 			
 			</thead>
 		</table>
