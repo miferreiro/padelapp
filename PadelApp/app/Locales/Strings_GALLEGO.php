@@ -366,7 +366,8 @@ array(
 	'Inscribirse en actividad'=>'Inscribirse nunha actividade',
 	'Gestión de clases'=>'Xestión de clases',
 	'Ya está inscrito en esa actividad'=>'Xa está inscrito nesa actividade',
-	'Gestión de Noticias' => 'Xestión de Noticias'
+	'Gestión de Noticias' => 'Xestión de Noticias',
+	'Tabla de borrado de noticia' => 'Tabla de borrado de noticia'
 	
 	)
 ;

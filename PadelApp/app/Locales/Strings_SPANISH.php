@@ -368,7 +368,8 @@ array(
 	'Inscribirse en actividad'=>'Inscribirse en actividad',
 	'Gestión de clases'=>'Gestión de clases',
 	'Ya está inscrito en esa actividad'=>'Ya está inscrito en esa actividad',
-	'Gestión de Noticias' => 'Gestión de Noticias'
+	'Gestión de Noticias' => 'Gestión de Noticias',
+	'Tabla de borrado de noticia' => 'Tabla de borrado de noticia'
 	
 	
 	)

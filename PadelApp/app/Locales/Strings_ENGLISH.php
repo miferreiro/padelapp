@@ -380,7 +380,8 @@ array(
 	'Inscribirse en actividad'=>'Register for Activity',
 	'Gestión de clases'=>'Class Management',
 	'Ya está inscrito en esa actividad'=>'You are already enrolled in this activity',
-	'Gestión de Noticias' => 'News Management'
+	'Gestión de Noticias' => 'News Management',
+	'Tabla de borrado de noticia' => 'News delete table'
 	
 	)
 ;
