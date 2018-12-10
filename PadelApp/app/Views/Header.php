@@ -235,7 +235,7 @@ que comprueba permisos para cada una de las acciones -->
 							<div class="dropdown-divider"></div>
 
 								<button id ="buttonBien" type="submit"  name="gesReservas"><a class="dropdown-item"  href="../Controllers/RESERVA_CONTROLLER.php" /><?php echo $strings['Gestión de reservas'] ?></a></button>
-
+					<?php } } ?>
 				<?php if (isset($_SESSION['login']) &  isset($_SESSION['tipo'])){?>
 					<?php if($_SESSION['tipo'] == 'Admin'){ ?>
 							<div class="dropdown-divider"></div>
