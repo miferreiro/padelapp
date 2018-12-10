@@ -2,12 +2,11 @@
 
 class NOTICIA_DELETE {
 
-	function __construct( $valores,$lista) { 
+	function __construct( $valores) { 
 		$this->valores = $valores;
-		$this->lista = $lista;
 
 
-		$this->render( $this->valores,$this->lista);
+		$this->render( $this->valores);
 	}
 
 	function render( $valores) { 
@@ -63,7 +62,7 @@ class NOTICIA_DELETE {
 				<input type="hidden" name="Titulo" value=<?php echo $this->valores['Titulo'] ?> />
 				<button id ="buttonBien" type="submit" name="action" value="DELETE" ><img src="../Views/icon/accept_big.png" alt="<?php echo $strings['Confirmar'] ?>"/></button>
 			</form>
-			<form action='../Controllers/USUARIO_CONTROLLER.php' method="post" style="display: inline">
+			<form action='../Controllers/NOTICIA_CONTROLLER.php' method="post" style="display: inline">
 				<button id ="buttonBien" type="submit"><img src="../Views/icon/cancel_big.png" alt="<?php echo $strings['Atras'] ?>"/></button>
 			</form>
 			</div>

@@ -75,11 +75,8 @@ class NOTICIA_SHOWALL {
 				
 				<tr align="center">
 						<td colspan="2">
-					<form action='../Controllers/USUARIO_CONTROLLER.php'>
-
-						<button id ="buttonBien"  type="submit" name="action" value="SEARCH"><img src="../Views/icon/search_big.png" alt="BUSCAR" /></button>	
-
-						<button id ="buttonBien"  type="submit" name="action" value="ADD"><img src="../Views/icon/add_big.png" alt="AÑADIR" /></button>
+					<form action='../Controllers/NOTICIA_CONTROLLER.php'>
+					  <button id ="buttonBien"  type="submit" name="action" value="ADD"><img src="../Views/icon/add_big.png" alt="AÑADIR" /></button>
 					</form>
 					</td>
 				</tr>

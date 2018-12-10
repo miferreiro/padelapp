@@ -65,10 +65,10 @@ switch ( $_REQUEST[ 'action' ] ) {
 		}else{
 			if($_SESSION['tipo'] == 'Admin'){
 				
-				$NOTICIA = get_data_form_add();
+				$NOTICIA = get_data_form();
 				$respuesta = $NOTICIA->ADD();
 
-				new MESSAGE( $respuesta, '../Controllers/USUARIO_CONTROLLER.php' );
+				new MESSAGE( $respuesta, '../Controllers/NOTICIA_CONTROLLER.php' );
 			}else{
 				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/USUARIO_CONTROLLER.php' );
 			}
@@ -90,7 +90,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			if($_SESSION['tipo'] == 'Admin'){			
 				$NOTICIA = new NOTICIA_MODEL( $_REQUEST['Titulo'], '', '');
 				$respuesta = $NOTICIA->DELETE();
-				new MESSAGE( $respuesta, '../Controllers/USUARIO_CONTROLLER.php' );
+				new MESSAGE( $respuesta, '../Controllers/NOTICIA_CONTROLLER.php' );
 			}else{
 				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/USUARIO_CONTROLLER.php' );
 			}
