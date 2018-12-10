@@ -217,6 +217,13 @@ que comprueba permisos para cada una de las acciones -->
 								
 				<?php } } ?>
 				<?php if (isset($_SESSION['login']) &  isset($_SESSION['tipo'])){?>
+					<?php if($_SESSION['tipo'] == 'Admin'){ ?>
+							<div class="dropdown-divider"></div>
+	
+								<button id ="buttonBien" type="submit"  name="actividades"><a class="dropdown-item"  href="../Controllers/NOTIFICACIONES_CONTROLLER.php" /><?php echo $strings['Gestión de notificaciones'] ?></a></button>
+								
+				<?php } } ?>
+				<?php if (isset($_SESSION['login']) &  isset($_SESSION['tipo'])){?>
 					<?php if($_SESSION['tipo'] == 'Deportista'){ ?>
 							<div class="dropdown-divider"></div>
 	
