@@ -2,12 +2,15 @@
 
 class USUARIO_DEFAULT {
 
-	function __construct( ) { 
+	function __construct( $datos ) { 
+  		$this->datos = $datos;
+		$this->render($this->datos);
 
-		$this->render();
 	}
 	
-	function render(){
+	function render($datos){
+		$this->datos = $datos;
+		
 	if (!isset($_SESSION['idioma'])) { 
 		$_SESSION['idioma'] = 'SPANISH';
 
@@ -135,6 +138,20 @@ class USUARIO_DEFAULT {
 	    </p>
 			</p>
    	  </div>
+<?php while ( $fila = mysqli_fetch_array( $this->datos ) ) { ?>
+ 		<div>
+			<h5 align="center"><?php echo $fila[ 'Titulo' ]; ?></h5>
+			 <p>
+				<?php echo $fila[ 'Contenido' ]; ?> 
+				 <br>
+		     <p align="center">
+				<?php if($fila[ 'Titulo' ]  <> ''){ ?>
+				   <img src="<?php echo $fila[ 'fotopersonal' ]; ?>" width="600" height="340" alt=""/>
+				<?php } ?>
+			</p>
+			</p>
+   	  </div>
+<?php } ?>
 	</div>
     <hr>
 <div class="container text-white bg-dark p-4">

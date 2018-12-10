@@ -4,7 +4,11 @@
 
 	include '../Views/DEFAULT_View.php';
 	include '../Functions/ActualizarPistas.php';
+    include '../Models/NOTICIA_MODEL.php';  
     ActualizarPistas();
-	$USUARIO_DEFAULT = new USUARIO_DEFAULT();
+
+	$NOTICIA = new NOTICIA_MODEL( '', '', '');
+    $datos = $NOTICIA->SEARCH();
+	$USUARIO_DEFAULT = new USUARIO_DEFAULT($datos);
 		
 ?>
