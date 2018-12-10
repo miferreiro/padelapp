@@ -365,7 +365,8 @@ array(
 	'Ver mis clases' => 'Ver as miñas clases',
 	'Inscribirse en actividad'=>'Inscribirse nunha actividade',
 	'Gestión de clases'=>'Xestión de clases',
-	'Ya está inscrito en esa actividad'=>'Xa está inscrito nesa actividade'
+	'Ya está inscrito en esa actividad'=>'Xa está inscrito nesa actividade',
+	'Gestión de Noticias' => 'Xestión de Noticias'
 	
 	)
 ;
