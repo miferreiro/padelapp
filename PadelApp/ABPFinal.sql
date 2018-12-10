@@ -71,6 +71,27 @@ CREATE TABLE IF NOT EXISTS `AbpBase`.`Noticia` (
   PRIMARY KEY (`Titulo`))
 ENGINE = InnoDB;
 
+
+
+-- -----------------------------------------------------
+-- Table `AbpBase`.`Notificaciones`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `AbpBase`.`Notificaciones` ;
+
+CREATE TABLE IF NOT EXISTS `AbpBase`.`Notificaciones` (
+  `IdNotificacion` INT NOT NULL,
+  `Titulo` VARCHAR(25) NOT NULL,
+  `Contenido` VARCHAR(500) NOT NULL,
+  `Notificado` VARCHAR(9) NOT NULL,
+  INDEX `fk_Notificaciones_Usuario1_idx` (`Notificado` ASC),
+  PRIMARY KEY (`IdNotificacion`),
+  CONSTRAINT `fk_Notificaciones_Usuario1`
+    FOREIGN KEY (`Notificado`)
+    REFERENCES `AbpBase`.`Usuario` (`Dni`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
 -- -----------------------------------------------------
 -- Table `AbpBase`.`Campeonato`
 -- -----------------------------------------------------
