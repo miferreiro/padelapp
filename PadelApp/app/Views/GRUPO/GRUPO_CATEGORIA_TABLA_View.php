@@ -153,9 +153,12 @@ class GRUPO_CATEGORIA_TABLA{
 				<input type="hidden" name="Tipo" value="<?php echo $this->vuelta['Tipo']; ?>">		
 				<input type="hidden" name="Nivel" value="<?php echo $this->vuelta['Nivel']; ?>">					
 				<input type="hidden" name="Letra" value="<?php echo $this->vuelta['Letra']; ?>">	
-				<button id ="buttonBien" type="submit"><img src="../Views/icon/back_big2.png" alt="<?php echo $strings['Atras']?>" /></button>
+				
 			</form>
 				
+			</div>
+			<div align="center">
+				<button id="buttonBien" type="submit"><img src="../Views/icon/back_big2.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</div>
 <?php
 		include '../Views/Footer.php';//incluimos el pie de la página
