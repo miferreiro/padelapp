@@ -14,7 +14,7 @@ class NOTIFICACIONES_ADD {
 ?>
 		<div class="seccion" align="center">
 			<h2>
-				<?php echo $strings['Formulario de inserción de NOTIFICACIONES'];?>
+				<?php echo $strings['Formulario de inserción de notificaciones'];?>
 			</h2>
 			<form name="ADD" action="../Controllers/NOTIFICACIONES_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit=""/> 
 			<div class="col-sm-4">
@@ -46,7 +46,7 @@ class NOTIFICACIONES_ADD {
 						<td colspan="2">
 							<button id ="buttonBien" type="submit" name="action" value="ADD"><img src="../Views/icon/accept_big.png" alt="<?php echo $strings['Confirmar formulario']?>" /></button>
 			</form>
-						<form action='../Controllers/NOTIFICACIONES_CONTROLLER.php' method="post" style="display: inline">
+						<form action='../Controllers/USUARIO_CONTROLLER.php' method="post" style="display: inline">
 							<button id ="buttonBien" type="submit"><img src="../Views/icon/back_big2.png" alt="<?php echo $strings['Atras']?>" /></button>
 						</form>
 					</tr>

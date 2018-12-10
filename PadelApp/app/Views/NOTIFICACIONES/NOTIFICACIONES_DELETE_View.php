@@ -28,7 +28,7 @@ class USUARIO_DELETE {
 ?>
 		<div class="seccion" align="center">
 			<h2>
-				<?php echo $strings['Tabla de borrado de usuario'];?>
+				<?php echo $strings['Tabla de borrado de notificación'];?>
 			</h2>
 			<div class="col-sm-4">
 			<table class="table table-sm">
@@ -200,11 +200,11 @@ class USUARIO_DELETE {
 			echo $strings['¿Está seguro de que quiere borrar esta tupla de la tabla?'];
 ?>
 			<div>
-			<form action="../Controllers/USUARIO_CONTROLLER.php" method="post" style="display: inline" >
+			<form action="../Controllers/NOTIFICACIONES_CONTROLLER.php" method="post" style="display: inline" >
 				<input type="hidden" name="Dni" value=<?php echo $this->valores['Dni'] ?> />
 				<button id ="buttonBien" type="submit" name="action" value="DELETE" ><img src="../Views/icon/accept_big.png" alt="<?php echo $strings['Confirmar'] ?>"/></button>
 			</form>
-			<form action='../Controllers/USUARIO_CONTROLLER.php' method="post" style="display: inline">
+			<form action='../Controllers/NOTIFICACIONES_CONTROLLER.php' method="post" style="display: inline">
 				<button id ="buttonBien" type="submit"><img src="../Views/icon/cancel_big.png" alt="<?php echo $strings['Atras'] ?>"/></button>
 			</form>
 			</div>

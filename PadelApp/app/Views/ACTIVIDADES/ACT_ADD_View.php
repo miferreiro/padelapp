@@ -82,7 +82,11 @@ class ACT_ADD {
 					</td>						
 <form action="../Controllers/ACT_CONTROLLER.php" method="post" style="display:inline" >
 					<td>
-					<input type="text" name="Actividad" placeholder="<?php echo $strings['Escriba aqui...']?>" required maxlength="45">
+							<select name="Actividad" required>
+							  <option value="Curso Básico">Curso Básico</option>
+							  <option value="Curso Intermedio">Curso Intermedio</option>
+							  <option value="Curso Avanzado">Curso Avanzado</option>
+							</select>
 					</td>
 	
 						<td>

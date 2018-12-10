@@ -262,12 +262,12 @@ array(
 
 	'El usuario no puede evaluarse a si mismo' => 'El usuario no puede evaluarse a si mismo',
 	'El alias evaluado no se corresponde con LoginEvaluado' => 'El alias evaluado no se corresponde con LoginEvaluado',
-	'idGrupo' => 'idGrupo',
-	'IdCampeonato' => 'IdCampeonato',
-	'FechaIni' => 'FechaIni',
-	'FechaFin' => 'FechaFin',
-	'HoraIni' => 'HoraIni',
-	'HoraFin' => 'HoraFin',
+	'idGrupo' => 'Grupo',
+	'IdCampeonato' => 'Campeonato',
+	'FechaIni' => 'Fecha Inicio',
+	'FechaFin' => 'Fecha Fin',
+	'HoraIni' => 'Hora Inicio',
+	'HoraFin' => 'Hora Fin',
 	'Categoria masculina Nivel 1' => 'Categoria masculina Nivel 1',
 	'Categoria masculina Nivel 2' => 'Categoria masculina Nivel 2',
 	'Categoria masculina Nivel 3' => 'Categoria masculina Nivel 3',
@@ -282,7 +282,7 @@ array(
 	'Login del miembro 1 de la pareja' => 'Login del miembro 1 de la pareja',
 	'Login del miembro 2 de la pareja' => 'Login del miembro 2 de la pareja',
 	'Capitan de la pareja' => 'Capitán',
-	'NumPareja' => 'NumPareja',
+	'NumPareja' => 'Número Pareja',
 	'Usuario_Dni'=>'Dni',
 	'Pista_idPista'=>'Pista',
 	'Pista_Hora'=>'Hora',
@@ -290,7 +290,7 @@ array(
 	'No existe el otro componente de la pareja' => 'No existe el otro componente de la pareja',
 	'No hay suficientes parejas para formar grupos' => 'No hay suficientes parejas para formar grupos',
 	'Letra' => 'Letra',
-	'NumEnfrentamiento' => 'NumEnfrentamiento',
+	'NumEnfrentamiento' => 'Número Enfrentamiento',
 	'Resultado' => 'Resultado',
 	'Reservar pista'=>'Reservar pista',
 	'Gestión de promociones'=>'Gestión de promociones',
@@ -369,7 +369,13 @@ array(
 	'Gestión de clases'=>'Gestión de clases',
 	'Ya está inscrito en esa actividad'=>'Ya está inscrito en esa actividad',
 	'Gestión de Noticias' => 'Gestión de Noticias',
-	'Tabla de borrado de noticia' => 'Tabla de borrado de noticia'
+	'Tabla de borrado de noticia' => 'Tabla de borrado de noticia',
+	'Gestión de notificaciones'=> 'Gestión de notificaciones',
+	'Ya existe esa notificacion'=>'Ya existe esa notificación',
+	'Tabla de notificaciones'=>'Tabla de notificaciones',
+	'Formulario de inserción de notificaciones'=>'Formulario de inserción de notificaciones',
+	'IdNotificacion'=>'Notificación',
+	'Tabla de borrado de notificación'=>'Tabla de borrado de notificación'
 	
 	
 	)

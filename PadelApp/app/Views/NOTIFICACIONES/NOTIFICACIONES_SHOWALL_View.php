@@ -19,7 +19,7 @@ class NOTIFICACIONES_SHOWALL {
 
 		<div class="seccion" align="center">
 			<h2>
-				<?php echo $strings['Tabla de NOTIFICACIONESs'];?>
+				<?php echo $strings['Tabla de notificaciones'];?>
 			</h2>
 			<div class="col-md-6">
 			<table class="table" id="mydatatableusuarios">
