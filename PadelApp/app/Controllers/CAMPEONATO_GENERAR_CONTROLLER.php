@@ -10,6 +10,7 @@ if (!IsAuthenticated()){
 include '../Models/CAMPEONATO_MODEL.php'; 
 include '../Models/PAREJA_MODEL.php'; 
 include '../Models/GRUPO_MODEL.php'; 
+include '../Models/NOTICIA_MODEL.php';
 include '../Models/PARTIDO_MODEL.php'; 
 include '../Models/ENFRENTAMIENTO_MODEL.php'; 
 
@@ -270,7 +271,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 				new CAMPEONATO_SHOWALL( $lista, $datos);
 
 		}else{
-			new USUARIO_DEFAULT();
+			$NOTICIA = new NOTICIA_MODEL( '', '', '');
+			$datos = $NOTICIA->SEARCH();
+			new USUARIO_DEFAULT($datos);
 		}
 		
 		

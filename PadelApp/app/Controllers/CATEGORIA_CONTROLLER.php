@@ -12,6 +12,7 @@ include '../Models/USUARIO_MODEL.php';
 include '../Models/CAMPEONATO_MODEL.php';
 include '../Models/CATEGORIA_MODEL.php';
 include '../Models/PAREJA_MODEL.php';
+include '../Models/NOTICIA_MODEL.php';
 include '../Models/USUARIO_PAREJA_MODEL.php';
 include '../Views/CATEGORIA/CATEGORIA_SHOWALL_View.php';
 include '../Views/CATEGORIA/CATEGORIA_INSCRIPTION_View.php';
@@ -198,7 +199,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 			new CATEGORIA_SHOWALL( $lista, $datos);
 
 		}else{
-			new USUARIO_DEFAULT();
+			$NOTICIA = new NOTICIA_MODEL( '', '', '');
+			$datos = $NOTICIA->SEARCH();
+			new USUARIO_DEFAULT($datos);
 		}			
 }
 

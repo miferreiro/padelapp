@@ -8,6 +8,7 @@ if (!IsAuthenticated()){
 }
 
 include '../Models/NOTIFICACIONES_MODEL.php'; 
+include '../Models/NOTICIA_MODEL.php';
 include '../Views/NOTIFICACIONES/NOTIFICACIONES_SHOWALL_View.php'; 
 include '../Views/NOTIFICACIONES/NOTIFICACIONES_ADD_View.php'; 
 include '../Views/NOTIFICACIONES/NOTIFICACIONES_DELETE_View.php';
@@ -91,7 +92,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 			new NOTIFICACIONES_SHOWALL( $lista, $datos);
 
 		}else{
-			new USUARIO_DEFAULT();
+			$NOTICIA = new NOTICIA_MODEL( '', '', '');
+			$datos = $NOTICIA->SEARCH();
+			new USUARIO_DEFAULT($datos);
 		}			
 }
 ?>

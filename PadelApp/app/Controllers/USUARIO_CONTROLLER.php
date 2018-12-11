@@ -10,6 +10,7 @@ if (!IsAuthenticated()){
 include '../Models/USUARIO_MODEL.php'; 
 include '../Models/RESERVA_MODEL.php'; 
 include '../Models/INSPROM_MODEL.php'; 
+include '../Models/NOTICIA_MODEL.php';
 include '../Views/USUARIO/USUARIO_SHOWALL_View.php'; 
 include '../Views/USUARIO/USUARIO_SEARCH_View.php';
 include '../Views/USUARIO/USUARIO_ADD_View.php'; 
@@ -193,7 +194,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 			new USUARIO_SHOWALL( $lista, $datos);
 
 		}else{
-			new USUARIO_DEFAULT();
+			$NOTICIA = new NOTICIA_MODEL( '', '', '');
+    		$datos = $NOTICIA->SEARCH();
+			new USUARIO_DEFAULT($datos);
 		}			
 }
 ?>

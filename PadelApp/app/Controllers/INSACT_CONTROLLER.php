@@ -11,6 +11,7 @@ include '../Views/INSACT/INSACT_SHOWALL.php';
 include '../Views/INSACT/INSACT_SHOWCURRENT.php'; 
 include '../Models/INSACT_MODEL.php'; 
 include '../Models/ACT_MODEL.php'; 
+include '../Models/NOTICIA_MODEL.php';
 include '../Views/ACTIVIDADES/ACT_SHOWALL_View.php'; 
 include '../Views/DEFAULT_View.php'; 
 include '../Views/MESSAGE_View.php';
@@ -83,7 +84,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 					
 						new INSACT_SHOWALL( $lista, $datos);
 				}else{
-					new DEFAULT_View();
+					$NOTICIA = new NOTICIA_MODEL( '', '', '');
+    				$datos = $NOTICIA->SEARCH();
+					new USUARIO_DEFAULT($datos);
 			}
 			
 }

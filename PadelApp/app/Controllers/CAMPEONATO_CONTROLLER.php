@@ -9,6 +9,7 @@ if (!IsAuthenticated()){
 
 include '../Models/CAMPEONATO_MODEL.php'; 
 include '../Models/CATEGORIA_MODEL.php'; 
+include '../Models/NOTICIA_MODEL.php';
 include '../Views/CAMPEONATO/CAMPEONATO_SHOWALL_View.php'; 
 include '../Views/CAMPEONATO/CAMPEONATO_SEARCH_View.php'; 
 include '../Views/CAMPEONATO/CAMPEONATO_ADD_View.php'; 
@@ -221,7 +222,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 						new CAMPEONATO_SHOWALL( $lista, $datos);
 			
    				}else{
-				new USUARIO_DEFAULT();
+				$NOTICIA = new NOTICIA_MODEL( '', '', '');
+   				$datos = $NOTICIA->SEARCH();
+				new USUARIO_DEFAULT($datos);
 			}
 			
 }

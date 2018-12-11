@@ -11,6 +11,7 @@ include '../Views/INSCRIPCIÓN_PROMOCIONES/INSPROM_SHOWALL.php';
 include '../Views/INSCRIPCIÓN_PROMOCIONES/INSPROM_SHOWCURRENT.php'; 
 include '../Models/INSPROM_MODEL.php'; 
 include '../Models/PROM_MODEL.php'; 
+include '../Models/NOTICIA_MODEL.php';
 include '../Views/PROMOCION/PROM_SHOWALL_View.php'; 
 include '../Views/DEFAULT_View.php'; 
 include '../Views/MESSAGE_View.php';
@@ -81,7 +82,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 					
 						new INSPROM_SHOWALL( $lista, $datos);
 				}else{
-					new DEFAULT_View();
+					$NOTICIA = new NOTICIA_MODEL( '', '', '');
+					$datos = $NOTICIA->SEARCH();
+					new USUARIO_DEFAULT($datos);
 			}
 			
 }

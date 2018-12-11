@@ -8,6 +8,7 @@ if (!IsAuthenticated()){
 }
 
 include '../Models/PARTIDO_MODEL.php';
+include '../Models/NOTICIA_MODEL.php';
 include '../Models/GRUPO_MODEL.php';
 include '../Models/ENFRENTAMIENTO_MODEL.php';
 include '../Views/GRUPO/GRUPO_CATEGORIA_SHOWALL_View.php';
@@ -163,7 +164,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 				new GRUPO_CATEGORIA_SHOWALL( $lista, $datos,$vuelta);
 			
    			}else{
-				new USUARIO_DEFAULT();
+				$NOTICIA = new NOTICIA_MODEL( '', '', '');
+    			$datos = $NOTICIA->SEARCH();
+				new USUARIO_DEFAULT($datos);
 			}
 
 }
