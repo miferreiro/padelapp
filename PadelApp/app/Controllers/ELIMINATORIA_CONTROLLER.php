@@ -8,6 +8,9 @@ if (!IsAuthenticated()){
 }
 
 include '../Models/CAMPEONATO_MODEL.php'; 
+include '../Models/ELIMINATORIA_MODEL.php';
+include '../Models/ENFRENELIMINATORIA_MODEL.php';
+
 include '../Models/CATEGORIA_MODEL.php'; 
 include '../Models/GRUPO_MODEL.php'; 
 include '../Models/NOTICIA_MODEL.php';
@@ -56,80 +59,6 @@ switch ( $_REQUEST[ 'action' ] ) {
 			
 			//echo $numGrupos;
 
-			if($numGrupos == 8){
-				
-				$enfrentamientos = array();
-				for($i = 0; $i < $numGrupos; $i++){
-
-					
-					if($i == 0) $Letra = 'A';
-					else if($i == 1) $Letra = 'B';
-					else if($i == 2) $Letra = 'C';
-					else if($i == 3) $Letra = 'D';
-					else if($i == 4) $Letra = 'E';
-					else if($i == 5) $Letra = 'F';
-					else if($i == 6) $Letra = 'G';
-					else if($i == 7) $Letra = 'H';
-
-					$GRUPO2= new GRUPO_MODEL($IdCampeonato, $Tipo,$Nivel,$Letra);
-					$listaClasificacion = $GRUPO2 ->Clasif();
-					
-					//Construyo el array
-					$numParejas = 0;
-					$parejas = array();
-					$puntos= array();
-					while ( $fila = mysqli_fetch_array( $listaClasificacion ) ) {		
-						$parejas[$numParejas] = $fila['NumPareja'];
-						$puntos[$numParejas] = $fila['Puntos'];
-
-						$numParejas++;
-					}
-					
-					
-					$pareja = $parejas[0];					
-											
-					$puntuacion = $puntos[0];
-					
-					$enfrentamientos [$pareja ] =  $puntuacion ;
-					
-				}				
-			
-		/*
-				foreach($enfrentamientos as $pa => $pu)
-				{
-				echo "La pareja " . $pa . " tiene de puntuacion " . $pu;
-				echo "<br>";
-				}*/
-				//asort |arsort
-				arsort($enfrentamientos);
-
-				$parejasOrdenadas = array();
-				$aux = 0;
-				foreach($enfrentamientos as $pa => $pu)
-				{
-					/*
-					echo "La pareja " . $pa . " tiene de puntuacion " . $pu;
-					echo "<br>";*/
-					$parejasOrdenadas[$aux] = $pa;
-					//echo $pa;
-					$aux++;
-
-				}
-
-				echo $parejasOrdenadas[0] . "-" . $parejasOrdenadas[7];echo "<br>";
-				echo $parejasOrdenadas[1] . "-" . $parejasOrdenadas[6];echo "<br>";
-				echo $parejasOrdenadas[2] . "-" . $parejasOrdenadas[5];echo "<br>";
-				echo $parejasOrdenadas[3] . "-" . $parejasOrdenadas[4];echo "<br>";
-
-
-				//Crear enfrentamientos en las tablas
-				//.........,pareja1,pareja2,numPartido,tipoEliminatorio,resul,fecha,...
-				//categoria,numPareja0,numPareja7,partido1,cuartos,resultado,fecha,...
-				//categoria,numPareja1,numPareja6,partido2,cuartos,resultado,fecha,...
-				//categoria,numPareja2,numPareja5,partido3,cuartos,resultado,fecha,....
-				//categoria,numPareja3,numPareja4,partido4,cuartos,resultado,fecha,....
-
-			}		
 if($numGrupos == 8){
 				
 				$enfrentamientos = array();
@@ -195,91 +124,48 @@ if($numGrupos == 8){
 				echo $parejasOrdenadas[2] . "-" . $parejasOrdenadas[5];echo "<br>";
 				echo $parejasOrdenadas[3] . "-" . $parejasOrdenadas[4];echo "<br>";
 
-
-				//Crear enfrentamientos en las tablas
-				//.........,pareja1,pareja2,numPartido,tipoEliminatorio,resul,fecha,...
-				//categoria,numPareja0,numPareja7,partido1,cuartos,resultado,fecha,...
-				//categoria,numPareja1,numPareja6,partido2,cuartos,resultado,fecha,...
-				//categoria,numPareja2,numPareja5,partido3,cuartos,resultado,fecha,....
-				//categoria,numPareja3,numPareja4,partido4,cuartos,resultado,fecha,....
-
-			}		
-			
-			
-if($numGrupos == 8){
 				
-				$enfrentamientos = array();
-				for($i = 0; $i < $numGrupos; $i++){
+				$Fase ="Cuartos";
+				$IdCampeonato = $_REQUEST['IdCampeonato'];
+				$Tipo = $_REQUEST['Tipo'];
+				$Nivel = $_REQUEST['Nivel'];
+	
+				$NumEnfrentamiento = 1;
+	
+				$ELIMINATORIA = new ELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,NULL,NULL,NULL,NULL,'0');
+				$mensaje = $ELIMINATORIA->ADD();
+				$ENFRENELIMINATORIA = new ENFRENELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,$parejasOrdenadas[0],NULL,NULL,NULL,'0');
+				$mensaje = $ENFRENELIMINATORIA->ADD();
+				$ENFRENELIMINATORIA = new ENFRENELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,$parejasOrdenadas[7],NULL,NULL,NULL,'0');
+				$mensaje = $ENFRENELIMINATORIA->ADD();
+				$NumEnfrentamiento = $NumEnfrentamiento + 1;
 
-					
-					if($i == 0) $Letra = 'A';
-					else if($i == 1) $Letra = 'B';
-					else if($i == 2) $Letra = 'C';
-					else if($i == 3) $Letra = 'D';
-					else if($i == 4) $Letra = 'E';
-					else if($i == 5) $Letra = 'F';
-					else if($i == 6) $Letra = 'G';
-					else if($i == 7) $Letra = 'H';
+				$ELIMINATORIA = new ELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,NULL,NULL,NULL,NULL,'0');
+				$mensaje = $ELIMINATORIA->ADD();
+				$ENFRENELIMINATORIA = new ENFRENELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,$parejasOrdenadas[1],NULL,NULL,NULL,'0');
+				$mensaje = $ENFRENELIMINATORIA->ADD();
+				$ENFRENELIMINATORIA = new ENFRENELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,$parejasOrdenadas[6],NULL,NULL,NULL,'0');
+				$mensaje = $ENFRENELIMINATORIA->ADD();
+				$NumEnfrentamiento = $NumEnfrentamiento + 1;
+	
+				$ELIMINATORIA = new ELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,NULL,NULL,NULL,NULL,'0');
+				$mensaje = $ELIMINATORIA->ADD();
+				$ENFRENELIMINATORIA = new ENFRENELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,$parejasOrdenadas[2],NULL,NULL,NULL,'0');
+				$mensaje = $ENFRENELIMINATORIA->ADD();
+				$ENFRENELIMINATORIA = new ENFRENELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,$parejasOrdenadas[5],NULL,NULL,NULL,'0');
+				$mensaje = $ENFRENELIMINATORIA->ADD();
+				$NumEnfrentamiento = $NumEnfrentamiento + 1;
+	
+				$ELIMINATORIA = new ELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,NULL,NULL,NULL,NULL,'0');
+				$mensaje = $ELIMINATORIA->ADD();
+				$ENFRENELIMINATORIA = new ENFRENELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,$parejasOrdenadas[3],NULL,NULL,NULL,'0');
+				$mensaje = $ENFRENELIMINATORIA->ADD();
+				$ENFRENELIMINATORIA = new ENFRENELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,$parejasOrdenadas[4],NULL,NULL,NULL,'0');
+				$mensaje = $ENFRENELIMINATORIA->ADD();
 
-					$GRUPO2= new GRUPO_MODEL($IdCampeonato, $Tipo,$Nivel,$Letra);
-					$listaClasificacion = $GRUPO2 ->Clasif();
-					
-					//Construyo el array
-					$numParejas = 0;
-					$parejas = array();
-					$puntos= array();
-					while ( $fila = mysqli_fetch_array( $listaClasificacion ) ) {		
-						$parejas[$numParejas] = $fila['NumPareja'];
-						$puntos[$numParejas] = $fila['Puntos'];
-
-						$numParejas++;
-					}
-					
-					
-					$pareja = $parejas[0];					
-											
-					$puntuacion = $puntos[0];
-					
-					$enfrentamientos [$pareja ] =  $puntuacion ;
-					
-				}				
-			
-		/*
-				foreach($enfrentamientos as $pa => $pu)
-				{
-				echo "La pareja " . $pa . " tiene de puntuacion " . $pu;
-				echo "<br>";
-				}*/
-				//asort |arsort
-				arsort($enfrentamientos);
-
-				$parejasOrdenadas = array();
-				$aux = 0;
-				foreach($enfrentamientos as $pa => $pu)
-				{
-					/*
-					echo "La pareja " . $pa . " tiene de puntuacion " . $pu;
-					echo "<br>";*/
-					$parejasOrdenadas[$aux] = $pa;
-					//echo $pa;
-					$aux++;
-
-				}
-
-				echo $parejasOrdenadas[0] . "-" . $parejasOrdenadas[7];echo "<br>";
-				echo $parejasOrdenadas[1] . "-" . $parejasOrdenadas[6];echo "<br>";
-				echo $parejasOrdenadas[2] . "-" . $parejasOrdenadas[5];echo "<br>";
-				echo $parejasOrdenadas[3] . "-" . $parejasOrdenadas[4];echo "<br>";
-
-
-				//Crear enfrentamientos en las tablas
-				//.........,pareja1,pareja2,numPartido,tipoEliminatorio,resul,fecha,...
-				//categoria,numPareja0,numPareja7,partido1,cuartos,resultado,fecha,...
-				//categoria,numPareja1,numPareja6,partido2,cuartos,resultado,fecha,...
-				//categoria,numPareja2,numPareja5,partido3,cuartos,resultado,fecha,....
-				//categoria,numPareja3,numPareja4,partido4,cuartos,resultado,fecha,....
 
 			}		
+	
 //saber como escoger los que pasan
 if($numGrupos == 7){
 				
@@ -346,13 +232,38 @@ if($numGrupos == 7){
 				echo $parejasOrdenadas[3] . "-" . $parejasOrdenadas[4];echo "<br>";
 
 
-				//Crear enfrentamientos en las tablas
-				//.........,pareja1,pareja2,numPartido,tipoEliminatorio,resul,fecha,...
-				//categoria,numPareja0,numPareja7,partido1,cuartos,resultado,fecha,...
-				//categoria,numPareja1,numPareja6,partido2,cuartos,resultado,fecha,...
-				//categoria,numPareja2,numPareja5,partido3,cuartos,resultado,fecha,....
-				//categoria,numPareja3,numPareja4,partido4,cuartos,resultado,fecha,....
+				$NumEnfrentamiento = 1;
+	
+				$ELIMINATORIA = new ELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,NULL,NULL,NULL,NULL,'0');
+				$mensaje = $ELIMINATORIA->ADD();
+				$ENFRENELIMINATORIA = new ENFRENELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,$parejasOrdenadas[0],NULL,NULL,NULL,'0');
+				$mensaje = $ENFRENELIMINATORIA->ADD();
+				$ENFRENELIMINATORIA = new ENFRENELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,$parejasOrdenadas[7],NULL,NULL,NULL,'0');
+				$mensaje = $ENFRENELIMINATORIA->ADD();
+				$NumEnfrentamiento = $NumEnfrentamiento + 1;
 
+				$ELIMINATORIA = new ELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,NULL,NULL,NULL,NULL,'0');
+				$mensaje = $ELIMINATORIA->ADD();
+				$ENFRENELIMINATORIA = new ENFRENELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,$parejasOrdenadas[1],NULL,NULL,NULL,'0');
+				$mensaje = $ENFRENELIMINATORIA->ADD();
+				$ENFRENELIMINATORIA = new ENFRENELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,$parejasOrdenadas[6],NULL,NULL,NULL,'0');
+				$mensaje = $ENFRENELIMINATORIA->ADD();
+				$NumEnfrentamiento = $NumEnfrentamiento + 1;
+	
+				$ELIMINATORIA = new ELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,NULL,NULL,NULL,NULL,'0');
+				$mensaje = $ELIMINATORIA->ADD();
+				$ENFRENELIMINATORIA = new ENFRENELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,$parejasOrdenadas[2],NULL,NULL,NULL,'0');
+				$mensaje = $ENFRENELIMINATORIA->ADD();
+				$ENFRENELIMINATORIA = new ENFRENELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,$parejasOrdenadas[5],NULL,NULL,NULL,'0');
+				$mensaje = $ENFRENELIMINATORIA->ADD();
+				$NumEnfrentamiento = $NumEnfrentamiento + 1;
+	
+				$ELIMINATORIA = new ELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,NULL,NULL,NULL,NULL,'0');
+				$mensaje = $ELIMINATORIA->ADD();
+				$ENFRENELIMINATORIA = new ENFRENELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,$parejasOrdenadas[3],NULL,NULL,NULL,'0');
+				$mensaje = $ENFRENELIMINATORIA->ADD();
+				$ENFRENELIMINATORIA = new ENFRENELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,$parejasOrdenadas[4],NULL,NULL,NULL,'0');
+				$mensaje = $ENFRENELIMINATORIA->ADD();
 			}		
 //saber como escoger los que pasan
 if($numGrupos == 6){
@@ -419,12 +330,38 @@ if($numGrupos == 6){
 				echo $parejasOrdenadas[3] . "-" . $parejasOrdenadas[4];echo "<br>";
 
 
-				//Crear enfrentamientos en las tablas
-				//.........,pareja1,pareja2,numPartido,tipoEliminatorio,resul,fecha,...
-				//categoria,numPareja0,numPareja7,partido1,cuartos,resultado,fecha,...
-				//categoria,numPareja1,numPareja6,partido2,cuartos,resultado,fecha,...
-				//categoria,numPareja2,numPareja5,partido3,cuartos,resultado,fecha,....
-				//categoria,numPareja3,numPareja4,partido4,cuartos,resultado,fecha,....
+				$NumEnfrentamiento = 1;
+	
+				$ELIMINATORIA = new ELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,NULL,NULL,NULL,NULL,'0');
+				$mensaje = $ELIMINATORIA->ADD();
+				$ENFRENELIMINATORIA = new ENFRENELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,$parejasOrdenadas[0],NULL,NULL,NULL,'0');
+				$mensaje = $ENFRENELIMINATORIA->ADD();
+				$ENFRENELIMINATORIA = new ENFRENELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,$parejasOrdenadas[7],NULL,NULL,NULL,'0');
+				$mensaje = $ENFRENELIMINATORIA->ADD();
+				$NumEnfrentamiento = $NumEnfrentamiento + 1;
+
+				$ELIMINATORIA = new ELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,NULL,NULL,NULL,NULL,'0');
+				$mensaje = $ELIMINATORIA->ADD();
+				$ENFRENELIMINATORIA = new ENFRENELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,$parejasOrdenadas[1],NULL,NULL,NULL,'0');
+				$mensaje = $ENFRENELIMINATORIA->ADD();
+				$ENFRENELIMINATORIA = new ENFRENELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,$parejasOrdenadas[6],NULL,NULL,NULL,'0');
+				$mensaje = $ENFRENELIMINATORIA->ADD();
+				$NumEnfrentamiento = $NumEnfrentamiento + 1;
+	
+				$ELIMINATORIA = new ELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,NULL,NULL,NULL,NULL,'0');
+				$mensaje = $ELIMINATORIA->ADD();
+				$ENFRENELIMINATORIA = new ENFRENELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,$parejasOrdenadas[2],NULL,NULL,NULL,'0');
+				$mensaje = $ENFRENELIMINATORIA->ADD();
+				$ENFRENELIMINATORIA = new ENFRENELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,$parejasOrdenadas[5],NULL,NULL,NULL,'0');
+				$mensaje = $ENFRENELIMINATORIA->ADD();
+				$NumEnfrentamiento = $NumEnfrentamiento + 1;
+	
+				$ELIMINATORIA = new ELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,NULL,NULL,NULL,NULL,'0');
+				$mensaje = $ELIMINATORIA->ADD();
+				$ENFRENELIMINATORIA = new ENFRENELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,$parejasOrdenadas[3],NULL,NULL,NULL,'0');
+				$mensaje = $ENFRENELIMINATORIA->ADD();
+				$ENFRENELIMINATORIA = new ENFRENELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,$parejasOrdenadas[4],NULL,NULL,NULL,'0');
+				$mensaje = $ENFRENELIMINATORIA->ADD();
 
 			}
 //saber como escoger los que pasan			
@@ -492,14 +429,40 @@ if($numGrupos == 5){
 				echo $parejasOrdenadas[3] . "-" . $parejasOrdenadas[4];echo "<br>";
 
 
-				//Crear enfrentamientos en las tablas
-				//.........,pareja1,pareja2,numPartido,tipoEliminatorio,resul,fecha,...
-				//categoria,numPareja0,numPareja7,partido1,cuartos,resultado,fecha,...
-				//categoria,numPareja1,numPareja6,partido2,cuartos,resultado,fecha,...
-				//categoria,numPareja2,numPareja5,partido3,cuartos,resultado,fecha,....
-				//categoria,numPareja3,numPareja4,partido4,cuartos,resultado,fecha,....
+				$NumEnfrentamiento = 1;
+	
+				$ELIMINATORIA = new ELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,NULL,NULL,NULL,NULL,'0');
+				$mensaje = $ELIMINATORIA->ADD();
+				$ENFRENELIMINATORIA = new ENFRENELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,$parejasOrdenadas[0],NULL,NULL,NULL,'0');
+				$mensaje = $ENFRENELIMINATORIA->ADD();
+				$ENFRENELIMINATORIA = new ENFRENELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,$parejasOrdenadas[7],NULL,NULL,NULL,'0');
+				$mensaje = $ENFRENELIMINATORIA->ADD();
+				$NumEnfrentamiento = $NumEnfrentamiento + 1;
 
-			}		
+				$ELIMINATORIA = new ELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,NULL,NULL,NULL,NULL,'0');
+				$mensaje = $ELIMINATORIA->ADD();
+				$ENFRENELIMINATORIA = new ENFRENELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,$parejasOrdenadas[1],NULL,NULL,NULL,'0');
+				$mensaje = $ENFRENELIMINATORIA->ADD();
+				$ENFRENELIMINATORIA = new ENFRENELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,$parejasOrdenadas[6],NULL,NULL,NULL,'0');
+				$mensaje = $ENFRENELIMINATORIA->ADD();
+				$NumEnfrentamiento = $NumEnfrentamiento + 1;
+	
+				$ELIMINATORIA = new ELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,NULL,NULL,NULL,NULL,'0');
+				$mensaje = $ELIMINATORIA->ADD();
+				$ENFRENELIMINATORIA = new ENFRENELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,$parejasOrdenadas[2],NULL,NULL,NULL,'0');
+				$mensaje = $ENFRENELIMINATORIA->ADD();
+				$ENFRENELIMINATORIA = new ENFRENELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,$parejasOrdenadas[5],NULL,NULL,NULL,'0');
+				$mensaje = $ENFRENELIMINATORIA->ADD();
+				$NumEnfrentamiento = $NumEnfrentamiento + 1;
+	
+				$ELIMINATORIA = new ELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,NULL,NULL,NULL,NULL,'0');
+				$mensaje = $ELIMINATORIA->ADD();
+				$ENFRENELIMINATORIA = new ENFRENELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,$parejasOrdenadas[3],NULL,NULL,NULL,'0');
+				$mensaje = $ENFRENELIMINATORIA->ADD();
+				$ENFRENELIMINATORIA = new ENFRENELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,$parejasOrdenadas[4],NULL,NULL,NULL,'0');
+				$mensaje = $ENFRENELIMINATORIA->ADD();
+
+			}	
 if($numGrupos == 4){
 				
 				$enfrentamientos = array();
@@ -564,12 +527,38 @@ if($numGrupos == 4){
 				echo $parejasOrdenadas[3] . "-" . $parejasOrdenadas[4];echo "<br>";
 
 
-				//Crear enfrentamientos en las tablas
-				//.........,pareja1,pareja2,numPartido,tipoEliminatorio,resul,fecha,...
-				//categoria,numPareja0,numPareja7,partido1,cuartos,resultado,fecha,...
-				//categoria,numPareja1,numPareja6,partido2,cuartos,resultado,fecha,...
-				//categoria,numPareja2,numPareja5,partido3,cuartos,resultado,fecha,....
-				//categoria,numPareja3,numPareja4,partido4,cuartos,resultado,fecha,....
+				$NumEnfrentamiento = 1;
+	
+				$ELIMINATORIA = new ELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,NULL,NULL,NULL,NULL,'0');
+				$mensaje = $ELIMINATORIA->ADD();
+				$ENFRENELIMINATORIA = new ENFRENELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,$parejasOrdenadas[0],NULL,NULL,NULL,'0');
+				$mensaje = $ENFRENELIMINATORIA->ADD();
+				$ENFRENELIMINATORIA = new ENFRENELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,$parejasOrdenadas[7],NULL,NULL,NULL,'0');
+				$mensaje = $ENFRENELIMINATORIA->ADD();
+				$NumEnfrentamiento = $NumEnfrentamiento + 1;
+
+				$ELIMINATORIA = new ELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,NULL,NULL,NULL,NULL,'0');
+				$mensaje = $ELIMINATORIA->ADD();
+				$ENFRENELIMINATORIA = new ENFRENELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,$parejasOrdenadas[1],NULL,NULL,NULL,'0');
+				$mensaje = $ENFRENELIMINATORIA->ADD();
+				$ENFRENELIMINATORIA = new ENFRENELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,$parejasOrdenadas[6],NULL,NULL,NULL,'0');
+				$mensaje = $ENFRENELIMINATORIA->ADD();
+				$NumEnfrentamiento = $NumEnfrentamiento + 1;
+	
+				$ELIMINATORIA = new ELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,NULL,NULL,NULL,NULL,'0');
+				$mensaje = $ELIMINATORIA->ADD();
+				$ENFRENELIMINATORIA = new ENFRENELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,$parejasOrdenadas[2],NULL,NULL,NULL,'0');
+				$mensaje = $ENFRENELIMINATORIA->ADD();
+				$ENFRENELIMINATORIA = new ENFRENELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,$parejasOrdenadas[5],NULL,NULL,NULL,'0');
+				$mensaje = $ENFRENELIMINATORIA->ADD();
+				$NumEnfrentamiento = $NumEnfrentamiento + 1;
+	
+				$ELIMINATORIA = new ELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,NULL,NULL,NULL,NULL,'0');
+				$mensaje = $ELIMINATORIA->ADD();
+				$ENFRENELIMINATORIA = new ENFRENELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,$parejasOrdenadas[3],NULL,NULL,NULL,'0');
+				$mensaje = $ENFRENELIMINATORIA->ADD();
+				$ENFRENELIMINATORIA = new ENFRENELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,$parejasOrdenadas[4],NULL,NULL,NULL,'0');
+				$mensaje = $ENFRENELIMINATORIA->ADD();
 
 			}	
 //saber como escoger los que pasan
@@ -635,12 +624,38 @@ if($numGrupos == 3){
 				echo $parejasOrdenadas[3] . "-" . $parejasOrdenadas[4];echo "<br>";
 
 
-				//Crear enfrentamientos en las tablas
-				//.........,pareja1,pareja2,numPartido,tipoEliminatorio,resul,fecha,...
-				//categoria,numPareja0,numPareja7,partido1,cuartos,resultado,fecha,...
-				//categoria,numPareja1,numPareja6,partido2,cuartos,resultado,fecha,...
-				//categoria,numPareja2,numPareja5,partido3,cuartos,resultado,fecha,....
-				//categoria,numPareja3,numPareja4,partido4,cuartos,resultado,fecha,....
+				$NumEnfrentamiento = 1;
+	
+				$ELIMINATORIA = new ELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,NULL,NULL,NULL,NULL,'0');
+				$mensaje = $ELIMINATORIA->ADD();
+				$ENFRENELIMINATORIA = new ENFRENELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,$parejasOrdenadas[0],NULL,NULL,NULL,'0');
+				$mensaje = $ENFRENELIMINATORIA->ADD();
+				$ENFRENELIMINATORIA = new ENFRENELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,$parejasOrdenadas[7],NULL,NULL,NULL,'0');
+				$mensaje = $ENFRENELIMINATORIA->ADD();
+				$NumEnfrentamiento = $NumEnfrentamiento + 1;
+
+				$ELIMINATORIA = new ELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,NULL,NULL,NULL,NULL,'0');
+				$mensaje = $ELIMINATORIA->ADD();
+				$ENFRENELIMINATORIA = new ENFRENELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,$parejasOrdenadas[1],NULL,NULL,NULL,'0');
+				$mensaje = $ENFRENELIMINATORIA->ADD();
+				$ENFRENELIMINATORIA = new ENFRENELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,$parejasOrdenadas[6],NULL,NULL,NULL,'0');
+				$mensaje = $ENFRENELIMINATORIA->ADD();
+				$NumEnfrentamiento = $NumEnfrentamiento + 1;
+	
+				$ELIMINATORIA = new ELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,NULL,NULL,NULL,NULL,'0');
+				$mensaje = $ELIMINATORIA->ADD();
+				$ENFRENELIMINATORIA = new ENFRENELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,$parejasOrdenadas[2],NULL,NULL,NULL,'0');
+				$mensaje = $ENFRENELIMINATORIA->ADD();
+				$ENFRENELIMINATORIA = new ENFRENELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,$parejasOrdenadas[5],NULL,NULL,NULL,'0');
+				$mensaje = $ENFRENELIMINATORIA->ADD();
+				$NumEnfrentamiento = $NumEnfrentamiento + 1;
+	
+				$ELIMINATORIA = new ELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,NULL,NULL,NULL,NULL,'0');
+				$mensaje = $ELIMINATORIA->ADD();
+				$ENFRENELIMINATORIA = new ENFRENELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,$parejasOrdenadas[3],NULL,NULL,NULL,'0');
+				$mensaje = $ENFRENELIMINATORIA->ADD();
+				$ENFRENELIMINATORIA = new ENFRENELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,$parejasOrdenadas[4],NULL,NULL,NULL,'0');
+				$mensaje = $ENFRENELIMINATORIA->ADD();
 
 			}		
 if($numGrupos == 2){
@@ -713,12 +728,38 @@ if($numGrupos == 2){
 				echo $parejasOrdenadas[3] . "-" . $parejasOrdenadas[4];echo "<br>";
 
 
-				//Crear enfrentamientos en las tablas
-				//.........,pareja1,pareja2,numPartido,tipoEliminatorio,resul,fecha,...
-				//categoria,numPareja0,numPareja7,partido1,cuartos,resultado,fecha,...
-				//categoria,numPareja1,numPareja6,partido2,cuartos,resultado,fecha,...
-				//categoria,numPareja2,numPareja5,partido3,cuartos,resultado,fecha,....
-				//categoria,numPareja3,numPareja4,partido4,cuartos,resultado,fecha,....
+				$NumEnfrentamiento = 1;
+	
+				$ELIMINATORIA = new ELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,NULL,NULL,NULL,NULL,'0');
+				$mensaje = $ELIMINATORIA->ADD();
+				$ENFRENELIMINATORIA = new ENFRENELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,$parejasOrdenadas[0],NULL,NULL,NULL,'0');
+				$mensaje = $ENFRENELIMINATORIA->ADD();
+				$ENFRENELIMINATORIA = new ENFRENELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,$parejasOrdenadas[7],NULL,NULL,NULL,'0');
+				$mensaje = $ENFRENELIMINATORIA->ADD();
+				$NumEnfrentamiento = $NumEnfrentamiento + 1;
+
+				$ELIMINATORIA = new ELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,NULL,NULL,NULL,NULL,'0');
+				$mensaje = $ELIMINATORIA->ADD();
+				$ENFRENELIMINATORIA = new ENFRENELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,$parejasOrdenadas[1],NULL,NULL,NULL,'0');
+				$mensaje = $ENFRENELIMINATORIA->ADD();
+				$ENFRENELIMINATORIA = new ENFRENELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,$parejasOrdenadas[6],NULL,NULL,NULL,'0');
+				$mensaje = $ENFRENELIMINATORIA->ADD();
+				$NumEnfrentamiento = $NumEnfrentamiento + 1;
+	
+				$ELIMINATORIA = new ELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,NULL,NULL,NULL,NULL,'0');
+				$mensaje = $ELIMINATORIA->ADD();
+				$ENFRENELIMINATORIA = new ENFRENELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,$parejasOrdenadas[2],NULL,NULL,NULL,'0');
+				$mensaje = $ENFRENELIMINATORIA->ADD();
+				$ENFRENELIMINATORIA = new ENFRENELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,$parejasOrdenadas[5],NULL,NULL,NULL,'0');
+				$mensaje = $ENFRENELIMINATORIA->ADD();
+				$NumEnfrentamiento = $NumEnfrentamiento + 1;
+	
+				$ELIMINATORIA = new ELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,NULL,NULL,NULL,NULL,'0');
+				$mensaje = $ELIMINATORIA->ADD();
+				$ENFRENELIMINATORIA = new ENFRENELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,$parejasOrdenadas[3],NULL,NULL,NULL,'0');
+				$mensaje = $ENFRENELIMINATORIA->ADD();
+				$ENFRENELIMINATORIA = new ENFRENELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,$parejasOrdenadas[4],NULL,NULL,NULL,'0');
+				$mensaje = $ENFRENELIMINATORIA->ADD();
 
 			}					
 if($numGrupos == 1){
@@ -798,12 +839,38 @@ if($numGrupos == 1){
 				echo $parejasOrdenadas[3] . "-" . $parejasOrdenadas[4];echo "<br>";
 
 
-				//Crear enfrentamientos en las tablas
-				//.........,pareja1,pareja2,numPartido,tipoEliminatorio,resul,fecha,...
-				//categoria,numPareja0,numPareja7,partido1,cuartos,resultado,fecha,...
-				//categoria,numPareja1,numPareja6,partido2,cuartos,resultado,fecha,...
-				//categoria,numPareja2,numPareja5,partido3,cuartos,resultado,fecha,....
-				//categoria,numPareja3,numPareja4,partido4,cuartos,resultado,fecha,....
+				$NumEnfrentamiento = 1;
+	
+				$ELIMINATORIA = new ELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,NULL,NULL,NULL,NULL,'0');
+				$mensaje = $ELIMINATORIA->ADD();
+				$ENFRENELIMINATORIA = new ENFRENELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,$parejasOrdenadas[0],NULL,NULL,NULL,'0');
+				$mensaje = $ENFRENELIMINATORIA->ADD();
+				$ENFRENELIMINATORIA = new ENFRENELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,$parejasOrdenadas[7],NULL,NULL,NULL,'0');
+				$mensaje = $ENFRENELIMINATORIA->ADD();
+				$NumEnfrentamiento = $NumEnfrentamiento + 1;
+
+				$ELIMINATORIA = new ELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,NULL,NULL,NULL,NULL,'0');
+				$mensaje = $ELIMINATORIA->ADD();
+				$ENFRENELIMINATORIA = new ENFRENELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,$parejasOrdenadas[1],NULL,NULL,NULL,'0');
+				$mensaje = $ENFRENELIMINATORIA->ADD();
+				$ENFRENELIMINATORIA = new ENFRENELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,$parejasOrdenadas[6],NULL,NULL,NULL,'0');
+				$mensaje = $ENFRENELIMINATORIA->ADD();
+				$NumEnfrentamiento = $NumEnfrentamiento + 1;
+	
+				$ELIMINATORIA = new ELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,NULL,NULL,NULL,NULL,'0');
+				$mensaje = $ELIMINATORIA->ADD();
+				$ENFRENELIMINATORIA = new ENFRENELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,$parejasOrdenadas[2],NULL,NULL,NULL,'0');
+				$mensaje = $ENFRENELIMINATORIA->ADD();
+				$ENFRENELIMINATORIA = new ENFRENELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,$parejasOrdenadas[5],NULL,NULL,NULL,'0');
+				$mensaje = $ENFRENELIMINATORIA->ADD();
+				$NumEnfrentamiento = $NumEnfrentamiento + 1;
+	
+				$ELIMINATORIA = new ELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,NULL,NULL,NULL,NULL,'0');
+				$mensaje = $ELIMINATORIA->ADD();
+				$ENFRENELIMINATORIA = new ENFRENELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,$parejasOrdenadas[3],NULL,NULL,NULL,'0');
+				$mensaje = $ENFRENELIMINATORIA->ADD();
+				$ENFRENELIMINATORIA = new ENFRENELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,$parejasOrdenadas[4],NULL,NULL,NULL,'0');
+				$mensaje = $ENFRENELIMINATORIA->ADD();
 
 			}			
 		
