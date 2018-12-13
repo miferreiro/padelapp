@@ -6,6 +6,7 @@ class ELIMINATORIA_MODEL{
     var $Tipo;
 	var $Nivel;
 	var $Fase;
+	var $Letra;
 	var $NumEnfrentamiento;
 	var $Fecha;
 	var $Hora;
@@ -14,12 +15,13 @@ class ELIMINATORIA_MODEL{
 	var $Disputado;
 	var $mysqli; 
 
-	function __construct($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,$Fecha,$Hora,$ParejaGanadora,$ParejaPerdedora,$Disputado) {
+	function __construct($IdCampeonato,$Tipo,$Nivel,$Fase,$Letra,$NumEnfrentamiento,$Fecha,$Hora,$ParejaGanadora,$ParejaPerdedora,$Disputado) {
 
 		$this->IdCampeonato = $IdCampeonato;
 		$this->Tipo = $Tipo;
 		$this->Nivel = $Nivel;
 		$this->Fase = $Fase;
+		$this->Letra = $Letra;
 		$this->NumEnfrentamiento = $NumEnfrentamiento;
 		$this->Fecha = $Fecha;
 		$this->Hora = $Hora;
@@ -35,9 +37,9 @@ class ELIMINATORIA_MODEL{
 
 
 	function ADD() {
-		if ( ( $this->IdCampeonato <> '' ) &&  ( $this->Tipo <> '' ) && ( $this->Nivel <> '' ) && ( $this->Fase <> '' ) && ( $this->NumEnfrentamiento <> '' )) {         
+		if ( ( $this->IdCampeonato <> '' ) &&  ( $this->Tipo <> '' ) && ( $this->Nivel <> '' ) && ( $this->Fase <> '' ) && ( $this->Letra <> '' )  && ( $this->NumEnfrentamiento <> '' )) {         
 	
-			$sql = "SELECT * FROM ELIMINATORIAS WHERE (IdCampeonato = '$this->IdCampeonato') && (Tipo = '$this->Tipo') && (Nivel = '$this->Nivel') && (Fase ='$this->Fase') && (NumEnfrentamiento = '$this->NumEnfrentamiento')";
+			$sql = "SELECT * FROM ELIMINATORIAS WHERE (IdCampeonato = '$this->IdCampeonato') && (Tipo = '$this->Tipo') && (Nivel = '$this->Nivel') && (Fase ='$this->Fase')&& (Letra ='$this->Letra') && (NumEnfrentamiento = '$this->NumEnfrentamiento')";
 
 			if ( !$result = $this->mysqli->query( $sql ) ) { 
 				return 'Error en la inserción'; 
@@ -49,6 +51,7 @@ class ELIMINATORIA_MODEL{
 									Tipo,
 									Nivel,
 									Fase,
+									Letra,
 									NumEnfrentamiento,
 									Fecha,
 									Hora,
@@ -61,6 +64,7 @@ class ELIMINATORIA_MODEL{
 								'$this->Tipo',
 								'$this->Nivel',
 								'$this->Fase',
+								'$this->Letra',
 								'$this->NumEnfrentamiento',
 								NULL,
 								NULL,

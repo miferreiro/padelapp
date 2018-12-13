@@ -6,6 +6,7 @@ class ENFRENELIMINATORIA_MODEL{
     var $Tipo;
 	var $Nivel;
 	var $Fase;
+	var $Letra;
 	var $NumEnfrentamiento;
 	var $NumPareja;
 	var $Resultado;
@@ -15,12 +16,13 @@ class ENFRENELIMINATORIA_MODEL{
 	var $ResultadoSet3;
 	var $mysqli; 
 
-	function __construct($IdCampeonato,$Tipo,$Nivel,$Fase,$NumEnfrentamiento,$NumPareja,$ResultadoSet1,$ResultadoSet2,$ResultadoSet3,$EstadoPropuesta) {
+	function __construct($IdCampeonato,$Tipo,$Nivel,$Fase,$Letra,$NumEnfrentamiento,$NumPareja,$ResultadoSet1,$ResultadoSet2,$ResultadoSet3,$EstadoPropuesta) {
 
 		$this->IdCampeonato = $IdCampeonato;
 		$this->Tipo = $Tipo;
 		$this->Nivel = $Nivel;
 		$this->Fase = $Fase;
+		$this->Letra = $Letra;
 		$this->NumEnfrentamiento = $NumEnfrentamiento;
 		$this->NumPareja = $NumPareja;
 		$this->ResultadoSet1 = $ResultadoSet1;		
@@ -32,10 +34,10 @@ class ENFRENELIMINATORIA_MODEL{
 
 	} 
 	function ADD() {
-		if ( ( $this->IdCampeonato <> '' ) &&  ( $this->Tipo <> '' ) && ( $this->Nivel <> '' ) && ( $this->Fase <> '' ) && ( $this->NumEnfrentamiento <> '' )
+		if ( ( $this->IdCampeonato <> '' ) &&  ( $this->Tipo <> '' ) && ( $this->Nivel <> '' ) && ( $this->Fase <> '' ) && ( $this->Letra <> '' )&& ( $this->NumEnfrentamiento <> '' )
 		   && ( $this->NumPareja <> '' )) {         
 	
-			$sql = "SELECT * FROM enfreneliminatorias WHERE (IdCampeonato = '$this->IdCampeonato') && (Tipo = '$this->Tipo') && (Nivel = '$this->Nivel') && (Fase ='$this->Fase') && (NumEnfrentamiento = '$this->NumEnfrentamiento') && (NumPareja = '$this->NumPareja')";
+			$sql = "SELECT * FROM enfreneliminatorias WHERE (IdCampeonato = '$this->IdCampeonato') && (Tipo = '$this->Tipo') && (Nivel = '$this->Nivel') && (Fase ='$this->Fase') && (Letra ='$this->Letra')&& (NumEnfrentamiento = '$this->NumEnfrentamiento') && (NumPareja = '$this->NumPareja')";
 
 			if ( !$result = $this->mysqli->query( $sql ) ) { 
 				return 'Error en la inserción'; 
@@ -47,6 +49,7 @@ class ENFRENELIMINATORIA_MODEL{
 									Tipo,
 									Nivel,
 									Fase,
+									Letra,
 									NumEnfrentamiento,
 									NumPareja,
 									ResultadoSet1,
@@ -59,6 +62,7 @@ class ENFRENELIMINATORIA_MODEL{
 								'$this->Tipo',
 								'$this->Nivel',
 								'$this->Fase',
+								'$this->Letra',
 								'$this->NumEnfrentamiento',
 								'$this->NumPareja',
 								NULL,

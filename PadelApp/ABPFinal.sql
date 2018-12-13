@@ -305,16 +305,17 @@ CREATE TABLE IF NOT EXISTS `AbpBase`.`Eliminatorias` (
   `Nivel` INT NOT NULL,
   `NumEnfrentamiento` INT NOT NULL,
   `Fase` VARCHAR(45) NOT NULL,
+  `Letra` CHAR NOT NULL,
   `Fecha` DATE NULL,
   `Hora` TIME NULL,
   `ParejaGanadora` INT NULL,
   `ParejaPerdedora`INT NULL,
   `Disputado` TINYINT NOT NULL, 
-  PRIMARY KEY (`IdCampeonato`, `Tipo`, `Nivel`, `NumEnfrentamiento`, `Fase`),
+  PRIMARY KEY (`IdCampeonato`, `Tipo`, `Nivel`, `NumEnfrentamiento`, `Fase`,`Letra`),
     INDEX `fk_Grupo_has_Partido_idx` (`IdCampeonato` ASC, `Tipo` ASC,`Nivel` ASC,`Fase` ASC) ,
   CONSTRAINT `fk_Categoria_has_Eliminatoria0`
-    FOREIGN KEY (`IdCampeonato` , `Tipo` , `Nivel` )
-    REFERENCES `AbpBase`.`Categoria` (`IdCampeonato` , `Tipo` , `Nivel`)
+    FOREIGN KEY (`IdCampeonato` , `Tipo` , `Nivel` ,`Letra`)
+    REFERENCES `AbpBase`.`Grupo` (`IdCampeonato` , `Tipo` , `Nivel`,`Letra`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -365,6 +366,7 @@ CREATE TABLE `enfreneliminatorias` (
   `NumEnfrentamiento` int(11) NOT NULL,
   `NumPareja` int(11) NOT NULL,
   `Fase` varchar(45) NOT NULL,
+  `Letra` CHAR NOT NULL,
   `ResultadoSet1` int(11) DEFAULT NULL,
   `ResultadoSet2` int(11) DEFAULT NULL,
   `ResultadoSet3` int(11) DEFAULT NULL,
@@ -375,15 +377,14 @@ CREATE TABLE `enfreneliminatorias` (
 -- Indices de la tabla `enfreneliminatorias`
 --
 ALTER TABLE `enfreneliminatorias`
-  ADD PRIMARY KEY (`IdCampeonato`,`Tipo`,`Nivel`,`NumEnfrentamiento`,`NumPareja`,`Fase`),
-  ADD KEY `IdCampeonato` (`IdCampeonato`,`Tipo`,`Nivel`,`NumPareja`),
-  ADD KEY `enfreneliminatorias_ibfk_2` (`IdCampeonato`,`Tipo`,`Nivel`,`NumEnfrentamiento`,`Fase`);
+  ADD PRIMARY KEY (`IdCampeonato`,`Tipo`,`Nivel`,`NumEnfrentamiento`,`NumPareja`,`Fase`,`Letra`),
+  ADD KEY `IdCampeonato` (`IdCampeonato`,`Tipo`,`Nivel`,`NumPareja`);
 --
 -- Filtros para la tabla `enfreneliminatorias`
 --
 ALTER TABLE `enfreneliminatorias`
   ADD CONSTRAINT `enfreneliminatorias_ibfk_1` FOREIGN KEY (`IdCampeonato`,`Tipo`,`Nivel`,`NumPareja`) REFERENCES `pareja` (`idCampeonato`, `Tipo`, `Nivel`, `NumPareja`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `enfreneliminatorias_ibfk_2` FOREIGN KEY (`IdCampeonato`,`Tipo`,`Nivel`,`NumEnfrentamiento`,`Fase`) REFERENCES `eliminatorias` (`IdCampeonato`, `Tipo`, `Nivel`, `NumEnfrentamiento`, `Fase`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `enfreneliminatorias_ibfk_2` FOREIGN KEY (`IdCampeonato`,`Tipo`,`Nivel`,`NumEnfrentamiento`,`Fase`,`Letra`) REFERENCES `eliminatorias` (`IdCampeonato`, `Tipo`, `Nivel`, `NumEnfrentamiento`, `Fase`,`Letra`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
 -- -----------------------------------------------------
