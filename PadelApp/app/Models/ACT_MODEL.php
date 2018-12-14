@@ -57,7 +57,6 @@ class ACT_MODEL{
 								'$this->hora',
 								'$this->actividad'
 								)";	
-						echo($sql);
 						if ( !$this->mysqli->query( $sql )) { 
 							return 'Error en la inserción';
 						} else { 											

@@ -62,7 +62,7 @@ class INSACT_MODEL{
 	}
 	
 	
-	function ADD() {
+	function ADDGRUPAL() {
 		if ( ( $this->EscuelaDeportiva_fecha <> '' ) && ( $this->EscuelaDeportiva_hora <> '' ) && ( $this->Usuario_Dni <> '' )) { 
             			
 			$sql = "SELECT * FROM AlumnosEscuela WHERE (  EscuelaDeportiva_Fecha = '$this->EscuelaDeportiva_fecha' && EscuelaDeportiva_Hora = '$this->EscuelaDeportiva_hora' && Usuario_Dni = '$this->Usuario_Dni' && EscuelaDeportiva_Actividad = '$this->EscuelaDeportiva_actividad')";
@@ -149,6 +149,91 @@ class INSACT_MODEL{
 						  }
 					}
 				}
+		} else { 
+			return 'Introduzca un valor'; 
+		}			
+	} 
+
+	
+function ADDINDIVIDUAL() {
+		if ( ( $this->EscuelaDeportiva_fecha <> '' ) && ( $this->EscuelaDeportiva_hora <> '' ) && ( $this->Usuario_Dni <> '' )) {
+		$sql = "SELECT * FROM AlumnosEscuela WHERE (  EscuelaDeportiva_Fecha = '$this->EscuelaDeportiva_fecha' && EscuelaDeportiva_Hora = '$this->EscuelaDeportiva_hora' && EscuelaDeportiva_Actividad = '$this->EscuelaDeportiva_actividad')";
+		if ( !$result = $this->mysqli->query( $sql ) ) { 
+				return 'No se ha podido conectar con la base de datos';
+			} else { 
+            if($result->num_rows >= 1){	
+				return 'Clase completa';
+			}else{
+			$sql = "SELECT * FROM AlumnosEscuela WHERE (  EscuelaDeportiva_Fecha = '$this->EscuelaDeportiva_fecha' && EscuelaDeportiva_Hora = '$this->EscuelaDeportiva_hora' && Usuario_Dni = '$this->Usuario_Dni' && EscuelaDeportiva_Actividad = '$this->EscuelaDeportiva_actividad')";
+
+			if ( !$result = $this->mysqli->query( $sql ) ) { 
+				return 'No se ha podido conectar con la base de datos';
+			} else { 
+
+				if ( $result->num_rows == 1 ) { 
+					
+					return 'Ya está inscrito en esa actividad';	
+					
+				}else{
+
+							
+								$sql = "INSERT INTO AlumnosEscuela (
+									Usuario_Dni,
+									EscuelaDeportiva_Fecha,
+									EscuelaDeportiva_Hora,
+									EscuelaDeportiva_Actividad
+									) 
+									VALUES(
+										'$this->Usuario_Dni',
+										'$this->EscuelaDeportiva_fecha',
+										'$this->EscuelaDeportiva_hora',
+										'$this->EscuelaDeportiva_actividad'
+									)";	
+								if ( !$this->mysqli->query( $sql)) { 
+									return 'Error en la inserción';
+								}else{
+									$sql = "SELECT Dni FROM Usuario WHERE Login = 'admin'";
+									$admin1 = $this->mysqli->query($sql);							
+									$admin2 = $admin1->fetch_array();
+									$a =  $admin2 ['Dni'];
+									$Pista = "SELECT DISTINCT idPista FROM pista WHERE Fecha = '$this->EscuelaDeportiva_fecha' && Disponibilidad = 1 LIMIT 1";
+									$idpistas = $this->mysqli->query($Pista);
+									$pista1 = $idpistas->fetch_array();
+									$p = $pista1 ['idPista'];
+									$sql2 = "INSERT INTO RESERVA (
+										Usuario_Dni,
+										Pista_idPista,
+										Pista_Fecha,
+										Pista_Hora
+										) 
+										VALUES(
+											'$a',
+											'$p',
+											'$this->EscuelaDeportiva_fecha',
+											'$this->EscuelaDeportiva_hora'
+										)";
+
+									if ( !$this->mysqli->query( $sql2 )) { 
+										return 'Error en la inserción';
+									} 
+									$sql3 = "UPDATE PISTA SET 
+											idPista = '$p',
+											Fecha = '$this->EscuelaDeportiva_fecha',
+											Hora='$this->EscuelaDeportiva_hora',
+											Disponibilidad = '0'
+										WHERE ( idPista = '$p' && Hora = '$this->EscuelaDeportiva_hora' && Fecha ='$this->EscuelaDeportiva_fecha'
+										)";	
+
+									if ( !$this->mysqli->query( $sql3 )) { 
+										return 'Error en la inserción';
+									}else{
+									return 'Inserción realizada con éxito';
+									}
+								}
+						    }
+						  }
+				}
+			}
 		} else { 
 			return 'Introduzca un valor'; 
 		}			

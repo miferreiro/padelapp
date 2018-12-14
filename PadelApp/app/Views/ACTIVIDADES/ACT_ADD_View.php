@@ -83,9 +83,8 @@ class ACT_ADD {
 <form action="../Controllers/ACT_CONTROLLER.php" method="post" style="display:inline" >
 					<td>
 							<select name="Actividad" required>
-							  <option value="Curso Básico">Curso Básico</option>
-							  <option value="Curso Intermedio">Curso Intermedio</option>
-							  <option value="Curso Avanzado">Curso Avanzado</option>
+							  <option value="Clase individual"><?php echo $strings['Clase individual']?></option>
+							  <option value="Clase grupal"><?php echo $strings['Clase grupal']?></option>
 							</select>
 					</td>
 	

@@ -38,7 +38,13 @@ switch ( $_REQUEST[ 'action' ] ) {
 	case 'INSCRIPCION':
 			if($_SESSION['tipo'] == 'Deportista'){
 				$INSACT = get_data_form();
-				$respuesta = $INSACT->ADD();//Variable que almacena la respuesta de la inserción
+				
+				if($_REQUEST[ 'EscuelaDeportiva_Actividad' ]=="Clase grupal"){
+				$respuesta = $INSACT->ADDGRUPAL();//Variable que almacena la respuesta de la inserción
+				}else{
+					$respuesta = $INSACT->ADDINDIVIDUAL();//Variable que almacena la respuesta de la inserción
+				}
+				
 				new MESSAGE( $respuesta, '../Controllers/ACT_CONTROLLER.php' );
 			}else{
 				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/ACT_CONTROLLER.php' );
