@@ -20,12 +20,6 @@ class NOTIFICACIONES_ADD {
 			<div class="col-sm-4">
 			<table class="table table-sm">
 				<thead class="thead-light">
-					<tr>
-						<th class="formThTd">
-							<?php echo $strings['IdNotificacion'];?>
-						</th>
-						<td class="formThTd"><input type="text" id="IdNotificacion" name="IdNotificacion" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="25" size="25" required />
-					</tr>
 				   <tr>
 						<th class="formThTd">
 							<?php echo $strings['Titulo'];?>

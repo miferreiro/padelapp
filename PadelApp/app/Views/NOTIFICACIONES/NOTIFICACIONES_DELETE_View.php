@@ -25,15 +25,7 @@ class NOTIFICACIONES_DELETE {
 			</h2>
 			<div class="col-sm-4">
 			<table class="table table-sm">
-				<thead class="thead-light">
-				<tr>
-					<th>
-						<?php echo $strings['IdNotificacion'];?>
-					</th>
-					<td>
-						<?php echo $this->valores['IdNotificacion']?>
-					</td>
-				</tr>			
+				<thead class="thead-light">			
 				<tr>
 					<th>
 						<?php echo $strings['Titulo'];?>

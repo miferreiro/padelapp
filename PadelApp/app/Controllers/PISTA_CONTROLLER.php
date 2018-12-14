@@ -10,13 +10,14 @@ if (!IsAuthenticated()){
 }
 include '../Models/RESERVA_MODEL.php';
 include '../Models/PISTA_MODEL.php'; 
+include '../Models/NOTIFICACIONES_MODEL.php';
 include '../Views/PISTA/PISTA_SHOWALL.php'; 
 include '../Views/PISTA/PISTA_EDIT.php';
 include '../Views/PISTA/PISTA_SHOWCURRENT.php';
 include '../Views/PISTA/PISTA_DELETE.php'; 
 include '../Views/DEFAULT_View.php'; 
 include '../Views/MESSAGE_View.php'; 
-
+require_once('../PHPMailer/class.phpmailer.php');
 
 function get_data_form() {
 	

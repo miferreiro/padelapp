@@ -48,7 +48,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		}else{
 			if($_SESSION['tipo'] == 'Admin'){
 				
-				$NOTIFICACIONES = get_data_form();
+				$NOTIFICACIONES = new NOTIFICACIONES_MODEL( '', $_REQUEST[ 'Titulo' ],$_REQUEST[ 'Contenido' ],$_REQUEST[ 'Notificado' ]);
 				$respuesta = $NOTIFICACIONES->ADD();
 
 				new MESSAGE( $respuesta, '../Controllers/USUARIO_CONTROLLER.php' );

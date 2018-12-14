@@ -47,26 +47,19 @@ class NOTIFICACIONES_MODEL{
 	} 
 
 	function ADD() {
-		if ( ( $this->Titulo <> '' ) ) { 
-            			
-			$sql = "SELECT * FROM NOTIFICACIONES WHERE (  IdNotificacion = '$this->IdNotificacion')";
 
-			if ( !$result = $this->mysqli->query( $sql ) ) { 
-				return 'No se ha podido conectar con la base de datos';
-			} else { 
-
-				if ( $result->num_rows != 0 ) {			
-						return 'Ya existe esa notificacion';// ya existe					
-					} else {
-
-							$sql = "INSERT INTO NOTIFICACIONES (
+			$sql="SELECT MAX(IdNotificacion) as Id FROM `notificaciones`";
+					$resultado = $this->mysqli->query( $sql );
+					$tupla = $resultado->fetch_array();
+					$Id=$tupla[ 'Id' ]+1;
+			$sql = "INSERT INTO NOTIFICACIONES (
 							     IdNotificacion,
 								 Titulo,
                                  Contenido,	     
 					             Notificado
 								) 
 								VALUES(
-								'$this->IdNotificacion',
+								'$Id',
 								'$this->Titulo',
                                 '$this->Contenido',
 								'$this->Notificado'
@@ -119,12 +112,7 @@ class NOTIFICACIONES_MODEL{
 								}
 								
 							}	
-					}
-	
-				}
-		} else { 
-			return 'Introduzca un valor'; 
-		}			
+			
 	} 
 	
 	function DELETE() {
