@@ -14,7 +14,7 @@ include '../Views/NOTIFICACIONES/NOTIFICACIONES_ADD_View.php';
 include '../Views/NOTIFICACIONES/NOTIFICACIONES_DELETE_View.php';
 include '../Views/DEFAULT_View.php';
 include '../Views/MESSAGE_View.php';
-
+require_once('../PHPMailer/class.phpmailer.php');
 
 function get_data_form() {
 	$IdNotificacion = $_REQUEST[ 'IdNotificacion' ];
@@ -51,7 +51,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 				$NOTIFICACIONES = get_data_form();
 				$respuesta = $NOTIFICACIONES->ADD();
 
-				new MESSAGE( $respuesta, '../Controllers/NOTIFICACIONES_CONTROLLER.php' );
+				new MESSAGE( $respuesta, '../Controllers/USUARIO_CONTROLLER.php' );
 			}else{
 				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/USUARIO_CONTROLLER.php' );
 			}

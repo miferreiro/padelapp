@@ -1,7 +1,4 @@
 <?php
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-
 
 class NOTIFICACIONES_MODEL{ 
 	
@@ -21,10 +18,6 @@ class NOTIFICACIONES_MODEL{
 		$this->Notificado = $Notificado;
 
 		include_once '../Functions/BdAdmin.php';
-		require_once '../PHPMailer/src/Exception.php';
-		require_once '../PHPMailer/src/PHPMailer.php';
-		require_once '../PHPMailer/src/SMTP.php';
-
 
 		$this->mysqli = ConectarBD();
 
@@ -88,42 +81,43 @@ class NOTIFICACIONES_MODEL{
 								$resultado = $this->mysqli->query( $sql );
 								$tupla = $resultado->fetch_array();
 								$email=$tupla[ 'Email' ];
+
+							
 								$mail = new PHPMailer();
+								//Definir que vamos a usar SMTP
 								$mail->IsSMTP();
-				
-								$mail->SMTPAuth = true;
-								
-								$mail->Host = "smtp.gmail.com";
-								
-								$mail->Username = "padelapp25@gmail.com";
-								
-								$mail->Password = "asdf1234.";
-								
-								$mail->Port = 25;
-								
-								$mail->From = "padelapp25@gmail.com";
-								
+								//Esto es para activar el modo depuración en producción
+								$mail->SMTPDebug  = 0;
+								//Ahora definimos gmail como servidor que aloja nuestro SMTP
+								$mail->Host       = 'smtp.gmail.com';
+								//El puerto será el 587 ya que usamos encriptación TLS
+								$mail->Port       = 587;
+								//Definmos la seguridad como TLS
+								$mail->SMTPSecure = 'tls';
+								//Tenemos que usar gmail autenticados, así que esto a TRUE
+								$mail->SMTPAuth   = true;
+								//Definimos la cuenta que vamos a usar. Dirección completa de la misma
+								$mail->Username   = "padelapp25@gmail.com";
+								//Introducimos nuestra contraseña de gmail
+								$mail->Password   = "asdf1234.";
+								//Definimos el remitente (dirección y nombre)
+                				$mail->SetFrom('padelapp25@gmail.com', 'PadelApp S.L.');
+								//Definimos el tema del email
+								$mail->Subject = $this->Titulo;
+								//Para enviar un correo formateado en HTML lo cargamos con la siguiente función. Si no, puedes meterle directamente una cadena de texto.
+								$mail->MsgHTML(utf8_decode($this->Contenido));
+								//Y por si nos bloquean el contenido HTML (algunos correos lo hacen por seguridad) una versión alternativa en texto plano (también será válida para lectores de pantalla)
+								$mail->AltBody = 'This is a plain-text message body';
+
 								$mail->AddAddress($email);
-								
-								$mail->IsHTML(true);
-								
-								$mail->Subject = "$this->Titulo";
-								
-								$body = "Estimado usuario. <br />";
-								
-								$body .= $this->Contenido;
-								
-								$mail->Body = $body; // Mensaje a enviar
-								
 								$exito = $mail->send(); // Envía el correo.
 								
-								//También podríamos agregar simples verificaciones para saber si se envió:
 								if($exito){
-								echo "El correo fue enviado correctamente.";
-								}else{
-								echo "Hubo un inconveniente. Contacta a un administrador.";
-								}
 								return 'Inserción realizada con éxito'; 
+								}else{
+								return 'Hubo un inconveniente. Contacta a un administrador';
+								}
+								
 							}	
 					}
 	

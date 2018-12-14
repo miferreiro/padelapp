@@ -9,6 +9,8 @@ array(
 	'idioma' => 'Language',
 	'menuGestion' => 'Management Menu',
 	'Opciones' => 'Options  ',
+	'Hubo un inconveniente. Contacta a un administrador' => 
+'There was an inconvenience. Contact an administrator ',
 	'Registro' => 'Register',
 	'Elija sexo' => 'Choose sex',
 	'Resultado primer set' => 'First set result',
@@ -27,6 +29,7 @@ array(
 	'Mujer' => 'Woman',
 	'Clase individual' => 'Individual class',
 	'Clase grupal' => 'Group class',
+	'Notificado' => 'Notified',
 	'Ha alcanzado el número máximo de reservas activas' => 'You have reached the maximum number of active reservations',
 	'idPista' => 'Court',
 	'Promociones_Hora' => 'Hour',
