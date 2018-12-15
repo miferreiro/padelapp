@@ -71,11 +71,18 @@ switch ( $_REQUEST[ 'action' ] ) {
 					$lista = array('Usuario_Dni','Pista_Fecha','Pista_Hora');
 					$RESERVA = new RESERVA_MODEL('',$_REQUEST[ 'idPista' ],'',''); 
 					$lista2 = $RESERVA->SEARCH();
-
 					new PISTA_DELETE( $valores,$lista,$lista2);
 
 			} else {
 				$PISTA = new PISTA_MODEL( $_REQUEST[ 'idPista' ], '', '', '');
+				$RESERVA = new RESERVA_MODEL('',$_REQUEST[ 'idPista' ],'',''); 
+				$usuarios = $RESERVA->SEARCH2();
+				while ( $fila = mysqli_fetch_array( $usuarios ) ) {
+					$Contenido =  "Se ha cancelado su reserva por problemas tecnicos en la pista asociada";
+					$Contenido.= ". Disculpe las molestias, PadelApp S.L.";
+					$NOTIFICACIONES = new NOTIFICACIONES_MODEL( '', 'Reserva cancelada', $Contenido ,$fila['Usuario_Dni']);
+					$NOTIFICACIONES->ADD();
+				}
 				$respuesta = $PISTA->DELETE();
 				new MESSAGE( $respuesta, '../Controllers/PISTA_CONTROLLER.php' );
 			}

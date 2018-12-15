@@ -69,7 +69,7 @@ class USUARIO_SHOWALL {
 						</form>
 					<form action="../Controllers/NOTIFICACIONES_CONTROLLER.php" method="get" style="display:inline" >
 								<input type="hidden" name="Dni" value="<?php echo $fila['Dni']; ?>">
-								<button id ="buttonBien"  type="submit" name="action" value="ADD"><img src="../Views/icon/add_big.png" alt="AÑADIR" /></button>						
+								<button id ="buttonBien"  type="submit" name="action" value="ADD"><img src="../Views/icon/notify_small.png" alt="AÑADIR"  width="20" height="20"/></button>						
 					</form>
 					</td>								
 				</tr>

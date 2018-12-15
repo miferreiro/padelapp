@@ -190,7 +190,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			}
 
 			$datos = $USUARIO->SEARCH();
-			$lista = array( 'Dni','Login','Nombre','Apellidos','Sexo','Telefono','Tipo','Email');
+			$lista = array( 'Dni','Login','Nombre','Apellidos','Sexo','Telefono','Email');
 			new USUARIO_SHOWALL( $lista, $datos);
 
 		}else{

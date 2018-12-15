@@ -13,6 +13,7 @@ if (!IsAuthenticated()){
 include '../Models/PROM_MODEL.php'; 
 include '../Models/INSPROM_MODEL.php'; 
 include '../Models/PISTA_MODEL.php'; 
+include '../Models/NOTIFICACIONES_MODEL.php';
 include '../Views/PROMOCION/PROM_SHOWALL_View.php'; 
 include '../Views/PROMOCION/PROM_DELETE_View.php';
 include '../Views/PROMOCION/PROM_SHOWCURRENT_View.php'; 
@@ -20,6 +21,7 @@ include '../Views/PROMOCION/PROM_SEARCH_View.php';
 include '../Views/PROMOCION/PROM_ADD_View.php'; 
 include '../Views/DEFAULT_View.php'; 
 include '../Views/MESSAGE_View.php';
+require_once('../PHPMailer/class.phpmailer.php');
 
 function get_data_form() {
 	$fecha = $_REQUEST[ 'Fecha' ]; 
@@ -68,11 +70,23 @@ switch ( $_REQUEST[ 'action' ] ) {
 				$lista= array('Promociones_Fecha', 'Promociones_Hora', 'Usuario_Dni');
 				$INSPROM = new INSPROM_MODEL('', $_REQUEST[ 'Fecha' ], $_REQUEST[ 'Hora' ]);
 				$lista2 = $INSPROM->SEARCH();
+				$usuarios = $INSPROM->SEARCH2();
 				new PROM_DELETE( $valores, $lista, $lista2);
 
 			} else {
 				$PROM = get_data_form();
-
+				$INSPROM = new INSPROM_MODEL('', $_REQUEST[ 'Fecha' ], $_REQUEST[ 'Hora' ]);
+				$usuarios = $INSPROM->SEARCH2();
+				while ( $fila = mysqli_fetch_array( $usuarios ) ) {
+					$Contenido =  "Se ha cancelado el partido ";
+					$Contenido.= " del día ";
+					$Contenido.= date( "d/m/Y", strtotime( $_REQUEST[ 'Fecha' ]) ) ;
+					$Contenido.= " a las ";
+					$Contenido.= $_REQUEST[ 'Hora' ];
+					$Contenido.= ". Disculpe las molestias, PadelApp S.L.";
+					$NOTIFICACIONES = new NOTIFICACIONES_MODEL( '', 'Partido cancelado', $Contenido ,$fila['Usuario_Dni']);
+					$NOTIFICACIONES->ADD();
+				}
 				$respuesta = $PROM->DELETE();
 
 				new MESSAGE( $respuesta, '../Controllers/PROM_CONTROLLER.php' );

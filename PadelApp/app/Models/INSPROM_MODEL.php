@@ -40,6 +40,23 @@ class INSPROM_MODEL{
 			return $resultado;
 		}
 	} 
+	
+	function SEARCH2() {
+		$sql = "select  Usuario_Dni
+       			from inscripcionpromociones 
+    			where 
+    				((BINARY Usuario_Dni LIKE '%$this->Usuario_Dni%')&&
+                    (BINARY Promociones_Fecha LIKE '%$this->Promociones_fecha%') &&
+    				(BINARY Promociones_Hora LIKE '%$this->Promociones_hora%') 
+					
+    				)";
+		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
+			return 'Error en la consulta sobre la base de datos';
+		} else { 
+
+			return $resultado;
+		}
+	} 
 	function ComprobarInscritos($fecha,$hora) {
 		$sql = "select COUNT(*)  as num
        			from INSCRIPCIONPROMOCIONES

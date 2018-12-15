@@ -44,7 +44,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 				$Contenido.= date( "d/m/Y", strtotime( $_REQUEST[ 'Promociones_Fecha' ]) ) ;
 				$Contenido.= " a las ";
 				$Contenido.= $_REQUEST[ 'Promociones_Hora' ];
-				$Contenido.= " . Atentamente PadelApp S.L.";
+				$Contenido.= ". Atentamente PadelApp S.L.";
 				$NOTIFICACIONES = new NOTIFICACIONES_MODEL( '', 'Inscripción en partido', $Contenido ,$_REQUEST[ 'Usuario_Dni' ]);
 				$NOTIFICACIONES->ADD();
 				new MESSAGE( $respuesta, '../Controllers/PROM_CONTROLLER.php' );
@@ -64,7 +64,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 				$Contenido.= date( "d/m/Y", strtotime( $_REQUEST[ 'Promociones_Fecha' ]) ) ;
 				$Contenido.= " a las ";
 				$Contenido.= $_REQUEST[ 'Promociones_Hora' ];
-				$Contenido.= " . Atentamente PadelApp S.L.";
+				$Contenido.= ". Atentamente PadelApp S.L.";
 				$NOTIFICACIONES = new NOTIFICACIONES_MODEL( '', 'Baja de partido', $Contenido ,$_REQUEST[ 'Usuario_Dni' ]);
 				$NOTIFICACIONES->ADD();
 			new MESSAGE( $respuesta, '../Controllers/INSPROM_CONTROLLER.php?Usuario_Dni='.$_SESSION['dni'] );

@@ -836,7 +836,7 @@ function comprobarEditUsuario() {
 		}
 	}
 	
-
+	encriptar();
 	return true;
 
 

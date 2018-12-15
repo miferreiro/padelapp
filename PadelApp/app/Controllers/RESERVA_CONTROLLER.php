@@ -50,7 +50,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 				$Contenido.= date( "d/m/Y", strtotime( $_REQUEST[ 'Pista_Fecha' ]) ) ;
 				$Contenido.= " a las ";
 				$Contenido.= $_REQUEST[ 'Pista_Hora' ];
-				$Contenido.= " . Atentamente PadelApp S.L.";
+				$Contenido.= ". Atentamente PadelApp S.L.";
 				$NOTIFICACIONES = new NOTIFICACIONES_MODEL( '', 'Reserva de pista', $Contenido ,$_REQUEST[ 'Usuario_Dni' ]);
 				$NOTIFICACIONES->ADD();
 				new MESSAGE( $respuesta, '../Controllers/PISTA_CONTROLLER.php' );
@@ -77,8 +77,8 @@ switch ( $_REQUEST[ 'action' ] ) {
 				$Contenido.= date( "d/m/Y", strtotime( $_REQUEST[ 'Pista_Fecha' ]) ) ;
 				$Contenido.= " a las ";
 				$Contenido.= $_REQUEST[ 'Pista_Hora' ];
-				$Contenido.= " . Atentamente PadelApp S.L.";
-				$NOTIFICACIONES = new NOTIFICACIONES_MODEL( '', 'Cancelación de reserva', $Contenido ,$_REQUEST[ 'Usuario_Dni' ]);
+				$Contenido.= ". Atentamente PadelApp S.L.";
+				$NOTIFICACIONES = new NOTIFICACIONES_MODEL( '', 'Reserva cancelada', $Contenido ,$_REQUEST[ 'Usuario_Dni' ]);
 				$NOTIFICACIONES->ADD();
 			new MESSAGE( $respuesta, '../Controllers/RESERVA_CONTROLLER.php'.'?Usuario_Dni='.$_REQUEST[ 'Usuario_Dni' ] );
 		}}else{

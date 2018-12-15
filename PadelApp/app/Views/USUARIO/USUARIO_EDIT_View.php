@@ -97,7 +97,7 @@ class USUARIO_EDIT {
 						<th class="formThTd">
 							<?php echo $strings['Email'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="email" name="email" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['Telefono']?>" maxlength="50" size="20" required /> 
+						<td class="formThTd"><input type="text" id="email" name="email" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['Email']?>" maxlength="60" size="30" required /> 
 					</tr>
 					<tr align="center">
 						<td colspan="2">

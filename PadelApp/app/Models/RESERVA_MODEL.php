@@ -44,7 +44,24 @@ class RESERVA_MODEL{
 		}
 	} 
 
+	function SEARCH2() {
 
+		$sql = "select  Usuario_Dni
+       			from RESERVA 
+    			where 
+    				((BINARY Usuario_Dni LIKE '%$this->Usuario_Dni%')&&
+					(BINARY Pista_idPista LIKE '%$this->Pista_idPista%') &&
+                    (BINARY Pista_Fecha LIKE '%$this->Pista_fecha%') &&
+    				(BINARY Pista_Hora LIKE '%$this->Pista_hora%') 
+					
+    				)";
+		
+		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
+			return 'Error en la consulta sobre la base de datos';
+		} else { 
+			return $resultado;
+		}
+	}
 	function ADD() {
 		if ( ( $this->Pista_fecha <> '' ) && ( $this->Pista_hora <> '' )&& ( $this->Pista_idPista <> '' ) && ( $this->Usuario_Dni <> '' )) { 
             			
