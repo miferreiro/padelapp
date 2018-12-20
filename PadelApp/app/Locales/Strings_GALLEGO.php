@@ -378,7 +378,8 @@ array(
 	'Tabla de notificaciones'=>'Tabla de notificacións',
 	'Formulario de inserción de notificaciones'=>'Formulario de inserción de notificacións',
 	'IdNotificacion'=>'Notificación',
-	'Tabla de borrado de notificación'=>'Tabla de borrado de notificación'
+	'Tabla de borrado de notificación'=>'Tabla de borrado de notificación',
+	'Se encuentran todos los partidos disputados'=> 'Encontranse todos os partidos disputados'
 	
 	)
 ;

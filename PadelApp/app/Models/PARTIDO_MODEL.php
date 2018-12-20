@@ -498,9 +498,30 @@ class PARTIDO_MODEL{
 		}
 		
 	}
-	
+	function comprobarFaseFinalizada(){
+		
+		$sql = "SELECT * FROM PARTIDO WHERE (Disputado = '0') && (Grupo_Letra = '$this->Letra')";
+		
+		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
+			return 'Se encuentran todos los partidos disputados'; // 
+		} else {            
+			$result = $resultado->fetch_array();	
+			return $result;
+		}
+	}
 
 	
  	}
+	function comprobarMaxFecha(){
+		$sql = "SELECT MAX(Fecha) FROM PARTIDO WHERE (Disputado = '1') && (Grupo_Letra = '$this->Letra')";
+		
+		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
+			return 'No existe en la base de datos'; // 
+		} else {            
+			$result = $resultado->fetch_array();	
+			return $result;
+		}
+	}
+
 
 ?>

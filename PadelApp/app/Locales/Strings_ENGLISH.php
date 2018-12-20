@@ -393,7 +393,8 @@ array(
 	'Tabla de notificaciones'=>'Notification table',
 	'Formulario de inserción de notificaciones'=>'Notification insertion form',
 	'IdNotificacion'=>'Notification',
-	'Tabla de borrado de notificación'=>'Notification erasure table'
+	'Tabla de borrado de notificación'=>'Notification erasure table',
+	'Se encuentran todos los partidos disputados'=>'All matches are contested'
 	
 	)
 ;

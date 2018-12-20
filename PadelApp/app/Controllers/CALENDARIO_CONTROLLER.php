@@ -76,7 +76,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			
 			//Añadir  reserva
 			
-			$USUARIO = new USUARIO_MODEL('admin','','','','','','','');
+			$USUARIO = new USUARIO_MODEL('admin','','','','','','','','');
 			$dniAdmin = $USUARIO->obtenerDni();
 			$RESERVA = new RESERVA_MODEL($dniAdmin,'',$_REQUEST['Fecha'],$_REQUEST['Hora']);
 			$respuesta = $RESERVA->RESERVACAMP();

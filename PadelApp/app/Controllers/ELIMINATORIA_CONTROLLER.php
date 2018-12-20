@@ -59,6 +59,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			
 			//AÑADIR FECHA FIN DE LA PRIMERA FASE EN LA CATEGORIA Y PERMITIR QUE SE GENERE CUANDO SE PASE
 			//echo $numGrupos;
+			
 				$Fase ="Cuartos";
 				$IdCampeonato = $_REQUEST['IdCampeonato'];
 				$Tipo = $_REQUEST['Tipo'];
