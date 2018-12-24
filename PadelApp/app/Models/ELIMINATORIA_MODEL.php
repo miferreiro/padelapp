@@ -8,14 +8,15 @@ class ELIMINATORIA_MODEL{
 	var $Fase;
 	var $Letra;
 	var $NumEnfrentamiento;
-	var $Fecha;
-	var $Hora;
-	var $ParejaGanadora;
-	var $ParejaPerdedora;
-	var $Disputado;
+	var $NumPareja;
+	var $Resultado;
+	var $EstadoPropuesta;
+	var $ResultadoSet1;
+	var $ResultadoSet2;
+	var $ResultadoSet3;
 	var $mysqli; 
 
-	function __construct($IdCampeonato,$Tipo,$Nivel,$Fase,$Letra,$NumEnfrentamiento,$Fecha,$Hora,$ParejaGanadora,$ParejaPerdedora,$Disputado) {
+	function __construct($IdCampeonato,$Tipo,$Nivel,$Fase,$Letra,$NumEnfrentamiento,$NumPareja,$ResultadoSet1,$ResultadoSet2,$ResultadoSet3,$EstadoPropuesta) {
 
 		$this->IdCampeonato = $IdCampeonato;
 		$this->Tipo = $Tipo;
@@ -23,41 +24,38 @@ class ELIMINATORIA_MODEL{
 		$this->Fase = $Fase;
 		$this->Letra = $Letra;
 		$this->NumEnfrentamiento = $NumEnfrentamiento;
-		$this->Fecha = $Fecha;
-		$this->Hora = $Hora;
-		$this->ParejaGanadora = $ParejaGanadora;
-		$this->ParejaPerdedora = $ParejaPerdedora;
-		$this->Disputado = $Disputado;
-		
+		$this->NumPareja = $NumPareja;
+		$this->ResultadoSet1 = $ResultadoSet1;		
+		$this->ResultadoSet2 = $ResultadoSet2;		
+		$this->ResultadoSet3 = $ResultadoSet3;
+		$this->EstadoPropuesta = $EstadoPropuesta;
 		include_once '../Functions/BdAdmin.php';
 		$this->mysqli = ConectarBD();
 
 	} 
-
-
-
 	function ADD() {
-		if ( ( $this->IdCampeonato <> '' ) &&  ( $this->Tipo <> '' ) && ( $this->Nivel <> '' ) && ( $this->Fase <> '' ) && ( $this->Letra <> '' )  && ( $this->NumEnfrentamiento <> '' )) {         
+		if ( ( $this->IdCampeonato <> '' ) &&  ( $this->Tipo <> '' ) && ( $this->Nivel <> '' ) && ( $this->Fase <> '' ) && ( $this->Letra <> '' )&& ( $this->NumEnfrentamiento <> '' )
+		   && ( $this->NumPareja <> '' )) {         
 	
-			$sql = "SELECT * FROM ELIMINATORIAS WHERE (IdCampeonato = '$this->IdCampeonato') && (Tipo = '$this->Tipo') && (Nivel = '$this->Nivel') && (Fase ='$this->Fase')&& (Letra ='$this->Letra') && (NumEnfrentamiento = '$this->NumEnfrentamiento')";
+			$sql = "SELECT * FROM eliminatorias WHERE (IdCampeonato = '$this->IdCampeonato') && (Tipo = '$this->Tipo') && (Nivel = '$this->Nivel') && (Fase ='$this->Fase') && (Letra ='$this->Letra')&& (NumEnfrentamiento = '$this->NumEnfrentamiento') && (NumPareja = '$this->NumPareja')";
 
 			if ( !$result = $this->mysqli->query( $sql ) ) { 
 				return 'Error en la inserción'; 
 			} else { 
 				if ( $result->num_rows == 0 ) { 
-				
-							$sql = "INSERT INTO ELIMINATORIAS (
+
+							$sql = "INSERT INTO eliminatorias (
 									IdCampeonato,
 									Tipo,
 									Nivel,
 									Fase,
 									Letra,
 									NumEnfrentamiento,
-									Fecha,
-									Hora,
-									ParejaGanadora,
-									ParejaPerdedora,
-									Disputado
+									NumPareja,
+									ResultadoSet1,
+									ResultadoSet2,
+									ResultadoSet3,
+									EstadoPropuesta
 					             	) 
 								VALUES(
 								'$this->IdCampeonato',							
@@ -66,14 +64,12 @@ class ELIMINATORIA_MODEL{
 								'$this->Fase',
 								'$this->Letra',
 								'$this->NumEnfrentamiento',
+								'$this->NumPareja',
 								NULL,
 								NULL,
 								NULL,
-								NULL,
-								0
+								'0'
 								)";					
-				echo $sql;
-				echo '<br>';		
 					
 					if ( !$this->mysqli->query( $sql )) { 
 						return 'Error en la inserción';
@@ -81,19 +77,211 @@ class ELIMINATORIA_MODEL{
 						return 'Inserción realizada con éxito'; 				
 					}	
 				}else{
-					return 'Error en la inserción';
+						return 'Error en la insercion';
 				}
 			}
 		} else { 
 			return 'Error en la inserción';
 		}
 	} 
-    
+	function EDIT() {
+		
+		$sql = 
+		"SELECT * FROM ELIMINATORIA 
+		WHERE  
+		(IdCampeonato = '$this->IdCampeonato') && (Tipo = '$this->Tipo') && (Nivel = '$this->Nivel') && (Letra = '$this->Letra') 
+		&& (NumEnfrentamiento = '$this->NumEnfrentamiento') && (NumPareja = '$this->NumPareja') 
+		
+		";
 	
-	
-	
+		$result = $this->mysqli->query( $sql );
 
-	
- 	}
+		if ( $result->num_rows == 1 ) {
 
+			$sql = "UPDATE ELIMINATORIA SET 
+					IdCampeonato = '$this->IdCampeonato',
+					Tipo='$this->Tipo',
+					Nivel='$this->Nivel',
+					Fase='$this->Fase'
+					Letra='$this->Letra',
+					NumEnfrentamiento='$this->NumEnfrentamiento',
+					NumPareja = '$this->NumPareja',
+					ResultadoSet1 = '$this->ResultadoSet1',
+					ResultadoSet2 = '$this->ResultadoSet2',
+					ResultadoSet3 = '$this->ResultadoSet3',
+					EstadoPropuesta = '$this->EstadoPropuesta'
+				WHERE (IdCampeonato = '$this->IdCampeonato') && (Tipo = '$this->Tipo') && (Nivel = '$this->Nivel') && (Letra = '$this->Letra') 
+				&& (NumEnfrentamiento = '$this->NumEnfrentamiento') && (NumPareja = '$this->NumPareja')
+				";
+
+			if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
+				return 'Error en la modificación';
+			} else {
+				return 'Modificado correctamente';
+				}
+			} 
+		else {
+			return 'No existe en la base de datos';
+		}
+	}
+	function ganador($ResultadoSet1Par1,$ResultadoSet2Par1,$ResultadoSet3Par1,$ResultadoSet1Par2,$ResultadoSet2Par2,$ResultadoSet3Par2,$NumPareja1){
+		$countPar1=0;
+		$countPar2=0;
+		if($ResultadoSet1Par1>$ResultadoSet1Par2){
+			$countPar1++;
+		}else{
+			$countPar2++;
+		}
+		if($ResultadoSet2Par1>$ResultadoSet2Par2){
+			$countPar1++;
+		}else{
+			$countPar2++;
+		}
+		if($ResultadoSet3Par1!=0 || $ResultadoSet3Par2!=0){
+			
+		if($ResultadoSet3Par1>$ResultadoSet3Par2){
+			$countPar1++;
+		}else{
+			$countPar2++;
+		}
+		}
+
+		if($countPar1>$countPar2){
+			$sql = "UPDATE PARTIDO SET
+					ParejaGanadora = '$NumPareja1',
+					ParejaPerdedora = '$this->NumPareja',
+					Disputado = '1'
+				WHERE (IdCampeonato = '$this->IdCampeonato') && (Tipo = '$this->Tipo') && (Nivel = '$this->Nivel') && (Grupo_Letra = '$this->Letra') && (NumEnfrentamiento = '$this->NumEnfrentamiento')
+				";
+
+			if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
+				return 'Error en la modificación';
+			} else { 
+				return 'Modificado correctamente';
+			}
+		}else{
+			$sql = "UPDATE PARTIDO SET 
+					ParejaGanadora = '$this->NumPareja',
+					ParejaPerdedora = '$NumPareja1',
+					Disputado = '1'
+				WHERE (IdCampeonato = '$this->IdCampeonato') && (Tipo = '$this->Tipo') && (Nivel = '$this->Nivel') && (Grupo_Letra = '$this->Letra') && (NumEnfrentamiento = '$this->NumEnfrentamiento')
+				";
+
+			if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
+				return 'Error en la modificación';
+			} else { 
+				return 'Modificado correctamente';
+			}
+		}
+	}
+function semis(){
+	
+				}
+function finalistas(){
+	$sql= "SELECT ParejaGanadora FROM PARTIDO WHERE (IdCampeonato = '$this->IdCampeonato') && (Tipo = '$this->Tipo') && (Nivel = '$this->Nivel') && (Grupo_Letra = '$this->Letra') && (NumEnfrentamiento = '$this->NumEnfrentamiento')";
+	$result=$this->mysqli->query( $sql );
+	$resultado=$result->fetch_array();
+	$finalista1=$resultado['ParejaGanadora'];
+	$sql= "SELECT DISTINCT NumEnfrentamiento FROM `eliminatorias` WHERE Fase='Semifinales' && NumEnfrentamiento<>'$this->NumEnfrentamiento'";
+	$result=$this->mysqli->query( $sql );
+	$resultado=$result->fetch_array();
+	$NumEm=$resultado['NumEnfrentamiento'];
+	$sql= "SELECT ParejaGanadora FROM PARTIDO WHERE (IdCampeonato = '$this->IdCampeonato') && (Tipo = '$this->Tipo') && (Nivel = '$this->Nivel') && (Grupo_Letra = '$this->Letra') && (NumEnfrentamiento = '$NumEm')";
+	$result=$this->mysqli->query( $sql );
+	$resultado=$result->fetch_array();
+	$finalista2=$resultado['ParejaGanadora'];
+		
+		$sql = "SELECT MAX(NumEnfrentamiento) AS NumEnfrentamiento FROM PARTIDO";
+		
+		$resultado = $this->mysqli->query( $sql ); 
+		  
+			$result = $resultado->fetch_array();	
+			$MaxNumEn= $result['NumEnfrentamiento']+1;
+			echo $MaxNumEn;
+			$sql="INSERT INTO PARTIDO(
+									IdCampeonato,
+									Tipo,
+									Nivel,
+									Grupo_Letra,
+									NumEnfrentamiento,
+									Fecha,
+									Hora,
+									ParejaGanadora,
+									ParejaPerdedora,
+									Disputado
+					             	) 
+								VALUES(
+								'$this->IdCampeonato',
+								'$this->Tipo',
+								'$this->Nivel',
+								'$this->Letra',
+								'$MaxNumEn',
+								NULL,
+								NULL,
+								NULL,
+								NULL,
+								0
+								)";
+				$result = $this->mysqli->query( $sql );	
+			$sql="INSERT INTO ELIMINATORIAS(
+									IdCampeonato,
+									Tipo,
+									Nivel,
+									Letra,
+									NumEnfrentamiento,
+									NumPareja,
+									Fase,
+									ResultadoSet1,
+									ResultadoSet2,
+									ResultadoSet3,
+									EstadoPropuesta
+					             	) 
+								VALUES(
+								'$this->IdCampeonato',
+								'$this->Tipo',
+								'$this->Nivel',
+								'$this->Letra',
+								'$MaxNumEn',
+								'$finalista1',
+								'Final',
+								NULL,
+								NULL,
+								NULL,
+								0
+								)";
+			$result = $this->mysqli->query( $sql );	
+			$sql="INSERT INTO ELIMINATORIAS(
+									IdCampeonato,
+									Tipo,
+									Nivel,
+									Letra,
+									NumEnfrentamiento,
+									NumPareja,
+									Fase,
+									ResultadoSet1,
+									ResultadoSet2,
+									ResultadoSet3,
+									EstadoPropuesta
+					             	) 
+								VALUES(
+								'$this->IdCampeonato',		
+								'$this->Tipo',
+								'$this->Nivel',
+								'$this->Letra',
+								'$MaxNumEn',
+								'$finalista2',
+								'Final',
+								NULL,
+								NULL,
+								NULL,
+								0
+								)";
+			if(!$result = $this->mysqli->query( $sql )){
+				return 'Error en la inserción';
+			}else{
+				return 'Inserción realizada con éxito';
+			}
+			
+}	
+}
 ?>
