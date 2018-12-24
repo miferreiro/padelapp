@@ -116,70 +116,54 @@ class PARTIDO_MODEL{
 			return $resultado;
 		}
 	} 
-	function ELIMINATORIAS(){
+	function CUARTOS(){
 	  $sql="SELECT * FROM `partido` WHERE IdCampeonato = '$this->IdCampeonato' && Tipo = '$this->Tipo' && Nivel='$this->Nivel' && Grupo_Letra = '$this->Letra' && Disputado = 0";
 		$result = $this->mysqli->query( $sql );	
 		if ( $result->num_rows == 0 ) {
-		$sql="SELECT * FROM `clasificacion` WHERE IdCampeonato='$this->IdCampeonato'&& Tipo='$this->Tipo' && Nivel='$this->Nivel' GROUP BY IdCampeonato,Tipo,Nivel,Letra";
+		$sql="SELECT * FROM `clasificacion` WHERE IdCampeonato='$this->IdCampeonato'&& Tipo='$this->Tipo' && Nivel='$this->Nivel' && Letra='$this->Letra' LIMIT 8";
 			$result = $this->mysqli->query( $sql );	
 			$grupos = array();
 			$q = 0;
-			while ( $resultado = mysqli_fetch_array( $datos ) ) {				
+			while ( $resultado = mysqli_fetch_array( $result ) ) {				
 					$grupos[$q] = $resultado['NumPareja'];
 					$q++;
 
 			}
-			$sql="INSERT INTO ELIMINATORIAS(
-									IdCampeonato,
-									Tipo,
-									Nivel,
-									Letra,
-									NumEnfrentamiento,
-									NumPareja,
-									Fase,
-									ResultadoSet1,
-									ResultadoSet2,
-									ResultadoSet3
-					             	) 
-								VALUES(
-								'$this->IdCampeonato',							
-								'$this->Tipo',
-								'$this->Nivel',
-								'A',
-								'1',
-								'$grupos[0]',
-								'Cuartos',
-								NULL,
-								NULL,
-								NULL
-								)";
-			$result = $this->mysqli->query( $sql );	
-			$sql="INSERT INTO ELIMINATORIAS(
-									IdCampeonato,
-									Tipo,
-									Nivel,
-									Letra,
-									NumEnfrentamiento,
-									NumPareja,
-									Fase,
-									ResultadoSet1,
-									ResultadoSet2,
-									ResultadoSet3
-					             	) 
-								VALUES(
-								'$this->IdCampeonato',							
-								'$this->Tipo',
-								'$this->Nivel',
-								'H',
-								'1',
-								'$grupos[7]',
-								'Cuartos',
-								NULL,
-								NULL,
-								NULL
-								)";
-			$result = $this->mysqli->query( $sql );	
+			$j=$q-1;
+			for($i=0;$i<=$j;$i++){
 			
+		$sql = "SELECT MAX(NumEnfrentamiento) AS NumEnfrentamiento FROM PARTIDO";
+		
+		$resultado = $this->mysqli->query( $sql ); 
+		  
+			$result = $resultado->fetch_array();	
+			$MaxNumEn= $result['NumEnfrentamiento']+1;
+			echo $MaxNumEn;
+			$sql="INSERT INTO PARTIDO(
+									IdCampeonato,
+									Tipo,
+									Nivel,
+									Grupo_Letra,
+									NumEnfrentamiento,
+									Fecha,
+									Hora,
+									ParejaGanadora,
+									ParejaPerdedora,
+									Disputado
+					             	) 
+								VALUES(
+								'$this->IdCampeonato',
+								'$this->Tipo',
+								'$this->Nivel',
+								'$this->Letra',
+								'$MaxNumEn',
+								NULL,
+								NULL,
+								NULL,
+								NULL,
+								0
+								)";
+				$result = $this->mysqli->query( $sql );	
 			$sql="INSERT INTO ELIMINATORIAS(
 									IdCampeonato,
 									Tipo,
@@ -190,19 +174,21 @@ class PARTIDO_MODEL{
 									Fase,
 									ResultadoSet1,
 									ResultadoSet2,
-									ResultadoSet3
+									ResultadoSet3,
+									EstadoPropuesta
 					             	) 
 								VALUES(
-								'$this->IdCampeonato',							
+								'$this->IdCampeonato',
 								'$this->Tipo',
 								'$this->Nivel',
-								'B',
-								'2',
-								'$grupos[1]',
+								'$this->Letra',
+								'$MaxNumEn',
+								'$grupos[$i]',
 								'Cuartos',
 								NULL,
 								NULL,
-								NULL
+								NULL,
+								0
 								)";
 			$result = $this->mysqli->query( $sql );	
 			$sql="INSERT INTO ELIMINATORIAS(
@@ -215,125 +201,28 @@ class PARTIDO_MODEL{
 									Fase,
 									ResultadoSet1,
 									ResultadoSet2,
-									ResultadoSet3
+									ResultadoSet3,
+									EstadoPropuesta
 					             	) 
 								VALUES(
-								'$this->IdCampeonato',							
+								'$this->IdCampeonato',		
 								'$this->Tipo',
 								'$this->Nivel',
-								'G',
-								'2',
-								'$grupos[6]',
+								'$this->Letra',
+								'$MaxNumEn',
+								'$grupos[$j]',
 								'Cuartos',
 								NULL,
 								NULL,
-								NULL
+								NULL,
+								0
 								)";
 			$result = $this->mysqli->query( $sql );
-			
-			
-			$sql="INSERT INTO ELIMINATORIAS(
-									IdCampeonato,
-									Tipo,
-									Nivel,
-									Letra,
-									NumEnfrentamiento,
-									NumPareja,
-									Fase,
-									ResultadoSet1,
-									ResultadoSet2,
-									ResultadoSet3
-					             	) 
-								VALUES(
-								'$this->IdCampeonato',							
-								'$this->Tipo',
-								'$this->Nivel',
-								'C',
-								'3',
-								'$grupos[2]',
-								'Cuartos',
-								NULL,
-								NULL,
-								NULL
-								)";
-			$result = $this->mysqli->query( $sql );	
-			$sql="INSERT INTO ELIMINATORIAS(
-									IdCampeonato,
-									Tipo,
-									Nivel,
-									Letra,
-									NumEnfrentamiento,
-									NumPareja,
-									Fase,
-									ResultadoSet1,
-									ResultadoSet2,
-									ResultadoSet3
-					             	) 
-								VALUES(
-								'$this->IdCampeonato',							
-								'$this->Tipo',
-								'$this->Nivel',
-								'F',
-								'3',
-								'$grupos[5]',
-								'Cuartos',
-								NULL,
-								NULL,
-								NULL
-								)";
-			$result = $this->mysqli->query( $sql );
-			
-			
-		    $sql="INSERT INTO ELIMINATORIAS(
-									IdCampeonato,
-									Tipo,
-									Nivel,
-									Letra,
-									NumEnfrentamiento,
-									NumPareja,
-									Fase,
-									ResultadoSet1,
-									ResultadoSet2,
-									ResultadoSet3
-					             	) 
-								VALUES(
-								'$this->IdCampeonato',							
-								'$this->Tipo',
-								'$this->Nivel',
-								'D',
-								'4',
-								'$grupos[3]',
-								'Cuartos',
-								NULL,
-								NULL,
-								NULL
-								)";
-			$result = $this->mysqli->query( $sql );	
-			$sql="INSERT INTO ELIMINATORIAS(
-									IdCampeonato,
-									Tipo,
-									Nivel,
-									Letra,
-									NumEnfrentamiento,
-									NumPareja,
-									Fase,
-									ResultadoSet1,
-									ResultadoSet2,
-									ResultadoSet3
-					             	) 
-								VALUES(
-								'$this->IdCampeonato',							
-								'$this->Tipo',
-								'$this->Nivel',
-								'E',
-								'4',
-								'$grupos[4]',
-								'Cuartos',
-								NULL,
-								NULL,
-								NULL
-								)";
-			$result = $this->mysqli->query( $sql );
+				$j--;
+			}
+			return 'Cuartos generados';
+		}else{
+			return 'No están todos los partidos disputados';
 		}
 	}
 	function DELETE() {
@@ -477,10 +366,10 @@ class PARTIDO_MODEL{
 			return 'No existe en la base de datos';
 		}
 	}  	
-	function getLastNumEnfrentamiento(){
-		if (( $this->IdCampeonato <> '' ) &&  ( $this->Tipo <> '' ) && ( $this->Nivel <> '' ) && ( $this->Letra <> '' )){
+	function getLastFecha(){
+		
 			
-			$sql = "SELECT MAX(NumEnfrentamiento) WHERE (IdCampeonato = '$this->IdCampeonato') && (Tipo = '$this->Tipo') && (Nivel = '$this->Nivel')  && (Grupo_Letra = '$this->Letra') FROM PARTIDO";
+			$sql = "SELECT MAX(Fecha) FROM PARTIDO";
 			
 			if(!$this->mysqli->query( $sql )){
 				return 'Error en la busqueda';
@@ -493,9 +382,7 @@ class PARTIDO_MODEL{
 					return($resul[0]);
 				}
 			}
-		}else { 
-			return 'Error en la busqueda';
-		}
+		
 		
 	}
 	function comprobarFaseFinalizada(){
@@ -511,17 +398,7 @@ class PARTIDO_MODEL{
 	}
 
 	
- 	}
-	function comprobarMaxFecha(){
-		$sql = "SELECT MAX(Fecha) FROM PARTIDO WHERE (Disputado = '1') && (Grupo_Letra = '$this->Letra')";
-		
-		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
-			return 'No existe en la base de datos'; // 
-		} else {            
-			$result = $resultado->fetch_array();	
-			return $result;
-		}
-	}
 
+}
 
 ?>

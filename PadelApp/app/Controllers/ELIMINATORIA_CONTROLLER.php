@@ -10,6 +10,7 @@ if (!IsAuthenticated()){
 include '../Models/CAMPEONATO_MODEL.php'; 
 include '../Models/ELIMINATORIA_MODEL.php';
 include '../Models/ENFRENELIMINATORIA_MODEL.php';
+include '../Models/PARTIDO_MODEL.php';
 
 include '../Models/CATEGORIA_MODEL.php'; 
 include '../Models/GRUPO_MODEL.php'; 
@@ -47,84 +48,15 @@ switch ( $_REQUEST[ 'action' ] ) {
 	
 
 		if($_SESSION['tipo'] == 'Admin'){
-
-			$IdCampeonato = $_REQUEST['IdCampeonato'];
-			$Tipo = $_REQUEST['Tipo'];
-			$Nivel = $_REQUEST['Nivel'];
-			$Letra = "";
- 			
 			
-			$GRUPO= new GRUPO_MODEL($IdCampeonato, $Tipo,$Nivel,$Letra);
-			$numGrupos = $GRUPO->numGrupos();
+			$PARTIDO= new PARTIDO_MODEL($_REQUEST['IdCampeonato'],$_REQUEST['Tipo'],$_REQUEST['Nivel'],$_REQUEST['Letra'],'','','','','','');
+			if(date("Y-m-d")>$PARTIDO->getLastFecha()){
 			
-			//AÑADIR FECHA FIN DE LA PRIMERA FASE EN LA CATEGORIA Y PERMITIR QUE SE GENERE CUANDO SE PASE
-			//echo $numGrupos;
-			
-				$Fase ="Cuartos";
-				$IdCampeonato = $_REQUEST['IdCampeonato'];
-				$Tipo = $_REQUEST['Tipo'];
-				$Nivel = $_REQUEST['Nivel'];
-				$enfrentamientos = array();
-				
-				for($i = 0; $i < $numGrupos; $i++){
-
-					
-					if($i == 0) $Letra = 'A';
-					else if($i == 1) $Letra = 'B';
-					else if($i == 2) $Letra = 'C';
-					else if($i == 3) $Letra = 'D';
-					else if($i == 4) $Letra = 'E';
-					else if($i == 5) $Letra = 'F';
-					else if($i == 6) $Letra = 'G';
-					else if($i == 7) $Letra = 'H';
-
-					$GRUPO2= new GRUPO_MODEL($IdCampeonato, $Tipo,$Nivel,$Letra);
-					$listaClasificacion = $GRUPO2 ->Clasif();
-					
-					//Construyo el array
-					$numParejas = 0;
-					$parejas = array();
-					$puntos= array();
-					while ( $fila = mysqli_fetch_array( $listaClasificacion ) ) {		
-						$parejas[$numParejas] = $fila['NumPareja'];
-						$numParejas++;
-					}
-										
-	
-				$NumEnfrentamiento = 1;				
-				$ELIMINATORIA = new ELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$Letra,$NumEnfrentamiento,NULL,NULL,NULL,NULL,'0');
-				$mensaje = $ELIMINATORIA->ADD();
-				$ENFRENELIMINATORIA = new ENFRENELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$Letra,$NumEnfrentamiento,$parejas[0],NULL,NULL,NULL,'0');
-				$mensaje = $ENFRENELIMINATORIA->ADD();
-				$ENFRENELIMINATORIA = new ENFRENELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$Letra,$NumEnfrentamiento,$parejas[7],NULL,NULL,NULL,'0');
-				$mensaje = $ENFRENELIMINATORIA->ADD();
-				$NumEnfrentamiento = $NumEnfrentamiento + 1;
-
-				$ELIMINATORIA = new ELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$Letra,$NumEnfrentamiento,NULL,NULL,NULL,NULL,'0');
-				$mensaje = $ELIMINATORIA->ADD();
-				$ENFRENELIMINATORIA = new ENFRENELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$Letra,$NumEnfrentamiento,$parejas[1],NULL,NULL,NULL,'0');
-				$mensaje = $ENFRENELIMINATORIA->ADD();
-				$ENFRENELIMINATORIA = new ENFRENELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$Letra,$NumEnfrentamiento,$parejas[6],NULL,NULL,NULL,'0');
-				$mensaje = $ENFRENELIMINATORIA->ADD();
-				$NumEnfrentamiento = $NumEnfrentamiento + 1;
-	
-				$ELIMINATORIA = new ELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$Letra,$NumEnfrentamiento,NULL,NULL,NULL,NULL,'0');
-				$mensaje = $ELIMINATORIA->ADD();
-				$ENFRENELIMINATORIA = new ENFRENELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$Letra,$NumEnfrentamiento,$parejas[2],NULL,NULL,NULL,'0');
-				$mensaje = $ENFRENELIMINATORIA->ADD();
-				$ENFRENELIMINATORIA = new ENFRENELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$Letra,$NumEnfrentamiento,$parejas[5],NULL,NULL,NULL,'0');
-				$mensaje = $ENFRENELIMINATORIA->ADD();
-				$NumEnfrentamiento = $NumEnfrentamiento + 1;
-	
-				$ELIMINATORIA = new ELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$Letra,$NumEnfrentamiento,NULL,NULL,NULL,NULL,'0');
-				$mensaje = $ELIMINATORIA->ADD();
-				$ENFRENELIMINATORIA = new ENFRENELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$Letra,$NumEnfrentamiento,$parejas[3],NULL,NULL,NULL,'0');
-				$mensaje = $ENFRENELIMINATORIA->ADD();
-				$ENFRENELIMINATORIA = new ENFRENELIMINATORIA_MODEL($IdCampeonato,$Tipo,$Nivel,$Fase,$Letra,$NumEnfrentamiento,$parejas[4],NULL,NULL,NULL,'0');
-				$mensaje = $ENFRENELIMINATORIA->ADD();
-					
-					
-				}						
+			$respuesta=$PARTIDO->CUARTOS();
+				new MESSAGE( $respuesta, '../Controllers/CAMPEONATO_CATEGORIA_CONTROLLER.php?IdCampeonato=' . $_REQUEST['IdCampeonato'] . '&Tipo='.$_REQUEST['Tipo']. '&Nivel='.$_REQUEST['Nivel']);	
+			}else{  
+			new MESSAGE( 'Debe esperar a que finalice la fase de grupos', '../Controllers/CAMPEONATO_CATEGORIA_CONTROLLER.php?IdCampeonato=' . $_REQUEST['IdCampeonato'] . '&Tipo='.$_REQUEST['Tipo']. '&Nivel='.$_REQUEST['Nivel']);			
+		}
 					
 	
 		}else{  
