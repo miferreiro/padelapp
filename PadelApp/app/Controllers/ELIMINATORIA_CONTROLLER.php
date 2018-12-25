@@ -9,7 +9,6 @@ if (!IsAuthenticated()){
 
 include '../Models/CAMPEONATO_MODEL.php'; 
 include '../Models/ELIMINATORIA_MODEL.php';
-include '../Models/ELIMINATORIA_MODEL.php';
 include '../Models/PARTIDO_MODEL.php';
 
 include '../Models/CATEGORIA_MODEL.php'; 
@@ -65,7 +64,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 	
 		break;
 	
-		case "EDITAR":
+	case "EDITAR":
 	
 		if ( !$_POST ) {
 
@@ -86,9 +85,22 @@ switch ( $_REQUEST[ 'action' ] ) {
 				$ELIMINATORIA2 = new ELIMINATORIA_MODEL($_REQUEST['IdCampeonato'],$_REQUEST['Tipo'],$_REQUEST['Nivel'],$_REQUEST['Letra'],$_REQUEST['NumEnfrentamiento'],$_REQUEST['pareja2'],$_REQUEST['ResultadoSet1Par2'],$_REQUEST['ResultadoSet2Par2'],$_REQUEST['ResultadoSet3Par2'],'');
 				$respuesta2 = $ELIMINATORIA2->EDIT();
 			    $ELIMINATORIA2->ganador($_REQUEST['ResultadoSet1Par1'],$_REQUEST['ResultadoSet2Par1'],$_REQUEST['ResultadoSet3Par1'],$_REQUEST['ResultadoSet1Par2'],$_REQUEST['ResultadoSet2Par2'],$_REQUEST['ResultadoSet3Par2'],$_REQUEST['pareja1']);
+			
+				$PARTIDO = new PARTIDO_MODEL($_REQUEST['IdCampeonato'],$_REQUEST['Tipo'],$_REQUEST['Nivel'],$_REQUEST['Letra'],'','','','','','');
+				$res=$PARTIDO->comprobarFaseFinalizada();
+				if($res==0){
+					if($_REQUEST['Fase']=='Cuartos'){
+						$ELIMINATORIASEMIS = new ELIMINATORIA_MODEL($_REQUEST['IdCampeonato'],$_REQUEST['Tipo'],$_REQUEST['Nivel'],$_REQUEST['Letra'],$_REQUEST['NumEnfrentamiento'],'','','','','');
+						$ELIMINATORIASEMIS->semis();
+					}
+					if($_REQUEST['Fase']=='Semifinales'){
+						$ELIMINATORIAFINAL = new ELIMINATORIA_MODEL($_REQUEST['IdCampeonato'],$_REQUEST['Tipo'],$_REQUEST['Nivel'],$_REQUEST['Letra'],$_REQUEST['NumEnfrentamiento'],'','','','','');
+						$ELIMINATORIAFINAL->finalistas();
+					}
+				}
 			new MESSAGE( $respuesta, '../Controllers/GRUPO_CONTROLLER.php?IdCampeonato=' . $_REQUEST['IdCampeonato'] . '&Tipo='.$_REQUEST['Tipo']. '&Nivel='.$_REQUEST['Nivel'] . '&Letra='.$_REQUEST['Letra'] . '&action=TABLA');
 		}
-		break;
+	break;
 		
 	case "CUADRO":
 		if($_SESSION['tipo'] == 'Admin'){
