@@ -138,7 +138,6 @@ class PARTIDO_MODEL{
 		  
 			$result = $resultado->fetch_array();	
 			$MaxNumEn= $result['NumEnfrentamiento']+1;
-			echo $MaxNumEn;
 			$sql="INSERT INTO PARTIDO(
 									IdCampeonato,
 									Tipo,
@@ -391,9 +390,12 @@ class PARTIDO_MODEL{
 		
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'Se encuentran todos los partidos disputados'; // 
-		} else {            
-			$result = $resultado->fetch_array();	
-			return $result;
+		} else {     
+			if ( $resultado->num_rows == 0 ) {
+					return 0;
+			}else{
+					return 1;
+			}
 		}
 	}
 
