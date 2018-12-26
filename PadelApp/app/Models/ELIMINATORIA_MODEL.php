@@ -360,7 +360,8 @@ function semis(){
 								NULL,
 								0
 								)";
-					$result = $this->mysqli->query( $sql );	
+					$result = $this->mysqli->query( $sql );
+	return "Semis generadas correctamente";
 			}
 function finalistas(){
 	$sql= "SELECT ParejaGanadora FROM PARTIDO WHERE (IdCampeonato = '$this->IdCampeonato') && (Tipo = '$this->Tipo') && (Nivel = '$this->Nivel') && (Grupo_Letra = '$this->Letra') && (NumEnfrentamiento = '$this->NumEnfrentamiento')";

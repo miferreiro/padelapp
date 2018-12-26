@@ -389,14 +389,13 @@ function comprobarFechaPartido(){
 			
 			$sql = "SELECT Fecha FROM PARTIDO WHERE (IdCampeonato = '$this->IdCampeonato') && (Tipo = '$this->Tipo') && (Nivel = '$this->Nivel') && (Grupo_Letra = '$this->Letra') && (NumEnfrentamiento = '$this->NumEnfrentamiento')";
 			
-			if(!$this->mysqli->query( $sql )){
+			if($resultado = $this->mysqli->query( $sql )){
 				return 'Error en la busqueda';
 			}else{
-				$resultado = $this->mysqli->query( $sql );
-				$resul = $resultado->fetch_array();
-				if($resul == NULL){
+				if( $resultado->num_rows == 0){
 					return  date("Y-m-d");
 				}else{
+					$resul = $resultado->fetch_array();
 					return $resul["Fecha"];
 				}
 			}
