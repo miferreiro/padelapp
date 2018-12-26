@@ -361,7 +361,7 @@ function semis(){
 								0
 								)";
 					$result = $this->mysqli->query( $sql );
-	return "Semis generadas correctamente";
+	return "Semifinales generadas correctamente";
 			}
 function finalistas(){
 	$sql= "SELECT ParejaGanadora FROM PARTIDO WHERE (IdCampeonato = '$this->IdCampeonato') && (Tipo = '$this->Tipo') && (Nivel = '$this->Nivel') && (Grupo_Letra = '$this->Letra') && (NumEnfrentamiento = '$this->NumEnfrentamiento')";
@@ -465,7 +465,7 @@ function finalistas(){
 			if(!$result = $this->mysqli->query( $sql )){
 				return 'Error en la inserción';
 			}else{
-				return 'Inserción realizada con éxito';
+				return 'Finales generadas correctamente';
 			}
 			
 }

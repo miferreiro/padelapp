@@ -401,7 +401,9 @@ array(
 	'Cuartos'=>'Fourth',
 	'Semifinales'=>'Semifinals',
 	'Final'=>'Final',
-	'Fase'=>'Phase'
+	'Fase'=>'Phase',
+	'Semifinales generadas correctamente'=>'Semifinals generated correctly',
+	'Finales generadas correctamente'=>'Finales generadas correctamente'
 	
 	)
 ;

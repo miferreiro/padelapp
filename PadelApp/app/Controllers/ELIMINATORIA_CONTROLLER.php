@@ -77,7 +77,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			}
 		} else {
 			$PARTIDO = new PARTIDO_MODEL($_REQUEST['IdCampeonato'],$_REQUEST['Tipo'],$_REQUEST['Nivel'],$_REQUEST['Letra'],$_REQUEST['NumEnfrentamiento'],'','','','','');	
-			echo $PARTIDO->comprobarFechaPartido();
+			
 			   if($PARTIDO->comprobarFechaPartido()< date("Y-m-d")){
 			 
 				$ELIMINATORIA1 = new ELIMINATORIA_MODEL($_REQUEST['IdCampeonato'],$_REQUEST['Tipo'],$_REQUEST['Nivel'],$_REQUEST['Letra'],$_REQUEST['NumEnfrentamiento'],$_REQUEST['pareja1'],$_REQUEST['Fase'],$_REQUEST['ResultadoSet1Par1'],$_REQUEST['ResultadoSet2Par1'],$_REQUEST['ResultadoSet3Par1'],'');
@@ -90,14 +90,17 @@ switch ( $_REQUEST[ 'action' ] ) {
 		
 
 				$res=$PARTIDO->comprobarFaseFinalizada();
+				  
 				if($res==0){
+					
 					if($_REQUEST['Fase']=='Cuartos'){
 						$ELIMINATORIASEMIS = new ELIMINATORIA_MODEL($_REQUEST['IdCampeonato'],$_REQUEST['Tipo'],$_REQUEST['Nivel'],$_REQUEST['Letra'],$_REQUEST['NumEnfrentamiento'],'','','','','','');
+						
 						$respuesta=$ELIMINATORIASEMIS->semis();
 					}
 					if($_REQUEST['Fase']=='Semifinales'){
 						$ELIMINATORIAFINAL = new ELIMINATORIA_MODEL($_REQUEST['IdCampeonato'],$_REQUEST['Tipo'],$_REQUEST['Nivel'],$_REQUEST['Letra'],$_REQUEST['NumEnfrentamiento'],'','','','','','');
-						$ELIMINATORIAFINAL->finalistas();
+						$respuesta=$ELIMINATORIAFINAL->finalistas();
 					}
 				}
 			new MESSAGE( $respuesta, '../Controllers/ELIMINATORIA_CONTROLLER.php?IdCampeonato=' . $_REQUEST['IdCampeonato'] . '&Tipo='.$_REQUEST['Tipo']. '&Nivel='.$_REQUEST['Nivel'] . '&Letra='.$_REQUEST['Letra'] . '&action=CUADRO');

@@ -389,7 +389,7 @@ function comprobarFechaPartido(){
 			
 			$sql = "SELECT Fecha FROM PARTIDO WHERE (IdCampeonato = '$this->IdCampeonato') && (Tipo = '$this->Tipo') && (Nivel = '$this->Nivel') && (Grupo_Letra = '$this->Letra') && (NumEnfrentamiento = '$this->NumEnfrentamiento')";
 			
-			if($resultado = $this->mysqli->query( $sql )){
+			if(!$resultado = $this->mysqli->query( $sql )){
 				return 'Error en la busqueda';
 			}else{
 				if( $resultado->num_rows == 0){
@@ -404,7 +404,7 @@ function comprobarFechaPartido(){
 	}
 	function comprobarFaseFinalizada(){
 		
-		$sql = "SELECT * FROM PARTIDO WHERE (Disputado = '0') && (Grupo_Letra = '$this->Letra')";
+		$sql = "SELECT * FROM PARTIDO WHERE (Disputado = '0') && (Grupo_Letra = '$this->Letra') && (IdCampeonato = '$this->IdCampeonato') && (Tipo = '$this->Tipo') && (Nivel = '$this->Nivel')";
 		
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'Se encuentran todos los partidos disputados'; // 

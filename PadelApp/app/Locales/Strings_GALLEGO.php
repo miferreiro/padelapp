@@ -386,7 +386,9 @@ array(
 	'Cuartos'=>'Cuartos',
 	'Semifinales'=>'Semifinales',
 	'Final'=>'Final',
-	'Fase'=>'Fase'
+	'Fase'=>'Fase',
+	'Semifinales generadas correctamente'=>'Semifinales xeneradas correctamente',
+	'Finales generadas correctamente'=>'Finales generadas correctamente'
 	
 	)
 ;
