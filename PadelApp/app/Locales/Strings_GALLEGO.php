@@ -379,7 +379,14 @@ array(
 	'Formulario de inserción de notificaciones'=>'Formulario de inserción de notificacións',
 	'IdNotificacion'=>'Notificación',
 	'Tabla de borrado de notificación'=>'Tabla de borrado de notificación',
-	'Se encuentran todos los partidos disputados'=> 'Encontranse todos os partidos disputados'
+	'Se encuentran todos los partidos disputados'=> 'Encontranse todos os partidos disputados',
+	'Debe esperar a que finalice la fase de grupos'=>'Debe esperar a que finalice a fase de grupos',
+	'Cuartos generados'=>'Cuartos xenerados',
+	'No están todos los partidos disputados'=>'Non están todos os partidos disputados',
+	'Cuartos'=>'Cuartos',
+	'Semifinales'=>'Semifinales',
+	'Final'=>'Final',
+	'Fase'=>'Fase'
 	
 	)
 ;

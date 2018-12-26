@@ -235,12 +235,14 @@ $m=0;
 			</div>
 			
 		</div>
+		<div class="seccion" align="center">
 		<form action='../Controllers/GRUPO_CONTROLLER.php' method="get" align="center">
 							<input type="hidden" name="IdCampeonato" value="<?php echo $IdCampeonato?>" />
 							<input type="hidden" name="Tipo" value="<?php echo $Tipo?>" />
 							<input type="hidden" name="Nivel" value="<?php echo $Nivel?>" />
 				<button id ="buttonBien" type="submit"><img src="../Views/icon/back_big2.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>
+			</div>
 <?php
 		include '../Views/Footer.php';//incluimos el pie de la página
 		}
