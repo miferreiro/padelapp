@@ -84,7 +84,7 @@ class GRUPO_CATEGORIA_SHOWALL {
 							<input type="hidden" name="Tipo" value="<?php echo $fila['Tipo']; ?>">		
 							<input type="hidden" name="Nivel" value="<?php echo $fila['Nivel']; ?>">	
 							<input type="hidden" name="Letra" value="<?php echo $fila['Letra']; ?>">
-								<button id ="buttonBien" type="submit" name="action" value="GENERAR" ><img src="../Views/icon/calendario.png" alt="<?php echo $strings['Ver clasificación']?>" width="20" height="20"/></button>			
+								<button id ="buttonBien" type="submit" name="action" value="GENERAR" ><img src="../Views/icon/baseline_cached1.png" alt="<?php echo $strings['Ver clasificación']?>" width="20" height="20"/></button>			
 	
 						</form>
 						<form action="../Controllers/ELIMINATORIA_CONTROLLER.php" method="get" style="display:inline" >
@@ -92,7 +92,7 @@ class GRUPO_CATEGORIA_SHOWALL {
 							<input type="hidden" name="Tipo" value="<?php echo $fila['Tipo']; ?>">		
 							<input type="hidden" name="Nivel" value="<?php echo $fila['Nivel']; ?>">	
 							<input type="hidden" name="Letra" value="<?php echo $fila['Letra']; ?>">
-								<button id ="buttonBien" type="submit" name="action" value="CUADRO" ><img src="../Views/icon/exito.png" alt="<?php echo $strings['Ver clasificación']?>" width="20" height="20"/></button>			
+								<button id ="buttonBien" type="submit" name="action" value="CUADRO" ><img src="../Views/icon/calendario.png" alt="<?php echo $strings['Ver clasificación']?>" width="20" height="20"/></button>			
 	
 						</form>					
 				</tr>
