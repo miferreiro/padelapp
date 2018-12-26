@@ -381,7 +381,13 @@ array(
 	'Formulario de inserción de notificaciones'=>'Formulario de inserción de notificaciones',
 	'IdNotificacion'=>'Notificación',
 	'Tabla de borrado de notificación'=>'Tabla de borrado de notificación',
-	'Se encuentran todos los partidos disputados'=> 'Se encuentran todos los partidos disputados'
+	'Se encuentran todos los partidos disputados'=> 'Se encuentran todos los partidos disputados',
+	'Debe esperar a que finalice la fase de grupos'=>'Debe esperar a que finalice la fase de grupos',
+	'Cuartos generados'=>'Cuartos generados',
+	'No están todos los partidos disputados'=>'No están todos los partidos disputados',
+	'Cuartos'=>'Cuartos',
+	'Semifinales'=>'Semifinales',
+	'Final'=>'Final'
 	
 	
 	)

@@ -394,7 +394,13 @@ array(
 	'Formulario de inserción de notificaciones'=>'Notification insertion form',
 	'IdNotificacion'=>'Notification',
 	'Tabla de borrado de notificación'=>'Notification erasure table',
-	'Se encuentran todos los partidos disputados'=>'All matches are contested'
+	'Se encuentran todos los partidos disputados'=>'All matches are contested',
+	'Debe esperar a que finalice la fase de grupos'=>'He must wait until the group stage finishes',
+	'Cuartos generados'=>'Fourth generation',
+	'No están todos los partidos disputados'=>'Not all matches are contested',
+	'Cuartos'=>'Fourth',
+	'Semifinales'=>'Semifinals',
+	'Final'=>'Final'
 	
 	)
 ;
