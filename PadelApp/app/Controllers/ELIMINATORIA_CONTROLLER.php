@@ -76,6 +76,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 				new MESSAGE( 'El usuario no tiene los permisos necesarios','../Controllers/GRUPO_CONTROLLER.php?IdCampeonato=' . $_REQUEST['IdCampeonato'] . '&Tipo='.$_REQUEST['Tipo']. '&Nivel='.$_REQUEST['Nivel'] . '&Letra='.$_REQUEST['Letra'] . '&action=TABLA' );
 			}
 		} else {
+				$PARTIDO = new PARTIDO_MODEL($_REQUEST['IdCampeonato'],$_REQUEST['Tipo'],$_REQUEST['Nivel'],$_REQUEST['Letra'],$_REQUEST['NumEnfrentamiento'],'','','','','');
+			   if($PARTIDO->comprobarFechaPartido()< date("Y-m-d")){
+			 
 				$ELIMINATORIA1 = new ELIMINATORIA_MODEL($_REQUEST['IdCampeonato'],$_REQUEST['Tipo'],$_REQUEST['Nivel'],$_REQUEST['Letra'],$_REQUEST['NumEnfrentamiento'],$_REQUEST['pareja1'],$_REQUEST['Fase'],$_REQUEST['ResultadoSet1Par1'],$_REQUEST['ResultadoSet2Par1'],$_REQUEST['ResultadoSet3Par1'],'');
 				$respuesta = $ELIMINATORIA1->EDIT();
 				
@@ -84,7 +87,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 				$respuesta2 = $ELIMINATORIA2->EDIT();
 			    $ELIMINATORIA2->ganador($_REQUEST['ResultadoSet1Par1'],$_REQUEST['ResultadoSet2Par1'],$_REQUEST['ResultadoSet3Par1'],$_REQUEST['ResultadoSet1Par2'],$_REQUEST['ResultadoSet2Par2'],$_REQUEST['ResultadoSet3Par2'],$_REQUEST['pareja1']);
 			
-				$PARTIDO = new PARTIDO_MODEL($_REQUEST['IdCampeonato'],$_REQUEST['Tipo'],$_REQUEST['Nivel'],$_REQUEST['Letra'],'','','','','','');
+
 				$res=$PARTIDO->comprobarFaseFinalizada();
 				if($res==0){
 					if($_REQUEST['Fase']=='Cuartos'){
@@ -96,7 +99,10 @@ switch ( $_REQUEST[ 'action' ] ) {
 						$ELIMINATORIAFINAL->finalistas();
 					}
 				}
-			new MESSAGE( $respuesta, '../Controllers/GRUPO_CONTROLLER.php?IdCampeonato=' . $_REQUEST['IdCampeonato'] . '&Tipo='.$_REQUEST['Tipo']. '&Nivel='.$_REQUEST['Nivel'] . '&Letra='.$_REQUEST['Letra'] . '&action=TABLA');
+			new MESSAGE( $respuesta, '../Controllers/ELIMINATORIA_CONTROLLER.php?IdCampeonato=' . $_REQUEST['IdCampeonato'] . '&Tipo='.$_REQUEST['Tipo']. '&Nivel='.$_REQUEST['Nivel'] . '&Letra='.$_REQUEST['Letra'] . '&action=CUADRO');
+		}else{
+			new MESSAGE( 'Ha de pasar la fecha del partido para poder editarlo', '../Controllers/ELIMINATORIA_CONTROLLER.php?IdCampeonato=' . $_REQUEST['IdCampeonato'] . '&Tipo='.$_REQUEST['Tipo']. '&Nivel='.$_REQUEST['Nivel'] . '&Letra='.$_REQUEST['Letra'] . '&action=CUADRO');	   
+			   }
 		}
 	break;
 		
