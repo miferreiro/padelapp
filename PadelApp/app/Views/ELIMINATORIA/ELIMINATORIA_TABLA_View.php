@@ -2,181 +2,69 @@
 
 class ELIMINATORIA_TABLA{
 
-	function __construct( $vuelta,
-								   $pareja0Cuartos,$pareja1Cuartos,$pareja2Cuartos,$pareja3Cuartos,$pareja4Cuartos,$pareja5Cuartos,$pareja6Cuartos,$pareja7Cuartos,
-								   $pareja0Semis,$pareja1Semis,$pareja2Semis,$pareja3Semis,
-								   $pareja0Final,$pareja1Final,
-									$resulSet1Pareja0Cuartos ,  
-									$resulSet1Pareja7Cuartos ,
-									$resulSet2Pareja0Cuartos ,  
-									$resulSet2Pareja7Cuartos ,
-									$resulSet3Pareja0Cuartos ,  
-									$resulSet3Pareja7Cuartos ,
-
-									$resulSet1Pareja1Cuartos ,  
-									$resulSet1Pareja6Cuartos ,
-									$resulSet2Pareja1Cuartos ,  
-									$resulSet2Pareja6Cuartos ,
-									$resulSet3Pareja1Cuartos ,  
-									$resulSet3Pareja6Cuartos ,
-
-									$resulSet1Pareja2Cuartos ,  
-									$resulSet1Pareja5Cuartos ,
-									$resulSet2Pareja2Cuartos ,  
-									$resulSet2Pareja5Cuartos ,
-									$resulSet3Pareja2Cuartos ,  
-									$resulSet3Pareja5Cuartos ,				
-
-									$resulSet1Pareja3Cuartos ,  
-									$resulSet1Pareja4Cuartos ,
-									$resulSet2Pareja3Cuartos ,  
-									$resulSet2Pareja4Cuartos ,
-									$resulSet3Pareja3Cuartos ,  
-									$resulSet3Pareja4Cuartos ,
-
-									$resulSet1Pareja0Semis ,  
-									$resulSet1Pareja3Semis ,
-									$resulSet2Pareja0Semis ,  
-									$resulSet2Pareja3Semis ,
-									$resulSet3Pareja0Semis ,  
-									$resulSet3Pareja3Semis ,
-
-									$resulSet1Pareja1Semis ,  
-									$resulSet1Pareja2Semis ,
-									$resulSet2Pareja1Semis,  
-									$resulSet2Pareja2Semis ,
-									$resulSet3Pareja1Semis ,  
-									$resulSet3Pareja2Semis ,
-									$resulSet1Pareja0Final ,  
-									$resulSet1Pareja1Final ,
-									$resulSet2Pareja0Final ,  
-									$resulSet2Pareja1Final ,
-									$resulSet3Pareja0Final ,  
-									$resulSet3Pareja1Final 
-						
-						
-						) {
-
-		$this->render($vuelta,
-								   $pareja0Cuartos,$pareja1Cuartos,$pareja2Cuartos,$pareja3Cuartos,$pareja4Cuartos,$pareja5Cuartos,$pareja6Cuartos,$pareja7Cuartos,
-								   $pareja0Semis,$pareja1Semis,$pareja2Semis,$pareja3Semis,
-								   $pareja0Final,$pareja1Final,
-					 
-									$resulSet1Pareja0Cuartos ,  
-									$resulSet1Pareja7Cuartos ,
-									$resulSet2Pareja0Cuartos ,  
-									$resulSet2Pareja7Cuartos ,
-									$resulSet3Pareja0Cuartos ,  
-									$resulSet3Pareja7Cuartos ,
-
-									$resulSet1Pareja1Cuartos ,  
-									$resulSet1Pareja6Cuartos ,
-									$resulSet2Pareja1Cuartos ,  
-									$resulSet2Pareja6Cuartos ,
-									$resulSet3Pareja1Cuartos ,  
-									$resulSet3Pareja6Cuartos ,
-
-									$resulSet1Pareja2Cuartos ,  
-									$resulSet1Pareja5Cuartos ,
-									$resulSet2Pareja2Cuartos ,  
-									$resulSet2Pareja5Cuartos ,
-									$resulSet3Pareja2Cuartos ,  
-									$resulSet3Pareja5Cuartos ,				
-
-									$resulSet1Pareja3Cuartos ,  
-									$resulSet1Pareja4Cuartos ,
-									$resulSet2Pareja3Cuartos ,  
-									$resulSet2Pareja4Cuartos ,
-									$resulSet3Pareja3Cuartos ,  
-									$resulSet3Pareja4Cuartos ,
-
-									$resulSet1Pareja0Semis ,  
-									$resulSet1Pareja3Semis ,
-									$resulSet2Pareja0Semis ,  
-									$resulSet2Pareja3Semis ,
-									$resulSet3Pareja0Semis ,  
-									$resulSet3Pareja3Semis ,
-
-									$resulSet1Pareja1Semis ,  
-									$resulSet1Pareja2Semis ,
-									$resulSet2Pareja1Semis,  
-									$resulSet2Pareja2Semis ,
-									$resulSet3Pareja1Semis ,  
-									$resulSet3Pareja2Semis ,
-									$resulSet1Pareja0Final ,  
-									$resulSet1Pareja1Final ,
-									$resulSet2Pareja0Final ,  
-									$resulSet2Pareja1Final ,
-									$resulSet3Pareja0Final ,  
-									$resulSet3Pareja1Final 
-					 
-					 
-					 );
+	function __construct($datos) {
+		$this->datos = $datos;
+		$this->render($this->datos);
 	}
 	
-	function render($vuelta,
-								   $pareja0Cuartos,$pareja1Cuartos,$pareja2Cuartos,$pareja3Cuartos,$pareja4Cuartos,$pareja5Cuartos,$pareja6Cuartos,$pareja7Cuartos,
-								   $pareja0Semis,$pareja1Semis,$pareja2Semis,$pareja3Semis,
-								   $pareja0Final,$pareja1Final,
-				   					$resulSet1Pareja0Cuartos ,  
-									$resulSet1Pareja7Cuartos ,
-									$resulSet2Pareja0Cuartos ,  
-									$resulSet2Pareja7Cuartos ,
-									$resulSet3Pareja0Cuartos ,  
-									$resulSet3Pareja7Cuartos ,
-
-									$resulSet1Pareja1Cuartos ,  
-									$resulSet1Pareja6Cuartos ,
-									$resulSet2Pareja1Cuartos ,  
-									$resulSet2Pareja6Cuartos ,
-									$resulSet3Pareja1Cuartos ,  
-									$resulSet3Pareja6Cuartos ,
-
-									$resulSet1Pareja2Cuartos ,  
-									$resulSet1Pareja5Cuartos ,
-									$resulSet2Pareja2Cuartos ,  
-									$resulSet2Pareja5Cuartos ,
-									$resulSet3Pareja2Cuartos ,  
-									$resulSet3Pareja5Cuartos ,				
-
-									$resulSet1Pareja3Cuartos ,  
-									$resulSet1Pareja4Cuartos ,
-									$resulSet2Pareja3Cuartos ,  
-									$resulSet2Pareja4Cuartos ,
-									$resulSet3Pareja3Cuartos ,  
-									$resulSet3Pareja4Cuartos ,
-
-									$resulSet1Pareja0Semis ,  
-									$resulSet1Pareja3Semis ,
-									$resulSet2Pareja0Semis ,  
-									$resulSet2Pareja3Semis ,
-									$resulSet3Pareja0Semis ,  
-									$resulSet3Pareja3Semis ,
-
-									$resulSet1Pareja1Semis ,  
-									$resulSet1Pareja2Semis ,
-									$resulSet2Pareja1Semis,  
-									$resulSet2Pareja2Semis ,
-									$resulSet3Pareja1Semis ,  
-									$resulSet3Pareja2Semis ,
-									$resulSet1Pareja0Final ,  
-									$resulSet1Pareja1Final ,
-									$resulSet2Pareja0Final ,  
-									$resulSet2Pareja1Final ,
-									$resulSet3Pareja0Final ,  
-									$resulSet3Pareja1Final 
-				   
-				   
-				   
-				   
-				   
-				   ){
-
-	
-		
+	function render($datos){
+		$this->datos = $datos;
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
-      
+		
+		
+$ParejasCuartos=array();
+$NumEnfrentamientosCuartos=array();		
+$ParejasSemis=array();	
+$NumEnfrentamientosSemis=array();	
+$ParejasFinal=array();
+$Cuartos=0;
+$Semis=0;
+$Finalistas=0;
+		
+$x=0;
+$i=0;
+$j=0;
+$h=0;
+$n=0;
+$p=0;
+$m=0;
+  while ( $fila = mysqli_fetch_array( $this->datos ) ) {
+	  if($fila['Fase']=="Cuartos"){
+		  $Cuartos=1;
+		  $ParejasCuartos[$x]=$fila['NumPareja'];
+		  if($p==0){
+			$NumEnfrentamientosCuartos[$h]=$fila['NumEnfrentamiento'];
+			 $h++;
+			 $p++;
+		  }else{
+			$p=0;  
+		  }
+		  $IdCampeonato=$fila['IdCampeonato'];
+		  $Tipo=$fila['Tipo'];
+		  $Nivel=$fila['Nivel'];
+		  $Letra=$fila['Letra'];
+		  $x++;
+	  }
+	  if($fila['Fase']=="Semifinales"){
+		  $Semis=1;
+		  $ParejasSemis[$i]=$fila['NumPareja'];
+		  if($m==0){
+		  $NumEnfrentamientosSemis[$n]=$fila['NumEnfrentamiento'];
+			 $n++;
+			 $m++;
+		  }else{
+			$m=0;  
+		  }
+		  $i++;		    
+	  }
+	  if($fila['Fase']=="Final"){
+		  $Finalistas=1;
+		  $ParejasFinal[$j]=$fila['NumPareja'];
+		  $NumEnfrentamientoFinal=$fila['NumEnfrentamiento'];
+		  $j++;		  
+	  }	  
+  }    
 ?>
 			<h2  align="center"> 
 				<?php echo $strings['Tabla de enfrentamientos'];?>
@@ -192,26 +80,72 @@ class ELIMINATORIA_TABLA{
 				   <tr style="height: 33px">
 						<th>Pareja 1</th> <th>Pareja 2</th> <th>Opciones</th>
 					</tr>
+			<?php if($Cuartos == 1){ ?>
 					<tr style="height: 33px">
-						<td><?php echo $pareja0Cuartos ?></td> 
-						<td><?php echo $pareja7Cuartos ?></td> 
-						<td><img src="../Views/icon/edit_big.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" /></td>
+						<td><?php echo $ParejasCuartos[0] ?></td> 
+						<td><?php echo $ParejasCuartos[1] ?></td> 
+						<td>
+						<form action='../Controllers/ELIMINATORIA_CONTROLLER.php' method="get" align="center">
+							<input type="hidden" name="IdCampeonato" value="<?php echo $IdCampeonato?>" />
+							<input type="hidden" name="Tipo" value="<?php echo $Tipo?>" />
+							<input type="hidden" name="Nivel" value="<?php echo $Nivel?>" />
+							<input type="hidden" name="Letra" value="<?php echo $Letra?>" />
+							<input type="hidden" name="NumEnfrentamiento" value="<?php echo $NumEnfrentamientosCuartos[0]?>" />
+							<button id ="buttonBien" type="submit" id="EDITAR" name="action" value="EDITAR" >
+							<img src="../Views/icon/edit_big.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
+							</button>
+						</form>	
+						</td>
 					</tr>
 					<tr style="height: 33px">
-						<td><?php echo $pareja1Cuartos ?></td> 
-						<td><?php echo $pareja6Cuartos ?></td> 
-						<td><img src="../Views/icon/edit_big.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" /></td>
+						<td><?php echo $ParejasCuartos[2] ?></td> 
+						<td><?php echo $ParejasCuartos[3] ?></td> 
+						<td>
+						<form action='../Controllers/ELIMINATORIA_CONTROLLER.php' method="get" align="center">
+							<input type="hidden" name="IdCampeonato" value="<?php echo $IdCampeonato?>" />
+							<input type="hidden" name="Tipo" value="<?php echo $Tipo?>" />
+							<input type="hidden" name="Nivel" value="<?php echo $Nivel?>" />
+							<input type="hidden" name="Letra" value="<?php echo $Letra?>" />
+							<input type="hidden" name="NumEnfrentamiento" value="<?php echo $NumEnfrentamientosCuartos[1]?>" />
+							<button id ="buttonBien" type="submit" id="EDITAR" name="action" value="EDITAR" >
+							<img src="../Views/icon/edit_big.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
+							</button>
+						</form>	
+						</td>
 					</tr>
 					<tr style="height: 33px">
-						<td><?php echo $pareja2Cuartos ?></td>
-						<td><?php echo $pareja5Cuartos ?></td> 
-						<td><img src="../Views/icon/edit_big.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" /></td>
+						<td><?php echo $ParejasCuartos[4] ?></td> 
+						<td><?php echo $ParejasCuartos[5] ?></td> 
+						<td>
+						<form action='../Controllers/ELIMINATORIA_CONTROLLER.php' method="get" align="center">
+							<input type="hidden" name="IdCampeonato" value="<?php echo $IdCampeonato?>" />
+							<input type="hidden" name="Tipo" value="<?php echo $Tipo?>" />
+							<input type="hidden" name="Nivel" value="<?php echo $Nivel?>" />
+							<input type="hidden" name="Letra" value="<?php echo $Letra?>" />
+							<input type="hidden" name="NumEnfrentamiento" value="<?php echo $NumEnfrentamientosCuartos[2]?>" />
+							<button id ="buttonBien" type="submit" id="EDITAR" name="action" value="EDITAR" >
+							<img src="../Views/icon/edit_big.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
+							</button>
+						</form>	
+						</td>
 					</tr >	
 					<tr style="height: 33px" >
-						<td><?php echo $pareja3Cuartos ?></td> 
-						<td><?php echo $pareja4Cuartos ?></td> 
-						<td><img src="../Views/icon/edit_big.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" /></td>
-					</tr>			
+						<td><?php echo $ParejasCuartos[6] ?></td> 
+						<td><?php echo $ParejasCuartos[7] ?></td> 
+						<td>
+						<form action='../Controllers/ELIMINATORIA_CONTROLLER.php' method="get" align="center">
+							<input type="hidden" name="IdCampeonato" value="<?php echo $IdCampeonato?>" />
+							<input type="hidden" name="Tipo" value="<?php echo $Tipo?>" />
+							<input type="hidden" name="Nivel" value="<?php echo $Nivel?>" />
+							<input type="hidden" name="Letra" value="<?php echo $Letra?>" />
+							<input type="hidden" name="NumEnfrentamiento" value="<?php echo $NumEnfrentamientosCuartos[3]?>" />
+							<button id ="buttonBien" type="submit" id="EDITAR" name="action" value="EDITAR" >
+							<img src="../Views/icon/edit_big.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
+							</button>
+						</form>	
+						</td>
+					</tr>
+			<?php  } ?>
 				</thead>
 			</table>
 			</div>
@@ -224,23 +158,40 @@ class ELIMINATORIA_TABLA{
 					<tr style="height: 33px">
 						<th>Pareja 1</th> <th>Pareja 2</th> <th>Opciones</th>
 					</tr>
+				<?php if($Semis == 1){ ?>
 					<tr style="height: 33px">
-				
+						<td><?php echo $ParejasSemis[0] ?></td> 
+						<td><?php echo $ParejasSemis[1] ?></td> 
+						<td>
+						<form action='../Controllers/ELIMINATORIA_CONTROLLER.php' method="get" align="center">
+							<input type="hidden" name="IdCampeonato" value="<?php echo $IdCampeonato?>" />
+							<input type="hidden" name="Tipo" value="<?php echo $Tipo?>" />
+							<input type="hidden" name="Nivel" value="<?php echo $Nivel?>" />
+							<input type="hidden" name="Letra" value="<?php echo $Letra?>" />
+							<input type="hidden" name="NumEnfrentamiento" value="<?php echo $NumEnfrentamientosSemis[0]?>" />
+							<button id ="buttonBien" type="submit" id="EDITAR" name="action" value="EDITAR" >
+							<img src="../Views/icon/edit_big.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
+							</button>
+						</form>	
+						</td>
 					</tr>
 					<tr style="height: 33px">
-						<td><?php echo $pareja0Semis ?></td>
-						<td><?php echo $pareja3Semis ?></td> 
-						<td><img src="../Views/icon/edit_big.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" /></td>
-					</tr>
-					<tr style="height: 33px">
-						<td><?php echo $pareja1Semis ?></td>
-						<td><?php echo $pareja2Semis ?></td>
-						<td><img src="../Views/icon/edit_big.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" /></td>
+						<td><?php echo $ParejasSemis[2] ?></td> 
+						<td><?php echo $ParejasSemis[3] ?></td> 
+						<td>
+						<form action='../Controllers/ELIMINATORIA_CONTROLLER.php' method="get" align="center">
+							<input type="hidden" name="IdCampeonato" value="<?php echo $IdCampeonato?>" />
+							<input type="hidden" name="Tipo" value="<?php echo $Tipo?>" />
+							<input type="hidden" name="Nivel" value="<?php echo $Nivel?>" />
+							<input type="hidden" name="Letra" value="<?php echo $Letra?>" />
+							<input type="hidden" name="NumEnfrentamiento" value="<?php echo $NumEnfrentamientosSemis[1]?>" />
+							<button id ="buttonBien" type="submit" id="EDITAR" name="action" value="EDITAR" >
+							<img src="../Views/icon/edit_big.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
+							</button>
+						</form>	
+						</td>
 					</tr>	
-					<tr style="height: 33px">
-						
-					</tr>	
-				
+				<?php } ?>
 				</thead>
 			</table>
 			</div>
@@ -252,25 +203,26 @@ class ELIMINATORIA_TABLA{
 					<tr style="height: 33px">
 						<th>Pareja 1</th> <th>Pareja 2</th> <th>Opciones</th>
 					</tr>
-					<tr style="height: 50px">
-					
-					</tr>
+				<?php if($Finalistas == 1){ ?>
 					<tr style="height: 33px" >
 					
-						<td style="border-top-color: white;border-bottom-color: white"><?php echo $pareja0Final ?></td> 
+						<td><?php echo $ParejasFinal[0] ?></td> 
+						<td><?php echo $ParejasFinal[1] ?></td> 
 
-
-						<td style="border-top-color: white"><?php echo $pareja1Final ?></td>
-
-						<td style="border-top-color: white"><img src="../Views/icon/edit_big.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" /></td>
+						<td>
+						<form action='../Controllers/ELIMINATORIA_CONTROLLER.php' method="get" align="center">
+							<input type="hidden" name="IdCampeonato" value="<?php echo $IdCampeonato?>" />
+							<input type="hidden" name="Tipo" value="<?php echo $Tipo?>" />
+							<input type="hidden" name="Nivel" value="<?php echo $Nivel?>" />
+							<input type="hidden" name="Letra" value="<?php echo $Letra?>" />
+							<input type="hidden" name="NumEnfrentamiento" value="<?php echo $NumEnfrentamientoFinal?>" />
+							<button id ="buttonBien" type="submit" id="EDITAR" name="action" value="EDITAR" >
+							<img src="../Views/icon/edit_big.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
+							</button>
+						</form>	
+						</td>
 					</tr>
-					<tr style="height: 50px">
-					
-					</tr>	
-					<tr style="height: 33px">
-			
-					</tr>
-			
+				<?php } ?>
 				</thead>
 			</table>
 			</div>

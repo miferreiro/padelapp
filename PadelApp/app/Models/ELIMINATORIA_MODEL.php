@@ -467,6 +467,18 @@ function finalistas(){
 				return 'Inserción realizada con éxito';
 			}
 			
-}	
+}
+	
+	
+function IntegrantesEliminatorias() { 
+
+		$sql = "SELECT * FROM ELIMINATORIAS WHERE (IdCampeonato = '$this->IdCampeonato') && (Tipo = '$this->Tipo') && (Nivel = '$this->Nivel')  && (Letra = '$this->Letra') ORDER BY NumEnfrentamiento";
+		
+		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
+			return 'No existe en la base de datos'; // 
+		} else {            
+			return $resultado;
+		}
+	}
 }
 ?>
