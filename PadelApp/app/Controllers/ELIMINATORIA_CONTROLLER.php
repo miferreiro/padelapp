@@ -77,6 +77,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			}
 		} else {
 				$PARTIDO = new PARTIDO_MODEL($_REQUEST['IdCampeonato'],$_REQUEST['Tipo'],$_REQUEST['Nivel'],$_REQUEST['Letra'],$_REQUEST['NumEnfrentamiento'],'','','','','');
+			echo $PARTIDO->comprobarFechaPartido();
 			   if($PARTIDO->comprobarFechaPartido()< date("Y-m-d")){
 			 
 				$ELIMINATORIA1 = new ELIMINATORIA_MODEL($_REQUEST['IdCampeonato'],$_REQUEST['Tipo'],$_REQUEST['Nivel'],$_REQUEST['Letra'],$_REQUEST['NumEnfrentamiento'],$_REQUEST['pareja1'],$_REQUEST['Fase'],$_REQUEST['ResultadoSet1Par1'],$_REQUEST['ResultadoSet2Par1'],$_REQUEST['ResultadoSet3Par1'],'');

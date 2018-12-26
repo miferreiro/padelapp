@@ -87,7 +87,7 @@ class ELIMINATORIA_MODEL{
 	function EDIT() {
 		
 		$sql = 
-		"SELECT * FROM ELIMINATORIA 
+		"SELECT * FROM ELIMINATORIAS 
 		WHERE  
 		(IdCampeonato = '$this->IdCampeonato') && (Tipo = '$this->Tipo') && (Nivel = '$this->Nivel') && (Letra = '$this->Letra') 
 		&& (NumEnfrentamiento = '$this->NumEnfrentamiento') && (NumPareja = '$this->NumPareja') 
@@ -98,11 +98,11 @@ class ELIMINATORIA_MODEL{
 
 		if ( $result->num_rows == 1 ) {
 
-			$sql = "UPDATE ELIMINATORIA SET 
+			$sql = "UPDATE ELIMINATORIAS SET 
 					IdCampeonato = '$this->IdCampeonato',
 					Tipo='$this->Tipo',
 					Nivel='$this->Nivel',
-					Fase='$this->Fase'
+					Fase='$this->Fase',
 					Letra='$this->Letra',
 					NumEnfrentamiento='$this->NumEnfrentamiento',
 					NumPareja = '$this->NumPareja',
@@ -471,7 +471,7 @@ function finalistas(){
 	
 	function RellenaDatos() { 
 
-		$sql = "SELECT DISTINCT E1.IdCampeonato as IdCampeonato,E1.Tipo as Tipo,E1.Nivel as Nivel,E1.Letra as Letra,
+		$sql = "SELECT DISTINCT E1.IdCampeonato as IdCampeonato,E1.Tipo as Tipo,E1.Nivel as Nivel,E1.Letra as Letra,E1.Fase as Fase,
 		E1.NumEnfrentamiento,E2.NumPareja as pareja2, E1.NumPareja as pareja1,
 		E1.ResultadoSet1 as ResultadoSet1Par1, E1.ResultadoSet2 as ResultadoSet2Par1, E1.ResultadoSet3 as ResultadoSet3Par1, 
 		E2.ResultadoSet1 as ResultadoSet1Par2, E2.ResultadoSet2 as ResultadoSet2Par2, E2.ResultadoSet3 as ResultadoSet3Par2
