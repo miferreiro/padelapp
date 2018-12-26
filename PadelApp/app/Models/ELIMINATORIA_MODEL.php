@@ -469,7 +469,29 @@ function finalistas(){
 			
 }
 	
-	
+	function RellenaDatos() { 
+
+		$sql = "SELECT DISTINCT E1.IdCampeonato as IdCampeonato,E1.Tipo as Tipo,E1.Nivel as Nivel,E1.Letra as Letra,
+		E1.NumEnfrentamiento,E2.NumPareja as pareja2, E1.NumPareja as pareja1,
+		E1.ResultadoSet1 as ResultadoSet1Par1, E1.ResultadoSet2 as ResultadoSet2Par1, E1.ResultadoSet3 as ResultadoSet3Par1, 
+		E2.ResultadoSet1 as ResultadoSet1Par2, E2.ResultadoSet2 as ResultadoSet2Par2, E2.ResultadoSet3 as ResultadoSet3Par2
+		FROM ELIMINATORIAS E1,ELIMINATORIAS E2
+		WHERE
+		(E1.IdCampeonato = E2.IdCampeonato) && (E1.Tipo = E2.Tipo) && (E1.Nivel = E2.Nivel) && (E1.Letra = E2.Letra) &&
+		(E1.NumEnfrentamiento = E2.NumEnfrentamiento) && (E1.NumPareja != E2.NumPareja) &&
+		(E1.IdCampeonato = '$this->IdCampeonato') && (E1.Tipo = '$this->Tipo') && (E1.Nivel = '$this->Nivel')  && (E1.Letra = '$this->Letra') 
+		&&(E1.NumEnfrentamiento = '$this->NumEnfrentamiento') && (E1.NumPareja = '$this->NumPareja')
+		GROUP BY E1.NumEnfrentamiento  
+
+		";
+		
+		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
+			return 'No existe en la base de datos'; // 
+		} else {            
+			$result = $resultado->fetch_array();	
+			return $result;
+		}
+	}	
 function IntegrantesEliminatorias() { 
 
 		$sql = "SELECT * FROM ELIMINATORIAS WHERE (IdCampeonato = '$this->IdCampeonato') && (Tipo = '$this->Tipo') && (Nivel = '$this->Nivel')  && (Letra = '$this->Letra') ORDER BY NumEnfrentamiento";

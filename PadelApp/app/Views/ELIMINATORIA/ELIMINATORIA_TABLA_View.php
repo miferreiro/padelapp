@@ -91,6 +91,7 @@ $m=0;
 							<input type="hidden" name="Nivel" value="<?php echo $Nivel?>" />
 							<input type="hidden" name="Letra" value="<?php echo $Letra?>" />
 							<input type="hidden" name="NumEnfrentamiento" value="<?php echo $NumEnfrentamientosCuartos[0]?>" />
+							<input type="hidden" name="pareja1" value="<?php echo $ParejasCuartos[0]?>" />
 							<button id ="buttonBien" type="submit" id="EDITAR" name="action" value="EDITAR" >
 							<img src="../Views/icon/edit_big.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
 							</button>
@@ -107,6 +108,7 @@ $m=0;
 							<input type="hidden" name="Nivel" value="<?php echo $Nivel?>" />
 							<input type="hidden" name="Letra" value="<?php echo $Letra?>" />
 							<input type="hidden" name="NumEnfrentamiento" value="<?php echo $NumEnfrentamientosCuartos[1]?>" />
+							<input type="hidden" name="pareja1" value="<?php echo $ParejasCuartos[2]?>" />
 							<button id ="buttonBien" type="submit" id="EDITAR" name="action" value="EDITAR" >
 							<img src="../Views/icon/edit_big.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
 							</button>
@@ -123,6 +125,7 @@ $m=0;
 							<input type="hidden" name="Nivel" value="<?php echo $Nivel?>" />
 							<input type="hidden" name="Letra" value="<?php echo $Letra?>" />
 							<input type="hidden" name="NumEnfrentamiento" value="<?php echo $NumEnfrentamientosCuartos[2]?>" />
+							<input type="hidden" name="pareja1" value="<?php echo $ParejasCuartos[4]?>" />
 							<button id ="buttonBien" type="submit" id="EDITAR" name="action" value="EDITAR" >
 							<img src="../Views/icon/edit_big.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
 							</button>
@@ -139,6 +142,7 @@ $m=0;
 							<input type="hidden" name="Nivel" value="<?php echo $Nivel?>" />
 							<input type="hidden" name="Letra" value="<?php echo $Letra?>" />
 							<input type="hidden" name="NumEnfrentamiento" value="<?php echo $NumEnfrentamientosCuartos[3]?>" />
+							<input type="hidden" name="pareja1" value="<?php echo $ParejasCuartos[6]?>" />
 							<button id ="buttonBien" type="submit" id="EDITAR" name="action" value="EDITAR" >
 							<img src="../Views/icon/edit_big.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
 							</button>
@@ -169,6 +173,7 @@ $m=0;
 							<input type="hidden" name="Nivel" value="<?php echo $Nivel?>" />
 							<input type="hidden" name="Letra" value="<?php echo $Letra?>" />
 							<input type="hidden" name="NumEnfrentamiento" value="<?php echo $NumEnfrentamientosSemis[0]?>" />
+							<input type="hidden" name="pareja1" value="<?php echo $ParejasSemis[0]?>" />
 							<button id ="buttonBien" type="submit" id="EDITAR" name="action" value="EDITAR" >
 							<img src="../Views/icon/edit_big.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
 							</button>
@@ -185,6 +190,7 @@ $m=0;
 							<input type="hidden" name="Nivel" value="<?php echo $Nivel?>" />
 							<input type="hidden" name="Letra" value="<?php echo $Letra?>" />
 							<input type="hidden" name="NumEnfrentamiento" value="<?php echo $NumEnfrentamientosSemis[1]?>" />
+							<input type="hidden" name="pareja1" value="<?php echo $ParejasSemis[2]?>" />
 							<button id ="buttonBien" type="submit" id="EDITAR" name="action" value="EDITAR" >
 							<img src="../Views/icon/edit_big.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
 							</button>
@@ -216,6 +222,7 @@ $m=0;
 							<input type="hidden" name="Nivel" value="<?php echo $Nivel?>" />
 							<input type="hidden" name="Letra" value="<?php echo $Letra?>" />
 							<input type="hidden" name="NumEnfrentamiento" value="<?php echo $NumEnfrentamientoFinal?>" />
+							<input type="hidden" name="pareja1" value="<?php echo $ParejasFinal[0]?>" />
 							<button id ="buttonBien" type="submit" id="EDITAR" name="action" value="EDITAR" >
 							<img src="../Views/icon/edit_big.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
 							</button>
@@ -228,9 +235,10 @@ $m=0;
 			</div>
 			
 		</div>
-		<form action='../Controllers/CAMPEONATO_CATEGORIA_CONTROLLER.php' method="get" align="center">
-				<input type="hidden" name="IdCampeonato" value="<?php echo $vuelta['IdCampeonato']; ?>">		
-								
+		<form action='../Controllers/GRUPO_CONTROLLER.php' method="get" align="center">
+							<input type="hidden" name="IdCampeonato" value="<?php echo $IdCampeonato?>" />
+							<input type="hidden" name="Tipo" value="<?php echo $Tipo?>" />
+							<input type="hidden" name="Nivel" value="<?php echo $Nivel?>" />
 				<button id ="buttonBien" type="submit"><img src="../Views/icon/back_big2.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>
 <?php

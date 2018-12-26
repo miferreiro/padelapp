@@ -14,16 +14,15 @@ include '../Models/PARTIDO_MODEL.php';
 include '../Models/CATEGORIA_MODEL.php'; 
 include '../Models/GRUPO_MODEL.php'; 
 include '../Models/NOTICIA_MODEL.php';
-include '../Views/CAMPEONATO/CAMPEONATO_SHOWALL_View.php'; 
-include '../Views/CAMPEONATO/CAMPEONATO_SEARCH_View.php'; 
-include '../Views/CAMPEONATO/CAMPEONATO_ADD_View.php'; 
-include '../Views/CAMPEONATO/CAMPEONATO_DELETE_View.php';
-include '../Views/CAMPEONATO/CAMPEONATO_SHOWCURRENT_View.php'; 
+
+include '../Views/ELIMINATORIA/ELIMINATORIA_TABLA_View.php';
+include '../Views/ELIMINATORIA/ELIMINATORIA_EDIT_View.php';
+
 include '../Views/DEFAULT_View.php'; 
 include '../Views/MESSAGE_View.php'; 
 
 
-include '../Views/ELIMINATORIA/ELIMINATORIA_TABLA_View.php';
+
 
 
 
@@ -70,19 +69,18 @@ switch ( $_REQUEST[ 'action' ] ) {
 
 			if($_SESSION['tipo'] == 'Admin'){
 
-				$ELIMINATORIA = new ELIMINATORIA_MODEL($_REQUEST['IdCampeonato'],$_REQUEST['Tipo'],$_REQUEST['Nivel'],$_REQUEST['Letra'],$_REQUEST['NumEnfrentamiento'],$_REQUEST['pareja1'],'','','','');
+				$ELIMINATORIA = new ELIMINATORIA_MODEL($_REQUEST['IdCampeonato'],$_REQUEST['Tipo'],$_REQUEST['Nivel'],$_REQUEST['Letra'],$_REQUEST['NumEnfrentamiento'],$_REQUEST['pareja1'],'','','','','');
 				$valores = $ELIMINATORIA->RellenaDatos();
-			
 				new ELIMINATORIA_EDIT( $valores);
 			}else{
 				new MESSAGE( 'El usuario no tiene los permisos necesarios','../Controllers/GRUPO_CONTROLLER.php?IdCampeonato=' . $_REQUEST['IdCampeonato'] . '&Tipo='.$_REQUEST['Tipo']. '&Nivel='.$_REQUEST['Nivel'] . '&Letra='.$_REQUEST['Letra'] . '&action=TABLA' );
 			}
 		} else {
-				$ELIMINATORIA1 = new ELIMINATORIA_MODEL($_REQUEST['IdCampeonato'],$_REQUEST['Tipo'],$_REQUEST['Nivel'],$_REQUEST['Letra'],$_REQUEST['NumEnfrentamiento'],$_REQUEST['pareja1'],$_REQUEST['ResultadoSet1Par1'],$_REQUEST['ResultadoSet2Par1'],$_REQUEST['ResultadoSet3Par1'],'');
+				$ELIMINATORIA1 = new ELIMINATORIA_MODEL($_REQUEST['IdCampeonato'],$_REQUEST['Tipo'],$_REQUEST['Nivel'],$_REQUEST['Letra'],$_REQUEST['NumEnfrentamiento'],$_REQUEST['pareja1'],$_REQUEST['Fase'],$_REQUEST['ResultadoSet1Par1'],$_REQUEST['ResultadoSet2Par1'],$_REQUEST['ResultadoSet3Par1'],'');
 				$respuesta = $ELIMINATORIA1->EDIT();
 				
 			
-				$ELIMINATORIA2 = new ELIMINATORIA_MODEL($_REQUEST['IdCampeonato'],$_REQUEST['Tipo'],$_REQUEST['Nivel'],$_REQUEST['Letra'],$_REQUEST['NumEnfrentamiento'],$_REQUEST['pareja2'],$_REQUEST['ResultadoSet1Par2'],$_REQUEST['ResultadoSet2Par2'],$_REQUEST['ResultadoSet3Par2'],'');
+				$ELIMINATORIA2 = new ELIMINATORIA_MODEL($_REQUEST['IdCampeonato'],$_REQUEST['Tipo'],$_REQUEST['Nivel'],$_REQUEST['Letra'],$_REQUEST['NumEnfrentamiento'],$_REQUEST['pareja2'],$_REQUEST['Fase'],$_REQUEST['ResultadoSet1Par2'],$_REQUEST['ResultadoSet2Par2'],$_REQUEST['ResultadoSet3Par2'],'');
 				$respuesta2 = $ELIMINATORIA2->EDIT();
 			    $ELIMINATORIA2->ganador($_REQUEST['ResultadoSet1Par1'],$_REQUEST['ResultadoSet2Par1'],$_REQUEST['ResultadoSet3Par1'],$_REQUEST['ResultadoSet1Par2'],$_REQUEST['ResultadoSet2Par2'],$_REQUEST['ResultadoSet3Par2'],$_REQUEST['pareja1']);
 			
