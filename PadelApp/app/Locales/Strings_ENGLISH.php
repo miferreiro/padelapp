@@ -400,7 +400,8 @@ array(
 	'No están todos los partidos disputados'=>'Not all matches are contested',
 	'Cuartos'=>'Fourth',
 	'Semifinales'=>'Semifinals',
-	'Final'=>'Final'
+	'Final'=>'Final',
+	'Fase'=>'Phase'
 	
 	)
 ;

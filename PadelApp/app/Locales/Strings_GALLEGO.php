@@ -385,7 +385,8 @@ array(
 	'No están todos los partidos disputados'=>'Non están todos os partidos disputados',
 	'Cuartos'=>'Cuartos',
 	'Semifinales'=>'Semifinales',
-	'Final'=>'Final'
+	'Final'=>'Final',
+	'Fase'=>'Fase'
 	
 	)
 ;

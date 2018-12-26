@@ -44,6 +44,12 @@ class ELIMINATORIA_EDIT {
 						</th>
 						<td class="formThTd"><input type="text" id="Letra" name="Letra" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['Letra']?>" maxlength="30" size="31" readonly required  />
 					</tr>
+						<tr>
+						<th class="formThTd">
+							<?php echo $strings['Fase'];?>
+						</th>
+						<td class="formThTd"><input type="text" id="Fase" name="Fase" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['Fase']?>" maxlength="30" size="31" readonly required  />
+					</tr>
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['NumEnfrentamiento'];?>
