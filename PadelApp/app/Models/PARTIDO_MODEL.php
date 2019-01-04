@@ -135,7 +135,6 @@ class PARTIDO_MODEL{
 		$sql = "SELECT MAX(NumEnfrentamiento) AS NumEnfrentamiento FROM PARTIDO";
 		
 		$resultado = $this->mysqli->query( $sql ); 
-		  
 			$result = $resultado->fetch_array();	
 			$MaxNumEn= $result['NumEnfrentamiento']+1;
 			$sql="INSERT INTO PARTIDO(
@@ -156,8 +155,8 @@ class PARTIDO_MODEL{
 								'$this->Nivel',
 								'$this->Letra',
 								'$MaxNumEn',
-								NULL,
-								NULL,
+								ADDDATE(NOW(),5),
+								'20:30:00',
 								NULL,
 								NULL,
 								0
@@ -217,6 +216,7 @@ class PARTIDO_MODEL{
 								0
 								)";
 			$result = $this->mysqli->query( $sql );
+
 				$j--;
 			}
 			return 'Cuartos generados';

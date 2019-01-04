@@ -208,8 +208,8 @@ function semis(){
 								'$this->Nivel',
 								'$this->Letra',
 								'$MaxNumEn',
-								NULL,
-								NULL,
+								ADDDATE(NOW(),5),
+								'20:30:00',
 								NULL,
 								NULL,
 								0
@@ -300,8 +300,8 @@ function semis(){
 								'$this->Nivel',
 								'$this->Letra',
 								'$MaxNumEn',
-								NULL,
-								NULL,
+								ADDDATE(NOW(),5),
+								'22:00:00',
 								NULL,
 								NULL,
 								0
@@ -383,7 +383,6 @@ function finalistas(){
 		  
 			$result = $resultado->fetch_array();	
 			$MaxNumEn= $result['NumEnfrentamiento']+1;
-			echo $MaxNumEn;
 			$sql="INSERT INTO PARTIDO(
 									IdCampeonato,
 									Tipo,
@@ -402,8 +401,8 @@ function finalistas(){
 								'$this->Nivel',
 								'$this->Letra',
 								'$MaxNumEn',
-								NULL,
-								NULL,
+								ADDDATE(NOW(),5),
+								'20:30:00',
 								NULL,
 								NULL,
 								0
