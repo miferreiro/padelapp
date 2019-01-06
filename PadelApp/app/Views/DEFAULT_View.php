@@ -38,7 +38,7 @@ class USUARIO_DEFAULT {
               <div class="carousel-item active">
                 <img class="d-block w-100" src="../Views/icon/padel2.jpg" alt="First slide">
                 <div class="carousel-caption d-none d-md-block">
-                  <h5>Bienvenido a Padel App</h5>
+                  <h5>Bienvenido a Padel App Waiting....</h5>
                   <p></p>
                 </div>
               </div>
