@@ -1,6 +1,6 @@
 <?php
 
-class ELIMINATORIA_TABLA{
+class ELIMINATORIA_TABLA2{
 
 	function __construct($datos,$capitan) {
 		$this->datos = $datos;

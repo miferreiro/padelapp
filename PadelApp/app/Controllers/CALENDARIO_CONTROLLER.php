@@ -9,6 +9,7 @@ if (!IsAuthenticated()){
 }
 
 include '../Models/USUARIO_MODEL.php';
+include '../Models/ELIMINATORIA_MODEL.php';
 include '../Models/PARTIDO_MODEL.php';
 include '../Models/CAMPEONATO_MODEL.php';
 include '../Models/CATEGORIA_MODEL.php';
@@ -223,7 +224,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 
 			    $ELIMINATORIA = new ELIMINATORIA_MODEL($_REQUEST['IdCampeonato'],$_REQUEST['Tipo'],$_REQUEST['Nivel'],$_REQUEST['Letra'],'','','','','','','');
 				$datos=$ELIMINATORIA->IntegrantesEliminatorias();
-				new ELIMINATORIA_TABLA2($datos);
+				new ELIMINATORIA_TABLA2($datos, $capitan);
 		}else{
 			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/CALENDARIO_CONTROLLER.php' );
 		}
