@@ -64,7 +64,8 @@ class CALENDARIO_SHOWALL {
 							<input type="hidden" name="Nivel" value="<?php echo $fila['Nivel']; ?>">						
 							<input type="hidden" name="Letra" value="<?php echo $fila['Letra']; ?>">
 								<button id ="buttonBien" type="submit" name="action" value="SHOWCURRENT" ><img src="../Views/icon/verdetalles_2.jpg" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>			
-								<button id ="buttonBien" type="submit" name="action" value="TABLA" ><img src="../Views/icon/tabla.png" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>			
+								<button id ="buttonBien" type="submit" name="action" value="TABLA" ><img src="../Views/icon/tabla.png" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>	
+								<button id ="buttonBien" type="submit" name="action" value="CUADRO" ><img src="../Views/icon/calendario.png" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>
 						</form>
 						<form action="../Controllers/GRUPO_CONTROLLER.php" method="get" style="display:inline" >
 							<input type="hidden" name="IdCampeonato" value="<?php echo $fila['IdCampeonato']; ?>">		
