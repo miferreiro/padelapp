@@ -87,14 +87,14 @@ $m=0;
 						<td><?php echo $ParejasCuartos[0] ?></td> 
 						<td><?php echo $ParejasCuartos[1] ?></td> 
 						<td>
-						<form action='../Controllers/ELIMINATORIA_CONTROLLER.php' method="get" align="center">
+						<form action='../Controllers/CALENDARIO_CONTROLLER.php' method="get" align="center">
 							<input type="hidden" name="IdCampeonato" value="<?php echo $IdCampeonato?>" />
 							<input type="hidden" name="Tipo" value="<?php echo $Tipo?>" />
 							<input type="hidden" name="Nivel" value="<?php echo $Nivel?>" />
 							<input type="hidden" name="Letra" value="<?php echo $Letra?>" />
 							<input type="hidden" name="NumEnfrentamiento" value="<?php echo $NumEnfrentamientosCuartos[0]?>" />
 							<input type="hidden" name="pareja1" value="<?php echo $ParejasCuartos[0]?>" />
-							<button id ="buttonBien" type="submit" id="EDITAR" name="action" value="EDITAR" >
+							<button id ="buttonBien" type="submit" id="EDITAR" name="action" value="INFORMACION" >
 							<img src="../Views/icon/edit_big.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
 							</button>
 						</form>	
@@ -104,14 +104,14 @@ $m=0;
 						<td><?php echo $ParejasCuartos[2] ?></td> 
 						<td><?php echo $ParejasCuartos[3] ?></td> 
 						<td>
-						<form action='../Controllers/ELIMINATORIA_CONTROLLER.php' method="get" align="center">
+						<form action='../Controllers/CALENDARIO_CONTROLLER.php' method="get" align="center">
 							<input type="hidden" name="IdCampeonato" value="<?php echo $IdCampeonato?>" />
 							<input type="hidden" name="Tipo" value="<?php echo $Tipo?>" />
 							<input type="hidden" name="Nivel" value="<?php echo $Nivel?>" />
 							<input type="hidden" name="Letra" value="<?php echo $Letra?>" />
 							<input type="hidden" name="NumEnfrentamiento" value="<?php echo $NumEnfrentamientosCuartos[1]?>" />
 							<input type="hidden" name="pareja1" value="<?php echo $ParejasCuartos[2]?>" />
-							<button id ="buttonBien" type="submit" id="EDITAR" name="action" value="EDITAR" >
+							<button id ="buttonBien" type="submit" id="EDITAR" name="action" value="INFORMACION" >
 							<img src="../Views/icon/edit_big.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
 							</button>
 						</form>	
@@ -121,14 +121,14 @@ $m=0;
 						<td><?php echo $ParejasCuartos[4] ?></td> 
 						<td><?php echo $ParejasCuartos[5] ?></td> 
 						<td>
-						<form action='../Controllers/ELIMINATORIA_CONTROLLER.php' method="get" align="center">
+						<form action='../Controllers/CALENDARIO_CONTROLLER.php' method="get" align="center">
 							<input type="hidden" name="IdCampeonato" value="<?php echo $IdCampeonato?>" />
 							<input type="hidden" name="Tipo" value="<?php echo $Tipo?>" />
 							<input type="hidden" name="Nivel" value="<?php echo $Nivel?>" />
 							<input type="hidden" name="Letra" value="<?php echo $Letra?>" />
 							<input type="hidden" name="NumEnfrentamiento" value="<?php echo $NumEnfrentamientosCuartos[2]?>" />
 							<input type="hidden" name="pareja1" value="<?php echo $ParejasCuartos[4]?>" />
-							<button id ="buttonBien" type="submit" id="EDITAR" name="action" value="EDITAR" >
+							<button id ="buttonBien" type="submit" id="EDITAR" name="action" value="INFORMACION" >
 							<img src="../Views/icon/edit_big.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
 							</button>
 						</form>	
@@ -138,14 +138,14 @@ $m=0;
 						<td><?php echo $ParejasCuartos[6] ?></td> 
 						<td><?php echo $ParejasCuartos[7] ?></td> 
 						<td>
-						<form action='../Controllers/ELIMINATORIA_CONTROLLER.php' method="get" align="center">
+						<form action='../Controllers/CALENDARIO_CONTROLLER.php' method="get" align="center">
 							<input type="hidden" name="IdCampeonato" value="<?php echo $IdCampeonato?>" />
 							<input type="hidden" name="Tipo" value="<?php echo $Tipo?>" />
 							<input type="hidden" name="Nivel" value="<?php echo $Nivel?>" />
 							<input type="hidden" name="Letra" value="<?php echo $Letra?>" />
 							<input type="hidden" name="NumEnfrentamiento" value="<?php echo $NumEnfrentamientosCuartos[3]?>" />
 							<input type="hidden" name="pareja1" value="<?php echo $ParejasCuartos[6]?>" />
-							<button id ="buttonBien" type="submit" id="EDITAR" name="action" value="EDITAR" >
+							<button id ="buttonBien" type="submit" id="EDITAR" name="action" value="INFORMACION" >
 							<img src="../Views/icon/edit_big.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
 							</button>
 						</form>	

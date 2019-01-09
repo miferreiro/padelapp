@@ -167,12 +167,13 @@ switch ( $_REQUEST[ 'action' ] ) {
 
 		if($_SESSION['tipo'] == 'Deportista'){
 
-			$ENFRENTAMIENTO = new ENFRENTAMIENTO_MODEL($_REQUEST['IdCampeonato'],$_REQUEST['Tipo'],$_REQUEST['Nivel'],$_REQUEST['Letra'],$_REQUEST['NumEnfrentamiento'],$_REQUEST['pareja1'],'','','','');
-			$valores = $ENFRENTAMIENTO->RellenaDatos2();
-		
+			$ELIMINATORIA = new ELIMINATORIA_MODEL($_REQUEST['IdCampeonato'],$_REQUEST['Tipo'],$_REQUEST['Nivel'],$_REQUEST['Letra'],$_REQUEST['NumEnfrentamiento'],$_REQUEST['pareja1'],'','','','','');
+
+			$valores = $ELIMINATORIA->RellenaDatos2();
+
 			$PARTIDO = new PARTIDO_MODEL($_REQUEST['IdCampeonato'],$_REQUEST['Tipo'],$_REQUEST['Nivel'],$_REQUEST['Letra'],$_REQUEST['NumEnfrentamiento'],'','','','','');
 			$valores2 = $PARTIDO->RellenaDatos2();
-		
+
 			$PAREJA2 = new PAREJA_MODEL($_REQUEST['IdCampeonato'],$_REQUEST['Tipo'],$_REQUEST['Nivel'],'','');
 			$numParejaActual = $PAREJA2->numPareja($_SESSION['dni']);	
 		
