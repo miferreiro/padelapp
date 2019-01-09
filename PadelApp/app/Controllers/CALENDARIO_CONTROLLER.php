@@ -25,6 +25,7 @@ include '../Views/CALENDARIO/CALENDARIO_SHOWCURRENT_View.php';
 include '../Views/CALENDARIO/CALENDARIO_TABLA_View.php';
 include '../Views/CALENDARIO/CALENDARIO_INFORMACION_View.php';
 include '../Views/CALENDARIO/CALENDARIO_ACEPTAR_View.php';
+include '../Views/CALENDARIO/CALENDARIO_ACEPTAR2_View.php';
 include '../Views/CALENDARIO/CALENDARIO_PROPONER_View.php';
 include '../Views/ELIMINATORIA/ELIMINATORIA_TABLA2_View.php';
 include '../Views/DEFAULT_View.php'; 
@@ -105,6 +106,60 @@ switch ( $_REQUEST[ 'action' ] ) {
 		}
 
 	break;
+	case "ACEPTAR2" :
+		if ( !$_POST ) {
+
+			if($_SESSION['tipo'] == 'Deportista'){
+				
+				$PARTIDO = new PARTIDO_MODEL($_REQUEST['IdCampeonato'],$_REQUEST['Tipo'],$_REQUEST['Nivel'],$_REQUEST['Letra'],$_REQUEST['NumEnfrentamiento'],'','','','','');
+				$valores = $PARTIDO->RellenaDatos2();
+				$valores['pareja1'] = $_REQUEST['pareja1'];
+				$valores['pareja2'] = $_REQUEST['pareja2'];
+				
+				new CALENDARIO_ACEPTAR( $valores);
+				
+			}else{
+					new MESSAGE( 'El usuario no tiene los permisos necesarios','../Controllers/CALENDARIO_CONTROLLER.php?IdCampeonato=' . $_REQUEST['IdCampeonato'] . '&Tipo='.$_REQUEST['Tipo']. '&Nivel='.$_REQUEST['Nivel'] . '&Letra='.$_REQUEST['Letra'] . '&action=TABLA' );
+			}
+		} else {
+			
+			$PARTIDO = new PARTIDO_MODEL($_REQUEST['IdCampeonato'],$_REQUEST['Tipo'],$_REQUEST['Nivel'],$_REQUEST['Letra'],$_REQUEST['NumEnfrentamiento'],$_REQUEST['Fecha'],$_REQUEST['Hora'],'','','');
+			$respuesta = $PARTIDO->EDIT3();
+			
+			$ELIMINATORIA = new ELIMINATORIA_MODEL($_REQUEST['IdCampeonato'],$_REQUEST['Tipo'],$_REQUEST['Nivel'],$_REQUEST['Letra'],$_REQUEST['NumEnfrentamiento'],$_REQUEST['pareja1'],'','','','',3);
+			$respuesta = $ENFRENTAMIENTO->EDIT2();
+			$ELIMINATORIA = new ELIMINATORIA_MODEL($_REQUEST['IdCampeonato'],$_REQUEST['Tipo'],$_REQUEST['Nivel'],$_REQUEST['Letra'],$_REQUEST['NumEnfrentamiento'],$_REQUEST['pareja2'],'','','','',3);
+			$respuesta = $ENFRENTAMIENTO->EDIT2();
+			
+			//Añadir  reserva
+			
+			$USUARIO = new USUARIO_MODEL('admin','','','','','','','','');
+			$dniAdmin = $USUARIO->obtenerDni();
+			$RESERVA = new RESERVA_MODEL($dniAdmin,'',$_REQUEST['Fecha'],$_REQUEST['Hora']);
+			$respuesta = $RESERVA->RESERVACAMP();
+			
+			if($respuesta != 'Inserción realizada con éxito'){
+				
+				$PARTIDO = new PARTIDO_MODEL($_REQUEST['IdCampeonato'],$_REQUEST['Tipo'],$_REQUEST['Nivel'],$_REQUEST['Letra'],$_REQUEST['NumEnfrentamiento'],NULL,NULL,'','','');
+				$respuesta2 = $PARTIDO->EDIT3();
+
+				$ELIMINATORIA = new ELIMINATORIA_MODEL($_REQUEST['IdCampeonato'],$_REQUEST['Tipo'],$_REQUEST['Nivel'],$_REQUEST['Letra'],$_REQUEST['NumEnfrentamiento'],$_REQUEST['pareja1'],'','','','',0);
+				$respuesta3 = $ENFRENTAMIENTO->EDIT2();
+				$ELIMINATORIA = new ELIMINATORIA_MODEL($_REQUEST['IdCampeonato'],$_REQUEST['Tipo'],$_REQUEST['Nivel'],$_REQUEST['Letra'],$_REQUEST['NumEnfrentamiento'],$_REQUEST['pareja2'],'','','','',0);
+				$respuesta4 = $ENFRENTAMIENTO->EDIT2();
+
+				new MESSAGE( $respuesta, '../Controllers/CALENDARIO_CONTROLLER.php?IdCampeonato=' . $_REQUEST['IdCampeonato'] . '&Tipo='.$_REQUEST['Tipo']. '&Nivel='.$_REQUEST['Nivel'] . '&Letra='.$_REQUEST['Letra'] . '&action=TABLA' );
+				
+			}else{
+					new MESSAGE( $respuesta, '../Controllers/CALENDARIO_CONTROLLER.php?IdCampeonato=' . $_REQUEST['IdCampeonato'] . '&Tipo='.$_REQUEST['Tipo']. '&Nivel='.$_REQUEST['Nivel'] . '&Letra='.$_REQUEST['Letra'] . '&action=TABLA' );
+			}
+			
+			
+			
+
+		}
+
+	break;
 	case "DENEGAR" :
 		if($_SESSION['tipo'] == 'Deportista'){
 		if ( $_POST ) {
@@ -114,6 +169,25 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$ENFRENTAMIENTO = new ENFRENTAMIENTO_MODEL($_REQUEST['IdCampeonato'],$_REQUEST['Tipo'],$_REQUEST['Nivel'],$_REQUEST['Letra'],$_REQUEST['NumEnfrentamiento'],$_REQUEST['pareja1'],'','','',0);
 			$respuesta = $ENFRENTAMIENTO->EDIT2();
 			$ENFRENTAMIENTO = new ENFRENTAMIENTO_MODEL($_REQUEST['IdCampeonato'],$_REQUEST['Tipo'],$_REQUEST['Nivel'],$_REQUEST['Letra'],$_REQUEST['NumEnfrentamiento'],$_REQUEST['pareja2'],'','','',0);
+			$respuesta = $ENFRENTAMIENTO->EDIT2();
+			
+			new MESSAGE( $respuesta1, '../Controllers/CALENDARIO_CONTROLLER.php?IdCampeonato=' . $_REQUEST['IdCampeonato'] . '&Tipo='.$_REQUEST['Tipo']. '&Nivel='.$_REQUEST['Nivel'] . '&Letra='.$_REQUEST['Letra'] . '&action=TABLA' );
+		
+		}}else{
+			new MESSAGE( 'El usuario no tiene los permisos necesarios','../Controllers/CALENDARIO_CONTROLLER.php?IdCampeonato=' . $_REQUEST['IdCampeonato'] . '&Tipo='.$_REQUEST['Tipo']. '&Nivel='.$_REQUEST['Nivel'] . '&Letra='.$_REQUEST['Letra'] . '&action=TABLA' );
+		}
+	
+	break;
+		
+	case "DENEGAR2" :
+		if($_SESSION['tipo'] == 'Deportista'){
+		if ( $_POST ) {
+			$PARTIDO = new PARTIDO_MODEL($_REQUEST['IdCampeonato'],$_REQUEST['Tipo'],$_REQUEST['Nivel'],$_REQUEST['Letra'],$_REQUEST['NumEnfrentamiento'],'','','','','');
+			$respuesta1 = $PARTIDO->EDIT2();
+			
+			$ELIMINATORIA = new ELIMINATORIA_MODEL($_REQUEST['IdCampeonato'],$_REQUEST['Tipo'],$_REQUEST['Nivel'],$_REQUEST['Letra'],$_REQUEST['NumEnfrentamiento'],$_REQUEST['pareja1'],'','','','',0);
+			$respuesta = $ENFRENTAMIENTO->EDIT2();
+			$ELIMINATORIA = new ELIMINATORIA_MODEL($_REQUEST['IdCampeonato'],$_REQUEST['Tipo'],$_REQUEST['Nivel'],$_REQUEST['Letra'],$_REQUEST['NumEnfrentamiento'],$_REQUEST['pareja2'],'','','','',0);
 			$respuesta = $ENFRENTAMIENTO->EDIT2();
 			
 			new MESSAGE( $respuesta1, '../Controllers/CALENDARIO_CONTROLLER.php?IdCampeonato=' . $_REQUEST['IdCampeonato'] . '&Tipo='.$_REQUEST['Tipo']. '&Nivel='.$_REQUEST['Nivel'] . '&Letra='.$_REQUEST['Letra'] . '&action=TABLA' );
