@@ -25,6 +25,7 @@ include '../Views/CALENDARIO/CALENDARIO_TABLA_View.php';
 include '../Views/CALENDARIO/CALENDARIO_INFORMACION_View.php';
 include '../Views/CALENDARIO/CALENDARIO_ACEPTAR_View.php';
 include '../Views/CALENDARIO/CALENDARIO_PROPONER_View.php';
+include '../Views/ELIMINATORIA/ELIMINATORIA_TABLA2_View.php';
 include '../Views/DEFAULT_View.php'; 
 include '../Views/MESSAGE_View.php'; 
 
@@ -204,6 +205,25 @@ switch ( $_REQUEST[ 'action' ] ) {
 				$vuelta['Nivel'] = $_REQUEST['Nivel'];
 				$vuelta['Letra'] = $_REQUEST['Letra'];
 			   new CALENDARIO_TABLA($listaParejas , $listaEnfrentamientos ,$listaEnfrentamientos2, $vuelta,$capitan,$numParejaActual);
+		}else{
+			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/CALENDARIO_CONTROLLER.php' );
+		}
+	
+	break;
+	case "CUADRO":
+		if($_SESSION['tipo'] == 'Deportista'){
+
+			
+				
+				$PAREJA = new PAREJA_MODEL($_REQUEST['IdCampeonato'],$_REQUEST['Tipo'],$_REQUEST['Nivel'],'','');
+				$capitan = $PAREJA->esCapitan($_SESSION['login']);
+				
+				$PAREJA2 = new PAREJA_MODEL($_REQUEST['IdCampeonato'],$_REQUEST['Tipo'],$_REQUEST['Nivel'],'','');
+				$numParejaActual = $PAREJA2->numPareja($_SESSION['dni']);		
+
+			    $ELIMINATORIA = new ELIMINATORIA_MODEL($_REQUEST['IdCampeonato'],$_REQUEST['Tipo'],$_REQUEST['Nivel'],$_REQUEST['Letra'],'','','','','','','');
+				$datos=$ELIMINATORIA->IntegrantesEliminatorias();
+				new ELIMINATORIA_TABLA2($datos);
 		}else{
 			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/CALENDARIO_CONTROLLER.php' );
 		}
