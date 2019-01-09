@@ -155,8 +155,8 @@ class PARTIDO_MODEL{
 								'$this->Nivel',
 								'$this->Letra',
 								'$MaxNumEn',
-								ADDDATE(NOW(),5),
-								'20:30:00',
+								NULL,
+								NULL,
 								NULL,
 								NULL,
 								0

@@ -126,7 +126,7 @@ class CALENDARIO_ACEPTAR2 {
 					<input type="hidden" name="Tipo" value="<?php echo $this->valores['Tipo']; ?>">		
 					<input type="hidden" name="Nivel" value="<?php echo $this->valores['Nivel']; ?>">
 					<input type="hidden" name="Letra" value="<?php echo $this->valores['Grupo_Letra']; ?>">
-				<button id ="buttonBien" name="action" type="submit" value="CUADRO"><img src="../Views/icon/back_big2.png" alt="<?php echo $strings['Atras'] ?>"/></button>
+				<button id ="buttonBien"  type="submit" name="action" value="CUADRO"><img src="../Views/icon/back_big2.png" alt="<?php echo $strings['Atras'] ?>"/></button>
 			</form>
 		</div>
 <?php           

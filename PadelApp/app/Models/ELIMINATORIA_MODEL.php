@@ -149,6 +149,41 @@ function RellenaDatos2() {
 			return 'No existe en la base de datos';
 		}
 	}
+	function EDIT2() {
+		
+		$sql = 
+		"SELECT * FROM ELIMINATORIAS 
+		WHERE  
+		(IdCampeonato = '$this->IdCampeonato') && (Tipo = '$this->Tipo') && (Nivel = '$this->Nivel') && (Letra = '$this->Letra') 
+		&& (NumEnfrentamiento = '$this->NumEnfrentamiento') && (NumPareja = '$this->NumPareja') 
+		
+		";
+
+		$result = $this->mysqli->query( $sql );
+		if ( $result->num_rows == 1 ) {
+
+			$sql = "UPDATE ELIMINATORIAS SET 
+					IdCampeonato = '$this->IdCampeonato',
+					Tipo='$this->Tipo',
+					Nivel='$this->Nivel',
+					Letra='$this->Letra',
+					NumEnfrentamiento='$this->NumEnfrentamiento',
+					NumPareja = '$this->NumPareja',
+					EstadoPropuesta = '$this->EstadoPropuesta'
+				WHERE (IdCampeonato = '$this->IdCampeonato') && (Tipo = '$this->Tipo') && (Nivel = '$this->Nivel') && (Letra = '$this->Letra') 
+				&& (NumEnfrentamiento = '$this->NumEnfrentamiento') && (NumPareja = '$this->NumPareja')
+				";
+
+			if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
+				return 'Error en la modificación';
+			} else { 
+				return 'Modificado correctamente';
+			}
+		} 
+		else {
+			return 'No existe en la base de datos';
+		}
+	} 
 	function ganador($ResultadoSet1Par1,$ResultadoSet2Par1,$ResultadoSet3Par1,$ResultadoSet1Par2,$ResultadoSet2Par2,$ResultadoSet3Par2,$NumPareja1){
 		$countPar1=0;
 		$countPar2=0;
@@ -233,8 +268,8 @@ function semis(){
 								'$this->Nivel',
 								'$this->Letra',
 								'$MaxNumEn',
-								ADDDATE(NOW(),5),
-								'20:30:00',
+								NULL,
+								NULL,
 								NULL,
 								NULL,
 								0
@@ -325,8 +360,8 @@ function semis(){
 								'$this->Nivel',
 								'$this->Letra',
 								'$MaxNumEn',
-								ADDDATE(NOW(),5),
-								'22:00:00',
+								NULL,
+								NULL,
 								NULL,
 								NULL,
 								0
@@ -426,8 +461,8 @@ function finalistas(){
 								'$this->Nivel',
 								'$this->Letra',
 								'$MaxNumEn',
-								ADDDATE(NOW(),5),
-								'20:30:00',
+								NULL,
+								NULL,
 								NULL,
 								NULL,
 								0
