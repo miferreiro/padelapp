@@ -102,7 +102,15 @@ class CAMPEONATO_MODEL{
 			if($result->num_rows >= 1){
 				$sql = "DELETE FROM Enfrentamiento WHERE (IdCampeonato = '$this->IdCampeonato')";
 				$this->mysqli->query( $sql );
-			}	
+			}
+			
+			$sql = "SELECT * FROM ELIMINATORIAS WHERE (IdCampeonato = '$this->IdCampeonato')";
+			$this->mysqli->query( $sql );
+			
+			if($result->num_rows >= 1){
+				$sql = "DELETE FROM ELIMINATORIAS WHERE (IdCampeonato = '$this->IdCampeonato')";
+				$this->mysqli->query( $sql );
+			}
 			
 			$sql = "SELECT * FROM usuarioparejas WHERE (Pareja_idCampeonato = '$this->IdCampeonato')";
 			$this->mysqli->query( $sql );
