@@ -51,9 +51,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 			if(date("Y-m-d")>$PARTIDO->getLastFecha()){
 			
 			$respuesta=$PARTIDO->CUARTOS();
-				new MESSAGE( $respuesta, '../Controllers/CAMPEONATO_CATEGORIA_CONTROLLER.php?IdCampeonato=' . $_REQUEST['IdCampeonato'] . '&Tipo='.$_REQUEST['Tipo']. '&Nivel='.$_REQUEST['Nivel']);	
+				new MESSAGE( $respuesta, '../Controllers/GRUPO_CONTROLLER.php?IdCampeonato=' . $_REQUEST['IdCampeonato'] . '&Tipo='.$_REQUEST['Tipo']. '&Nivel='.$_REQUEST['Nivel']);	
 			}else{  
-			new MESSAGE( 'Debe esperar a que finalice la fase de grupos', '../Controllers/CAMPEONATO_CATEGORIA_CONTROLLER.php?IdCampeonato=' . $_REQUEST['IdCampeonato'] . '&Tipo='.$_REQUEST['Tipo']. '&Nivel='.$_REQUEST['Nivel']);			
+			new MESSAGE( 'Debe esperar a que finalice la fase de grupos', '../Controllers/GRUPO_CONTROLLER.php?IdCampeonato=' . $_REQUEST['IdCampeonato'] . '&Tipo='.$_REQUEST['Tipo']. '&Nivel='.$_REQUEST['Nivel']);			
 		}
 					
 	

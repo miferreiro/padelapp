@@ -189,7 +189,7 @@ class CALENDARIO_INFORMACION{
 					<input type="hidden" name="Tipo" value="<?php echo $this->valores['Tipo']; ?>">		
 					<input type="hidden" name="Nivel" value="<?php echo $this->valores['Nivel']; ?>">
 					<input type="hidden" name="Letra" value="<?php echo $this->valores['Letra']; ?>">
-						<button id ="buttonBien" name="action" type="submit" ><img src="../Views/icon/back_big2.png" alt="<?php echo $strings['Atras'] ?>" /></button>
+						<button id ="buttonBien" name="action" type="submit" value='CUADRO'><img src="../Views/icon/back_big2.png" alt="<?php echo $strings['Atras'] ?>" /></button>
 				</form>
 
 
