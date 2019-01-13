@@ -150,7 +150,39 @@ switch ( $_REQUEST[ 'action' ] ) {
 		}else{
 			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/USUARIO_CONTROLLER.php' );
 		}
-	break;	
+	break;
+	case 'DELETE':
+		if ( !$_POST ) {
+
+			if($_SESSION['tipo'] == 'Admin'){
+				$GRUPO = new GRUPO_MODEL( $_REQUEST[ 'IdCampeonato' ], '', '', '');
+
+				$valores = $GRUPO->RellenaDatos( $_REQUEST[ 'IdCampeonato' ] );
+            
+				new GRUPO_DELETE1( $valores);
+			}else{
+				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/GRUPO_CONTROLLER.php' );
+			
+			}
+		
+		} else {
+			
+			$GRUPO = new GRUPO_MODEL( $_REQUEST[ 'IdCampeonato' ], '', '', '');
+			
+			$respuesta = $GRUPO->DELETE1();
+				
+		
+
+			
+			
+			if(($respuesta != 'Borrado correctamente')){
+				new MESSAGE( 'Borrado incorrectamente', '../Controllers/GRUPO_CONTROLLER.php' );
+			}else{
+				new MESSAGE( $respuesta, '../Controllers/GRUPO_CONTROLLER.php' );
+			}
+			
+		}
+		break;		
 	default: 
 			if($_SESSION['tipo'] == 'Admin'){
 			

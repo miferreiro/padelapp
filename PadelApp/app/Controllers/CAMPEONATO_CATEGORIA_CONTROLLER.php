@@ -57,7 +57,39 @@ switch ( $_REQUEST[ 'action' ] ) {
 		}
 		
 
-	break;	
+	break;
+	case 'DELETE':
+		if ( !$_POST ) {
+
+			if($_SESSION['tipo'] == 'Admin'){
+				$CATEGORIA = new CATEGORIA_MODEL( $_REQUEST[ 'IdCampeonato' ], '', '');
+
+				$valores = $CATEGORIA->RellenaDatos( $_REQUEST[ 'IdCampeonato' ] );
+            
+				new CATEGORIA_DELETE1( $valores);
+			}else{
+				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/CAMPEONATO_CATEGORIA_CONTROLLER.php' );
+			
+			}
+		
+		} else {
+			
+			$CATEGORIA = new CATEGORIA_MODEL( $_REQUEST[ 'IdCampeonato' ], '', '');
+			
+			$respuesta = $CATEGORIA->DELETE1();
+				
+		
+
+			
+			
+			if(($respuesta != 'Borrado correctamente')){
+				new MESSAGE( 'Borrado incorrectamente', '../Controllers/CAMPEONATO_CATEGORIA_CONTROLLER.php' );
+			}else{
+				new MESSAGE( $respuesta, '../Controllers/CAMPEONATO_CATEGORIA_CONTROLLER.php' );
+			}
+			
+		}
+		break;	
 
 	default: 
 			if($_SESSION['tipo'] == 'Admin'){

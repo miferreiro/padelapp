@@ -73,7 +73,51 @@ class GRUPO_MODEL{
 			return 'Error en la inserción';
 		}
 	} 
-    
+    function DELETE1() {
+
+		$sql = "SELECT * FROM Grupo WHERE (IdCampeonato = '$this->IdCampeonato')";
+		$result = $this->mysqli->query( $sql );	
+
+		if ( $result->num_rows == 1 ) {
+
+			$sql = "SELECT * FROM Enfrentamiento WHERE (IdCampeonato = '$this->IdCampeonato')";
+			$this->mysqli->query( $sql );
+			
+			if($result->num_rows >= 1){
+				$sql = "DELETE FROM Enfrentamiento WHERE (IdCampeonato = '$this->IdCampeonato')";
+				$this->mysqli->query( $sql );
+			}	
+			
+			$sql = "SELECT * FROM usuarioparejas WHERE (Pareja_idCampeonato = '$this->IdCampeonato')";
+			$this->mysqli->query( $sql );
+			
+			if($result->num_rows >= 1){
+				$sql = "DELETE FROM usuarioparejas WHERE (Pareja_idCampeonato = '$this->IdCampeonato')";
+				$this->mysqli->query( $sql );
+			}
+			
+			$sql = "SELECT * FROM Pareja WHERE (idCampeonato = '$this->IdCampeonato')";
+			$this->mysqli->query( $sql );
+			
+			if($result->num_rows >= 1){
+				$sql = "DELETE FROM Pareja WHERE (idCampeonato = '$this->IdCampeonato')";
+				$this->mysqli->query( $sql );
+			}
+			$sql = "SELECT * FROM Partido WHERE (IdCampeonato = '$this->IdCampeonato')";
+			$this->mysqli->query( $sql );
+			
+			if($result->num_rows >= 1){
+				$sql = "DELETE FROM Partido WHERE (IdCampeonato = '$this->IdCampeonato')";
+				$this->mysqli->query( $sql );
+			}
+			$sql = "DELETE FROM Grupo WHERE (IdCampeonato = '$this->IdCampeonato')";
+			$this->mysqli->query( $sql );
+			
+			return "Borrado correctamente";
+		}
+		else
+			return "No existe";
+	} 
 	function DELETE() {
 
 		$sql = "SELECT * FROM GRUPO WHERE  (IdCampeonato = '$this->IdCampeonato') && (Tipo = '$this->Tipo') && (Nivel = '$this->Nivel') && (Letra = '$this->Letra')";
