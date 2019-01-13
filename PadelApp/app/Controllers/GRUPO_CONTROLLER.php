@@ -158,9 +158,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 			if($_SESSION['tipo'] == 'Admin'){
 				$GRUPO = new GRUPO_MODEL( $_REQUEST[ 'IdCampeonato' ], $_REQUEST['Tipo'], $_REQUEST['Nivel'], $_REQUEST['Letra']);
 
-				$valores = $GRUPO->SEARCH( $_REQUEST[ 'IdCampeonato' ], $_REQUEST['Tipo'], $_REQUEST['Nivel'], $_REQUEST['Letra']);
+				$valores = $GRUPO->RellenaDatos( $_REQUEST[ 'IdCampeonato' ], $_REQUEST['Tipo'], $_REQUEST['Nivel'], $_REQUEST['Letra']);
             
-				new GRUPO_CATEGORIA_DELETE( $valores);
+				new GRUPO_CATEGORIA_DELETE($valores);
 			}else{
 				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/GRUPO_CONTROLLER.php' );
 			
