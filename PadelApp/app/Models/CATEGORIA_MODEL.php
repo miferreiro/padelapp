@@ -80,57 +80,59 @@ class CATEGORIA_MODEL{
 
     function DELETE1() {
 
-		$sql = "SELECT * FROM Categoria WHERE (IdCampeonato = '$this->IdCampeonato', Tipo = '$this->Tipo', Nivel = '$this->Nivel')";
+		$sql = "SELECT * FROM Categoria WHERE (IdCampeonato = '$this->IdCampeonato' && Tipo = '$this->Tipo' && Nivel = '$this->Nivel')";
 		$result = $this->mysqli->query( $sql );	
 
 		if ( $result->num_rows == 1 ) {
-
-			$sql = "SELECT * FROM Enfrentamiento WHERE (IdCampeonato = '$this->IdCampeonato', Tipo = '$this->Tipo', Nivel = '$this->Nivel')";
+			
+			$sql = "SELECT * FROM ELIMINATORIAS WHERE (IdCampeonato = '$this->IdCampeonato' && Tipo = '$this->Tipo' && Nivel = '$this->Nivel')";
 			$this->mysqli->query( $sql );
 			
 			if($result->num_rows >= 1){
-				$sql = "DELETE FROM Enfrentamiento WHERE (IdCampeonato = '$this->IdCampeonato', Tipo = '$this->Tipo', Nivel = '$this->Nivel')";
+				$sql = "DELETE FROM ELIMINATORIAS WHERE (IdCampeonato = '$this->IdCampeonato' && Tipo = '$this->Tipo' && Nivel = '$this->Nivel')";
 				$this->mysqli->query( $sql );
 			}
 			
-			$sql = "SELECT * FROM ELIMINATORIAS WHERE (IdCampeonato = '$this->IdCampeonato', Tipo = '$this->Tipo', Nivel = '$this->Nivel')";
+			$sql = "SELECT * FROM Enfrentamiento WHERE (IdCampeonato = '$this->IdCampeonato' && Tipo = '$this->Tipo' && Nivel = '$this->Nivel')";
 			$this->mysqli->query( $sql );
 			
 			if($result->num_rows >= 1){
-				$sql = "DELETE FROM ELIMINATORIAS WHERE (IdCampeonato = '$this->IdCampeonato', Tipo = '$this->Tipo', Nivel = '$this->Nivel')";
+				$sql = "DELETE FROM Enfrentamiento WHERE (IdCampeonato = '$this->IdCampeonato' && Tipo = '$this->Tipo' && Nivel = '$this->Nivel')";
 				$this->mysqli->query( $sql );
 			}
 			
-			$sql = "SELECT * FROM usuarioparejas WHERE (Pareja_idCampeonato = '$this->IdCampeonato', Tipo = '$this->Tipo', Nivel = '$this->Nivel')";
+			
+			
+			$sql = "SELECT * FROM usuarioparejas WHERE (Pareja_idCampeonato = '$this->IdCampeonato' && Tipo = '$this->Tipo' && Nivel = '$this->Nivel')";
 			$this->mysqli->query( $sql );
 			
 			if($result->num_rows >= 1){
-				$sql = "DELETE FROM usuarioparejas WHERE (Pareja_idCampeonato = '$this->IdCampeonato', Tipo = '$this->Tipo', Nivel = '$this->Nivel')";
+				$sql = "DELETE FROM usuarioparejas WHERE (Pareja_idCampeonato = '$this->IdCampeonato' && Tipo = '$this->Tipo' && Nivel = '$this->Nivel')";
 				$this->mysqli->query( $sql );
 			}
 			
-			$sql = "SELECT * FROM Pareja WHERE (idCampeonato = '$this->IdCampeonato', Tipo = '$this->Tipo', Nivel = '$this->Nivel')";
+			$sql = "SELECT * FROM Pareja WHERE (idCampeonato = '$this->IdCampeonato' && Tipo = '$this->Tipo' && Nivel = '$this->Nivel')";
 			$this->mysqli->query( $sql );
 			
 			if($result->num_rows >= 1){
-				$sql = "DELETE FROM Pareja WHERE (idCampeonato = '$this->IdCampeonato', Tipo = '$this->Tipo', Nivel = '$this->Nivel')";
+				$sql = "DELETE FROM Pareja WHERE (idCampeonato = '$this->IdCampeonato' && Tipo = '$this->Tipo' && Nivel = '$this->Nivel')";
 				$this->mysqli->query( $sql );
 			}
-			$sql = "SELECT * FROM Partido WHERE (IdCampeonato = '$this->IdCampeonato', Tipo = '$this->Tipo', Nivel = '$this->Nivel')";
+			$sql = "SELECT * FROM Partido WHERE (IdCampeonato = '$this->IdCampeonato' && Tipo = '$this->Tipo' && Nivel = '$this->Nivel')";
 			$this->mysqli->query( $sql );
 			
 			if($result->num_rows >= 1){
-				$sql = "DELETE FROM Partido WHERE (IdCampeonato = '$this->IdCampeonato', Tipo = '$this->Tipo', Nivel = '$this->Nivel')";
+				$sql = "DELETE FROM Partido WHERE (IdCampeonato = '$this->IdCampeonato' && Tipo = '$this->Tipo' && Nivel = '$this->Nivel')";
 				$this->mysqli->query( $sql );
 			}
-			$sql = "SELECT * FROM Grupo WHERE (IdCampeonato = '$this->IdCampeonato', Tipo = '$this->Tipo', Nivel = '$this->Nivel')";
+			$sql = "SELECT * FROM Grupo WHERE (IdCampeonato = '$this->IdCampeonato' && Tipo = '$this->Tipo' && Nivel = '$this->Nivel')";
 			$this->mysqli->query( $sql );
 			
 			if($result->num_rows >= 1){
-				$sql = "DELETE FROM Grupo WHERE (IdCampeonato = '$this->IdCampeonato', Tipo = '$this->Tipo', Nivel = '$this->Nivel')";
+				$sql = "DELETE FROM Grupo WHERE (IdCampeonato = '$this->IdCampeonato' && Tipo = '$this->Tipo' && Nivel = '$this->Nivel')";
 				$this->mysqli->query( $sql );
 			}
-			$sql = "DELETE FROM Categoria WHERE (IdCampeonato = '$this->IdCampeonato', Tipo = '$this->Tipo', Nivel = '$this->Nivel')";
+			$sql = "DELETE FROM Categoria WHERE (IdCampeonato = '$this->IdCampeonato' && Tipo = '$this->Tipo' && Nivel = '$this->Nivel')";
 			$this->mysqli->query( $sql );
 			
 			return "Borrado correctamente";

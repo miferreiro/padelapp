@@ -79,7 +79,7 @@ class CAMPEONATO_CATEGORIA_SHOWALL {
 								<button id ="buttonBien"type="submit"name="action"   ><img src="../Views/icon/consultar_grupo_big.png	" width="20" height="20"/></button>
 							
 						</form>
-						<form action="../Controllers/CAMPEONATO_GENERAR_CONTROLLER.php" method="post" style="display:inline" >
+						<form action="../Controllers/CAMPEONATO_CATEGORIA_CONTROLLER.php" method="get" style="display:inline" >
 							<input type="hidden" name="IdCampeonato" value="<?php echo $fila['IdCampeonato']; ?>">		
 							<input type="hidden" name="Tipo" value="<?php echo $fila['Tipo']; ?>">		
 							<input type="hidden" name="Nivel" value="<?php echo $fila['Nivel']; ?>">	

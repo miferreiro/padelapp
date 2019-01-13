@@ -11,7 +11,7 @@ include '../Models/CATEGORIA_MODEL.php';
 include '../Models/NOTICIA_MODEL.php';
 include '../Views/CAMPEONATO_CATEGORIA/CAMPEONATO_CATEGORIA_SHOWALL_View.php';
 include '../Views/CAMPEONATO_CATEGORIA/CAMPEONATO_CATEGORIA_INSCRITOS_View.php';
-
+include '../Views/CAMPEONATO_CATEGORIA/CAMPEONATO_CATEGORIA_DELETE.php';
 
 include '../Views/DEFAULT_View.php'; 
 include '../Views/MESSAGE_View.php';
@@ -64,9 +64,10 @@ switch ( $_REQUEST[ 'action' ] ) {
 			if($_SESSION['tipo'] == 'Admin'){
 				$CATEGORIA = new CATEGORIA_MODEL( $_REQUEST[ 'IdCampeonato' ], $_REQUEST[ 'Tipo' ], $_REQUEST[ 'Nivel' ]);
 
-				$valores = $CATEGORIA->SEARCH( $_REQUEST[ 'IdCampeonato' ], $_REQUEST[ 'Tipo' ], $_REQUEST[ 'Nivel' ]);
-            
-				new CATEGORIA_DELETE( $valores);
+				$valores = $CATEGORIA->RellenaDatos( $_REQUEST[ 'IdCampeonato' ], $_REQUEST[ 'Tipo' ], $_REQUEST[ 'Nivel' ]);
+            	
+				new CAMPEONATO_CATEGORIA_DELETE( $valores);
+				
 			}else{
 				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/CAMPEONATO_CATEGORIA_CONTROLLER.php' );
 			
@@ -79,7 +80,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$respuesta = $CATEGORIA->DELETE1();
 				
 		
-
+			
 			
 			
 			if(($respuesta != 'Borrado correctamente')){

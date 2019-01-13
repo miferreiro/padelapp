@@ -14,6 +14,7 @@ include '../Models/ENFRENTAMIENTO_MODEL.php';
 include '../Views/GRUPO/GRUPO_CATEGORIA_SHOWALL_View.php';
 include '../Views/GRUPO/GRUPO_CATEGORIA_PAREJAS_View.php';
 include '../Views/GRUPO/GRUPO_CATEGORIA_TABLA_View.php';
+include '../Views/GRUPO/GRUPO_CATEGORIA_DELETE.php';
 include '../Views/ENFRENTAMIENTO/ENFRENTAMIENTO_EDIT_View.php';
 include '../Views/GRUPO/Clasificacion_View.php';
 include '../Views/DEFAULT_View.php'; 
@@ -159,7 +160,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 
 				$valores = $GRUPO->SEARCH( $_REQUEST[ 'IdCampeonato' ], $_REQUEST['Tipo'], $_REQUEST['Nivel'], $_REQUEST['Letra']);
             
-				new GRUPO_DELETE( $valores);
+				new GRUPO_CATEGORIA_DELETE( $valores);
 			}else{
 				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/GRUPO_CONTROLLER.php' );
 			
