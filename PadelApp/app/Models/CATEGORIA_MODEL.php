@@ -181,6 +181,17 @@ class CATEGORIA_MODEL{
 			return $result;
 		}
 	} 
+	function RellenaDatos2() { 
+
+		$sql = "SELECT * FROM CATEGORIA WHERE (IdCampeonato = '$this->IdCampeonato') && (Tipo = '$this->Tipo') && (Nivel = '$this->Nivel')";
+		
+		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
+			return 'No existe en la base de datos'; // 
+		} else {            
+			$result = $resultado->fetch_array();	
+			return $result;
+		}
+	} 
     
 	function ListaInscritos(){
 		

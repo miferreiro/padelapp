@@ -111,11 +111,11 @@ class GRUPO_MODEL{
 				$sql = "DELETE FROM Pareja WHERE (idCampeonato = '$this->IdCampeonato' && Tipo = '$this->Tipo' && Nivel = '$this->Nivel' && Letra = '$this->Letra')";
 				$this->mysqli->query( $sql );
 			}
-			$sql = "SELECT * FROM Partido WHERE (IdCampeonato = '$this->IdCampeonato' && Tipo = '$this->Tipo' && Nivel = '$this->Nivel' && Letra = '$this->Letra')";
+			$sql = "SELECT * FROM Partido WHERE (IdCampeonato = '$this->IdCampeonato' && Tipo = '$this->Tipo' && Nivel = '$this->Nivel' && Grupo_Letra = '$this->Letra')";
 			$this->mysqli->query( $sql );
 			
 			if($result->num_rows >= 1){
-				$sql = "DELETE FROM Partido WHERE (IdCampeonato = '$this->IdCampeonato' && Tipo = '$this->Tipo' && Nivel = '$this->Nivel' && Letra = '$this->Letra')";
+				$sql = "DELETE FROM Partido WHERE (IdCampeonato = '$this->IdCampeonato' && Tipo = '$this->Tipo' && Nivel = '$this->Nivel' && Grupo_Letra = '$this->Letra')";
 				$this->mysqli->query( $sql );
 			}
 			$sql = "DELETE FROM Grupo WHERE (IdCampeonato = '$this->IdCampeonato' && Tipo = '$this->Tipo' && Nivel = '$this->Nivel' && Letra = '$this->Letra')";
@@ -167,6 +167,17 @@ class GRUPO_MODEL{
 		}
 	} 
 	//Fin
+	function RellenaDatos2() { 
+
+		$sql = "SELECT * FROM GRUPO WHERE (IdCampeonato = '$this->IdCampeonato') && (Tipo = '$this->Tipo') && (Nivel = '$this->Nivel')&& (Letra = '$this->Letra')";
+		
+		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
+			return 'No existe en la base de datos'; // 
+		} else {            
+			$result = $resultado->fetch_array();	
+			return $result;
+		}
+	} 
 	function ListaParejasGrupo(){
 		
 	

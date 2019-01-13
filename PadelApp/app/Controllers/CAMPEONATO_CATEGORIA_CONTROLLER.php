@@ -64,9 +64,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 			if($_SESSION['tipo'] == 'Admin'){
 				$CATEGORIA = new CATEGORIA_MODEL( $_REQUEST[ 'IdCampeonato' ], $_REQUEST[ 'Tipo' ], $_REQUEST[ 'Nivel' ]);
 
-				$valores = $CATEGORIA->RellenaDatos( $_REQUEST[ 'IdCampeonato' ], $_REQUEST[ 'Tipo' ], $_REQUEST[ 'Nivel' ]);
+				$valores = $CATEGORIA->RellenaDatos2( $_REQUEST[ 'IdCampeonato' ], $_REQUEST[ 'Tipo' ], $_REQUEST[ 'Nivel' ]);
             	
-				new CAMPEONATO_CATEGORIA_DELETE( $valores);
+				new CAMPEONATO_CATEGORIA_DELETE($valores);
 				
 			}else{
 				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/CAMPEONATO_CATEGORIA_CONTROLLER.php' );

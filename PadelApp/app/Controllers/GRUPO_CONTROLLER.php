@@ -158,7 +158,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			if($_SESSION['tipo'] == 'Admin'){
 				$GRUPO = new GRUPO_MODEL( $_REQUEST[ 'IdCampeonato' ], $_REQUEST['Tipo'], $_REQUEST['Nivel'], $_REQUEST['Letra']);
 
-				$valores = $GRUPO->RellenaDatos( $_REQUEST[ 'IdCampeonato' ], $_REQUEST['Tipo'], $_REQUEST['Nivel'], $_REQUEST['Letra']);
+				$valores = $GRUPO->RellenaDatos2($_REQUEST[ 'IdCampeonato' ], $_REQUEST['Tipo'], $_REQUEST['Nivel'], $_REQUEST['Letra']);
             
 				new GRUPO_CATEGORIA_DELETE($valores);
 			}else{
