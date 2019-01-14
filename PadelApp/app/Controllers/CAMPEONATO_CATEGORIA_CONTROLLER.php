@@ -78,16 +78,8 @@ switch ( $_REQUEST[ 'action' ] ) {
 			$CATEGORIA = new CATEGORIA_MODEL( $_REQUEST[ 'IdCampeonato' ],  $_REQUEST[ 'Tipo' ], $_REQUEST[ 'Nivel' ]);
 			
 			$respuesta = $CATEGORIA->DELETE1();
-				
-		
-			
-			
-			
-			if(($respuesta != 'Borrado correctamente')){
-				new MESSAGE( 'Borrado incorrectamente', '../Controllers/CAMPEONATO_CATEGORIA_CONTROLLER.php' );
-			}else{
-				new MESSAGE( $respuesta, '../Controllers/CAMPEONATO_CATEGORIA_CONTROLLER.php' );
-			}
+
+			new MESSAGE( $respuesta, '../Controllers/CAMPEONATO_CATEGORIA_CONTROLLER.php?IdCampeonato=' . $_REQUEST['IdCampeonato'] );
 			
 		}
 		break;	

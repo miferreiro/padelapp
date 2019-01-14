@@ -162,7 +162,7 @@ switch ( $_REQUEST[ 'action' ] ) {
             
 				new GRUPO_CATEGORIA_DELETE($valores);
 			}else{
-				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/GRUPO_CONTROLLER.php' );
+				new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/GRUPO_CONTROLLER.php?IdCampeonato=' . $_REQUEST['IdCampeonato'] . '&Tipo='.$_REQUEST['Tipo']. '&Nivel='.$_REQUEST['Nivel']  );
 			
 			}
 		
@@ -170,17 +170,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 			
 			$GRUPO = new GRUPO_MODEL( $_REQUEST[ 'IdCampeonato' ],  $_REQUEST['Tipo'], $_REQUEST['Nivel'], $_REQUEST['Letra']);
 			
-			$respuesta = $GRUPO->DELETE1();
-				
-		
-
+			$respuesta = $GRUPO->DELETE1();	
 			
-			
-			if(($respuesta != 'Borrado correctamente')){
-				new MESSAGE( 'Borrado incorrectamente', '../Controllers/GRUPO_CONTROLLER.php' );
-			}else{
-				new MESSAGE( $respuesta, '../Controllers/GRUPO_CONTROLLER.php' );
-			}
+			new MESSAGE( $respuesta, '../Controllers/GRUPO_CONTROLLER.php?IdCampeonato=' . $_REQUEST['IdCampeonato'] . '&Tipo='.$_REQUEST['Tipo']. '&Nivel='.$_REQUEST['Nivel'] );
 			
 		}
 		break;		

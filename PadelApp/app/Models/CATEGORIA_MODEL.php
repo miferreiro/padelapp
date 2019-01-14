@@ -103,11 +103,11 @@ class CATEGORIA_MODEL{
 			
 			
 			
-			$sql = "SELECT * FROM usuarioparejas WHERE (Pareja_idCampeonato = '$this->IdCampeonato' && Tipo = '$this->Tipo' && Nivel = '$this->Nivel')";
+			$sql = "SELECT * FROM usuarioparejas WHERE (Pareja_idCampeonato = '$this->IdCampeonato' && Pareja_Tipo = '$this->Tipo' && Pareja_Nivel = '$this->Nivel')";
 			$this->mysqli->query( $sql );
 			
 			if($result->num_rows >= 1){
-				$sql = "DELETE FROM usuarioparejas WHERE (Pareja_idCampeonato = '$this->IdCampeonato' && Tipo = '$this->Tipo' && Nivel = '$this->Nivel')";
+				$sql = "DELETE FROM usuarioparejas WHERE (Pareja_idCampeonato = '$this->IdCampeonato' && Pareja_Tipo = '$this->Tipo' && Pareja_Nivel = '$this->Nivel')";
 				$this->mysqli->query( $sql );
 			}
 			
