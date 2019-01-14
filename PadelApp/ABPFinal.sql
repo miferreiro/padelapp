@@ -424,6 +424,9 @@ INSERT INTO `categoria` (`IdCampeonato`, `Tipo`, `Nivel`) VALUES
 (5, 'Masculino', 2),
 (5, 'Mixto', 1),
 (5, 'Mixto', 2),
+(5, 'Masculino', 3),
+(5, 'Femenino', 3),
+(5, 'Mixto', 3),
 (5, 'Femenino', 2);
 
 
@@ -1142,41 +1145,7 @@ INSERT INTO `pareja` (`idCampeonato`, `Tipo`, `Nivel`, `NumPareja`, `Capitan`) V
 
 -- ------
 
-(5, 'Mixto', 2, 537, 'usuario1020'),
-(5, 'Mixto', 2, 538, 'usuario1022'),
-(5, 'Mixto', 2, 539, 'usuario1024'),
-(5, 'Mixto', 2, 540, 'usuario1026'),
-(5, 'Mixto', 2, 541, 'usuario1028'),
-(5, 'Mixto', 2, 542, 'usuario1030'),
-(5, 'Mixto', 2, 543, 'usuario1032'),
-(5, 'Mixto', 2, 544, 'usuario1034'),
 
-(5, 'Mixto', 2, 545, 'usuario1036'),
-(5, 'Mixto', 2, 546, 'usuario1038'),
-(5, 'Mixto', 2, 547, 'usuario1040'),
-(5, 'Mixto', 2, 548, 'usuario1042'),
-(5, 'Mixto', 2, 549, 'usuario1044'),
-(5, 'Mixto', 2, 550, 'usuario1046'),
-(5, 'Mixto', 2, 551, 'usuario1048'),
-(5, 'Mixto', 2, 552, 'usuario1050'),
-
-(5, 'Mixto', 2, 553, 'usuario1052'),
-(5, 'Mixto', 2, 554, 'usuario1054'),
-(5, 'Mixto', 2, 555, 'usuario1056'),
-(5, 'Mixto', 2, 556, 'usuario1058'),
-(5, 'Mixto', 2, 557, 'usuario1060'),
-(5, 'Mixto', 2, 558, 'usuario1062'),
-(5, 'Mixto', 2, 559, 'usuario1064'),
-(5, 'Mixto', 2, 560, 'usuario1066'),
-
-(5, 'Mixto', 2, 561, 'usuario1068'),
-(5, 'Mixto', 2, 562, 'usuario1070'),
-(5, 'Mixto', 2, 563, 'usuario1072'),
-(5, 'Mixto', 2, 564, 'usuario1074'),
-(5, 'Mixto', 2, 565, 'usuario1076'),
-(5, 'Mixto', 2, 566, 'usuario1078'),
-(5, 'Mixto', 2, 567, 'usuario1080'),
-(5, 'Mixto', 2, 568, 'usuario1082'),
 
 -- ------------------------
 
@@ -4050,7 +4019,7 @@ INSERT INTO `campeonato` (`IdCampeonato`, `FechaIni`, `HoraIni`, `FechaFin`, `Ho
 (1, '2018-10-23', '09:00:00', '2018-10-31', '23:00:00'),
 (2, '2018-10-25', '10:00:00', '2018-10-27', '23:00:00'),
 (3, '2018-10-10', '12:21:00', '2018-10-15', '12:21:00'),
-(5, '2018-11-15', '12:21:00', '2018-11-20', '12:21:00');
+(5, '2019-01-12', '12:21:00', '2019-01-13', '12:21:00');
 
 -- --------------------------------------------------------
 --
@@ -4058,18 +4027,18 @@ INSERT INTO `campeonato` (`IdCampeonato`, `FechaIni`, `HoraIni`, `FechaFin`, `Ho
 --
 
 INSERT INTO `promociones` (`Fecha`, `Hora`) VALUES
-('2018-11-23', '22:00'),
-('2018-11-23', '20:30');
+('2019-01-20', '22:00'),
+('2019-01-20', '20:30');
 
 --
 -- Volcado de datos para la tabla `inscripcionpromociones`
 --
 
 INSERT INTO `inscripcionpromociones` (`Usuario_Dni`, `Promociones_Fecha`, `Promociones_Hora`) VALUES
-('37570953Q', '2018-11-23', '22:00'),
-('74663639G', '2018-11-23', '22:00'),
-('82156546V', '2018-11-23', '22:00'),
-('56024330X', '2018-11-23', '20:30');
+('37570953Q', '2019-01-20', '22:00'),
+('74663639G', '2019-01-20', '22:00'),
+('82156546V', '2019-01-20', '22:00'),
+('56024330X', '2019-01-20', '20:30');
 
 --
 -- Volcado de datos para la tabla `pista`
@@ -6057,6 +6026,13 @@ INSERT INTO `reserva` (`Usuario_Dni`, `Pista_idPista`, `Pista_Fecha`, `Pista_Hor
 ('45469088C', 1, '2018-11-27', '20:30'),
 ('45469088C', 1, '2018-11-27', '22:00');
 
+INSERT INTO `escueladeportiva` (`Fecha`, `Hora`, `Actividad`) VALUES
+('2019-01-19', '11:00:00', 'Clase grupal');
+
+INSERT INTO `alumnosescuela` (`EscuelaDeportiva_Fecha`, `EscuelaDeportiva_Hora`, `EscuelaDeportiva_Actividad`, `Usuario_Dni`) VALUES
+('2019-01-19', '11:00:00', 'Clase grupal', '65707327F'),
+('2019-01-19', '11:00:00', 'Clase grupal', '80070728T'),
+('2019-01-19', '11:00:00', 'Clase grupal', '84987297C');
  
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
