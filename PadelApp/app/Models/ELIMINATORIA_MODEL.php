@@ -235,7 +235,7 @@ function RellenaDatos2() {
 		}
 	}
 function semis(){
-	$sql="SELECT NumPareja FROM `eliminatorias` E, `partido` P WHERE E.IdCampeonato = P.IdCampeonato && E.Tipo = P.Tipo && E.Nivel = P.Nivel && E.Letra = P.Grupo_Letra && E.NumEnfrentamiento = P.NumEnfrentamiento && NumPareja=ParejaGanadora  && IdCampeonato = '$this->IdCampeonato' && Tipo = '$this->Tipo' && Nivel = '$this->Nivel' && Grupo_Letra = '$this->Letra' && NumEnfrentamiento = '$this->NumEnfrentamiento' && E.Fase='Cuartos'";
+	$sql="SELECT NumPareja FROM `eliminatorias` E, `partido` P WHERE E.IdCampeonato = P.IdCampeonato && E.Tipo = P.Tipo && E.Nivel = P.Nivel && E.Letra = P.Grupo_Letra && E.NumEnfrentamiento = P.NumEnfrentamiento && NumPareja=ParejaGanadora  && P.IdCampeonato = '$this->IdCampeonato' && P.Tipo = '$this->Tipo' && P.Nivel = '$this->Nivel' && P.Grupo_Letra = '$this->Letra' && E.Fase='Cuartos'";
 	$result = $this->mysqli->query( $sql );	
 	$NumPar = array();
 	$q = 1;
@@ -428,7 +428,7 @@ function finalistas(){
 	$result=$this->mysqli->query( $sql );
 	$resultado=$result->fetch_array();
 	$finalista1=$resultado['ParejaGanadora'];
-	$sql= "SELECT DISTINCT NumEnfrentamiento FROM `eliminatorias` WHERE Fase='Semifinales' && (IdCampeonato = '$this->IdCampeonato') && (Tipo = '$this->Tipo') && (Nivel = '$this->Nivel') && (Grupo_Letra = '$this->Letra') && NumEnfrentamiento<>'$this->NumEnfrentamiento'";
+	$sql= "SELECT DISTINCT NumEnfrentamiento FROM `eliminatorias` WHERE Fase='Semifinales' && (IdCampeonato = '$this->IdCampeonato') && (Tipo = '$this->Tipo') && (Nivel = '$this->Nivel') && (Letra = '$this->Letra') && NumEnfrentamiento<>'$this->NumEnfrentamiento'";
 	$result=$this->mysqli->query( $sql );
 	$resultado=$result->fetch_array();
 	$NumEm=$resultado['NumEnfrentamiento'];
