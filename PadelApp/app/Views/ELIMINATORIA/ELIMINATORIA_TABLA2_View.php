@@ -39,15 +39,17 @@ $p=0;
 $m=0;
 $l=0;
 $s=0;
+$o=0;						
 
   while ( $fila = mysqli_fetch_array( $this->datos ) ) {
+
 	  if($fila['Fase']=="Cuartos"){
 		  $Cuartos=1;
 		  $ParejasCuartos[$x]=$fila['NumPareja'];
 		  if($p==0){
 			$NumEnfrentamientosCuartos[$h]=$fila['NumEnfrentamiento'];
 			$EstadosProPar1Cuartos[$s]=$fila['EstadoPropuesta'];
-			$s++;
+			 $s++;
 			 $h++;
 			 $p++;
 		  }else{
@@ -62,20 +64,19 @@ $s=0;
 		  $x++;
 	  }
 	  if($fila['Fase']=="Semifinales"){
-		  $s=0;
 		  $Semis=1;
 		  $ParejasSemis[$i]=$fila['NumPareja'];
 		  if($m==0){
 		  $NumEnfrentamientosSemis[$n]=$fila['NumEnfrentamiento'];
-		  $EstadosProPar1Semis[$s]=$fila['EstadoPropuesta'];
-			  $s++;
+		  $EstadosProPar1Semis[$o]=$fila['EstadoPropuesta'];
+			 $o++;
 			 $n++;
 			 $m++;
 		  }else{
 			  
 			$m=0; 
-			$EstadosProPar2Semis[$s]=$fila['EstadoPropuesta'];
-			$s++;
+			$EstadosProPar2Semis[$o]=$fila['EstadoPropuesta'];
+			$o++;
 		  }
 		  $i++;		    
 	  }
@@ -91,10 +92,13 @@ $s=0;
 		  }
 		  $j++;		  
 	  }	  
-  }    
+  }
+
 ?>
 			<h2  align="center"> 
-				<?php echo $strings['Tabla de enfrentamientos'];?>
+				<?php echo $strings['Tabla de enfrentamientos'];
+
+				?>
 			</h2>
 	
 
@@ -525,6 +529,7 @@ $s=0;
 						</form>	
 								<?php
 								   } else { 
+		
 											if(($EstadosProPar1Semis[0] == 2 && $ParejasSemis[0] == $this->numParejaActual) || ( $EstadosProPar2Semis[1] == 2 && $ParejasSemis[1] == $this->numParejaActual)){
 	  						?>
 							<td style ="background-color: #E49E56;">
