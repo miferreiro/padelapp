@@ -403,7 +403,9 @@ array(
 	'Final'=>'Final',
 	'Fase'=>'Phase',
 	'Semifinales generadas correctamente'=>'Semifinals generated correctly',
-	'Finales generadas correctamente'=>'Finales generadas correctamente'
+	'Finales generadas correctamente'=>'Finales generadas correctamente',
+	'Tabla de confirmacion'=>'Confirmation table',
+	'Tabla de propuesta'=>'Proposal table'
 	
 	)
 ;

@@ -390,7 +390,9 @@ array(
 	'Final'=>'Final',
 	'Fase'=>'Fase',
 	'Semifinales generadas correctamente'=>'Semifinales generadas correctamente',
-	'Finales generadas correctamente'=>'Finales generadas correctamente'
+	'Finales generadas correctamente'=>'Finales generadas correctamente',
+	'Tabla de confirmacion'=>'Tabla de confirmación',
+	'Tabla de propuesta'=>'Tabla de propuesta'
 	
 	
 	)

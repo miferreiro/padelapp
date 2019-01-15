@@ -19,7 +19,7 @@ class CALENDARIO_ACEPTAR2 {
 ?>
 		<div class="seccion" align="center">
 			<h2>
-				<?php echo $strings['Tabla de borrado'];?>
+				<?php echo $strings['Tabla de confirmacion'];?>
 			</h2>
 			<div class="col-sm-4">
 			<table class="table table-sm">

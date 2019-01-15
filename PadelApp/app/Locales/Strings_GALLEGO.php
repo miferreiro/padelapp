@@ -388,7 +388,9 @@ array(
 	'Final'=>'Final',
 	'Fase'=>'Fase',
 	'Semifinales generadas correctamente'=>'Semifinales xeneradas correctamente',
-	'Finales generadas correctamente'=>'Finales generadas correctamente'
+	'Finales generadas correctamente'=>'Finales generadas correctamente',
+	'Tabla de confirmacion'=>'Tabla de confirmacion',
+	'Tabla de propuesta'=>'Tabla de proposta'
 	
 	)
 ;
