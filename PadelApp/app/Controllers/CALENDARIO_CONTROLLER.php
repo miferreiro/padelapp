@@ -24,6 +24,7 @@ include '../Views/CALENDARIO/CALENDARIO_SHOWALL_View.php';
 include '../Views/CALENDARIO/CALENDARIO_SHOWCURRENT_View.php';
 include '../Views/CALENDARIO/CALENDARIO_TABLA_View.php';
 include '../Views/CALENDARIO/CALENDARIO_INFORMACION_View.php';
+include '../Views/CALENDARIO/CALENDARIO_INFORMACION2_View.php';
 include '../Views/CALENDARIO/CALENDARIO_ACEPTAR_View.php';
 include '../Views/CALENDARIO/CALENDARIO_ACEPTAR2_View.php';
 include '../Views/CALENDARIO/CALENDARIO_PROPONER_View.php';
@@ -278,7 +279,8 @@ case "PROPONER2" :
 		}
 
 	break;
-	case "INFORMACION":
+		
+	case "INFORMACION2":
 
 		if($_SESSION['tipo'] == 'Deportista'){
 
@@ -292,12 +294,33 @@ case "PROPONER2" :
 			$PAREJA2 = new PAREJA_MODEL($_REQUEST['IdCampeonato'],$_REQUEST['Tipo'],$_REQUEST['Nivel'],'','');
 			$numParejaActual = $PAREJA2->numPareja($_SESSION['dni']);	
 		
-			new CALENDARIO_INFORMACION($valores,$valores2,$numParejaActual);
+			new CALENDARIO_INFORMACION2($valores,$valores2,$numParejaActual);
 		}else{
 			new MESSAGE( 'El usuario no tiene los permisos necesarios','../Controllers/CALENDARIO_CONTROLLER.php?IdCampeonato=' . $_REQUEST['IdCampeonato'] . '&Tipo='.$_REQUEST['Tipo']. '&Nivel='.$_REQUEST['Nivel'] . '&Letra='.$_REQUEST['Letra'] . '&action=TABLA' );
 		}
 	
 	break;
+		
+	case "INFORMACION": 
+ 
+		if($_SESSION['tipo'] == 'Deportista'){ 
+ 
+			$ENFRENTAMIENTO = new ENFRENTAMIENTO_MODEL($_REQUEST['IdCampeonato'],$_REQUEST['Tipo'],$_REQUEST['Nivel'],$_REQUEST['Letra'],$_REQUEST['NumEnfrentamiento'],$_REQUEST['pareja1'],'','','',''); 
+			$valores = $ENFRENTAMIENTO->RellenaDatos2(); 
+		 
+			$PARTIDO = new PARTIDO_MODEL($_REQUEST['IdCampeonato'],$_REQUEST['Tipo'],$_REQUEST['Nivel'],$_REQUEST['Letra'],$_REQUEST['NumEnfrentamiento'],'','','','',''); 
+			$valores2 = $PARTIDO->RellenaDatos2(); 
+		 
+			$PAREJA2 = new PAREJA_MODEL($_REQUEST['IdCampeonato'],$_REQUEST['Tipo'],$_REQUEST['Nivel'],'',''); 
+			$numParejaActual = $PAREJA2->numPareja($_SESSION['dni']);	 
+		 
+			new CALENDARIO_INFORMACION($valores,$valores2,$numParejaActual); 
+		}else{ 
+			new MESSAGE( 'El usuario no tiene los permisos necesarios','../Controllers/CALENDARIO_CONTROLLER.php?IdCampeonato=' . $_REQUEST['IdCampeonato'] . '&Tipo='.$_REQUEST['Tipo']. '&Nivel='.$_REQUEST['Nivel'] . '&Letra='.$_REQUEST['Letra'] . '&action=TABLA' ); 
+		} 
+	 
+	break;
+		
 	case "TABLA":
 		if($_SESSION['tipo'] == 'Deportista'){
 

@@ -124,8 +124,8 @@ $s=0;
 							<input type="hidden" name="NumEnfrentamiento" value="<?php echo $NumEnfrentamientosCuartos[0]?>" />
 							<input type="hidden" name="pareja1" value="<?php echo $ParejasCuartos[0]?>" />
 							<input type="hidden" name="pareja2" value="<?php echo $ParejasCuartos[1]?>" />
-							<button id ="buttonBien" type="submit" id="INFORMACION" name="action" value="INFORMACION" >
-							<img src="../Views/icon/edit_big.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
+							<button id ="buttonBien" type="submit" id="INFORMACION2" name="action" value="INFORMACION2" >
+							<img src="../Views/icon/calendario.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
 							</button>
 				
 						</form>	
@@ -142,14 +142,14 @@ $s=0;
 							<input type="hidden" name="NumEnfrentamiento" value="<?php echo $NumEnfrentamientosCuartos[0]?>" />
 							<input type="hidden" name="pareja1" value="<?php echo $ParejasCuartos[0]?>" />
 							<input type="hidden" name="pareja2" value="<?php echo $ParejasCuartos[1]?>" />
-							<button id ="buttonBien" type="submit" id="INFORMACION" name="action" value="INFORMACION" >
-							<img src="../Views/icon/edit_big.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
+							<button id ="buttonBien" type="submit" id="INFORMACION2" name="action" value="INFORMACION2" >
+							<img src="../Views/icon/calendario.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
 							</button>
 							<?php
 	  							if($this->capitan == $_SESSION['login'] && (($this->numParejaActual == $ParejasCuartos[0])|| ($this->numParejaActual == $ParejasCuartos[1]) )){
 	  						?>
-							<button id ="buttonBien" type="submit" id="ACEPTAR" name="action" value="ACEPTAR2" >
-							<img src="../Views/icon/tabla.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
+							<button id ="buttonBien" type="submit" id="ACEPTAR2" name="action" value="ACEPTAR2" >
+							<img src="../Views/icon/recibido.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
 							</button>
 							<?php
 								   }
@@ -169,8 +169,8 @@ $s=0;
 							<input type="hidden" name="NumEnfrentamiento" value="<?php echo $NumEnfrentamientosCuartos[0]?>" />
 							<input type="hidden" name="pareja1" value="<?php echo $ParejasCuartos[0]?>" />
 							<input type="hidden" name="pareja2" value="<?php echo $ParejasCuartos[1]?>" />
-							<button id ="buttonBien" type="submit" id="INFORMACION" name="action" value="INFORMACION" >
-							<img src="../Views/icon/edit_big.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
+							<button id ="buttonBien" type="submit" id="INFORMACION2" name="action" value="INFORMACION2" >
+							<img src="../Views/icon/calendario.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
 							</button>
 						</form>
 									<?php
@@ -185,14 +185,14 @@ $s=0;
 							<input type="hidden" name="NumEnfrentamiento" value="<?php echo $NumEnfrentamientosCuartos[0]?>" />
 							<input type="hidden" name="pareja1" value="<?php echo $ParejasCuartos[0]?>" />
 							<input type="hidden" name="pareja2" value="<?php echo $ParejasCuartos[1]?>" />
-							<button id ="buttonBien" type="submit" id="INFORMACION" name="action" value="INFORMACION" >
-							<img src="../Views/icon/edit_big.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
+							<button id ="buttonBien" type="submit" id="INFORMACION2" name="action" value="INFORMACION2" >
+							<img src="../Views/icon/calendario.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
 							</button>
 							<?php
 	  							if($this->capitan == $_SESSION['login'] && (($this->numParejaActual == $ParejasCuartos[0])|| ($this->numParejaActual == $ParejasCuartos[1]) )){
 	  						?>
 							<button id ="buttonBien" type="submit" id="PROPONER" name="action" value="PROPONER2" >
-							<img src="../Views/icon/tabla.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
+							<img  src="../Views/icon/enviar.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
 							</button>
 							<?php
 								   }
@@ -221,8 +221,8 @@ $s=0;
 							<input type="hidden" name="NumEnfrentamiento" value="<?php echo $NumEnfrentamientosCuartos[1]?>" />
 							<input type="hidden" name="pareja1" value="<?php echo $ParejasCuartos[2]?>" />
 							<input type="hidden" name="pareja2" value="<?php echo $ParejasCuartos[3]?>" />
-							<button id ="buttonBien" type="submit" id="INFORMACION" name="action" value="INFORMACION" >
-							<img src="../Views/icon/edit_big.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
+							<button id ="buttonBien" type="submit" id="INFORMACION2" name="action" value="INFORMACION2" >
+							<img src="../Views/icon/calendario.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
 							</button>
 				
 						</form>	
@@ -239,14 +239,14 @@ $s=0;
 							<input type="hidden" name="NumEnfrentamiento" value="<?php echo $NumEnfrentamientosCuartos[1]?>" />
 							<input type="hidden" name="pareja1" value="<?php echo $ParejasCuartos[2]?>" />
 							<input type="hidden" name="pareja2" value="<?php echo $ParejasCuartos[3]?>" />
-							<button id ="buttonBien" type="submit" id="INFORMACION" name="action" value="INFORMACION" >
-							<img src="../Views/icon/edit_big.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
+							<button id ="buttonBien" type="submit" id="INFORMACION2" name="action" value="INFORMACION2" >
+							<img src="../Views/icon/calendario.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
 							</button>
 							<?php
 	  							if($this->capitan == $_SESSION['login'] && (($this->numParejaActual == $ParejasCuartos[2])|| ($this->numParejaActual == $ParejasCuartos[3]) )){
 	  						?>
-							<button id ="buttonBien" type="submit" id="ACEPTAR" name="action" value="ACEPTAR2" >
-							<img src="../Views/icon/tabla.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
+							<button id ="buttonBien" type="submit" id="ACEPTAR2" name="action" value="ACEPTAR2" >
+							<img src="../Views/icon/recibido.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
 							</button>
 							<?php
 								   }
@@ -266,8 +266,8 @@ $s=0;
 							<input type="hidden" name="NumEnfrentamiento" value="<?php echo $NumEnfrentamientosCuartos[1]?>" />
 							<input type="hidden" name="pareja1" value="<?php echo $ParejasCuartos[2]?>" />
 							<input type="hidden" name="pareja2" value="<?php echo $ParejasCuartos[3]?>" />
-							<button id ="buttonBien" type="submit" id="INFORMACION" name="action" value="INFORMACION" >
-							<img src="../Views/icon/edit_big.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
+							<button id ="buttonBien" type="submit" id="INFORMACION2" name="action" value="INFORMACION2" >
+							<img src="../Views/icon/calendario.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
 							</button>
 						</form>
 									<?php
@@ -282,14 +282,14 @@ $s=0;
 							<input type="hidden" name="NumEnfrentamiento" value="<?php echo $NumEnfrentamientosCuartos[1]?>" />
 							<input type="hidden" name="pareja1" value="<?php echo $ParejasCuartos[2]?>" />
 							<input type="hidden" name="pareja2" value="<?php echo $ParejasCuartos[3]?>" />
-							<button id ="buttonBien" type="submit" id="INFORMACION" name="action" value="INFORMACION" >
-							<img src="../Views/icon/edit_big.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
+							<button id ="buttonBien" type="submit" id="INFORMACION2" name="action" value="INFORMACION2" >
+							<img src="../Views/icon/calendario.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
 							</button>
 							<?php
 	  							if($this->capitan == $_SESSION['login'] && (($this->numParejaActual == $ParejasCuartos[2])|| ($this->numParejaActual == $ParejasCuartos[3]) )){
 	  						?>
 							<button id ="buttonBien" type="submit" id="PROPONER" name="action" value="PROPONER2" >
-							<img src="../Views/icon/tabla.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
+							<img  src="../Views/icon/enviar.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
 							</button>
 							<?php
 								   }
@@ -315,8 +315,8 @@ $s=0;
 							<input type="hidden" name="NumEnfrentamiento" value="<?php echo $NumEnfrentamientosCuartos[2]?>" />
 							<input type="hidden" name="pareja1" value="<?php echo $ParejasCuartos[4]?>" />
 							<input type="hidden" name="pareja2" value="<?php echo $ParejasCuartos[5]?>" />
-							<button id ="buttonBien" type="submit" id="INFORMACION" name="action" value="INFORMACION" >
-							<img src="../Views/icon/edit_big.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
+							<button id ="buttonBien" type="submit" id="INFORMACION2" name="action" value="INFORMACION2" >
+							<img src="../Views/icon/calendario.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
 							</button>
 				
 						</form>	
@@ -333,14 +333,14 @@ $s=0;
 							<input type="hidden" name="NumEnfrentamiento" value="<?php echo $NumEnfrentamientosCuartos[2]?>" />
 							<input type="hidden" name="pareja1" value="<?php echo $ParejasCuartos[4]?>" />
 							<input type="hidden" name="pareja2" value="<?php echo $ParejasCuartos[5]?>" />
-							<button id ="buttonBien" type="submit" id="INFORMACION" name="action" value="INFORMACION" >
-							<img src="../Views/icon/edit_big.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
+							<button id ="buttonBien" type="submit" id="INFORMACION2" name="action" value="INFORMACION2" >
+							<img src="../Views/icon/calendario.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
 							</button>
 							<?php
 	  							if($this->capitan == $_SESSION['login'] && (($this->numParejaActual == $ParejasCuartos[4])|| ($this->numParejaActual == $ParejasCuartos[5]) )){
 	  						?>
-							<button id ="buttonBien" type="submit" id="ACEPTAR" name="action" value="ACEPTAR2" >
-							<img src="../Views/icon/tabla.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
+							<button id ="buttonBien" type="submit" id="ACEPTAR2" name="action" value="ACEPTAR2" >
+							<img src="../Views/icon/recibido.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
 							</button>
 							<?php
 								   }
@@ -360,8 +360,8 @@ $s=0;
 							<input type="hidden" name="NumEnfrentamiento" value="<?php echo $NumEnfrentamientosCuartos[2]?>" />
 							<input type="hidden" name="pareja1" value="<?php echo $ParejasCuartos[4]?>" />
 							<input type="hidden" name="pareja2" value="<?php echo $ParejasCuartos[5]?>" />
-							<button id ="buttonBien" type="submit" id="INFORMACION" name="action" value="INFORMACION" >
-							<img src="../Views/icon/edit_big.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
+							<button id ="buttonBien" type="submit" id="INFORMACION2" name="action" value="INFORMACION2" >
+							<img src="../Views/icon/calendario.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
 							</button>
 						</form>
 									<?php
@@ -376,14 +376,14 @@ $s=0;
 							<input type="hidden" name="NumEnfrentamiento" value="<?php echo $NumEnfrentamientosCuartos[2]?>" />
 							<input type="hidden" name="pareja1" value="<?php echo $ParejasCuartos[4]?>" />
 							<input type="hidden" name="pareja2" value="<?php echo $ParejasCuartos[5]?>" />
-							<button id ="buttonBien" type="submit" id="INFORMACION" name="action" value="INFORMACION" >
-							<img src="../Views/icon/edit_big.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
+							<button id ="buttonBien" type="submit" id="INFORMACION2" name="action" value="INFORMACION2" >
+							<img src="../Views/icon/calendario.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
 							</button>
 							<?php
 	  							if($this->capitan == $_SESSION['login'] && (($this->numParejaActual == $ParejasCuartos[4])|| ($this->numParejaActual == $ParejasCuartos[5]) )){
 	  						?>
 							<button id ="buttonBien" type="submit" id="PROPONER" name="action" value="PROPONER2" >
-							<img src="../Views/icon/tabla.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
+							<img src="../Views/icon/enviar.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
 							</button>
 							<?php
 								   }
@@ -409,8 +409,8 @@ $s=0;
 							<input type="hidden" name="NumEnfrentamiento" value="<?php echo $NumEnfrentamientosCuartos[3]?>" />
 							<input type="hidden" name="pareja1" value="<?php echo $ParejasCuartos[6]?>" />
 							<input type="hidden" name="pareja2" value="<?php echo $ParejasCuartos[7]?>" />
-							<button id ="buttonBien" type="submit" id="INFORMACION" name="action" value="INFORMACION" >
-							<img src="../Views/icon/edit_big.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
+							<button id ="buttonBien" type="submit" id="INFORMACION2" name="action" value="INFORMACION2" >
+							<img src="../Views/icon/calendario.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
 							</button>
 				
 						</form>	
@@ -427,14 +427,14 @@ $s=0;
 							<input type="hidden" name="NumEnfrentamiento" value="<?php echo $NumEnfrentamientosCuartos[3]?>" />
 							<input type="hidden" name="pareja1" value="<?php echo $ParejasCuartos[6]?>" />
 							<input type="hidden" name="pareja2" value="<?php echo $ParejasCuartos[7]?>" />
-							<button id ="buttonBien" type="submit" id="INFORMACION" name="action" value="INFORMACION" >
-							<img src="../Views/icon/edit_big.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
+							<button id ="buttonBien" type="submit" id="INFORMACION2" name="action" value="INFORMACION2" >
+							<img src="../Views/icon/calendario.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
 							</button>
 							<?php
 	  							if($this->capitan == $_SESSION['login'] && (($this->numParejaActual == $ParejasCuartos[6])|| ($this->numParejaActual == $ParejasCuartos[7]) )){
 	  						?>
-							<button id ="buttonBien" type="submit" id="ACEPTAR" name="action" value="ACEPTAR2" >
-							<img src="../Views/icon/tabla.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
+							<button id ="buttonBien" type="submit" id="ACEPTAR2" name="action" value="ACEPTAR2" >
+							<img src="../Views/icon/recibido.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
 							</button>
 							<?php
 								   }
@@ -454,8 +454,8 @@ $s=0;
 							<input type="hidden" name="NumEnfrentamiento" value="<?php echo $NumEnfrentamientosCuartos[3]?>" />
 							<input type="hidden" name="pareja1" value="<?php echo $ParejasCuartos[6]?>" />
 							<input type="hidden" name="pareja2" value="<?php echo $ParejasCuartos[7]?>" />
-							<button id ="buttonBien" type="submit" id="INFORMACION" name="action" value="INFORMACION" >
-							<img src="../Views/icon/edit_big.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
+							<button id ="buttonBien" type="submit" id="INFORMACION2" name="action" value="INFORMACION2" >
+							<img src="../Views/icon/calendario.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
 							</button>
 						</form>
 									<?php
@@ -470,14 +470,14 @@ $s=0;
 							<input type="hidden" name="NumEnfrentamiento" value="<?php echo $NumEnfrentamientosCuartos[3]?>" />
 							<input type="hidden" name="pareja1" value="<?php echo $ParejasCuartos[6]?>" />
 							<input type="hidden" name="pareja2" value="<?php echo $ParejasCuartos[7]?>" />
-							<button id ="buttonBien" type="submit" id="INFORMACION" name="action" value="INFORMACION" >
-							<img src="../Views/icon/edit_big.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
+							<button id ="buttonBien" type="submit" id="INFORMACION2" name="action" value="INFORMACION2" >
+							<img src="../Views/icon/calendario.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
 							</button>
 							<?php
 	  							if($this->capitan == $_SESSION['login'] && (($this->numParejaActual == $ParejasCuartos[6])|| ($this->numParejaActual == $ParejasCuartos[7]) )){
 	  						?>
 							<button id ="buttonBien" type="submit" id="PROPONER" name="action" value="PROPONER2" >
-							<img src="../Views/icon/tabla.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
+							<img  src="../Views/icon/enviar.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
 							</button>
 							<?php
 								   }
@@ -518,8 +518,8 @@ $s=0;
 							<input type="hidden" name="NumEnfrentamiento" value="<?php echo $NumEnfrentamientosSemis[0]?>" />
 							<input type="hidden" name="pareja1" value="<?php echo $ParejasSemis[0]?>" />
 							<input type="hidden" name="pareja2" value="<?php echo $ParejasSemis[1]?>" />
-							<button id ="buttonBien" type="submit" id="INFORMACION" name="action" value="INFORMACION" >
-							<img src="../Views/icon/edit_big.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
+							<button id ="buttonBien" type="submit" id="INFORMACION2" name="action" value="INFORMACION2" >
+							<img src="../Views/icon/calendario.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
 							</button>
 				
 						</form>	
@@ -536,14 +536,14 @@ $s=0;
 							<input type="hidden" name="NumEnfrentamiento" value="<?php echo $NumEnfrentamientosSemis[0]?>" />
 							<input type="hidden" name="pareja1" value="<?php echo $ParejasSemis[0]?>" />
 							<input type="hidden" name="pareja2" value="<?php echo $ParejasSemis[1]?>" />
-							<button id ="buttonBien" type="submit" id="INFORMACION" name="action" value="INFORMACION" >
-							<img src="../Views/icon/edit_big.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
+							<button id ="buttonBien" type="submit" id="INFORMACION2" name="action" value="INFORMACION2" >
+							<img src="../Views/icon/calendario.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
 							</button>
 							<?php
 	  							if($this->capitan == $_SESSION['login'] && (($this->numParejaActual == $ParejasSemis[0])|| ($this->numParejaActual == $ParejasSemis[1]) )){
 	  						?>
-							<button id ="buttonBien" type="submit" id="ACEPTAR" name="action" value="ACEPTAR2" >
-							<img src="../Views/icon/tabla.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
+							<button id ="buttonBien" type="submit" id="ACEPTAR2" name="action" value="ACEPTAR2" >
+							<img src="../Views/icon/recibido.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
 							</button>
 							<?php
 								   }
@@ -563,8 +563,8 @@ $s=0;
 							<input type="hidden" name="NumEnfrentamiento" value="<?php echo $NumEnfrentamientosSemis[0]?>" />
 							<input type="hidden" name="pareja1" value="<?php echo $ParejasSemis[0]?>" />
 							<input type="hidden" name="pareja2" value="<?php echo $ParejasSemis[1]?>" />
-							<button id ="buttonBien" type="submit" id="INFORMACION" name="action" value="INFORMACION" >
-							<img src="../Views/icon/edit_big.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
+							<button id ="buttonBien" type="submit" id="INFORMACION2" name="action" value="INFORMACION2" >
+							<img src="../Views/icon/calendario.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
 							</button>
 						</form>
 									<?php
@@ -579,14 +579,14 @@ $s=0;
 							<input type="hidden" name="NumEnfrentamiento" value="<?php echo $NumEnfrentamientosSemis[0]?>" />
 							<input type="hidden" name="pareja1" value="<?php echo $ParejasSemis[0]?>" />
 							<input type="hidden" name="pareja2" value="<?php echo $ParejasSemis[1]?>" />
-							<button id ="buttonBien" type="submit" id="INFORMACION" name="action" value="INFORMACION" >
-							<img src="../Views/icon/edit_big.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
+							<button id ="buttonBien" type="submit" id="INFORMACION2" name="action" value="INFORMACION2" >
+							<img src="../Views/icon/calendario.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
 							</button>
 							<?php
 	  							if($this->capitan == $_SESSION['login'] && (($this->numParejaActual == $ParejasSemis[0])|| ($this->numParejaActual == $ParejasSemis[1]) )){
 	  						?>
 							<button id ="buttonBien" type="submit" id="PROPONER" name="action" value="PROPONER2" >
-							<img src="../Views/icon/tabla.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
+							<img  src="../Views/icon/enviar.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
 							</button>
 							<?php
 								   }
@@ -615,8 +615,8 @@ $s=0;
 							<input type="hidden" name="NumEnfrentamiento" value="<?php echo $NumEnfrentamientosSemis[1]?>" />
 							<input type="hidden" name="pareja1" value="<?php echo $ParejasSemis[2]?>" />
 							<input type="hidden" name="pareja2" value="<?php echo $ParejasSemis[3]?>" />
-							<button id ="buttonBien" type="submit" id="INFORMACION" name="action" value="INFORMACION" >
-							<img src="../Views/icon/edit_big.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
+							<button id ="buttonBien" type="submit" id="INFORMACION2" name="action" value="INFORMACION2" >
+							<img src="../Views/icon/calendario.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
 							</button>
 				
 						</form>	
@@ -633,14 +633,14 @@ $s=0;
 							<input type="hidden" name="NumEnfrentamiento" value="<?php echo $NumEnfrentamientosSemis[1]?>" />
 							<input type="hidden" name="pareja1" value="<?php echo $ParejasSemis[2]?>" />
 							<input type="hidden" name="pareja2" value="<?php echo $ParejasSemis[3]?>" />
-							<button id ="buttonBien" type="submit" id="INFORMACION" name="action" value="INFORMACION" >
-							<img src="../Views/icon/edit_big.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
+							<button id ="buttonBien" type="submit" id="INFORMACION2" name="action" value="INFORMACION2" >
+							<img src="../Views/icon/calendario.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
 							</button>
 							<?php
 	  							if($this->capitan == $_SESSION['login'] && (($this->numParejaActual == $ParejasSemis[2])|| ($this->numParejaActual == $ParejasSemis[3]) )){
 	  						?>
-							<button id ="buttonBien" type="submit" id="ACEPTAR" name="action" value="ACEPTAR2" >
-							<img src="../Views/icon/tabla.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
+							<button id ="buttonBien" type="submit" id="ACEPTAR2" name="action" value="ACEPTAR2" >
+							<img src="../Views/icon/recibido.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
 							</button>
 							<?php
 								   }
@@ -660,8 +660,8 @@ $s=0;
 							<input type="hidden" name="NumEnfrentamiento" value="<?php echo $NumEnfrentamientosSemis[1]?>" />
 							<input type="hidden" name="pareja1" value="<?php echo $ParejasSemis[2]?>" />
 							<input type="hidden" name="pareja2" value="<?php echo $ParejasSemis[3]?>" />
-							<button id ="buttonBien" type="submit" id="INFORMACION" name="action" value="INFORMACION" >
-							<img src="../Views/icon/edit_big.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
+							<button id ="buttonBien" type="submit" id="INFORMACION2" name="action" value="INFORMACION2" >
+							<img src="../Views/icon/calendario.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
 							</button>
 						</form>
 									<?php
@@ -677,13 +677,13 @@ $s=0;
 							<input type="hidden" name="pareja1" value="<?php echo $ParejasSemis[2]?>" />
 							<input type="hidden" name="pareja2" value="<?php echo $ParejasSemis[3]?>" />
 							<button id ="buttonBien" type="submit" id="INFORMACION" name="action" value="INFORMACION" >
-							<img src="../Views/icon/edit_big.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
+							<img src="../Views/icon/calendario.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
 							</button>
 							<?php
 	  							if($this->capitan == $_SESSION['login'] && (($this->numParejaActual == $ParejasSemis[2])|| ($this->numParejaActual == $ParejasSemis[3]) )){
 	  						?>
 							<button id ="buttonBien" type="submit" id="PROPONER" name="action" value="PROPONER2" >
-							<img src="../Views/icon/tabla.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
+							<img  src="../Views/icon/enviar.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
 							</button>
 							<?php
 								   }
@@ -725,8 +725,8 @@ $s=0;
 							<input type="hidden" name="NumEnfrentamiento" value="<?php echo $NumEnfrentamientoFinal?>" />
 							<input type="hidden" name="pareja1" value="<?php echo $ParejasFinal[0]?>" />
 							<input type="hidden" name="pareja2" value="<?php echo $ParejasFinal[1]?>" />
-							<button id ="buttonBien" type="submit" id="INFORMACION" name="action" value="INFORMACION" >
-							<img src="../Views/icon/edit_big.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
+							<button id ="buttonBien" type="submit" id="INFORMACION2" name="action" value="INFORMACION2" >
+							<img src="../Views/icon/calendario.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
 							</button>
 				
 						</form>	
@@ -743,14 +743,14 @@ $s=0;
 							<input type="hidden" name="NumEnfrentamiento" value="<?php echo $NumEnfrentamientoFinal?>" />
 							<input type="hidden" name="pareja1" value="<?php echo $ParejasFinal[0]?>" />
 							<input type="hidden" name="pareja2" value="<?php echo $ParejasFinal[1]?>" />
-							<button id ="buttonBien" type="submit" id="INFORMACION" name="action" value="INFORMACION" >
-							<img src="../Views/icon/edit_big.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
+							<button id ="buttonBien" type="submit" id="INFORMACION2" name="action" value="INFORMACION2" >
+							<img src="../Views/icon/calendario.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
 							</button>
 							<?php
 	  							if($this->capitan == $_SESSION['login'] && (($this->numParejaActual == $ParejasFinal[0])|| ($this->numParejaActual == $ParejasFinal[1]) )){
 	  						?>
-							<button id ="buttonBien" type="submit" id="ACEPTAR" name="action" value="ACEPTAR2" >
-							<img src="../Views/icon/tabla.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
+							<button id ="buttonBien" type="submit" id="ACEPTAR2" name="action" value="ACEPTAR2" >
+							<img src="../Views/icon/recibido.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
 							</button>
 							<?php
 								   }
@@ -770,8 +770,8 @@ $s=0;
 							<input type="hidden" name="NumEnfrentamiento" value="<?php echo $NumEnfrentamientoFinal?>" />
 							<input type="hidden" name="pareja1" value="<?php echo $ParejasFinal[0]?>" />
 							<input type="hidden" name="pareja2" value="<?php echo $ParejasFinal[1]?>" />
-							<button id ="buttonBien" type="submit" id="INFORMACION" name="action" value="INFORMACION" >
-							<img src="../Views/icon/edit_big.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
+							<button id ="buttonBien" type="submit" id="INFORMACION2" name="action" value="INFORMACION2" >
+							<img src="../Views/icon/calendario.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
 							</button>
 						</form>
 									<?php
@@ -786,14 +786,14 @@ $s=0;
 							<input type="hidden" name="NumEnfrentamiento" value="<?php echo $NumEnfrentamientoFinal?>" />
 							<input type="hidden" name="pareja1" value="<?php echo $ParejasFinal[0]?>" />
 							<input type="hidden" name="pareja2" value="<?php echo $ParejasFinal[1]?>" />
-							<button id ="buttonBien" type="submit" id="INFORMACION" name="action" value="INFORMACION" >
-							<img src="../Views/icon/edit_big.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
+							<button id ="buttonBien" type="submit" id="INFORMACION2" name="action" value="INFORMACION2" >
+							<img src="../Views/icon/calendario.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
 							</button>
 							<?php
 	  							if($this->capitan == $_SESSION['login'] && (($this->numParejaActual == $ParejasFinal[0])|| ($this->numParejaActual == $ParejasFinal[1]) )){
 	  						?>
 							<button id ="buttonBien" type="submit" id="PROPONER" name="action" value="PROPONER2" >
-							<img src="../Views/icon/tabla.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
+							<img  src="../Views/icon/enviar.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" />
 							</button>
 							<?php
 								   }
