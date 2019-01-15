@@ -416,6 +416,9 @@ ORDER BY E.Letra,Puntos DESC, E.NumPareja DESC;
 -- Volcado de datos para la tabla `categoria`
 --
 INSERT INTO `categoria` (`IdCampeonato`, `Tipo`, `Nivel`) VALUES
+(1, 'Femenino', 1),
+(1, 'Masculino', 3),
+(1, 'Masculino', 1),
 (3, 'Femenino', 1),
 (3, 'Masculino', 2),
 (3, 'Masculino', 1),
@@ -4016,7 +4019,7 @@ INSERT INTO `usuarioparejas` (`Usuario_Dni`, `Pareja_idCampeonato`, `Pareja_Tipo
 --
 
 INSERT INTO `campeonato` (`IdCampeonato`, `FechaIni`, `HoraIni`, `FechaFin`, `HoraFin`) VALUES
-(1, '2018-10-23', '09:00:00', '2018-10-31', '23:00:00'),
+(1, '2019-01-14', '09:00:00', '2019-01-30', '23:00:00'),
 (2, '2018-10-25', '10:00:00', '2018-10-27', '23:00:00'),
 (3, '2018-10-10', '12:21:00', '2018-10-15', '12:21:00'),
 (5, '2019-01-12', '12:21:00', '2019-01-13', '12:21:00');
@@ -5211,6 +5214,7 @@ INSERT INTO `enfrentamiento` (`IdCampeonato`, `Tipo`, `Nivel`, `Letra`, `NumEnfr
 (3, 'Masculino', 1, 'B', 103, 72, NULL, NULL, NULL, 0),
 (3, 'Masculino', 1, 'B', 104, 71, NULL, NULL, NULL, 0),
 (3, 'Masculino', 1, 'B', 104, 72, NULL, NULL, NULL, 0),
+
 (3, 'Masculino', 1, 'C', 1, 17, NULL, NULL, NULL, 0),
 (3, 'Masculino', 1, 'C', 1, 18, NULL, NULL, NULL, 0),
 (3, 'Masculino', 1, 'C', 2, 17, NULL, NULL, NULL, 0),
