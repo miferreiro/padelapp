@@ -11,7 +11,7 @@ else{
 		
 	include '../Models/USUARIO_MODEL.php';
 	
-	$usuario = new USUARIO_MODEL($_REQUEST['login'],$_REQUEST['password'],$_REQUEST['Dni'],$_REQUEST['nombre'],$_REQUEST['apellidos'],$_REQUEST['telefono'],$_REQUEST['sexo'],'Deportista');
+	$usuario = new USUARIO_MODEL($_REQUEST['login'],$_REQUEST['password'],$_REQUEST['Dni'],$_REQUEST['nombre'],$_REQUEST['apellidos'],$_REQUEST['telefono'],$_REQUEST['sexo'],$_REQUEST['email'],'Deportista');
 	
 	$respuesta = $usuario->Register();
 
