@@ -383,7 +383,7 @@ array(
 	'EscuelaDeportiva_Hora'=>'Hour',
 	'EscuelaDeportiva_Actividad'=>'Activity',
 	'Ver mis clases'=> 'View my classes',
-	'Inscribirse en actividad'=>'Register for Activity',
+	'Inscribirse en actividad'=>'Register for class',
 	'Gestión de clases'=>'Class Management',
 	'Ya está inscrito en esa actividad'=>'You are already enrolled in this activity',
 	'Gestión de Noticias' => 'News Management',

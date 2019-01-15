@@ -370,7 +370,7 @@ array(
 	'EscuelaDeportiva_Hora'=>'Hora',
 	'EscuelaDeportiva_Actividad'=>'Actividad',
 	'Ver mis clases'=>'Ver mis clases',
-	'Inscribirse en actividad'=>'Inscribirse en actividad',
+	'Inscribirse en actividad'=>'Inscribirse en clase',
 	'Gestión de clases'=>'Gestión de clases',
 	'Ya está inscrito en esa actividad'=>'Ya está inscrito en esa actividad',
 	'Gestión de Noticias' => 'Gestión de Noticias',
