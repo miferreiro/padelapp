@@ -69,7 +69,8 @@ class RESERVA_DELETE {
 
 				<button id ="buttonBien" type="submit" name="action" value="DELETE" ><img src="../Views/icon/accept_big.png" alt="<?php echo $strings['Confirmar'] ?>"/></button>
 			</form>
-			<form action='../Controllers/RESERVA_CONTROLLER.php' method="post" style="display: inline">
+			<form action='../Controllers/RESERVA_CONTROLLER.php' method="get" style="display: inline">
+				<input type="hidden" name="Usuario_Dni" value="<?php echo $this->valores['Usuario_Dni']; ?>">
 				<button id ="buttonBien" type="submit"><img src="../Views/icon/back_big2.png" alt="<?php echo $strings['Atras'] ?>"/></button>
 			</form>
 			</div>
