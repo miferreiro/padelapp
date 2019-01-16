@@ -21,7 +21,7 @@ class NOTIFICACIONES_SHOWALL {
 			<h2>
 				<?php echo $strings['Tabla de notificaciones'];?>
 			</h2>
-			<div class="col-md-6">
+			<div class="col-md-3">
 			<table class="table" id="mydatatableusuarios">
 				<thead class="thead-light">
 				
@@ -58,14 +58,11 @@ class NOTIFICACIONES_SHOWALL {
 ?>
 					
 					<td>
-						<form action="../Controllers/NOTIFICACIONES_CONTROLLER.php" method="get" style="display:inline" >
+						<form action="../Controllers/NOTIFICACIONES_CONTROLLER.php" method="get" style="display:inline">
 							<input type="hidden" name="IdNotificacion" value="<?php echo $fila['IdNotificacion']; ?>">
 							
-								<button id ="buttonBien" type="submit" name="action" value="EDIT" ><img src="../Views/icon/edit_big.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" /></button>
-										
 								<button id ="buttonBien" type="submit" name="action" value="DELETE" ><img src="../Views/icon/delete_big.png" alt="<?php echo $strings['Eliminar']?>" width="20" height="20" /></button>				
 										
-								<button id ="buttonBien" type="submit" name="action" value="SHOWCURRENT" ><img src="../Views/icon/verdetalles_2.jpg" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>
 						</form>						
 					</td>								
 				</tr>
