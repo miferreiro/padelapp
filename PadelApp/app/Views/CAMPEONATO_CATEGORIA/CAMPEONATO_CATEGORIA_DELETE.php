@@ -56,8 +56,11 @@ class CAMPEONATO_CATEGORIA_DELETE {
 				<input type="hidden" name="Nivel" value="<?php echo $this->valores['Nivel'] ?>" />
                 <button id ="buttonBien" type="submit" id="DELETE" name="action" value="DELETE" ><img src="../Views/icon/accept_big.png" width="32" height="32" alt="<?php echo $strings['Confirmar'] ?>"/></button>
 			</form>
-			<form action='../Controllers/CAMPEONATO_CATEGORIA_CONTROLLER.php' method="post" style="display: inline">
-				<button id ="buttonBien" type="submit"><img src="../Views/icon/back_big2.png" alt="<?php echo $strings['Atras'] ?>"/></button>
+			<form action='../Controllers/CAMPEONATO_CATEGORIA_CONTROLLER.php' method="get">
+				<input type="hidden" name="IdCampeonato" value="<?php echo $this->valores['IdCampeonato'] ?>" />
+				<input type="hidden" name="Tipo" value="<?php echo $this->valores['Tipo'] ?>" />
+				<input type="hidden" name="Nivel" value="<?php echo $this->valores['Nivel'] ?>" />
+				<button id ="buttonBien" type="submit"><img src="../Views/icon/back_big2.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>
 			</div>
 		</div>
