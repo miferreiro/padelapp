@@ -114,7 +114,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		if($_SESSION['tipo'] == 'Admin'){
 			$ELIMINATORIA = new ELIMINATORIA_MODEL($_REQUEST['IdCampeonato'],$_REQUEST['Tipo'],$_REQUEST['Nivel'],$_REQUEST['Letra'],'','','','','','','');
 			$datos=$ELIMINATORIA->IntegrantesEliminatorias();
-			new ELIMINATORIA_TABLA($datos);
+			new ELIMINATORIA_TABLA($datos,$_REQUEST['IdCampeonato'],$_REQUEST['Tipo'],$_REQUEST['Nivel']);
 		}else{
 			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/CALENDARIO_CONTROLLER.php' );
 		}

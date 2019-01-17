@@ -2,14 +2,14 @@
 
 class ELIMINATORIA_TABLA2{
 
-	function __construct($datos,$capitan,$numParejaActual) {
+	function __construct($datos,$capitan,$numParejaActual,$IdCampeonato,$Tipo,$Nivel) {
 		$this->datos = $datos;
 		$this->capitan = $capitan;
 		$this->numParejaActual = $numParejaActual;
-		$this->render($this->datos , $this->capitan, $this->numParejaActual);
+		$this->render($this->datos , $this->capitan, $this->numParejaActual,$IdCampeonato,$Tipo,$Nivel);
 	}
 	
-	function render($datos,$capitan,$numParejaActual){
+	function render($datos,$capitan,$numParejaActual,$IdCampeonato,$Tipo,$Nivel){
 		$this->datos = $datos;
 		$this->capitan = $capitan;
 		$this->numParejaActual = $numParejaActual;

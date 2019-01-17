@@ -2,16 +2,18 @@
 
 class ELIMINATORIA_TABLA{
 
-	function __construct($datos) {
+	function __construct($datos,$IdCampeonato,$Tipo,$Nivel) {
 		$this->datos = $datos;
-		$this->render($this->datos);
+		$this->render($this->datos,$IdCampeonato,$Tipo,$Nivel);
 	}
 	
-	function render($datos){
+	function render($datos,$IdCampeonato,$Tipo,$Nivel){
 		$this->datos = $datos;
 		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
-		
+$IdCampeonato = $IdCampeonato;
+$Tipo = $Tipo;
+$Nivel = $Nivel;		
 		
 $ParejasCuartos=array();
 $NumEnfrentamientosCuartos=array();		
@@ -65,6 +67,7 @@ $m=0;
 		  $j++;		  
 	  }	  
   }    
+  
 ?>
 			<h2  align="center"> 
 				<?php echo $strings['Tabla de enfrentamientos'];?>
@@ -240,6 +243,7 @@ $m=0;
 							<input type="hidden" name="IdCampeonato" value="<?php echo $IdCampeonato?>" />
 							<input type="hidden" name="Tipo" value="<?php echo $Tipo?>" />
 							<input type="hidden" name="Nivel" value="<?php echo $Nivel?>" />
+							<input type="hidden" name="action" value="<?php echo ""?>" />
 				<button id ="buttonBien" type="submit"><img src="../Views/icon/back_big2.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>
 			</div>

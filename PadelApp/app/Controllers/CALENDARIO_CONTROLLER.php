@@ -363,7 +363,7 @@ case "PROPONER2" :
 
 			    $ELIMINATORIA = new ELIMINATORIA_MODEL($_REQUEST['IdCampeonato'],$_REQUEST['Tipo'],$_REQUEST['Nivel'],$_REQUEST['Letra'],'','','','','','','');
 				$datos=$ELIMINATORIA->IntegrantesEliminatorias();
-				new ELIMINATORIA_TABLA2($datos, $capitan, $numParejaActual);
+				new ELIMINATORIA_TABLA2($datos, $capitan, $numParejaActual,$_REQUEST['IdCampeonato'],$_REQUEST['Tipo'],$_REQUEST['Nivel']);
 		}else{
 			new MESSAGE( 'El usuario no tiene los permisos necesarios', '../Controllers/CALENDARIO_CONTROLLER.php' );
 		}
